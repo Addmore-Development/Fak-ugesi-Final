@@ -38,21 +38,19 @@
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
 
-    /* Hero logo — bottom right, same as schedule/index: light SVG, no white box */
-.hero-logo {
-  position: relative;
-  z-index: 2;
-  flex-shrink: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-.hero-logo img {
-  height: 110px;
-  width: auto;
-  display: block;
-  filter: brightness(0) invert(1) contrast(1.2);
-}
+    .hero-logo{
+      position:relative;z-index:4;
+      flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+      align-self:center;
+      background:transparent;
+    }
+    .hero-logo img{
+      height:110px;width:auto;display:block;
+      filter:brightness(0) invert(1) contrast(1.2);
+      mix-blend-mode:screen;
+      background:transparent;
+    }
 
     /* TICKER */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
