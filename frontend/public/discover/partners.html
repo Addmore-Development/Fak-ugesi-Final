@@ -153,7 +153,7 @@
     }
     .logo-strip {
       display: flex;
-      gap: 0;
+      gap: 12px;
       transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
     }
     /* Cards fill exactly 1/5 viewport each — set by JS */
@@ -553,6 +553,7 @@
   };
 
   function scrollStrip(id, dir) {
+    const gap = 12;
     const outer = document.getElementById(id + '-outer');
     const strip = document.getElementById(id + '-strip');
     const cards = strip.querySelectorAll('.logo-card');
@@ -573,6 +574,7 @@
 
   // Size each strip card to exactly 1/5 of the viewport width
   function sizeStrips() {
+    const gap = 12;
     ['expo', 'market', 'supporting'].forEach(id => {
       const strip = document.getElementById(id + '-strip');
       if (!strip) return;

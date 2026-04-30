@@ -73,8 +73,9 @@
       padding: 11px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
       text-transform: uppercase; cursor: pointer; text-decoration: none;
       transition: background 0.22s, color 0.22s;
+        position: relative;overflow: hidden;
     }
-    .btn-tickets:hover { background: var(--white); color: var(--navy); }
+    .btn-tickets:hover { background: #1a2744; color: var(--white); border-color: rgba(255,220,60,0.75); transform: translateY(-1px); }
 
     .hero-logo-centered {
       position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
@@ -359,13 +360,23 @@
     .ticket-card.full-pass .btn-get-pass {
       background: transparent; border-color: var(--dark-text); color: var(--dark-text);
     }
-    .ticket-card.full-pass .btn-get-pass:hover { background: var(--dark-text); color: var(--white); }
+    .ticket-card.full-pass .btn-get-pass:hover {
+  background: #0d1b3e;
+  color: var(--white);
+  border-color: rgba(255,220,60,0.75);
+  transform: translateY(-1px);
+}
     .ticket-card.day-pass .btn-get-pass,
     .ticket-card.industry-pass .btn-get-pass {
       background: transparent; border-color: rgba(255,255,255,0.60); color: var(--white);
     }
     .ticket-card.day-pass .btn-get-pass:hover,
-    .ticket-card.industry-pass .btn-get-pass:hover { background: var(--white); color: var(--dark-text); }
+.ticket-card.industry-pass .btn-get-pass:hover {
+  background: #0d1b3e;
+  color: var(--white);
+  border-color: rgba(255,220,60,0.75);
+  transform: translateY(-1px);
+}
 
     /* ════════════════════════
        FAQ
@@ -499,6 +510,11 @@
       .faq-title { font-size: 26px !important; }
       .partners-title { font-size: 24px !important; }
     }
+
+    .ticket-card-wrap::before,
+.ticket-card-wrap::after {
+  display: none;
+}
   </style>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
@@ -520,7 +536,7 @@
     <p class="hero-eyebrow">Fak'ugesi Festival 2026 · 07 — 12 October</p>
     <h1 class="hero-title">Join us between<br>13 and 17 October 2026</h1>
     <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-    <a class="btn-tickets" href="#passes">GET YOUR TICKETS</a>
+    <a class="btn-tickets" href="#passes"><span>GET YOUR TICKETS</span></a>
   </div>
 
   <div class="hero-logo-centered">
@@ -549,11 +565,9 @@
   <div class="passes-content">
 
     <!-- Top crosses row — converted to .cross-icon-inline so spin script targets them -->
-    <div class="crosses-row">
-      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
-      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
-      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
-    </div>
+    <div class="cross-icon" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></div>
+<div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></div>
+<div class="cross-icon" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></div>
 
     <div class="passes-body">
 
@@ -596,7 +610,7 @@
                   </ul>
                 </div>
                 <div style="margin-top:18px;">
-                  <a class="btn-get-pass" href="#">GET FULL PASS</a>
+                 <a class="btn-get-pass" href="#"><span>GET FULL PASS</span></a>
                 </div>
               </div>
               <div><!-- spacer for dots --></div>
@@ -650,7 +664,7 @@
                   </ul>
                 </div>
                 <div style="margin-top:18px;">
-                  <a class="btn-get-pass" href="#">GET DAY PASS</a>
+                  <a class="btn-get-pass" href="#"><span></span>GET DAY PASS</span></a>
                 </div>
               </div>
               <div><!-- spacer for dots --></div>
@@ -705,7 +719,7 @@
                   </ul>
                 </div>
                 <div style="margin-top:18px;">
-                  <a class="btn-get-pass" href="#">GET INDUSTRY PASS</a>
+                 <a class="btn-get-pass" href="#"><span>GET INDUSTRY PASS</span></a>
                 </div>
               </div>
               <div><!-- spacer for dots --></div>
@@ -727,11 +741,9 @@
     </div><!-- /.passes-body -->
 
     <!-- Bottom crosses row — converted to .cross-icon-inline -->
-    <div class="crosses-row-bot">
-      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
-      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
-      <span class="cross-icon-inline"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></span>
-    </div>
+    <div class="cross-icon" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></div>
+<div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></div>
+<div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/></svg></div>
 
   </div>
 </section>

@@ -28,16 +28,18 @@
     body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
     /* ── CROSS ICONS ── */
-    .cross-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px; height: 18px;
-      flex-shrink: 0;
-      position: absolute;
-      z-index: 6;
-      opacity: 0.45;
-    }
+.cross-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  position: absolute;
+  z-index: 6;
+  opacity: 0.45;
+  transition: transform 0.1s linear !important;
+  animation: none !important;
+}
     .cross-icon svg { width: 100%; height: 100%; }
 
     /* ── HERO ── */
@@ -72,16 +74,17 @@
       justify-content: space-between;
     }
 
-    .hero-content { max-width: 420px; }
+    .hero-content { max-width: 660px; }
     .hero-subtitle {
       font-size: 11px; font-weight: 600;
       letter-spacing: 0.12em; text-transform: uppercase;
       opacity: 0.8; margin-bottom: 10px;
     }
-    .hero-title {
-      font-size: 52px; font-weight: 600;
-      line-height: 1.0; margin-bottom: 18px;
-    }
+ .hero-title {
+  font-size: 52px; font-weight: 600;
+  line-height: 1.0; margin-bottom: 18px;
+  max-width: 580px;
+}
     .hero-body {
       font-size: 12px; line-height: 1.7;
       max-width: 340px; opacity: 0.85; margin-bottom: 18px;
@@ -439,10 +442,10 @@
      WHO WE ARE
 ══════════════════════════════════════════════ -->
 <section class="who-section">
-  <div class="crosses-bar">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  </div>
+ <div class="crosses-bar">
+  <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+</div>
   <div class="who-layout">
     <div class="who-left">
       <h2 class="who-title">Who we are</h2>
@@ -476,10 +479,10 @@
     <div class="strip-img-item"><img src="images/Copy_of__MGL3584.jpg" alt="Festival" /></div>
   </div>
   <div class="crosses-bar-3">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  </div>
+  <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+</div>
 </section>
 
 <!-- ══════════════════════════════════════════════
@@ -505,8 +508,8 @@
     </div>
   </div>
   <div style="display:flex;justify-content:space-between;padding:22px 200px 0;">
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none" style="width:18px;height:18px;"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
+    <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   </div>
 </section>
 
@@ -514,10 +517,10 @@
      THE TEAM
 ══════════════════════════════════════════════ -->
 <section class="team-section">
-  <div class="team-crosses-top">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  </div>
+ <div class="team-crosses-top">
+  <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+</div>
   <div class="team-inner">
     <h2 class="team-title">The Team</h2>
     <div class="team-grid">

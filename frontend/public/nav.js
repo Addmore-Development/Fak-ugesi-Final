@@ -88,10 +88,10 @@
       flex-shrink:0; position:relative; z-index:1;
     }
     #main-nav .nav-search {
-      background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
-      display:flex; align-items:center; padding:6px;
-      margin-left:32px;
-    }
+  background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
+  display:flex; align-items:center; padding:6px;
+  margin-left:92px;
+}
     #main-nav .nav-search svg{width:18px;height:18px;}
 
     /* GET TICKETS */

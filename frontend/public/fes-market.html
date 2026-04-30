@@ -23,10 +23,15 @@
     .hero-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL3273.jpg');background-size:cover;background-position:center 40%;filter:brightness(0.5);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-inner{
-      position:relative;z-index:3;padding:64px 248px 56px;
-      display:flex;align-items:flex-end;justify-content:space-between;
-    }
+    .hero-inner {
+  position: relative;
+  z-index: 3;
+  padding: 120px 248px 56px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
     .hero-content{max-width:620px;}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
     .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
@@ -34,19 +39,20 @@
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
 
     /* Hero logo — bottom right, same as schedule/index: light SVG, no white box */
-    .hero-logo{
-      position:relative;z-index:4;
-      flex-shrink:0;
-      display:flex;align-items:center;justify-content:center;
-      align-self:center;
-      background:transparent;
-    }
-    .hero-logo img{
-      height:110px;width:auto;display:block;
-      filter:brightness(0) invert(1) contrast(1.2);
-      mix-blend-mode:screen;
-      background:transparent;
-    }
+.hero-logo {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.hero-logo img {
+  height: 110px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1) contrast(1.2);
+}
 
     /* TICKER */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
@@ -179,8 +185,31 @@
     .spot-cta-content{position:relative;z-index:3;padding:60px 248px;width:100%;}
     .spot-cta-title{font-size:42px;font-weight:900;color:#fff;margin-bottom:24px;max-width:480px;line-height:1.15;}
     .spot-cta-body{font-size:13px;line-height:1.72;max-width:440px;opacity:.85;color:#fff;margin-bottom:28px;}
-    .spot-cta-btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.7);color:#fff;background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .22s,color .22s,border-color .22s;}
-    .spot-cta-btn:hover{background:#fff;color:var(--navy);border-color:#fff}
+    .spot-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px solid rgba(255,255,255,0.7);
+  color: #fff;
+  background: transparent;
+  padding: 12px 28px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'InterDisplay', sans-serif;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s !important;
+}
+  .spot-cta-btn:hover {
+  background: #0d1b3e !important;
+  color: #fff !important;
+  border-color: rgba(100,160,255,0.65) !important;
+  transform: translateY(-1px) !important;
+}
 
     /* PARTNERS — carousel style */
     .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
@@ -547,6 +576,9 @@ button.btn-tickets:hover,
   text-align: center; padding: 14px; font-weight: 700;
   font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
 }
+
+
+
 </style>
 
 </head>
@@ -735,7 +767,7 @@ button.btn-tickets:hover,
   <div class="spot-cta-content">
     <h2 class="spot-cta-title">Want to a spot at Fak'ugesi Market?</h2>
     <p class="spot-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
-    <a class="spot-cta-btn" href="#">GET INVOLVED</a>
+    <a class="spot-cta-btn btn-outline-white" href="#">GET INVOLVED</a>
   </div>
 </section>
 
