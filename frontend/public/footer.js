@@ -16,10 +16,9 @@
     #fug-social-band {
       background: #1a2744;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      gap: 40px;
-      padding: 18px 48px;
+      padding: 18px 248px;
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-social-band p {
@@ -46,38 +45,66 @@
     #fug-footer {
       background: #fff;
       border-top: 1px solid rgba(26,39,68,0.1);
-      padding: 0 48px;
       color: #0d1b3e;
       position: relative;
       font-family: 'InterDisplay', sans-serif;
+      padding: 0;
     }
-    #fug-footer .fug-footer-inner {
-      display: flex;
+
+    /* Cross icons — 22px, dark blue, absolutely positioned */
+    .fug-footer-cross {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
-      gap: 80px;
-      padding: 40px 0 36px;
+      width: 22px;
+      height: 22px;
+      position: absolute;
+      z-index: 2;
+    }
+    .fug-footer-cross svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /*
+      Three-column grid:
+        Col 1 starts at 248px from left  (left cross)
+        Col 2 starts at 50% centre       (middle cross)
+        Col 3 ends at 248px from right   (right cross)
+      Using padding on the inner to align col 1 & 3, and equal thirds for the grid.
+    */
+    #fug-footer .fug-footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 56px 248px;
+      gap: 0 40px;
       position: relative;
     }
-    #fug-footer .fug-footer-col { display: flex; flex-direction: column; }
+
+    #fug-footer .fug-footer-col {
+      display: flex;
+      flex-direction: column;
+    }
+
     #fug-footer .fug-footer-brand {
       font-weight: 700;
       font-size: 13px;
       color: #0d1b3e;
-      margin-bottom: 6px;
+      margin: 0 0 6px 0;
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-footer .fug-footer-addr {
       font-size: 12px;
       line-height: 1.7;
       color: #5a6070;
+      margin: 0;
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-footer .fug-footer-col-title {
       font-size: 12px;
       font-weight: 600;
       color: #0d1b3e;
-      margin-bottom: 10px;
+      margin: 0 0 10px 0;
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-footer a {
@@ -89,102 +116,79 @@
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-footer a:hover { text-decoration: underline; }
+
+    /* Third column: logo + copyright side by side */
     #fug-footer .fug-footer-right {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 14px;
     }
     #fug-footer .fug-footer-logo {
       height: 52px;
       width: auto;
       display: block;
+      flex-shrink: 0;
     }
     #fug-footer .fug-footer-copy {
       font-size: 11px;
       color: #888;
       line-height: 1.7;
+      margin: 0;
       font-family: 'InterDisplay', sans-serif;
     }
 
-    /* Cross icons in footer */
-    .fug-footer-cross {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 14px; height: 14px; position: absolute; z-index: 2;
-      opacity: 0.25;
-      transition: transform 0.1s linear;
-    }
-    .fug-footer-cross svg { width: 100%; height: 100%; }
-
     /* ── TABLET (≤1024px) ── */
     @media (max-width: 1024px) {
-      #fug-social-band {
-        gap: 24px;
-        padding: 16px 32px;
-      }
+      #fug-social-band { padding: 16px 48px; }
       #fug-social-band p { font-size: 13px; }
-
-      #fug-footer { padding: 0 32px; }
-      #fug-footer .fug-footer-inner {
-        gap: 48px;
-        padding: 36px 0 32px;
-      }
-
-      /* Hide corner crosses on tablet — too close to content */
+      #fug-footer .fug-footer-inner { padding: 40px 48px; gap: 0 32px; }
       .fug-footer-cross { display: none; }
     }
 
     /* ── MOBILE (≤768px) ── */
     @media (max-width: 768px) {
-      /* Social band stacks on very small */
       #fug-social-band {
         flex-direction: column;
         gap: 12px;
-        padding: 20px 20px;
+        padding: 20px;
         text-align: center;
       }
       #fug-social-band p { font-size: 12px; }
       #fug-social-band .fsb-icons { justify-content: center; gap: 20px; }
       #fug-social-band .fsb-icons a svg { width: 22px; height: 22px; }
 
-      /* Footer layout stacks vertically */
-      #fug-footer { padding: 0 20px; }
       #fug-footer .fug-footer-inner {
-        flex-direction: column;
-        gap: 28px;
-        padding: 32px 0 28px;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
+        padding: 32px 20px 28px;
+        gap: 28px 0;
       }
-
-      /* Brand + address col */
       #fug-footer .fug-footer-col { width: 100%; }
-      #fug-footer .fug-footer-brand { font-size: 14px; margin-bottom: 4px; }
+      #fug-footer .fug-footer-brand { font-size: 14px; }
       #fug-footer .fug-footer-addr { font-size: 12px; }
       #fug-footer .fug-footer-col-title { font-size: 11px; letter-spacing: 0.06em; }
       #fug-footer a { font-size: 13px; line-height: 2.1; }
-
-      /* Logo + copyright row: side by side on mobile */
       #fug-footer .fug-footer-right {
-        width: 100%;
-        flex-direction: row;
         align-items: center;
-        justify-content: space-between;
-        gap: 0;
         padding-top: 8px;
         border-top: 1px solid rgba(26,39,68,0.08);
-        margin-top: 4px;
       }
       #fug-footer .fug-footer-logo { height: 38px; }
-      #fug-footer .fug-footer-copy { font-size: 10px; text-align: right; line-height: 1.6; }
+      #fug-footer .fug-footer-copy { font-size: 10px; line-height: 1.6; }
+      .fug-footer-cross { display: none; }
     }
 
     /* ── SMALL MOBILE (≤480px) ── */
     @media (max-width: 480px) {
       #fug-social-band p { font-size: 11px; }
-      #fug-footer .fug-footer-right { flex-direction: column; align-items: flex-start; gap: 12px; }
-      #fug-footer .fug-footer-copy { text-align: left; }
     }
   `;
   document.head.appendChild(style);
+
+  /* SVG cross helper */
+  const crossSVG = `<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="11" y1="0" x2="11" y2="22" stroke="#1a2744" stroke-width="1.5"/>
+    <line x1="0"  y1="11" x2="22" y2="11" stroke="#1a2744" stroke-width="1.5"/>
+  </svg>`;
 
   const html = `
     <div id="fug-social-band">
@@ -211,33 +215,47 @@
     </div>
 
     <footer id="fug-footer">
-      <span class="fug-footer-cross" style="top:16px;left:200px;">
-        <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
-      </span>
-      <span class="fug-footer-cross" style="top:16px;right:200px;">
-        <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
-      </span>
-      <span class="fug-footer-cross" style="bottom:16px;left:200px;">
-        <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
-      </span>
-      <span class="fug-footer-cross" style="bottom:16px;right:200px;">
-        <svg viewBox="0 0 14 14" fill="none"><line x1="7" y1="0" x2="7" y2="14" stroke="#1a2744" stroke-width="1.2"/><line x1="0" y1="7" x2="14" y2="7" stroke="#1a2744" stroke-width="1.2"/></svg>
-      </span>
+
+      <!--
+        Cross placement (centred on their anchor point):
+          Left crosses  → centred on the 248px left margin line
+          Middle cross  → centred on 50% (midpoint between left & right content)
+          Right crosses → centred on the 248px right margin line
+        offset by half of 22px (11px) so the centre of the cross sits exactly on the line
+      -->
+
+      <!-- TOP ROW crosses -->
+      <span class="fug-footer-cross" style="top:24px; left:calc(248px - 11px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="top:24px; left:calc(50% - 11px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="top:24px; right:calc(248px - 11px);">${crossSVG}</span>
+
+      <!-- BOTTOM ROW crosses -->
+      <span class="fug-footer-cross" style="bottom:24px; left:calc(248px - 11px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="bottom:24px; right:calc(248px - 11px);">${crossSVG}</span>
 
       <div class="fug-footer-inner">
+
+        <!-- Col 1: Brand + Address — left edge at 248px -->
         <div class="fug-footer-col">
           <p class="fug-footer-brand">Fak'ugesi Festival</p>
           <p class="fug-footer-addr">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
         </div>
+
+        <!-- Col 2: Contact — starts right after the middle cross at 50% -->
         <div class="fug-footer-col">
           <p class="fug-footer-col-title">Contact us</p>
           <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
           <a href="tel:+27117178156">+27 11 717 8156</a>
         </div>
-        <div class="fug-footer-right">
-          <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
-          <p class="fug-footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p>
+
+        <!-- Col 3: Logo + Copyright — right edge at 248px from right -->
+        <div class="fug-footer-col">
+          <div class="fug-footer-right">
+            <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
+            <p class="fug-footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p>
+          </div>
         </div>
+
       </div>
     </footer>
   `;

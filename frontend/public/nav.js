@@ -87,11 +87,17 @@
       display:flex; align-items:center; gap:24px; padding-right:32px;
       flex-shrink:0; position:relative; z-index:1;
     }
+
+    /* Search icon — sits at 248px from the right edge of the viewport */
     #main-nav .nav-search {
-  background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
-  display:flex; align-items:center; padding:6px;
-  margin-left:92px;
-}
+      background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
+      display:flex; align-items:center; padding:6px;
+      position: absolute;
+      right: 248px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
     #main-nav .nav-search svg{width:18px;height:18px;}
 
     /* GET TICKETS */
@@ -325,7 +331,7 @@
       #main-nav .nav-links>li:first-child>a,
       #main-nav .nav-links>li:first-child>span { padding-left: 0; }
       #main-nav .nav-tickets { padding: 8px 16px; font-size: 10.5px; }
-      #main-nav .nav-search { margin-left: 12px; }
+      #main-nav .nav-search { right: 48px; }
     }
 
     /* Mobile (≤768px): show hamburger, hide desktop nav */
@@ -337,6 +343,9 @@
 
       /* nav bar always has a dark bg on mobile for readability */
       #main-nav::before { opacity: 1 !important; }
+
+      /* Hide search on mobile (it's in the hamburger flow) */
+      #main-nav .nav-search { display: none; }
     }
   </style>`);
 
@@ -394,12 +403,14 @@
       <!-- Desktop links -->
       <div class="nav-links-wrap" id="nav-links-wrap">
         <ul class="nav-links" id="nav-list">${items}</ul>
-        <button class="nav-search" aria-label="Search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-        </button>
       </div>
+
+      <!-- Search icon — absolutely positioned at 248px from right -->
+      <button class="nav-search" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
 
       <!-- Desktop right: tickets -->
       <div class="nav-right">
