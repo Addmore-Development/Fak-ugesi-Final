@@ -837,7 +837,7 @@ if(isActive) a.classList.add('fug-active');
 const img=document.createElement('img'); img.src=p.img; img.alt=p.label; img.style.cssText=p.imgStyle;
 if(isActive){ img.style.transform='scale(1.18)'; img.style.opacity='1'; }
       const label=document.createElement('span'); label.className='fug-sig-label'; label.textContent=p.label;
-      a.appendChild(img); a.appendChild(label); inner.appendChild(a);
+      a.appendChild(img); inner.appendChild(a);
     });
     strip.appendChild(inner); return strip;
   }

@@ -1067,7 +1067,7 @@ pages.forEach(p => {
   if (isActive) { img.style.transform = 'scale(1.18)'; img.style.opacity = '1'; }
   const label = document.createElement('span');
   label.textContent = p.label;
-  a.appendChild(img); a.appendChild(label); inner.appendChild(a);
+  a.appendChild(img); inner.appendChild(a);
 });
   strip.appendChild(inner); const ticker=document.querySelector('.ticker-wrapper'); if(ticker) ticker.after(strip);
   patchHeroCrosses();
