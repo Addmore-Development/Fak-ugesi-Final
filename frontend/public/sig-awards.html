@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fak'ugesi Awards 2026 – African Digital Innovation Festival</title>
+  <style>
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
+    @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1a2744;
+      --blue-mid:  #2a3f72;
+      --lavender:  #dde3f0;
+      --white:     #ffffff;
+      --dark-text: #0d1b3e;
+      --body-gray: #3a4060;
+      --band:      248px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'InterDisplay', sans-serif;
+      background: var(--white);
+      color: var(--dark-text);
+      overflow-x: hidden;
+    }
+
+    /* ── CROSS ICONS ── */
+    .cross-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      position: absolute;
+      z-index: 6;
+      opacity: 1;
+      transition: transform 0.1s linear;
+    }
+    .cross-icon svg { width: 100%; height: 100%; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ══════════════════════════════════════════════
+       HERO — matches sig-pitchathon.html grid layout
+    ══════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 580px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: calc(16px + 9px) 1fr calc(16px + 9px);
+      grid-template-columns: 248px 1fr 248px;
+      align-items: stretch;
+      padding-top: 0;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/signature/_MGL7139.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.50);
+      animation: kenBurns 18s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
+    }
+
+    /* Hero content sits in col 2, row 2 — matches pitchathon */
+    .hero-content {
+      grid-row: 2;
+      grid-column: 2;
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 48px;
+      padding: 110px 0 60px;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero-text-wrapper { flex: 1; min-width: 0; }
+
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.75); margin-bottom: 14px;
+    }
+    /* Two-line title — "Celebrating the best in" / "African digital creativity" */
+    .hero-title {
+      font-size: 52px; font-weight: 700;
+      line-height: 1.05; color: #fff;
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+    .hero-body {
+      font-size: 13px; font-weight: 400;
+      line-height: 1.72; color: rgba(255,255,255,0.85);
+      max-width: 510px; margin-bottom: 28px;
+    }
+    .btn-apply {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1.5px solid #fff; color: #fff; background: transparent;
+      padding: 13px 32px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; font-family: 'InterDisplay', sans-serif;
+      text-decoration: none;
+      transition: background 0.22s, color 0.22s, transform 0.18s;
+    }
+    .btn-apply:hover { background: #fff; color: var(--navy); transform: translateY(-1px); }
+
+    /* Awards logo badge — right side, no white background box */
+    .hero-signia {
+      flex-shrink: 0;
+      width: auto;
+      max-width: 280px;
+      padding-top: 38px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+    .hero-signia img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 90px;
+      object-fit: contain;
+      /* Remove any white background — ensure SVG renders on dark bg */
+      background: transparent;
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrapper {
+      background: var(--dark-text); overflow: hidden; white-space: nowrap;
+      padding: 12px 0; position: relative; z-index: 10;
+    }
+    .ticker-track { display: inline-flex; animation: tickerScroll 22s linear infinite; }
+    .ticker-track span {
+      padding: 0 40px; font-size: 12px; font-weight: 500;
+      color: #fff; letter-spacing: 0.04em;
+    }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+
+    /* ── SIG NAV STRIP ── */
+    .fug-sig-strip {
+      background: rgba(26,39,68,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      position: relative;
+      z-index: 20;
+    }
+    .fug-sig-strip-inner {
+      display: flex; align-items: stretch;
+      overflow-x: auto; scrollbar-width: none;
+      justify-content: center;
+    }
+    .fug-sig-strip-inner::-webkit-scrollbar { display: none; }
+    .fug-sig-item {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 7px; padding: 12px 38px;
+      text-decoration: none; color: rgba(255,255,255,0.60);
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.22s, color 0.22s;
+      flex-shrink: 0; min-width: 100px;
+      position: relative; white-space: nowrap;
+    }
+    .fug-sig-item:first-child { border-left: 1px solid rgba(255,255,255,0.07); }
+    .fug-sig-item:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.95); }
+    .fug-sig-item.fug-active { background: rgba(255,255,255,0.12); color: #fff; }
+    .fug-sig-item.fug-active::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: rgba(255,255,255,0.5);
+    }
+    .fug-sig-item img {
+      display: block; max-width: 88px; max-height: 40px;
+      object-fit: contain;
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s;
+      opacity: 0.65;
+    }
+    .fug-sig-item:hover img, .fug-sig-item.fug-active img { transform: scale(1.18); opacity: 1; }
+
+    /* ══════════════════════════════════════════════
+       2025 WINNERS — auto-scroll carousel (no white start gap)
+    ══════════════════════════════════════════════ */
+    .winners-section {
+      background: #fff;
+      padding: 0 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .winners-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 56px 248px 36px;
+      position: relative;
+    }
+    .winners-title {
+      font-size: 52px; font-weight: 700;
+      color: var(--dark-text);
+    }
+    .winners-nav {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .winners-nav button {
+      background: none; border: none; cursor: pointer;
+      font-size: 22px; color: var(--dark-text);
+      padding: 4px 8px;
+      transition: opacity 0.2s;
+      font-family: 'InterDisplay', sans-serif;
+    }
+    .winners-nav button:hover { opacity: 0.5; }
+
+    /* Outer clips, strip scrolls inside */
+    .winners-strip-outer {
+      overflow: hidden;
+      cursor: grab;
+    }
+    .winners-strip-outer:active { cursor: grabbing; }
+
+    /* Strip: continuous auto-scroll, duplicated cards */
+     .winners-strip {
+    display: flex;
+    gap: 2px;
+    width: max-content;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+    .winners-strip:hover { animation-play-state: paused; }
+    @keyframes winnersAutoScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .winner-card {
+      flex: 0 0 360px;
+      min-width: 0;
+      cursor: pointer;
+    }
+    .winner-img-wrap {
+      width: 100%; height: 360px;
+      overflow: hidden; position: relative;
+    }
+    .winner-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .winner-card:hover .winner-img-wrap img { transform: scale(1.04); }
+    .winner-info {
+      padding: 12px 0 28px;
+    }
+    .winner-cat {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--body-gray); margin-bottom: 6px;
+    }
+    .winner-name {
+      font-size: 17px; font-weight: 700;
+      color: var(--dark-text); margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .winner-meta {
+      font-size: 12px; color: var(--body-gray);
+    }
+
+    /* ── ELIGIBLE CATEGORIES ── */
+    .categories-section {
+      position: relative;
+      min-height: 580px;
+      overflow: hidden;
+      padding: 0;
+    }
+    .cat-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/signature/Poster - Akende Muyumbana.png');
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.38);
+    }
+    .cat-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(5,10,28,0.75) 0%, rgba(5,10,28,0.45) 60%, rgba(5,10,28,0.2) 100%);
+    }
+    .cat-inner {
+      position: relative; z-index: 3;
+      padding: 60px var(--band) 64px;
+    }
+    .cat-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .cat-title {
+      font-size: 52px; font-weight: 700;
+      color: #fff; line-height: 1.0;
+    }
+    .cat-apply-link {
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      text-decoration: underline;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      margin-top: 12px;
+      cursor: pointer;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .cat-apply-link:hover { color: #fff; }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .cat-card {
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 18px 18px 22px;
+      position: relative;
+      transition: background 0.22s;
+    }
+    .cat-card.active {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.75);
+    }
+    .cat-card.active .cat-card-tag,
+    .cat-card.active .cat-card-title,
+    .cat-card.active .cat-card-items li {
+     color: #fff;
+   }
+    .cat-card.active .cat-card-num {
+    color: rgba(255,255,255,1);
+   }
+    .cat-card:hover { background: rgba(255,255,255,0.06); }
+    .cat-card-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 10px;
+    }
+    .cat-card-tag {
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+    }
+    .cat-card-num {
+      font-size: 36px; font-weight: 700;
+      color: rgba(255,255,255,0.75); line-height: 1;
+    }
+    .cat-card-title {
+      font-size: 17px; font-weight: 400;
+      color: rgba(255,255,255,0.9); line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .cat-card-items { list-style: none; }
+    .cat-card-items li {
+      font-size: 11px; font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 4px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .cat-card-items li::before { content: '→'; font-size: 10px; }
+
+    /* ══════════════════════════════════════════════
+       JURY — outlined container, square images, smaller cards
+    ══════════════════════════════════════════════ */
+    .jury-section {
+      background: #fff;
+      padding: 0 0 0;
+      position: relative;
+    }
+    .jury-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 56px 248px 40px;
+    }
+    .jury-title {
+      font-size: 44px; font-weight: 700;
+      color: var(--dark-text);
+    }
+    /* Match pitchathon: 3-col, outlined card, square image */
+    .jury-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 0 var(--band) 0;
+    }
+    .jury-card {
+      border: 1px solid rgba(26,39,68,0.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      
+    }
+    .jury-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;   /* square — matches pitchathon screenshot */
+      overflow: hidden;
+      position: relative;
+    }
+    .jury-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .jury-card:hover .jury-img-wrap img { transform: scale(1.04); }
+    .jury-info {
+      background: var(--lavender);
+      padding: 16px 18px 20px;
+    }
+    .jury-name {
+      font-size: 20px; font-weight: 700;
+      color: var(--dark-text); margin-bottom: 6px;
+      line-height: 1.1;
+    }
+    .jury-role {
+      font-size: 12px; font-weight: 400;
+      color: var(--body-gray); margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .jury-country {
+      font-size: 11px; font-weight: 400;
+      color: var(--body-gray);
+    }
+
+    /* ══════════════════════════════════════════════
+       REQUIREMENTS — single full-width list, items stacked
+    ══════════════════════════════════════════════ */
+   .req-section { background: var(--navy); padding: 36px 248px; position: relative; }
+
+   .req-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+   .req-title { font-size: 28px; font-weight: 700; color: #fff; line-height: 1.0; }
+    .req-apply-link {
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-decoration: underline;
+      letter-spacing: 0.06em;
+      cursor: pointer; margin-top: 8px;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .req-apply-link:hover { color: #fff; }
+    /* Full-width single column list — see screenshot */
+    .req-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .req-list li { display: flex; gap: 16px; font-size: 11px; font-weight: 400; line-height: 1.65; color: rgba(255,255,255,0.82); padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.10); }
+
+    .req-list li:first-child { border-top: 1px solid rgba(255,255,255,0.10); }
+    .req-num {
+      font-size: 12px; font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      min-width: 22px; flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+.faq-section { background: var(--white); padding: 64px 248px; position: relative; }
+.faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
+.faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
+.faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+.faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+.faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
+.faq-items-wrap { display: flex; flex-direction: column; }
+.faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
+.faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
+.faq-item:hover { background: var(--navy); }
+.faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+.faq-item:hover .faq-t-icon { color: var(--white); }
+.faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
+.faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
+.faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; max-width: calc(100% - 40px); }
+.faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
+.faq-item.open .faq-t-icon { transform: rotate(45deg); }
+.faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
+.faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
+    /* ══════════════════════════════════════════════
+       PARTNERS — logo images rendered correctly (dark filter)
+    ══════════════════════════════════════════════ */
+    .partners-section {
+      background: var(--lavender);
+      padding: 0;
+      position: relative;
+    }
+    .partners-inner { padding: 40px 248px 72px; }
+    .partners-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .partners-title {
+      font-size: 38px; font-weight: 700;
+      color: var(--dark-text);
+    }
+    .partners-view-link {
+      font-size: 11px; font-weight: 600;
+      color: var(--navy); text-decoration: underline;
+      letter-spacing: 0.06em; cursor: pointer;
+      text-underline-offset: 3px; transition: opacity 0.2s;
+    }
+    .partners-view-link:hover { opacity: 0.6; }
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .partner-card { display: flex; flex-direction: column; }
+    .partner-logo-box {
+      background: #fff;
+      border: 1px solid rgba(26,39,68,0.12);
+      aspect-ratio: 1 / 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 32px;
+      transition: box-shadow 0.3s, transform 0.3s;
+      margin-bottom: 14px;
+    }
+    .partner-card:hover .partner-logo-box {
+      box-shadow: 0 10px 32px rgba(26,39,68,0.13);
+      transform: translateY(-5px);
+    }
+    .partner-logo-box img {
+      max-width: 100%; max-height: 120px;
+      object-fit: contain; display: block;
+      /* Convert SVG logos to dark navy colour so they show on white bg */
+      filter: brightness(0) saturate(100%) invert(13%) sepia(53%) saturate(780%) hue-rotate(198deg) brightness(82%);
+    }
+    .partner-desc {
+      font-size: 12px; font-weight: 400;
+      color: var(--body-gray); line-height: 1.65;
+    }
+
+    /* ── SOCIAL BAR ── */
+    .social-bar {
+      background: var(--navy);
+      padding: 20px var(--band);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .social-bar-text { font-size: 13px; font-weight: 500; color: #fff; }
+    .social-icons { display: flex; gap: 20px; align-items: center; }
+    .social-icons a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; display: flex; }
+    .social-icons a:hover { color: #fff; }
+    .social-icons svg { width: 18px; height: 18px; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: #fff; padding: 0; position: relative; }
+    .footer-inner {
+      padding: 32px var(--band) 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .footer-address { font-size: 12px; font-weight: 700; color: var(--dark-text); line-height: 1.7; }
+    .footer-address span { display: block; font-weight: 400; color: var(--body-gray); }
+    .footer-contact { font-size: 12px; color: var(--body-gray); line-height: 1.7; }
+    .footer-contact a { color: var(--navy); text-decoration: underline; display: block; }
+    .footer-logo-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .footer-logo-wrap img { height: 48px; width: auto; }
+    .footer-copy { font-size: 11px; color: var(--body-gray); text-align: right; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      :root { --band: 48px; }
+      .hero { grid-template-columns: 48px 1fr 48px; }
+      .hero-title { font-size: 40px; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .jury-grid { grid-template-columns: repeat(2, 1fr); }
+      .faq-layout { grid-template-columns: 240px 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      :root { --band: 20px; }
+      .cross-icon { display: none; }
+      .hero { display: flex; flex-direction: column; min-height: auto; }
+      .hero-content { padding: 90px 24px 48px !important; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
+      .hero-title { font-size: 32px; max-width: 100%; }
+      .hero-signia { max-width: 140px; padding-top: 0; }
+      .winners-header { padding: 40px 20px 24px; }
+      .winners-title { font-size: 32px; }
+      .winner-card { flex: 0 0 280px; }
+      .winner-img-wrap { height: 280px; }
+      .cat-title { font-size: 32px; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .jury-header { padding: 40px 20px 24px; }
+      .jury-title { font-size: 30px; }
+      .jury-grid { grid-template-columns: 1fr 1fr; padding: 0 20px; }
+      .req-section { padding: 48px 20px; }
+      .req-title { font-size: 28px; }
+      .faq-layout { grid-template-columns: 1fr; gap: 24px; }
+      .faq-left-head { font-size: 32px; }
+      .faq-inner { padding: 32px 20px 56px; }
+      .partners-inner { padding: 32px 20px 48px; }
+      .partners-title { font-size: 26px; }
+      .partners-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .fug-sig-strip-inner { justify-content: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 26px; }
+      .jury-grid { grid-template-columns: 1fr; }
+      .partners-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<script src="nav.js"></script>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-text-wrapper">
+      <p class="hero-eyebrow">Fak'ugesi Awards</p>
+      <!-- Two-line title using <br> -->
+      <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <a class="btn-apply" href="#">SUBMIT YOUR APPLICATION</a>
+    </div>
+    <!-- Logo with NO white background box -->
+    <div class="hero-signia">
+      <img src="images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ TICKER ═══════════════════════════════ -->
+<div class="ticker-wrapper">
+  <div class="ticker-track">
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ SIG NAV ═══════════════════════════════ -->
+<nav class="fug-sig-strip">
+  <div class="fug-sig-strip-inner">
+    <a class="fug-sig-item fug-active" href="sig-awards.html">
+      <img src="images/logos/signatureProgrammes/awards_logo_light.svg" alt="Awards" style="height:38px;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-dalakhona.html">
+      <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona" style="height:38px;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-fakugesipro.html">
+      <img src="images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="PRO" style="height:34px;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-immersive.html">
+      <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Immersive Africa" style="height:32px;filter:brightness(0) invert(1);opacity:.8;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-jamz.html">
+      <img src="images/logos/signatureProgrammes/jamz_logo_colour.svg" alt="JAMZ" style="height:42px;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-pitchathon.html">
+      <img src="images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon" style="height:36px;"/>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════ 2025 WINNERS ═══════════════════════════════ -->
+<section class="winners-section reveal">
+  <div class="cross-icon" style="top:56px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:56px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="winners-header">
+    <h2 class="winners-title">2025 Winners</h2>
+    <div class="winners-nav">
+      <button id="prevWinner" aria-label="Previous">←</button>
+      <button id="nextWinner" aria-label="Next">→</button>
+    </div>
+  </div>
+
+  <!--
+    Strip uses CSS auto-scroll (infinite marquee).
+    Cards are duplicated so it loops seamlessly with NO white-space gap.
+    The left padding has been removed — cards start flush from edge 248px.
+  -->
+  <div class="winners-strip-outer" id="winnersOuter">
+    <div class="winners-strip" id="winnersStrip">
+
+      <!-- ── SET 1 ── -->
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Digital Art</p>
+          <p class="winner-name">Unmuted: The Power of African Youth Movements</p>
+          <div class="winner-meta"><span>by Jopee Dairo (Nigeria)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Voices of Fire" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Interactive Installation</p>
+          <p class="winner-name">Voices of Fire: A Digital Anthology</p>
+          <div class="winner-meta"><span>by Amara Diallo (Senegal)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="AfroVerse" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Immersive Media</p>
+          <p class="winner-name">AfroVerse: Beyond the Binary</p>
+          <div class="winner-meta"><span>by Kwame Asante (Ghana)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Griot" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Digital Storytelling</p>
+          <p class="winner-name">Digital Griot: Stories from the Sahel</p>
+          <div class="winner-meta"><span>by Fatima Kouyaté (Mali)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Ubuntu Code" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Tech Innovation</p>
+          <p class="winner-name">Ubuntu Code: Collective Intelligence</p>
+          <div class="winner-meta"><span>by Sipho Ndlovu (South Africa)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Roots" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Game Design</p>
+          <p class="winner-name">Roots: An African Odyssey</p>
+          <div class="winner-meta"><span>by Temi Ade (Nigeria)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Pulse" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Motion Graphics</p>
+          <p class="winner-name">Digital Pulse: Rhythms of the City</p>
+          <div class="winner-meta"><span>by Aisha Mensah (Kenya)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Neon Ancestor" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Digital Art</p>
+          <p class="winner-name">Neon Ancestor: A Tribute</p>
+          <div class="winner-meta"><span>by Chidi Okafor (Nigeria)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Sankofa Digital" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Interactive</p>
+          <p class="winner-name">Sankofa Digital: Looking Back Forward</p>
+          <div class="winner-meta"><span>by Ama Boateng (Ghana)</span></div>
+        </div>
+      </div>
+
+      <!-- ── SET 2 (duplicate for seamless loop) ── -->
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Digital Art</p>
+          <p class="winner-name">Unmuted: The Power of African Youth Movements</p>
+          <div class="winner-meta"><span>by Jopee Dairo (Nigeria)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Voices of Fire" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Interactive Installation</p>
+          <p class="winner-name">Voices of Fire: A Digital Anthology</p>
+          <div class="winner-meta"><span>by Amara Diallo (Senegal)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="AfroVerse" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Immersive Media</p>
+          <p class="winner-name">AfroVerse: Beyond the Binary</p>
+          <div class="winner-meta"><span>by Kwame Asante (Ghana)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Griot" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Digital Storytelling</p>
+          <p class="winner-name">Digital Griot: Stories from the Sahel</p>
+          <div class="winner-meta"><span>by Fatima Kouyaté (Mali)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Ubuntu Code" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Tech Innovation</p>
+          <p class="winner-name">Ubuntu Code: Collective Intelligence</p>
+          <div class="winner-meta"><span>by Sipho Ndlovu (South Africa)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Roots" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Game Design</p>
+          <p class="winner-name">Roots: An African Odyssey</p>
+          <div class="winner-meta"><span>by Temi Ade (Nigeria)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Pulse" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Motion Graphics</p>
+          <p class="winner-name">Digital Pulse: Rhythms of the City</p>
+          <div class="winner-meta"><span>by Aisha Mensah (Kenya)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Neon Ancestor" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Digital Art</p>
+          <p class="winner-name">Neon Ancestor: A Tribute</p>
+          <div class="winner-meta"><span>by Chidi Okafor (Nigeria)</span></div>
+        </div>
+      </div>
+
+      <div class="winner-card">
+        <div class="winner-img-wrap">
+          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Sankofa Digital" />
+        </div>
+        <div class="winner-info">
+          <p class="winner-cat">Interactive</p>
+          <p class="winner-name">Sankofa Digital: Looking Back Forward</p>
+          <div class="winner-meta"><span>by Ama Boateng (Ghana)</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="position:relative;height:36px;margin-top:0;">
+    <div class="cross-icon" style="bottom:0;left:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="bottom:0;right:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ ELIGIBLE CATEGORIES ═══════════════════════════════ -->
+<section class="categories-section reveal">
+  <div class="cat-bg"></div>
+  <div class="cat-overlay"></div>
+  <div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="cat-inner">
+    <div class="cat-header">
+      <h2 class="cat-title">Eligible Categories</h2>
+      <a class="cat-apply-link" href="#">Submit your application</a>
+    </div>
+    <div class="cat-grid">
+
+      <div class="cat-card" data-bg="images/trailer.png">
+        <div class="cat-card-header"><span class="cat-card-tag">Immersive Media</span><span class="cat-card-num">01</span></div>
+        <h3 class="cat-card-title">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</h3>
+        <ul class="cat-card-items"><li>Virtual Reality</li><li>Augmented Reality</li><li>Extended Reality</li></ul>
+      </div>
+
+      <div class="cat-card" data-bg="images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg">
+        <div class="cat-card-header"><span class="cat-card-tag">Digital Art</span><span class="cat-card-num">02</span></div>
+        <h3 class="cat-card-title">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</h3>
+        <ul class="cat-card-items"><li>Generative Art</li><li>AI-Assisted Art</li><li>Digital Illustration</li></ul>
+      </div>
+
+      <div class="cat-card" data-bg="images/Screenshot-2024-05-21-at-21.36.37.webp">
+        <div class="cat-card-header"><span class="cat-card-tag">Interactive Design</span><span class="cat-card-num">03</span></div>
+        <h3 class="cat-card-title">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</h3>
+        <ul class="cat-card-items"><li>UX/UI Design</li><li>Interactive Installations</li><li>Net Art</li></ul>
+      </div>
+
+      <div class="cat-card" data-bg="images/Joburg-planetarium-1-2022.jpg">
+        <div class="cat-card-header"><span class="cat-card-tag">Game Design</span><span class="cat-card-num">04</span></div>
+        <h3 class="cat-card-title">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</h3>
+        <ul class="cat-card-items"><li>Mobile Games</li><li>PC / Console Games</li><li>Serious Games</li></ul>
+      </div>
+
+      <div class="cat-card" data-bg="images/Fak_ugesi_2025-32.jpg">
+        <div class="cat-card-header"><span class="cat-card-tag">Motion &amp; Sound</span><span class="cat-card-num">05</span></div>
+        <h3 class="cat-card-title">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</h3>
+        <ul class="cat-card-items"><li>Motion Graphics</li><li>Music Visualisation</li><li>Sound Art</li></ul>
+      </div>
+
+      <div class="cat-card" data-bg="images/digital-dome-image-inside.jpg">
+        <div class="cat-card-header"><span class="cat-card-tag">Tech Innovation</span><span class="cat-card-num">06</span></div>
+        <h3 class="cat-card-title">Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit</h3>
+        <ul class="cat-card-items"><li>AI Tools</li><li>Creative Tech Platforms</li><li>Social Impact Tech</li></ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ JURY ═══════════════════════════════ -->
+<section class="jury-section reveal">
+  <div style="position:relative;height:36px;">
+    <div class="cross-icon" style="top:0;left:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="top:0;left:50%;transform:translateX(-50%);">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="top:0;right:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+  </div>
+
+  <div class="jury-header">
+    <h2 class="jury-title">2026 Awards Jury</h2>
+  </div>
+
+  <div class="jury-grid">
+    <div class="jury-card">
+      <div class="jury-img-wrap">
+        <img src="images/signature/Mickael Newton.png" alt="Mickael Newton" />
+      </div>
+      <div class="jury-info">
+        <p class="jury-name">Mickael Newton</p>
+        <p class="jury-role">Ubisoft Senior Social Impact Manager</p>
+        <p class="jury-country">France</p>
+      </div>
+    </div>
+    <div class="jury-card">
+      <div class="jury-img-wrap">
+        <img src="images/signature/Mickael Newton.png" alt="Amara Osei" />
+      </div>
+      <div class="jury-info">
+        <p class="jury-name">Amara Osei</p>
+        <p class="jury-role">Creative Director, AfroTech Collective</p>
+        <p class="jury-country">Ghana</p>
+      </div>
+    </div>
+    <div class="jury-card">
+      <div class="jury-img-wrap">
+        <img src="images/signature/Mickael Newton.png" alt="Leila Benali" />
+      </div>
+      <div class="jury-info">
+        <p class="jury-name">Leila Benali</p>
+        <p class="jury-role">Digital Innovation Lead, African Union</p>
+        <p class="jury-country">Morocco</p>
+      </div>
+    </div>
+    <div class="jury-card">
+      <div class="jury-img-wrap">
+        <img src="images/signature/Mickael Newton.png" alt="Tunde Fashola" />
+      </div>
+      <div class="jury-info">
+        <p class="jury-name">Tunde Fashola</p>
+        <p class="jury-role">Founder, Lagos Digital Arts Festival</p>
+        <p class="jury-country">Nigeria</p>
+      </div>
+    </div>
+    <div class="jury-card">
+      <div class="jury-img-wrap">
+        <img src="images/signature/Mickael Newton.png" alt="Nadia Kamara" />
+      </div>
+      <div class="jury-info">
+        <p class="jury-name">Nadia Kamara</p>
+        <p class="jury-role">Senior Curator, Digital Arts Institute</p>
+        <p class="jury-country">Senegal</p>
+      </div>
+    </div>
+    <div class="jury-card">
+      <div class="jury-img-wrap">
+        <img src="images/signature/Mickael Newton.png" alt="Marcus Dlamini" />
+      </div>
+      <div class="jury-info">
+        <p class="jury-name">Marcus Dlamini</p>
+        <p class="jury-role">Head of Innovation, Wits Tshimologong</p>
+        <p class="jury-country">South Africa</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;height:36px;margin-top:8px;">
+    <div class="cross-icon" style="bottom:0;left:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="bottom:0;left:50%;transform:translateX(-50%);">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="bottom:0;right:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ REQUIREMENTS ═══════════════════════════════ -->
+<section class="req-section reveal">
+
+  <!-- Title + link on same row -->
+  <div class="req-top">
+    <h2 class="req-title">Requirements</h2>
+    <a class="req-apply-link" href="#">Submit your application</a>
+  </div>
+
+  <!-- Single column list — items stacked one after another -->
+  <ol class="req-list">
+    <li>
+      <span class="req-num">1.</span>
+      <span>Nulla gravida, arcu eget dictum eleifend, velit ligula suscipit nibh, sagittis imperdiet metus nunc non pede. Aenean congue pede in nisi tristique interdum. Sed commodo, ipsum ac dignissim ullamcorper, odio nulla venenatis nisi, in porta dolor neque venenatis lacus. Pellentesque fermentum. Mauris sit amet ligula ut tellus gravida mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</span>
+    </li>
+    <li>
+      <span class="req-num">2.</span>
+      <span>Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat. Praesent odio nisl, suscipit at, rhoncus sit amet, porttitor sit amet, leo. Aenean hendrerit est. Etiam ac augue. Morbi tincidunt neque ut lacus. Duis vulputate cursus orci. Mauris justo lorem, scelerisque sit amet, placerat sed, condimentum in, leo. Donec urna est, semper quis, auctor eget, ultrices in, purus. Etiam rutrum. Phasellus sollicitudin.</span>
+    </li>
+    <li>
+      <span class="req-num">3.</span>
+      <span>Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor. Integer sapien nibh, egestas ut, cursus sit amet, faucibus a, sapien. Vestibulum purus, elementum ac, luctus ullamcorper, ornare vitae, massa. Nullam posuere sem ut mauris. Nullam velit. Quisque sodales. Donec suscipit suscipit erat. Nam blandit. Praesent congue lorem non dolor. Maecenas vitae erat. Ut ac purus vel purus dapibus gravida.</span>
+    </li>
+    <li>
+      <span class="req-num">4.</span>
+      <span>Nullam lorem sapien, tempus ac, fringilla at, elementum sed, purus. Duis molestie pede. Vivamus quis odio sit amet libero sodales tincidunt. Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus.</span>
+    </li>
+  </ol>
+</section>
+
+<section class="faq-section reveal">
+<div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="faq-inner">
+    <div class="faq-layout">
+      <div>
+        <h2 class="faq-title-left">FAQ</h2>
+        <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+        <a class="faq-apply-link" href="#">Submit your application</a>
+      </div>
+      <div>
+        <div class="faq-right-hdr">
+          <a class="faq-apply-top" href="#">Submit your application</a>
+        </div>
+        <div class="faq-items-wrap" id="faqAccordion"></div>
+      </div>
+    </div>
+  </div>
+
+<div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PARTNERS ═══════════════════════════════ -->
+<section class="partners-section reveal">
+
+  <div class="partners-inner">
+    <div class="partners-header">
+      <h2 class="partners-title">Our Awards Partners</h2>
+      <a class="partners-view-link" href="#">View all partners</a>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="footer.js"></script>
+
+<script>
+/* ── REVEAL ON SCROLL ── */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.06 });
+revealEls.forEach(el => io.observe(el));
+
+/* ── WINNERS: arrow buttons only ── */
+(function () {
+  const strip = document.getElementById('winnersStrip');
+  const prevBtn = document.getElementById('prevWinner');
+  const nextBtn = document.getElementById('nextWinner');
+
+  let offset = 0;
+
+  function getCardWidth() {
+    const card = strip.querySelector('.winner-card');
+    return card ? card.getBoundingClientRect().width + 2 : 362;
+  }
+
+  function getTotalWidth() {
+    // half of strip = one full set (cards are duplicated)
+    return strip.scrollWidth / 2;
+  }
+
+  function move(direction) {
+    const cw = getCardWidth();
+    const total = getTotalWidth();
+
+    offset += direction * cw;
+
+    // wrap forward
+    if (offset <= -total) offset = 0;
+    // wrap backward
+    if (offset > 0) offset = -(total - cw);
+
+    strip.style.transform = `translateX(${offset}px)`;
+  }
+
+  nextBtn.addEventListener('click', () => move(-1));
+  prevBtn.addEventListener('click', () => move(1));
+})();
+
+const faqData = [
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat. Praesent odio nisl.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Nullam lorem sapien, tempus ac, fringilla at, elementum sed, purus.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo.' },
+];
+
+const faqContainer = document.getElementById('faqAccordion');
+faqData.forEach((faq, i) => {
+  const item = document.createElement('div');
+  item.className = 'faq-item' + (i === 0 ? ' open' : '');
+  item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
+  item.querySelector('.faq-q-btn').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    faqContainer.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-t-icon').textContent = '+';
+      el.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('.faq-t-icon').textContent = '×';
+      item.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'true');
+    }
+  });
+  faqContainer.appendChild(item);
+});
+
+/* ── CROSS ICON SCROLL SPIN ── */
+(function () {
+  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
+  function resetRot() {
+    rot = 0;
+    document.querySelectorAll('.cross-icon, .fug-footer-cross').forEach(function (el) {
+      el.style.transition = 'transform 0.45s ease';
+      el.style.transform = 'rotate(0deg)';
+    });
+  }
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        var y = window.scrollY, delta = y - lastY;
+        if (Math.abs(delta) > 0) {
+          rot += delta > 0 ? 15 : -15;
+          document.querySelectorAll('.cross-icon, .fug-footer-cross').forEach(function (el) {
+            el.style.transition = 'transform 0.1s linear';
+            el.style.transform = 'rotate(' + rot + 'deg)';
+          });
+        }
+        lastY = y;
+        ticking = false;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(resetRot, 300);
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+
+/* ── CATEGORIES: click to swap section background ── */
+(function () {
+  const section = document.querySelector('.categories-section');
+  const bg = section.querySelector('.cat-bg');
+  const originalBg = "url('images/signature/Poster - Akende Muyumbana.png')";
+
+  document.querySelectorAll('.cat-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const already = card.classList.contains('active');
+      document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+
+      bg.style.transition = 'opacity 0.45s ease';
+      bg.style.opacity = '0';
+
+      setTimeout(() => {
+        if (already) {
+          bg.style.backgroundImage = originalBg;
+        } else {
+          card.classList.add('active');
+          bg.style.backgroundImage = `url('${card.getAttribute('data-bg')}')`;
+        }
+        bg.style.opacity = '1';
+      }, 250);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

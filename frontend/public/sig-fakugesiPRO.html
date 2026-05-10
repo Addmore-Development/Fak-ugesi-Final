@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fak'ugesiPRO – Our Dedicated Industry Platform – Fak'ugesi Festival</title>
+  <style>
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1a2744;
+      --blue-mid:  #2a3f72;
+      --lavender:  #dde3f0;
+      --white:     #ffffff;
+      --dark-text: #0d1b3e;
+      --body-gray: #3a4060;
+      --band:      248px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'InterDisplay', sans-serif;
+      background: var(--white);
+      color: var(--dark-text);
+      overflow-x: hidden;
+    }
+
+    /* ── CROSS ICONS ── */
+    .cross-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px; height: 18px;
+      flex-shrink: 0; position: absolute;
+      z-index: 6; opacity: 1;
+      transition: transform 0.1s linear;
+    }
+    .cross-icon svg { width: 100%; height: 100%; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ══════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════ */
+    .hero {
+      position: relative; width: 100%; min-height: 580px; overflow: hidden;
+      display: grid;
+      grid-template-rows: calc(16px + 9px) 1fr calc(16px + 9px);
+      grid-template-columns: 248px 1fr 248px;
+      align-items: stretch; padding-top: 0;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('../images/_DMC6809.JPG');
+      background-size: cover; background-position: center 35%;
+      filter: brightness(0.50);
+      animation: kenBurns 18s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
+    }
+    .hero-content {
+      grid-row: 2; grid-column: 2; position: relative; z-index: 4;
+      display: flex; flex-direction: row;
+      justify-content: space-between; align-items: flex-start;
+      gap: 48px; padding: 110px 0 60px;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-text-wrapper { flex: 1; min-width: 0; }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 52px; font-weight: 700; line-height: 1.05;
+      color: #fff; margin-bottom: 20px; max-width: 640px;
+    }
+    .hero-body {
+      font-size: 13px; font-weight: 400; line-height: 1.72;
+      color: rgba(255,255,255,0.85); max-width: 510px; margin-bottom: 20px;
+    }
+    .hero-dates {
+      font-size: 24px; font-weight: 700; letter-spacing: 0.02em;
+      color: #fff; margin-bottom: 0;
+    }
+    .hero-signia {
+      flex-shrink: 0; width: auto; max-width: 280px;
+      padding-top: 38px; display: flex;
+      align-items: flex-start; justify-content: flex-end;
+    }
+    .hero-signia img {
+      display: block; width: 100%; height: auto;
+      max-height: 120px; object-fit: contain; background: transparent;
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrapper {
+      background: var(--dark-text); overflow: hidden; white-space: nowrap;
+      padding: 12px 0; position: relative; z-index: 10;
+    }
+    .ticker-track { display: inline-flex; animation: tickerScroll 22s linear infinite; }
+    .ticker-track span {
+      padding: 0 40px; font-size: 12px; font-weight: 500;
+      color: #fff; letter-spacing: 0.04em;
+    }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+
+    /* ── SIG NAV STRIP ── */
+    .fug-sig-strip {
+      background: rgba(26,39,68,0.92); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden; position: relative; z-index: 20;
+    }
+    .fug-sig-strip-inner {
+      display: flex; align-items: stretch;
+      overflow-x: auto; scrollbar-width: none; justify-content: center;
+    }
+    .fug-sig-strip-inner::-webkit-scrollbar { display: none; }
+    .fug-sig-item {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 7px; padding: 12px 38px;
+      text-decoration: none; color: rgba(255,255,255,0.60);
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.22s, color 0.22s;
+      flex-shrink: 0; min-width: 100px;
+      position: relative; white-space: nowrap;
+    }
+    .fug-sig-item:first-child { border-left: 1px solid rgba(255,255,255,0.07); }
+    .fug-sig-item:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.95); }
+    .fug-sig-item.fug-active { background: rgba(255,255,255,0.12); color: #fff; }
+    .fug-sig-item.fug-active::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: rgba(255,255,255,0.5);
+    }
+    .fug-sig-item img {
+      display: block; max-width: 88px; max-height: 40px; object-fit: contain;
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s;
+      opacity: 0.65;
+    }
+    .fug-sig-item:hover img, .fug-sig-item.fug-active img { transform: scale(1.18); opacity: 1; }
+
+    /* ══════════════════════════════════════════════
+       INTRO — "What is Fak'ugesiPRO"
+    ══════════════════════════════════════════════ */
+    .intro-section {
+      background: var(--white); padding: 72px 248px;
+      position: relative;
+    }
+    .intro-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 32px;
+    }
+    .intro-title {
+      font-size: 44px; font-weight: 700;
+      color: var(--dark-text); line-height: 1.05;
+    }
+    .intro-view-link {
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      text-decoration: underline; letter-spacing: 0.06em;
+      cursor: pointer; text-underline-offset: 3px;
+      white-space: nowrap; margin-top: 12px;
+      transition: opacity 0.2s;
+    }
+    .intro-view-link:hover { opacity: 0.6; }
+    .intro-body {
+      font-size: 14px; line-height: 1.78; color: var(--dark-text);
+      max-width: 860px; margin-bottom: 48px;
+    }
+    .intro-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .intro-card {
+      border: 1px solid rgba(26,39,68,0.15);
+      background: var(--lavender);
+      padding: 24px 22px 28px;
+    }
+    .intro-card-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 12px;
+    }
+    .intro-card-tag {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--body-gray);
+    }
+    .intro-card-num {
+      font-size: 36px; font-weight: 700;
+      color: var(--navy); line-height: 1;
+    }
+    .intro-card-title {
+      font-size: 20px; font-weight: 700;
+      color: var(--dark-text); line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .intro-card-body {
+      font-size: 12px; font-weight: 400;
+      color: var(--body-gray); line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════════════
+       NETWORK — full-width dark image section
+    ══════════════════════════════════════════════ */
+    .network-section {
+      position: relative; min-height: 420px; overflow: hidden;
+    }
+    .network-bg {
+      position: absolute; inset: 0;
+      background-image: url('../images/_DMC6610.JPG');
+      background-size: cover; background-position: center 30%;
+      filter: brightness(0.45);
+    }
+    .network-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(10,18,48,0.72) 50%, transparent 85%);
+    }
+    .network-inner {
+      position: relative; z-index: 3;
+      padding: 64px 248px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .network-content { max-width: 500px; }
+    .network-title {
+      font-size: 44px; font-weight: 700;
+      color: #fff; line-height: 1.05; margin-bottom: 24px;
+    }
+    .network-body {
+      font-size: 13px; line-height: 1.72;
+      color: rgba(255,255,255,0.85); margin-bottom: 32px;
+    }
+    .network-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1.5px solid #fff; color: #fff; background: transparent;
+      padding: 13px 32px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; font-family: 'InterDisplay', sans-serif;
+      text-decoration: none;
+      transition: background 0.22s, color 0.22s, transform 0.18s;
+    }
+    .network-cta:hover { background: #fff; color: var(--navy); transform: translateY(-1px); }
+    .network-view-link {
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,255,255,0.65); text-decoration: underline;
+      letter-spacing: 0.06em; white-space: nowrap;
+      margin-top: 12px; cursor: pointer;
+      text-underline-offset: 3px; transition: color 0.2s;
+    }
+    .network-view-link:hover { color: #fff; }
+
+    /* ══════════════════════════════════════════════
+       2025 HIGHLIGHTS
+    ══════════════════════════════════════════════ */
+    .highlights-section {
+      background: #fff; padding: 0; position: relative; overflow: hidden;
+    }
+    .highlights-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 56px 248px 36px; position: relative;
+    }
+    .highlights-title {
+      font-size: 52px; font-weight: 700; color: var(--dark-text);
+    }
+    .highlights-nav-wrap {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    }
+    .highlights-nav { display: flex; align-items: center; gap: 16px; }
+    .highlights-nav button {
+      background: none; border: none; cursor: pointer;
+      font-size: 22px; color: var(--dark-text); padding: 4px 8px;
+      transition: opacity 0.2s; font-family: 'InterDisplay', sans-serif;
+    }
+    .highlights-nav button:hover { opacity: 0.5; }
+    .highlights-view-link {
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      text-decoration: underline; letter-spacing: 0.06em;
+      cursor: pointer; text-underline-offset: 3px;
+      white-space: nowrap; transition: opacity 0.2s;
+    }
+    .highlights-view-link:hover { opacity: 0.6; }
+    .highlights-strip-outer { overflow: hidden; }
+    .highlights-strip {
+      display: flex; gap: 2px; width: max-content;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .highlight-card { flex: 0 0 360px; min-width: 0; cursor: pointer; }
+    .highlight-img-wrap {
+      width: 100%; height: 360px; overflow: hidden; position: relative;
+    }
+    .highlight-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+    }
+    .highlight-card:hover .highlight-img-wrap img { transform: scale(1.04); }
+    .highlight-info { padding: 12px 0 28px; }
+    .highlight-cat {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--body-gray); margin-bottom: 6px;
+    }
+    .highlight-name {
+      font-size: 17px; font-weight: 700;
+      color: var(--dark-text); margin-bottom: 6px; line-height: 1.2;
+    }
+
+    .highlight-meta { font-size: 12px; color: var(--body-gray); line-height: 1.65; margin-bottom: 10px; }
+    .highlight-speakers { margin-top: 6px; }
+    .highlight-speakers p { font-size: 11px; font-weight: 500; color: var(--dark-text); line-height: 1.7; }
+
+    /* ══════════════════════════════════════════════
+       FAQ — same style as sig-dalakhona
+    ══════════════════════════════════════════════ */
+    .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
+    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
+    .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
+    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
+    .faq-items-wrap { display: flex; flex-direction: column; }
+    .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
+    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
+    .faq-item:hover { background: var(--navy); }
+    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-t-icon { color: var(--white); }
+    .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
+    .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; max-width: calc(100% - 40px); }
+    .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
+    .faq-item.open .faq-t-icon { transform: rotate(45deg); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
+    .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
+    .faq-apply-link {
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      text-decoration: underline; letter-spacing: 0.06em;
+      display: block; margin-top: 40px; cursor: pointer;
+      text-underline-offset: 3px; transition: opacity 0.2s;
+    }
+    .faq-apply-link:hover { opacity: 0.6; }
+
+    /* ══════════════════════════════════════════════
+       PARTNERS
+    ══════════════════════════════════════════════ */
+    .partners-section { background: var(--lavender); padding: 0; position: relative; }
+    .partners-inner { padding: 40px 248px 72px; }
+    .partners-header {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 40px;
+    }
+    .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
+    .partners-view-link {
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      text-decoration: underline; letter-spacing: 0.06em;
+      cursor: pointer; text-underline-offset: 3px; transition: opacity 0.2s;
+    }
+    .partners-view-link:hover { opacity: 0.6; }
+    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .partner-card { display: flex; flex-direction: column; }
+    .partner-logo-box {
+      background: #fff; border: 1px solid rgba(26,39,68,0.12);
+      aspect-ratio: 1 / 1; display: flex; align-items: center;
+      justify-content: center; padding: 40px 32px;
+      transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 14px;
+    }
+    .partner-card:hover .partner-logo-box {
+      box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px);
+    }
+    .partner-logo-box img {
+      max-width: 100%; max-height: 120px; object-fit: contain; display: block;
+      filter: brightness(0) saturate(100%) invert(13%) sepia(53%) saturate(780%) hue-rotate(198deg) brightness(82%);
+    }
+    .partner-desc { font-size: 12px; font-weight: 400; color: var(--body-gray); line-height: 1.65; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      :root { --band: 48px; }
+      .hero { grid-template-columns: 48px 1fr 48px; }
+      .hero-title { font-size: 40px; }
+      .intro-section { padding: 56px 48px; }
+      .intro-cards { grid-template-columns: repeat(2, 1fr); }
+      .network-inner { padding: 56px 48px; }
+      .highlights-header { padding: 40px 48px 28px; }
+      .faq-section { padding: 56px 48px; }
+      .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
+      .partners-inner { padding: 40px 48px 56px; }
+    }
+    @media (max-width: 768px) {
+      :root { --band: 20px; }
+      .cross-icon { display: none; }
+      .hero { display: flex; flex-direction: column; min-height: auto; }
+      .hero-content { padding: 90px 24px 48px !important; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
+      .hero-title { font-size: 32px; max-width: 100%; }
+      .hero-signia { max-width: 160px; padding-top: 0; }
+      .intro-section { padding: 40px 20px; }
+      .intro-title { font-size: 30px; }
+      .intro-cards { grid-template-columns: 1fr; }
+      .network-inner { padding: 48px 20px; flex-direction: column; gap: 24px; }
+      .network-title { font-size: 30px; }
+      .highlights-header { padding: 40px 20px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .highlights-title { font-size: 32px; }
+      .highlight-card { flex: 0 0 280px; }
+      .highlight-img-wrap { height: 280px; }
+      .faq-section { padding: 40px 20px 56px; }
+      .faq-layout { grid-template-columns: 1fr; gap: 24px; }
+      .faq-title-left { font-size: 32px; }
+      .partners-inner { padding: 32px 20px 48px; }
+      .partners-title { font-size: 26px; }
+      .partners-grid { grid-template-columns: 1fr 1fr; }
+      .fug-sig-strip-inner { justify-content: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 26px; }
+      .intro-title { font-size: 24px; }
+      .partners-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<script src="nav.js"></script>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-text-wrapper">
+      <p class="hero-eyebrow">Fak'ugesiPRO</p>
+      <h1 class="hero-title">Our dedicated<br>industry platform</h1>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <p class="hero-dates">07 — 12.10.2026</p>
+    </div>
+    <div class="hero-signia">
+      <img src="images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="Fak'ugesiPRO" />
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ TICKER ═══════════════════════════════ -->
+<div class="ticker-wrapper">
+  <div class="ticker-track">
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>Get your tickets now &nbsp;→&nbsp;</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ SIG NAV ═══════════════════════════════ -->
+<nav class="fug-sig-strip">
+  <div class="fug-sig-strip-inner">
+    <a class="fug-sig-item" href="sig-awards.html">
+      <img src="images/logos/signatureProgrammes/awards_logo_light.svg" alt="Awards" style="height:38px;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-dalakhona.html">
+      <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona" style="height:38px;"/>
+    </a>
+    <a class="fug-sig-item fug-active" href="sig-fakugesiPRO.html">
+      <img src="images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="PRO" style="height:34px;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-immersive.html">
+      <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Immersive Africa" style="height:32px;filter:brightness(0) invert(1);opacity:.8;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-jamz.html">
+      <img src="images/logos/signatureProgrammes/jamz_logo_colour.svg" alt="JAMZ" style="height:42px;"/>
+    </a>
+    <a class="fug-sig-item" href="sig-pitchathon.html">
+      <img src="images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon" style="height:36px;"/>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════ WHAT IS FAK'UGESI PRO ═══════════════════════════════ -->
+<section class="intro-section reveal">
+  <div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="intro-header">
+    <h2 class="intro-title">What is Fak'ugesiPRO</h2>
+    <a class="intro-view-link" href="programme.html">View 2026 programme</a>
+  </div>
+  <p class="intro-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
+
+  <div class="intro-cards">
+    <div class="intro-card">
+      <div class="intro-card-header">
+        <span class="intro-card-tag">Nam sit amet</span>
+        <span class="intro-card-num">01</span>
+      </div>
+      <h3 class="intro-card-title">Intermediaries<br>&amp; Policymakers</h3>
+      <p class="intro-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-header">
+        <span class="intro-card-tag">Nam sit amet</span>
+        <span class="intro-card-num">02</span>
+      </div>
+      <h3 class="intro-card-title">Entrepreneurs<br>&amp; Investors</h3>
+      <p class="intro-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-header">
+        <span class="intro-card-tag">Nam sit amet</span>
+        <span class="intro-card-num">03</span>
+      </div>
+      <h3 class="intro-card-title">Creative<br>Organisations</h3>
+      <p class="intro-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
+    </div>
+  </div>
+
+  <div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ JOIN OUR INDUSTRY NETWORK ═══════════════════════════════ -->
+<section class="network-section reveal">
+  <div class="network-bg"></div>
+  <div class="network-overlay"></div>
+  <div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="network-inner">
+    <div class="network-content">
+      <h2 class="network-title">Join our industry<br>network</h2>
+      <p class="network-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.</p>
+      <a class="network-cta" href="#">GET INVOLVED</a>
+    </div>
+    <a class="network-view-link" href="programme.html">View 2026 programme</a>
+  </div>
+
+  <div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ 2025 HIGHLIGHTS ═══════════════════════════════ -->
+<section class="highlights-section reveal">
+  <div class="cross-icon" style="top:56px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:56px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="highlights-header">
+    <h2 class="highlights-title">2025 Highlights</h2>
+    <div class="highlights-nav-wrap">
+      <div class="highlights-nav">
+        <button id="prevHighlight" aria-label="Previous">←</button>
+        <button id="nextHighlight" aria-label="Next">→</button>
+      </div>
+      <a class="highlights-view-link" href="programme.html">View 2026 programme</a>
+    </div>
+  </div>
+
+  <div class="highlights-strip-outer">
+    <div class="highlights-strip" id="highlightsStrip">
+
+      <!-- SET 1 -->
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="A Seat at the Table of Change" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Industry Roundtable" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Investor Pitching Session" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Policy Forum" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Networking Evening" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Keynote" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SET 2 (duplicate for seamless loop) -->
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="A Seat at the Table of Change" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Industry Roundtable" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Investor Pitching Session" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Policy Forum" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Networking Evening" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-img-wrap">
+          <img src="images/image00028.jpeg" alt="Keynote" />
+        </div>
+        <div class="highlight-info">
+          <p class="highlight-cat">Panel</p>
+          <p class="highlight-name">A Seat at the Table of Change</p>
+          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+          <div class="highlight-speakers">
+            <p>Thobile Chittenden</p>
+            <p>Samukelisiwe Dube</p>
+            <p>Masentle Nzimande</p>
+            <p>Tadeo Lopez-Sendon</p>
+            <p>Meghna Singh</p>
+            <p>Daniel Getachew</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+</section>
+
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section class="faq-section reveal">
+  <div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+      <a class="faq-apply-link" href="programme.html">View 2026 programme</a>
+    </div>
+    <div>
+      <div class="faq-right-hdr">
+        <a class="faq-apply-top" href="programme.html">View 2026 programme</a>
+      </div>
+      <div class="faq-items-wrap" id="faqAccordion"></div>
+    </div>
+  </div>
+
+  <div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PARTNERS ═══════════════════════════════ -->
+<section class="partners-section reveal">
+  <div class="partners-inner">
+    <div class="partners-header">
+      <h2 class="partners-title">Our Main Partners</h2>
+      <a class="partners-view-link" href="#">View all partners</a>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" />
+        </div>
+        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="footer.js"></script>
+
+<script>
+/* ── REVEAL ON SCROLL ── */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.06 });
+revealEls.forEach(el => io.observe(el));
+
+/* ── HIGHLIGHTS: arrow buttons only ── */
+(function () {
+  const strip = document.getElementById('highlightsStrip');
+  const prevBtn = document.getElementById('prevHighlight');
+  const nextBtn = document.getElementById('nextHighlight');
+  let offset = 0;
+
+  function getCardWidth() {
+    const card = strip.querySelector('.highlight-card');
+    return card ? card.getBoundingClientRect().width + 2 : 362;
+  }
+  function getTotalWidth() { return strip.scrollWidth / 2; }
+  function move(direction) {
+    const cw = getCardWidth();
+    const total = getTotalWidth();
+    offset += direction * cw;
+    if (offset <= -total) offset = 0;
+    if (offset > 0) offset = -(total - cw);
+    strip.style.transform = `translateX(${offset}px)`;
+  }
+
+  nextBtn.addEventListener('click', () => move(-1));
+  prevBtn.addEventListener('click', () => move(1));
+})();
+
+/* ── FAQ ── */
+const faqData = [
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum. Proin eget est a augue vehicula mattis. Pellentesque sed nisi at nisi scelerisque iaculis. Phasellus orci. Nulla adipiscing. Suspendisse et leo vel elit ullamcorper gravida. Proin tempor, ligula ut tincidunt.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Vestibulum semper enim non eros. Sed vitae arcu. Aliquam erat volutpat. Praesent odio nisl.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Nullam lorem sapien, tempus ac, fringilla at, elementum sed, purus.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.' },
+  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium.' },
+];
+
+const faqContainer = document.getElementById('faqAccordion');
+faqData.forEach((faq, i) => {
+  const item = document.createElement('div');
+  item.className = 'faq-item' + (i === 0 ? ' open' : '');
+  item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
+  item.querySelector('.faq-q-btn').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    faqContainer.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-t-icon').textContent = '+';
+      el.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('.faq-t-icon').textContent = '×';
+      item.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'true');
+    }
+  });
+  faqContainer.appendChild(item);
+});
+
+/* ── CROSS ICON SCROLL SPIN ── */
+(function () {
+  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
+  function resetRot() {
+    rot = 0;
+    document.querySelectorAll('.cross-icon, .fug-footer-cross').forEach(function (el) {
+      el.style.transition = 'transform 0.45s ease';
+      el.style.transform = 'rotate(0deg)';
+    });
+  }
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        var y = window.scrollY, delta = y - lastY;
+        if (Math.abs(delta) > 0) {
+          rot += delta > 0 ? 15 : -15;
+          document.querySelectorAll('.cross-icon, .fug-footer-cross').forEach(function (el) {
+            el.style.transition = 'transform 0.1s linear';
+            el.style.transform = 'rotate(' + rot + 'deg)';
+          });
+        }
+        lastY = y;
+        ticking = false;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(resetRot, 300);
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+</script>
+
+</body>
+</html>
