@@ -7,11 +7,47 @@
   <link rel="stylesheet" href="../css/styles.css">
 
   <style>
-    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
-    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
-    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
-    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
-    @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    /* ── InterDisplay — multiple src paths so it resolves from any page depth ── */
+    @font-face {
+      font-family: 'InterDisplay';
+      src: url('fonts/InterDisplay-Regular.otf') format('opentype'),
+           url('../fonts/InterDisplay-Regular.otf') format('opentype'),
+           url('/fonts/InterDisplay-Regular.otf') format('opentype'),
+           url('frontend/fonts/InterDisplay-Regular.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: block;
+    }
+    @font-face {
+      font-family: 'InterDisplay';
+      src: url('fonts/InterDisplay-Medium.otf') format('opentype'),
+           url('../fonts/InterDisplay-Medium.otf') format('opentype'),
+           url('/fonts/InterDisplay-Medium.otf') format('opentype'),
+           url('frontend/fonts/InterDisplay-Medium.otf') format('opentype');
+      font-weight: 500; font-style: normal; font-display: block;
+    }
+    @font-face {
+      font-family: 'InterDisplay';
+      src: url('fonts/InterDisplay-SemiBold.otf') format('opentype'),
+           url('../fonts/InterDisplay-SemiBold.otf') format('opentype'),
+           url('/fonts/InterDisplay-SemiBold.otf') format('opentype'),
+           url('frontend/fonts/InterDisplay-SemiBold.otf') format('opentype');
+      font-weight: 600; font-style: normal; font-display: block;
+    }
+    @font-face {
+      font-family: 'InterDisplay';
+      src: url('fonts/InterDisplay-Bold.otf') format('opentype'),
+           url('../fonts/InterDisplay-Bold.otf') format('opentype'),
+           url('/fonts/InterDisplay-Bold.otf') format('opentype'),
+           url('frontend/fonts/InterDisplay-Bold.otf') format('opentype');
+      font-weight: 700; font-style: normal; font-display: block;
+    }
+    @font-face {
+      font-family: 'DxWideground';
+      src: url('fonts/DxWideground-Regular.otf') format('opentype'),
+           url('../fonts/DxWideground-Regular.otf') format('opentype'),
+           url('/fonts/DxWideground-Regular.otf') format('opentype'),
+           url('frontend/fonts/DxWideground-Regular.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: block;
+    }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -103,7 +139,6 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .hero-content { max-width: 420px; }
-    /* Subtitle: small, uppercase, slightly opaque — matches image */
     .hero-subtitle {
       font-size: 11px;
       font-weight: 400;
@@ -113,7 +148,6 @@
       margin-bottom: 10px;
       color: var(--white);
     }
-    /* Title: large, bold white — matches image ~52px semibold */
     .hero-title {
       font-size: 52px;
       font-weight: 700;
@@ -121,7 +155,6 @@
       margin-bottom: 18px;
       color: var(--white);
     }
-    /* Body text: small, light weight, matches image */
     .hero-body {
       font-size: 12px;
       font-weight: 400;
@@ -195,7 +228,6 @@
     .theme-section {
       position: relative; min-height: 540px; display: flex; align-items: center;
       overflow: hidden;
-      /* Matches schedule page day-selector gradient exactly */
       background: linear-gradient(180deg, #3a4a88 0%, #4a5899 40%, #5a6aaa 70%, #6878bb 100%);
     }
     .theme-bg-img {
@@ -204,9 +236,7 @@
       background-size: contain;
       background-position: right bottom;
       background-repeat: no-repeat;
-      /* Original orientation — scaleX(-1) matches initial code */
       transform: scaleX(-1);
-      /* Brighter — no dimming filter */
       filter: brightness(1.15);
     }
     .theme-fade {
@@ -216,7 +246,6 @@
     .theme-inner { position: relative; z-index: 3; width: 100%; padding: 60px var(--band); }
     .theme-content { max-width: 480px; }
 
-    /* "2026 Theme" — DxWideground wide display font */
     .theme-year {
       font-family: 'DxWideground', sans-serif;
       font-size: 48px;
@@ -225,7 +254,6 @@
       letter-spacing: 0.01em;
       color: var(--white);
     }
-    /* "Africa's creative energy unleashed" — small, regular, sits right under 2026 Theme */
     .theme-sub {
       font-family: 'InterDisplay', sans-serif;
       font-size: 11px;
@@ -235,7 +263,6 @@
       margin-bottom: 12px;
       color: var(--white);
     }
-    /* "African Imaginaries" — InterDisplay Bold, large */
     .theme-head {
       font-family: 'InterDisplay', sans-serif;
       font-size: 38px;
@@ -244,7 +271,6 @@
       margin-bottom: 18px;
       color: var(--white);
     }
-    /* Body text — InterDisplay Regular */
     .theme-body {
       font-family: 'InterDisplay', sans-serif;
       font-size: 13px;
@@ -256,9 +282,8 @@
       color: var(--white);
     }
     .btn-row     { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
-    /* "07 — 12.10.2026" — InterDisplay Bold, large */
     .theme-dates {
-      font-family: 'InterDisplay', sans-serif;
+      font-family: 'InterDisplay', 'Inter', Arial, sans-serif !important;
       font-size: 30px;
       font-weight: 700;
       letter-spacing: 0.02em;
@@ -278,7 +303,6 @@
     }
     .involved-inner { position: relative; z-index: 3; width: 100%; padding: 60px var(--band); }
     .involved-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
-    /* "Get involved" — large bold white */
     .involved-title {
       font-size: 42px;
       font-weight: 700;
@@ -441,133 +465,64 @@
   transform: translateX(3px);
 }
 
-    /* Cards — matching image: bordered, with content stacked, LEARN MORE button at bottom */
+    /* ── GET INVOLVED CARDS — NO FLIP, STATIC ── */
     .inv-card {
       border: 1px solid rgba(255,255,255,0.45);
       position: relative;
-      perspective: 900px;
       min-height: 280px;
       display: flex;
       flex-direction: column;
     }
-    .inv-card-inner {
-      position: relative;
-      width: 100%; height: 100%; flex: 1;
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
-      min-height: 280px;
-    }
-    .inv-card:hover .inv-card-inner { transform: rotateY(180deg); }
-
-    .inv-card-front, .inv-card-back {
-      position: absolute; inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      padding: 22px 20px 20px;
-      display: flex;
-      flex-direction: column;
-    }
+    /* Card front only — no flip effect */
     .inv-card-front {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
       background: transparent;
       justify-content: flex-start;
-      padding: 20px;
     }
-    .inv-card-back {
-      background: transparent;
-      transform: rotateY(180deg);
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      border: 1px solid rgba(255,255,255,0.45);
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    .inv-card-fact {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .inv-card-fact p {
-      font-size: 11.5px;
-      line-height: 1.65;
-      color: rgba(255,255,255,0.85);
-      text-align: center;
-      font-style: normal;
-      font-weight: 400;
-      font-family: 'InterDisplay', sans-serif;
-      opacity: 0.82;
-    }
-    .inv-card-back-label {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
-    }
+    /* Hide the back entirely */
+    .inv-card-back { display: none !important; }
 
-    /* Card number top-right — InterDisplay Bold, white, large — matches theme section heading style */
+    /* Card number top-right — BRIGHT WHITE */
     .card-num {
       position: absolute; top: 14px; right: 16px;
       font-family: 'InterDisplay', sans-serif;
       font-size: 36px; font-weight: 700;
-      color: rgba(255,255,255,0.7);
+      color: #ffffff;
       line-height: 1; letter-spacing: -0.01em;
     }
-    /* Card tag — InterDisplay Regular, small, uppercase */
+    /* Card tag */
     .card-tag {
       font-family: 'InterDisplay', sans-serif;
       font-size: 10px; font-weight: 400;
       letter-spacing: 0.1em; text-transform: uppercase;
       opacity: 0.6; margin-bottom: 8px; margin-top: 28px; color: var(--white);
     }
-    /* Card title — InterDisplay Bold */
+    /* Card title */
     .card-title {
       font-family: 'InterDisplay', sans-serif;
       font-size: 20px; font-weight: 700;
       margin-bottom: 12px; color: var(--white);
     }
-    /* Card body — InterDisplay Regular */
+    /* Card body */
     .card-body {
       font-family: 'InterDisplay', sans-serif;
       font-size: 11.5px; font-weight: 400;
       line-height: 1.65; opacity: 0.82;
       color: var(--white);
     }
-    /* Card back — InterDisplay fonts */
-    .inv-card-fact p {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 13px; line-height: 1.72;
-      color: rgba(255,255,255,0.88);
-      text-align: center; font-weight: 400;
-    }
-    .inv-card-back-label {
-      position: absolute; top: 14px; left: 14px;
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 9px; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
-    }
 
     /* ── SPOTLIGHT ── */
     .spotlight-section { background: var(--lavender); padding: 72px 0; position: relative; }
     .spotlight-inner { padding: 0 var(--band); }
-    /* "Spotlight" — large, bold, dark matches image */
     .spotlight-title { font-size: 44px; font-weight: 700; color: var(--dark-text); margin-bottom: 40px; }
     .spotlight-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .spotlight-img-wrap { overflow: hidden; aspect-ratio: 4/3; }
     .spotlight-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; display: block; }
     .spotlight-img-wrap:hover img { transform: scale(1.05); }
-    /* Tag — small uppercase, dark navy */
     .spotlight-tag  { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
-    /* Spotlight heading — bold, matches image */
     .spotlight-head { font-size: 30px; font-weight: 700; color: var(--dark-text); line-height: 1.1; margin-bottom: 20px; }
     .spotlight-body { font-size: 13px; font-weight: 400; line-height: 1.72; color: var(--body-gray); margin-bottom: 32px; }
 
@@ -575,7 +530,6 @@
     .happening-section { background: var(--white); padding: 72px 0; overflow: hidden; position: relative; }
     .happening-inner { padding: 0 var(--band); }
     .happening-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-    /* "What's happening" — large bold dark */
     .happening-title { font-size: 44px; font-weight: 700; color: var(--dark-text); }
 
     .soc-tabs { display: flex; gap: 16px; align-items: center; }
@@ -677,7 +631,6 @@
    MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
 ══════════════════════════════════════════════════ */
 
-/* ── TABLET (≤1024px) ── */
 @media (max-width: 1024px) {
   .hero-inner { padding: 100px 48px 52px; }
   .hero-title { font-size: 40px; }
@@ -692,7 +645,6 @@
   .involved-inner { padding: 52px 48px; }
   .involved-title { font-size: 34px; }
   .inv-card { min-height: 240px; }
-  .inv-card-inner { min-height: 240px; }
 
   .spotlight-inner { padding: 0 48px; }
   .spotlight-title { font-size: 36px; }
@@ -734,10 +686,7 @@
   transform: translateY(-1px);
 }
 
-/* ── MOBILE (≤768px) ── */
 @media (max-width: 768px) {
-
-  /* HERO */
   .hero { min-height: auto; }
   .hero-bg { background-position: center center; }
   .hero-inner {
@@ -752,7 +701,6 @@
   .hero-body { font-size: 12px; max-width: 100%; margin-bottom: 14px; }
   .hero-logo { display: none; }
 
-  /* THEME SECTION */
   .theme-section { min-height: auto; }
   .theme-bg-img { display: none; }
   .theme-fade { display: none; }
@@ -773,7 +721,6 @@
   }
   .theme-dates { font-size: 22px; }
 
-  /* GET INVOLVED */
   .involved-inner { padding: 40px 20px; }
   .involved-header {
     flex-direction: column;
@@ -784,25 +731,17 @@
   .involved-title { font-size: 28px; }
   .involved-link { font-size: 11px; }
   .involved-cards { grid-template-columns: 1fr; gap: 12px; }
-
-  /* Disable flip on mobile — show front only, make static */
-  .inv-card { min-height: auto; perspective: none; }
-  .inv-card-inner { min-height: auto; transform-style: flat; transition: none; }
-  .inv-card:hover .inv-card-inner { transform: none; }
+  .inv-card { min-height: auto; }
   .inv-card-front {
     position: relative; inset: auto;
-    backface-visibility: visible;
-    -webkit-backface-visibility: visible;
     padding: 20px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.3);
   }
-  .inv-card-back { display: none; }
   .card-title { font-size: 18px; margin-bottom: 8px; }
   .card-body { font-size: 11px; }
-  .card-num { font-size: 20px; top: 12px; right: 12px; color: rgba(255,255,255,0.7); }
+  .card-num { font-size: 20px; top: 12px; right: 12px; color: #ffffff; }
 
-  /* SPOTLIGHT */
   .spotlight-section { padding: 48px 0; }
   .spotlight-inner { padding: 0 20px; }
   .spotlight-title { font-size: 28px; margin-bottom: 28px; }
@@ -814,7 +753,6 @@
   .spotlight-body { font-size: 12px; margin-bottom: 20px; }
   .btn-outline-dark { width: 100%; justify-content: center; }
 
-  /* WHAT'S HAPPENING */
   .happening-section { padding: 48px 0; }
   .happening-inner { padding: 0 20px; }
   .happening-header {
@@ -825,27 +763,22 @@
   }
   .happening-title { font-size: 28px; }
 
-  /* Social tabs — keep horizontal, just tighten */
   .soc-tabs { gap: 10px; }
   .soc-tab { width: 34px; height: 34px; }
 
-  /* Instagram strip — smaller tiles */
   .strip-img { flex: 0 0 200px; height: 180px; }
 
-  /* Twitter grid — single col */
   .tweet-grid { grid-template-columns: 1fr; gap: 12px; }
   .tweet-card { padding: 16px; }
   .tweet-name { font-size: 12px; }
   .tweet-text { font-size: 12px; }
 
-  /* Facebook feed — single col */
   .fb-feed { grid-template-columns: 1fr; gap: 14px; }
   .fb-card-img { height: 180px; }
   .fb-card-body { padding: 14px 16px; }
 
   .happening-caption { padding: 0 20px; font-size: 11px; margin-top: 12px; }
 
-  /* PARTNERS */
   .partners-section { padding: 40px 0 48px; }
   .partners-inner { padding: 0 20px; }
   .partners-header {
@@ -866,22 +799,16 @@
   .cross-icon { display: none; }
 }
 
-/* ── SMALL MOBILE (≤480px) ── */
 @media (max-width: 480px) {
   .hero-title { font-size: 26px; }
-
   .theme-year { font-size: 24px; }
   .theme-head { font-size: 22px; }
   .theme-dates { font-size: 18px; }
-
   .involved-title { font-size: 24px; }
-
   .spotlight-title { font-size: 24px; }
   .spotlight-head { font-size: 20px; }
-
   .happening-title { font-size: 24px; }
   .strip-img { flex: 0 0 160px; height: 150px; }
-
   .partners-title { font-size: 22px; }
   .partners-grid { grid-template-columns: 1fr; }
 }
@@ -889,22 +816,85 @@
   </style>
 
   <style>
-    /* Global: no text effects on hover anywhere */
     * { -webkit-text-stroke: 0 !important; }
+
+    /* ── Force InterDisplay on theme section — belt-and-braces ── */
+    .theme-section,
+    .theme-section *,
+    .theme-year,
+    .theme-sub,
+    .theme-head,
+    .theme-body,
+    .theme-dates,
+    .theme-content p,
+    .theme-content h2,
+    .theme-content h3 {
+      font-family: 'InterDisplay', 'Inter', Arial, sans-serif !important;
+    }
+    .theme-dates {
+      font-family: 'InterDisplay', 'Inter', Arial, sans-serif !important;
+      font-weight: 700 !important;
+    }
+    .theme-year {
+      font-family: 'DxWideground', 'InterDisplay', Arial, sans-serif !important;
+    }
   </style>
 
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-SemiBold.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
+  <!-- Fallback preloads for alternate directory structures -->
+  <link rel="preload" href="../fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="../fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="/fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="/fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
+
+  <script>
+    /* Dynamic font loader — probes candidate paths and loads the first that resolves */
+    (function() {
+      var base = window.location.href.replace(/\/[^\/]*$/, '/');
+      var candidates = [
+        base + 'fonts/',
+        base + '../fonts/',
+        '/fonts/',
+        '/frontend/fonts/',
+        base + 'frontend/fonts/'
+      ];
+      var weights = [
+        { file: 'InterDisplay-Regular.otf',  weight: '400' },
+        { file: 'InterDisplay-Medium.otf',   weight: '500' },
+        { file: 'InterDisplay-SemiBold.otf', weight: '600' },
+        { file: 'InterDisplay-Bold.otf',     weight: '700' },
+        { file: 'DxWideground-Regular.otf',  weight: '400', family: 'DxWideground' }
+      ];
+      function tryLoad(pathPrefix, idx) {
+        if (idx >= weights.length) return;
+        var w = weights[idx];
+        var family = w.family || 'InterDisplay';
+        var url = pathPrefix + w.file;
+        var ff = new FontFace(family, 'url(' + url + ') format("opentype")', { weight: w.weight, style: 'normal' });
+        ff.load().then(function(loaded) {
+          document.fonts.add(loaded);
+          tryLoad(pathPrefix, idx + 1);
+        }).catch(function() {});
+      }
+      /* Probe each candidate by trying to load Regular; if it works, load the rest */
+      candidates.forEach(function(prefix) {
+        var probe = new FontFace('InterDisplay', 'url(' + prefix + 'InterDisplay-Regular.otf) format("opentype")', { weight: '400' });
+        probe.load().then(function(loaded) {
+          document.fonts.add(loaded);
+          tryLoad(prefix, 1); /* start from Medium onward */
+        }).catch(function() {});
+      });
+    })();
+  </script>
 </head>
 <body>
 
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <!-- Cross icons REMOVED from hero to match image -->
 
-  <!-- nav injected by nav.js -->
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-subtitle">African Digital &amp; Innovation Festival</p>
@@ -932,24 +922,19 @@
   </div>
 </div>
 
-<!-- 2026 THEME -->
+<!-- 2026 THEME — 2 crosses at TOP only, NO bottom crosses, brighter white -->
 <section class="theme-section reveal">
   <div class="theme-bg-img"></div>
   <div class="theme-fade"></div>
 
-  <!-- Cross icons kept in theme section (visible in image) -->
+  <!-- Only 2 cross icons at top — left and right -->
   <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
-  </div>
+  <!-- NO bottom crosses for theme section -->
 
   <div class="theme-inner">
     <div class="theme-content">
@@ -966,21 +951,29 @@
   </div>
 </section>
 
-<!-- GET INVOLVED -->
+<!-- GET INVOLVED — 3 crosses top, 3 crosses bottom, solid bright white, NO flip -->
 <section class="involved-section reveal">
   <div class="involved-bg"></div>
 
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
+  <!-- 3 crosses at TOP — solid bright white -->
+  <div class="cross-icon" style="top:16px;left:200px;opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
+  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
+  <div class="cross-icon" style="top:16px;right:200px;opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/></svg>
+  <!-- 3 crosses at BOTTOM — solid bright white -->
+  <div class="cross-icon" style="bottom:16px;left:200px;opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
   </div>
 
   <div class="involved-inner">
@@ -991,53 +984,29 @@
     <div class="involved-cards">
 
       <div class="inv-card">
-        <div class="inv-card-inner">
-          <div class="inv-card-front">
-            <span class="card-num">01</span>
-            <p class="card-tag">Festival Collaboration</p>
-            <h3 class="card-title">Investors &amp; Funders</h3>
-            <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
-          </div>
-          <div class="inv-card-back">
-            <span class="inv-card-back-label">Fun Facts</span>
-            <div class="inv-card-fact">
-              <p>Africa is home to more than 54 recognized nations, yet shares a deep tradition of collective creative expression that transcends borders and languages.</p>
-            </div>
-          </div>
+        <div class="inv-card-front">
+          <span class="card-num">01</span>
+          <p class="card-tag">Festival Collaboration</p>
+          <h3 class="card-title">Investors &amp; Funders</h3>
+          <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
         </div>
       </div>
 
       <div class="inv-card">
-        <div class="inv-card-inner">
-          <div class="inv-card-front">
-            <span class="card-num">02</span>
-            <p class="card-tag">Curated Festival Experiences</p>
-            <h3 class="card-title">Expo &amp; Showcases</h3>
-            <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
-          </div>
-          <div class="inv-card-back">
-            <span class="inv-card-back-label">Fun Facts</span>
-            <div class="inv-card-fact">
-              <p>The African continent has the fastest-growing startup ecosystem in the world, with digital innovation hubs now operating in over 40 countries across the continent.</p>
-            </div>
-          </div>
+        <div class="inv-card-front">
+          <span class="card-num">02</span>
+          <p class="card-tag">Curated Festival Experiences</p>
+          <h3 class="card-title">Expo &amp; Showcases</h3>
+          <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
         </div>
       </div>
 
       <div class="inv-card">
-        <div class="inv-card-inner">
-          <div class="inv-card-front">
-            <span class="card-num">03</span>
-            <p class="card-tag">Lend a Hand</p>
-            <h3 class="card-title">Volunteers</h3>
-            <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
-          </div>
-          <div class="inv-card-back">
-            <span class="inv-card-back-label">Fun Facts</span>
-            <div class="inv-card-fact">
-              <p>Fak'ugesi has welcomed visitors from over 30 countries since its founding, building one of the most diverse networks of digital creators on the African continent.</p>
-            </div>
-          </div>
+        <div class="inv-card-front">
+          <span class="card-num">03</span>
+          <p class="card-tag">Lend a Hand</p>
+          <h3 class="card-title">Volunteers</h3>
+          <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
         </div>
       </div>
 
@@ -1045,20 +1014,8 @@
   </div>
 </section>
 
-<!-- SPOTLIGHT -->
+<!-- SPOTLIGHT — no cross icons -->
 <section class="spotlight-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.4)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.4)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.4)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.4)" stroke-width="1.5"/></svg>
-  </div>
 
   <div class="spotlight-inner">
     <h2 class="spotlight-title">Spotlight</h2>
@@ -1076,19 +1033,27 @@
   </div>
 </section>
 
-<!-- WHAT'S HAPPENING -->
+<!-- WHAT'S HAPPENING — 3 crosses at top, 3 at bottom, solid dark navy -->
 <section class="happening-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
+  <!-- 3 crosses at TOP — solid dark navy -->
+  <div class="cross-icon" style="top:16px;left:200px;opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
+  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
+  <div class="cross-icon" style="top:16px;right:200px;opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
+  <!-- 3 crosses at BOTTOM — solid dark navy -->
+  <div class="cross-icon" style="bottom:16px;left:200px;opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;opacity:1;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
 
   <div class="happening-inner">
@@ -1118,7 +1083,6 @@
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Fak'ugesi on Instagram" /></a></div>
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL0176.jpg" alt="Fak'ugesi on Instagram" /></a></div>
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <!-- duplicated for seamless loop -->
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Fak'ugesi on Instagram" /></a></div>
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Fak'ugesi on Instagram" /></a></div>
         <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi on Instagram" /></a></div>
@@ -1192,20 +1156,9 @@
   </div>
 </section>
 
-<!-- OUR MAIN PARTNERS -->
+<!-- OUR MAIN PARTNERS — NO cross icons -->
 <section class="partners-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg>
-  </div>
+  <!-- Cross icons removed from partners section -->
 
   <div class="partners-inner">
     <div class="partners-header">
@@ -1255,7 +1208,7 @@
   });
 </script>
 <script>
-  /* Cross icon scroll spin */
+  /* Cross icon scroll spin — preserved exactly */
   (function(){
     var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
     function resetRot(){

@@ -15,10 +15,15 @@
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
+    /* Cross icon — base style */
     .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear}
     .cross-icon svg{width:100%;height:100%}
 
-    /* HERO — brightness 0.7 */
+    /* Solid navy cross variant used in Fak'ugesi Market section */
+    .cross-icon--navy{opacity:1;}
+    .cross-icon--navy svg line{stroke:#1a2744;stroke-width:2;}
+
+    /* HERO — NO cross-icons */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;}
     .hero-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL3273.jpg');background-size:cover;background-position:center 40%;filter:brightness(0.7);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
@@ -44,7 +49,7 @@
     .ticker-wrap:hover .ticker-item{color:#ffffff !important;}
     .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff !important;}
 
-    /* MARKET INFO */
+    /* MARKET INFO — solid dark navy cross-icons */
     .market-info-section{background:#ffffff;padding:80px 248px 72px;position:relative;overflow:hidden;}
     .market-info-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;}
     .market-info-title{font-size:48px;font-weight:900;color:var(--dark-text);line-height:1.05;}
@@ -58,17 +63,21 @@
     .exhibitors-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;text-underline-offset:3px;}
 
     .exhibitors-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:0 248px;}
-    /* ── CHANGED: same grey as schedule "More to Experience" card bodies ── */
-    .exhibitor-card{background:#c5cde0;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .22s,box-shadow .22s;position:relative;}
+
+    /* ── Cards: one shade lighter grey + solid black border ── */
+    .exhibitor-card{background:#d4dae9;border:1.5px solid #000000;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .22s,box-shadow .22s;position:relative;}
     .exhibitor-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,39,68,.18);}
-    .exhibitor-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;background:#b0b8ce;}
+    .exhibitor-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;background:#bec7d8;}
     .exhibitor-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
-    /* ── Info panel slightly darker than card ── */
-    .exhibitor-card-info{padding:16px 18px 20px;background:#b8c0d4;}
+    /* ── Info panel: slightly darker than card ── */
+    .exhibitor-card-info{padding:16px 18px 20px;background:#c6cedf;}
     .exhibitor-card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
     .exhibitor-card-type{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);}
     .exhibitor-card-more{font-size:9px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;cursor:pointer;}
     .exhibitor-card-title{font-size:26px;font-weight:900;color:var(--dark-text);line-height:1.1;}
+
+    /* ── 3 bottom cross-icons row for exhibitors section ── */
+    .exhibitors-bottom-crosses{display:flex;justify-content:center;align-items:center;gap:64px;padding:40px 0 0;}
 
     /* EXHIBITOR DETAIL */
     .exhibitor-detail{display:none;position:relative;}
@@ -96,7 +105,7 @@
     .exhibitor-detail-meta-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:4px;}
     .exhibitor-detail-meta-value{font-size:22px;font-weight:700;color:#fff;}
 
-    /* WANT A SPOT */
+    /* WANT A SPOT — NO cross-icons */
     .spot-cta-section{position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;}
     .spot-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of 2C6A3678.jpg');background-size:cover;background-position:center top;filter:brightness(0.65);}
     .spot-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.5) 40%,rgba(5,10,28,.12) 80%);}
@@ -132,148 +141,12 @@
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
+    /* ── Fak'ugesi shared link hover effect ── */
+    .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
+    .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
+    .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
+    .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
-   /* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
-
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
-
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
-
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
     @media(max-width:900px){
       .hero-title{font-size:44px}
       .hero-inner{padding-left:32px;padding-right:32px;}
@@ -282,7 +155,7 @@
       .exhibitors-grid{grid-template-columns:1fr}
       .partners-header{padding-left:32px;padding-right:32px}
     }
-    @media (max-width:1024px){
+    @media(max-width:1024px){
       .hero-inner{padding:52px 48px 48px;}
       .hero-title{font-size:52px;}
       .hero-date{font-size:22px;}
@@ -300,7 +173,7 @@
       .partners-title{font-size:36px;}
       .cross-icon{display:none;}
     }
-    @media (max-width:768px){
+    @media(max-width:768px){
       .hero{min-height:auto;}
       .hero-bg{background-position:center center;}
       .hero-inner{padding:80px 20px 40px !important;flex-direction:column !important;align-items:flex-start !important;gap:20px !important;}
@@ -344,8 +217,9 @@
       .partners-social-row{flex-direction:column;gap:16px;align-items:flex-start;}
       .partners-social-row p{font-size:13px;}
       .cross-icon{display:none;}
+      .exhibitors-bottom-crosses{display:none;}
     }
-    @media (max-width:480px){
+    @media(max-width:480px){
       .hero-title{font-size:26px !important;}
       .hero-date{font-size:17px;}
       .market-info-title{font-size:24px;}
@@ -362,6 +236,8 @@
 .btn-primary:hover,.btn-outline-dark:hover,.btn-outline-white:hover,.hero-cta:hover,.btn-apply:hover,.btn-cta-white:hover,.btn-cta-filled:hover,.btn-learn:hover,a.btn-tickets:hover,button.btn-tickets:hover,.btn-get-pass:hover,[class*="btn-"]:not(.req-btn):not(.faq-q-btn):hover{background:#1e3a6e !important;color:#ffffff !important;border-color:rgba(100,160,255,0.6) !important;}
 .btn-outline-dark:hover,.btn-outline-white:hover{color:#fff !important;}
 .cross-icon{display:inline-flex !important;align-items:center !important;justify-content:center !important;width:18px !important;height:18px !important;flex-shrink:0 !important;position:absolute !important;z-index:6 !important;opacity:0.45 !important;animation:none !important;transition:transform 0.1s linear !important;}
+/* Override for navy solid crosses — bump specificity */
+.cross-icon.cross-icon--navy{opacity:1 !important;}
 .cross-icon svg{width:100%;height:100%;}
 @media(max-width:1400px){:root{--band:160px !important;--gutter:160px !important;}}
 @media(max-width:1200px){:root{--band:80px !important;--gutter:80px !important;}.prizes-grid,.involved-cards{grid-template-columns:repeat(2,1fr) !important;}.spotlight-grid{gap:32px !important;}}
@@ -382,14 +258,10 @@
 <script src="nav.js"></script>
 <script src="ticker-hover.js"></script>
 
-<!-- HERO -->
+<!-- HERO — no cross-icons -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg></div>
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Market</p>
@@ -421,10 +293,15 @@
   </div>
 </div>
 
-<!-- MARKET INFO -->
+<!-- MARKET INFO — solid dark navy cross-icons -->
 <section class="market-info-section reveal" id="market-info-section">
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <!-- Solid navy cross-icons (no opacity fade, dark navy stroke) -->
+  <div class="cross-icon cross-icon--navy" style="top:24px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg>
+  </div>
+  <div class="cross-icon cross-icon--navy" style="top:24px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg>
+  </div>
   <div class="market-info-top">
     <h2 class="market-info-title">Fak'ugesi Market</h2>
     <a class="market-info-link" href="programme.html">View 2026 programme →</a>
@@ -434,10 +311,9 @@
 
 <!-- EXHIBITORS -->
 <section class="exhibitors-section reveal" id="exhibitors-section">
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.25)" stroke-width="1.5"/></svg></div>
+  <!-- Top 2 crosses — solid dark navy -->
+  <div class="cross-icon cross-icon--navy" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
+  <div class="cross-icon cross-icon--navy" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
 
   <!-- Cards view -->
   <div id="exhibitors-cards-view">
@@ -503,7 +379,13 @@
         </div>
       </div>
     </div>
-  </div>
+
+  </div><!-- /#exhibitors-cards-view -->
+
+  <!-- 3 dark navy cross-icons distributed left/centre/right like index.html happening section -->
+  <div class="cross-icon cross-icon--navy" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
+  <div class="cross-icon cross-icon--navy" style="bottom:24px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
+  <div class="cross-icon cross-icon--navy" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
 
   <!-- Detail view -->
   <div class="exhibitor-detail" id="exhibitor-detail">
@@ -555,12 +437,10 @@
   </div>
 </section>
 
-<!-- WANT A SPOT -->
+<!-- WANT A SPOT — no cross-icons -->
 <section class="spot-cta-section reveal" id="spot-cta-section">
   <div class="spot-cta-bg"></div>
   <div class="spot-cta-overlay"></div>
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
   <div class="spot-cta-content">
     <h2 class="spot-cta-title">Want to a spot at Fak'ugesi Market?</h2>
     <p class="spot-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>

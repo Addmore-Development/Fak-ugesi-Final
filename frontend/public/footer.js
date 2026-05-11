@@ -51,17 +51,17 @@
       padding: 0;
     }
 
-    /* Cross icons — 22px, dark blue, absolutely positioned at 200px */
+    /* Cross icons — 18px, absolutely positioned */
     .fug-footer-cross {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       position: absolute;
       z-index: 2;
     }
-    .fug-footer-cross svg { width: 22px; height: 22px; }
+    .fug-footer-cross svg { width: 18px; height: 18px; }
 
     /* Three-column grid aligned to 200px margins */
     #fug-footer .fug-footer-inner {
@@ -96,7 +96,7 @@
       font-family: 'InterDisplay', sans-serif;
     }
 
-    /* Col 2 — "Contact us" label — now same size + weight as brand */
+    /* Col 2 — "Contact us" label */
     #fug-footer .fug-footer-col-title {
       font-size: 16px;
       font-weight: 700;
@@ -107,7 +107,7 @@
       text-transform: none;
     }
 
-    /* Plain links — no hover effects, no underline animation */
+    /* Plain links */
     #fug-footer a {
       color: #1a2744;
       font-size: 14px;
@@ -131,7 +131,7 @@
       flex-shrink: 0;
     }
 
-    /* Copyright — same size + weight as brand and contact us */
+    /* Copyright */
     #fug-footer .fug-footer-copy {
       font-size: 16px;
       font-weight: 700;
@@ -189,10 +189,10 @@
   `;
   document.head.appendChild(style);
 
-  /* SVG cross helper */
-  const crossSVG = `<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="11" y1="0" x2="11" y2="22" stroke="#1a2744" stroke-width="1.5"/>
-    <line x1="0"  y1="11" x2="22" y2="11" stroke="#1a2744" stroke-width="1.5"/>
+  /* SVG cross helper — 18px viewBox */
+  const crossSVG = `<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
+    <line x1="0"  y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
   </svg>`;
 
   const html = `
@@ -221,14 +221,14 @@
 
     <footer id="fug-footer">
 
-      <!-- TOP ROW crosses -->
-      <span class="fug-footer-cross" style="top:24px; left:calc(200px - 11px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="top:24px; left:calc(50% - 11px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="top:24px; right:calc(200px - 11px);">${crossSVG}</span>
+      <!-- TOP ROW crosses — 18px size -->
+      <span class="fug-footer-cross" style="top:24px; left:calc(200px - 9px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="top:24px; left:calc(50% - 9px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="top:24px; right:calc(200px - 9px);">${crossSVG}</span>
 
-      <!-- BOTTOM ROW crosses -->
-      <span class="fug-footer-cross" style="bottom:24px; left:calc(200px - 11px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="bottom:24px; right:calc(200px - 11px);">${crossSVG}</span>
+      <!-- BOTTOM ROW crosses — 18px size -->
+      <span class="fug-footer-cross" style="bottom:24px; left:calc(200px - 9px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="bottom:24px; right:calc(200px - 9px);">${crossSVG}</span>
 
       <div class="fug-footer-inner">
 
