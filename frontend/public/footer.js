@@ -18,7 +18,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 248px;
+      padding: 18px 200px;
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-social-band p {
@@ -51,7 +51,7 @@
       padding: 0;
     }
 
-    /* Cross icons — 22px, dark blue, absolutely positioned */
+    /* Cross icons — 22px, dark blue, absolutely positioned at 200px */
     .fug-footer-cross {
       display: inline-flex;
       align-items: center;
@@ -61,22 +61,13 @@
       position: absolute;
       z-index: 2;
     }
-    .fug-footer-cross svg {
-      width: 22px;
-      height: 22px;
-    }
+    .fug-footer-cross svg { width: 22px; height: 22px; }
 
-    /*
-      Three-column grid:
-        Col 1 starts at 248px from left  (left cross)
-        Col 2 starts at 50% centre       (middle cross)
-        Col 3 ends at 248px from right   (right cross)
-      Using padding on the inner to align col 1 & 3, and equal thirds for the grid.
-    */
+    /* Three-column grid aligned to 200px margins */
     #fug-footer .fug-footer-inner {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      padding: 56px 248px;
+      padding: 64px 200px;
       gap: 0 40px;
       position: relative;
     }
@@ -86,32 +77,42 @@
       flex-direction: column;
     }
 
+    /* Col 1 — brand name */
     #fug-footer .fug-footer-brand {
       font-weight: 700;
-      font-size: 13px;
+      font-size: 16px;
       color: #0d1b3e;
-      margin: 0 0 6px 0;
+      margin: 0 0 10px 0;
       font-family: 'InterDisplay', sans-serif;
+      letter-spacing: -0.01em;
     }
+
+    /* Col 1 — address */
     #fug-footer .fug-footer-addr {
-      font-size: 12px;
-      line-height: 1.7;
+      font-size: 14px;
+      line-height: 1.8;
       color: #5a6070;
       margin: 0;
       font-family: 'InterDisplay', sans-serif;
     }
+
+    /* Col 2 — "Contact us" label — now same size + weight as brand */
     #fug-footer .fug-footer-col-title {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 700;
       color: #0d1b3e;
-      margin: 0 0 10px 0;
+      margin: 0 0 12px 0;
       font-family: 'InterDisplay', sans-serif;
+      letter-spacing: -0.01em;
+      text-transform: none;
     }
+
+    /* Plain links — no hover effects, no underline animation */
     #fug-footer a {
       color: #1a2744;
-      font-size: 12px;
+      font-size: 14px;
       display: block;
-      line-height: 2;
+      line-height: 2.1;
       text-decoration: none;
       font-family: 'InterDisplay', sans-serif;
     }
@@ -121,20 +122,24 @@
     #fug-footer .fug-footer-right {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 16px;
     }
     #fug-footer .fug-footer-logo {
-      height: 52px;
+      height: 56px;
       width: auto;
       display: block;
       flex-shrink: 0;
     }
+
+    /* Copyright — same size + weight as brand and contact us */
     #fug-footer .fug-footer-copy {
-      font-size: 11px;
-      color: #888;
-      line-height: 1.7;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0d1b3e;
+      line-height: 1.8;
       margin: 0;
       font-family: 'InterDisplay', sans-serif;
+      letter-spacing: -0.01em;
     }
 
     /* ── TABLET (≤1024px) ── */
@@ -163,9 +168,9 @@
         gap: 28px 0;
       }
       #fug-footer .fug-footer-col { width: 100%; }
-      #fug-footer .fug-footer-brand { font-size: 14px; }
-      #fug-footer .fug-footer-addr { font-size: 12px; }
-      #fug-footer .fug-footer-col-title { font-size: 11px; letter-spacing: 0.06em; }
+      #fug-footer .fug-footer-brand { font-size: 15px; }
+      #fug-footer .fug-footer-addr { font-size: 13px; }
+      #fug-footer .fug-footer-col-title { font-size: 15px; }
       #fug-footer a { font-size: 13px; line-height: 2.1; }
       #fug-footer .fug-footer-right {
         align-items: center;
@@ -173,7 +178,7 @@
         border-top: 1px solid rgba(26,39,68,0.08);
       }
       #fug-footer .fug-footer-logo { height: 38px; }
-      #fug-footer .fug-footer-copy { font-size: 10px; line-height: 1.6; }
+      #fug-footer .fug-footer-copy { font-size: 15px; }
       .fug-footer-cross { display: none; }
     }
 
@@ -216,39 +221,31 @@
 
     <footer id="fug-footer">
 
-      <!--
-        Cross placement (centred on their anchor point):
-          Left crosses  → centred on the 248px left margin line
-          Middle cross  → centred on 50% (midpoint between left & right content)
-          Right crosses → centred on the 248px right margin line
-        offset by half of 22px (11px) so the centre of the cross sits exactly on the line
-      -->
-
       <!-- TOP ROW crosses -->
-      <span class="fug-footer-cross" style="top:24px; left:calc(248px - 11px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="top:24px; left:calc(200px - 11px);">${crossSVG}</span>
       <span class="fug-footer-cross" style="top:24px; left:calc(50% - 11px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="top:24px; right:calc(248px - 11px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="top:24px; right:calc(200px - 11px);">${crossSVG}</span>
 
       <!-- BOTTOM ROW crosses -->
-      <span class="fug-footer-cross" style="bottom:24px; left:calc(248px - 11px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="bottom:24px; right:calc(248px - 11px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="bottom:24px; left:calc(200px - 11px);">${crossSVG}</span>
+      <span class="fug-footer-cross" style="bottom:24px; right:calc(200px - 11px);">${crossSVG}</span>
 
       <div class="fug-footer-inner">
 
-        <!-- Col 1: Brand + Address — left edge at 248px -->
+        <!-- Col 1: Brand + Address -->
         <div class="fug-footer-col">
           <p class="fug-footer-brand">Fak'ugesi Festival</p>
           <p class="fug-footer-addr">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
         </div>
 
-        <!-- Col 2: Contact — starts right after the middle cross at 50% -->
+        <!-- Col 2: Contact -->
         <div class="fug-footer-col">
           <p class="fug-footer-col-title">Contact us</p>
           <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
           <a href="tel:+27117178156">+27 11 717 8156</a>
         </div>
 
-        <!-- Col 3: Logo + Copyright — right edge at 248px from right -->
+        <!-- Col 3: Logo + Copyright -->
         <div class="fug-footer-col">
           <div class="fug-footer-right">
             <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />

@@ -35,7 +35,148 @@
       overflow-x: hidden;
     }
 
-    /* ── CROSS ICONS ── */
+   /* ── Fak'ugesi shared link hover effect ── */
+.involved-link,
+.curatorial-view-link,
+.showcases-link,
+.showcases-header a,
+.showcase-card-more,
+.winners-view-link,
+.highlights-view-link,
+.intro-view-link,
+.network-view-link,
+.faq-tickets-link,
+.faq-apply-link,
+.faq-apply-top,
+.partners-link,
+.partners-view-link,
+.main-partners-link,
+.market-info-link,
+.exhibitors-link,
+.exhibitor-card-more,
+.more-card-link,
+.prizes-apply-link,
+.cat-apply-link,
+.req-apply-link,
+.challenge-apply-link,
+.section-link,
+.media-link,
+.locations-map-link,
+.directions-link,
+.hero-link,
+[data-fug-link] {
+  position: relative !important;
+  text-decoration: none !important;
+  padding-bottom: 2px !important;
+  transition: opacity 0.25s ease, transform 0.25s ease !important;
+}
+
+.involved-link::after,
+.curatorial-view-link::after,
+.showcases-link::after,
+.showcases-header a::after,
+.showcase-card-more::after,
+.winners-view-link::after,
+.highlights-view-link::after,
+.intro-view-link::after,
+.network-view-link::after,
+.faq-tickets-link::after,
+.faq-apply-link::after,
+.faq-apply-top::after,
+.partners-link::after,
+.partners-view-link::after,
+.main-partners-link::after,
+.market-info-link::after,
+.exhibitors-link::after,
+.exhibitor-card-more::after,
+.more-card-link::after,
+.prizes-apply-link::after,
+.cat-apply-link::after,
+.req-apply-link::after,
+.challenge-apply-link::after,
+.section-link::after,
+.media-link::after,
+.locations-map-link::after,
+.directions-link::after,
+.hero-link::after,
+[data-fug-link]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.28s ease;
+}
+
+.involved-link:hover::after,
+.curatorial-view-link:hover::after,
+.showcases-link:hover::after,
+.showcases-header a:hover::after,
+.showcase-card-more:hover::after,
+.winners-view-link:hover::after,
+.highlights-view-link:hover::after,
+.intro-view-link:hover::after,
+.network-view-link:hover::after,
+.faq-tickets-link:hover::after,
+.faq-apply-link:hover::after,
+.faq-apply-top:hover::after,
+.partners-link:hover::after,
+.partners-view-link:hover::after,
+.main-partners-link:hover::after,
+.market-info-link:hover::after,
+.exhibitors-link:hover::after,
+.exhibitor-card-more:hover::after,
+.more-card-link:hover::after,
+.prizes-apply-link:hover::after,
+.cat-apply-link:hover::after,
+.req-apply-link:hover::after,
+.challenge-apply-link:hover::after,
+.section-link:hover::after,
+.media-link:hover::after,
+.locations-map-link:hover::after,
+.directions-link:hover::after,
+.hero-link:hover::after,
+[data-fug-link]:hover::after {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+.involved-link:hover,
+.curatorial-view-link:hover,
+.showcases-link:hover,
+.showcases-header a:hover,
+.showcase-card-more:hover,
+.winners-view-link:hover,
+.highlights-view-link:hover,
+.intro-view-link:hover,
+.network-view-link:hover,
+.faq-tickets-link:hover,
+.faq-apply-link:hover,
+.faq-apply-top:hover,
+.partners-link:hover,
+.partners-view-link:hover,
+.main-partners-link:hover,
+.market-info-link:hover,
+.exhibitors-link:hover,
+.exhibitor-card-more:hover,
+.more-card-link:hover,
+.prizes-apply-link:hover,
+.cat-apply-link:hover,
+.req-apply-link:hover,
+.challenge-apply-link:hover,
+.section-link:hover,
+.media-link:hover,
+.locations-map-link:hover,
+.directions-link:hover,
+.hero-link:hover,
+[data-fug-link]:hover {
+  transform: translateX(3px);
+}
+
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
