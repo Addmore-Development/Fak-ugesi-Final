@@ -44,6 +44,7 @@
       display: flex;
       align-items: center;
       text-decoration: none;
+      transition: opacity 0.3s ease;
     }
     #nav-home-logo img {
       height: 26px;
@@ -54,6 +55,7 @@
       transition: opacity 0.2s;
     }
     #nav-home-logo:hover img { opacity: 1; }
+    #nav-home-logo.hidden { opacity: 0; pointer-events: none; }
 
     /* ── Desktop nav links ── */
     #main-nav .nav-links-wrap {
@@ -64,7 +66,9 @@
       position: relative;
       z-index: 1;
       overflow: visible;
+      transition: opacity 0.3s ease;
     }
+    #main-nav .nav-links-wrap.hidden { opacity: 0; pointer-events: none; }
     #main-nav .nav-links {
       display: flex;
       align-items: center;
@@ -107,9 +111,147 @@
     #main-nav .nav-right {
       display:flex; align-items:center; gap:24px; padding-right:32px;
       flex-shrink:0; position:relative; z-index:1;
+      transition: opacity 0.3s ease;
+    }
+    #main-nav .nav-right.hidden { opacity: 0; pointer-events: none; }
+
+    /* ── INLINE SEARCH — expands across the nav bar ── */
+    #nav-search-bar {
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      padding: 0 200px;
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transform: scaleX(0.96);
+      transform-origin: right center;
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+    #nav-search-bar.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scaleX(1);
+    }
+    #nav-search-bar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 15, 44, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: -1;
+    }
+    #nav-search-icon-static {
+      color: rgba(255,255,255,0.55);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      margin-right: 14px;
+    }
+    #nav-search-icon-static svg { width: 18px; height: 18px; }
+    #nav-search-inline-input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      caret-color: rgba(255,255,255,0.8);
+    }
+    #nav-search-inline-input::placeholder { color: rgba(255,255,255,0.35); }
+    #nav-search-close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(255,255,255,0.5);
+      font-size: 22px;
+      line-height: 1;
+      padding: 4px 8px;
+      font-family: sans-serif;
+      flex-shrink: 0;
+      transition: color 0.18s;
+    }
+    #nav-search-close-btn:hover { color: #fff; }
+
+    /* ── INLINE SEARCH RESULTS DROPDOWN ── */
+    #nav-search-results-drop {
+      position: absolute;
+      top: 57px;
+      left: 200px;
+      right: 200px;
+      background: rgba(8,15,44,0.98);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: none;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      max-height: 420px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.15) transparent;
+      z-index: 9;
+      display: none;
+    }
+    #nav-search-results-drop.open { display: block; }
+    #nav-search-results-drop::-webkit-scrollbar { width: 4px; }
+    #nav-search-results-drop::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+    .nsr-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 13px 20px;
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.15s;
+    }
+    .nsr-item:last-child { border-bottom: none; }
+    .nsr-item:hover { background: rgba(255,255,255,0.07); }
+    .nsr-section {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      min-width: 80px;
+      flex-shrink: 0;
+      padding-top: 2px;
+      font-family: 'InterDisplay', sans-serif;
+    }
+    .nsr-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #fff;
+      font-family: 'InterDisplay', sans-serif;
+      line-height: 1.3;
+    }
+    .nsr-title mark {
+      background: none;
+      color: rgba(255,220,60,0.95);
+      font-weight: 700;
+    }
+    .nsr-no-results {
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      font-family: 'InterDisplay', sans-serif;
+    }
+    .nsr-hint {
+      padding: 8px 20px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      font-family: 'InterDisplay', sans-serif;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    /* Search icon — sits at 200px from the right edge */
+    /* Search icon button in nav — sits at 200px from right edge */
     #main-nav .nav-search {
       background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
       display:flex; align-items:center; padding:6px;
@@ -118,6 +260,7 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 2;
+      transition: color 0.18s;
     }
     #main-nav .nav-search svg{width:18px;height:18px;}
     #main-nav .nav-search:hover { color: #fff; }
@@ -136,162 +279,6 @@
     #main-nav .nav-tickets:hover{background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px);}
     #main-nav .nav-tickets canvas{position:absolute;inset:0;pointer-events:none;z-index:0;}
     #main-nav .nav-tickets span{position:relative;z-index:1;}
-
-    /* ── SEARCH OVERLAY ── */
-    #nav-search-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(5, 10, 30, 0.92);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 80px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-    #nav-search-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    #nav-search-box {
-      width: 100%;
-      max-width: 680px;
-      padding: 0 24px;
-      position: relative;
-    }
-    #nav-search-input {
-      width: 100%;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.22);
-      border-bottom: 2px solid rgba(255,255,255,0.6);
-      color: #fff;
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 28px;
-      font-weight: 400;
-      padding: 18px 56px 18px 20px;
-      outline: none;
-      letter-spacing: 0.01em;
-      transition: border-color 0.2s;
-    }
-    #nav-search-input::placeholder { color: rgba(255,255,255,0.35); }
-    #nav-search-input:focus { border-color: rgba(255,255,255,0.85); border-bottom-color: #fff; }
-    #nav-search-close {
-      position: absolute;
-      right: 36px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: rgba(255,255,255,0.55);
-      font-size: 28px;
-      line-height: 1;
-      padding: 4px;
-      font-family: sans-serif;
-      transition: color 0.18s;
-    }
-    #nav-search-close:hover { color: #fff; }
-    #nav-search-hint {
-      margin-top: 16px;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.38);
-      text-align: center;
-      font-family: 'InterDisplay', sans-serif;
-      text-transform: uppercase;
-    }
-    #nav-search-results {
-      width: 100%;
-      max-width: 680px;
-      padding: 24px 24px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      max-height: calc(100vh - 260px);
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.15) transparent;
-    }
-    #nav-search-results::-webkit-scrollbar { width: 4px; }
-    #nav-search-results::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
-    .search-result-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 16px 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.18s, border-color 0.18s;
-    }
-    .search-result-item:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
-    .search-result-icon {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      min-width: 90px;
-      padding-top: 2px;
-      flex-shrink: 0;
-    }
-    .search-result-content { flex: 1; min-width: 0; }
-    .search-result-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 4px;
-      font-family: 'InterDisplay', sans-serif;
-    }
-    .search-result-excerpt {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.5;
-      font-family: 'InterDisplay', sans-serif;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .search-result-item mark {
-      background: none;
-      color: rgba(255,220,60,0.95);
-      font-weight: 600;
-    }
-    #nav-search-no-results {
-      display: none;
-      color: rgba(255,255,255,0.45);
-      font-size: 14px;
-      font-family: 'InterDisplay', sans-serif;
-      text-align: center;
-      padding: 32px 0;
-    }
-    #nav-search-categories {
-      width: 100%;
-      max-width: 680px;
-      padding: 32px 24px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .search-category-btn {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.6);
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 7px 14px;
-      cursor: pointer;
-      transition: background 0.18s, color 0.18s;
-    }
-    .search-category-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
 
     /* ── HAMBURGER BUTTON (mobile only) ── */
     #nav-hamburger {
@@ -506,6 +493,8 @@
       #main-nav .nav-links>li>span { font-size: 12px; padding: 0 14px; }
       #main-nav .nav-tickets { padding: 8px 16px; font-size: 10.5px; }
       #main-nav .nav-search { right: 48px; }
+      #nav-search-bar { padding: 0 48px; }
+      #nav-search-results-drop { left: 48px; right: 48px; }
     }
 
     @media (max-width: 768px) {
@@ -516,6 +505,7 @@
       #nav-home-logo { display: none; }
       #main-nav::before { opacity: 1 !important; }
       #main-nav .nav-search { display: none; }
+      #nav-search-bar { display: none; }
     }
   </style>`);
 
@@ -582,15 +572,36 @@
         <ul class="nav-links" id="nav-list">${items}</ul>
       </div>
 
-      <!-- Search icon — absolutely positioned at 200px from right (aligned with cross icons) -->
+      <!-- Search icon — absolutely positioned at 200px from right -->
       <button class="nav-search" id="nav-search-btn" aria-label="Search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
       </button>
 
+      <!-- Inline search bar — expands across the entire nav -->
+      <div id="nav-search-bar" role="search" aria-label="Site search">
+        <div id="nav-search-icon-static">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="nav-search-inline-input"
+          placeholder="Search Fak'ugesi…"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Search"
+        />
+        <button id="nav-search-close-btn" aria-label="Close search">×</button>
+      </div>
+
+      <!-- Inline search results dropdown -->
+      <div id="nav-search-results-drop"></div>
+
       <!-- Desktop right: tickets -->
-      <div class="nav-right">
+      <div class="nav-right" id="nav-right">
         <a class="nav-tickets" id="nav-tickets" href="/tickets.html">
           <canvas id="nav-bolt-canvas"></canvas>
           <span>GET TICKETS</span>
@@ -618,25 +629,6 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         </a>
       </div>
-    </div>
-
-    <!-- Search overlay -->
-    <div id="nav-search-overlay" role="dialog" aria-label="Search" aria-modal="true">
-      <div id="nav-search-box">
-        <input
-          type="text"
-          id="nav-search-input"
-          placeholder="Search Fak'ugesi…"
-          autocomplete="off"
-          spellcheck="false"
-          aria-label="Search"
-        />
-        <button id="nav-search-close" aria-label="Close search">×</button>
-      </div>
-      <div id="nav-search-hint">Press Esc to close · Enter to go</div>
-      <div id="nav-search-categories"></div>
-      <div id="nav-search-results"></div>
-      <div id="nav-search-no-results">No results found. Try a different search.</div>
     </div>
   `);
 
@@ -683,7 +675,7 @@
   });
 
   /* ══════════════════════════════════════
-     SEARCH SYSTEM
+     INLINE SEARCH SYSTEM
   ══════════════════════════════════════ */
   const SEARCH_INDEX = [
     /* HOME */
@@ -691,160 +683,70 @@
     { title:'2026 Theme: African Imaginaries', section:'Home', url:'/index.html', tags:['african imaginaries','2026 theme','afrofuturism','speculative','creative energy','october'] },
     { title:'Get Involved', section:'Home', url:'/index.html', tags:['get involved','investors','funders','volunteers','expo showcases','sponsors'] },
     { title:'Festival Dates', section:'Home', url:'/index.html', tags:['07 october','12 october','2026','dates','when','braamfontein'] },
-
-    /* PROGRAMME */
-    { title:'Festival Programme', section:'Programme', url:'/programme.html', tags:['programme','programme 2026','events','what is on','lineup'] },
-
-    /* EXPO */
-    { title:'Fak\'ugesi Expo', section:'Expo', url:'/fes-expo.html', tags:['expo','showcases','exhibitions','curatorial frequencies','imagination engines','memory engines','future engines','toor bos','displays','artworks','immersive media','digital art'] },
-    { title:'Curatorial Frequencies', section:'Expo', url:'/fes-expo.html', tags:['curatorial','imagination engines','memory engines','future engines','ai','heritage','circuits','planetary'] },
-    { title:'Showcases & Exhibitions', section:'Expo', url:'/fes-expo.html', tags:['showcase','exhibition','toor bos','university of johannesburg','UJ'] },
-    { title:'Want to Showcase', section:'Expo', url:'/fes-expo.html', tags:['exhibit','showcase your work','apply','show at expo'] },
-
-    /* MARKET */
-    { title:'Fak\'ugesi Market', section:'Market', url:'/fes-market.html', tags:['market','marketplace','exhibitors','buy','sell','startup','business','vendors','maputo fast forward','products'] },
-    { title:'Market Exhibitors', section:'Market', url:'/fes-market.html', tags:['exhibitors','stalls','creative organisation','maputo fast forward','market stall'] },
-    { title:'Get a Market Spot', section:'Market', url:'/fes-market.html', tags:['apply','market spot','vendor','sell','exhibit'] },
-
-    /* SCHEDULE */
-    { title:'Festival Schedule', section:'Schedule', url:'/fes-schedule.html', tags:['schedule','timetable','programme','agenda','sessions','panels','keynotes','talks','workshops'] },
-    { title:'AI Symposium', section:'Schedule', url:'/fes-schedule.html', tags:['ai symposium','artificial intelligence','tuesday','wednesday','research','adam pantanowitz','pierre saal','vukosi marivate','hannah andrews','avril joffe'] },
-    { title:'A Provocation – Keynote', section:'Schedule', url:'/fes-schedule.html', tags:['keynote','adam pantanowitz','provocation','tshimologong'] },
-    { title:'Policy by Design', section:'Schedule', url:'/fes-schedule.html', tags:['policy','design','creative futures','ai','panel','avril joffe','zwelakhe gila','kieran jones'] },
-    { title:'A Radical Reimagining', section:'Schedule', url:'/fes-schedule.html', tags:['radical reimagining','african ai','artist perspective','hannah andrews','vukosi marivate'] },
-    { title:'The AI Workshop', section:'Schedule', url:'/fes-schedule.html', tags:['workshop','ai workshop','pierre saal'] },
-    { title:'A Seat at the Table', section:'Schedule', url:'/fes-schedule.html', tags:['seat at the table','power','representation','thobile chittenden','samukelisiwe dube','masentle nzimande'] },
-    { title:'Pitchathon Coaching Workshop', section:'Schedule', url:'/fes-schedule.html', tags:['pitchathon','pitch','coaching','wic','startups','wednesday'] },
-    { title:'JAMZ Video Game Challenge – Day 1', section:'Schedule', url:'/fes-schedule.html', tags:['jamz','gaming','esports','video game','league','wednesday'] },
-    { title:'Awards: Jury Q&A', section:'Schedule', url:'/fes-schedule.html', tags:['awards','jury','qa','all welcome'] },
-    { title:'Pitchathon Grand Finale', section:'Schedule', url:'/fes-schedule.html', tags:['pitchathon','finale','grand final','r20000','prize','saturday'] },
-    { title:'Dala Khona Speedrun Marathon', section:'Schedule', url:'/fes-schedule.html', tags:['dala khona','gaming','speedrun','arcade','saturday'] },
-    { title:'JAMZ Grand Finals', section:'Schedule', url:'/fes-schedule.html', tags:['jamz','finals','animation','video game','sunday'] },
-    { title:'Immersive Africa: Closing Screening', section:'Schedule', url:'/fes-schedule.html', tags:['immersive africa','kancica','digital dome','closing','screening'] },
-
-    /* SIGNATURE: AWARDS */
-    { title:'Fak\'ugesi Awards', section:'Awards', url:'/sig-awards.html', tags:['awards','celebrating','african digital creativity','application','submit','2026'] },
-    { title:'Awards Categories', section:'Awards', url:'/sig-awards.html', tags:['categories','immersive media','digital art','interactive design','game design','motion graphics','sound art','tech innovation','vr','ar','xr'] },
-    { title:'Awards Jury 2026', section:'Awards', url:'/sig-awards.html', tags:['jury','judges','mickael newton','ubisoft','amara osei','leila benali','tunde fashola','nadia kamara','marcus dlamini'] },
-    { title:'Awards Requirements', section:'Awards', url:'/sig-awards.html', tags:['requirements','eligibility','how to apply','criteria'] },
-    { title:'Awards 2025 Winners', section:'Awards', url:'/sig-awards.html', tags:['winners','2025','past winners','unmuted','voices of fire','afroverse','digital griot','ubuntu code','jopee dairo'] },
-
-    /* SIGNATURE: DALA KHONA */
-    { title:'Dala Khona – African Gaming Arcade', section:'Dala Khona', url:'/sig-dalakhona.html', tags:['dala khona','gaming','arcade','african games','game developers','indie','joburg games fest','speedrun','tournament','retro'] },
-    { title:'Join Dala Khona Developer Network', section:'Dala Khona', url:'/sig-dalakhona.html', tags:['developer network','game dev','get involved','dala khona'] },
-
-    /* SIGNATURE: PRO */
-    { title:'Fak\'ugesiPRO', section:'PRO', url:'/sig-fakugesipro.html', tags:['pro','industry platform','professional','intermediaries','policymakers','entrepreneurs','investors','creative organisations','networking','industry'] },
-    { title:'Join Industry Network', section:'PRO', url:'/sig-fakugesipro.html', tags:['industry network','pro','join','get involved'] },
-    { title:'PRO 2025 Highlights', section:'PRO', url:'/sig-fakugesipro.html', tags:['highlights','2025','panel','a seat at the table','speakers'] },
-
-    /* SIGNATURE: IMMERSIVE AFRICA */
-    { title:'Immersive Africa', section:'Immersive Africa', url:'/sig-immersive.html', tags:['immersive africa','afriverse','digital dome','xr','vr','dome','kancica','kwasukasukela','dream feel factory','wits'] },
-    { title:'Kancícà – Dome Premiere', section:'Immersive Africa', url:'/sig-immersive.html', tags:['kancica','south african premiere','dream feel factory','mansa','digital dome','screening'] },
-    { title:'Kwasukasukela – Dome Screening', section:'Immersive Africa', url:'/sig-immersive.html', tags:['kwasukasukela','dome','ongoing','screening','digital dome'] },
-
-    /* SIGNATURE: JAMZ */
-    { title:'JAMZ – Animation & Video Game Hackathon', section:'JAMZ', url:'/sig-jamz.html', tags:['jamz','animation','video game','hackathon','high octane','esports','league','tournament','team sakuga'] },
-    { title:'JAMZ Animation Challenge 2026', section:'JAMZ', url:'/sig-jamz.html', tags:['animation challenge','tournament of power','single elimination','apply','jamz 2026'] },
-    { title:'JAMZ Video Game Challenge 2026', section:'JAMZ', url:'/sig-jamz.html', tags:['video game challenge','esports league','tournament of power','gaming','apply','jamz'] },
-    { title:'JAMZ 2025 Winners', section:'JAMZ', url:'/sig-jamz.html', tags:['jamz winners','2025','team sakuga','thobile chittenden','samukelisiwe dube'] },
-    { title:'JAMZ Prizes 2026', section:'JAMZ', url:'/sig-jamz.html', tags:['prizes','jamz prize','r20000','animation winner','video game winner'] },
-    { title:'JAMZ Requirements', section:'JAMZ', url:'/sig-jamz.html', tags:['requirements','jamz requirements','eligibility','rules'] },
-
-    /* SIGNATURE: PITCHATHON */
-    { title:'Pitchathon', section:'Pitchathon', url:'/sig-pitchathon.html', tags:['pitchathon','pitch','shark tank','startup','entrepreneur','apply','high stakes','business','innovation'] },
-    { title:'Pitchathon 2026 Jury', section:'Pitchathon', url:'/sig-pitchathon.html', tags:['jury','judges','adam pantanowitz','wits innovation centre','pitchathon'] },
-    { title:'Pitchathon Prizes 2026', section:'Pitchathon', url:'/sig-pitchathon.html', tags:['prizes','r20000','wic pgdip','audience choice','social impact','tech innovation','runner up'] },
-    { title:'Pitchathon FAQ', section:'Pitchathon', url:'/sig-pitchathon.html', tags:['faq','questions','who can apply','deadline','submissions','shortlisted','how long is the pitch'] },
-    { title:'Pitchathon 2025 Winners', section:'Pitchathon', url:'/sig-pitchathon.html', tags:['winners','2025','neo shingenwana','amara nwosu','studio tshwane','kagiso molefe'] },
-    { title:'Apply to Pitchathon', section:'Pitchathon', url:'/sig-pitchathon.html', tags:['apply','application','submit','pitchathon apply','submissions close'] },
-
-    /* DISCOVER: ABOUT */
-    { title:'About Fak\'ugesi', section:'About', url:'/about.html', tags:['about','who we are','history','fakugesi','festival','what is fakugesi','south africa','johannesburg','digital innovation'] },
-    { title:'Festival Team', section:'About', url:'/about.html', tags:['team','staff','festival director','alby michaels','programme manager','communications'] },
-    { title:'Previous Editions', section:'About', url:'/about.html', tags:['previous editions','past','2024','2023','2022','2021','2020','untilunlocked','digital futures','reconnect','african origins','new worlds','history'] },
-    { title:'Get in Touch', section:'About', url:'/about.html', tags:['contact','email','phone','address','41 juta street','braamfontein','hello@fakugesi','get in touch'] },
-
-    /* DISCOVER: VENUES */
-    { title:'Festival Venues', section:'Venues', url:'/discover/venues.html', tags:['venues','locations','map','where','tshimologong precinct','wits digital dome','braamfontein','johannesburg','directions','getting there'] },
-    { title:'Tshimologong Precinct', section:'Venues', url:'/discover/venues.html', tags:['tshimologong','41 juta street','braamfontein','venue','main venue','wits'] },
-    { title:'Wits Digital Dome', section:'Venues', url:'/discover/venues.html', tags:['digital dome','wits','yale road','braamfontein','dome','planetarium','immersive'] },
-
-    /* DISCOVER: PARTNERS */
-    { title:'Festival Partners', section:'Partners', url:'/discover/partners.html', tags:['partners','sponsors','funders','supporters','tshimologong','wits university','goethe','pro helvetia','eunic','eu delegation','austrian embassy'] },
-    { title:'Main Partners', section:'Partners', url:'/discover/partners.html', tags:['main partners','tshimologong','wits','digital dome'] },
-    { title:'Expo Partners', section:'Partners', url:'/discover/partners.html', tags:['expo partners','goethe','habitatxr','prohelvetia','eunic','acf','austrian embassy'] },
-    { title:'Become a Partner', section:'Partners', url:'/discover/partners.html', tags:['partner','sponsor','collaborate','join as partner'] },
-
-    /* DISCOVER: ARCHIVE */
-    { title:'Festival Archive', section:'Archive', url:'/discover/archive.html', tags:['archive','gallery','history','past festivals','photos','trailers','posters','time machine','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'] },
-    { title:'2023 – More Flow', section:'Archive', url:'/discover/archive.html', tags:['2023','more flow','eduardo cachucho','archive','festival poster'] },
-
-    /* DISCOVER: RESOURCES */
-    { title:'Research & Resources', section:'Resources', url:'/discover/resources.html', tags:['resources','research','reports','download','pdf','intermediaries','tegan bristow','creative economy','knowledge base'] },
-    { title:'Intermediaries Research Report', section:'Resources', url:'/discover/resources.html', tags:['intermediaries report','research','2023','dr tegan bristow','creative economy','download pdf'] },
-
-    /* TICKETS */
-    { title:'Get Tickets', section:'Tickets', url:'/tickets.html', tags:['tickets','buy tickets','get tickets','attend','passes','pricing','festival pass','industry pass','student'] },
+    { title:'Festival Programme', section:'Programme', url:'/programme.html', tags:['programme','events','lineup'] },
+    { title:"Fak'ugesi Expo", section:'Expo', url:'/fes-expo.html', tags:['expo','showcases','exhibitions','digital art','immersive media'] },
+    { title:'Curatorial Frequencies', section:'Expo', url:'/fes-expo.html', tags:['curatorial','imagination engines','memory engines','future engines','ai','heritage'] },
+    { title:'Want to Showcase', section:'Expo', url:'/fes-expo.html', tags:['exhibit','showcase your work','apply'] },
+    { title:"Fak'ugesi Market", section:'Market', url:'/fes-market.html', tags:['market','exhibitors','startup','business','vendors'] },
+    { title:'Festival Schedule', section:'Schedule', url:'/fes-schedule.html', tags:['schedule','timetable','sessions','panels','keynotes','talks','workshops'] },
+    { title:'AI Symposium', section:'Schedule', url:'/fes-schedule.html', tags:['ai symposium','artificial intelligence','research'] },
+    { title:'Pitchathon Coaching Workshop', section:'Schedule', url:'/fes-schedule.html', tags:['pitchathon','pitch','coaching'] },
+    { title:'JAMZ Video Game Challenge', section:'Schedule', url:'/fes-schedule.html', tags:['jamz','gaming','video game'] },
+    { title:"Fak'ugesi Awards", section:'Awards', url:'/sig-awards.html', tags:['awards','categories','application','submit'] },
+    { title:'Awards Jury 2026', section:'Awards', url:'/sig-awards.html', tags:['jury','judges'] },
+    { title:'Awards 2025 Winners', section:'Awards', url:'/sig-awards.html', tags:['winners','2025','past winners'] },
+    { title:'Dala Khona – African Gaming Arcade', section:'Dala Khona', url:'/sig-dalakhona.html', tags:['gaming','arcade','african games','indie','speedrun'] },
+    { title:"Fak'ugesiPRO", section:'PRO', url:'/sig-fakugesipro.html', tags:['pro','industry','professional','networking'] },
+    { title:'Immersive Africa', section:'Immersive Africa', url:'/sig-immersive.html', tags:['immersive','xr','vr','dome','digital dome'] },
+    { title:'JAMZ – Animation & Video Game Hackathon', section:'JAMZ', url:'/sig-jamz.html', tags:['jamz','animation','hackathon','esports'] },
+    { title:'Pitchathon', section:'Pitchathon', url:'/sig-pitchathon.html', tags:['pitchathon','pitch','startup','entrepreneur','apply'] },
+    { title:"About Fak'ugesi", section:'About', url:'/about.html', tags:['about','who we are','history','fakugesi'] },
+    { title:'Festival Venues', section:'Venues', url:'/discover/venues.html', tags:['venues','locations','map','tshimologong','digital dome','braamfontein'] },
+    { title:'Festival Partners', section:'Partners', url:'/discover/partners.html', tags:['partners','sponsors','funders'] },
+    { title:'Festival Archive', section:'Archive', url:'/discover/archive.html', tags:['archive','gallery','history','past festivals','photos'] },
+    { title:'Research & Resources', section:'Resources', url:'/discover/resources.html', tags:['resources','research','reports','download'] },
+    { title:'Get Tickets', section:'Tickets', url:'/tickets.html', tags:['tickets','buy tickets','attend','passes','pricing'] },
   ];
 
   const categoryColors = {
-    'Home':'#4a90d9', 'Programme':'#7b68ee', 'Expo':'#e05a1e',
-    'Market':'#3a8a6a', 'Schedule':'#c46200', 'Awards':'#b8860b',
-    'Dala Khona':'#1a7a4a', 'PRO':'#3a5a9a', 'Immersive Africa':'#7a3a8a',
-    'JAMZ':'#c43a3a', 'Pitchathon':'#2a6a8a', 'About':'#5a6a7a',
-    'Venues':'#4a7a4a', 'Partners':'#6a4a7a', 'Archive':'#7a5a3a',
-    'Resources':'#3a6a7a', 'Tickets':'#a03a3a'
+    'Home':'#4a90d9','Programme':'#7b68ee','Expo':'#e05a1e','Market':'#3a8a6a',
+    'Schedule':'#c46200','Awards':'#b8860b','Dala Khona':'#1a7a4a','PRO':'#3a5a9a',
+    'Immersive Africa':'#7a3a8a','JAMZ':'#c43a3a','Pitchathon':'#2a6a8a',
+    'About':'#5a6a7a','Venues':'#4a7a4a','Partners':'#6a4a7a','Archive':'#7a5a3a',
+    'Resources':'#3a6a7a','Tickets':'#a03a3a'
   };
 
-  const overlay = document.getElementById('nav-search-overlay');
-  const searchInput = document.getElementById('nav-search-input');
-  const searchResults = document.getElementById('nav-search-results');
-  const searchClose = document.getElementById('nav-search-close');
-  const searchNoResults = document.getElementById('nav-search-no-results');
-  const searchCategories = document.getElementById('nav-search-categories');
-  let activeCategory = null;
+  const searchBar    = document.getElementById('nav-search-bar');
+  const searchInput  = document.getElementById('nav-search-inline-input');
+  const searchClose  = document.getElementById('nav-search-close-btn');
+  const searchDrop   = document.getElementById('nav-search-results-drop');
+  const navLogo      = document.getElementById('nav-home-logo');
+  const navLinks     = document.getElementById('nav-links-wrap');
+  const navRight     = document.getElementById('nav-right');
+  const navSearchBtn = document.getElementById('nav-search-btn');
 
   function openSearch() {
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => searchInput.focus(), 50);
-    showCategories();
+    searchBar.classList.add('open');
+    searchDrop.classList.add('open');
+    navLogo.classList.add('hidden');
+    navLinks.classList.add('hidden');
+    navRight.classList.add('hidden');
+    navSearchBtn.style.opacity = '0';
+    navSearchBtn.style.pointerEvents = 'none';
+    setTimeout(() => searchInput.focus(), 60);
     renderResults('');
   }
 
   function closeSearch() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
+    searchBar.classList.remove('open');
+    searchDrop.classList.remove('open');
+    navLogo.classList.remove('hidden');
+    navLinks.classList.remove('hidden');
+    navRight.classList.remove('hidden');
+    navSearchBtn.style.opacity = '';
+    navSearchBtn.style.pointerEvents = '';
     searchInput.value = '';
-    activeCategory = null;
-    searchResults.innerHTML = '';
-    searchNoResults.style.display = 'none';
-  }
-
-  function showCategories() {
-    const cats = [...new Set(SEARCH_INDEX.map(i => i.section))];
-    searchCategories.innerHTML = cats.map(c =>
-      `<button class="search-category-btn" data-cat="${c}" style="border-color:${categoryColors[c] || 'rgba(255,255,255,0.15)'}">${c}</button>`
-    ).join('');
-    searchCategories.querySelectorAll('.search-category-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (activeCategory === btn.dataset.cat) {
-          activeCategory = null;
-          btn.style.background = '';
-          btn.style.color = '';
-        } else {
-          activeCategory = btn.dataset.cat;
-          searchCategories.querySelectorAll('.search-category-btn').forEach(b => {
-            b.style.background = '';
-            b.style.color = '';
-          });
-          btn.style.background = (categoryColors[btn.dataset.cat] || '#555') + '33';
-          btn.style.color = '#fff';
-        }
-        renderResults(searchInput.value);
-      });
-    });
+    searchDrop.innerHTML = '';
   }
 
   function highlight(text, query) {
@@ -857,10 +759,6 @@
     const q = query.trim().toLowerCase();
     let results = SEARCH_INDEX;
 
-    if (activeCategory) {
-      results = results.filter(r => r.section === activeCategory);
-    }
-
     if (q) {
       results = results.filter(r => {
         const combined = (r.title + ' ' + r.section + ' ' + r.tags.join(' ')).toLowerCase();
@@ -870,61 +768,77 @@
         const bTitle = b.title.toLowerCase().includes(q) ? 0 : 1;
         return aTitle - bTitle;
       });
+    } else {
+      // Show recent/popular pages when no query
+      results = results.slice(0, 6);
     }
 
-    if (!q && !activeCategory) {
-      results = results.slice(0, 8);
-    }
+    searchDrop.innerHTML = '';
 
-    searchResults.innerHTML = '';
-    searchNoResults.style.display = 'none';
+    if (!q) {
+      searchDrop.innerHTML = `<div class="nsr-hint">Suggested pages</div>`;
+    }
 
     if (results.length === 0) {
-      searchNoResults.style.display = 'block';
+      searchDrop.innerHTML = `<div class="nsr-no-results">No results found — try a different search.</div>`;
       return;
     }
 
-    results.slice(0, 12).forEach(r => {
+    results.slice(0, 10).forEach(r => {
       const el = document.createElement('a');
       el.href = r.url;
-      el.className = 'search-result-item';
-      const matchedTag = q ? r.tags.find(t => t.toLowerCase().includes(q)) : null;
+      el.className = 'nsr-item';
       el.innerHTML = `
-        <div class="search-result-icon" style="color:${categoryColors[r.section] || 'rgba(255,255,255,0.35)'}">${r.section}</div>
-        <div class="search-result-content">
-          <div class="search-result-title">${highlight(r.title, q)}</div>
-          ${matchedTag ? `<div class="search-result-excerpt">${highlight(matchedTag, q)}</div>` : ''}
-        </div>
+        <div class="nsr-section" style="color:${categoryColors[r.section] || 'rgba(255,255,255,0.35)'}">${r.section}</div>
+        <div class="nsr-title">${highlight(r.title, q)}</div>
       `;
       el.addEventListener('click', () => closeSearch());
-      searchResults.appendChild(el);
+      searchDrop.appendChild(el);
     });
   }
 
-  /* Search button click */
-  document.getElementById('nav-search-btn').addEventListener('click', openSearch);
+  /* Open search on button click */
+  navSearchBtn.addEventListener('click', openSearch);
   searchClose.addEventListener('click', closeSearch);
 
-  /* Keyboard */
+  /* Live filtering as user types */
   searchInput.addEventListener('input', () => renderResults(searchInput.value));
+
+  /* Keyboard: Esc to close, Enter to go to first result */
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeSearch();
     if (e.key === 'Enter') {
-      const first = searchResults.querySelector('.search-result-item');
+      const first = searchDrop.querySelector('.nsr-item');
       if (first) { first.click(); }
     }
   });
+
+  /* Global keyboard shortcuts: / or Cmd+K or Ctrl+K */
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeSearch();
-    if ((e.key === '/' || (e.metaKey && e.key === 'k') || (e.ctrlKey && e.key === 'k')) && !overlay.classList.contains('open')) {
+    if (e.key === 'Escape' && searchBar.classList.contains('open')) {
+      closeSearch();
+    }
+    if (
+      (e.key === '/' || (e.metaKey && e.key === 'k') || (e.ctrlKey && e.key === 'k')) &&
+      !searchBar.classList.contains('open') &&
+      document.activeElement.tagName !== 'INPUT' &&
+      document.activeElement.tagName !== 'TEXTAREA'
+    ) {
       e.preventDefault();
       openSearch();
     }
   });
 
-  /* Click outside to close */
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeSearch();
+  /* Click outside the search bar to close */
+  document.addEventListener('click', (e) => {
+    if (
+      searchBar.classList.contains('open') &&
+      !searchBar.contains(e.target) &&
+      !searchDrop.contains(e.target) &&
+      e.target !== navSearchBtn
+    ) {
+      closeSearch();
+    }
   });
 
   /* ── Electric lightning on GET TICKETS ── */
