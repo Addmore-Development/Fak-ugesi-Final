@@ -316,9 +316,9 @@
     .winners-nav button {
       background: none; border: none; cursor: pointer;
       font-size: 22px; color: var(--dark-text); padding: 4px 8px;
-      transition: opacity 0.2s; font-family: 'InterDisplay', sans-serif;
+      transition: opacity 0.2s, background 0.22s, color 0.22s; font-family: 'InterDisplay', sans-serif;
     }
-    .winners-nav button:hover { opacity: 0.5; }
+    .winners-nav button:hover { opacity: 1; background: var(--navy); color: #fff; }
     .winners-view-link {
       font-size: 11px; font-weight: 600; color: var(--navy);
       text-decoration: underline; letter-spacing: 0.06em;
@@ -355,9 +355,10 @@
 
     /* ══════════════════════════════════════════════
        CHALLENGE SECTIONS — full-width dark image
+       No cross icons; increased min-height
     ══════════════════════════════════════════════ */
     .challenge-section {
-      position: relative; min-height: 480px; overflow: hidden;
+      position: relative; min-height: 620px; overflow: hidden;
     }
     .challenge-bg {
       position: absolute; inset: 0;
@@ -370,7 +371,7 @@
     }
     .challenge-inner {
       position: relative; z-index: 3;
-      padding: 64px 248px;
+      padding: 88px 248px;
       display: flex; justify-content: space-between; align-items: flex-start;
     }
     .challenge-content { max-width: 500px; }
@@ -380,16 +381,16 @@
     }
     .challenge-sub-label {
       font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(255,255,255,0.65);
-      margin-bottom: 8px;
+      text-transform: uppercase; color: #ffffff;
+      margin-bottom: 8px; margin-top: 20px;
     }
     .challenge-sub-title {
       font-size: 22px; font-weight: 700;
-      color: #fff; margin-bottom: 18px; line-height: 1.2;
+      color: #ffffff; margin-bottom: 18px; line-height: 1.2;
     }
     .challenge-body {
       font-size: 13px; line-height: 1.72;
-      color: rgba(255,255,255,0.85); margin-bottom: 32px;
+      color: #ffffff; margin-bottom: 32px;
     }
     .challenge-cta {
       display: inline-flex; align-items: center; justify-content: center;
@@ -400,7 +401,7 @@
       text-decoration: none;
       transition: background 0.22s, color 0.22s, transform 0.18s;
     }
-    .challenge-cta:hover { background: #fff; color: var(--navy); transform: translateY(-1px); }
+    .challenge-cta:hover { background: var(--navy); color: #fff; border-color: var(--navy); transform: translateY(-1px); }
     .challenge-apply-link {
       font-size: 11px; font-weight: 600;
       color: rgba(255,255,255,0.65); text-decoration: underline;
@@ -435,7 +436,7 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
     }
     .prize-card {
-      border: 1px solid rgba(26,39,68,0.15);
+      border: 1px solid var(--navy);
       background: var(--lavender);
       padding: 24px 22px 28px;
     }
@@ -451,6 +452,22 @@
     .prize-desc {
       font-size: 12px; font-weight: 400;
       color: var(--body-gray); line-height: 1.65;
+    }
+
+    /* ── Prizes cross icons row ── */
+    .prizes-crosses-top {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 8px;
+      position: relative;
+    }
+    .prizes-crosses-top .cross-icon,
+    .prizes-crosses-bottom .cross-icon {
+      position: relative; top: auto; left: auto; right: auto; bottom: auto;
+    }
+    .prizes-crosses-bottom {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-top: 24px;
+      position: relative;
     }
 
     /* ══════════════════════════════════════════════
@@ -483,6 +500,14 @@
        FAQ — same as sig-dalakhona / sig-fakugesiPRO
     ══════════════════════════════════════════════ */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
+    .faq-crosses-top {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 40px;
+      position: relative;
+    }
+    .faq-crosses-top .cross-icon {
+      position: relative; top: auto; left: auto; right: auto; bottom: auto;
+    }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
@@ -512,7 +537,10 @@
     /* ══════════════════════════════════════════════
        PARTNERS
     ══════════════════════════════════════════════ */
-    .partners-section { background: var(--lavender); padding: 0; position: relative; }
+    .partners-section {
+      background: var(--lavender); padding: 0; position: relative;
+      border-top: 1px solid var(--navy);
+    }
     .partners-inner { padding: 40px 248px 72px; }
     .partners-header {
       display: flex; justify-content: space-between;
@@ -528,7 +556,8 @@
     .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
-      background: #fff; border: 1px solid rgba(26,39,68,0.12);
+      background: #fff;
+      border: 1px solid rgba(26,39,68,0.12);
       aspect-ratio: 1 / 1; display: flex; align-items: center;
       justify-content: center; padding: 40px 32px;
       transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 14px;
@@ -541,6 +570,14 @@
       filter: brightness(0) saturate(100%) invert(13%) sepia(53%) saturate(780%) hue-rotate(198deg) brightness(82%);
     }
     .partner-desc { font-size: 12px; font-weight: 400; color: var(--body-gray); line-height: 1.65; }
+
+    /* ── Global: navy bg on button hover ── */
+    button:hover,
+    .challenge-cta:hover,
+    .winners-nav button:hover {
+      background: var(--navy) !important;
+      color: #fff !important;
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
@@ -903,15 +940,10 @@
 </section>
 
 <!-- ═══════════════════════════════ 2026 ANIMATION CHALLENGE ═══════════════════════════════ -->
+<!-- No cross icons, increased height via min-height + padding in CSS -->
 <section class="challenge-section reveal">
   <div class="challenge-bg" style="background-image:url('../images/trailer.png');"></div>
   <div class="challenge-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
   <div class="challenge-inner">
     <div class="challenge-content">
       <h2 class="challenge-title">2026 Animation<br>Challenge</h2>
@@ -922,24 +954,13 @@
     </div>
     <a class="challenge-apply-link" href="#">Apply now</a>
   </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
 </section>
 
 <!-- ═══════════════════════════════ 2026 VIDEO GAME CHALLENGE ═══════════════════════════════ -->
+<!-- No cross icons, increased height via min-height + padding in CSS -->
 <section class="challenge-section reveal">
   <div class="challenge-bg" style="background-image:url('../images/ruka.jpg');background-position:center 20%;"></div>
   <div class="challenge-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
   <div class="challenge-inner">
     <div class="challenge-content">
       <h2 class="challenge-title">2026 Video Game<br>Challenge</h2>
@@ -950,23 +971,21 @@
     </div>
     <a class="challenge-apply-link" href="#">Apply now</a>
   </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
 </section>
 
 <!-- ═══════════════════════════════ 2026 PRIZES ═══════════════════════════════ -->
 <section class="prizes-section reveal">
   <div class="prizes-inner">
-    <div class="cross-icon" style="top:16px;left:-28px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <!-- 2 cross icons at top -->
+    <div class="prizes-crosses-top">
+      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
+        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      </div>
+      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
+        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      </div>
     </div>
-    <div class="cross-icon" style="top:16px;right:-28px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
+
     <div class="prizes-header">
       <h2 class="prizes-title">2026 Prizes</h2>
       <a class="prizes-apply-link" href="#">Apply now</a>
@@ -1003,14 +1022,18 @@
         <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
       </div>
     </div>
-    <div class="cross-icon" style="bottom:16px;left:-28px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
-    <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
-    <div class="cross-icon" style="bottom:16px;right:-28px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+
+    <!-- 3 cross icons at bottom -->
+    <div class="prizes-crosses-bottom">
+      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
+        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      </div>
+      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
+        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      </div>
+      <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
+        <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      </div>
     </div>
   </div>
 </section>
@@ -1043,11 +1066,17 @@
 
 <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  <!-- 3 cross icons at top, evenly spaced -->
+  <div class="faq-crosses-top">
+    <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="position:relative;top:auto;left:auto;right:auto;bottom:auto;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
   </div>
 
   <div class="faq-layout">
@@ -1062,13 +1091,6 @@
       </div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
     </div>
-  </div>
-
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
 </section>
 

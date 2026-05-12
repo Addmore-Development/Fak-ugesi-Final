@@ -51,7 +51,7 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     /* ══════════════════════════════════════════════
-       HERO — matches sig-pitchathon.html grid layout
+       HERO
     ══════════════════════════════════════════════ */
     .hero {
       position: relative;
@@ -78,7 +78,6 @@
       background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
     }
 
-    /* Hero content sits in col 2, row 2 — matches pitchathon */
     .hero-content {
       grid-row: 2;
       grid-column: 2;
@@ -101,7 +100,6 @@
       letter-spacing: 0.14em; text-transform: uppercase;
       color: rgba(255,255,255,0.75); margin-bottom: 14px;
     }
-    /* Two-line title — "Celebrating the best in" / "African digital creativity" */
     .hero-title {
       font-size: 52px; font-weight: 700;
       line-height: 1.05; color: #fff;
@@ -113,18 +111,31 @@
       line-height: 1.72; color: rgba(255,255,255,0.85);
       max-width: 510px; margin-bottom: 28px;
     }
+
+    /* ── BUTTON: navy bg + lightning bolt on hover ── */
     .btn-apply {
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border: 1.5px solid #fff; color: #fff; background: transparent;
       padding: 13px 32px; font-size: 11px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
       cursor: pointer; font-family: 'InterDisplay', sans-serif;
       text-decoration: none;
-      transition: background 0.22s, color 0.22s, transform 0.18s;
+      transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s;
+      position: relative; overflow: hidden;
     }
-    .btn-apply:hover { background: #fff; color: var(--navy); transform: translateY(-1px); }
+    .btn-apply .btn-lightning {
+      display: none;
+      font-size: 14px;
+      line-height: 1;
+    }
+    .btn-apply:hover {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .btn-apply:hover .btn-lightning { display: inline; }
 
-    /* Awards logo badge — right side, no white background box */
     .hero-signia {
       flex-shrink: 0;
       width: auto;
@@ -140,7 +151,6 @@
       height: auto;
       max-height: 90px;
       object-fit: contain;
-      /* Remove any white background — ensure SVG renders on dark bg */
       background: transparent;
     }
 
@@ -148,11 +158,20 @@
     .ticker-wrapper {
       background: var(--dark-text); overflow: hidden; white-space: nowrap;
       padding: 12px 0; position: relative; z-index: 10;
+      transition: background 0.25s;
+    }
+    /* White background on hover */
+    .ticker-wrapper:hover {
+      background: #fff;
+    }
+    .ticker-wrapper:hover .ticker-track span {
+      color: var(--dark-text);
     }
     .ticker-track { display: inline-flex; animation: tickerScroll 22s linear infinite; }
     .ticker-track span {
       padding: 0 40px; font-size: 12px; font-weight: 500;
       color: #fff; letter-spacing: 0.04em;
+      transition: color 0.25s;
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
@@ -201,7 +220,7 @@
     .fug-sig-item:hover img, .fug-sig-item.fug-active img { transform: scale(1.18); opacity: 1; }
 
     /* ══════════════════════════════════════════════
-       2025 WINNERS — auto-scroll carousel (no white start gap)
+       2025 WINNERS
     ══════════════════════════════════════════════ */
     .winners-section {
       background: #fff;
@@ -232,20 +251,18 @@
     }
     .winners-nav button:hover { opacity: 0.5; }
 
-    /* Outer clips, strip scrolls inside */
     .winners-strip-outer {
       overflow: hidden;
       cursor: grab;
     }
     .winners-strip-outer:active { cursor: grabbing; }
 
-    /* Strip: continuous auto-scroll, duplicated cards */
-     .winners-strip {
-    display: flex;
-    gap: 2px;
-    width: max-content;
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-   }
+    .winners-strip {
+      display: flex;
+      gap: 2px;
+      width: max-content;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
     .winners-strip:hover { animation-play-state: paused; }
     @keyframes winnersAutoScroll {
       from { transform: translateX(0); }
@@ -347,11 +364,11 @@
     .cat-card.active .cat-card-tag,
     .cat-card.active .cat-card-title,
     .cat-card.active .cat-card-items li {
-     color: #fff;
-   }
+      color: #fff;
+    }
     .cat-card.active .cat-card-num {
-    color: rgba(255,255,255,1);
-   }
+      color: rgba(255,255,255,1);
+    }
     .cat-card:hover { background: rgba(255,255,255,0.06); }
     .cat-card-header {
       display: flex; justify-content: space-between;
@@ -366,10 +383,12 @@
       font-size: 36px; font-weight: 700;
       color: rgba(255,255,255,0.75); line-height: 1;
     }
+    /* Smaller, thinner font for category card titles */
     .cat-card-title {
-      font-size: 17px; font-weight: 400;
-      color: rgba(255,255,255,0.9); line-height: 1.3;
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.9); line-height: 1.35;
       margin-bottom: 16px;
+      letter-spacing: 0.01em;
     }
     .cat-card-items { list-style: none; }
     .cat-card-items li {
@@ -381,7 +400,7 @@
     .cat-card-items li::before { content: '→'; font-size: 10px; }
 
     /* ══════════════════════════════════════════════
-       JURY — outlined container, square images, smaller cards
+       JURY
     ══════════════════════════════════════════════ */
     .jury-section {
       background: #fff;
@@ -398,7 +417,6 @@
       font-size: 44px; font-weight: 700;
       color: var(--dark-text);
     }
-    /* Match pitchathon: 3-col, outlined card, square image */
     .jury-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -410,11 +428,10 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      
     }
     .jury-img-wrap {
       width: 100%;
-      aspect-ratio: 1 / 1;   /* square — matches pitchathon screenshot */
+      aspect-ratio: 1 / 1;
       overflow: hidden;
       position: relative;
     }
@@ -445,154 +462,153 @@
     }
 
     /* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
+    .involved-link,
+    .curatorial-view-link,
+    .showcases-link,
+    .showcases-header a,
+    .showcase-card-more,
+    .winners-view-link,
+    .highlights-view-link,
+    .intro-view-link,
+    .network-view-link,
+    .faq-tickets-link,
+    .faq-apply-link,
+    .faq-apply-top,
+    .partners-link,
+    .partners-view-link,
+    .main-partners-link,
+    .market-info-link,
+    .exhibitors-link,
+    .exhibitor-card-more,
+    .more-card-link,
+    .prizes-apply-link,
+    .cat-apply-link,
+    .req-apply-link,
+    .challenge-apply-link,
+    .section-link,
+    .media-link,
+    .locations-map-link,
+    .directions-link,
+    .hero-link,
+    [data-fug-link] {
+      position: relative !important;
+      text-decoration: none !important;
+      padding-bottom: 2px !important;
+      transition: opacity 0.25s ease, transform 0.25s ease !important;
+    }
 
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
+    .involved-link::after,
+    .curatorial-view-link::after,
+    .showcases-link::after,
+    .showcases-header a::after,
+    .showcase-card-more::after,
+    .winners-view-link::after,
+    .highlights-view-link::after,
+    .intro-view-link::after,
+    .network-view-link::after,
+    .faq-tickets-link::after,
+    .faq-apply-link::after,
+    .faq-apply-top::after,
+    .partners-link::after,
+    .partners-view-link::after,
+    .main-partners-link::after,
+    .market-info-link::after,
+    .exhibitors-link::after,
+    .exhibitor-card-more::after,
+    .more-card-link::after,
+    .prizes-apply-link::after,
+    .cat-apply-link::after,
+    .req-apply-link::after,
+    .challenge-apply-link::after,
+    .section-link::after,
+    .media-link::after,
+    .locations-map-link::after,
+    .directions-link::after,
+    .hero-link::after,
+    [data-fug-link]::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(1);
+      transform-origin: left center;
+      transition: transform 0.28s ease;
+    }
 
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
+    .involved-link:hover::after,
+    .curatorial-view-link:hover::after,
+    .showcases-link:hover::after,
+    .showcases-header a:hover::after,
+    .showcase-card-more:hover::after,
+    .winners-view-link:hover::after,
+    .highlights-view-link:hover::after,
+    .intro-view-link:hover::after,
+    .network-view-link:hover::after,
+    .faq-tickets-link:hover::after,
+    .faq-apply-link:hover::after,
+    .faq-apply-top:hover::after,
+    .partners-link:hover::after,
+    .partners-view-link:hover::after,
+    .main-partners-link:hover::after,
+    .market-info-link:hover::after,
+    .exhibitors-link:hover::after,
+    .exhibitor-card-more:hover::after,
+    .more-card-link:hover::after,
+    .prizes-apply-link:hover::after,
+    .cat-apply-link:hover::after,
+    .req-apply-link:hover::after,
+    .challenge-apply-link:hover::after,
+    .section-link:hover::after,
+    .media-link:hover::after,
+    .locations-map-link:hover::after,
+    .directions-link:hover::after,
+    .hero-link:hover::after,
+    [data-fug-link]:hover::after {
+      transform: scaleX(0);
+      transform-origin: right center;
+    }
 
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
+    .involved-link:hover,
+    .curatorial-view-link:hover,
+    .showcases-link:hover,
+    .showcases-header a:hover,
+    .showcase-card-more:hover,
+    .winners-view-link:hover,
+    .highlights-view-link:hover,
+    .intro-view-link:hover,
+    .network-view-link:hover,
+    .faq-tickets-link:hover,
+    .faq-apply-link:hover,
+    .faq-apply-top:hover,
+    .partners-link:hover,
+    .partners-view-link:hover,
+    .main-partners-link:hover,
+    .market-info-link:hover,
+    .exhibitors-link:hover,
+    .exhibitor-card-more:hover,
+    .more-card-link:hover,
+    .prizes-apply-link:hover,
+    .cat-apply-link:hover,
+    .req-apply-link:hover,
+    .challenge-apply-link:hover,
+    .section-link:hover,
+    .media-link:hover,
+    .locations-map-link:hover,
+    .directions-link:hover,
+    .hero-link:hover,
+    [data-fug-link]:hover {
+      transform: translateX(3px);
+    }
 
     /* ══════════════════════════════════════════════
-       REQUIREMENTS — single full-width list, items stacked
+       REQUIREMENTS
     ══════════════════════════════════════════════ */
-   .req-section { background: var(--navy); padding: 36px 248px; position: relative; }
-
-   .req-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
-   .req-title { font-size: 28px; font-weight: 700; color: #fff; line-height: 1.0; }
+    .req-section { background: var(--navy); padding: 36px 248px; position: relative; }
+    .req-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+    .req-title { font-size: 28px; font-weight: 700; color: #fff; line-height: 1.0; }
     .req-apply-link {
       font-size: 11px; font-weight: 600;
       color: rgba(255,255,255,0.6);
@@ -604,7 +620,6 @@
       transition: color 0.2s;
     }
     .req-apply-link:hover { color: #fff; }
-    /* Full-width single column list — see screenshot */
     .req-list {
       list-style: none;
       display: flex;
@@ -612,7 +627,6 @@
       gap: 0;
     }
     .req-list li { display: flex; gap: 16px; font-size: 11px; font-weight: 400; line-height: 1.65; color: rgba(255,255,255,0.82); padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.10); }
-
     .req-list li:first-child { border-top: 1px solid rgba(255,255,255,0.10); }
     .req-num {
       font-size: 12px; font-weight: 700;
@@ -621,32 +635,42 @@
       margin-top: 1px;
     }
 
-.faq-section { background: var(--white); padding: 64px 248px; position: relative; }
-.faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
-.faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
-.faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
-.faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-.faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
-.faq-items-wrap { display: flex; flex-direction: column; }
-.faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
-.faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
-.faq-item:hover { background: var(--navy); }
-.faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
-.faq-item:hover .faq-t-icon { color: var(--white); }
-.faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
-.faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
-.faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; max-width: calc(100% - 40px); }
-.faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
-.faq-item.open .faq-t-icon { transform: rotate(45deg); }
-.faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
-.faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
+    /* ── FAQ ── */
+    .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
+    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
+    .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
+    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
+    .faq-items-wrap { display: flex; flex-direction: column; }
+    .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
+    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
+    .faq-item:hover { background: var(--navy); }
+    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-t-icon { color: var(--white); }
+    .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
+    .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; max-width: calc(100% - 40px); }
+    .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
+    .faq-item.open .faq-t-icon { transform: rotate(45deg); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
+    .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
+
     /* ══════════════════════════════════════════════
-       PARTNERS — logo images rendered correctly (dark filter)
+       PARTNERS — navy outline bar at top
     ══════════════════════════════════════════════ */
     .partners-section {
       background: var(--lavender);
       padding: 0;
       position: relative;
+    }
+    /* Navy outline / border at the top of the partners section */
+    .partners-section::before {
+      content: '';
+      display: block;
+      height: 3px;
+      background: var(--navy);
+      width: 100%;
     }
     .partners-inner { padding: 40px 248px 72px; }
     .partners-header {
@@ -688,7 +712,6 @@
     .partner-logo-box img {
       max-width: 100%; max-height: 120px;
       object-fit: contain; display: block;
-      /* Convert SVG logos to dark navy colour so they show on white bg */
       filter: brightness(0) saturate(100%) invert(13%) sepia(53%) saturate(780%) hue-rotate(198deg) brightness(82%);
     }
     .partner-desc {
@@ -783,12 +806,13 @@
   <div class="hero-content">
     <div class="hero-text-wrapper">
       <p class="hero-eyebrow">Fak'ugesi Awards</p>
-      <!-- Two-line title using <br> -->
       <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-      <a class="btn-apply" href="#">SUBMIT YOUR APPLICATION</a>
+      <a class="btn-apply" href="#">
+        <span class="btn-lightning">⚡</span>
+        SUBMIT YOUR APPLICATION
+      </a>
     </div>
-    <!-- Logo with NO white background box -->
     <div class="hero-signia">
       <img src="images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
     </div>
@@ -850,11 +874,6 @@
     </div>
   </div>
 
-  <!--
-    Strip uses CSS auto-scroll (infinite marquee).
-    Cards are duplicated so it loops seamlessly with NO white-space gap.
-    The left padding has been removed — cards start flush from edge 248px.
-  -->
   <div class="winners-strip-outer" id="winnersOuter">
     <div class="winners-strip" id="winnersStrip">
 
@@ -1061,32 +1080,25 @@
     </div>
   </div>
 
-  <div style="position:relative;height:36px;margin-top:0;">
-    <div class="cross-icon" style="bottom:0;left:200px;">
+  <!-- Bottom: 3 cross icons — left, centre, right -->
+  <div style="position:relative;height:52px;margin-top:0;">
+    <div class="cross-icon" style="top:8px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
-    <div class="cross-icon" style="bottom:0;right:200px;">
+    <div class="cross-icon" style="top:8px;left:50%;transform:translateX(-50%);">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="top:8px;right:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════ ELIGIBLE CATEGORIES ═══════════════════════════════ -->
+<!-- Cross icons removed from this section -->
 <section class="categories-section reveal">
   <div class="cat-bg"></div>
   <div class="cat-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
 
   <div class="cat-inner">
     <div class="cat-header">
@@ -1137,14 +1149,15 @@
 
 <!-- ═══════════════════════════════ JURY ═══════════════════════════════ -->
 <section class="jury-section reveal">
-  <div style="position:relative;height:36px;">
-    <div class="cross-icon" style="top:0;left:200px;">
+  <!-- Top cross icons: lowered to sit inside the section, not too close to the top edge -->
+  <div style="position:relative;height:56px;">
+    <div class="cross-icon" style="top:20px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
-    <div class="cross-icon" style="top:0;left:50%;transform:translateX(-50%);">
+    <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
-    <div class="cross-icon" style="top:0;right:200px;">
+    <div class="cross-icon" style="top:20px;right:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
   </div>
@@ -1216,14 +1229,15 @@
     </div>
   </div>
 
-  <div style="position:relative;height:36px;margin-top:8px;">
-    <div class="cross-icon" style="bottom:0;left:200px;">
+  <!-- Bottom cross icons: raised up, not too close to the next section -->
+  <div style="position:relative;height:52px;margin-top:8px;">
+    <div class="cross-icon" style="top:16px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
-    <div class="cross-icon" style="bottom:0;left:50%;transform:translateX(-50%);">
+    <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
-    <div class="cross-icon" style="bottom:0;right:200px;">
+    <div class="cross-icon" style="top:16px;right:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
     </div>
   </div>
@@ -1231,14 +1245,10 @@
 
 <!-- ═══════════════════════════════ REQUIREMENTS ═══════════════════════════════ -->
 <section class="req-section reveal">
-
-  <!-- Title + link on same row -->
   <div class="req-top">
     <h2 class="req-title">Requirements</h2>
     <a class="req-apply-link" href="#">Submit your application</a>
   </div>
-
-  <!-- Single column list — items stacked one after another -->
   <ol class="req-list">
     <li>
       <span class="req-num">1.</span>
@@ -1259,8 +1269,9 @@
   </ol>
 </section>
 
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
-<div class="cross-icon" style="top:16px;left:200px;">
+  <div class="cross-icon" style="top:16px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;right:200px;">
@@ -1271,8 +1282,8 @@
     <div class="faq-layout">
       <div>
         <h2 class="faq-title-left">FAQ</h2>
+        <!-- "Submit your application" link removed from below the intro text -->
         <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
-        <a class="faq-apply-link" href="#">Submit your application</a>
       </div>
       <div>
         <div class="faq-right-hdr">
@@ -1283,7 +1294,7 @@
     </div>
   </div>
 
-<div class="cross-icon" style="bottom:16px;left:200px;">
+  <div class="cross-icon" style="bottom:16px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
   <div class="cross-icon" style="bottom:16px;right:200px;">
@@ -1292,8 +1303,8 @@
 </section>
 
 <!-- ═══════════════════════════════ PARTNERS ═══════════════════════════════ -->
+<!-- Navy outline bar rendered via CSS ::before on .partners-section -->
 <section class="partners-section reveal">
-
   <div class="partners-inner">
     <div class="partners-header">
       <h2 class="partners-title">Our Awards Partners</h2>
@@ -1346,21 +1357,15 @@ revealEls.forEach(el => io.observe(el));
   }
 
   function getTotalWidth() {
-    // half of strip = one full set (cards are duplicated)
     return strip.scrollWidth / 2;
   }
 
   function move(direction) {
     const cw = getCardWidth();
     const total = getTotalWidth();
-
     offset += direction * cw;
-
-    // wrap forward
     if (offset <= -total) offset = 0;
-    // wrap backward
     if (offset > 0) offset = -(total - cw);
-
     strip.style.transform = `translateX(${offset}px)`;
   }
 
@@ -1368,6 +1373,7 @@ revealEls.forEach(el => io.observe(el));
   prevBtn.addEventListener('click', () => move(1));
 })();
 
+/* ── FAQ ── */
 const faqData = [
   { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada. Nulla quis dui quis ante fermentum interdum.' },
   { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
@@ -1429,7 +1435,6 @@ faqData.forEach((faq, i) => {
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
-
 
 /* ── CATEGORIES: click to swap section background ── */
 (function () {
