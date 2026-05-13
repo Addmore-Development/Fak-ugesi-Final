@@ -112,6 +112,12 @@
     .ticker-track span {
       padding: 0 40px; font-size: 12px; font-weight: 500;
       color: #fff; letter-spacing: 0.04em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .ticker-track span:hover {
+      background: #fff;
+      color: var(--dark-text);
+      cursor: pointer;
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
@@ -185,7 +191,8 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
     }
     .intro-card {
-      border: 1px solid rgba(26,39,68,0.15);
+      /* CHANGED: thicker border — 2px solid navy */
+      border: 2px solid var(--navy);
       background: var(--lavender);
       padding: 24px 22px 28px;
     }
@@ -212,7 +219,7 @@
     }
 
     /* ══════════════════════════════════════════════
-       NETWORK — full-width dark image section
+       NETWORK
     ══════════════════════════════════════════════ */
     .network-section {
       position: relative; min-height: 420px; overflow: hidden;
@@ -242,15 +249,23 @@
       color: rgba(255,255,255,0.85); margin-bottom: 32px;
     }
     .network-cta {
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border: 1.5px solid #fff; color: #fff; background: transparent;
       padding: 13px 32px; font-size: 11px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
       cursor: pointer; font-family: 'InterDisplay', sans-serif;
       text-decoration: none;
-      transition: background 0.22s, color 0.22s, transform 0.18s;
+      transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.18s;
     }
-    .network-cta:hover { background: #fff; color: var(--navy); transform: translateY(-1px); }
+    .network-cta .btn-lightning { display: none; font-size: 14px; line-height: 1; }
+    .network-cta:hover {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .network-cta:hover .btn-lightning { display: inline; }
+
     .network-view-link {
       font-size: 11px; font-weight: 600;
       color: rgba(255,255,255,0.65); text-decoration: underline;
@@ -260,160 +275,167 @@
     }
     .network-view-link:hover { color: #fff; }
 
-   /* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
+    /* ── Fak'ugesi shared link hover effect ── */
+    .involved-link,
+    .curatorial-view-link,
+    .showcases-link,
+    .showcases-header a,
+    .showcase-card-more,
+    .winners-view-link,
+    .highlights-view-link,
+    .intro-view-link,
+    .network-view-link,
+    .faq-tickets-link,
+    .faq-apply-link,
+    .faq-apply-top,
+    .partners-link,
+    .partners-view-link,
+    .main-partners-link,
+    .market-info-link,
+    .exhibitors-link,
+    .exhibitor-card-more,
+    .more-card-link,
+    .prizes-apply-link,
+    .cat-apply-link,
+    .req-apply-link,
+    .challenge-apply-link,
+    .section-link,
+    .media-link,
+    .locations-map-link,
+    .directions-link,
+    .hero-link,
+    [data-fug-link] {
+      position: relative !important;
+      text-decoration: none !important;
+      padding-bottom: 2px !important;
+      transition: opacity 0.25s ease, transform 0.25s ease !important;
+    }
 
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
+    .involved-link::after,
+    .curatorial-view-link::after,
+    .showcases-link::after,
+    .showcases-header a::after,
+    .showcase-card-more::after,
+    .winners-view-link::after,
+    .highlights-view-link::after,
+    .intro-view-link::after,
+    .network-view-link::after,
+    .faq-tickets-link::after,
+    .faq-apply-link::after,
+    .faq-apply-top::after,
+    .partners-link::after,
+    .partners-view-link::after,
+    .main-partners-link::after,
+    .market-info-link::after,
+    .exhibitors-link::after,
+    .exhibitor-card-more::after,
+    .more-card-link::after,
+    .prizes-apply-link::after,
+    .cat-apply-link::after,
+    .req-apply-link::after,
+    .challenge-apply-link::after,
+    .section-link::after,
+    .media-link::after,
+    .locations-map-link::after,
+    .directions-link::after,
+    .hero-link::after,
+    [data-fug-link]::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 1px;
+      background: currentColor;
+      transform: scaleX(1);
+      transform-origin: left center;
+      transition: transform 0.28s ease;
+    }
 
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
+    .involved-link:hover::after,
+    .curatorial-view-link:hover::after,
+    .showcases-link:hover::after,
+    .showcases-header a:hover::after,
+    .showcase-card-more:hover::after,
+    .winners-view-link:hover::after,
+    .highlights-view-link:hover::after,
+    .intro-view-link:hover::after,
+    .network-view-link:hover::after,
+    .faq-tickets-link:hover::after,
+    .faq-apply-link:hover::after,
+    .faq-apply-top:hover::after,
+    .partners-link:hover::after,
+    .partners-view-link:hover::after,
+    .main-partners-link:hover::after,
+    .market-info-link:hover::after,
+    .exhibitors-link:hover::after,
+    .exhibitor-card-more:hover::after,
+    .more-card-link:hover::after,
+    .prizes-apply-link:hover::after,
+    .cat-apply-link:hover::after,
+    .req-apply-link:hover::after,
+    .challenge-apply-link:hover::after,
+    .section-link:hover::after,
+    .media-link:hover::after,
+    .locations-map-link:hover::after,
+    .directions-link:hover::after,
+    .hero-link:hover::after,
+    [data-fug-link]:hover::after {
+      transform: scaleX(0);
+      transform-origin: right center;
+    }
 
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
+    .involved-link:hover,
+    .curatorial-view-link:hover,
+    .showcases-link:hover,
+    .showcases-header a:hover,
+    .showcase-card-more:hover,
+    .winners-view-link:hover,
+    .highlights-view-link:hover,
+    .intro-view-link:hover,
+    .network-view-link:hover,
+    .faq-tickets-link:hover,
+    .faq-apply-link:hover,
+    .faq-apply-top:hover,
+    .partners-link:hover,
+    .partners-view-link:hover,
+    .main-partners-link:hover,
+    .market-info-link:hover,
+    .exhibitors-link:hover,
+    .exhibitor-card-more:hover,
+    .more-card-link:hover,
+    .prizes-apply-link:hover,
+    .cat-apply-link:hover,
+    .req-apply-link:hover,
+    .challenge-apply-link:hover,
+    .section-link:hover,
+    .media-link:hover,
+    .locations-map-link:hover,
+    .directions-link:hover,
+    .hero-link:hover,
+    [data-fug-link]:hover {
+      transform: translateX(3px);
+    }
 
     /* ══════════════════════════════════════════════
-       2025 HIGHLIGHTS — same style as sig-awards winners
+       2025 HIGHLIGHTS
     ══════════════════════════════════════════════ */
     .highlights-section {
       background: #fff; padding: 0; position: relative; overflow: hidden;
     }
+    .highlights-top-spacer {
+      position: relative;
+      height: 64px;
+    }
     .highlights-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 56px 248px 36px; position: relative;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 16px 248px 36px; position: relative;
     }
     .highlights-title {
       font-size: 52px; font-weight: 700; color: var(--dark-text);
+    }
+    .highlights-nav-wrap {
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 12px;
+      padding-top: 8px;
     }
     .highlights-nav { display: flex; align-items: center; gap: 16px; }
     .highlights-nav button {
@@ -422,6 +444,13 @@
       transition: opacity 0.2s; font-family: 'InterDisplay', sans-serif;
     }
     .highlights-nav button:hover { opacity: 0.5; }
+    .highlights-view-link {
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      text-decoration: underline; letter-spacing: 0.06em;
+      cursor: pointer; text-underline-offset: 3px;
+      white-space: nowrap; transition: opacity 0.2s;
+    }
+    .highlights-view-link:hover { opacity: 0.6; }
     .highlights-strip-outer { overflow: hidden; }
     .highlights-strip {
       display: flex; gap: 2px; width: max-content;
@@ -446,16 +475,9 @@
       color: var(--dark-text); margin-bottom: 6px; line-height: 1.2;
     }
     .highlight-meta { font-size: 12px; color: var(--body-gray); }
-    .highlights-view-link {
-      font-size: 11px; font-weight: 600; color: var(--navy);
-      text-decoration: underline; letter-spacing: 0.06em;
-      cursor: pointer; text-underline-offset: 3px;
-      white-space: nowrap; transition: opacity 0.2s;
-    }
-    .highlights-view-link:hover { opacity: 0.6; }
 
     /* ══════════════════════════════════════════════
-       FAQ — same style as sig-awards
+       FAQ
     ══════════════════════════════════════════════ */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
@@ -485,9 +507,18 @@
     .faq-apply-link:hover { opacity: 0.6; }
 
     /* ══════════════════════════════════════════════
-       PARTNERS
+       PARTNERS — navy 1px outline at top
     ══════════════════════════════════════════════ */
-    .partners-section { background: var(--lavender); padding: 0; position: relative; }
+    .partners-section {
+      background: var(--lavender); padding: 0; position: relative;
+    }
+    .partners-section::before {
+      content: '';
+      display: block;
+      height: 1px;
+      background: var(--navy);
+      width: 100%;
+    }
     .partners-inner { padding: 40px 248px 72px; }
     .partners-header {
       display: flex; justify-content: space-between;
@@ -525,7 +556,7 @@
       .intro-section { padding: 56px 48px; }
       .intro-cards { grid-template-columns: repeat(2, 1fr); }
       .network-inner { padding: 56px 48px; }
-      .highlights-header { padding: 40px 48px 28px; }
+      .highlights-header { padding: 16px 48px 28px; }
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
       .partners-inner { padding: 40px 48px 56px; }
@@ -542,7 +573,7 @@
       .intro-cards { grid-template-columns: 1fr; }
       .network-inner { padding: 48px 20px; flex-direction: column; gap: 24px; }
       .network-title { font-size: 30px; }
-      .highlights-header { padding: 40px 20px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .highlights-header { padding: 16px 20px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
       .highlights-title { font-size: 32px; }
       .highlight-card { flex: 0 0 280px; }
       .highlight-img-wrap { height: 280px; }
@@ -677,47 +708,43 @@
 <section class="network-section reveal">
   <div class="network-bg"></div>
   <div class="network-overlay"></div>
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
 
   <div class="network-inner">
     <div class="network-content">
       <h2 class="network-title">Join our developer<br>network</h2>
       <p class="network-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio.</p>
-      <a class="network-cta" href="#">GET INVOLVED</a>
+      <a class="network-cta" href="#">
+        <span class="btn-lightning"> </span>
+        GET INVOLVED
+      </a>
     </div>
     <a class="network-view-link" href="programme.html">View 2026 programme</a>
-  </div>
-
-  <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/></svg>
   </div>
 </section>
 
 <!-- ═══════════════════════════════ 2025 HIGHLIGHTS ═══════════════════════════════ -->
 <section class="highlights-section reveal">
-  <div class="cross-icon" style="top:56px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:56px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+
+  <div class="highlights-top-spacer">
+    <div class="cross-icon" style="top:16px;left:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
+    <div class="cross-icon" style="top:16px;right:200px;">
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    </div>
   </div>
 
   <div class="highlights-header">
     <h2 class="highlights-title">2025 Highlights</h2>
-    <div style="display:flex;align-items:center;gap:32px;">
-      <a class="highlights-view-link" href="programme.html">View 2026 programme</a>
+    <div class="highlights-nav-wrap">
       <div class="highlights-nav">
         <button id="prevHighlight" aria-label="Previous">←</button>
         <button id="nextHighlight" aria-label="Next">→</button>
       </div>
+      <a class="highlights-view-link" href="programme.html">View 2026 programme</a>
     </div>
   </div>
 
@@ -860,20 +887,14 @@
 
     </div>
   </div>
-
-  <div style="position:relative;height:36px;margin-top:0;">
-    <div class="cross-icon" style="bottom:0;left:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
-    <div class="cross-icon" style="bottom:0;right:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-    </div>
-  </div>
 </section>
 
 <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;right:200px;">
@@ -1030,7 +1051,6 @@ faqData.forEach((faq, i) => {
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 </script>
-
 
 </body>
 </html>

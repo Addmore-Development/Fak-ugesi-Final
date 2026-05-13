@@ -425,6 +425,49 @@
     .btn-primary:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
     .btn-outline-dark:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
     .btn-outline-white:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
+    .btn-primary canvas, .btn-outline-dark canvas, .btn-outline-white canvas,
+    .btn-apply canvas, .btn-cta-white canvas, .btn-cta-filled canvas,
+    .btn-learn canvas, .hero-cta canvas, .intro-cta canvas,
+    .network-cta canvas, .section-cta canvas, .challenge-cta canvas,
+    a.btn-tickets canvas, button.btn-tickets canvas, .btn-get-pass canvas,
+    .showcase-cta-btn canvas,
+    [class*="btn-"] canvas {
+      position:absolute !important; inset:0 !important;
+      pointer-events:none !important; z-index:0 !important;
+    }
+    .btn-primary > *, .btn-outline-dark > *, .btn-outline-white > *,
+    .btn-apply > *, .btn-cta-white > *, .btn-cta-filled > *,
+    .btn-learn > *, .hero-cta > *, .intro-cta > *,
+    .network-cta > *, .section-cta > *, .challenge-cta > *,
+    a.btn-tickets > *, button.btn-tickets > *, .btn-get-pass > *,
+    .showcase-cta-btn > *,
+    [class*="btn-"] > * {
+      position:relative !important; z-index:1 !important;
+    }
+
+    .curatorial-view-link, .showcases-link, .showcase-card-more,
+    .showcase-detail-link, .partners-link, .more-card-link,
+    .sched-location, .sched-speakers a, .nav-dd a, .ticker-item,
+    .carousel-logo-name, .hero-eyebrow, .showcases-header a,
+    .curatorial-view-link, .more-card-top span,  .jury-prog-link,
+    [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back) {
+      display:inline-block;
+      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+                  color 0.2s ease,
+                  letter-spacing 0.22s ease !important;
+    }
+    .curatorial-view-link:hover, .showcases-link:hover, .showcase-card-more:hover,
+    .showcase-detail-link:hover, .partners-link:hover, .more-card-link:hover,
+    .sched-location:hover, .sched-speakers a:hover, .showcases-header a:hover,
+    .more-card-top span:hover,  .jury-prog-link:hover,
+    [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back):hover {
+      transform: scale(1.1);
+      transform-origin: left center;
+      letter-spacing: 0.07em;
+    }
+    #main-nav .nav-dd a {
+      transition: background 0.18s, color 0.18s, padding-left 0.2s ease !important;
+    }
 
     /* ══ RESPONSIVE BREAKPOINTS ══ */
     @media (max-width: 1024px) {
