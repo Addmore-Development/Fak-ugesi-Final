@@ -36,12 +36,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 18px;
-      height: 18px;
+      width: 12px;
+      height: 12px;
       flex-shrink: 0;
       position: absolute;
       z-index: 6;
-      opacity: 1;
+      opacity: 0.55;
       transition: transform 0.1s linear;
     }
     .cross-icon svg { width: 100%; height: 100%; }
@@ -77,7 +77,6 @@
       position: absolute; inset: 0;
       background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
     }
-
     .hero-content {
       grid-row: 2;
       grid-column: 2;
@@ -112,7 +111,6 @@
       max-width: 510px; margin-bottom: 28px;
     }
 
-    /* ── BUTTON: navy bg on hover — NO lightning emoji ── */
     .btn-apply {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border: 1.5px solid #fff; color: #fff; background: transparent;
@@ -123,7 +121,6 @@
       transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s;
       position: relative; overflow: hidden;
     }
-    /* Lightning emoji hidden permanently */
     .btn-apply .btn-lightning { display: none !important; }
     .btn-apply:hover {
       background: var(--navy);
@@ -254,7 +251,6 @@
       width: max-content;
       transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .winners-strip:hover { animation-play-state: paused; }
 
     .winner-card {
       flex: 0 0 360px;
@@ -350,12 +346,8 @@
     }
     .cat-card.active .cat-card-tag,
     .cat-card.active .cat-card-title,
-    .cat-card.active .cat-card-items li {
-      color: #fff;
-    }
-    .cat-card.active .cat-card-num {
-      color: rgba(255,255,255,1);
-    }
+    .cat-card.active .cat-card-items li { color: #fff; }
+    .cat-card.active .cat-card-num { color: rgba(255,255,255,1); }
     .cat-card:hover { background: rgba(255,255,255,0.06); }
     .cat-card-header {
       display: flex; justify-content: space-between;
@@ -373,8 +365,7 @@
     .cat-card-title {
       font-size: 13px; font-weight: 300;
       color: rgba(255,255,255,0.9); line-height: 1.35;
-      margin-bottom: 16px;
-      letter-spacing: 0.01em;
+      margin-bottom: 16px; letter-spacing: 0.01em;
     }
     .cat-card-items { list-style: none; }
     .cat-card-items li {
@@ -447,145 +438,69 @@
       color: var(--body-gray);
     }
 
-    /* ── Fak'ugesi shared link hover effect ── */
-    .involved-link,
-    .curatorial-view-link,
-    .showcases-link,
-    .showcases-header a,
-    .showcase-card-more,
-    .winners-view-link,
-    .highlights-view-link,
-    .intro-view-link,
-    .network-view-link,
-    .faq-tickets-link,
-    .faq-apply-link,
-    .faq-apply-top,
-    .partners-link,
-    .partners-view-link,
-    .main-partners-link,
-    .market-info-link,
-    .exhibitors-link,
-    .exhibitor-card-more,
-    .more-card-link,
-    .prizes-apply-link,
-    .cat-apply-link,
-    .req-apply-link,
-    .challenge-apply-link,
-    .section-link,
-    .media-link,
-    .locations-map-link,
-    .directions-link,
-    .hero-link,
-    [data-fug-link] {
+    /* ── Shared link hover effect ── */
+    .involved-link, .curatorial-view-link, .showcases-link,
+    .showcases-header a, .showcase-card-more, .winners-view-link,
+    .highlights-view-link, .intro-view-link, .network-view-link,
+    .faq-tickets-link, .faq-apply-link, .faq-apply-top,
+    .partners-link, .partners-view-link, .main-partners-link,
+    .market-info-link, .exhibitors-link, .exhibitor-card-more,
+    .more-card-link, .prizes-apply-link, .cat-apply-link,
+    .req-apply-link, .challenge-apply-link, .section-link,
+    .media-link, .locations-map-link, .directions-link,
+    .hero-link, [data-fug-link] {
       position: relative !important;
       text-decoration: none !important;
       padding-bottom: 2px !important;
       transition: opacity 0.25s ease, transform 0.25s ease !important;
     }
-
-    .involved-link::after,
-    .curatorial-view-link::after,
-    .showcases-link::after,
-    .showcases-header a::after,
-    .showcase-card-more::after,
-    .winners-view-link::after,
-    .highlights-view-link::after,
-    .intro-view-link::after,
-    .network-view-link::after,
-    .faq-tickets-link::after,
-    .faq-apply-link::after,
-    .faq-apply-top::after,
-    .partners-link::after,
-    .partners-view-link::after,
-    .main-partners-link::after,
-    .market-info-link::after,
-    .exhibitors-link::after,
-    .exhibitor-card-more::after,
-    .more-card-link::after,
-    .prizes-apply-link::after,
-    .cat-apply-link::after,
-    .req-apply-link::after,
-    .challenge-apply-link::after,
-    .section-link::after,
-    .media-link::after,
-    .locations-map-link::after,
-    .directions-link::after,
-    .hero-link::after,
-    [data-fug-link]::after {
+    .involved-link::after, .curatorial-view-link::after, .showcases-link::after,
+    .showcases-header a::after, .showcase-card-more::after, .winners-view-link::after,
+    .highlights-view-link::after, .intro-view-link::after, .network-view-link::after,
+    .faq-tickets-link::after, .faq-apply-link::after, .faq-apply-top::after,
+    .partners-link::after, .partners-view-link::after, .main-partners-link::after,
+    .market-info-link::after, .exhibitors-link::after, .exhibitor-card-more::after,
+    .more-card-link::after, .prizes-apply-link::after, .cat-apply-link::after,
+    .req-apply-link::after, .challenge-apply-link::after, .section-link::after,
+    .media-link::after, .locations-map-link::after, .directions-link::after,
+    .hero-link::after, [data-fug-link]::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
+      bottom: 0; left: 0;
+      width: 100%; height: 1px;
       background: currentColor;
       transform: scaleX(1);
       transform-origin: left center;
       transition: transform 0.28s ease;
     }
-
-    .involved-link:hover::after,
-    .curatorial-view-link:hover::after,
-    .showcases-link:hover::after,
-    .showcases-header a:hover::after,
-    .showcase-card-more:hover::after,
-    .winners-view-link:hover::after,
-    .highlights-view-link:hover::after,
-    .intro-view-link:hover::after,
-    .network-view-link:hover::after,
-    .faq-tickets-link:hover::after,
-    .faq-apply-link:hover::after,
-    .faq-apply-top:hover::after,
-    .partners-link:hover::after,
-    .partners-view-link:hover::after,
-    .main-partners-link:hover::after,
-    .market-info-link:hover::after,
-    .exhibitors-link:hover::after,
-    .exhibitor-card-more:hover::after,
-    .more-card-link:hover::after,
-    .prizes-apply-link:hover::after,
-    .cat-apply-link:hover::after,
-    .req-apply-link:hover::after,
-    .challenge-apply-link:hover::after,
-    .section-link:hover::after,
-    .media-link:hover::after,
-    .locations-map-link:hover::after,
-    .directions-link:hover::after,
-    .hero-link:hover::after,
+    .involved-link:hover::after, .curatorial-view-link:hover::after,
+    .showcases-link:hover::after, .showcases-header a:hover::after,
+    .showcase-card-more:hover::after, .winners-view-link:hover::after,
+    .highlights-view-link:hover::after, .intro-view-link:hover::after,
+    .network-view-link:hover::after, .faq-tickets-link:hover::after,
+    .faq-apply-link:hover::after, .faq-apply-top:hover::after,
+    .partners-link:hover::after, .partners-view-link:hover::after,
+    .main-partners-link:hover::after, .market-info-link:hover::after,
+    .exhibitors-link:hover::after, .exhibitor-card-more:hover::after,
+    .more-card-link:hover::after, .prizes-apply-link:hover::after,
+    .cat-apply-link:hover::after, .req-apply-link:hover::after,
+    .challenge-apply-link:hover::after, .section-link:hover::after,
+    .media-link:hover::after, .locations-map-link:hover::after,
+    .directions-link:hover::after, .hero-link:hover::after,
     [data-fug-link]:hover::after {
       transform: scaleX(0);
       transform-origin: right center;
     }
-
-    .involved-link:hover,
-    .curatorial-view-link:hover,
-    .showcases-link:hover,
-    .showcases-header a:hover,
-    .showcase-card-more:hover,
-    .winners-view-link:hover,
-    .highlights-view-link:hover,
-    .intro-view-link:hover,
-    .network-view-link:hover,
-    .faq-tickets-link:hover,
-    .faq-apply-link:hover,
-    .faq-apply-top:hover,
-    .partners-link:hover,
-    .partners-view-link:hover,
-    .main-partners-link:hover,
-    .market-info-link:hover,
-    .exhibitors-link:hover,
-    .exhibitor-card-more:hover,
-    .more-card-link:hover,
-    .prizes-apply-link:hover,
-    .cat-apply-link:hover,
-    .req-apply-link:hover,
-    .challenge-apply-link:hover,
-    .section-link:hover,
-    .media-link:hover,
-    .locations-map-link:hover,
-    .directions-link:hover,
-    .hero-link:hover,
-    [data-fug-link]:hover {
+    .involved-link:hover, .curatorial-view-link:hover, .showcases-link:hover,
+    .showcases-header a:hover, .showcase-card-more:hover, .winners-view-link:hover,
+    .highlights-view-link:hover, .intro-view-link:hover, .network-view-link:hover,
+    .faq-tickets-link:hover, .faq-apply-link:hover, .faq-apply-top:hover,
+    .partners-link:hover, .partners-view-link:hover, .main-partners-link:hover,
+    .market-info-link:hover, .exhibitors-link:hover, .exhibitor-card-more:hover,
+    .more-card-link:hover, .prizes-apply-link:hover, .cat-apply-link:hover,
+    .req-apply-link:hover, .challenge-apply-link:hover, .section-link:hover,
+    .media-link:hover, .locations-map-link:hover, .directions-link:hover,
+    .hero-link:hover, [data-fug-link]:hover {
       transform: translateX(3px);
     }
 
@@ -612,7 +527,13 @@
       flex-direction: column;
       gap: 0;
     }
-    .req-list li { display: flex; gap: 16px; font-size: 11px; font-weight: 400; line-height: 1.65; color: rgba(255,255,255,0.82); padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.10); }
+    .req-list li {
+      display: flex; gap: 16px;
+      font-size: 11px; font-weight: 400; line-height: 1.65;
+      color: rgba(255,255,255,0.82);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
     .req-list li:first-child { border-top: 1px solid rgba(255,255,255,0.10); }
     .req-num {
       font-size: 12px; font-weight: 700;
@@ -621,36 +542,86 @@
       margin-top: 1px;
     }
 
-    /* ── FAQ ── */
-    .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
-    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
-    .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
-    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+    /* ══════════════════════════════════════════════
+       FAQ  — matches sig-dalakhona exactly
+    ══════════════════════════════════════════════ */
+    .faq-section {
+      background: var(--white);
+      padding: 64px 248px;
+      position: relative;
+    }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 64px;
+      align-items: flex-start;
+    }
+    .faq-title-left {
+      font-size: 50px; font-weight: 600;
+      color: var(--dark-text); margin-bottom: 20px;
+    }
+    .faq-intro-text {
+      font-size: 13px; line-height: 1.7;
+      color: var(--body-gray); max-width: 280px;
+    }
+    .faq-apply-link {
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      text-decoration: underline; letter-spacing: 0.06em;
+      display: block; margin-top: 40px; cursor: pointer;
+      text-underline-offset: 3px; transition: opacity 0.2s;
+    }
+    .faq-apply-link:hover { opacity: 0.6; }
     .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
+    .faq-apply-top {
+      font-size: 12px; color: var(--dark-text);
+      text-decoration: underline; letter-spacing: .06em; cursor: pointer;
+    }
     .faq-items-wrap { display: flex; flex-direction: column; }
-    .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
+    .faq-item {
+      border-top: 1px solid rgba(26,39,68,.15);
+      background: transparent;
+      transition: background 0.28s ease;
+    }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
     .faq-item:hover { background: var(--navy); }
     .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
     .faq-item:hover .faq-t-icon { color: var(--white); }
     .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
-    .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
-    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; max-width: calc(100% - 40px); }
-    .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
+    .faq-q-btn {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 22px 16px;
+      cursor: pointer; gap: 16px;
+      background: none; border: none; width: 100%;
+      text-align: left; font-family: 'InterDisplay', sans-serif;
+    }
+    .faq-q-text {
+      font-size: 16px; font-weight: 500;
+      color: var(--dark-text); line-height: 1.35;
+      transition: color 0.28s ease, font-family 0.1s;
+      max-width: calc(100% - 40px);
+    }
+    .faq-t-icon {
+      font-size: 22px; color: var(--dark-text);
+      flex-shrink: 0; font-weight: 300; line-height: 1;
+      transition: color 0.28s ease, transform 0.3s ease;
+    }
     .faq-item.open .faq-t-icon { transform: rotate(45deg); }
-    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
+    .faq-ans {
+      max-height: 0; overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease, color 0.28s ease;
+      font-size: 13px; line-height: 1.72;
+      color: var(--body-gray); padding: 0 16px;
+    }
     .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
 
     /* ══════════════════════════════════════════════
-       PARTNERS — thin 1px navy outline at top
+       PARTNERS
     ══════════════════════════════════════════════ */
     .partners-section {
       background: var(--lavender);
       padding: 0;
       position: relative;
     }
-    /* CHANGED: thin 1px outline instead of 3px */
     .partners-section::before {
       content: '';
       display: block;
@@ -665,10 +636,7 @@
       align-items: center;
       margin-bottom: 40px;
     }
-    .partners-title {
-      font-size: 38px; font-weight: 700;
-      color: var(--dark-text);
-    }
+    .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
     .partners-view-link {
       font-size: 11px; font-weight: 600;
       color: var(--navy); text-decoration: underline;
@@ -736,47 +704,71 @@
     .footer-logo-wrap img { height: 48px; width: auto; }
     .footer-copy { font-size: 11px; color: var(--body-gray); text-align: right; }
 
-    /* ── RESPONSIVE ── */
+    /* ══════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       :root { --band: 48px; }
       .hero { grid-template-columns: 48px 1fr 48px; }
       .hero-title { font-size: 40px; }
       .cat-grid { grid-template-columns: repeat(2, 1fr); }
       .jury-grid { grid-template-columns: repeat(2, 1fr); }
-      .faq-layout { grid-template-columns: 240px 1fr; gap: 48px; }
+      .faq-section { padding: 56px 48px; }
+      .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
     }
+
     @media (max-width: 768px) {
       :root { --band: 20px; }
       .cross-icon { display: none; }
+
+      /* Hero */
       .hero { display: flex; flex-direction: column; min-height: auto; }
       .hero-content { padding: 90px 24px 48px !important; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
       .hero-title { font-size: 32px; max-width: 100%; }
       .hero-signia { max-width: 140px; padding-top: 0; }
+
+      /* Winners */
       .winners-header { padding: 40px 20px 24px; }
       .winners-title { font-size: 32px; }
       .winner-card { flex: 0 0 280px; }
       .winner-img-wrap { height: 280px; }
+
+      /* Categories */
       .cat-title { font-size: 32px; }
       .cat-grid { grid-template-columns: 1fr; }
+
+      /* Jury */
       .jury-header { padding: 40px 20px 24px; }
       .jury-title { font-size: 30px; }
       .jury-grid { grid-template-columns: 1fr 1fr; padding: 0 20px; }
+
+      /* Requirements */
       .req-section { padding: 48px 20px; }
       .req-title { font-size: 28px; }
+
+      /* FAQ — key fixes */
+      .faq-section { padding: 40px 20px 56px; }
       .faq-layout { grid-template-columns: 1fr; gap: 24px; }
-      .faq-left-head { font-size: 32px; }
-      .faq-inner { padding: 32px 20px 56px; }
+      .faq-title-left { font-size: 32px; }
+
+      /* Partners */
       .partners-inner { padding: 32px 20px 48px; }
       .partners-title { font-size: 26px; }
       .partners-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Footer */
       .footer-inner { grid-template-columns: 1fr 1fr; }
+
+      /* Sig nav */
       .fug-sig-strip-inner { justify-content: flex-start; }
     }
+
     @media (max-width: 480px) {
       .hero-title { font-size: 26px; }
       .jury-grid { grid-template-columns: 1fr; }
       .partners-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
+      .faq-q-text { font-size: 14px; }
     }
   </style>
 </head>
@@ -792,7 +784,7 @@
   <div class="hero-content">
     <div class="hero-text-wrapper">
       <p class="hero-eyebrow">Fak'ugesi Awards</p>
-      <h1 class="hero-title">Celebrating the best in<br>African digital creativity</h1>
+      <h1 class="hero-title">Celebrating the Best in<br>African Digital Creativity</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
       <a class="btn-apply" href="#">
         SUBMIT YOUR APPLICATION
@@ -845,10 +837,10 @@
 <!-- ═══════════════════════════════ 2025 WINNERS ═══════════════════════════════ -->
 <section class="winners-section reveal">
   <div class="cross-icon" style="top:56px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:56px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
   <div class="winners-header">
@@ -862,11 +854,8 @@
   <div class="winners-strip-outer" id="winnersOuter">
     <div class="winners-strip" id="winnersStrip">
 
-      <!-- ── SET 1 ── -->
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted" /></div>
         <div class="winner-info">
           <p class="winner-cat">Digital Art</p>
           <p class="winner-name">Unmuted: The Power of African Youth Movements</p>
@@ -875,9 +864,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Voices of Fire" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Voices of Fire" /></div>
         <div class="winner-info">
           <p class="winner-cat">Interactive Installation</p>
           <p class="winner-name">Voices of Fire: A Digital Anthology</p>
@@ -886,9 +873,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="AfroVerse" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="AfroVerse" /></div>
         <div class="winner-info">
           <p class="winner-cat">Immersive Media</p>
           <p class="winner-name">AfroVerse: Beyond the Binary</p>
@@ -897,9 +882,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Griot" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Griot" /></div>
         <div class="winner-info">
           <p class="winner-cat">Digital Storytelling</p>
           <p class="winner-name">Digital Griot: Stories from the Sahel</p>
@@ -908,9 +891,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Ubuntu Code" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Ubuntu Code" /></div>
         <div class="winner-info">
           <p class="winner-cat">Tech Innovation</p>
           <p class="winner-name">Ubuntu Code: Collective Intelligence</p>
@@ -919,9 +900,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Roots" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Roots" /></div>
         <div class="winner-info">
           <p class="winner-cat">Game Design</p>
           <p class="winner-name">Roots: An African Odyssey</p>
@@ -930,9 +909,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Pulse" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Pulse" /></div>
         <div class="winner-info">
           <p class="winner-cat">Motion Graphics</p>
           <p class="winner-name">Digital Pulse: Rhythms of the City</p>
@@ -941,9 +918,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Neon Ancestor" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Neon Ancestor" /></div>
         <div class="winner-info">
           <p class="winner-cat">Digital Art</p>
           <p class="winner-name">Neon Ancestor: A Tribute</p>
@@ -952,9 +927,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Sankofa Digital" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Sankofa Digital" /></div>
         <div class="winner-info">
           <p class="winner-cat">Interactive</p>
           <p class="winner-name">Sankofa Digital: Looking Back Forward</p>
@@ -962,11 +935,9 @@
         </div>
       </div>
 
-      <!-- ── SET 2 (duplicate for seamless loop) ── -->
+      <!-- SET 2 duplicate for seamless loop -->
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted" /></div>
         <div class="winner-info">
           <p class="winner-cat">Digital Art</p>
           <p class="winner-name">Unmuted: The Power of African Youth Movements</p>
@@ -975,9 +946,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Voices of Fire" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Voices of Fire" /></div>
         <div class="winner-info">
           <p class="winner-cat">Interactive Installation</p>
           <p class="winner-name">Voices of Fire: A Digital Anthology</p>
@@ -986,9 +955,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="AfroVerse" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="AfroVerse" /></div>
         <div class="winner-info">
           <p class="winner-cat">Immersive Media</p>
           <p class="winner-name">AfroVerse: Beyond the Binary</p>
@@ -997,9 +964,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Griot" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Griot" /></div>
         <div class="winner-info">
           <p class="winner-cat">Digital Storytelling</p>
           <p class="winner-name">Digital Griot: Stories from the Sahel</p>
@@ -1008,9 +973,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Ubuntu Code" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Ubuntu Code" /></div>
         <div class="winner-info">
           <p class="winner-cat">Tech Innovation</p>
           <p class="winner-name">Ubuntu Code: Collective Intelligence</p>
@@ -1019,9 +982,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Roots" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Roots" /></div>
         <div class="winner-info">
           <p class="winner-cat">Game Design</p>
           <p class="winner-name">Roots: An African Odyssey</p>
@@ -1030,9 +991,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Pulse" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Digital Pulse" /></div>
         <div class="winner-info">
           <p class="winner-cat">Motion Graphics</p>
           <p class="winner-name">Digital Pulse: Rhythms of the City</p>
@@ -1041,9 +1000,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Neon Ancestor" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Neon Ancestor" /></div>
         <div class="winner-info">
           <p class="winner-cat">Digital Art</p>
           <p class="winner-name">Neon Ancestor: A Tribute</p>
@@ -1052,9 +1009,7 @@
       </div>
 
       <div class="winner-card">
-        <div class="winner-img-wrap">
-          <img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Sankofa Digital" />
-        </div>
+        <div class="winner-img-wrap"><img src="images/signature/VOF Voices of fire print - Joseph Dairo.jpg" alt="Sankofa Digital" /></div>
         <div class="winner-info">
           <p class="winner-cat">Interactive</p>
           <p class="winner-name">Sankofa Digital: Looking Back Forward</p>
@@ -1067,13 +1022,13 @@
 
   <div style="position:relative;height:52px;margin-top:0;">
     <div class="cross-icon" style="top:8px;left:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:8px;left:50%;transform:translateX(-50%);">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:8px;right:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
   </div>
 </section>
@@ -1134,13 +1089,13 @@
 <section class="jury-section reveal">
   <div style="position:relative;height:56px;">
     <div class="cross-icon" style="top:20px;left:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:20px;right:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
   </div>
 
@@ -1150,9 +1105,7 @@
 
   <div class="jury-grid">
     <div class="jury-card">
-      <div class="jury-img-wrap">
-        <img src="images/signature/Mickael Newton.png" alt="Mickael Newton" />
-      </div>
+      <div class="jury-img-wrap"><img src="images/signature/Mickael Newton.png" alt="Mickael Newton" /></div>
       <div class="jury-info">
         <p class="jury-name">Mickael Newton</p>
         <p class="jury-role">Ubisoft Senior Social Impact Manager</p>
@@ -1160,9 +1113,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img-wrap">
-        <img src="images/signature/Mickael Newton.png" alt="Amara Osei" />
-      </div>
+      <div class="jury-img-wrap"><img src="images/signature/Mickael Newton.png" alt="Amara Osei" /></div>
       <div class="jury-info">
         <p class="jury-name">Amara Osei</p>
         <p class="jury-role">Creative Director, AfroTech Collective</p>
@@ -1170,9 +1121,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img-wrap">
-        <img src="images/signature/Mickael Newton.png" alt="Leila Benali" />
-      </div>
+      <div class="jury-img-wrap"><img src="images/signature/Mickael Newton.png" alt="Leila Benali" /></div>
       <div class="jury-info">
         <p class="jury-name">Leila Benali</p>
         <p class="jury-role">Digital Innovation Lead, African Union</p>
@@ -1180,9 +1129,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img-wrap">
-        <img src="images/signature/Mickael Newton.png" alt="Tunde Fashola" />
-      </div>
+      <div class="jury-img-wrap"><img src="images/signature/Mickael Newton.png" alt="Tunde Fashola" /></div>
       <div class="jury-info">
         <p class="jury-name">Tunde Fashola</p>
         <p class="jury-role">Founder, Lagos Digital Arts Festival</p>
@@ -1190,9 +1137,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img-wrap">
-        <img src="images/signature/Mickael Newton.png" alt="Nadia Kamara" />
-      </div>
+      <div class="jury-img-wrap"><img src="images/signature/Mickael Newton.png" alt="Nadia Kamara" /></div>
       <div class="jury-info">
         <p class="jury-name">Nadia Kamara</p>
         <p class="jury-role">Senior Curator, Digital Arts Institute</p>
@@ -1200,9 +1145,7 @@
       </div>
     </div>
     <div class="jury-card">
-      <div class="jury-img-wrap">
-        <img src="images/signature/Mickael Newton.png" alt="Marcus Dlamini" />
-      </div>
+      <div class="jury-img-wrap"><img src="images/signature/Mickael Newton.png" alt="Marcus Dlamini" /></div>
       <div class="jury-info">
         <p class="jury-name">Marcus Dlamini</p>
         <p class="jury-role">Head of Innovation, Wits Tshimologong</p>
@@ -1213,13 +1156,13 @@
 
   <div style="position:relative;height:52px;margin-top:8px;">
     <div class="cross-icon" style="top:16px;left:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:16px;right:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
   </div>
 </section>
@@ -1253,32 +1196,31 @@
 <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
-  <div class="faq-inner">
-    <div class="faq-layout">
-      <div>
-        <h2 class="faq-title-left">FAQ</h2>
-        <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+      <a class="faq-apply-link" href="#">Submit your application</a>
+    </div>
+    <div>
+      <div class="faq-right-hdr">
+        <a class="faq-apply-top" href="#">Submit your application</a>
       </div>
-      <div>
-        <div class="faq-right-hdr">
-          <a class="faq-apply-top" href="#">Submit your application</a>
-        </div>
-        <div class="faq-items-wrap" id="faqAccordion"></div>
-      </div>
+      <div class="faq-items-wrap" id="faqAccordion"></div>
     </div>
   </div>
 
   <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 </section>
 
@@ -1327,18 +1269,13 @@ revealEls.forEach(el => io.observe(el));
   const strip = document.getElementById('winnersStrip');
   const prevBtn = document.getElementById('prevWinner');
   const nextBtn = document.getElementById('nextWinner');
-
   let offset = 0;
 
   function getCardWidth() {
     const card = strip.querySelector('.winner-card');
     return card ? card.getBoundingClientRect().width + 2 : 362;
   }
-
-  function getTotalWidth() {
-    return strip.scrollWidth / 2;
-  }
-
+  function getTotalWidth() { return strip.scrollWidth / 2; }
   function move(direction) {
     const cw = getCardWidth();
     const total = getTotalWidth();

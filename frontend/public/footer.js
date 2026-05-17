@@ -124,8 +124,12 @@
       align-items: flex-start;
       gap: 16px;
     }
+
+    /* Logo — height matches the 3-line copyright text block:
+       font-size 16px × line-height 1.8 × 3 lines ≈ 86px;
+       set to 90px so it sits flush top-to-bottom with the text. */
     #fug-footer .fug-footer-logo {
-      height: 56px;
+      height: 90px;
       width: auto;
       display: block;
       flex-shrink: 0;
@@ -177,7 +181,7 @@
         padding-top: 8px;
         border-top: 1px solid rgba(26,39,68,0.08);
       }
-      #fug-footer .fug-footer-logo { height: 38px; }
+      #fug-footer .fug-footer-logo { height: 56px; }
       #fug-footer .fug-footer-copy { font-size: 15px; }
       .fug-footer-cross { display: none; }
     }

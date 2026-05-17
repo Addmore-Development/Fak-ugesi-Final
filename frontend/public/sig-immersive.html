@@ -16,109 +16,72 @@
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    /* ── HERO — original, untouched ── */
-    .hero{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end;padding-top:110px;}
+    /* ── HERO ── */
+    .hero{
+      position:relative;width:100%;min-height:100vh;overflow:hidden;
+      display:grid;
+      grid-template-rows:calc(16px + 9px) 1fr calc(16px + 9px);
+      grid-template-columns:248px 1fr 248px;
+      align-items:stretch;
+      padding-top:0;
+    }
     .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.72) 45%,transparent 80%)}
-    .hero-content{position:relative;z-index:3;padding:0 248px 72px;animation:fadeUp .9s ease both}
+
+    /* ── Hero content: flex row matching Dala Khona ── */
+    .hero-content{
+      grid-row:2;grid-column:2;
+      position:relative;z-index:4;
+      display:flex;flex-direction:row;
+      justify-content:space-between;align-items:flex-start;
+      gap:48px;
+      padding:110px 0 60px;
+      animation:fadeUp .9s ease both;
+    }
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+    .hero-text-wrapper{flex:1;min-width:0;}
+
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
     .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:510px;opacity:.85;margin-bottom:28px}
 
-    /* ── Digital Dome logo — absolutely positioned top-right, doesn't touch layout ── */
+    /* ── Digital Dome logo — inline flex child, matching Dala Khona .hero-signia ── */
     .hero-signia{
-      position:absolute;
-      top:80px;right:248px;
-      z-index:4;
-      max-width:200px;
-      pointer-events:none;
+      flex-shrink:0;
+      width:auto;max-width:200px;
+      padding-top:38px;
+      display:flex;align-items:flex-start;justify-content:flex-end;
     }
     .hero-signia img{
-      display:block;width:100%;height:auto;max-height:72px;
+      display:block;width:100%;height:auto;
+      max-height:96px;
       object-fit:contain;
       filter:brightness(0) invert(1);
       opacity:0.82;
     }
 
-    /* ── BUTTONS: transparent / outlined at rest ── */
-    .hero-cta{
+    /* ══ BUTTONS ══ */
+    .hero-cta,
+    .section-cta {
       display:inline-flex;align-items:center;gap:10px;
       border:1.5px solid #fff;color:#fff;background:transparent;
       padding:13px 30px;font-size:11px;font-weight:700;
       letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
-      text-decoration:none;margin-top:8px;
-      position:relative;overflow:hidden;isolation:isolate;
-      transition:background .22s,color .22s,border-color .22s;
-    }
-    .section-cta{
-      display:inline-flex;align-items:center;gap:10px;
-      border:1.5px solid rgba(255,255,255,.7);color:#fff;background:transparent;
-      padding:12px 28px;font-size:11px;font-weight:700;
-      letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
       text-decoration:none;
-      position:relative;overflow:hidden;isolation:isolate;
-      transition:background .22s,color .22s,border-color .22s;
+      transition:background .22s, color .22s, border-color .22s;
     }
-
-    /* ── Lightning layer — hidden at rest, activates on hover ── */
-    .hero-cta::before,
-    .section-cta::before {
-      content:'';
-      position:absolute;inset:-2px;z-index:0;
-      opacity:0;
-      background:
-        linear-gradient(117deg, transparent 20%, rgba(140,180,255,0.55) 35%, transparent 50%),
-        linear-gradient(243deg, transparent 15%, rgba(180,140,255,0.45) 32%, transparent 52%),
-        linear-gradient(78deg,  transparent 40%, rgba(100,220,255,0.4)  55%, transparent 68%),
-        linear-gradient(195deg, transparent 25%, rgba(255,180,120,0.3)  42%, transparent 58%);
-      background-size:300% 300%, 280% 280%, 320% 320%, 260% 260%;
-      background-position:0% 50%, 100% 0%, 50% 100%, 20% 80%;
-      transition:opacity .18s ease;
-      pointer-events:none;
-    }
-    .hero-cta:hover::before,
-    .section-cta:hover::before {
-      opacity:1;
-      animation:
-        bolt1 0.9s ease-in-out infinite alternate,
-        bolt2 1.3s ease-in-out infinite alternate-reverse,
-        bolt3 0.7s ease-in-out infinite alternate,
-        bolt4 1.1s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes bolt1{
-      0%  {background-position:0% 50%,100% 0%,50% 100%,20% 80%;}
-      100%{background-position:100% 50%,0% 100%,50% 0%,80% 20%;}
-    }
-    @keyframes bolt2{
-      0%  {background-size:300% 300%,280% 280%,320% 320%,260% 260%;}
-      50% {background-size:380% 380%,200% 200%,260% 260%,340% 340%;}
-      100%{background-size:300% 300%,280% 280%,320% 320%,260% 260%;}
-    }
-    @keyframes bolt3{
-      0%  {filter:hue-rotate(0deg)  brightness(1);}
-      100%{filter:hue-rotate(40deg) brightness(1.3);}
-    }
-    @keyframes bolt4{
-      0%,100%{opacity:1;}
-      45%    {opacity:0.65;}
-      55%    {opacity:1;}
-      72%    {opacity:0.5;}
-      80%    {opacity:1;}
-    }
-
-    /* On hover: fill navy, keep white text, lightning plays behind */
     .hero-cta:hover,
     .section-cta:hover {
-      background:var(--navy) !important;
-      color:#fff !important;
-      border-color:rgba(255,255,255,0.85) !important;
+      background: var(--navy) !important;
+      color: #fff !important;
+      border-color: var(--navy) !important;
     }
-    /* Keep text above the lightning layer */
-    .hero-cta > *,
-    .section-cta > * {
-      position:relative;z-index:1;
+    .hero-cta::before,
+    .section-cta::before {
+      display: none !important;
+      content: none !important;
     }
 
     /* ── TICKER ── */
@@ -180,20 +143,33 @@
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){
+      .hero{grid-template-columns:48px 1fr 48px;}
+      .hero-title{font-size:40px !important;}
+      .premiering-content,.ongoing-content{padding-left:48px;padding-right:48px}
+      .section-header-label{font-size:36px}
+      .partners-title,.partners-blue-band{padding-left:48px;padding-right:48px}
+    }
     @media(max-width:900px){
       .hero-title{font-size:44px}
       .hero-content,.premiering-content,.ongoing-content{padding-left:32px;padding-right:32px}
       .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
       .section-header-label{font-size:36px}
-      .hero-signia{right:32px;}
     }
     @media(max-width:768px){
-      .hero{min-height:70vh !important;align-items:flex-end !important;padding-top:58px !important;}
-      .hero-content{padding:0 24px 48px !important;}
+      .hero{display:flex;flex-direction:column;min-height:auto;}
+      .hero-content{
+        padding:90px 24px 48px !important;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+        width:100%;
+      }
       .hero-title{font-size:36px !important;line-height:1.1 !important;}
       .hero-body{font-size:12px !important;max-width:100% !important;}
       .hero-body br{display:none;}
-      .hero-signia{top:68px;right:20px;max-width:110px;}
+      .hero-signia{padding-top:0;max-width:160px;}
       .premiering-section,.ongoing-section{min-height:70vh !important;}
       .premiering-content,.ongoing-content{padding:0 24px 48px !important;}
       .section-header-label{font-size:32px !important;}
@@ -213,14 +189,16 @@
       .section-header-label{font-size:26px !important;}
       .premiere-title{font-size:22px !important;}
       .hero-content,.premiering-content,.ongoing-content{padding:0 16px 36px !important;}
-      .hero-signia{max-width:80px;}
+      .hero-signia{max-width:100px;}
     }
   </style>
 
 <style id="fug-global-fixes">
 .hero{padding-top:58px !important;}
 body>.hero:first-child{padding-top:58px !important;}
+/* ── Global button hover: navy bg ── */
 .btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative !important;overflow:hidden !important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s !important;}
+.btn-primary:hover,.btn-outline-dark:hover,.btn-outline-white:hover,.btn-apply:hover,.btn-cta-white:hover,.btn-cta-filled:hover,.btn-learn:hover,.hero-cta:hover,.intro-cta:hover,.network-cta:hover,.section-cta:hover,.challenge-cta:hover,a.btn-tickets:hover,button.btn-tickets:hover,.btn-get-pass:hover,.btn-primary-dark:hover,.btn-white:hover,.btn-dark:hover,.cta-btn:hover{background:var(--navy) !important;color:#fff !important;border-color:var(--navy) !important;}
 .cross-icon{display:inline-flex !important;align-items:center !important;justify-content:center !important;width:18px !important;height:18px !important;flex-shrink:0 !important;position:absolute !important;z-index:6 !important;opacity:1 !important;animation:none !important;transition:transform 0.1s linear !important;}
 .cross-icon svg{width:100%;height:100%;}
 @media(max-width:1400px){:root{--band:160px !important;}}
@@ -241,21 +219,24 @@ body>.hero:first-child{padding-top:58px !important;}
 <body>
 <script src="nav.js"></script>
 
-<!-- ═══ HERO — original structure, logo added as absolute overlay ═══ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <!-- Digital Dome logo: position:absolute, does not affect hero-content flow -->
-  <div class="hero-signia">
-    <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/>
-  </div>
-
   <div class="hero-content">
-    <p class="hero-eyebrow">Immersive Africa</p>
-    <h1 class="hero-title">Explore The<br>AfriVerse</h1>
-    <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis<br>justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.<br>Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-    <a class="hero-cta" href="tickets.html" id="immersive-cta">GET YOUR TICKETS</a>
+    <!-- Text block -->
+    <div class="hero-text-wrapper">
+      <p class="hero-eyebrow">Immersive Africa</p>
+      <h1 class="hero-title">Explore The<br>AfriVerse</h1>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis<br>justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.<br>Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <a class="hero-cta" href="tickets.html" id="immersive-cta">GET YOUR TICKETS</a>
+    </div>
+
+    <!-- Logo — inline flex child, matching Dala Khona layout -->
+    <div class="hero-signia">
+      <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/>
+    </div>
   </div>
 </section>
 
@@ -376,31 +357,6 @@ const track = document.getElementById('partnersTrack');
   a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/></div>`;
   track.appendChild(a);
 });
-
-/* ── SPINNING RAINBOW LIGHTNING on hero CTA ── */
-(function() {
-  const btn = document.getElementById('immersive-cta');
-  if (!btn) return;
-  const arcColors = ['#a855f7','#ec4899','#3b82f6','#06b6d4','#10b981','#eab308'];
-  let frame = 0, si;
-  function spawnArc() {
-    if (!btn.matches(':hover')) return;
-    const rect = btn.getBoundingClientRect();
-    const arc = document.createElement('span');
-    const startX = rect.left + Math.random()*rect.width;
-    const startY = rect.top + Math.random()*rect.height;
-    const col = arcColors[frame % arcColors.length]; frame++;
-    arc.style.cssText = `position:fixed;pointer-events:none;z-index:9999;left:${startX}px;top:${startY}px;width:${15+Math.random()*25}px;height:2px;background:linear-gradient(to right,transparent,${col},transparent);border-radius:2px;box-shadow:0 0 8px ${col},0 0 16px ${col}50;transform:rotate(${Math.random()*360}deg);transform-origin:left center;opacity:1;transition:opacity 0.4s ease,transform 0.4s ease;`;
-    document.body.appendChild(arc);
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      arc.style.opacity = '0';
-      arc.style.transform = `rotate(${parseFloat(arc.style.transform.match(/\d+/)[0])+45}deg) scaleX(1.5)`;
-    }));
-    setTimeout(() => arc.remove(), 420);
-  }
-  btn.addEventListener('mouseenter', () => { si = setInterval(spawnArc, 60); });
-  btn.addEventListener('mouseleave', () => clearInterval(si));
-})();
 
 /* ── SIG-STRIP INJECT ── */
 (function(){

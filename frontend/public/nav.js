@@ -34,17 +34,18 @@
     #main-nav.scrolled::before { opacity: 1; }
     #main-nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
 
-    /* ── HOME LOGO LINK ── */
+    /* ── HOME LOGO (non-linked, far left) ── */
     #nav-home-logo {
       position: absolute;
-      left: 248px;
+      left: 32px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 2;
       display: flex;
       align-items: center;
       text-decoration: none;
-      transition: opacity 0.3s ease;
+      pointer-events: none;
+      user-select: none;
     }
     #nav-home-logo img {
       height: 26px;
@@ -52,16 +53,14 @@
       display: block;
       filter: brightness(0) invert(1);
       opacity: 0.88;
-      transition: opacity 0.2s;
     }
-    #nav-home-logo:hover img { opacity: 1; }
 
     /* ── Desktop nav links ── */
     #main-nav .nav-links-wrap {
       flex: 1;
       display: flex;
       align-items: center;
-      padding-left: 390px;
+      padding-left: 248px;
       position: relative;
       z-index: 1;
       overflow: visible;
@@ -84,6 +83,10 @@
       padding:0 20px;
       cursor:pointer;
     }
+    #main-nav .nav-links>li:first-child>a,
+    #main-nav .nav-links>li:first-child>span {
+      padding-left: 0;
+    }
     #main-nav .nav-links>li>a.active,
     #main-nav .nav-links>li>span.active { color:#fff; font-weight:400; }
 
@@ -105,6 +108,8 @@
     }
     #main-nav .nav-dd a:hover { background:rgba(255,255,255,0.07); padding-left:28px; }
 
+
+
     /* Right-side controls */
     #main-nav .nav-right {
       display:flex; align-items:center; gap:0; padding-right:32px;
@@ -123,7 +128,7 @@
     #main-nav .nav-search svg{width:18px;height:18px;}
     #main-nav .nav-search:hover { color: #fff; }
 
-    /* ── COMPACT INLINE SEARCH — appears to left of search icon, stays within nav-right ── */
+    /* ── COMPACT INLINE SEARCH ── */
     #nav-search-bar {
       display: flex;
       align-items: center;
@@ -135,7 +140,6 @@
       transition: max-width 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease;
       position: relative;
       z-index: 2;
-      /* Subtle background pill so it's readable */
       background: rgba(255,255,255,0.10);
       border: 1px solid rgba(255,255,255,0);
       border-radius: 2px;
@@ -178,7 +182,7 @@
     }
     #nav-search-close-btn:hover { color: #fff; }
 
-    /* ── SEARCH RESULTS DROPDOWN — anchored below nav-right area ── */
+    /* ── SEARCH RESULTS DROPDOWN ── */
     #nav-search-results-drop {
       position: fixed;
       top: 58px;
@@ -449,7 +453,7 @@
     .showcase-detail-link, .partners-link, .more-card-link,
     .sched-location, .sched-speakers a, .nav-dd a, .ticker-item,
     .carousel-logo-name, .hero-eyebrow, .showcases-header a,
-    .curatorial-view-link, .more-card-top span,  .jury-prog-link,
+    .curatorial-view-link, .more-card-top span, .jury-prog-link,
     [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back) {
       display:inline-block;
       transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
@@ -459,7 +463,7 @@
     .curatorial-view-link:hover, .showcases-link:hover, .showcase-card-more:hover,
     .showcase-detail-link:hover, .partners-link:hover, .more-card-link:hover,
     .sched-location:hover, .sched-speakers a:hover, .showcases-header a:hover,
-    .more-card-top span:hover,  .jury-prog-link:hover,
+    .more-card-top span:hover, .jury-prog-link:hover,
     [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back):hover {
       transform: scale(1.1);
       transform-origin: left center;
@@ -471,14 +475,15 @@
 
     /* ══ RESPONSIVE BREAKPOINTS ══ */
     @media (max-width: 1024px) {
-      #nav-home-logo { left: 180px; }
-      #main-nav .nav-links-wrap { padding-left: 300px; }
+      #nav-home-logo { left: 24px; }
+      #main-nav .nav-links-wrap { padding-left: 200px; }
       #main-nav .nav-right { padding-right: 24px; }
       #main-nav .nav-links>li>a,
       #main-nav .nav-links>li>span { font-size: 12px; padding: 0 14px; }
       #main-nav .nav-tickets { padding: 8px 16px; font-size: 10.5px; }
       #nav-search-bar.open { max-width: 200px; }
       #nav-search-results-drop { right: 24px; width: 300px; }
+      #main-nav .nav-dd-sig { width: 420px; }
     }
 
     @media (max-width: 768px) {
@@ -493,36 +498,68 @@
     }
   </style>`);
 
+  /* ── Signature Programmes sub-pages ── */
+  const SIG_PAGES = [
+    { label: 'Awards',           href: '/sig-awards.html'      },
+    { label: 'Dala Khona',       href: '/sig-dalakhona.html'   },
+    { label: 'PRO',              href: '/sig-fakugesipro.html'  },
+    { label: 'Immersive Africa', href: '/sig-immersive.html'   },
+    { label: 'JAMZ',             href: '/sig-jamz.html'         },
+    { label: 'Pitchathon',       href: '/sig-pitchathon.html'  },
+  ];
+
+  /* Check if current page is any sig page (used to mark parent as active) */
+  const sigHrefs = SIG_PAGES.map(p => p.href.replace(/^\//, '').replace(/\.html$/, ''));
+  const isAnySigPage = sigHrefs.includes(page);
+
+  /* Build the sig dropdown HTML — plain text links, same style as Discover */
+  const sigDropHTML = SIG_PAGES.map(p => `<a href="${p.href}">${p.label}</a>`).join('');
+
   const links = [
-    { label:'Festival Programme',   href:'/programme.html', dd:[
-      { label:'Expo',      href:'/fes-expo.html' },
-      { label:'Market',    href:'/fes-market.html' },
-      { label:'Schedule',  href:'/fes-schedule.html' },
+    { label: 'Home',                  href: '/index.html' },
+    { label: 'Festival Programme',    href: '/programme.html', dd: [
+      { label: 'Expo',     href: '/fes-expo.html' },
+      { label: 'Market',   href: '/fes-market.html' },
+      { label: 'Schedule', href: '/fes-schedule.html' },
     ]},
-    { label:'Signature Programmes', href:'/sig-awards.html' },
-    { label:'Discover', href:'#', dd:[
-      { label:'About Us',   href:'/about.html' },
-      { label:'Venues',     href:'/discover/venues.html' },
-      { label:'Partners',   href:'/discover/partners.html' },
-      { label:'Archive',    href:'/discover/archive.html' },
-      { label:'Resources',  href:'/discover/resources.html' },
+    { label: 'Signature Programmes',  href: '/sig-awards.html', sigDd: true },
+    { label: 'Discover',              href: '#', dd: [
+      { label: 'About Us',   href: '/about.html' },
+      { label: 'Venues',     href: '/discover/venues.html' },
+      { label: 'Partners',   href: '/discover/partners.html' },
+      { label: 'Archive',    href: '/discover/archive.html' },
+      { label: 'Resources',  href: '/discover/resources.html' },
     ]},
   ];
 
   /* ── Desktop nav items ── */
   const items = links.map((l, i) => {
-    const active = isActive(l.href);
+    const active = l.sigDd ? isAnySigPage : isActive(l.href);
+    if (l.sigDd) {
+      return `<li data-i="${i}"><span class="${active ? 'active' : ''}">${l.label} ▾</span><div class="nav-dd">${sigDropHTML}</div></li>`;
+    }
     if (l.dd) {
-      const ddHTML = `<div class="nav-dd">${l.dd.map(d=>`<a href="${d.href}">${d.label}</a>`).join('')}</div>`;
+      const ddHTML = `<div class="nav-dd">${l.dd.map(d => `<a href="${d.href}">${d.label}</a>`).join('')}</div>`;
       return `<li data-i="${i}"><span class="${active ? 'active' : ''}">${l.label} ▾</span>${ddHTML}</li>`;
     }
     return `<li data-i="${i}"><a href="${l.href}"${active ? ' class="active"' : ''}>${l.label}</a></li>`;
   }).join('');
 
   /* ── Mobile menu items (includes Home) ── */
-  const mobileLinks = [{ label:'Home', href:'/index.html' }, ...links];
+  const mobileLinks = [{ label: 'Home', href: '/index.html' }, ...links.slice(1)];
   const mobItems = mobileLinks.map((l, i) => {
-    const active = isActive(l.href);
+    const active = l.sigDd ? isAnySigPage : isActive(l.href);
+    if (l.sigDd) {
+      const subItems = SIG_PAGES.map(p => `<li><a href="${p.href}">${p.label}</a></li>`).join('');
+      return `
+        <li>
+          <span class="${active ? 'active' : ''}" data-mob-toggle="${i}">
+            ${l.label}
+            <span class="mob-chevron" id="mob-chev-${i}"></span>
+          </span>
+          <ul class="mob-sub" id="mob-sub-${i}">${subItems}</ul>
+        </li>`;
+    }
     if (l.dd) {
       const subItems = l.dd.map(d => `<li><a href="${d.href}">${d.label}</a></li>`).join('');
       return `
@@ -539,10 +576,10 @@
 
   document.body.insertAdjacentHTML('afterbegin', `
     <nav id="main-nav">
-      <!-- Home logo (desktop left) -->
-      <a href="/index.html" id="nav-home-logo" aria-label="Fak'ugesi Festival Home">
+      <!-- Home logo (desktop left, not linked) -->
+      <div id="nav-home-logo" aria-label="Fak'ugesi Festival">
         <img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
-      </a>
+      </div>
 
       <!-- Mobile logo (left, mobile only) -->
       <div id="nav-mobile-logo">
@@ -561,7 +598,7 @@
 
       <!-- Desktop right: compact search box + search icon + tickets -->
       <div class="nav-right" id="nav-right">
-        <!-- Compact search bar — expands to the left of the search icon -->
+        <!-- Compact search bar -->
         <div id="nav-search-bar" role="search" aria-label="Site search">
           <input
             type="text"
@@ -614,7 +651,7 @@
   /* ── Scroll behaviour ── */
   window.addEventListener('scroll', () => {
     document.getElementById('main-nav').classList.toggle('scrolled', scrollY > 40);
-  }, { passive:true });
+  }, { passive: true });
   document.getElementById('main-nav').classList.toggle('scrolled', scrollY > 40);
 
   /* ── Hamburger toggle ── */
@@ -657,41 +694,41 @@
      INLINE SEARCH SYSTEM
   ══════════════════════════════════════ */
   const SEARCH_INDEX = [
-    { title:'Home', section:'Home', url:'/index.html', tags:['home','festival','fakugesi','2026','african','digital','innovation','african imaginaries','theme','johannesburg'] },
-    { title:'2026 Theme: African Imaginaries', section:'Home', url:'/index.html', tags:['african imaginaries','2026 theme','afrofuturism','speculative','creative energy','october'] },
-    { title:'Get Involved', section:'Home', url:'/index.html', tags:['get involved','investors','funders','volunteers','expo showcases','sponsors'] },
-    { title:'Festival Dates', section:'Home', url:'/index.html', tags:['07 october','12 october','2026','dates','when','braamfontein'] },
-    { title:'Festival Programme', section:'Programme', url:'/programme.html', tags:['programme','events','lineup'] },
-    { title:"Fak'ugesi Expo", section:'Expo', url:'/fes-expo.html', tags:['expo','showcases','exhibitions','digital art','immersive media'] },
-    { title:'Curatorial Frequencies', section:'Expo', url:'/fes-expo.html', tags:['curatorial','imagination engines','memory engines','future engines','ai','heritage'] },
-    { title:'Want to Showcase', section:'Expo', url:'/fes-expo.html', tags:['exhibit','showcase your work','apply'] },
-    { title:"Fak'ugesi Market", section:'Market', url:'/fes-market.html', tags:['market','exhibitors','startup','business','vendors'] },
-    { title:'Festival Schedule', section:'Schedule', url:'/fes-schedule.html', tags:['schedule','timetable','sessions','panels','keynotes','talks','workshops'] },
-    { title:'AI Symposium', section:'Schedule', url:'/fes-schedule.html', tags:['ai symposium','artificial intelligence','research'] },
-    { title:'Pitchathon Coaching Workshop', section:'Schedule', url:'/fes-schedule.html', tags:['pitchathon','pitch','coaching'] },
-    { title:'JAMZ Video Game Challenge', section:'Schedule', url:'/fes-schedule.html', tags:['jamz','gaming','video game'] },
-    { title:"Fak'ugesi Awards", section:'Awards', url:'/sig-awards.html', tags:['awards','categories','application','submit'] },
-    { title:'Awards Jury 2026', section:'Awards', url:'/sig-awards.html', tags:['jury','judges'] },
-    { title:'Awards 2025 Winners', section:'Awards', url:'/sig-awards.html', tags:['winners','2025','past winners'] },
-    { title:'Dala Khona – African Gaming Arcade', section:'Dala Khona', url:'/sig-dalakhona.html', tags:['gaming','arcade','african games','indie','speedrun'] },
-    { title:"Fak'ugesiPRO", section:'PRO', url:'/sig-fakugesipro.html', tags:['pro','industry','professional','networking'] },
-    { title:'Immersive Africa', section:'Immersive Africa', url:'/sig-immersive.html', tags:['immersive','xr','vr','dome','digital dome'] },
-    { title:'JAMZ – Animation & Video Game Hackathon', section:'JAMZ', url:'/sig-jamz.html', tags:['jamz','animation','hackathon','esports'] },
-    { title:'Pitchathon', section:'Pitchathon', url:'/sig-pitchathon.html', tags:['pitchathon','pitch','startup','entrepreneur','apply'] },
-    { title:"About Fak'ugesi", section:'About', url:'/about.html', tags:['about','who we are','history','fakugesi'] },
-    { title:'Festival Venues', section:'Venues', url:'/discover/venues.html', tags:['venues','locations','map','tshimologong','digital dome','braamfontein'] },
-    { title:'Festival Partners', section:'Partners', url:'/discover/partners.html', tags:['partners','sponsors','funders'] },
-    { title:'Festival Archive', section:'Archive', url:'/discover/archive.html', tags:['archive','gallery','history','past festivals','photos'] },
-    { title:'Research & Resources', section:'Resources', url:'/discover/resources.html', tags:['resources','research','reports','download'] },
-    { title:'Get Tickets', section:'Tickets', url:'/tickets.html', tags:['tickets','buy tickets','attend','passes','pricing'] },
+    { title: 'Home', section: 'Home', url: '/index.html', tags: ['home','festival','fakugesi','2026','african','digital','innovation','african imaginaries','theme','johannesburg'] },
+    { title: '2026 Theme: African Imaginaries', section: 'Home', url: '/index.html', tags: ['african imaginaries','2026 theme','afrofuturism','speculative','creative energy','october'] },
+    { title: 'Get Involved', section: 'Home', url: '/index.html', tags: ['get involved','investors','funders','volunteers','expo showcases','sponsors'] },
+    { title: 'Festival Dates', section: 'Home', url: '/index.html', tags: ['07 october','12 october','2026','dates','when','braamfontein'] },
+    { title: 'Festival Programme', section: 'Programme', url: '/programme.html', tags: ['programme','events','lineup'] },
+    { title: "Fak'ugesi Expo", section: 'Expo', url: '/fes-expo.html', tags: ['expo','showcases','exhibitions','digital art','immersive media'] },
+    { title: 'Curatorial Frequencies', section: 'Expo', url: '/fes-expo.html', tags: ['curatorial','imagination engines','memory engines','future engines','ai','heritage'] },
+    { title: 'Want to Showcase', section: 'Expo', url: '/fes-expo.html', tags: ['exhibit','showcase your work','apply'] },
+    { title: "Fak'ugesi Market", section: 'Market', url: '/fes-market.html', tags: ['market','exhibitors','startup','business','vendors'] },
+    { title: 'Festival Schedule', section: 'Schedule', url: '/fes-schedule.html', tags: ['schedule','timetable','sessions','panels','keynotes','talks','workshops'] },
+    { title: 'AI Symposium', section: 'Schedule', url: '/fes-schedule.html', tags: ['ai symposium','artificial intelligence','research'] },
+    { title: 'Pitchathon Coaching Workshop', section: 'Schedule', url: '/fes-schedule.html', tags: ['pitchathon','pitch','coaching'] },
+    { title: 'JAMZ Video Game Challenge', section: 'Schedule', url: '/fes-schedule.html', tags: ['jamz','gaming','video game'] },
+    { title: "Fak'ugesi Awards", section: 'Awards', url: '/sig-awards.html', tags: ['awards','categories','application','submit'] },
+    { title: 'Awards Jury 2026', section: 'Awards', url: '/sig-awards.html', tags: ['jury','judges'] },
+    { title: 'Awards 2025 Winners', section: 'Awards', url: '/sig-awards.html', tags: ['winners','2025','past winners'] },
+    { title: 'Dala Khona – African Gaming Arcade', section: 'Dala Khona', url: '/sig-dalakhona.html', tags: ['gaming','arcade','african games','indie','speedrun'] },
+    { title: "Fak'ugesiPRO", section: 'PRO', url: '/sig-fakugesipro.html', tags: ['pro','industry','professional','networking'] },
+    { title: 'Immersive Africa', section: 'Immersive Africa', url: '/sig-immersive.html', tags: ['immersive','xr','vr','dome','digital dome'] },
+    { title: 'JAMZ – Animation & Video Game Hackathon', section: 'JAMZ', url: '/sig-jamz.html', tags: ['jamz','animation','hackathon','esports'] },
+    { title: 'Pitchathon', section: 'Pitchathon', url: '/sig-pitchathon.html', tags: ['pitchathon','pitch','startup','entrepreneur','apply'] },
+    { title: "About Fak'ugesi", section: 'About', url: '/about.html', tags: ['about','who we are','history','fakugesi'] },
+    { title: 'Festival Venues', section: 'Venues', url: '/discover/venues.html', tags: ['venues','locations','map','tshimologong','digital dome','braamfontein'] },
+    { title: 'Festival Partners', section: 'Partners', url: '/discover/partners.html', tags: ['partners','sponsors','funders'] },
+    { title: 'Festival Archive', section: 'Archive', url: '/discover/archive.html', tags: ['archive','gallery','history','past festivals','photos'] },
+    { title: 'Research & Resources', section: 'Resources', url: '/discover/resources.html', tags: ['resources','research','reports','download'] },
+    { title: 'Get Tickets', section: 'Tickets', url: '/tickets.html', tags: ['tickets','buy tickets','attend','passes','pricing'] },
   ];
 
   const categoryColors = {
-    'Home':'#4a90d9','Programme':'#7b68ee','Expo':'#e05a1e','Market':'#3a8a6a',
-    'Schedule':'#c46200','Awards':'#b8860b','Dala Khona':'#1a7a4a','PRO':'#3a5a9a',
-    'Immersive Africa':'#7a3a8a','JAMZ':'#c43a3a','Pitchathon':'#2a6a8a',
-    'About':'#5a6a7a','Venues':'#4a7a4a','Partners':'#6a4a7a','Archive':'#7a5a3a',
-    'Resources':'#3a6a7a','Tickets':'#a03a3a'
+    'Home': '#4a90d9', 'Programme': '#7b68ee', 'Expo': '#e05a1e', 'Market': '#3a8a6a',
+    'Schedule': '#c46200', 'Awards': '#b8860b', 'Dala Khona': '#1a7a4a', 'PRO': '#3a5a9a',
+    'Immersive Africa': '#7a3a8a', 'JAMZ': '#c43a3a', 'Pitchathon': '#2a6a8a',
+    'About': '#5a6a7a', 'Venues': '#4a7a4a', 'Partners': '#6a4a7a', 'Archive': '#7a5a3a',
+    'Resources': '#3a6a7a', 'Tickets': '#a03a3a'
   };
 
   const searchBar    = document.getElementById('nav-search-bar');
@@ -762,7 +799,7 @@
   }
 
   /* Open/close search */
-  navSearchBtn.addEventListener('click', function(e) {
+  navSearchBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     if (searchBar.classList.contains('open')) {
       closeSearch();
@@ -820,15 +857,15 @@
     const ctx = cv.getContext('2d');
     let raf = null, on = false, bolts = [], f = 0;
     function rs() { cv.width = btn.offsetWidth; cv.height = btn.offsetHeight; }
-    function seg(x1,y1,x2,y2,r,d) {
+    function seg(x1, y1, x2, y2, r, d) {
       if (d <= 0) return [[x1,y1],[x2,y2]];
       const mx = (x1+x2)/2 + (Math.random()-.5)*r, my = (y1+y2)/2 + (Math.random()-.5)*r*.4;
       return [...seg(x1,y1,mx,my,r*.55,d-1), ...seg(mx,my,x2,y2,r*.55,d-1).slice(1)];
     }
     function spawn() {
       const W = cv.width, H = cv.height;
-      return { pts:seg(W*(.1+Math.random()*.8),0,W*(.1+Math.random()*.8),H,W*.28,4),
-               life:1, decay:.08+Math.random()*.06, w:.7+Math.random()*.9 };
+      return { pts: seg(W*(.1+Math.random()*.8),0,W*(.1+Math.random()*.8),H,W*.28,4),
+               life: 1, decay: .08+Math.random()*.06, w: .7+Math.random()*.9 };
     }
     function draw(b) {
       const a = Math.max(0, b.life);
@@ -873,18 +910,18 @@
       const ctx = cv.getContext('2d');
       let raf = null, on = false, bolts = [], f = 0;
       function rs() { cv.width = btn.offsetWidth; cv.height = btn.offsetHeight; }
-      function seg(x1,y1,x2,y2,r,d) {
-        if (d<=0) return [[x1,y1],[x2,y2]];
-        const mx=(x1+x2)/2+(Math.random()-.5)*r, my=(y1+y2)/2+(Math.random()-.5)*r*.4;
+      function seg(x1, y1, x2, y2, r, d) {
+        if (d <= 0) return [[x1,y1],[x2,y2]];
+        const mx = (x1+x2)/2 + (Math.random()-.5)*r, my = (y1+y2)/2 + (Math.random()-.5)*r*.4;
         return [...seg(x1,y1,mx,my,r*.55,d-1), ...seg(mx,my,x2,y2,r*.55,d-1).slice(1)];
       }
       function spawn() {
-        const W=cv.width, H=cv.height;
-        return { pts:seg(W*(.1+Math.random()*.8),0,W*(.1+Math.random()*.8),H,W*.28,4),
-                 life:1, decay:.08+Math.random()*.06, w:.7+Math.random()*.9 };
+        const W = cv.width, H = cv.height;
+        return { pts: seg(W*(.1+Math.random()*.8),0,W*(.1+Math.random()*.8),H,W*.28,4),
+                 life: 1, decay: .08+Math.random()*.06, w: .7+Math.random()*.9 };
       }
       function draw(b) {
-        const a = Math.max(0,b.life);
+        const a = Math.max(0, b.life);
         [[b.w*5,`rgba(60,120,255,${a*.28})`,'rgba(60,140,255,.7)',12],
          [b.w*.7,`rgba(200,230,255,${a*.8})`,'rgba(180,220,255,.9)',4]]
         .forEach(([lw,sc,sh,sb]) => {
@@ -896,13 +933,13 @@
       }
       function tick() {
         if (!on) return; rs(); ctx.clearRect(0,0,cv.width,cv.height); f++;
-        if (f%9===0) { bolts.push(spawn()); if(Math.random()>.55) bolts.push(spawn()); }
-        bolts = bolts.filter(b=>b.life>0);
-        bolts.forEach(b=>{ draw(b); b.life-=b.decay; });
+        if (f%9 === 0) { bolts.push(spawn()); if (Math.random() > .55) bolts.push(spawn()); }
+        bolts = bolts.filter(b => b.life > 0);
+        bolts.forEach(b => { draw(b); b.life -= b.decay; });
         raf = requestAnimationFrame(tick);
       }
-      btn.addEventListener('mouseenter', ()=>{ on=true; rs(); bolts=[]; f=0; if(!raf) raf=requestAnimationFrame(tick); });
-      btn.addEventListener('mouseleave', ()=>{ on=false; if(raf){cancelAnimationFrame(raf);raf=null;} ctx.clearRect(0,0,cv.width,cv.height); });
+      btn.addEventListener('mouseenter', () => { on=true; rs(); bolts=[]; f=0; if (!raf) raf=requestAnimationFrame(tick); });
+      btn.addEventListener('mouseleave', () => { on=false; if(raf){cancelAnimationFrame(raf);raf=null;} ctx.clearRect(0,0,cv.width,cv.height); });
     }
 
     function attachAll() {
