@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fak'ugesi Awards 2026 – African Digital Innovation Festival</title>
   <style>
+    /* ── FONTS: exact from fes-schedule.html ── */
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; font-style:normal; }
-    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; }
-    @font-face { font-family:'DxWideground'; src:url('fonts/DxWideground-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
+    @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:700; font-style:normal; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -36,8 +36,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 12px;
-      height: 12px;
+      width: 18px;
+      height: 18px;
       flex-shrink: 0;
       position: absolute;
       z-index: 6;
@@ -51,66 +51,52 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     /* ══════════════════════════════════════════════
-       HERO
+       HERO — exact from fes-schedule.html
     ══════════════════════════════════════════════ */
     .hero {
       position: relative;
       width: 100%;
-      min-height: 580px;
+      min-height: 520px;
       overflow: hidden;
-      display: grid;
-      grid-template-rows: calc(16px + 9px) 1fr calc(16px + 9px);
-      grid-template-columns: 248px 1fr 248px;
-      align-items: stretch;
-      padding-top: 0;
+      display: flex;
+      align-items: flex-start;
     }
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('images/signature/_MGL7139.jpg');
       background-size: cover;
       background-position: center 30%;
-      filter: brightness(0.50);
+      filter: brightness(0.70);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
-    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
+    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.75) 42%, transparent 80%);
+      background: linear-gradient(105deg, rgba(10,18,48,0.52) 45%, transparent 80%);
     }
-    .hero-content {
-      grid-row: 2;
-      grid-column: 2;
-      position: relative;
-      z-index: 4;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 48px;
-      padding: 110px 0 60px;
-      animation: fadeUp 0.9s ease both;
+
+    .hero-inner {
+      position: relative; z-index: 4; width: 100%;
+      padding: 120px 248px 56px;
+      display: flex; align-items: flex-start; justify-content: space-between;
     }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-
-    .hero-text-wrapper { flex: 1; min-width: 0; }
-
+    .hero-content { max-width: 620px; }
     .hero-eyebrow {
       font-size: 11px; font-weight: 600;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.75); margin-bottom: 14px;
+      opacity: 0.75; margin-bottom: 14px; color: #fff;
     }
     .hero-title {
-      font-size: 52px; font-weight: 700;
-      line-height: 1.05; color: #fff;
-      margin-bottom: 20px;
-      max-width: 640px;
+      font-size: 72px; font-weight: 900;
+      line-height: 1.0; margin-bottom: 20px; color: #fff;
     }
     .hero-body {
-      font-size: 13px; font-weight: 400;
-      line-height: 1.72; color: rgba(255,255,255,0.85);
-      max-width: 510px; margin-bottom: 28px;
+      font-size: 13px; line-height: 1.72;
+      max-width: 480px; opacity: 0.85;
+      margin-bottom: 28px; color: #fff;
     }
 
+    /* Apply button — kept from awards, styled to match schedule's hero aesthetic */
     .btn-apply {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border: 1.5px solid #fff; color: #fff; background: transparent;
@@ -119,9 +105,7 @@
       cursor: pointer; font-family: 'InterDisplay', sans-serif;
       text-decoration: none;
       transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s;
-      position: relative; overflow: hidden;
     }
-    .btn-apply .btn-lightning { display: none !important; }
     .btn-apply:hover {
       background: var(--navy);
       border-color: var(--navy);
@@ -129,23 +113,22 @@
       transform: translateY(-1px);
     }
 
-    .hero-signia {
+    /* Logo — exact from fes-schedule.html .hero-logo */
+    .hero-logo {
+      position: relative; z-index: 4;
       flex-shrink: 0;
-      width: auto;
-      max-width: 280px;
-      padding-top: 38px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
-    }
-    .hero-signia img {
-      display: block;
-      width: 100%;
-      height: auto;
-      max-height: 90px;
-      object-fit: contain;
+      display: flex; align-items: center; justify-content: center;
+      align-self: center;
       background: transparent;
     }
+    .hero-logo img {
+      height: 110px; width: auto; display: block;
+      filter: brightness(0) invert(1) contrast(1.2);
+      mix-blend-mode: screen;
+    }
+
+    /* Hero cross icons */
+    .cross-svg { width: 18px; height: 18px; display: block; }
 
     /* ── TICKER ── */
     .ticker-wrapper {
@@ -543,7 +526,7 @@
     }
 
     /* ══════════════════════════════════════════════
-       FAQ  — matches sig-dalakhona exactly
+       FAQ
     ══════════════════════════════════════════════ */
     .faq-section {
       background: var(--white);
@@ -673,101 +656,51 @@
       color: var(--body-gray); line-height: 1.65;
     }
 
-    /* ── SOCIAL BAR ── */
-    .social-bar {
-      background: var(--navy);
-      padding: 20px var(--band);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .social-bar-text { font-size: 13px; font-weight: 500; color: #fff; }
-    .social-icons { display: flex; gap: 20px; align-items: center; }
-    .social-icons a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; display: flex; }
-    .social-icons a:hover { color: #fff; }
-    .social-icons svg { width: 18px; height: 18px; }
-
-    /* ── FOOTER ── */
-    .site-footer { background: #fff; padding: 0; position: relative; }
-    .footer-inner {
-      padding: 32px var(--band) 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 32px;
-      align-items: start;
-    }
-    .footer-address { font-size: 12px; font-weight: 700; color: var(--dark-text); line-height: 1.7; }
-    .footer-address span { display: block; font-weight: 400; color: var(--body-gray); }
-    .footer-contact { font-size: 12px; color: var(--body-gray); line-height: 1.7; }
-    .footer-contact a { color: var(--navy); text-decoration: underline; display: block; }
-    .footer-logo-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-    .footer-logo-wrap img { height: 48px; width: auto; }
-    .footer-copy { font-size: 11px; color: var(--body-gray); text-align: right; }
-
     /* ══════════════════════════════════════════════
-       RESPONSIVE
+       RESPONSIVE — exact from fes-schedule.html
     ══════════════════════════════════════════════ */
     @media (max-width: 1024px) {
-      :root { --band: 48px; }
-      .hero { grid-template-columns: 48px 1fr 48px; }
-      .hero-title { font-size: 40px; }
+      .hero-inner { padding: 52px 48px 48px; }
+      .hero-title { font-size: 52px !important; }
+      .hero-logo img { height: 80px; }
+      .winners-header { padding: 40px 48px 24px; }
       .cat-grid { grid-template-columns: repeat(2, 1fr); }
-      .jury-grid { grid-template-columns: repeat(2, 1fr); }
+      .jury-header { padding: 40px 48px 24px; }
+      .jury-grid { grid-template-columns: repeat(2, 1fr); padding: 0 48px; }
+      .req-section { padding: 36px 48px; }
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
+      .partners-inner { padding: 40px 48px 72px; }
     }
 
     @media (max-width: 768px) {
-      :root { --band: 20px; }
-      .cross-icon { display: none; }
-
-      /* Hero */
-      .hero { display: flex; flex-direction: column; min-height: auto; }
-      .hero-content { padding: 90px 24px 48px !important; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
-      .hero-title { font-size: 32px; max-width: 100%; }
-      .hero-signia { max-width: 140px; padding-top: 0; }
-
-      /* Winners */
+      .hero { min-height: auto; }
+      .hero-inner { padding: 80px 20px 40px !important; flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+      .hero-logo { display: none !important; }
+      .hero-title { font-size: 32px !important; }
       .winners-header { padding: 40px 20px 24px; }
       .winners-title { font-size: 32px; }
       .winner-card { flex: 0 0 280px; }
       .winner-img-wrap { height: 280px; }
-
-      /* Categories */
       .cat-title { font-size: 32px; }
       .cat-grid { grid-template-columns: 1fr; }
-
-      /* Jury */
       .jury-header { padding: 40px 20px 24px; }
       .jury-title { font-size: 30px; }
       .jury-grid { grid-template-columns: 1fr 1fr; padding: 0 20px; }
-
-      /* Requirements */
       .req-section { padding: 48px 20px; }
       .req-title { font-size: 28px; }
-
-      /* FAQ — key fixes */
       .faq-section { padding: 40px 20px 56px; }
       .faq-layout { grid-template-columns: 1fr; gap: 24px; }
       .faq-title-left { font-size: 32px; }
-
-      /* Partners */
       .partners-inner { padding: 32px 20px 48px; }
       .partners-title { font-size: 26px; }
       .partners-grid { grid-template-columns: 1fr 1fr; }
-
-      /* Footer */
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-
-      /* Sig nav */
-      .fug-sig-strip-inner { justify-content: flex-start; }
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 26px; }
+      .hero-title { font-size: 24px !important; }
       .jury-grid { grid-template-columns: 1fr; }
       .partners-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr; }
       .faq-q-text { font-size: 14px; }
     }
   </style>
@@ -776,22 +709,25 @@
 
 <script src="nav.js"></script>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<!-- ═══════════════════════════════ HERO — structure from fes-schedule.html ═══════════════════════════════ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <div class="hero-content">
-    <div class="hero-text-wrapper">
+  <!-- Hero cross icons at 200px — exact from fes-schedule.html -->
+  <svg style="position:absolute;top:20px;left:200px;width:18px;height:18px;z-index:5;opacity:0.65;transition:transform 0.1s linear;" class="cross-svg" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  <svg style="position:absolute;top:20px;right:200px;width:18px;height:18px;z-index:5;opacity:0.65;transition:transform 0.1s linear;" class="cross-svg" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  <svg style="position:absolute;bottom:20px;left:200px;width:18px;height:18px;z-index:5;opacity:0.65;transition:transform 0.1s linear;" class="cross-svg" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  <svg style="position:absolute;bottom:20px;right:200px;width:18px;height:18px;z-index:5;opacity:0.65;transition:transform 0.1s linear;" class="cross-svg" viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+
+  <div class="hero-inner">
+    <div class="hero-content">
       <p class="hero-eyebrow">Fak'ugesi Awards</p>
-      <h1 class="hero-title">Celebrating The Best in<br>African Digital Creativity</h1>
-      <h1 class="hero-title">Celebrating the Best in<br>African Digital Creativity</h1>
+      <h1 class="hero-title">Celebrating The Best in African Digital Creativity</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-      <a class="btn-apply" href="#">
-        SUBMIT YOUR APPLICATION
-      </a>
+      <a class="btn-apply" href="#">SUBMIT YOUR APPLICATION</a>
     </div>
-    <div class="hero-signia">
+    <div class="hero-logo">
       <img src="images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
     </div>
   </div>
@@ -838,10 +774,10 @@
 <!-- ═══════════════════════════════ 2025 WINNERS ═══════════════════════════════ -->
 <section class="winners-section reveal">
   <div class="cross-icon" style="top:56px;left:200px;">
-    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:56px;right:200px;">
-    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
   <div class="winners-header">
@@ -1023,13 +959,13 @@
 
   <div style="position:relative;height:52px;margin-top:0;">
     <div class="cross-icon" style="top:8px;left:200px;">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:8px;left:50%;transform:translateX(-50%);">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:8px;right:200px;">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
   </div>
 </section>
@@ -1090,13 +1026,13 @@
 <section class="jury-section reveal">
   <div style="position:relative;height:56px;">
     <div class="cross-icon" style="top:20px;left:200px;">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:20px;left:50%;transform:translateX(-50%);">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:20px;right:200px;">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
   </div>
 
@@ -1157,13 +1093,13 @@
 
   <div style="position:relative;height:52px;margin-top:8px;">
     <div class="cross-icon" style="top:16px;left:200px;">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
     <div class="cross-icon" style="top:16px;right:200px;">
-      <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
   </div>
 </section>
@@ -1197,10 +1133,10 @@
 <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
   <div class="faq-layout">
@@ -1218,10 +1154,10 @@
   </div>
 
   <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 12 12" fill="none"><line x1="6" y1="0" x2="6" y2="12" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="6" x2="12" y2="6" stroke="#1a2744" stroke-width="0.75"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 </section>
 
@@ -1326,7 +1262,7 @@ faqData.forEach((faq, i) => {
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
   function resetRot() {
     rot = 0;
-    document.querySelectorAll('.cross-icon, .fug-footer-cross').forEach(function (el) {
+    document.querySelectorAll('.cross-icon, .cross-svg, .fug-footer-cross').forEach(function (el) {
       el.style.transition = 'transform 0.45s ease';
       el.style.transform = 'rotate(0deg)';
     });
@@ -1337,7 +1273,7 @@ faqData.forEach((faq, i) => {
         var y = window.scrollY, delta = y - lastY;
         if (Math.abs(delta) > 0) {
           rot += delta > 0 ? 15 : -15;
-          document.querySelectorAll('.cross-icon, .fug-footer-cross').forEach(function (el) {
+          document.querySelectorAll('.cross-icon, .cross-svg, .fug-footer-cross').forEach(function (el) {
             el.style.transition = 'transform 0.1s linear';
             el.style.transform = 'rotate(' + rot + 'deg)';
           });

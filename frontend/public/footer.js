@@ -53,14 +53,15 @@
 
     /* Cross icons — 18px, absolutely positioned */
     .fug-footer-cross {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      position: absolute;
-      z-index: 2;
-    }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  z-index: 2;
+  opacity: 0.55;
+}
     .fug-footer-cross svg { width: 18px; height: 18px; }
 
     /* Three-column grid aligned to 200px margins */
@@ -195,8 +196,8 @@
 
   /* SVG cross helper — 18px viewBox */
   const crossSVG = `<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/>
-    <line x1="0"  y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/>
+    <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/>
+    <line x1="0"  y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/>
   </svg>`;
 
   const html = `
