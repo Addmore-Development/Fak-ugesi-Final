@@ -207,10 +207,10 @@
     }
     .winners-view-link:hover { opacity: 0.6; }
     .winners-strip-outer { overflow: hidden; }
-    .winners-strip {
-      display: flex; gap: 2px; width: max-content;
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+   .winners-strip {
+  display: flex; gap: 16px; width: max-content;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
     .winner-card { flex: 0 0 360px; min-width: 0; cursor: pointer; }
     .winner-img-wrap {
       width: 100%; height: 360px; overflow: hidden; position: relative;
@@ -315,10 +315,10 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
     }
     .prize-card {
-      border: 1px solid var(--navy);
-      background: var(--lavender);
-      padding: 24px 22px 28px;
-    }
+  border: 2px solid rgba(26,39,68,0.35);
+  background: var(--lavender);
+  padding: 24px 22px 28px;
+}
     .prize-card-tag {
       font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--body-gray);
@@ -890,7 +890,7 @@ revealEls.forEach(el => io.observe(el));
 
   function getCardWidth() {
     const card = strip.querySelector('.winner-card');
-    return card ? card.getBoundingClientRect().width + 2 : 362;
+    return card ? card.getBoundingClientRect().width + 16 : 376;
   }
   function getTotalWidth() { return strip.scrollWidth / 2; }
   function move(direction) {
