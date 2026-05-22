@@ -63,8 +63,8 @@
     .day-cards:hover .day-card.active .day-card-day { color: rgba(255,255,255,0.3); }
     .day-cards:hover .day-card.active:hover { background: #ffffff !important; }
     .day-cards:hover .day-card.active:hover .day-card-day { color: var(--dark-text) !important; }
-    .day-card-programme { font-size: 8px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 6px; transition: color 0.22s; }
-    .day-card-day { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 6px; transition: color 0.22s; word-break: break-word; }
+    .day-card-programme { font-size: 8px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 4px; transition: color 0.22s; }
+    .day-card-day { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 4px; transition: color 0.22s; white-space: nowrap; }
     .day-card-desc { font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.5; display: block; }
 
     /* SCHEDULE SECTION — flows directly after day selector; crosses sit inside at top */
@@ -269,27 +269,27 @@
 
     <!-- DAY 0 -->
     <div class="sched-panel active" id="day-0">
-      <div class="sched-row" data-speaker-img="/images/Speakers/Adam Pantanowitz.jpg">
+      <div class="sched-row">
         <div class="sched-cell"><div class="sched-time">09:45 — 10:15</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
         <div class="sched-cell"><div class="sched-event-title">A Provocation</div><div class="sched-event-sub">Keynote Address</div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Adam Pantanowitz">Adam Pantanowitz</span></div></div>
       </div>
-      <div class="sched-row" data-speaker-img="/images/Speakers/Masilakhe Njomane.jpg">
+      <div class="sched-row">
         <div class="sched-cell"><div class="sched-time">10:15 — 11:45</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
         <div class="sched-cell"><div class="sched-event-title">Setting the Charge</div><div class="sched-event-sub">An AI Research Presentation</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Masilakhe Njomane">Masilakhe Njomane</span></div></div>
       </div>
-      <div class="sched-row" data-speaker-img="/images/Speakers/Avril Joffe.jpg">
+      <div class="sched-row">
         <div class="sched-cell"><div class="sched-time">11:45 — 12:45</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
         <div class="sched-cell"><div class="sched-event-title">Policy by Design</div><div class="sched-event-sub">Shaping Creative Futures in the Age of AI</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Policy</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Avril Joffe">Avril Joffe</span><span class="speaker-name-text" data-speaker="Zwelakhe Gila">Zwelakhe Gila</span><span class="speaker-name-text" data-speaker="Kieran Jones">Kieran Jones</span><span class="speaker-name-text" data-speaker="Mandy-Lee Pietersen">Mandy-Lee Pietersen</span></div></div>
       </div>
-      <div class="sched-row" data-speaker-img="/images/Speakers/Hannah Andrews.jpg">
+      <div class="sched-row">
         <div class="sched-cell"><div class="sched-time">13:45 — 15:00</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
         <div class="sched-cell"><div class="sched-event-title">A Radical Reimagining</div><div class="sched-event-sub">African AI from the Artist's Perspective</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Hannah Andrews">Hannah Andrews</span><span class="speaker-name-text" data-speaker="Vukosi Marivate">Vukosi Marivate</span></div></div>
       </div>
-      <div class="sched-row" data-speaker-img="/images/Speakers/pierresaal-astronaute.jpg">
+      <div class="sched-row">
         <div class="sched-cell"><div class="sched-time">15:15 — 16:30</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
         <div class="sched-cell"><div class="sched-event-title">The AI Workshop</div><div class="tags"><span class="tag">AI</span></div></div>
         <div class="sched-cell"><div class="sched-speakers"><span class="speaker-name-text" data-speaker="Pierre Saal">Pierre Saal</span></div></div>
@@ -411,7 +411,7 @@
 
   document.querySelectorAll('.sched-row').forEach(row => {
     const panel = row.closest('.sched-panel');
-    const imgSrc = row.getAttribute('data-speaker-img') || FALLBACK_IMG;
+    const imgSrc = row.getAttribute('data-speaker-img') || null;
     row.addEventListener('mouseenter', () => { if(activeRow) return; setSectionBg(imgSrc); panel.classList.add('panel-hover'); schedSection.classList.add('has-hover'); });
     row.addEventListener('mouseleave', () => { if(activeRow) return; panel.classList.remove('panel-hover'); schedSection.classList.remove('has-hover'); setSectionBg(''); });
     row.addEventListener('click', e => {
