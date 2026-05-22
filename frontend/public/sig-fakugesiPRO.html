@@ -30,14 +30,14 @@
       overflow-x: hidden;
     }
 
-    /* ── CROSS ICONS ── */
+    /* ── CROSS ICONS — matched to sig-dalakhona.html ── */
     .cross-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 18px; height: 18px;
       flex-shrink: 0; position: absolute;
-      z-index: 6; opacity: 1;
+      z-index: 6; opacity: 0.55;
       transition: transform 0.1s linear;
     }
     .cross-icon svg { width: 100%; height: 100%; }
@@ -104,19 +104,14 @@
     }
 
     /* ── TICKER ── */
-    /* CHANGED: white bg + dark text on hover for each span */
     .ticker-wrapper {
       background: var(--dark-text); overflow: hidden; white-space: nowrap;
       padding: 12px 0; position: relative; z-index: 10;
       transition: background 0.28s ease;
     }
-    .ticker-wrapper:hover {
-      background: #fff;
-    }
+    .ticker-wrapper:hover { background: #fff; }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
-    .ticker-wrapper:hover .ticker-track span {
-      color: var(--dark-text);
-    }
+    .ticker-wrapper:hover .ticker-track span { color: var(--dark-text); }
     .ticker-track { display: inline-flex; animation: tickerScroll 22s linear infinite; }
     .ticker-track span {
       padding: 0 40px; font-size: 12px; font-weight: 500;
@@ -194,7 +189,6 @@
     .intro-cards {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
     }
-    /* CHANGED: border thickness increased from 1px to 2px */
     .intro-card {
       border: 2px solid rgba(26,39,68,0.35);
       background: var(--lavender);
@@ -308,9 +302,9 @@
     .highlights-view-link:hover { opacity: 0.6; }
     .highlights-strip-outer { overflow: hidden; }
     .highlights-strip {
-      display: flex; gap: 2px; width: max-content;
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  display: flex; gap: 16px; width: max-content;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
     .highlight-card { flex: 0 0 360px; min-width: 0; cursor: pointer; }
     .highlight-img-wrap {
       width: 100%; height: 360px; overflow: hidden; position: relative;
@@ -656,10 +650,10 @@
 <!-- ═══════════════════════════════ WHAT IS FAK'UGESI PRO ═══════════════════════════════ -->
 <section class="intro-section reveal">
   <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
   <div class="intro-header">
@@ -696,10 +690,10 @@
   </div>
 
   <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 </section>
 
@@ -721,10 +715,10 @@
 <!-- ═══════════════════════════════ 2025 HIGHLIGHTS ═══════════════════════════════ -->
 <section class="highlights-section reveal">
   <div class="cross-icon" style="top:56px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:56px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
   <div class="highlights-header">
@@ -979,13 +973,13 @@
 <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
   <div class="faq-layout">
@@ -1003,10 +997,10 @@
   </div>
 
   <div class="cross-icon" style="bottom:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="bottom:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 </section>
 
