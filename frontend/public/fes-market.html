@@ -1,526 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Market • Fak'ugesi Festival 2026</title>
   <style>
-    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; }
-    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; }
-    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; }
-    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Bold.otf') format('opentype'); font-weight:700; }
-
+    @font-face{font-family:'InterDisplay';src:url('/fonts/InterDisplay-Regular.otf') format('opentype');font-weight:400;}
+    @font-face{font-family:'InterDisplay';src:url('/fonts/InterDisplay-Medium.otf') format('opentype');font-weight:500;}
+    @font-face{font-family:'InterDisplay';src:url('/fonts/InterDisplay-SemiBold.otf') format('opentype');font-weight:600;}
+    @font-face{font-family:'InterDisplay';src:url('/fonts/InterDisplay-Bold.otf') format('opentype');font-weight:700;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--band:248px;}
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
-
-    .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.45;transition:transform 0.1s linear}
-    .cross-icon svg{width:100%;height:100%}
-    .cross-icon--navy{opacity:1;}
-    .cross-icon--navy svg line{stroke:#1a2744;stroke-width:2;}
-
-    /* HERO */
+    .cross-strip{display:flex;justify-content:space-between;align-items:center;padding:0 var(--band);height:40px;}
+    .cross-strip svg{display:block;flex-shrink:0;}
+    .sec-crosses{position:absolute;left:0;right:0;display:flex;justify-content:space-between;padding:0 var(--band);pointer-events:none;z-index:20;}
+    .sec-crosses-top{top:20px;} .sec-crosses-bottom{bottom:20px;}
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;}
     .hero-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL3273.jpg');background-size:cover;background-position:center 40%;filter:brightness(0.7);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,.52) 45%,transparent 80%)}
     .hero-inner{position:relative;z-index:3;padding:120px 248px 56px;width:100%;display:flex;align-items:flex-start;justify-content:space-between;}
     .hero-content{max-width:620px;}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
+    .hero-title{font-size:72px;font-weight:600;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
-    .hero-logo{position:relative;z-index:4;flex-shrink:0;display:flex;align-items:center;justify-content:center;align-self:center;background:transparent;}
-    .hero-logo img{height:110px;width:auto;display:block;filter:brightness(0) invert(1) contrast(1.2);mix-blend-mode:screen;background:transparent;}
-
-    /* TICKER */
-    .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
+    .hero-logo{position:relative;z-index:4;flex-shrink:0;display:flex;align-items:center;justify-content:center;align-self:center;}
+    .hero-logo img{height:110px;width:auto;display:block;filter:brightness(0) invert(1) contrast(1.2);mix-blend-mode:screen;}
+    .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10;transition:background 0.28s ease;}
     .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:flex;align-items:center;gap:6px;color:var(--dark-text);font-size:12px;font-weight:500;white-space:nowrap;padding:0 40px}
-    .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
-    .ticker-wrap{transition:background 0.28s ease;}
-    .ticker-wrap:hover{background:var(--navy) !important;border-top-color:rgba(26,39,68,0.35) !important;border-bottom-color:rgba(26,39,68,0.35) !important;}
-    .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
-    .ticker-wrap:hover .ticker-item{color:#ffffff !important;}
-    .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff !important;}
-
-    /* MARKET INFO */
+    .ticker-wrap:hover{background:var(--navy)!important;} .ticker-wrap:hover .ticker-track{animation-play-state:paused;} .ticker-wrap:hover .ticker-item{color:#fff!important;}
     .market-info-section{background:#ffffff;padding:80px 248px 72px;position:relative;overflow:hidden;}
     .market-info-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;}
-    .market-info-title{font-size:48px;font-weight:900;color:var(--dark-text);line-height:1.05;}
-    .market-info-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;text-underline-offset:3px;white-space:nowrap;margin-top:8px;flex-shrink:0;margin-left:32px;}
+    .market-info-title{font-size:48px;font-weight:600;color:var(--dark-text);line-height:1.05;}
+    .market-info-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;white-space:nowrap;margin-top:8px;flex-shrink:0;margin-left:32px;}
     .market-info-body{font-size:13px;line-height:1.8;color:var(--body-gray);max-width:860px;}
-
-    /* EXHIBITORS */
     .exhibitors-section{background:#ffffff;padding:64px 0 80px;position:relative;overflow:hidden;}
     .exhibitors-header{display:flex;justify-content:space-between;align-items:center;padding:0 248px;margin-bottom:48px;}
-    .exhibitors-title{font-size:48px;font-weight:900;color:var(--dark-text);}
-    .exhibitors-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;text-underline-offset:3px;}
+    .exhibitors-title{font-size:48px;font-weight:600;color:var(--dark-text);}
+    .exhibitors-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;}
     .exhibitors-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:0 248px;}
-
-    .exhibitor-card{background:#d4dae9;border:1.5px solid #000000;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .22s,box-shadow .22s;position:relative;}
+    .exhibitor-card{background:#d4dae9;border:1.5px solid #000;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .22s,box-shadow .22s;}
     .exhibitor-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,39,68,.18);}
-    .exhibitor-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;background:#bec7d8;}
+    .exhibitor-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;background:#bec7d8;}
     .exhibitor-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
     .exhibitor-card-info{padding:16px 18px 20px;background:#c6cedf;}
     .exhibitor-card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
     .exhibitor-card-type{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-text);}
-    .exhibitor-card-more{font-size:9px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;cursor:pointer;}
-    .exhibitor-card-title{font-size:26px;font-weight:900;color:var(--dark-text);line-height:1.1;}
-
-    .exhibitors-bottom-crosses{display:flex;justify-content:center;align-items:center;gap:64px;padding:40px 0 0;}
-
-    /* EXHIBITOR DETAIL */
-    .exhibitor-detail{display:none;position:relative;}
-    .exhibitor-detail.active{display:block;}
+    .exhibitor-card-more{font-size:9px;font-weight:600;color:var(--navy);text-decoration:underline;cursor:pointer;}
+    .exhibitor-card-title{font-size:26px;font-weight:600;color:var(--dark-text);line-height:1.1;}
+    .exhibitor-detail{display:none;position:relative;} .exhibitor-detail.active{display:block;}
     .exhibitor-detail-bg{position:absolute;inset:0;background-size:cover;background-position:center 20%;}
     .exhibitor-detail-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,0.88) 40%,rgba(10,18,48,0.55) 100%);}
     .exhibitor-detail-inner{position:relative;min-height:540px;overflow:hidden;}
-    .exhibitor-detail-content{position:relative;z-index:2;padding:48px var(--band) 64px;display:grid;grid-template-columns:1fr 260px;grid-template-rows:auto auto;gap:0 48px;}
+    .exhibitor-detail-content{position:relative;z-index:2;padding:48px var(--band) 64px;display:grid;grid-template-columns:1fr 260px;gap:0 48px;}
     .exhibitor-detail-back{grid-column:1/-1;display:inline-flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.75);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-family:'InterDisplay',sans-serif;margin-bottom:36px;padding:0;transition:color .2s;}
-    .exhibitor-detail-back:hover{color:#fff;}
-    .exhibitor-detail-back svg{width:16px;height:16px;flex-shrink:0;}
-    .exhibitor-detail-left{display:flex;flex-direction:column;}
-    .exhibitor-detail-right{display:flex;flex-direction:column;justify-content:space-between;}
-    .exhibitor-detail-title{font-size:52px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:8px;}
-    .exhibitor-detail-subtitle{font-size:16px;font-weight:400;color:rgba(255,255,255,.75);margin-bottom:28px;}
+    .exhibitor-detail-back:hover{color:#fff;} .exhibitor-detail-back svg{width:16px;height:16px;}
+    .exhibitor-detail-title{font-size:52px;font-weight:600;color:#fff;line-height:1.05;margin-bottom:8px;}
+    .exhibitor-detail-subtitle{font-size:16px;color:rgba(255,255,255,.75);margin-bottom:28px;}
     .exhibitor-detail-body{font-size:13.5px;line-height:1.72;color:rgba(255,255,255,.85);max-width:560px;}
-    .exhibitor-detail-logos{display:flex;align-items:center;gap:12px;margin-bottom:36px;}
-    .exhibitor-detail-logo-box{height:64px;padding:8px 14px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;}
-    .exhibitor-detail-logo-box img{max-height:44px;max-width:120px;object-fit:contain;filter:brightness(0) invert(1);}
-    .exhibitor-detail-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#e05a1e;font-size:13px;font-weight:900;color:#fff;letter-spacing:.04em;}
-    .exhibitor-detail-links{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
-    .exhibitor-detail-link{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:3px;cursor:pointer;transition:color .2s;}
-    .exhibitor-detail-link:hover{color:#fff;}
+    .exhibitor-detail-badge{display:inline-flex;padding:10px 16px;background:#e05a1e;font-size:13px;font-weight:900;color:#fff;margin-bottom:24px;}
     .exhibitor-detail-meta{display:flex;flex-direction:column;gap:20px;}
     .exhibitor-detail-meta-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:4px;}
     .exhibitor-detail-meta-value{font-size:22px;font-weight:700;color:#fff;}
-
-    /* WANT A SPOT */
     .spot-cta-section{position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;}
     .spot-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of 2C6A3678.jpg');background-size:cover;background-position:center top;filter:brightness(0.65);}
     .spot-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.5) 40%,rgba(5,10,28,.12) 80%);}
     .spot-cta-content{position:relative;z-index:3;padding:60px 248px;width:100%;}
-    .spot-cta-title{font-size:42px;font-weight:900;color:#fff;margin-bottom:24px;max-width:480px;line-height:1.15;}
+    .spot-cta-title{font-size:42px;font-weight:600;color:#fff;margin-bottom:24px;max-width:480px;line-height:1.15;}
     .spot-cta-body{font-size:13px;line-height:1.72;max-width:440px;opacity:.85;color:#fff;margin-bottom:28px;}
-    .spot-cta-btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,0.7);color:#fff;background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;font-family:'InterDisplay',sans-serif;position:relative !important;overflow:hidden !important;transition:background 0.22s,color 0.22s,border-color 0.22s,transform 0.18s !important;}
-    .spot-cta-btn:hover{background:#0d1b3e !important;color:#fff !important;border-color:rgba(100,160,255,0.65) !important;transform:translateY(-1px) !important;}
-
-    /* ── MARKET PARTNERS — WHITE BG, ORIGINAL COLOURS, NO NAME LABELS ── */
-    .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
+    .spot-cta-btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,0.7);color:#fff;background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;font-family:'InterDisplay',sans-serif;transition:background 0.22s,color 0.22s,border-color 0.22s,transform 0.18s;}
+    .spot-cta-btn:hover{background:#0d1b3e;border-color:rgba(100,160,255,0.65);transform:translateY(-1px);}
+    .partners-section{background:#ffffff;padding:80px 0 0;}
     .partners-header{display:flex;justify-content:space-between;align-items:center;padding:0 248px;margin-bottom:52px;}
-    .partners-title{font-size:48px;font-weight:900;color:var(--dark-text);font-family:'InterDisplay',sans-serif;}
-    .partners-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;text-underline-offset:3px;}
-    .partners-carousel-outer{overflow:hidden;width:100%;position:relative;}
+    .partners-title{font-size:48px;font-weight:600;color:var(--dark-text);font-family:'InterDisplay',sans-serif;}
+    .partners-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;}
+    .partners-carousel-outer{overflow:hidden;width:100%;}
     .partners-carousel-track{display:flex;align-items:center;gap:56px;width:max-content;animation:partnerScroll 24s linear infinite;padding:8px 0 48px;}
     .partners-carousel-track:hover{animation-play-state:paused;}
     @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-    /* Logo item — off-white tile so white logos show, original colours, no name */
-    .carousel-logo{min-width:150px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;cursor:pointer;text-decoration:none;}
-    .carousel-logo-img-wrap{
-      width:150px;height:90px;
-      /* Slightly off-white so pure-white logos are visible */
-      background:#e8eaed;
-      border:1px solid rgba(26,39,68,0.10);
-      display:flex;align-items:center;justify-content:center;padding:14px 18px;
-      transition:box-shadow 0.28s ease,transform 0.28s ease,background 0.28s ease;
-    }
-    .carousel-logo:hover .carousel-logo-img-wrap{
-      box-shadow:0 8px 28px rgba(26,39,68,0.13);
-      transform:translateY(-4px);
-      background:#dde0e5;
-    }
-    /* Original colours — NO filter */
-    .carousel-logo-img-wrap img{
-      max-height:56px;max-width:118px;
-      object-fit:contain;display:block;
-      /* No filter — render logos in their native colours */
-    }
-    /* Name label hidden */
-    .carousel-logo-name{display:none !important;}
-
-    .partners-blue-band{width:100%;background:var(--navy);padding:18px 48px;}
-    .partners-social-row{display:flex;justify-content:center;align-items:center;gap:40px;}
-    .partners-social-row p{font-size:14px;font-weight:500;color:#fff;letter-spacing:.02em;margin:0;}
-    .partners-social-icons{display:flex;gap:16px;}
-    .partners-social-icons a{color:#fff;text-decoration:none;transition:opacity .2s;display:flex;align-items:center;}
-    .partners-social-icons a:hover{opacity:.5;}
-
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-
-    /* Shared link hover */
+    .carousel-logo{min-width:150px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;text-decoration:none;}
+    .carousel-logo-img-wrap{width:150px;height:90px;background:#e8eaed;border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:14px 18px;transition:box-shadow 0.28s,transform 0.28s;}
+    .carousel-logo:hover .carousel-logo-img-wrap{box-shadow:0 8px 28px rgba(26,39,68,0.13);transform:translateY(-4px);}
+    .carousel-logo-img-wrap img{max-height:56px;max-width:118px;object-fit:contain;display:block;}
     .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
     .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
-
-    @media(max-width:900px){
-      .hero-title{font-size:44px}
-      .hero-inner{padding-left:32px;padding-right:32px;}
-      .hero-logo{display:none;}
-      .market-info-section,.exhibitors-header,.exhibitors-grid,.spot-cta-content,.exhibitor-detail{padding-left:32px;padding-right:32px}
-      .exhibitors-grid{grid-template-columns:1fr}
-      .partners-header{padding-left:32px;padding-right:32px}
-    }
-    @media(max-width:1024px){
-      .hero-inner{padding:52px 48px 48px;}
-      .hero-title{font-size:52px;}
-      .hero-date{font-size:22px;}
-      .hero-logo img{height:80px;}
-      .market-info-section{padding:60px 48px 56px;}
-      .market-info-title{font-size:36px;}
-      .exhibitors-header{padding:0 48px;margin-bottom:32px;}
-      .exhibitors-title{font-size:36px;}
-      .exhibitors-grid{padding:0 48px;gap:16px;}
-      .exhibitor-detail-content{padding:40px 48px 52px;}
-      .exhibitor-detail-title{font-size:40px;}
-      .spot-cta-content{padding:52px 48px;}
-      .spot-cta-title{font-size:34px;}
-      .partners-header{padding:0 48px;margin-bottom:36px;}
-      .partners-title{font-size:36px;}
-      .cross-icon{display:none;}
-    }
-    @media(max-width:768px){
-      .hero{min-height:auto;}
-      .hero-bg{background-position:center center;}
-      .hero-inner{padding:80px 20px 40px !important;flex-direction:column !important;align-items:flex-start !important;gap:20px !important;}
-      .hero-content{max-width:100% !important;}
-      .hero-eyebrow{font-size:10px;margin-bottom:8px;}
-      .hero-title{font-size:32px !important;margin-bottom:14px;}
-      .hero-body{font-size:12px;max-width:100%;}
-      .hero-date{font-size:20px;}
-      .hero-logo{display:none !important;}
-      .market-info-section{padding:40px 20px 36px;}
-      .market-info-top{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:16px;}
-      .market-info-title{font-size:28px;}
-      .market-info-link{margin-left:0;font-size:11px;}
-      .market-info-body{font-size:13px;max-width:100%;}
-      .exhibitors-section{padding:40px 0 48px;}
-      .exhibitors-header{padding:0 20px;margin-bottom:24px;flex-direction:column;align-items:flex-start;gap:10px;}
-      .exhibitors-title{font-size:28px;}
-      .exhibitors-grid{grid-template-columns:1fr !important;padding:0 20px;gap:16px;}
-      .exhibitor-card-title{font-size:22px;}
-      .exhibitor-detail-content{padding:32px 20px 48px;grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:28px 0;}
-      .exhibitor-detail-back{margin-bottom:20px;}
-      .exhibitor-detail-title{font-size:28px;margin-bottom:6px;}
-      .exhibitor-detail-subtitle{font-size:14px;margin-bottom:16px;}
-      .exhibitor-detail-body{font-size:13px;}
-      .exhibitor-detail-logos{flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-      .exhibitor-detail-meta{gap:16px;}
-      .exhibitor-detail-meta-value{font-size:18px;}
-      .spot-cta-section{min-height:auto;}
-      .spot-cta-content{padding:48px 20px;}
-      .spot-cta-title{font-size:26px;margin-bottom:16px;max-width:100%;}
-      .spot-cta-body{font-size:12px;margin-bottom:20px;max-width:100%;}
-      .spot-cta-btn{width:100%;justify-content:center;padding:14px 20px;}
-      .partners-section{padding:48px 0 0;}
-      .partners-header{padding:0 20px !important;margin-bottom:28px;flex-direction:column !important;align-items:flex-start !important;gap:10px !important;}
-      .partners-title{font-size:28px !important;}
-      .partners-carousel-track{gap:32px;}
-      .carousel-logo-img-wrap{width:110px;height:72px;}
-      .carousel-logo-img-wrap img{max-height:44px;max-width:88px;}
-      .partners-blue-band{padding:16px 20px;}
-      .partners-social-row{flex-direction:column;gap:16px;align-items:flex-start;}
-      .partners-social-row p{font-size:13px;}
-      .cross-icon{display:none;}
-      .exhibitors-bottom-crosses{display:none;}
-    }
-    @media(max-width:480px){
-      .hero-title{font-size:26px !important;}
-      .hero-date{font-size:17px;}
-      .market-info-title{font-size:24px;}
-      .exhibitors-title{font-size:24px;}
-      .exhibitor-card-title{font-size:20px;}
-      .exhibitor-detail-title{font-size:24px;}
-      .spot-cta-title{font-size:22px;}
-      .partners-title{font-size:24px !important;}
-    }
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease} .reveal.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:1024px){.hero-inner{padding:52px 48px 48px;}.hero-title{font-size:52px;}.market-info-section{padding:60px 48px 56px;}.market-info-title{font-size:36px;}.exhibitors-header{padding:0 48px;}.exhibitors-grid{padding:0 48px;gap:16px;}.exhibitor-detail-content{padding:40px 48px 52px;}.spot-cta-content{padding:52px 48px;}.partners-header{padding:0 48px;}.cross-strip{padding:0 48px;}.sec-crosses{padding:0 48px;}}
+    @media(max-width:768px){.hero{min-height:auto;}.hero-inner{padding:80px 20px 40px!important;flex-direction:column!important;align-items:flex-start!important;gap:20px!important;}.hero-title{font-size:32px!important;}.hero-logo{display:none!important;}.market-info-section{padding:40px 20px 36px;}.market-info-top{flex-direction:column;align-items:flex-start;gap:10px;}.market-info-title{font-size:28px;}.market-info-link{margin-left:0;}.exhibitors-section{padding:40px 0 48px;}.exhibitors-header{padding:0 20px;flex-direction:column;align-items:flex-start;gap:10px;}.exhibitors-title{font-size:28px;}.exhibitors-grid{grid-template-columns:1fr!important;padding:0 20px;gap:16px;}.exhibitor-detail-content{padding:32px 20px 48px;grid-template-columns:1fr;}.spot-cta-content{padding:48px 20px;}.spot-cta-title{font-size:26px;max-width:100%;}.partners-section{padding:48px 0 0;}.partners-header{padding:0 20px!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;}.partners-title{font-size:28px!important;}.cross-strip{padding:0 20px;height:28px;}.sec-crosses{padding:0 20px;}}
+    @media(max-width:480px){.hero-title{font-size:26px!important;}.market-info-title{font-size:24px;}.exhibitors-title{font-size:24px;}}
   </style>
-
-<style id="fug-global-fixes">
-.btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative !important;overflow:hidden !important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s !important;}
-.cross-icon{display:inline-flex !important;align-items:center !important;justify-content:center !important;width:18px !important;height:18px !important;flex-shrink:0 !important;position:absolute !important;z-index:6 !important;opacity:0.45 !important;animation:none !important;transition:transform 0.1s linear !important;}
-.cross-icon.cross-icon--navy{opacity:1 !important;}
-.cross-icon svg{width:100%;height:100%;}
-@media(max-width:1400px){:root{--band:160px !important;}}
-@media(max-width:1200px){:root{--band:80px !important;}}
-@media(max-width:1024px){:root{--band:40px !important;}.hero-title{font-size:40px !important;}}
-@media(max-width:768px){:root{--band:20px !important;}#main-nav .nav-links-wrap{display:none !important;}#main-nav .nav-mobile-toggle{display:flex !important;}.hero-inner{flex-direction:column !important;padding:80px 20px 40px !important;gap:24px !important;}.hero-logo{display:none !important;}.hero-title{font-size:36px !important;}.hero-content{max-width:100% !important;}.partners-title{font-size:28px !important;}#main-nav{height:58px !important;}}
-@media(max-width:480px){.hero-title{font-size:28px !important;}}
-#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
-#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
-#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px 24px;overflow-y:auto;}
-#mobile-nav-drawer.open{display:flex;}
-#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}
-#mobile-nav-drawer a:hover{color:#fff;}
-#mobile-nav-drawer .drawer-tickets{margin-top:24px;border:1.5px solid rgba(255,255,255,0.4);text-align:center;padding:14px;font-weight:700;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
-</style>
-
+  <style id="nav-fix">@media(max-width:768px){#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}}#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;}#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px;overflow-y:auto;}#mobile-nav-drawer.open{display:flex;}#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}</style>
 </head>
 <body>
-<script src="nav.js"></script>
-<script src="ticker-hover.js"></script>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-inner">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Market</p>
-      <h1 class="hero-title">Explore Our 2026<br>Marketplace</h1>
-      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
-      <p class="hero-date">07 — 12.10.2026</p>
-    </div>
-    <div class="hero-logo">
-      <img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/>
-    </div>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get your tickets now <span class="ticker-arrow">→</span></span>
-  </div>
-</div>
-
-<!-- MARKET INFO -->
+<script src="nav.js"></script><script src="ticker-hover.js"></script>
+<section class="hero"><div class="hero-bg"></div><div class="hero-inner"><div class="hero-content"><p class="hero-eyebrow">Market</p><h1 class="hero-title">Explore Our<br>Marketplace</h1><p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p><p class="hero-date">07 — 12.10.2026</p></div><div class="hero-logo"><img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div></div></section>
+<div class="ticker-wrap"><div class="ticker-track"><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span></div></div>
 <section class="market-info-section reveal" id="market-info-section">
-  <div class="cross-icon cross-icon--navy" style="top:24px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg>
-  </div>
-  <div class="cross-icon cross-icon--navy" style="top:24px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg>
-  </div>
-  <div class="market-info-top">
-    <h2 class="market-info-title">Fak'ugesi Market</h2>
-    <a class="market-info-link" href="programme.html">View 2026 Programme →</a>
-  </div>
-  <p class="market-info-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
+  <div class="sec-crosses sec-crosses-top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg></div>
+  <div class="market-info-top"><h2 class="market-info-title">Fak'ugesi Market</h2><a class="market-info-link" href="programme.html">View 2026 Programme →</a></div>
+  <p class="market-info-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 </section>
-
-<!-- EXHIBITORS -->
 <section class="exhibitors-section reveal" id="exhibitors-section">
-  <div class="cross-icon cross-icon--navy" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
-
+  <div class="sec-crosses sec-crosses-top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg></div>
   <div id="exhibitors-cards-view">
-    <div class="exhibitors-header">
-      <h2 class="exhibitors-title">Exhibitors</h2>
-      <a class="exhibitors-link" href="programme.html">View 2026 Programme →</a>
-    </div>
+    <div class="exhibitors-header"><h2 class="exhibitors-title">Exhibitors</h2><a class="exhibitors-link" href="programme.html">View 2026 Programme →</a></div>
     <div class="exhibitors-grid" id="exhibitors-grid">
-      <div class="exhibitor-card" data-id="0"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
-      <div class="exhibitor-card" data-id="1"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
-      <div class="exhibitor-card" data-id="2"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
-      <div class="exhibitor-card" data-id="3"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
-      <div class="exhibitor-card" data-id="4"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
-      <div class="exhibitor-card" data-id="5"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
-      <div class="exhibitor-card" data-id="6"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
-      <div class="exhibitor-card" data-id="7"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Maputo Fast Forward"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="0"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Exhibitor"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="1"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Exhibitor"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="2"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Exhibitor"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
+      <div class="exhibitor-card" data-id="3"><div class="exhibitor-card-img"><img src="/images/radicals.f-824583338.jpg" alt="Exhibitor"/></div><div class="exhibitor-card-info"><div class="exhibitor-card-meta"><span class="exhibitor-card-type">Creative Organisation</span><span class="exhibitor-card-more">More Info →</span></div><h3 class="exhibitor-card-title">Maputo Fast Forward</h3></div></div>
     </div>
   </div>
-
-  <div class="cross-icon cross-icon--navy" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="bottom:24px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="2"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="2"/></svg></div>
-
-  <!-- Detail view -->
-  <div class="exhibitor-detail" id="exhibitor-detail">
-    <div class="exhibitor-detail-inner">
-      <div class="exhibitor-detail-bg" id="exhibitor-detail-bg"></div>
-      <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-      <div class="exhibitor-detail-content">
-        <button class="exhibitor-detail-back" id="exhibitor-detail-back">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
-          </svg>
-          Back To All Exhibitors
-        </button>
-        <div class="exhibitor-detail-left">
-          <h2 class="exhibitor-detail-title" id="ed-title"></h2>
-          <p class="exhibitor-detail-subtitle" id="ed-subtitle"></p>
-          <p class="exhibitor-detail-body" id="ed-body"></p>
-        </div>
-        <div class="exhibitor-detail-right">
-          <div>
-            <div class="exhibitor-detail-logos">
-              <div class="exhibitor-detail-logo-box">
-                <img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Organisation"/>
-              </div>
-              <div class="exhibitor-detail-badge" id="ed-badge"></div>
-            </div>
-            <div class="exhibitor-detail-links" id="ed-links"></div>
-          </div>
-          <div class="exhibitor-detail-meta">
-            <div><p class="exhibitor-detail-meta-label">Viewing Dates</p><p class="exhibitor-detail-meta-value" id="ed-dates"></p></div>
-            <div><p class="exhibitor-detail-meta-label">Market Type</p><p class="exhibitor-detail-meta-value" id="ed-type"></p></div>
-            <div><p class="exhibitor-detail-meta-label">Location</p><p class="exhibitor-detail-meta-value" id="ed-location"></p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="sec-crosses sec-crosses-bottom"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg></div>
+  <div class="exhibitor-detail" id="exhibitor-detail"><div class="exhibitor-detail-inner"><div class="exhibitor-detail-bg" id="exhibitor-detail-bg"></div><div class="exhibitor-detail-content"><button class="exhibitor-detail-back" id="exhibitor-detail-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back to All Exhibitors</button><div><h2 class="exhibitor-detail-title" id="ed-title"></h2><p class="exhibitor-detail-subtitle" id="ed-subtitle"></p><p class="exhibitor-detail-body" id="ed-body"></p></div><div><div class="exhibitor-detail-badge" id="ed-badge"></div><div class="exhibitor-detail-meta"><div><p class="exhibitor-detail-meta-label">Viewing Dates</p><p class="exhibitor-detail-meta-value" id="ed-dates"></p></div><div><p class="exhibitor-detail-meta-label">Market Type</p><p class="exhibitor-detail-meta-value" id="ed-type"></p></div><div><p class="exhibitor-detail-meta-label">Location</p><p class="exhibitor-detail-meta-value" id="ed-location"></p></div></div></div></div></div></div>
 </section>
-
-<!-- WANT A SPOT -->
-<section class="spot-cta-section reveal" id="spot-cta-section">
-  <div class="spot-cta-bg"></div>
-  <div class="spot-cta-overlay"></div>
-  <div class="spot-cta-content">
-    <h2 class="spot-cta-title">Want A Spot At Fak'ugesi Market?</h2>
-    <p class="spot-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
-    <a class="spot-cta-btn btn-outline-white" href="#">GET INVOLVED</a>
-  </div>
-</section>
-
-<!-- MARKET PARTNERS — original colours, off-white tile, no name labels -->
-<section class="partners-section reveal">
-  <div class="partners-header">
-    <h2 class="partners-title">Our Market Partners</h2>
-    <a class="partners-link" href="#">Join As Partner →</a>
-  </div>
-  <div class="partners-carousel-outer">
-    <div class="partners-carousel-track" id="market-partners-track"></div>
-  </div>
-</section>
-
+<section class="spot-cta-section reveal" id="spot-cta-section"><div class="spot-cta-bg"></div><div class="spot-cta-overlay"></div><div class="spot-cta-content"><h2 class="spot-cta-title">Want a Spot at Fak'ugesi Market?</h2><p class="spot-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo.</p><a class="spot-cta-btn" href="#">GET INVOLVED</a></div></section>
+<section class="partners-section reveal"><div class="partners-header"><h2 class="partners-title">Our Market Partners</h2><a class="partners-link" href="#">Join as Partner →</a></div><div class="partners-carousel-outer"><div class="partners-carousel-track" id="market-partners-track"></div></div></section>
 <script src="footer.js"></script>
-
 <script>
-/* REVEAL */
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.06 });
-revealEls.forEach(el => io.observe(el));
-
-/* MARKET PARTNERS — original colours, no name labels, off-white tile for white logos */
-const marketPartners = [
-  { img:'/images/logos/expo/goethe.svg',                    name:'Goethe Institut',    url:'https://www.goethe.de/ins/za/en/index.html' },
-  { img:'/images/logos/tshimologong/logo_tshimologong_dark.svg', name:'Tshimologong', url:'https://tshimologong.joburg/' },
-  { img:'/images/logos/wits/logo_wits_dark_colloquial_extended.svg', name:'Wits University', url:'https://www.wits.ac.za/' },
-  { img:'/images/logos/expo/eunic.svg',                     name:'EUNIC',              url:'https://www.eunic.eu/' },
-  { img:'/images/logos/expo/acf.svg',                       name:'ACF',                url:'https://www.acfid.asn.au/' },
-  { img:'/images/logos/expo/prohelvetia.svg',               name:'Pro Helvetia',       url:'https://prohelvetia.ch/en/' },
-  { img:'/images/logos/immersiveAfrica/habitatxr.png',      name:'HabitatXR',          url:'#' },
-  { img:'/images/logos/immersiveAfrica/ifas.png',           name:'IFAS',               url:'#' },
-  { img:'/images/logos/immersiveAfrica/mansab.png',         name:'MansA',              url:'#' },
-  { img:'/images/logos/immersiveAfrica/SoC logo.png',       name:'Spaces of Culture',  url:'#' },
-];
-const track = document.getElementById('market-partners-track');
-[...marketPartners, ...marketPartners].forEach(p => {
-  const a = document.createElement('a');
-  a.className = 'carousel-logo';
-  a.href = p.url || '#';
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
-  // No name span — original colours — grey tile so white logos show
-  a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}"/></div>`;
-  track.appendChild(a);
-});
-
-/* EXHIBITOR DATA */
-const EXHIBITOR_DATA = Array(8).fill(null).map(() => ({
-  title: 'Maputo Fast Forward',
-  subtitle: 'Cras cursus ipsum vel dolor.',
-  type: 'Recruitment',
-  location: 'Tshimologong Precinct',
-  dates: '07 — 12.10.2026',
-  body: 'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales.',
-  badge: '20 YEARS',
-  links: ['Visit Maputo Fast Forward Website →', 'View More Info →']
-}));
-
-const exhibitorsSection = document.getElementById('exhibitors-section');
-const cardsView         = document.getElementById('exhibitors-cards-view');
-const detailView        = document.getElementById('exhibitor-detail');
-const detailBack        = document.getElementById('exhibitor-detail-back');
-const detailBg          = document.getElementById('exhibitor-detail-bg');
-const marketInfoSection = document.getElementById('market-info-section');
-const spotCtaSection    = document.getElementById('spot-cta-section');
-
-document.querySelectorAll('.exhibitor-card[data-id]').forEach(card => {
-  card.addEventListener('click', () => {
-    const d = EXHIBITOR_DATA[parseInt(card.dataset.id)] || EXHIBITOR_DATA[0];
-    const cardImg = card.querySelector('.exhibitor-card-img img');
-    const imgSrc = cardImg ? cardImg.src : '/images/radicals.f-824583338.jpg';
-    document.getElementById('ed-title').textContent = d.title;
-    document.getElementById('ed-subtitle').textContent = d.subtitle;
-    document.getElementById('ed-body').textContent = d.body;
-    document.getElementById('ed-dates').textContent = d.dates;
-    document.getElementById('ed-type').textContent = d.type;
-    document.getElementById('ed-location').textContent = d.location;
-    document.getElementById('ed-badge').textContent = d.badge;
-    const linksEl = document.getElementById('ed-links');
-    linksEl.innerHTML = d.links.map(l => `<span class="exhibitor-detail-link">${l}</span>`).join('');
-    detailBg.style.backgroundImage = `url('${imgSrc}')`;
-    if (marketInfoSection) marketInfoSection.style.display = 'none';
-    if (spotCtaSection) spotCtaSection.style.display = 'none';
-    cardsView.style.display = 'none';
-    detailView.classList.add('active');
-    exhibitorsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-detailBack.addEventListener('click', () => {
-  detailView.classList.remove('active');
-  cardsView.style.display = '';
-  if (marketInfoSection) marketInfoSection.style.display = '';
-  if (spotCtaSection) spotCtaSection.style.display = '';
-  exhibitorsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-/* Cross icon scroll spin */
-(function(){
-  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
-  function resetRot(){
-    rot = 0;
-    document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-      el.style.transition = 'transform 0.45s ease';
-      el.style.transform = 'rotate(0deg)';
-    });
-  }
-  function onScroll(){
-    if(!ticking){
-      requestAnimationFrame(function(){
-        var y = window.scrollY, delta = y - lastY;
-        if(Math.abs(delta) > 0){
-          rot += delta > 0 ? 15 : -15;
-          document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-            el.style.transition = 'transform 0.1s linear';
-            el.style.transform = 'rotate('+rot+'deg)';
-          });
-        }
-        lastY = y;
-        ticking = false;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(resetRot, 300);
-      });
-      ticking = true;
-    }
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-})();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}}),{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const mP=[{img:'/images/logos/expo/goethe.svg',name:'Goethe',url:'#'},{img:'/images/logos/tshimologong/logo_tshimologong_dark.svg',name:'Tshimologong',url:'#'},{img:'/images/logos/wits/logo_wits_dark_colloquial_extended.svg',name:'Wits',url:'#'},{img:'/images/logos/expo/eunic.svg',name:'EUNIC',url:'#'},{img:'/images/logos/expo/acf.svg',name:'ACF',url:'#'},{img:'/images/logos/expo/prohelvetia.svg',name:'Pro Helvetia',url:'#'}];
+const mT=document.getElementById('market-partners-track');
+[...mP,...mP].forEach(p=>{const a=document.createElement('a');a.className='carousel-logo';a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';a.innerHTML=`<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/></div>`;mT.appendChild(a);});
+const ED=Array(4).fill(null).map(()=>({title:'Maputo Fast Forward',subtitle:'Cras cursus ipsum.',type:'Recruitment',location:'Tshimologong Precinct',dates:'07 — 12.10.2026',body:'Nam sit amet metus vitae lectus ullamcorper dignissim.',badge:'20 YEARS'}));
+const eS=document.getElementById('exhibitors-section'),cV=document.getElementById('exhibitors-cards-view'),dV=document.getElementById('exhibitor-detail'),dB=document.getElementById('exhibitor-detail-back'),dBg=document.getElementById('exhibitor-detail-bg'),mI=document.getElementById('market-info-section'),sC=document.getElementById('spot-cta-section');
+document.querySelectorAll('.exhibitor-card[data-id]').forEach(c=>{c.addEventListener('click',()=>{const d=ED[parseInt(c.dataset.id)]||ED[0];const img=c.querySelector('img')?.src||'';document.getElementById('ed-title').textContent=d.title;document.getElementById('ed-subtitle').textContent=d.subtitle;document.getElementById('ed-body').textContent=d.body;document.getElementById('ed-dates').textContent=d.dates;document.getElementById('ed-type').textContent=d.type;document.getElementById('ed-location').textContent=d.location;document.getElementById('ed-badge').textContent=d.badge;dBg.style.backgroundImage=`url('${img}')`;if(mI)mI.style.display='none';if(sC)sC.style.display='none';cV.style.display='none';dV.classList.add('active');eS.scrollIntoView({behavior:'smooth',block:'start'});});});
+dB.addEventListener('click',()=>{dV.classList.remove('active');cV.style.display='';if(mI)mI.style.display='';if(sC)sC.style.display='';eS.scrollIntoView({behavior:'smooth',block:'start'});});
+(function(){var lY=window.scrollY,r=0,t=false,tm=null;function rs(){r=0;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.45s ease';el.style.transform='rotate(0deg)';});}function sp(){if(!t){requestAnimationFrame(()=>{var y=window.scrollY,d=y-lY;if(Math.abs(d)>0){r+=d>0?15:-15;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.1s linear';el.style.transform='rotate('+r+'deg)';});}lY=y;t=false;clearTimeout(tm);tm=setTimeout(rs,300);});t=true;}}window.addEventListener('scroll',sp,{passive:true});})();
 </script>
 </body>
 </html>

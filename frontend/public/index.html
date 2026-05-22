@@ -1,1243 +1,412 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fak'ugesi Festival – African Digital &amp; Innovation Festival</title>
-  <link rel="stylesheet" href="../css/styles.css">
-
   <style>
-    /* ── InterDisplay — multiple src paths so it resolves from any page depth ── */
-    @font-face {
-      font-family: 'InterDisplay';
-      src: url('fonts/InterDisplay-Regular.otf') format('opentype'),
-           url('../fonts/InterDisplay-Regular.otf') format('opentype'),
-           url('/fonts/InterDisplay-Regular.otf') format('opentype'),
-           url('frontend/fonts/InterDisplay-Regular.otf') format('opentype');
-      font-weight: 400; font-style: normal; font-display: block;
-    }
-    @font-face {
-      font-family: 'InterDisplay';
-      src: url('fonts/InterDisplay-Medium.otf') format('opentype'),
-           url('../fonts/InterDisplay-Medium.otf') format('opentype'),
-           url('/fonts/InterDisplay-Medium.otf') format('opentype'),
-           url('frontend/fonts/InterDisplay-Medium.otf') format('opentype');
-      font-weight: 500; font-style: normal; font-display: block;
-    }
-    @font-face {
-      font-family: 'InterDisplay';
-      src: url('fonts/InterDisplay-SemiBold.otf') format('opentype'),
-           url('../fonts/InterDisplay-SemiBold.otf') format('opentype'),
-           url('/fonts/InterDisplay-SemiBold.otf') format('opentype'),
-           url('frontend/fonts/InterDisplay-SemiBold.otf') format('opentype');
-      font-weight: 600; font-style: normal; font-display: block;
-    }
-    @font-face {
-      font-family: 'InterDisplay';
-      src: url('fonts/InterDisplay-Bold.otf') format('opentype'),
-           url('../fonts/InterDisplay-Bold.otf') format('opentype'),
-           url('/fonts/InterDisplay-Bold.otf') format('opentype'),
-           url('frontend/fonts/InterDisplay-Bold.otf') format('opentype');
-      font-weight: 700; font-style: normal; font-display: block;
-    }
-    @font-face {
-      font-family: 'DxWideground';
-      src: url('fonts/DxWideground-Regular.otf') format('opentype'),
-           url('../fonts/DxWideground-Regular.otf') format('opentype'),
-           url('/fonts/DxWideground-Regular.otf') format('opentype'),
-           url('frontend/fonts/DxWideground-Regular.otf') format('opentype');
-      font-weight: 400; font-style: normal; font-display: block;
-    }
+    @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Regular.otf') format('opentype'),url('../fonts/InterDisplay-Regular.otf') format('opentype'),url('/fonts/InterDisplay-Regular.otf') format('opentype');font-weight:400;font-display:block;}
+    @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Medium.otf') format('opentype'),url('../fonts/InterDisplay-Medium.otf') format('opentype'),url('/fonts/InterDisplay-Medium.otf') format('opentype');font-weight:500;font-display:block;}
+    @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'),url('../fonts/InterDisplay-SemiBold.otf') format('opentype'),url('/fonts/InterDisplay-SemiBold.otf') format('opentype');font-weight:600;font-display:block;}
+    @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Bold.otf') format('opentype'),url('../fonts/InterDisplay-Bold.otf') format('opentype'),url('/fonts/InterDisplay-Bold.otf') format('opentype');font-weight:700;font-display:block;}
+    @font-face{font-family:'DxWideground';src:url('fonts/DxWideground-Regular.otf') format('opentype'),url('../fonts/DxWideground-Regular.otf') format('opentype'),url('/fonts/DxWideground-Regular.otf') format('opentype');font-weight:400;font-display:block;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#1a2744;--blue-mid:#2a3f72;--lavender:#dde3f0;--white:#ffffff;--orange:#e05a1e;--dark-text:#0d1b3e;--body-gray:#3a4060;--band:248px;}
+    html{scroll-behavior:smooth}
+    body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* CANONICAL CROSS STRIPS */
+    .cross-strip{display:flex;justify-content:space-between;align-items:center;padding:0 var(--band);height:40px;}
+    .sec-crosses{position:absolute;left:0;right:0;display:flex;justify-content:space-between;padding:0 var(--band);pointer-events:none;z-index:20;}
+    .sec-crosses-top{top:20px;} .sec-crosses-bottom{bottom:20px;}
 
-    :root {
-      --navy:      #1a2744;
-      --blue-mid:  #2a3f72;
-      --lavender:  #dde3f0;
-      --white:     #ffffff;
-      --orange:    #e05a1e;
-      --dark-text: #0d1b3e;
-      --body-gray: #3a4060;
-      --band:      248px;
-    }
+    .btn-outline-white{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1.5px solid var(--white);color:var(--white);background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.22s,color 0.22s,transform 0.18s;font-family:'InterDisplay',sans-serif;}
+    .btn-outline-white:hover{background:var(--white);color:var(--navy);transform:translateY(-1px);}
+    .btn-outline-dark{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1.5px solid var(--dark-text);color:var(--dark-text);background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'InterDisplay',sans-serif;transition:background 0.22s,color 0.22s,transform 0.18s;}
+    .btn-outline-dark:hover{background:var(--dark-text);color:var(--white);transform:translateY(-1px);}
 
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'InterDisplay', sans-serif;
-      background: var(--white);
-      color: var(--white);
-      overflow-x: hidden;
-    }
+    /* HERO */
+    .hero{position:relative;width:100%;min-height:490px;overflow:hidden;display:flex;align-items:center;}
+    .hero-bg{position:absolute;inset:0;background-image:url('images/_MGL2775.jpg');background-size:cover;background-position:center 20%;filter:brightness(0.52);animation:kenBurns 16s ease-in-out infinite alternate;}
+    @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.07)}}
+    .hero-inner{position:relative;z-index:3;width:100%;padding:110px var(--band) 60px;display:flex;align-items:center;justify-content:space-between;}
+    .hero-content{max-width:420px;}
+    .hero-subtitle{font-size:11px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:10px;color:var(--white);}
+    /* SemiBold hero title — matches image 3 */
+    .hero-title{font-size:52px;font-weight:600;line-height:1.0;margin-bottom:18px;color:var(--white);font-family:'InterDisplay',sans-serif;}
+    .hero-body{font-size:12px;font-weight:400;line-height:1.7;max-width:340px;opacity:0.85;margin-bottom:18px;color:var(--white);}
+    .hero-link{color:var(--white);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.06em;cursor:pointer;display:inline-flex;align-items:center;gap:8px;position:relative;padding-bottom:2px;transition:transform 0.25s ease;}
+    .hero-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--white);transform:scaleX(1);transform-origin:left;transition:transform 0.25s ease;}
+    .hero-link:hover::after{transform:scaleX(0);transform-origin:right;}
+    .hero-link:hover{opacity:0.75;transform:scale(1.02);}
+    .hero-link-arrow{display:inline-block;transition:transform 0.22s ease;font-size:14px;}
+    .hero-link:hover .hero-link-arrow{transform:translateX(4px);}
+    .hero-logo{flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+    .hero-logo img{height:110px;width:auto;display:block;filter:brightness(0) invert(1) contrast(1.2);}
 
-    /* ── CROSS ICONS ── */
-    .cross-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px; height: 18px;
-      flex-shrink: 0;
-      position: absolute;
-      z-index: 6;
-      opacity: 0.45;
-      transition: transform 0.1s linear;
-    }
-    .cross-icon svg { width: 100%; height: 100%; }
+    /* TICKER */
+    .ticker-wrapper{background:var(--white);overflow:hidden;white-space:nowrap;padding:11px 0;position:relative;z-index:10;border-top:1px solid rgba(26,39,68,0.08);border-bottom:1px solid rgba(26,39,68,0.08);transition:background 0.28s ease;}
+    .ticker-wrapper:hover{background:var(--navy)!important;}
+    .ticker-wrapper:hover .ticker-track{animation-play-state:paused;}
+    .ticker-wrapper:hover .ticker-track span{color:#ffffff!important;}
+    .ticker-track{display:inline-flex;animation:tickerScroll 30s linear infinite;}
+    .ticker-track span{padding:0 32px;font-size:12.5px;font-weight:500;color:var(--navy);letter-spacing:0.02em;}
+    @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    .content-band {
-      padding-left:  var(--band);
-      padding-right: var(--band);
-      box-sizing: border-box;
-    }
+    /* THEME SECTION */
+    .theme-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(180deg,#3a4a88 0%,#4a5899 40%,#5a6aaa 70%,#6878bb 100%);}
+    .theme-bg-img{position:absolute;right:-3cm;bottom:0;top:0;width:52%;height:100%;background-image:url('images/cyber1.png');background-size:contain;background-position:right bottom;background-repeat:no-repeat;transform:scaleX(-1);filter:brightness(1.15);}
+    .theme-fade{position:absolute;inset:0;background:linear-gradient(to right,#3a4a88 18%,rgba(58,74,136,0.92) 35%,rgba(58,74,136,0.4) 58%,rgba(58,74,136,0.0) 100%);}
+    .theme-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
+    .theme-content{max-width:480px;}
 
-    /* ── BUTTONS ── */
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      background: var(--navy); color: var(--white); border: none;
-      padding: 12px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; cursor: pointer; font-family: 'InterDisplay', sans-serif;
-      transition: background 0.22s, color 0.22s, transform 0.18s; text-decoration: none;
+    /* "2026 Theme" title — large bold heading matching the image */
+    .theme-year-label{
+      font-family:'InterDisplay','Inter',Arial,sans-serif !important;
+      font-size:52px !important;
+      font-weight:600 !important;
+      color:var(--white) !important;
+      opacity:1 !important;
+      display:block !important;
+      margin-bottom:16px !important;
+      letter-spacing:-0.01em !important;
+      line-height:1.05 !important;
     }
-    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-1px); }
-    .btn-outline-white {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      border: 1.5px solid var(--white); color: var(--white); background: transparent;
-      padding: 12px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; cursor: pointer; transition: background 0.22s, color 0.22s, transform 0.18s;
-      font-family: 'InterDisplay', sans-serif;
-    }
-    .btn-outline-white:hover { background: var(--white); color: var(--navy); transform: translateY(-1px); }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative; width: 100%; min-height: 490px; overflow: hidden;
-      display: flex; align-items: center;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('images/_MGL2775.jpg');
-      background-size: cover; background-position: center 20%;
-      filter: brightness(0.52);
-      animation: kenBurns 16s ease-in-out infinite alternate;
-      transform-origin: center center;
-    }
-    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(10,18,50,0.0) 0%,
-        rgba(10,18,50,0.0) 10%,
-        rgba(10,18,50,0.35) 40%,
-        rgba(10,18,48,0.25) 70%,
-        transparent 100%
-      );
-    }
-    .hero-inner {
-      position: relative; z-index: 3; width: 100%;
-      padding: 110px var(--band) 60px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .hero-content { max-width: 420px; }
-    .hero-subtitle {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.8;
-      margin-bottom: 10px;
-      color: var(--white);
-    }
-    .hero-title {
-      font-size: 52px;
-      font-weight: 700;
-      line-height: 1.0;
-      margin-bottom: 18px;
-      color: var(--white);
-    }
-    .hero-body {
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 1.7;
-      max-width: 340px;
-      opacity: 0.85;
-      margin-bottom: 18px;
-      color: var(--white);
+    .theme-sub{font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.06em;opacity:0.75;margin-bottom:12px;color:var(--white);}
+    .theme-head{font-family:'InterDisplay',sans-serif;font-size:38px;font-weight:600;line-height:1.05;margin-bottom:18px;color:var(--white);}
+    .theme-body{font-family:'InterDisplay',sans-serif;font-size:13px;font-weight:400;line-height:1.72;opacity:0.84;max-width:380px;margin-bottom:28px;color:var(--white);}
+    .btn-row{display:flex;gap:14px;margin-bottom:32px;flex-wrap:wrap;}
+    /* Date — InterDisplay, same size as hero-dates on other pages */
+    .theme-dates{
+      font-family:'InterDisplay','Inter',Arial,Helvetica,sans-serif !important;
+      font-size:28px !important;
+      font-weight:400 !important;
+      letter-spacing:0.01em !important;
+      color:var(--white) !important;
+      opacity:0.9 !important;
+      display:block !important;
     }
 
-    /* ── HERO LINK ── */
-    .hero-link {
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-      padding-bottom: 2px;
-      transition: transform 0.25s ease;
+    /* GET INVOLVED */
+    .involved-section{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden;}
+    .involved-bg{position:absolute;inset:0;background-image:url('images/Copy_of__MGL4129.jpg');background-size:cover;background-position:center;filter:brightness(0.55);animation:kenBurns 22s ease-in-out infinite alternate;}
+    .involved-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
+    .involved-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;}
+    .involved-title{font-size:42px;font-weight:600;color:var(--white);}
+    .involved-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;}
+
+    /* Shared link hover */
+    .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
+    .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
+    .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
+    .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
+    /* Force white on the get-involved link — overrides any inherited link color */
+    .involved-link{color:#ffffff !important;}
+
+    .inv-card{border:1px solid rgba(255,255,255,0.45);position:relative;min-height:280px;display:flex;flex-direction:column;}
+    .inv-card-front{flex:1;padding:20px;display:flex;flex-direction:column;background:transparent;justify-content:flex-start;}
+    .card-num{position:absolute;top:14px;right:16px;font-family:'InterDisplay',sans-serif;font-size:36px;font-weight:700;color:#ffffff;line-height:1;}
+    .card-tag{font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;margin-bottom:8px;margin-top:28px;color:var(--white);}
+    .card-title{font-size:20px;font-weight:600;margin-bottom:12px;color:var(--white);}
+    .card-body{font-size:11.5px;font-weight:400;line-height:1.65;opacity:0.82;color:var(--white);}
+
+    /* SPOTLIGHT */
+    .spotlight-section{background:var(--lavender);padding:72px 0;position:relative;}
+    .spotlight-inner{padding:0 var(--band);}
+    .spotlight-title{font-size:44px;font-weight:600;color:var(--dark-text);margin-bottom:40px;}
+    .spotlight-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+    .spotlight-img-wrap{overflow:hidden;aspect-ratio:4/3;}
+    .spotlight-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.55s ease;display:block;}
+    .spotlight-img-wrap:hover img{transform:scale(1.05);}
+    .spotlight-tag{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;}
+    .spotlight-head{font-size:30px;font-weight:600;color:var(--dark-text);line-height:1.1;margin-bottom:20px;}
+    .spotlight-body{font-size:13px;font-weight:400;line-height:1.72;color:var(--body-gray);margin-bottom:32px;}
+
+    /* WHAT'S HAPPENING */
+    .happening-section{background:var(--white);padding:72px 0;overflow:hidden;position:relative;}
+    .happening-inner{padding:0 var(--band);}
+    .happening-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;}
+    .happening-title{font-size:44px;font-weight:600;color:var(--dark-text);}
+    .soc-tabs{display:flex;gap:16px;align-items:center;}
+    .soc-tab{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1.5px solid transparent;background:transparent;cursor:pointer;color:var(--body-gray);transition:color 0.2s,background 0.2s,border-color 0.2s,transform 0.18s;padding:0;}
+    .soc-tab svg{width:22px;height:22px;}
+    .soc-tab:hover{color:var(--navy);background:rgba(26,39,68,0.08);border-color:rgba(26,39,68,0.2);transform:translateY(-2px) scale(1.08);}
+    .soc-tab.active{color:var(--navy);border-color:rgba(26,39,68,0.3);background:rgba(26,39,68,0.06);}
+    .soc-feed-panel{display:none;} .soc-feed-panel.active{display:block;}
+    .happening-strip-outer{overflow:hidden;margin:0;}
+    .happening-strip{display:flex;gap:14px;width:max-content;animation:stripScroll 28s linear infinite;}
+    .happening-strip:hover{animation-play-state:paused;}
+    @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .strip-img{flex:0 0 320px;height:280px;overflow:hidden;}
+    .strip-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;display:block;}
+    .strip-img:hover img{transform:scale(1.04);}
+    .tweet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .tweet-card{border:1px solid rgba(26,39,68,0.1);padding:22px;background:var(--white);transition:box-shadow 0.25s,transform 0.25s;}
+    .tweet-card:hover{box-shadow:0 8px 28px rgba(26,39,68,0.1);transform:translateY(-3px);}
+    .tweet-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+    .tweet-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue-mid));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--white);flex-shrink:0;}
+    .tweet-name{font-size:13px;font-weight:700;color:var(--dark-text);}
+    .tweet-handle{font-size:12px;color:var(--body-gray);}
+    .tweet-x-icon{margin-left:auto;}
+    .tweet-x-icon svg{width:16px;height:16px;}
+    .tweet-text{font-size:13px;line-height:1.65;color:var(--dark-text);margin-bottom:14px;}
+    .tweet-text a{color:var(--blue-mid);text-decoration:none;}
+    .tweet-meta{font-size:11px;color:var(--body-gray);display:flex;gap:16px;}
+    .fb-feed{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+    .fb-card{border:1px solid rgba(26,39,68,0.1);background:var(--white);overflow:hidden;transition:box-shadow 0.25s,transform 0.25s;}
+    .fb-card:hover{box-shadow:0 8px 28px rgba(26,39,68,0.1);transform:translateY(-3px);}
+    .fb-card-img{width:100%;height:200px;overflow:hidden;}
+    .fb-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;}
+    .fb-card:hover .fb-card-img img{transform:scale(1.04);}
+    .fb-card-body{padding:18px 20px;}
+    .fb-card-date{font-size:11px;color:var(--body-gray);letter-spacing:0.06em;margin-bottom:8px;text-transform:uppercase;}
+    .fb-card-text{font-size:13px;line-height:1.65;color:var(--dark-text);}
+    .fb-card-actions{display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(26,39,68,0.07);}
+    .fb-card-actions span{font-size:12px;color:var(--body-gray);}
+    .happening-caption{text-align:right;margin-top:16px;font-size:12px;color:var(--body-gray);line-height:1.65;padding:0 var(--band);}
+
+    /* PARTNERS */
+    .partners-section{background:var(--lavender);padding:72px 0;position:relative;}
+    .partners-inner{padding:0 var(--band);}
+    .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
+    .partners-title{font-size:38px;font-weight:600;color:var(--dark-text);}
+    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;cursor:pointer;}
+    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+    .partner-card{display:flex;flex-direction:column;}
+    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;}
+    .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
+    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* Force InterDisplay on all theme section text */
+    .theme-section .theme-year-label,.theme-section .theme-sub,.theme-section .theme-head,.theme-section .theme-body,.theme-section .theme-dates{font-family:'InterDisplay','Inter',Arial,sans-serif !important;}
+
+    @media(max-width:1024px){
+      .hero-inner{padding:100px 48px 52px;}.hero-title{font-size:40px;}
+      .theme-inner{padding:52px 48px;}.theme-year-label{font-size:40px !important;}.theme-head{font-size:30px;}
+      .theme-bg-img{width:50%;opacity:0.6;}
+      .involved-inner{padding:52px 48px;}.involved-title{font-size:34px;}
+      .spotlight-inner{padding:0 48px;}.spotlight-title{font-size:36px;}
+      .happening-inner{padding:0 48px;}.happening-title{font-size:36px;}
+      .tweet-grid{grid-template-columns:1fr 1fr;}
+      .happening-caption{padding:0 48px;}
+      .partners-inner{padding:0 48px;}.partners-title{font-size:32px;}
+      .cross-strip{padding:0 48px;}.sec-crosses{padding:0 48px;}
     }
-    .hero-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 1px;
-      background: var(--white);
-      transform: scaleX(1);
-      transform-origin: left;
-      transition: transform 0.25s ease;
+    @media(max-width:768px){
+      .hero{min-height:auto;}.hero-inner{padding:80px 20px 40px;flex-direction:column;align-items:flex-start;gap:24px;}
+      .hero-content{max-width:100%;}.hero-title{font-size:32px;}.hero-logo{display:none;}
+      .theme-section{min-height:auto;}.theme-bg-img,.theme-fade{display:none;}
+      .theme-inner{padding:40px 20px 44px;}.theme-content{max-width:100%;}
+      .theme-year-label{font-size:32px !important;margin-bottom:12px !important;}.theme-head{font-size:26px;margin-bottom:14px;}
+      .theme-body{font-size:12px;max-width:100%;margin-bottom:20px;}
+      .btn-row{flex-direction:column;gap:10px;margin-bottom:20px;}
+      .btn-row .btn-outline-white{width:100%;justify-content:center;}
+      .theme-dates{font-size:20px !important;}
+      .involved-inner{padding:40px 20px;}.involved-header{flex-direction:column;align-items:flex-start;gap:10px;}
+      .involved-title{font-size:28px;}.involved-cards{grid-template-columns:1fr;gap:12px;}
+      .spotlight-section{padding:48px 0;}.spotlight-inner{padding:0 20px;}
+      .spotlight-title{font-size:28px;margin-bottom:28px;}.spotlight-grid{grid-template-columns:1fr;gap:24px;}
+      .spotlight-head{font-size:22px;}.btn-outline-dark{width:100%;justify-content:center;}
+      .happening-section{padding:48px 0;}.happening-inner{padding:0 20px;}
+      .happening-header{flex-direction:column;align-items:flex-start;gap:16px;}.happening-title{font-size:28px;}
+      .strip-img{flex:0 0 200px;height:180px;}
+      .tweet-grid{grid-template-columns:1fr;gap:12px;}.fb-feed{grid-template-columns:1fr;}
+      .happening-caption{padding:0 20px;}
+      .partners-section{padding:40px 0 48px;}.partners-inner{padding:0 20px;}
+      .partners-header{flex-direction:column;align-items:flex-start;gap:10px;}.partners-title{font-size:26px;}
+      .partners-grid{grid-template-columns:1fr 1fr;gap:14px;}
+      .cross-strip{padding:0 20px;height:28px;}.sec-crosses{padding:0 20px;}
     }
-    .hero-link:hover::after {
-      transform: scaleX(0);
-      transform-origin: right;
-    }
-    .hero-link:hover {
-      opacity: 0.75;
-      transform: scale(1.02);
-    }
-    .hero-link-arrow {
-      display: inline-block;
-      transition: transform 0.22s ease;
-      font-size: 14px;
-    }
-    .hero-link:hover .hero-link-arrow {
-      transform: translateX(4px);
-    }
-
-    .hero-logo { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); }
-
-    /* ── TICKER ── */
-    .ticker-wrapper {
-      background: var(--white); overflow: hidden; white-space: nowrap;
-      padding: 11px 0; position: relative; z-index: 10;
-      border-top: 1px solid rgba(26,39,68,0.08); border-bottom: 1px solid rgba(26,39,68,0.08);
-    }
-    .ticker-wrapper { transition: background 0.28s ease; }
-    .ticker-wrapper:hover { background: var(--navy) !important; }
-    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
-    .ticker-wrapper:hover .ticker-track span { color: #ffffff !important; }
-    .ticker-track { display: inline-flex; animation: tickerScroll 30s linear infinite; }
-    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: var(--navy); letter-spacing: 0.02em; }
-    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── THEME SECTION ── */
-    .theme-section {
-      position: relative; min-height: 540px; display: flex; align-items: center;
-      overflow: hidden;
-      background: linear-gradient(180deg, #3a4a88 0%, #4a5899 40%, #5a6aaa 70%, #6878bb 100%);
-    }
-    .theme-bg-img {
-      position: absolute; right: -3cm; bottom: 0; top: 0; width: 52%; height: 100%;
-      background-image: url('images/cyber1.png');
-      background-size: contain;
-      background-position: right bottom;
-      background-repeat: no-repeat;
-      transform: scaleX(-1);
-      filter: brightness(1.15);
-    }
-    .theme-fade {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, #3a4a88 18%, rgba(58,74,136,0.92) 35%, rgba(58,74,136,0.4) 58%, rgba(58,74,136,0.0) 100%);
-    }
-    .theme-inner { position: relative; z-index: 3; width: 100%; padding: 60px var(--band); }
-    .theme-content { max-width: 480px; }
-
-    .theme-year {
-      font-family: 'DxWideground', sans-serif;
-      font-size: 48px;
-      font-weight: 400;
-      margin-bottom: 16px;
-      letter-spacing: 0.01em;
-      color: var(--white);
-    }
-    .theme-sub {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      opacity: 0.75;
-      margin-bottom: 12px;
-      color: var(--white);
-    }
-    .theme-head {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 38px;
-      font-weight: 700;
-      line-height: 1.05;
-      margin-bottom: 18px;
-      color: var(--white);
-    }
-    .theme-body {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.72;
-      opacity: 0.84;
-      max-width: 380px;
-      margin-bottom: 28px;
-      color: var(--white);
-    }
-    .btn-row     { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
-    .theme-dates {
-      font-family: 'InterDisplay', 'Inter', Arial, sans-serif !important;
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--white);
-    }
-
-    /* ── GET INVOLVED ── */
-    .involved-section {
-      position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden;
-    }
-    .involved-bg {
-      position: absolute; inset: 0;
-      background-image: url('images/Copy_of__MGL4129.jpg');
-      background-size: cover; background-position: center;
-      filter: brightness(0.55);
-      animation: kenBurns 22s ease-in-out infinite alternate;
-    }
-    .involved-inner { position: relative; z-index: 3; width: 100%; padding: 60px var(--band); }
-    .involved-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
-    .involved-title {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .involved-link {
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 600;
-      text-decoration: underline;
-      letter-spacing: 0.06em;
-      white-space: nowrap;
-      margin-top: 8px;
-      transition: opacity 0.22s ease, transform 0.22s ease;
-      display: inline-block;
-    }
-    .involved-link:hover { opacity: 0.7; transform: translateX(3px); }
-    .involved-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: stretch; }
-
-
-/* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
-
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
-
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
-
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
-
-    /* ── GET INVOLVED CARDS — NO FLIP, STATIC ── */
-    .inv-card {
-      border: 1px solid rgba(255,255,255,0.45);
-      position: relative;
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-    }
-    /* Card front only — no flip effect */
-    .inv-card-front {
-      flex: 1;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      background: transparent;
-      justify-content: flex-start;
-    }
-    /* Hide the back entirely */
-    .inv-card-back { display: none !important; }
-
-    /* Card number top-right — BRIGHT WHITE */
-    .card-num {
-      position: absolute; top: 14px; right: 16px;
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 36px; font-weight: 700;
-      color: #ffffff;
-      line-height: 1; letter-spacing: -0.01em;
-    }
-    /* Card tag */
-    .card-tag {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 10px; font-weight: 400;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      opacity: 0.6; margin-bottom: 8px; margin-top: 28px; color: var(--white);
-    }
-    /* Card title */
-    .card-title {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 20px; font-weight: 700;
-      margin-bottom: 12px; color: var(--white);
-    }
-    /* Card body */
-    .card-body {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 11.5px; font-weight: 400;
-      line-height: 1.65; opacity: 0.82;
-      color: var(--white);
-    }
-
-    /* ── SPOTLIGHT ── */
-    .spotlight-section { background: var(--lavender); padding: 72px 0; position: relative; }
-    .spotlight-inner { padding: 0 var(--band); }
-    .spotlight-title { font-size: 44px; font-weight: 700; color: var(--dark-text); margin-bottom: 40px; }
-    .spotlight-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-    .spotlight-img-wrap { overflow: hidden; aspect-ratio: 4/3; }
-    .spotlight-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; display: block; }
-    .spotlight-img-wrap:hover img { transform: scale(1.05); }
-    .spotlight-tag  { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
-    .spotlight-head { font-size: 30px; font-weight: 700; color: var(--dark-text); line-height: 1.1; margin-bottom: 20px; }
-    .spotlight-body { font-size: 13px; font-weight: 400; line-height: 1.72; color: var(--body-gray); margin-bottom: 32px; }
-
-    /* ── WHAT'S HAPPENING ── */
-    .happening-section { background: var(--white); padding: 72px 0; overflow: hidden; position: relative; }
-    .happening-inner { padding: 0 var(--band); }
-    .happening-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-    .happening-title { font-size: 44px; font-weight: 700; color: var(--dark-text); }
-
-    .soc-tabs { display: flex; gap: 16px; align-items: center; }
-    .soc-tab {
-      display: flex; align-items: center; justify-content: center;
-      width: 38px; height: 38px; border: 1.5px solid transparent; background: transparent;
-      cursor: pointer; color: var(--body-gray); transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.18s; padding: 0;
-      border-radius: 0;
-    }
-    .soc-tab svg { width: 22px; height: 22px; flex-shrink: 0; }
-    .soc-tab:hover { color: var(--navy); background: rgba(26,39,68,0.08); border-color: rgba(26,39,68,0.2); transform: translateY(-2px) scale(1.08); }
-    .soc-tab.active { color: var(--navy); border-color: rgba(26,39,68,0.3); background: rgba(26,39,68,0.06); }
-
-    .soc-feed-panel { display: none; }
-    .soc-feed-panel.active { display: block; }
-
-    .happening-strip-outer { overflow: hidden; margin: 0; }
-    .happening-strip { display: flex; gap: 14px; width: max-content; animation: stripScroll 28s linear infinite; }
-    .happening-strip:hover { animation-play-state: paused; }
-    @keyframes stripScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .strip-img { flex: 0 0 320px; height: 280px; overflow: hidden; }
-    .strip-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
-    .strip-img:hover img { transform: scale(1.04); }
-
-    .tweet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .tweet-card {
-      border: 1px solid rgba(26,39,68,0.1); padding: 22px; background: var(--white);
-      transition: box-shadow 0.25s, transform 0.25s;
-    }
-    .tweet-card:hover { box-shadow: 0 8px 28px rgba(26,39,68,0.1); transform: translateY(-3px); }
-    .tweet-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-    .tweet-avatar {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy), var(--blue-mid));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 700; color: var(--white); flex-shrink: 0;
-    }
-    .tweet-name { font-size: 13px; font-weight: 700; color: var(--dark-text); }
-    .tweet-handle { font-size: 12px; color: var(--body-gray); }
-    .tweet-x-icon { margin-left: auto; }
-    .tweet-x-icon svg { width: 16px; height: 16px; }
-    .tweet-text { font-size: 13px; line-height: 1.65; color: var(--dark-text); margin-bottom: 14px; }
-    .tweet-text a { color: var(--blue-mid); text-decoration: none; }
-    .tweet-meta { font-size: 11px; color: var(--body-gray); display: flex; gap: 16px; }
-
-    .fb-feed { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .fb-card {
-      border: 1px solid rgba(26,39,68,0.1); background: var(--white); overflow: hidden;
-      transition: box-shadow 0.25s, transform 0.25s;
-    }
-    .fb-card:hover { box-shadow: 0 8px 28px rgba(26,39,68,0.1); transform: translateY(-3px); }
-    .fb-card-img { width: 100%; height: 200px; overflow: hidden; }
-    .fb-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-    .fb-card:hover .fb-card-img img { transform: scale(1.04); }
-    .fb-card-body { padding: 18px 20px; }
-    .fb-card-date { font-size: 11px; color: var(--body-gray); letter-spacing: 0.06em; margin-bottom: 8px; text-transform: uppercase; }
-    .fb-card-text { font-size: 13px; line-height: 1.65; color: var(--dark-text); }
-    .fb-card-actions { display: flex; gap: 16px; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(26,39,68,0.07); }
-    .fb-card-actions span { font-size: 12px; color: var(--body-gray); display: flex; align-items: center; gap: 4px; }
-
-    .happening-caption {
-      text-align: right; margin-top: 16px; font-size: 12px;
-      color: var(--body-gray); line-height: 1.65; padding: 0 var(--band);
-    }
-
-    /* ── PARTNERS ── */
-    .partners-section { background: var(--lavender); padding: 72px 0; position: relative; }
-    .partners-inner { padding: 0 var(--band); }
-    .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-    .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
-    .partners-link {
-      font-size: 12px;
-      color: var(--navy);
-      font-weight: 600;
-      text-decoration: underline;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      transition: transform 0.25s ease;
-      display: inline-block;
-    }
-    .partners-link:hover { transform: scale(1.02); }
-    .partners-grid  { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-    .partner-card { display: flex; flex-direction: column; }
-    .partner-logo-box {
-      background: var(--white); border: 1px solid rgba(26,39,68,0.12);
-      aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
-      padding: 40px 32px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px;
-    }
-    .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
-    .partner-logo-box img.keep-color { filter: none; }
-    .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
-
-    /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    /* ══════════════════════════════════════════════════
-   MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
-══════════════════════════════════════════════════ */
-
-@media (max-width: 1024px) {
-  .hero-inner { padding: 100px 48px 52px; }
-  .hero-title { font-size: 40px; }
-  .hero-logo img { height: 80px; }
-
-  .theme-inner { padding: 52px 48px; }
-  .theme-year { font-size: 36px; }
-  .theme-head { font-size: 30px; }
-  .theme-dates { font-size: 24px; }
-  .theme-bg-img { width: 50%; opacity: 0.6; }
-
-  .involved-inner { padding: 52px 48px; }
-  .involved-title { font-size: 34px; }
-  .inv-card { min-height: 240px; }
-
-  .spotlight-inner { padding: 0 48px; }
-  .spotlight-title { font-size: 36px; }
-  .spotlight-head { font-size: 26px; }
-
-  .happening-inner { padding: 0 48px; }
-  .happening-title { font-size: 36px; }
-  .tweet-grid { grid-template-columns: 1fr 1fr; }
-  .happening-caption { padding: 0 48px; }
-
-  .partners-inner { padding: 0 48px; }
-  .partners-title { font-size: 32px; }
-
-  .strip-img { flex: 0 0 260px; height: 230px; }
-
-  .cross-icon { display: none; }
-}
-
-.btn-outline-dark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border: 1.5px solid var(--dark-text);
-  color: var(--dark-text);
-  background: transparent;
-  padding: 12px 28px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: 'InterDisplay', sans-serif;
-  transition: background 0.22s, color 0.22s, transform 0.18s;
-}
-.btn-outline-dark:hover {
-  background: var(--dark-text);
-  color: var(--white);
-  transform: translateY(-1px);
-}
-
-@media (max-width: 768px) {
-  .hero { min-height: auto; }
-  .hero-bg { background-position: center center; }
-  .hero-inner {
-    padding: 80px 20px 40px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-  }
-  .hero-content { max-width: 100%; }
-  .hero-subtitle { font-size: 10px; margin-bottom: 8px; }
-  .hero-title { font-size: 32px; margin-bottom: 14px; }
-  .hero-body { font-size: 12px; max-width: 100%; margin-bottom: 14px; }
-  .hero-logo { display: none; }
-
-  .theme-section { min-height: auto; }
-  .theme-bg-img { display: none; }
-  .theme-fade { display: none; }
-  .theme-inner { padding: 40px 20px 44px; }
-  .theme-content { max-width: 100%; }
-  .theme-year { font-size: 28px; margin-bottom: 4px; }
-  .theme-sub { font-size: 10px; margin-bottom: 10px; }
-  .theme-head { font-size: 26px; margin-bottom: 14px; }
-  .theme-body { font-size: 12px; max-width: 100%; margin-bottom: 20px; }
-  .btn-row {
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  .btn-row .btn-outline-white {
-    width: 100%;
-    justify-content: center;
-  }
-  .theme-dates { font-size: 22px; }
-
-  .involved-inner { padding: 40px 20px; }
-  .involved-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-  .involved-title { font-size: 28px; }
-  .involved-link { font-size: 11px; }
-  .involved-cards { grid-template-columns: 1fr; gap: 12px; }
-  .inv-card { min-height: auto; }
-  .inv-card-front {
-    position: relative; inset: auto;
-    padding: 20px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-  .card-title { font-size: 18px; margin-bottom: 8px; }
-  .card-body { font-size: 11px; }
-  .card-num { font-size: 20px; top: 12px; right: 12px; color: #ffffff; }
-
-  .spotlight-section { padding: 48px 0; }
-  .spotlight-inner { padding: 0 20px; }
-  .spotlight-title { font-size: 28px; margin-bottom: 28px; }
-  .spotlight-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .spotlight-head { font-size: 22px; margin-bottom: 14px; }
-  .spotlight-body { font-size: 12px; margin-bottom: 20px; }
-  .btn-outline-dark { width: 100%; justify-content: center; }
-
-  .happening-section { padding: 48px 0; }
-  .happening-inner { padding: 0 20px; }
-  .happening-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .happening-title { font-size: 28px; }
-
-  .soc-tabs { gap: 10px; }
-  .soc-tab { width: 34px; height: 34px; }
-
-  .strip-img { flex: 0 0 200px; height: 180px; }
-
-  .tweet-grid { grid-template-columns: 1fr; gap: 12px; }
-  .tweet-card { padding: 16px; }
-  .tweet-name { font-size: 12px; }
-  .tweet-text { font-size: 12px; }
-
-  .fb-feed { grid-template-columns: 1fr; gap: 14px; }
-  .fb-card-img { height: 180px; }
-  .fb-card-body { padding: 14px 16px; }
-
-  .happening-caption { padding: 0 20px; font-size: 11px; margin-top: 12px; }
-
-  .partners-section { padding: 40px 0 48px; }
-  .partners-inner { padding: 0 20px; }
-  .partners-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-  .partners-title { font-size: 26px; }
-  .partners-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  .partner-logo-box { padding: 20px 16px; margin-bottom: 10px; }
-  .partner-logo-box img { max-height: 80px; }
-  .partner-desc { font-size: 11px; }
-
-  .cross-icon { display: none; }
-}
-
-@media (max-width: 480px) {
-  .hero-title { font-size: 26px; }
-  .theme-year { font-size: 24px; }
-  .theme-head { font-size: 22px; }
-  .theme-dates { font-size: 18px; }
-  .involved-title { font-size: 24px; }
-  .spotlight-title { font-size: 24px; }
-  .spotlight-head { font-size: 20px; }
-  .happening-title { font-size: 24px; }
-  .strip-img { flex: 0 0 160px; height: 150px; }
-  .partners-title { font-size: 22px; }
-  .partners-grid { grid-template-columns: 1fr; }
-}
-
+    @media(max-width:480px){.hero-title{font-size:26px;}.theme-head{font-size:22px;}.involved-title{font-size:24px;}.spotlight-title{font-size:24px;}.happening-title{font-size:24px;}.partners-title{font-size:22px;}.partners-grid{grid-template-columns:1fr;}}
   </style>
-
-  <style>
-    * { -webkit-text-stroke: 0 !important; }
-
-    /* ── Force InterDisplay on theme section — belt-and-braces ── */
-    .theme-section,
-    .theme-section *,
-    .theme-year,
-    .theme-sub,
-    .theme-head,
-    .theme-body,
-    .theme-dates,
-    .theme-content p,
-    .theme-content h2,
-    .theme-content h3 {
-      font-family: 'InterDisplay', 'Inter', Arial, sans-serif !important;
-    }
-    .theme-dates {
-      font-family: 'InterDisplay', 'Inter', Arial, sans-serif !important;
-      font-weight: 700 !important;
-    }
-    .theme-year {
-      font-family: 'DxWideground', 'InterDisplay', Arial, sans-serif !important;
-    }
-  </style>
-
+  <style id="nav-fix">@media(max-width:768px){#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}}#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;}#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px;overflow-y:auto;}#mobile-nav-drawer.open{display:flex;}#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}</style>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-SemiBold.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
-  <!-- Fallback preloads for alternate directory structures -->
-  <link rel="preload" href="../fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="../fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="/fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="/fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
-
-  <script>
-    /* Dynamic font loader — probes candidate paths and loads the first that resolves */
-    (function() {
-      var base = window.location.href.replace(/\/[^\/]*$/, '/');
-      var candidates = [
-        base + 'fonts/',
-        base + '../fonts/',
-        '/fonts/',
-        '/frontend/fonts/',
-        base + 'frontend/fonts/'
-      ];
-      var weights = [
-        { file: 'InterDisplay-Regular.otf',  weight: '400' },
-        { file: 'InterDisplay-Medium.otf',   weight: '500' },
-        { file: 'InterDisplay-SemiBold.otf', weight: '600' },
-        { file: 'InterDisplay-Bold.otf',     weight: '700' },
-        { file: 'DxWideground-Regular.otf',  weight: '400', family: 'DxWideground' }
-      ];
-      function tryLoad(pathPrefix, idx) {
-        if (idx >= weights.length) return;
-        var w = weights[idx];
-        var family = w.family || 'InterDisplay';
-        var url = pathPrefix + w.file;
-        var ff = new FontFace(family, 'url(' + url + ') format("opentype")', { weight: w.weight, style: 'normal' });
-        ff.load().then(function(loaded) {
-          document.fonts.add(loaded);
-          tryLoad(pathPrefix, idx + 1);
-        }).catch(function() {});
-      }
-      /* Probe each candidate by trying to load Regular; if it works, load the rest */
-      candidates.forEach(function(prefix) {
-        var probe = new FontFace('InterDisplay', 'url(' + prefix + 'InterDisplay-Regular.otf) format("opentype")', { weight: '400' });
-        probe.load().then(function(loaded) {
-          document.fonts.add(loaded);
-          tryLoad(prefix, 1); /* start from Medium onward */
-        }).catch(function() {});
-      });
-    })();
-  </script>
+  <link rel="preload" href="fonts/DxWideground-Regular.otf" as="font" type="font/otf" crossorigin>
+  <script>(function(){var b=window.location.href.replace(/\/[^\/]*$/,'/'),cs=[b+'fonts/',b+'../fonts/','/fonts/'];var ws=[{file:'InterDisplay-Regular.otf',weight:'400'},{file:'InterDisplay-Medium.otf',weight:'500'},{file:'InterDisplay-SemiBold.otf',weight:'600'},{file:'InterDisplay-Bold.otf',weight:'700'},{file:'DxWideground-Regular.otf',weight:'400',family:'DxWideground'}];function tl(p,i){if(i>=ws.length)return;var w=ws[i],f=w.family||'InterDisplay',u=p+w.file,ff=new FontFace(f,'url('+u+') format("opentype")',{weight:w.weight,style:'normal'});ff.load().then(function(l){document.fonts.add(l);tl(p,i+1);}).catch(function(){});}cs.forEach(function(p){var pr=new FontFace('InterDisplay','url('+p+'InterDisplay-Regular.otf) format("opentype")',{weight:'400'});pr.load().then(function(l){document.fonts.add(l);tl(p,1);}).catch(function(){});});})();</script>
 </head>
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-subtitle">African Digital &amp; Innovation Festival</p>
       <h1 class="hero-title">Fak'ugesi<br>Festival</h1>
-      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
       <a class="hero-link" href="about.html">What is Fak'ugesi? <span class="hero-link-arrow">→</span></a>
     </div>
-    <div class="hero-logo">
-      <img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
-    </div>
+    <div class="hero-logo"><img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div>
   </div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
+    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
   </div>
 </div>
 
-<!-- 2026 THEME — 2 crosses at TOP only, NO bottom crosses, brighter white -->
+<!-- THEME SECTION -->
 <section class="theme-section reveal">
   <div class="theme-bg-img"></div>
   <div class="theme-fade"></div>
-
-  <!-- Only 2 cross icons at top — left and right -->
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/></svg>
+  <!-- Crosses top left + right -->
+  <div class="sec-crosses sec-crosses-top">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/></svg>
-  </div>
-  <!-- NO bottom crosses for theme section -->
-
   <div class="theme-inner">
     <div class="theme-content">
-      <h2 class="theme-year">2026 Theme</h2>
+      <!-- "2026 Theme" — large bold heading, InterDisplay SemiBold ~52px, matching the image -->
+      <span class="theme-year-label">2026 Theme</span>
       <p class="theme-sub">Africa's creative energy unleashed</p>
       <h3 class="theme-head">African<br>Imaginaries</h3>
-      <p class="theme-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus</p>
+      <p class="theme-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
       <div class="btn-row">
         <button class="btn-outline-white" onclick="location.href='programme.html'">VIEW PROGRAMME</button>
         <button class="btn-outline-white" onclick="location.href='tickets.html'">GET TICKETS</button>
       </div>
-      <p class="theme-dates">07 — 12.10.2026</p>
+      <!-- Date — InterDisplay, font-weight 400, 28px — same as hero-dates on other pages -->
+      <span class="theme-dates">07 — 12.10.2026</span>
     </div>
   </div>
 </section>
 
-<!-- GET INVOLVED — 3 crosses top, 3 crosses bottom, solid bright white, NO flip -->
+<!-- GET INVOLVED -->
 <section class="involved-section reveal">
   <div class="involved-bg"></div>
-
-  <!-- 3 crosses at TOP — solid bright white -->
-  <div class="cross-icon" style="top:16px;left:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
+  <div class="sec-crosses sec-crosses-top">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
+  <div class="sec-crosses sec-crosses-bottom">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;right:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
-  </div>
-  <!-- 3 crosses at BOTTOM — solid bright white -->
-  <div class="cross-icon" style="bottom:16px;left:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
-  </div>
-
   <div class="involved-inner">
     <div class="involved-header">
       <h2 class="involved-title">Get involved</h2>
       <a class="involved-link" href="about.html">What is Fak'ugesi?</a>
     </div>
     <div class="involved-cards">
-
-      <div class="inv-card">
-        <div class="inv-card-front">
-          <span class="card-num">01</span>
-          <p class="card-tag">Festival Collaboration</p>
-          <h3 class="card-title">Investors &amp; Funders</h3>
-          <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
-        </div>
-      </div>
-
-      <div class="inv-card">
-        <div class="inv-card-front">
-          <span class="card-num">02</span>
-          <p class="card-tag">Curated Festival Experiences</p>
-          <h3 class="card-title">Expo &amp; Showcases</h3>
-          <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
-        </div>
-      </div>
-
-      <div class="inv-card">
-        <div class="inv-card-front">
-          <span class="card-num">03</span>
-          <p class="card-tag">Lend a Hand</p>
-          <h3 class="card-title">Volunteers</h3>
-          <p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
-        </div>
-      </div>
-
+      <div class="inv-card"><div class="inv-card-front"><span class="card-num">01</span><p class="card-tag">Festival Collaboration</p><h3 class="card-title">Investors &amp; Funders</h3><p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p></div></div>
+      <div class="inv-card"><div class="inv-card-front"><span class="card-num">02</span><p class="card-tag">Curated Festival Experiences</p><h3 class="card-title">Expo &amp; Showcases</h3><p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p></div></div>
+      <div class="inv-card"><div class="inv-card-front"><span class="card-num">03</span><p class="card-tag">Lend a Hand</p><h3 class="card-title">Volunteers</h3><p class="card-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- SPOTLIGHT — no cross icons -->
+<!-- SPOTLIGHT -->
 <section class="spotlight-section reveal">
-
   <div class="spotlight-inner">
     <h2 class="spotlight-title">Spotlight</h2>
     <div class="spotlight-grid">
-      <div class="spotlight-img-wrap">
-        <img src="images/Fak_ugesi_2025-32.jpg" alt="Festival spotlight" />
-      </div>
+      <div class="spotlight-img-wrap"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival spotlight"/></div>
       <div>
         <p class="spotlight-tag">Fak'ugesi Awards</p>
         <h3 class="spotlight-head">Awards applications<br>now open</h3>
-        <p class="spotlight-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non</p>
+        <p class="spotlight-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
         <button class="btn-outline-dark" onclick="location.href='awards.html'">LEARN MORE</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT'S HAPPENING — 3 crosses at top, 3 at bottom, solid dark navy -->
+<!-- WHAT'S HAPPENING -->
 <section class="happening-section reveal">
-  <!-- 3 crosses at TOP — solid dark navy -->
-  <div class="cross-icon" style="top:16px;left:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  <div class="sec-crosses sec-crosses-top">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  <div class="sec-crosses sec-crosses-bottom">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;right:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <!-- 3 crosses at BOTTOM — solid dark navy -->
-  <div class="cross-icon" style="bottom:16px;left:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-
   <div class="happening-inner">
     <div class="happening-header">
       <h2 class="happening-title">What's happening</h2>
       <div class="soc-tabs">
-        <button class="soc-tab active" data-feed="instagram" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-        </button>
-        <button class="soc-tab x-tab" data-feed="twitter" aria-label="X">
-          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg>
-        </button>
-        <button class="soc-tab fb-tab" data-feed="facebook" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </button>
+        <button class="soc-tab active" data-feed="instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></button>
+        <button class="soc-tab" data-feed="twitter" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></button>
+        <button class="soc-tab" data-feed="facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></button>
       </div>
     </div>
   </div>
-
-  <!-- INSTAGRAM FEED -->
+  <!-- INSTAGRAM -->
   <div class="soc-feed-panel active" id="feed-instagram">
-    <div class="happening-strip-outer">
-      <div class="happening-strip">
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL0176.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL0176.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-        <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Fak'ugesi on Instagram" /></a></div>
-      </div>
-    </div>
+    <div class="happening-strip-outer"><div class="happening-strip">
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL4129.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_MGL7139.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Copy_of__MGL3584.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/_C6A0500.jpg" alt="Instagram"/></a></div>
+      <div class="strip-img"><a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener"><img src="images/Fak_ugesi_2025-32.jpg" alt="Instagram"/></a></div>
+    </div></div>
     <p class="happening-caption">Follow <a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener" style="color:var(--navy)">@fakugesi</a> on Instagram for live festival updates</p>
   </div>
-
-  <!-- TWITTER / X FEED -->
+  <!-- TWITTER -->
   <div class="soc-feed-panel" id="feed-twitter">
     <div class="happening-inner" style="padding-top:0;">
       <div class="tweet-grid">
-        <div class="tweet-card">
-          <div class="tweet-header">
-            <div class="tweet-avatar">F</div>
-            <div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div>
-            <div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div>
-          </div>
-          <p class="tweet-text">Awards applications are now OPEN! Submit your project and be part of Africa's most celebrated digital innovation awards. <a href="#">#FakugesiAwards</a> <a href="#">#AfricanTech</a></p>
-          <div class="tweet-meta"><span>2h ago</span><span>💬 12</span><span>🔁 34</span><span>❤️ 98</span></div>
-        </div>
-        <div class="tweet-card">
-          <div class="tweet-header">
-            <div class="tweet-avatar">F</div>
-            <div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div>
-            <div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div>
-          </div>
-          <p class="tweet-text">The 2026 theme is "African Imaginaries" — a celebration of Africa's speculative futures and creative visions. Join us 07–12 October in Johannesburg. <a href="#">#Fakugesi2026</a></p>
-          <div class="tweet-meta"><span>1d ago</span><span>💬 28</span><span>🔁 71</span><span>❤️ 210</span></div>
-        </div>
-        <div class="tweet-card">
-          <div class="tweet-header">
-            <div class="tweet-avatar">F</div>
-            <div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div>
-            <div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div>
-          </div>
-          <p class="tweet-text">Immersive Africa returns. Experience cutting-edge XR, VR and dome installations at the Wits Anglo American Digital Dome. Tickets available now. <a href="#">#ImmersiveAfrica</a></p>
-          <div class="tweet-meta"><span>3d ago</span><span>💬 19</span><span>🔁 55</span><span>❤️ 174</span></div>
-        </div>
+        <div class="tweet-card"><div class="tweet-header"><div class="tweet-avatar">F</div><div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div><div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div></div><p class="tweet-text">Awards applications are now OPEN! Submit your project and be part of Africa's most celebrated digital innovation awards. <a href="#">#FakugesiAwards</a></p><div class="tweet-meta"><span>2h ago</span><span>💬 12</span><span>🔁 34</span><span>❤️ 98</span></div></div>
+        <div class="tweet-card"><div class="tweet-header"><div class="tweet-avatar">F</div><div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div><div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div></div><p class="tweet-text">The theme is "African Imaginaries" — a celebration of Africa's speculative futures and creative visions. Join us 07–12 October. <a href="#">#Fakugesi2026</a></p><div class="tweet-meta"><span>1d ago</span><span>💬 28</span><span>🔁 71</span><span>❤️ 210</span></div></div>
+        <div class="tweet-card"><div class="tweet-header"><div class="tweet-avatar">F</div><div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div><div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div></div><p class="tweet-text">Immersive Africa returns. Experience cutting-edge XR, VR and dome installations at the Wits Anglo American Digital Dome. <a href="#">#ImmersiveAfrica</a></p><div class="tweet-meta"><span>3d ago</span><span>💬 19</span><span>🔁 55</span><span>❤️ 174</span></div></div>
       </div>
       <p class="happening-caption" style="padding:0;">Follow <a href="https://x.com/fakugesi" target="_blank" rel="noopener" style="color:var(--navy)">@fakugesi</a> on X for real-time updates</p>
     </div>
   </div>
-
-  <!-- FACEBOOK FEED -->
+  <!-- FACEBOOK -->
   <div class="soc-feed-panel" id="feed-facebook">
     <div class="happening-inner" style="padding-top:0;">
       <div class="fb-feed">
-        <div class="fb-card">
-          <div class="fb-card-img"><img src="images/Copy_of__MGL4129.jpg" alt="Festival post" /></div>
-          <div class="fb-card-body">
-            <div class="fb-card-date">April 7, 2026</div>
-            <p class="fb-card-text">Awards applications are now open! Submit your project before the deadline and join Africa's most exciting digital innovation celebration.</p>
-            <div class="fb-card-actions"><span>142 Likes</span><span>23 Comments</span><span>18 Shares</span></div>
-          </div>
-        </div>
-        <div class="fb-card">
-          <div class="fb-card-img"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival post" /></div>
-          <div class="fb-card-body">
-            <div class="fb-card-date">March 28, 2026</div>
-            <p class="fb-card-text">2026 Theme Announcement: African Imaginaries. Explore speculative futures, Afrofuturism, and African creative visions across 6 days of programming.</p>
-            <div class="fb-card-actions"><span>287 Likes</span><span>41 Comments</span><span>93 Shares</span></div>
-          </div>
-        </div>
+        <div class="fb-card"><div class="fb-card-img"><img src="images/Copy_of__MGL4129.jpg" alt="Post"/></div><div class="fb-card-body"><div class="fb-card-date">April 7, 2026</div><p class="fb-card-text">Awards applications are now open! Submit your project before the deadline and join Africa's most exciting digital innovation celebration.</p><div class="fb-card-actions"><span>142 Likes</span><span>23 Comments</span><span>18 Shares</span></div></div></div>
+        <div class="fb-card"><div class="fb-card-img"><img src="images/Fak_ugesi_2025-32.jpg" alt="Post"/></div><div class="fb-card-body"><div class="fb-card-date">March 28, 2026</div><p class="fb-card-text">Theme Announcement: African Imaginaries. Explore speculative futures, Afrofuturism, and African creative visions across 6 days of programming.</p><div class="fb-card-actions"><span>287 Likes</span><span>41 Comments</span><span>93 Shares</span></div></div></div>
       </div>
-      <p class="happening-caption" style="padding:0;">Follow <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" style="color:var(--navy)">Fak'ugesi Festival</a> on Facebook for news and updates</p>
+      <p class="happening-caption" style="padding:0;">Follow <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" style="color:var(--navy)">Fak'ugesi Festival</a> on Facebook</p>
     </div>
   </div>
 </section>
 
-<!-- OUR MAIN PARTNERS — NO cross icons -->
+<!-- OUR MAIN PARTNERS -->
 <section class="partners-section reveal">
-  <!-- Cross icons removed from partners section -->
-
   <div class="partners-inner">
-    <div class="partners-header">
-      <h2 class="partners-title">Our Main Partners</h2>
-      <a class="partners-link" href="about.html#partners">View all partners</a>
-    </div>
+    <div class="partners-header"><h2 class="partners-title">Our Main Partners</h2><a class="partners-link" href="about.html#partners">View all partners</a></div>
     <div class="partners-grid">
-      <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" />
-        </div>
-        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-      </div>
-      <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" />
-        </div>
-        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-      </div>
-      <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" />
-        </div>
-        <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
-      </div>
+      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
+      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
+      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
     </div>
   </div>
 </section>
 
 <script>
-  // Reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => io.observe(el));
+  const revealEls=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
+  revealEls.forEach(el=>io.observe(el));
 
-  // Social feed switcher
-  document.querySelectorAll('.soc-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      const feed = tab.dataset.feed;
-      document.querySelectorAll('.soc-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.querySelectorAll('.soc-feed-panel').forEach(p => p.classList.remove('active'));
-      document.getElementById('feed-' + feed).classList.add('active');
+  document.querySelectorAll('.soc-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const feed=tab.dataset.feed;
+      document.querySelectorAll('.soc-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');
+      document.querySelectorAll('.soc-feed-panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById('feed-'+feed).classList.add('active');
     });
   });
-</script>
-<script>
-  /* Cross icon scroll spin — preserved exactly */
+
   (function(){
-    var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
-    function resetRot(){
-      rot = 0;
-      document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-        el.style.transition = 'transform 0.45s ease';
-        el.style.transform = 'rotate(0deg)';
-      });
-    }
-    function onScroll(){
-      if(!ticking){
-        requestAnimationFrame(function(){
-          var y = window.scrollY, delta = y - lastY;
-          if(Math.abs(delta) > 0){
-            rot += delta > 0 ? 15 : -15;
-            document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-              el.style.transition = 'transform 0.1s linear';
-              el.style.transform = 'rotate('+rot+'deg)';
-            });
-          }
-          lastY = y;
-          ticking = false;
-          clearTimeout(scrollTimer);
-          scrollTimer = setTimeout(resetRot, 300);
-        });
-        ticking = true;
-      }
-    }
-    window.addEventListener('scroll', onScroll, {passive:true});
+    var lY=window.scrollY,r=0,t=false,tm=null;
+    function rs(){r=0;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.45s ease';el.style.transform='rotate(0deg)';});}
+    function sp(){if(!t){requestAnimationFrame(()=>{var y=window.scrollY,d=y-lY;if(Math.abs(d)>0){r+=d>0?15:-15;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.1s linear';el.style.transform='rotate('+r+'deg)';});}lY=y;t=false;clearTimeout(tm);tm=setTimeout(rs,300);});t=true;}}
+    window.addEventListener('scroll',sp,{passive:true});
   })();
 </script>
 <script src="nav.js"></script>
