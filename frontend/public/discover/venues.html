@@ -61,10 +61,6 @@
       animation: kenBurns 16s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.55) 40%, transparent 78%);
-    }
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
       padding: 110px var(--band) 60px;
@@ -466,7 +462,7 @@
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-subtitle">Venues</p>
-      <h1 class="hero-title">Getting the lay<br>of the land</h1>
+      <h1 class="hero-title">Getting the Lay<br>of the Land</h1>
       <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
     </div>
     <div class="hero-logo">
@@ -623,79 +619,101 @@
   ];
 
   // ── Init Leaflet map ──
-  const map = L.map('venue-map', {
-    center: [-26.1915, 28.0300],
-    zoom: 15,
-    zoomControl: true,
-    scrollWheelZoom: false,
-    // Disable tap on mobile to prevent map stealing scroll
-    tap: false
+const map = L.map('venue-map', {
+  center: [-26.1915, 28.0300],
+  zoom: 15,
+  zoomControl: true,
+  scrollWheelZoom: false,
+  tap: false
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
+// Custom dot marker
+function makeIcon(active) {
+  return L.divIcon({
+    className: '',
+    html: `<div style="
+      width:14px;height:14px;
+      background:${active ? '#e05a1e' : '#1a2744'};
+      border:2.5px solid #fff;
+      border-radius:50%;
+      box-shadow:0 2px 8px rgba(0,0,0,0.4);
+    "></div>`,
+    iconSize: [14,14], iconAnchor: [7,7], popupAnchor: [0,-10]
   });
+}
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19
-  }).addTo(map);
-
-  // Custom dot marker
-  function makeIcon(active) {
-    return L.divIcon({
-      className: '',
-      html: `<div style="
-        width:14px;height:14px;
-        background:${active ? '#e05a1e' : '#1a2744'};
-        border:2.5px solid #fff;
-        border-radius:50%;
-        box-shadow:0 2px 8px rgba(0,0,0,0.4);
-      "></div>`,
-      iconSize: [14,14], iconAnchor: [7,7], popupAnchor: [0,-10]
-    });
+// Add markers with persistent popups (autoClose: false) for first two venues
+const markers = venues.map((v, i) => {
+  const marker = L.marker([v.lat, v.lng], { icon: makeIcon(i === 0) }).addTo(map);
+  
+  // For Tshimologong Precinct (index 0) and Wits Digital Dome (index 1)
+  // bind popup with autoClose: false so multiple popups can stay open
+  if (i === 0 || i === 1) {
+    marker.bindPopup(
+      `<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br>` +
+      `<span style="font-size:10px;color:#3a4060;">${v.address}</span>`,
+      { autoClose: false, closeOnClick: false }
+    );
+  } else {
+    // Default popup for any extra venues (closes others on open)
+    marker.bindPopup(
+      `<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br>` +
+      `<span style="font-size:10px;color:#3a4060;">${v.address}</span>`
+    );
   }
+  return marker;
+});
 
-  // Add markers
-  const markers = venues.map((v, i) =>
-    L.marker([v.lat, v.lng], { icon: makeIcon(i === 0) })
-      .addTo(map)
-      .bindPopup(
-        `<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br>` +
-        `<span style="font-size:10px;color:#3a4060;">${v.address}</span>`
-      )
-  );
-  markers[0].openPopup();
+// Open BOTH Tshimologong and Wits Digital Dome popups by default (simultaneously)
+markers[0].openPopup();
+markers[1].openPopup();
 
-  // ── Card interaction ──
-  function activateCard(num) {
-    document.querySelectorAll('.location-card').forEach(c => c.classList.remove('active'));
-    document.getElementById('card-' + num).classList.add('active');
-    markers.forEach((m, i) => m.setIcon(makeIcon(i === num - 1)));
-    const v = venues[num - 1];
-    map.flyTo([v.lat, v.lng], 16, { duration: 0.8 });
-    markers[num - 1].openPopup();
+// ── Card interaction with popup management ──
+function activateCard(num) {
+  // Close ALL marker popups first to ensure only the selected one shows after click
+  markers.forEach(marker => marker.closePopup());
+  
+  // Update active card UI
+  document.querySelectorAll('.location-card').forEach(c => c.classList.remove('active'));
+  document.getElementById('card-' + num).classList.add('active');
+  
+  // Update marker icons
+  markers.forEach((m, i) => m.setIcon(makeIcon(i === num - 1)));
+  
+  // Fly to selected venue and open its popup
+  const v = venues[num - 1];
+  map.flyTo([v.lat, v.lng], 16, { duration: 0.8 });
+  markers[num - 1].openPopup();
 
-    // On mobile, scroll the map into view after card tap
-    if (window.innerWidth <= 768) {
-      document.querySelector('.map-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  // On mobile, scroll map into view
+  if (window.innerWidth <= 768) {
+    document.querySelector('.map-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// ── Reveal on scroll ──
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      setTimeout(() => map.invalidateSize(), 800);
     }
-  }
-
-  // ── Reveal on scroll ──
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        setTimeout(() => map.invalidateSize(), 800);
-      }
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => io.observe(el));
-
-  // Invalidate map on resize (handles orientation change on mobile)
-  window.addEventListener('resize', () => {
-    clearTimeout(window._mapResizeTimer);
-    window._mapResizeTimer = setTimeout(() => map.invalidateSize(), 200);
   });
+}, { threshold: 0.08 });
+revealEls.forEach(el => io.observe(el));
+
+// Invalidate map on resize
+window.addEventListener('resize', () => {
+  clearTimeout(window._mapResizeTimer);
+  window._mapResizeTimer = setTimeout(() => map.invalidateSize(), 200);
+});
 </script>
 <script src="../nav.js"></script>
 <script src="../fakugesi-cross-patch.js"></script>
