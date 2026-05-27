@@ -42,7 +42,96 @@
     .ticker-track span{padding:0 32px;font-size:12.5px;font-weight:500;color:var(--navy);letter-spacing:0.02em;}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+<<<<<<< HEAD
+    /* Row crosses — static positioned inside flex rows */
+    .cross-icon-inline {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0;
+      opacity: 0.45; transition: transform 0.1s linear;
+    }
+    .cross-icon-inline svg { width: 18px; height: 18px; }
+
+    /* ── HERO — taller to clear nav ── */
+    .hero {
+      position: relative; width: 100%;
+      /* Increased from 420px — nav is ~64px, this gives clear breathing room */
+      min-height: 560px;
+      overflow: hidden; display: flex; align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/_C6A0500.jpg');
+      background-size: cover; background-position: center 30%;
+      filter: brightness(0.55);
+      animation: kenBurns 18s ease-in-out infinite alternate;
+      transform: scaleX(-1);
+    }
+    @keyframes kenBurns { from { transform: scaleX(-1) scale(1); } to { transform: scaleX(-1) scale(1.06); } }
+    .hero-overlay {
+  position: absolute; inset: 0;
+  background: transparent;
+}
+    .hero-blue-tint { position: absolute; inset: 0; background: rgba(30,60,160,0.18); z-index: 1; }
+
+    /* Hero inner — flex row so content left, logo right */
+    .hero-inner {
+      position: relative; z-index: 3;
+      width: 100%;
+      padding: 0 248px 56px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      animation: fadeUp 0.9s ease both;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero-content { max-width: 520px; }
+    .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; }
+    .hero-title { font-size: 54px; font-weight: 900; line-height: 1.0; margin-bottom: 18px; }
+    .hero-body { font-size: 12.5px; line-height: 1.7; max-width: 420px; opacity: 0.85; margin-bottom: 24px; }
+
+    .btn-tickets {
+      display: inline-block; border: 1.5px solid var(--white); color: var(--white); background: transparent;
+      padding: 11px 28px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; cursor: pointer; text-decoration: none;
+      transition: background 0.22s, color 0.22s;
+      position: relative; overflow: hidden;
+    }
+    .btn-tickets:hover { background: #1a2744; color: var(--white); border-color: rgba(255,220,60,0.75); transform: translateY(-1px); }
+
+    /* Logo right-aligned, vertically centred */
+    .hero-logo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+    }
+    .hero-logo img {
+      height: 110px; width: auto; display: block;
+      filter: brightness(0) invert(1) contrast(1.2);
+      mix-blend-mode: screen;
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrapper {
+      background: var(--white);
+      border-top: 1px solid rgba(26,39,68,0.1);
+      border-bottom: 1px solid rgba(26,39,68,0.1);
+      overflow: hidden; white-space: nowrap; padding: 10px 0; position: relative; z-index: 10;
+      transition: background 0.28s ease;
+    }
+    .ticker-wrapper:hover { background: var(--navy) !important; border-top-color: rgba(26,39,68,0.35) !important; border-bottom-color: rgba(26,39,68,0.35) !important; }
+    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+    .ticker-wrapper:hover .ticker-track span { color: #ffffff !important; }
+    .ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
+    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: var(--navy); letter-spacing: 0.02em; }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── Fak'ugesi shared link hover effect ── */
+=======
     /* Shared link hover */
+>>>>>>> ea013245a0a57b1b854f3f617c0e3ea7d96bb805
     .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
     .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}

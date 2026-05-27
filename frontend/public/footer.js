@@ -53,15 +53,15 @@
 
     /* Cross icons — 18px, absolutely positioned */
     .fug-footer-cross {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  z-index: 2;
-  opacity: 0.55;
-}
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      z-index: 2;
+      opacity: 0.55;
+    }
     .fug-footer-cross svg { width: 18px; height: 18px; }
 
     /* Three-column grid aligned to 200px margins */
@@ -119,24 +119,25 @@
     }
     #fug-footer a:hover { text-decoration: underline; }
 
-    /* Third column: logo + copyright side by side */
+    /* Third column: logo + copyright side by side — KEY FIX */
     #fug-footer .fug-footer-right {
       display: flex;
       align-items: flex-start;
       gap: 16px;
+      /* Prevent wrapping at any width */
+      flex-wrap: nowrap;
+      min-width: 0;
     }
 
-    /* Logo — height matches the 3-line copyright text block:
-       font-size 16px × line-height 1.8 × 3 lines ≈ 86px;
-       set to 90px so it sits flush top-to-bottom with the text. */
+    /* Logo — fixed size, never shrinks */
     #fug-footer .fug-footer-logo {
       height: 90px;
       width: auto;
       display: block;
-      flex-shrink: 0;
+      flex-shrink: 0; /* never compress the logo */
     }
 
-    /* Copyright */
+    /* Copyright — stays beside the logo, never pushes below */
     #fug-footer .fug-footer-copy {
       font-size: 16px;
       font-weight: 700;
@@ -145,6 +146,9 @@
       margin: 0;
       font-family: 'InterDisplay', sans-serif;
       letter-spacing: -0.01em;
+      flex-shrink: 1;   /* can compress text if needed */
+      min-width: 0;     /* allows text to shrink inside flex */
+      white-space: nowrap; /* keeps each line on one line */
     }
 
     /* ── TABLET (≤1024px) ── */
@@ -177,19 +181,30 @@
       #fug-footer .fug-footer-addr { font-size: 13px; }
       #fug-footer .fug-footer-col-title { font-size: 15px; }
       #fug-footer a { font-size: 13px; line-height: 2.1; }
+
+      /* On mobile: logo + copyright still side-by-side, never stacked */
       #fug-footer .fug-footer-right {
         align-items: center;
         padding-top: 8px;
         border-top: 1px solid rgba(26,39,68,0.08);
+        flex-wrap: nowrap; /* enforce side-by-side even on mobile */
+        gap: 12px;
       }
       #fug-footer .fug-footer-logo { height: 56px; }
-      #fug-footer .fug-footer-copy { font-size: 15px; }
+      #fug-footer .fug-footer-copy {
+        font-size: 13px;
+        white-space: nowrap;
+      }
       .fug-footer-cross { display: none; }
     }
 
     /* ── SMALL MOBILE (≤480px) ── */
     @media (max-width: 480px) {
       #fug-social-band p { font-size: 11px; }
+      #fug-footer .fug-footer-copy {
+        font-size: 12px;
+      }
+      #fug-footer .fug-footer-logo { height: 48px; }
     }
   `;
   document.head.appendChild(style);
