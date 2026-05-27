@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Expo • Fak'ugesi Festival</title>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expo • Fak'ugesi Festival 2026</title>
   <style>
-    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; }
-    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; }
-    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:600; }
-    @font-face { font-family:'InterDisplay'; src:url('/fonts/InterDisplay-SemiBold.otf') format('opentype'); font-weight:700; }
-
+    @font-face{font-family:'InterDisplay';src:url('/fonts/InterDisplay-Regular.otf') format('opentype');font-weight:400;}
+    @font-face{font-family:'InterDisplay';src:url('/fonts/InterDisplay-Medium.otf') format('opentype');font-weight:500;}
+    @font-face{font-family:'InterDisplay';src:url('/fonts/InterDisplay-SemiBold.otf') format('opentype');font-weight:600;}
+    @font-face{font-family:'InterDisplay';src:url('/fonts/InterDisplay-SemiBold.otf') format('opentype');font-weight:700;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--navy:#1a2744;--lavender:#dde3f0;--white:#ffffff;--dark-text:#0d1b3e;--body-gray:#3a4060;--band:248px;}
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
-    .cross-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0;position:absolute;z-index:6;opacity:0.65;transition:transform 0.1s linear}
-    .cross-icon svg{width:100%;height:100%}
+    /* CANONICAL CROSS STRIP */
+    .cross-strip{display:flex;justify-content:space-between;align-items:center;padding:0 var(--band);height:40px;}
+    .cross-strip svg{display:block;flex-shrink:0;}
+
+    /* Section-internal cross rows (absolute positioned) */
+    .sec-crosses{position:absolute;left:0;right:0;display:flex;justify-content:space-between;padding:0 var(--band);pointer-events:none;z-index:20;}
+    .sec-crosses-top{top:20px;}
+    .sec-crosses-bottom{bottom:20px;}
 
     /* HERO */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-start;}
@@ -34,22 +38,12 @@
     }
     .hero-content{max-width:620px;}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:72px;font-weight:900;line-height:1.0;margin-bottom:20px;max-width:700px}
+    /* SemiBold hero title */
+    .hero-title{font-size:72px;font-weight:600;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
-    .hero-logo{
-      position:relative;z-index:4;
-      flex-shrink:0;
-      display:flex;align-items:center;justify-content:center;
-      align-self:center;
-      background:transparent;
-    }
-    .hero-logo img{
-      height:110px;width:auto;display:block;
-      filter:brightness(0) invert(1) contrast(1.2);
-      mix-blend-mode:screen;
-      background:transparent;
-    }
+    .hero-logo{position:relative;z-index:4;flex-shrink:0;display:flex;align-items:center;justify-content:center;align-self:center;}
+    .hero-logo img{height:110px;width:auto;display:block;filter:brightness(0) invert(1) contrast(1.2);mix-blend-mode:screen;}
 
     /* Shared link hover */
     .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
@@ -58,80 +52,30 @@
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
     /* TICKER */
-    .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
+    .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10;transition:background 0.28s ease;}
     .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:flex;align-items:center;gap:6px;color:var(--dark-text);font-size:12px;font-weight:500;white-space:nowrap;padding:0 40px}
-    .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
-    .ticker-wrap{transition:background 0.28s ease;}
-    .ticker-wrap:hover{background:var(--navy)!important;border-top-color:rgba(26,39,68,0.35)!important;border-bottom-color:rgba(26,39,68,0.35)!important;}
+    .ticker-wrap:hover{background:var(--navy)!important;}
     .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
     .ticker-wrap:hover .ticker-item{color:#ffffff!important;}
-    .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff!important;}
 
     /* CURATORIAL FREQUENCIES */
-    .curatorial-section{
-      position:relative;width:100%;min-height:580px;overflow:hidden;
-      background:linear-gradient(135deg,#1a2462 0%,#2a3a8f 30%,#3a52b0 55%,#6878c8 80%,#8898d8 100%);
-      display:flex;align-items:stretch;
-    }
-    .curatorial-bg-img{
-      position:absolute;right:0;top:0;bottom:0;width:55%;
-      background-image:url('images/robo1.png');
-      background-size:contain;
-      background-repeat:no-repeat;
-      background-position:right center;
-      z-index:1;
-    }
-    .curatorial-fade{
-      position:absolute;inset:0;
-      background:linear-gradient(to right,
-        rgba(26,36,98,1) 0%,
-        rgba(26,36,98,0.85) 40%,
-        rgba(26,36,98,0.3) 62%,
-        transparent 78%);
-      z-index:2;
-    }
-    .curatorial-inner{
-      position:relative;z-index:3;width:100%;
-      padding:64px 248px 56px;
-      display:grid;
-      grid-template-rows:auto auto auto auto;
-    }
-    .curatorial-top-row{
-      display:flex;justify-content:space-between;align-items:flex-start;
-      margin-bottom:24px;
-    }
-    .curatorial-title{font-size:60px;font-weight:900;line-height:1.0;color:#fff;margin:0;max-width:620px;}
-    .curatorial-view-link{
-      font-size:12px;font-weight:600;color:rgba(255,255,255,.85);
-      text-decoration:underline;letter-spacing:.06em;cursor:pointer;
-      text-underline-offset:3px;transition:color .2s;
-      white-space:nowrap;margin-top:8px;flex-shrink:0;margin-left:32px;
-    }
-    .curatorial-view-link:hover{color:#fff;}
-    .curatorial-body{
-      font-size:14px;line-height:1.8;color:rgba(255,255,255,.9);
-      max-width:520px;margin-bottom:44px;
-    }
-    .curatorial-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
-    .curatorial-card{
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.22);
-      padding:24px 22px 28px;position:relative;
-    }
-    .curatorial-card+.curatorial-card{border-left:none;}
-    .curatorial-card-num{
-      position:absolute;top:14px;right:16px;
-      font-size:32px;font-weight:900;color:rgba(255,255,255,.18);
-      line-height:1;
-    }
-    .curatorial-card-tag{
-      font-size:8px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-      color:rgba(255,255,255,.55);margin-bottom:12px;line-height:1.5;
-      max-width:calc(100% - 40px);
-    }
-    .curatorial-card-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:16px;line-height:1.15;}
+    .curatorial-section{position:relative;width:100%;min-height:560px;overflow:hidden;background:linear-gradient(135deg,#1a2462 0%,#2a3a8f 30%,#3a52b0 55%,#6878c8 80%,#8898d8 100%);display:flex;align-items:stretch;}
+    .curatorial-bg-img{position:absolute;right:0;top:0;bottom:0;width:55%;background-image:url('images/robo1.png');background-size:contain;background-repeat:no-repeat;background-position:right center;z-index:1;}
+    .curatorial-fade{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,36,98,1) 0%,rgba(26,36,98,0.85) 40%,rgba(26,36,98,0.3) 62%,transparent 78%);z-index:2;}
+    /* Reduced left padding */
+    .curatorial-inner{position:relative;z-index:3;width:100%;padding:40px 180px 48px;display:grid;grid-template-rows:auto auto auto auto;}
+    .curatorial-top-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
+    .curatorial-title{font-size:60px;font-weight:600;line-height:1.0;color:#fff;margin:0;max-width:620px;}
+    .curatorial-view-link{font-size:12px;font-weight:600;color:rgba(255,255,255,.85);text-decoration:underline;letter-spacing:.06em;white-space:nowrap;margin-top:8px;flex-shrink:0;margin-left:32px;}
+    .curatorial-body{font-size:14px;line-height:1.8;color:rgba(255,255,255,.9);max-width:520px;margin-bottom:36px;}
+    /* Gap between curatorial cards */
+    .curatorial-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+    .curatorial-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.22);padding:24px 22px 28px;position:relative;}
+    .curatorial-card-num{position:absolute;top:14px;right:16px;font-size:32px;font-weight:900;color:rgba(255,255,255,.18);line-height:1;}
+    .curatorial-card-tag{font-size:8px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px;line-height:1.5;max-width:calc(100% - 40px);}
+    .curatorial-card-title{font-size:22px;font-weight:600;color:#fff;margin-bottom:16px;line-height:1.15;}
     .curatorial-card-body{font-size:11px;line-height:1.7;color:rgba(255,255,255,.65);}
 
     /* SHOWCASE DETAIL */
@@ -140,208 +84,98 @@
     .showcase-detail-inner{position:relative;min-height:540px;overflow:hidden;}
     .showcase-detail-bg{position:absolute;inset:0;background-size:cover;background-position:center 20%;}
     .showcase-detail-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,18,48,0.88) 40%,rgba(10,18,48,0.55) 100%);}
-    .showcase-detail-content{position:relative;z-index:2;padding:48px var(--band) 64px;display:grid;grid-template-columns:1fr 260px;grid-template-rows:auto auto;gap:0 48px;}
+    .showcase-detail-content{position:relative;z-index:2;padding:48px var(--band) 64px;display:grid;grid-template-columns:1fr 260px;gap:0 48px;}
     .showcase-detail-back{grid-column:1/-1;display:inline-flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.75);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-family:'InterDisplay',sans-serif;margin-bottom:36px;padding:0;transition:color .2s;}
     .showcase-detail-back:hover{color:#fff;}
-    .showcase-detail-back svg{width:16px;height:16px;flex-shrink:0;}
-    .showcase-detail-left{display:flex;flex-direction:column;}
-    .showcase-detail-right{display:flex;flex-direction:column;justify-content:space-between;}
-    .showcase-detail-title{font-size:52px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:8px;}
-    .showcase-detail-subtitle{font-size:16px;font-weight:400;color:rgba(255,255,255,.75);margin-bottom:28px;}
+    .showcase-detail-back svg{width:16px;height:16px;}
+    .showcase-detail-title{font-size:52px;font-weight:600;color:#fff;line-height:1.05;margin-bottom:8px;}
+    .showcase-detail-subtitle{font-size:16px;color:rgba(255,255,255,.75);margin-bottom:28px;}
     .showcase-detail-body{font-size:13.5px;line-height:1.72;color:rgba(255,255,255,.85);max-width:560px;}
-    .showcase-detail-logos{display:flex;align-items:center;gap:12px;margin-bottom:36px;}
-    .showcase-detail-logo-box{height:64px;padding:8px 14px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;}
+    .showcase-detail-logo-box{height:64px;padding:8px 14px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:36px;}
     .showcase-detail-logo-box img{max-height:44px;max-width:120px;object-fit:contain;filter:brightness(0) invert(1);}
-    .showcase-detail-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#e05a1e;font-size:13px;font-weight:900;color:#fff;letter-spacing:.04em;}
-    .showcase-detail-links{display:flex;flex-direction:column;gap:8px;margin-top:16px;}
-    .showcase-detail-link{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:rgba(255,255,255,.8);text-decoration:underline;text-underline-offset:3px;cursor:pointer;transition:color .2s;}
-    .showcase-detail-link:hover{color:#fff;}
-    .showcase-detail-meta{display:flex;flex-direction:column;gap:20px;}
+    .showcase-detail-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#e05a1e;font-size:13px;font-weight:900;color:#fff;}
+    .showcase-detail-meta{display:flex;flex-direction:column;gap:20px;margin-top:24px;}
     .showcase-detail-meta-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:4px;}
     .showcase-detail-meta-value{font-size:22px;font-weight:700;color:#fff;}
 
     /* SHOWCASES */
     .showcases-section{background:#fff;padding:80px 0;position:relative;overflow:hidden;}
     .showcases-header{display:flex;justify-content:space-between;align-items:center;padding:0 248px;margin-bottom:48px;}
-    .showcases-title{font-size:48px;font-weight:900;color:var(--dark-text);}
-    .showcases-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;text-underline-offset:3px;}
+    .showcases-title{font-size:48px;font-weight:600;color:var(--dark-text);}
+    .showcases-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;}
     .showcases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:0 248px;}
-    .showcase-card{background:#eef1f8;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(26,39,68,.08);}
+    .showcase-card{background:#eef1f8;overflow:hidden;display:flex;flex-direction:column;border:1px solid rgba(26,39,68,.08);cursor:pointer;}
     .showcase-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;}
     .showcase-card-img img{width:100%;height:100%;object-fit:cover;display:block;}
     .showcase-card-info{padding:18px 20px 22px;}
     .showcase-card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
     .showcase-card-type{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--body-gray);}
-    .showcase-card-more{font-size:9px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;cursor:pointer;}
-    .showcase-card-title{font-size:28px;font-weight:900;color:var(--dark-text);margin-bottom:6px;line-height:1.1;}
+    .showcase-card-more{font-size:9px;font-weight:600;color:var(--navy);text-decoration:underline;cursor:pointer;}
+    .showcase-card-title{font-size:28px;font-weight:600;color:var(--dark-text);margin-bottom:6px;line-height:1.1;}
     .showcase-card-sub{font-size:13px;color:var(--body-gray);}
 
-    /* WANT TO SHOWCASE */
+    /* CTA */
     .showcase-cta-section{position:relative;width:100%;min-height:380px;overflow:hidden;display:flex;align-items:center;}
     .showcase-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL4253.jpg');background-size:cover;background-position:center top;filter:brightness(0.68);}
     .showcase-cta-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,10,28,.42) 40%,rgba(5,10,28,.12) 80%);}
     .showcase-cta-content{position:relative;z-index:3;padding:60px 248px;width:100%;}
-    .showcase-cta-title{font-size:42px;font-weight:900;color:#fff;margin-bottom:24px;max-width:480px;line-height:1.15;}
+    .showcase-cta-title{font-size:42px;font-weight:600;color:#fff;margin-bottom:24px;max-width:480px;line-height:1.15;}
     .showcase-cta-body{font-size:13px;line-height:1.72;max-width:440px;opacity:.85;color:#fff;margin-bottom:28px;}
-    .showcase-cta-btn{
-      display:inline-flex;align-items:center;gap:10px;
-      border:1.5px solid rgba(255,255,255,0.7);color:#fff;background:transparent;
-      padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:0.1em;
-      text-transform:uppercase;cursor:pointer;text-decoration:none;
-      font-family:'InterDisplay',sans-serif;
-      transition:background 0.22s,color 0.22s,border-color 0.22s;
-    }
-    .showcase-cta-btn:hover{background:#0d1b3e!important;color:#fff!important;border-color:rgba(100,160,255,0.65)!important;transform:translateY(-1px)!important;}
+    .showcase-cta-btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,0.7);color:#fff;background:transparent;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;font-family:'InterDisplay',sans-serif;transition:background 0.22s,color 0.22s;}
+    .showcase-cta-btn:hover{background:#0d1b3e;border-color:rgba(100,160,255,0.65);transform:translateY(-1px);}
 
-    /* ══ EXPO PARTNERS ══ */
-    .partners-section{background:#ffffff;padding:80px 0 0;position:relative;overflow:hidden;}
-    .partners-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 20% 50%,rgba(120,160,200,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(100,150,195,0.06) 0%,transparent 50%);pointer-events:none;}
-    .partners-title{font-size:48px;font-weight:900;color:#1a2744;text-align:center;margin-bottom:56px;font-family:'InterDisplay',sans-serif;padding:0 248px;position:relative;z-index:2;}
-    .partners-carousel-outer{overflow:hidden;width:100%;position:relative;z-index:2;}
+    /* PARTNERS */
+    .partners-section{background:#ffffff;padding:80px 0 0;position:relative;}
+    .partners-title{font-size:48px;font-weight:600;color:#1a2744;text-align:center;margin-bottom:56px;font-family:'InterDisplay',sans-serif;padding:0 248px;}
+    .partners-carousel-outer{overflow:hidden;width:100%;position:relative;}
     .partners-carousel-track{display:flex;align-items:center;gap:56px;width:max-content;animation:partnerScroll 28s linear infinite;padding:8px 0;}
     .partners-carousel-track:hover{animation-play-state:paused;}
     @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-    .carousel-logo{
-      min-width:150px;flex:0 0 auto;
-      display:flex;align-items:center;justify-content:center;
-      cursor:pointer;text-decoration:none;
-    }
-    .carousel-logo-img-wrap{
-      width:150px;height:90px;
-      background:#e8eaed;
-      border:1px solid rgba(26,39,68,0.10);
-      display:flex;align-items:center;justify-content:center;
-      padding:14px 18px;
-      transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.28s ease,background 0.28s ease;
-    }
-    .carousel-logo:hover .carousel-logo-img-wrap{
-      transform:translateY(-5px) scale(1.05);
-      box-shadow:0 10px 32px rgba(26,39,68,0.14);
-      background:#dde0e5;
-    }
-    .carousel-logo-img-wrap img{
-      max-height:56px;max-width:118px;
-      object-fit:contain;display:block;
-    }
-    .carousel-logo-name{display:none!important;}
-
-    .partners-blue-band{width:100%;background:rgba(26,39,68,0.05);border-top:1px solid rgba(26,39,68,0.08);margin-top:56px;padding:40px 248px;position:relative;z-index:2;}
+    .carousel-logo{min-width:150px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;}
+    .carousel-logo-img-wrap{width:150px;height:90px;background:#e8eaed;border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:14px 18px;transition:transform 0.28s,box-shadow 0.28s;}
+    .carousel-logo:hover .carousel-logo-img-wrap{transform:translateY(-5px) scale(1.05);box-shadow:0 10px 32px rgba(26,39,68,0.14);}
+    .carousel-logo-img-wrap img{max-height:56px;max-width:118px;object-fit:contain;display:block;}
+    .partners-blue-band{width:100%;background:rgba(26,39,68,0.05);border-top:1px solid rgba(26,39,68,0.08);margin-top:56px;padding:40px 248px;}
     .partners-disclaimer{font-size:11px;line-height:1.7;color:rgba(26,39,68,0.5);text-align:center;max-width:840px;margin:0 auto;}
 
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    @media(max-width:900px){
-      .hero-title{font-size:44px}
-      .hero-inner{flex-direction:column!important;padding:64px 20px 40px!important;gap:24px!important;}
-      .hero-logo{display:none;}
-      .showcases-header,.showcases-grid,.showcase-cta-content,.curatorial-inner{padding-left:32px;padding-right:32px}
-      .curatorial-cards{width:100%;margin-left:0;padding:0;grid-template-columns:1fr}
-      .showcases-grid{grid-template-columns:1fr}
-      .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
-    }
     @media(max-width:1024px){
-      .hero-inner{padding:100px 48px 52px;}
-      .hero-title{font-size:52px;}
-      .hero-date{font-size:22px;}
-      .hero-logo img{height:80px;}
-      .curatorial-inner{padding:52px 48px 48px;}
-      .curatorial-title{font-size:44px;}
-      .curatorial-bg-img{width:50%;}
-      .showcases-header{padding:0 48px;margin-bottom:32px;}
-      .showcases-title{font-size:36px;}
-      .showcases-grid{padding:0 48px;gap:16px;}
-      .showcase-cta-content{padding:52px 48px;}
-      .showcase-cta-title{font-size:34px;}
-      .partners-title{padding:0 48px;font-size:36px;margin-bottom:40px;}
-      .partners-blue-band{padding:32px 48px;}
-      .showcase-detail-content{padding:40px 48px 52px;}
-      .showcase-detail-title{font-size:40px;}
-      .cross-icon{display:none;}
+      .hero-inner{padding:100px 48px 52px;}.hero-title{font-size:52px;}
+      .curatorial-inner{padding:40px 48px 40px;}.curatorial-title{font-size:44px;}
+      .showcases-header{padding:0 48px;}.showcases-grid{padding:0 48px;gap:16px;}
+      .showcase-cta-content{padding:52px 48px;}.showcase-cta-title{font-size:34px;}
+      .partners-title{padding:0 48px;font-size:36px;}.partners-blue-band{padding:32px 48px;}
+      .showcase-detail-content{padding:40px 48px 52px;}.cross-strip{padding:0 48px;}
+      .sec-crosses{padding:0 48px;}
     }
     @media(max-width:768px){
-      .hero{min-height:auto;}
-      .hero-bg{background-position:center center;}
       .hero-inner{padding:80px 20px 40px!important;flex-direction:column!important;align-items:flex-start!important;gap:20px!important;}
-      .hero-content{max-width:100%!important;}
-      .hero-eyebrow{font-size:10px;margin-bottom:8px;}
-      .hero-title{font-size:32px!important;margin-bottom:14px;}
-      .hero-body{font-size:12px;max-width:100%;}
-      .hero-date{font-size:20px;}
-      .hero-logo{display:none!important;}
-      .curatorial-section{min-height:auto;}
-      .curatorial-bg-img{display:none;}
-      .curatorial-fade{display:none;}
-      .curatorial-inner{padding:40px 20px 36px;}
-      .curatorial-top-row{flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:16px;}
-      .curatorial-title{font-size:28px;max-width:100%;}
-      .curatorial-view-link{margin-left:0;margin-top:0;font-size:11px;}
-      .curatorial-body{font-size:13px;margin-bottom:28px;max-width:100%;}
-      .curatorial-cards{grid-template-columns:1fr;}
-      .curatorial-card{padding:20px 18px 24px;}
-      .curatorial-card+.curatorial-card{border-left:1px solid rgba(255,255,255,0.22);border-top:none;}
-      .curatorial-card-title{font-size:18px;margin-bottom:10px;}
-      .curatorial-card-num{font-size:24px;}
-      .showcases-section{padding:48px 0;}
-      .showcases-header{padding:0 20px;margin-bottom:24px;flex-direction:column;align-items:flex-start;gap:10px;}
-      .showcases-title{font-size:28px;}
-      .showcases-grid{grid-template-columns:1fr!important;padding:0 20px;gap:16px;}
-      .showcase-card-title{font-size:22px;}
-      .showcase-detail-content{padding:32px 20px 48px;grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:28px 0;}
-      .showcase-detail-back{margin-bottom:20px;}
-      .showcase-detail-title{font-size:28px;margin-bottom:6px;}
-      .showcase-detail-subtitle{font-size:14px;margin-bottom:16px;}
-      .showcase-detail-body{font-size:13px;}
-      .showcase-detail-right{margin-top:0;gap:24px;}
-      .showcase-detail-logos{flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-      .showcase-detail-meta{gap:16px;}
-      .showcase-detail-meta-value{font-size:18px;}
-      .showcase-cta-section{min-height:auto;}
-      .showcase-cta-content{padding:48px 20px;}
-      .showcase-cta-title{font-size:26px;margin-bottom:16px;max-width:100%;}
-      .showcase-cta-body{font-size:12px;margin-bottom:20px;max-width:100%;}
-      .showcase-cta-btn{width:100%;justify-content:center;padding:14px 20px;}
-      .partners-section{padding:48px 0 0;}
-      .partners-title{font-size:28px!important;padding:0 20px!important;margin-bottom:28px;text-align:left;}
-      .partners-blue-band{padding:28px 20px!important;margin-top:40px;}
-      .partners-disclaimer{font-size:10px;text-align:left;}
-      .partners-carousel-track{gap:32px;}
-      .carousel-logo-img-wrap{width:110px;height:72px;}
-      .carousel-logo-img-wrap img{max-height:46px;max-width:90px;}
-      .cross-icon{display:none;}
+      .hero-title{font-size:32px!important;}.hero-logo{display:none!important;}
+      .curatorial-bg-img,.curatorial-fade{display:none;}
+      .curatorial-inner{padding:32px 20px 28px;}
+      .curatorial-top-row{flex-direction:column;align-items:flex-start;gap:12px;}
+      .curatorial-title{font-size:28px;}.curatorial-cards{grid-template-columns:1fr;gap:10px;}
+      .showcases-section{padding:48px 0;}.showcases-header{padding:0 20px;flex-direction:column;align-items:flex-start;gap:10px;}
+      .showcases-title{font-size:28px;}.showcases-grid{grid-template-columns:1fr!important;padding:0 20px;gap:16px;}
+      .showcase-cta-content{padding:48px 20px;}.showcase-cta-title{font-size:26px;max-width:100%;}
+      .showcase-detail-content{padding:32px 20px 48px;grid-template-columns:1fr;}
+      .showcase-detail-title{font-size:28px;}
+      .partners-section{padding:48px 0 0;}.partners-title{font-size:28px!important;padding:0 20px!important;text-align:left;}
+      .partners-blue-band{padding:28px 20px!important;}
+      .cross-strip{padding:0 20px;height:28px;}.sec-crosses{padding:0 20px;}
     }
-    @media(max-width:480px){
-      .hero-title{font-size:26px!important;}
-      .hero-date{font-size:17px;}
-      .curatorial-title{font-size:24px;}
-      .curatorial-card-title{font-size:16px;}
-      .showcases-title{font-size:24px;}
-      .showcase-card-title{font-size:20px;}
-      .showcase-detail-title{font-size:24px;}
-      .showcase-cta-title{font-size:22px;}
-      .partners-title{font-size:24px!important;}
-    }
+    @media(max-width:480px){.hero-title{font-size:26px!important;}.curatorial-title{font-size:24px;}.showcases-title{font-size:24px;}}
   </style>
-
-<style id="fug-global-fixes">
-.btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative!important;overflow:hidden!important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s!important;}
-.cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:0.65!important;animation:none!important;transition:transform 0.1s linear!important;}
-.cross-icon svg{width:100%;height:100%;}
-@media(max-width:1400px){:root{--band:160px!important;}}
-@media(max-width:1200px){:root{--band:80px!important;}}
-@media(max-width:1024px){:root{--band:40px!important;}.hero-title{font-size:40px!important;}}
-@media(max-width:768px){:root{--band:20px!important;}#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}.hero-inner{flex-direction:column!important;padding:80px 20px 40px!important;gap:24px!important;}.hero-logo{display:none!important;}.hero-title{font-size:36px!important;}.hero-content{max-width:100%!important;}.partners-title{font-size:28px!important;}#main-nav{height:58px!important;}}
-@media(max-width:480px){.hero-title{font-size:28px!important;}}
-#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
-#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
-#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px 24px;overflow-y:auto;}
-#mobile-nav-drawer.open{display:flex;}
-#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}
-#mobile-nav-drawer a:hover{color:#fff;}
-#mobile-nav-drawer .drawer-tickets{margin-top:24px;border:1.5px solid rgba(255,255,255,0.4);text-align:center;padding:14px;font-weight:700;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
-</style>
-
+  <style id="nav-fix">
+    @media(max-width:768px){#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}}
+    #main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
+    #main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
+    #mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px;overflow-y:auto;}
+    #mobile-nav-drawer.open{display:flex;}
+    #mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}
+  </style>
 </head>
 <body>
 <script src="nav.js"></script>
@@ -350,52 +184,39 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <!-- Hero cross icons — navy, 200px -->
-  <div class="cross-icon" style="top:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:16px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Expo</p>
       <h1 class="hero-title">Explore Our Showcases</h1>
-      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
       <p class="hero-date">07 — 12.10.2026</p>
     </div>
-    <div class="hero-logo">
-      <img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/>
-    </div>
+    <div class="hero-logo"><img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div>
   </div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
+    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
   </div>
 </div>
 
-<!-- CURATORIAL FREQUENCIES -->
+<!-- CROSS STRIP — above Curatorial Frequencies -->
+<div class="cross-strip" style="background:#1a2462;">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
+</div>
+
+<!-- CURATORIAL FREQUENCIES — wrapped between cross strips -->
 <section class="curatorial-section reveal" id="curatorial-section">
   <div class="curatorial-bg-img"></div>
   <div class="curatorial-fade"></div>
-  <!-- Curatorial cross icons — navy, 200px -->
-  <div class="cross-icon" style="top:24px;left:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;left:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;right:200px;z-index:4;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
   <div class="curatorial-inner">
     <div class="curatorial-top-row">
       <h2 class="curatorial-title">Curatorial Frequencies</h2>
@@ -407,80 +228,66 @@
         <span class="curatorial-card-num">01</span>
         <p class="curatorial-card-tag">AI, Creative Agency &amp; Human Futures</p>
         <h3 class="curatorial-card-title">Imagination<br>Engines</h3>
-        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultrices sit amet, malesuada et, diam.</p>
+        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.</p>
       </div>
       <div class="curatorial-card">
         <span class="curatorial-card-num">02</span>
         <p class="curatorial-card-tag">Heritage, Custodianship, &amp; Memory Systems</p>
         <h3 class="curatorial-card-title">Memory<br>Engines</h3>
-        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultrices sit amet, malesuada et, diam.</p>
+        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.</p>
       </div>
       <div class="curatorial-card">
         <span class="curatorial-card-num">03</span>
         <p class="curatorial-card-tag">Circuits, Systems &amp; Planetary Futures</p>
         <h3 class="curatorial-card-title">Future<br>Engines</h3>
-        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultrices sit amet, malesuada et, diam.</p>
+        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CROSS STRIP — below Curatorial Frequencies -->
+<div class="cross-strip" style="background:#8898d8;">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
+</div>
+
 <!-- SHOWCASES -->
 <section class="showcases-section reveal" id="showcases-section">
-  <!-- Showcases cross icons — navy, 200px -->
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
+  <div class="sec-crosses sec-crosses-top">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
+  </div>
+  <div class="sec-crosses sec-crosses-bottom">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
+  </div>
 
   <div id="showcases-cards-view">
-    <div class="showcases-header" id="showcases-header">
-      <h2 class="showcases-title">Showcases</h2>
-      <a class="showcases-link" href="programme.html">Show 2026 Programme →</a>
-    </div>
+    <div class="showcases-header"><h2 class="showcases-title">Showcases</h2><a class="showcases-link" href="programme.html">Show 2026 Programme →</a></div>
     <div class="showcases-grid" id="showcases-grid">
-      <div class="showcase-card" data-id="0" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="1" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="2" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="3" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="4" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="5" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="6" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
-      <div class="showcase-card" data-id="7" style="cursor:pointer;"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="0"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="1"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="2"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
+      <div class="showcase-card" data-id="3"><div class="showcase-card-img"><img src="/images/Toor-Bos.jpg" alt="Toor|Bos"/></div><div class="showcase-card-info"><div class="showcase-card-meta"><span class="showcase-card-type">Immersive Media</span><span class="showcase-card-more">More Info →</span></div><h3 class="showcase-card-title">Toor|Bos</h3><p class="showcase-card-sub">University of Johannesburg</p></div></div>
     </div>
   </div>
 
-  <!-- In-section showcase detail -->
   <div class="showcase-detail" id="showcase-detail">
     <div class="showcase-detail-inner">
       <div class="showcase-detail-bg" id="showcase-detail-bg"></div>
-      <!-- Showcase detail cross icons — navy, 200px -->
-      <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-      <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
       <div class="showcase-detail-content">
         <button class="showcase-detail-back" id="showcase-detail-back">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
-          </svg>
-          Back To All Showcases
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to All Showcases
         </button>
-        <div class="showcase-detail-left">
+        <div>
           <h2 class="showcase-detail-title" id="sd-title"></h2>
           <p class="showcase-detail-subtitle" id="sd-subtitle"></p>
           <p class="showcase-detail-body" id="sd-body"></p>
         </div>
-        <div class="showcase-detail-right">
-          <div>
-            <div class="showcase-detail-logos">
-              <div class="showcase-detail-logo-box">
-                <img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="University of Johannesburg"/>
-              </div>
-              <div class="showcase-detail-badge" id="sd-badge"></div>
-            </div>
-            <div class="showcase-detail-links" id="sd-links"></div>
-          </div>
+        <div>
+          <div class="showcase-detail-logo-box"><img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="UJ"/></div>
           <div class="showcase-detail-meta">
             <div><p class="showcase-detail-meta-label">Viewing Dates</p><p class="showcase-detail-meta-value" id="sd-dates"></p></div>
             <div><p class="showcase-detail-meta-label">Expo Type</p><p class="showcase-detail-meta-value" id="sd-type"></p></div>
@@ -496,149 +303,90 @@
 <section class="showcase-cta-section reveal" id="showcase-cta-section">
   <div class="showcase-cta-bg"></div>
   <div class="showcase-cta-overlay"></div>
-  <!-- CTA cross icons — navy, 200px -->
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
   <div class="showcase-cta-content">
-    <h2 class="showcase-cta-title">Want To Showcase Your Work At Fak'ugesi Expo?</h2>
-    <p class="showcase-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
+    <h2 class="showcase-cta-title">Want to Showcase Your Work at Fak'ugesi Expo?</h2>
+    <p class="showcase-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
     <a class="showcase-cta-btn" href="#">GET INVOLVED</a>
   </div>
 </section>
 
 <!-- EXPO PARTNERS -->
 <section class="partners-section reveal">
-  <!-- Partners cross icons — navy, 200px -->
-  <div class="cross-icon" style="top:24px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="top:24px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg></div>
   <h2 class="partners-title">Our Expo Partners</h2>
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track" id="expoPartnersTrack"></div>
   </div>
   <div class="partners-blue-band">
-    <p class="partners-disclaimer">By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes across our print and digital platforms, including social media.</p>
+    <p class="partners-disclaimer">By attending this event, you acknowledge and consent to photography and video recordings that may include your image.</p>
   </div>
 </section>
 
 <script src="footer.js"></script>
-
 <script>
-/* REVEAL */
 const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.06 });
-revealEls.forEach(el => io.observe(el));
+const io = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.06});
+revealEls.forEach(el=>io.observe(el));
 
-const expoPartners = [
-  { img:'/images/logos/expo/goethe.svg',          name:'Goethe Institut',     url:'https://www.goethe.de/ins/za/en/index.html' },
-  { img:'/images/logos/expo/prohelvetia.svg',      name:'Pro Helvetia',        url:'https://prohelvetia.ch/en/' },
-  { img:'/images/logos/expo/acf.svg',              name:'ACF',                 url:'https://www.institutfrancais.com/en/' },
-  { img:'/images/logos/expo/austrianembassy.svg',  name:'Austrian Embassy',    url:'https://www.bmeia.gv.at/en/austrian-embassy-pretoria/' },
-  { img:'/images/logos/expo/digitaldome.svg',      name:'Digital Dome',        url:'https://www.wits.ac.za/tshimologong/' },
-  { img:'/images/logos/expo/dreamfeel.svg',        name:'Dream Feel Factory',  url:'https://dreamfeel.ie/' },
-  { img:'/images/logos/expo/eudelegation.svg',     name:'EU Delegation',       url:'https://www.eeas.europa.eu/delegations/south-africa_en' },
-  { img:'/images/logos/expo/eunic.svg',            name:'EUNIC',               url:'https://www.eunic.eu/' },
-  { img:'/images/logos/immersiveAfrica/habitatxr.png', name:'HabitatXR',       url:'#' },
-  { img:'/images/logos/immersiveAfrica/ifas.png',       name:'IFAS',           url:'#' },
-  { img:'/images/logos/immersiveAfrica/mansab.png',     name:'MansA',          url:'#' },
-  { img:'/images/logos/immersiveAfrica/SoC logo.png',   name:'Spaces of Culture', url:'#' },
+const expoPartners=[
+  {img:'/images/logos/expo/goethe.svg',name:'Goethe Institut',url:'https://www.goethe.de/ins/za/en/index.html'},
+  {img:'/images/logos/expo/prohelvetia.svg',name:'Pro Helvetia',url:'https://prohelvetia.ch/en/'},
+  {img:'/images/logos/expo/acf.svg',name:'ACF',url:'#'},
+  {img:'/images/logos/expo/austrianembassy.svg',name:'Austrian Embassy',url:'#'},
+  {img:'/images/logos/expo/digitaldome.svg',name:'Digital Dome',url:'#'},
+  {img:'/images/logos/expo/dreamfeel.svg',name:'Dream Feel Factory',url:'#'},
+  {img:'/images/logos/expo/eudelegation.svg',name:'EU Delegation',url:'#'},
+  {img:'/images/logos/expo/eunic.svg',name:'EUNIC',url:'https://www.eunic.eu/'},
 ];
-
-const track = document.getElementById('expoPartnersTrack');
-
-[...expoPartners, ...expoPartners].forEach(p => {
-  const a = document.createElement('a');
-  a.href = p.url || '#';
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
-  a.className = 'carousel-logo';
-  a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/></div>`;
+const track=document.getElementById('expoPartnersTrack');
+[...expoPartners,...expoPartners].forEach(p=>{
+  const a=document.createElement('a');
+  a.href=p.url||'#';a.target='_blank';a.rel='noopener noreferrer';a.className='carousel-logo';
+  a.innerHTML=`<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/></div>`;
   track.appendChild(a);
 });
 
-/* SHOWCASE CARD DATA */
-const SHOWCASE_DATA = Array(8).fill(null).map(() => ({
-  title:'Toor|Bos', subtitle:'Cras cursus ipsum vel dolor.',
-  type:'Immersive Media', location:'Tshimologong Precinct',
-  dates:'07 — 12.10.2026',
-  body:'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales.',
-  org:'University of Johannesburg',
-  badge:'20 YEARS',
-  links:['Visit University Of Johannesburg Website →','Visit Toor|Bos Website →']
+const SHOWCASE_DATA=Array(4).fill(null).map(()=>({
+  title:'Toor|Bos',subtitle:'Cras cursus ipsum vel dolor.',type:'Immersive Media',
+  location:'Tshimologong Precinct',dates:'07 — 12.10.2026',
+  body:'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo.',
 }));
 
-const curatorialSection  = document.getElementById('curatorial-section');
-const showcaseCtaSection = document.getElementById('showcase-cta-section');
-const showcasesCardsView = document.getElementById('showcases-cards-view');
-const showcaseDetail     = document.getElementById('showcase-detail');
-const showcaseDetailBack = document.getElementById('showcase-detail-back');
-const showcaseDetailBg   = document.getElementById('showcase-detail-bg');
-const showcasesSection   = document.getElementById('showcases-section');
+const curatorialSection=document.getElementById('curatorial-section');
+const showcaseCtaSection=document.getElementById('showcase-cta-section');
+const showcasesCardsView=document.getElementById('showcases-cards-view');
+const showcaseDetail=document.getElementById('showcase-detail');
+const showcaseDetailBack=document.getElementById('showcase-detail-back');
+const showcaseDetailBg=document.getElementById('showcase-detail-bg');
+const showcasesSection=document.getElementById('showcases-section');
 
-document.querySelectorAll('.showcase-card[data-id]').forEach(card => {
-  card.addEventListener('click', () => {
-    const d = SHOWCASE_DATA[parseInt(card.dataset.id)] || SHOWCASE_DATA[0];
-    const cardImg = card.querySelector('.showcase-card-img img');
-    const imgSrc = cardImg ? cardImg.src : '/images/Toor-Bos.jpg';
-    document.getElementById('sd-title').textContent    = d.title;
-    document.getElementById('sd-subtitle').textContent = d.subtitle;
-    document.getElementById('sd-body').textContent     = d.body;
-    document.getElementById('sd-dates').textContent    = d.dates;
-    document.getElementById('sd-type').textContent     = d.type;
-    document.getElementById('sd-location').textContent = d.location;
-    document.getElementById('sd-badge').textContent    = d.badge;
-    const linksEl = document.getElementById('sd-links');
-    linksEl.innerHTML = d.links.map(l => `<span class="showcase-detail-link">${l}</span>`).join('');
-    showcaseDetailBg.style.backgroundImage = `url('${imgSrc}')`;
-    curatorialSection.style.display  = 'none';
-    showcaseCtaSection.style.display = 'none';
-    showcasesCardsView.style.display = 'none';
+document.querySelectorAll('.showcase-card[data-id]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const d=SHOWCASE_DATA[parseInt(card.dataset.id)]||SHOWCASE_DATA[0];
+    const imgSrc=card.querySelector('img')?.src||'/images/Toor-Bos.jpg';
+    document.getElementById('sd-title').textContent=d.title;
+    document.getElementById('sd-subtitle').textContent=d.subtitle;
+    document.getElementById('sd-body').textContent=d.body;
+    document.getElementById('sd-dates').textContent=d.dates;
+    document.getElementById('sd-type').textContent=d.type;
+    document.getElementById('sd-location').textContent=d.location;
+    showcaseDetailBg.style.backgroundImage=`url('${imgSrc}')`;
+    curatorialSection.style.display='none';showcaseCtaSection.style.display='none';showcasesCardsView.style.display='none';
     showcaseDetail.classList.add('active');
-    showcasesSection.scrollIntoView({ behavior:'smooth', block:'start' });
+    showcasesSection.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
 
-showcaseDetailBack.addEventListener('click', () => {
+showcaseDetailBack.addEventListener('click',()=>{
   showcaseDetail.classList.remove('active');
-  curatorialSection.style.display  = '';
-  showcaseCtaSection.style.display = '';
-  showcasesCardsView.style.display = '';
-  showcasesSection.scrollIntoView({ behavior:'smooth', block:'start' });
+  curatorialSection.style.display='';showcaseCtaSection.style.display='';showcasesCardsView.style.display='';
+  showcasesSection.scrollIntoView({behavior:'smooth',block:'start'});
 });
 
-/* Cross icon scroll spin */
 (function(){
-  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
-  function resetRot(){
-    rot = 0;
-    document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-      el.style.transition = 'transform 0.45s ease';
-      el.style.transform = 'rotate(0deg)';
-    });
-  }
-  function onScroll(){
-    if(!ticking){
-      requestAnimationFrame(function(){
-        var y = window.scrollY, delta = y - lastY;
-        if(Math.abs(delta) > 0){
-          rot += delta > 0 ? 15 : -15;
-          document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-            el.style.transition = 'transform 0.1s linear';
-            el.style.transform = 'rotate('+rot+'deg)';
-          });
-        }
-        lastY = y;
-        ticking = false;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(resetRot, 300);
-      });
-      ticking = true;
-    }
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
+  var lastY=window.scrollY,rot=0,ticking=false,timer=null;
+  function reset(){rot=0;document.querySelectorAll('.cross-strip svg,.sec-crosses svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.45s ease';el.style.transform='rotate(0deg)';});}
+  function spin(){if(!ticking){requestAnimationFrame(()=>{var y=window.scrollY,d=y-lastY;if(Math.abs(d)>0){rot+=d>0?15:-15;document.querySelectorAll('.cross-strip svg,.sec-crosses svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.1s linear';el.style.transform='rotate('+rot+'deg)';});}lastY=y;ticking=false;clearTimeout(timer);timer=setTimeout(reset,300);});ticking=true;}}
+  window.addEventListener('scroll',spin,{passive:true});
 })();
 </script>
 </body>
