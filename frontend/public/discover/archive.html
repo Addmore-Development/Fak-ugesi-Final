@@ -496,6 +496,37 @@
       transform: translateY(0) scale(1);
     }
 
+    /* ══════════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════════ */
+    .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
+    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
+    .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
+    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
+    .faq-items-wrap { display: flex; flex-direction: column; }
+    .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
+    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
+    .faq-item:hover { background: var(--navy); }
+    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-t-icon { color: var(--white); }
+    .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
+    .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; max-width: calc(100% - 40px); }
+    .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
+    .faq-item.open .faq-t-icon { transform: rotate(45deg); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
+    .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
+    .faq-apply-link {
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      text-decoration: underline; letter-spacing: 0.06em;
+      display: block; margin-top: 40px; cursor: pointer;
+      text-underline-offset: 3px; transition: opacity 0.2s;
+    }
+    .faq-apply-link:hover { opacity: 0.6; }
+
+
     /* ── PARTNERS ── */
     .partners-section { background: var(--lavender); padding: 72px 0; position: relative; border-top: 2px solid var(--navy); }
     .partners-inner { padding: 0 var(--band); }
@@ -560,7 +591,8 @@
   .detail-media [style*="height:420px"] { height: 320px !important; }
 
   .photos-grid { gap: 8px; }
-
+  .faq-section { padding: 56px 48px; }
+  .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
   .partners-section { padding: 52px 0 60px; }
   .partners-inner { padding: 0 48px; }
   .partners-title { font-size: 34px; }
@@ -653,6 +685,9 @@
   }
   .photos-section-label { font-size: 10px; margin-bottom: 10px; }
 
+  .faq-section { padding: 40px 20px 56px; }
+  .faq-layout { grid-template-columns: 1fr; gap: 24px; }
+  .faq-title-left { font-size: 32px; }
   /* PARTNERS */
   .partners-section { padding: 40px 0 48px; }
   .partners-inner { padding: 0 20px; }
@@ -790,7 +825,14 @@
           </div>
         </div>
         <div>
-          <p class="detail-body-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a lectus sed nisi luctus pretium. Sed egestas rutrum odio. Nunc ornare arcu. Quisque at augue ac magna sollicitudin sodales. Donec nulla justo, adipiscing sit amet, feugiat ac, facilisis euismod, risus.</p>
+      <p class="detail-body-text">Twelve editions. Twelve years of public experimentation with African digital culture, documented, indexed,
+      and held in the Tshimologong archive. The Time Machine is a structured record of what Fak'ugesi has built,
+      tested, exhibited, and released since its founding in 2014.</p>
+      <p class="detail-body-text">The archive is is in the process of being built. Programme records, participant listings, award recipients,
+      partnership histories, and documented outcomes are being collated. Not as a highlights reel but as
+      evidence of a practice that has been running, iterating, and compounding for twelve years.</p>
+      <p class="detail-body-text">Twelve years of African digital practice, held in one place.</p>
+      <p class="detail-body-text">Sign up to the newsletter to be notified when it opens</p>
         </div>
       </div>
 
@@ -962,9 +1004,43 @@
 
   </div>
 
-  <div class="cross-icon cross-icon--navy" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <!-- <div class="cross-icon cross-icon--navy" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon cross-icon--navy" style="bottom:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon cross-icon--navy" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div> -->
+</section>
+
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section class="faq-section reveal">
+  <div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
+      <a class="faq-apply-link" href="programme.html">View 2026 programme</a>
+    </div>
+    <div>
+      <div class="faq-right-hdr">
+        <a class="faq-apply-top" href="programme.html">View 2026 programme</a>
+      </div>
+      <div class="faq-items-wrap" id="faqAccordion"></div>
+    </div>
+  </div>
+
+  <div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
 </section>
 
 <!-- OUR MAIN PARTNERS -->
@@ -1062,6 +1138,33 @@
   }
   window.addEventListener('scroll', onScroll, {passive:true});
 })();
+
+/* ── FAQ ── */
+const faqData = [
+  { q: "When will the archive be available?", a: "Sign up to the newsletter to be notified when it goes live." },
+  { q: "Can I contribute to the archive?", a: "If you have participated in a previous Fak'ugesi edition and have documentation, images, or records to contribute, contact hello@fakugesi.co.za with the subject line \"Time Machine contribution.\"" },
+];
+
+const faqContainer = document.getElementById('faqAccordion');
+faqData.forEach((faq, i) => {
+  const item = document.createElement('div');
+  item.className = 'faq-item' + (i === 0 ? ' open' : '');
+  item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
+  item.querySelector('.faq-q-btn').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    faqContainer.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-t-icon').textContent = '+';
+      el.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('.faq-t-icon').textContent = '×';
+      item.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'true');
+    }
+  });
+  faqContainer.appendChild(item);
+});
 </script>
 </body>
 </html>
