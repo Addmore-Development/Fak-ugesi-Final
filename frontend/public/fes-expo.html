@@ -179,7 +179,7 @@
 </head>
 <body>
 <script src="nav.js"></script>
-<script src="ticker-hover.js"></script>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -188,8 +188,8 @@
     <div class="hero-content">
       <p class="hero-eyebrow">Expo</p>
       <h1 class="hero-title">Explore Our Showcases</h1>
-      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
-      <p class="hero-date">07 — 12.10.2026</p>
+      <p class="hero-body">Five days of exhibitions, showcases, and curated programme at the Tshimologong Digital Innovation Precinct. Work from African creatives and technologists across all three Frequencies: Memory Engines, Imagination Engines, and Future Engines.</p>
+      <p class="hero-date">13 — 17.10.2026</p>
     </div>
     <div class="hero-logo"><img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div>
   </div>
@@ -222,32 +222,40 @@
       <h2 class="curatorial-title">Curatorial Frequencies</h2>
       <a class="curatorial-view-link" href="programme.html">View 2026 Programme →</a>
     </div>
-    <p class="curatorial-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus iaculis dolor id felis. Phasellus cursus nulla non odio. Nulla a</p>
+    <p class="curatorial-body">African thinkers, makers, coders, creatives, and archivists are already building the systems through which the future will be lived, remembered, and shared. The Expo is where that work becomes public, visible, and open to encounter across five intensive days.</p>
     <div class="curatorial-cards">
-      <div class="curatorial-card">
+      <div class="curatorial-card" data-freq="imagination" style="cursor:pointer;">
         <span class="curatorial-card-num">01</span>
         <p class="curatorial-card-tag">AI, Creative Agency &amp; Human Futures</p>
         <h3 class="curatorial-card-title">Imagination<br>Engines</h3>
-        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.</p>
+        <p class="curatorial-card-body">Across the continent, practitioners are contesting the terms on which artificial intelligence enters creative practice. Click to read more →</p>
       </div>
-      <div class="curatorial-card">
+      <div class="curatorial-card" data-freq="memory" style="cursor:pointer;">
         <span class="curatorial-card-num">02</span>
         <p class="curatorial-card-tag">Heritage, Custodianship, &amp; Memory Systems</p>
         <h3 class="curatorial-card-title">Memory<br>Engines</h3>
-        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.</p>
+        <p class="curatorial-card-body">How African communities preserve and transmit knowledge on their own terms. Digital preservation as an act of sovereignty. Click to read more →</p>
       </div>
-      <div class="curatorial-card">
+      <div class="curatorial-card" data-freq="future" style="cursor:pointer;">
         <span class="curatorial-card-num">03</span>
         <p class="curatorial-card-tag">Circuits, Systems &amp; Planetary Futures</p>
         <h3 class="curatorial-card-title">Future<br>Engines</h3>
-        <p class="curatorial-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis.</p>
+        <p class="curatorial-card-body">How African cities and systems are being built right now, ahead of global precedent. Infrastructure as a cultural and political force. Click to read more →</p>
       </div>
+    </div>
+
+    <!-- FREQUENCY DETAIL PANEL — shown when a card is clicked -->
+    <div id="freq-detail" style="display:none;margin-top:32px;border-top:1px solid rgba(255,255,255,0.25);padding-top:28px;position:relative;">
+      <button id="freq-detail-close" style="position:absolute;top:0;right:0;background:transparent;border:1.5px solid rgba(255,255,255,0.5);color:#fff;font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;cursor:pointer;">Close ×</button>
+      <p id="freq-detail-tag" style="font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;"></p>
+      <h3 id="freq-detail-title" style="font-size:32px;font-weight:600;color:#fff;margin-bottom:18px;line-height:1.1;"></h3>
+      <p id="freq-detail-body" style="font-size:13px;line-height:1.8;color:rgba(255,255,255,0.88);max-width:660px;"></p>
     </div>
   </div>
 </section>
 
 <!-- CROSS STRIP — below Curatorial Frequencies -->
-<div class="cross-strip" style="background:#8898d8;">
+<div class="cross-strip" style="background:#1a2462;">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
 </div>
@@ -305,7 +313,7 @@
   <div class="showcase-cta-overlay"></div>
   <div class="showcase-cta-content">
     <h2 class="showcase-cta-title">Want to Showcase Your Work at Fak'ugesi Expo?</h2>
-    <p class="showcase-cta-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</p>
+    <p class="showcase-cta-body">Programme submissions are open. The festival draws digital creatives, coders, animators, sound artists, archivists, urban planners, and climate technologists. Work that is technically rigorous, contextually grounded, and advancing the field is prioritised.</p>
     <a class="showcase-cta-btn" href="#">GET INVOLVED</a>
   </div>
 </section>
@@ -347,9 +355,57 @@ const track=document.getElementById('expoPartnersTrack');
 
 const SHOWCASE_DATA=Array(4).fill(null).map(()=>({
   title:'Toor|Bos',subtitle:'Cras cursus ipsum vel dolor.',type:'Immersive Media',
-  location:'Tshimologong Precinct',dates:'07 — 12.10.2026',
+  location:'Tshimologong Precinct',dates:'13 — 17.10.2026',
   body:'Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo.',
 }));
+
+
+const FREQ_DATA = {
+  imagination: {
+    tag: 'AI, Creative Agency & Human Futures',
+    title: 'Imagination Engines',
+    body: 'Across the continent, practitioners are contesting the terms on which artificial intelligence enters creative practice. The work is already in studios, research labs, and independent practices from Nairobi to Cape Town, Lagos to Johannesburg. Imagination Engines convenes the people doing it.\n\nSessions, installations, and prototyping labs explore generative image systems, language models trained on African knowledge bases, synthetic media, and algorithmic curation built for local contexts. The conversations here assume fluency. They are not introductory.\n\nWhat does it mean to build a machine that thinks in African? Not as metaphor, but as a design brief issued to engineers, creatives, and theorists working in the same room. Imagination Engines is dedicated to that contest: who shapes the tools, in whose language, and towards whose vision.'
+  },
+  memory: {
+    tag: 'Heritage, Custodianship & Memory Systems',
+    title: 'Memory Engines',
+    body: 'There is a persistent assumption that African knowledge systems exist only in relation to the past. Memory Engines challenges that assumption directly. The systems being preserved are not static artefacts or anthropological residue. They are living frameworks for organising memory, transmitting traditional and cultural knowledge systems, and shaping our collective futures.\n\nHow a society decides what to preserve, how to classify it, and who may access it is one of the most consequential design decisions that can be made. For African communities, whose archives have been scattered, suppressed, or systematically misattributed, digital preservation is not a technical undertaking alone. It is an act of sovereignty.\n\nMemory Engines gathers the archivists, oral historians, digital humanists, storytellers, technologists, curators, and platform builders working on this directly — examining cultural and indigenous knowledge repositories, digitisation practices, decentralised archival platforms, and community-managed knowledge systems.'
+  },
+  future: {
+    tag: 'Circuits, Systems & Planetary Futures',
+    title: 'Future Engines',
+    body: `Future Engines explores the infrastructures shaping Africa's technological, planetary, and work futures. From cities and mobility systems to climate networks, digital platforms, energy grids, and data infrastructures, the programme examines how the continent is building under conditions of pressure, acceleration, and uneven access.\n\nAcross sessions, urban planners, climate scientists, civic technologists, policymakers, researchers, and systems designers come together around evidence and implementation. What has been built? What does the data reveal? What failed and why? What kinds of infrastructure will African societies require over the next decade, and who gets to design them?\n\nFuture Engines treats infrastructure not as a neutral technical layer, but as a cultural and political force that shapes how people move, work, communicate, survive, and imagine the future. The work happening across African cities and networks is not peripheral to global futures thinking. Increasingly, it is where those futures are being prototyped.`
+  }
+};
+
+const freqDetail = document.getElementById('freq-detail');
+const freqDetailTag = document.getElementById('freq-detail-tag');
+const freqDetailTitle = document.getElementById('freq-detail-title');
+const freqDetailBody = document.getElementById('freq-detail-body');
+const freqDetailClose = document.getElementById('freq-detail-close');
+
+document.querySelectorAll('.curatorial-card[data-freq]').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.dataset.freq;
+    const d = FREQ_DATA[key];
+    if (!d) return;
+    freqDetailTag.textContent = d.tag;
+    freqDetailTitle.textContent = d.title;
+    // Render newlines as paragraphs
+    freqDetailBody.innerHTML = d.body.split('\n\n').map(p => `<p style="margin-bottom:14px;">${p}</p>`).join('');
+    freqDetail.style.display = 'block';
+    // Highlight active card
+    document.querySelectorAll('.curatorial-card[data-freq]').forEach(c => c.style.background = 'rgba(255,255,255,0.08)');
+    card.style.background = 'rgba(255,255,255,0.18)';
+    // Scroll detail into view
+    freqDetail.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+  });
+});
+
+freqDetailClose.addEventListener('click', () => {
+  freqDetail.style.display = 'none';
+  document.querySelectorAll('.curatorial-card[data-freq]').forEach(c => c.style.background = 'rgba(255,255,255,0.08)');
+});
 
 const curatorialSection=document.getElementById('curatorial-section');
 const showcaseCtaSection=document.getElementById('showcase-cta-section');

@@ -112,7 +112,7 @@
     .premiere-links a{font-size:12px;font-weight:600;color:#fff;text-decoration:underline;text-underline-offset:3px;opacity:.8;cursor:pointer;transition:opacity .2s}
     .premiere-links a:hover{opacity:1}
     .premiere-co{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
-    .premiere-co img{height:14px;width:auto;filter:invert(1) brightness(2)}
+    .premiere-co img{width:auto;filter:invert(1) brightness(2)}
 
     /* ── ON-GOING SECTION ── */
     .ongoing-section{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end}
@@ -231,7 +231,7 @@ body>.hero:first-child{padding-top:58px !important;}
     <div class="hero-text-wrapper">
       <p class="hero-eyebrow">Immersive Africa</p>
       <h1 class="hero-title">Explore The<br>AfriVerse</h1>
-      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis<br>justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.<br>Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <p class="hero-body">AfriVerse is Fak’ugesi’s signature fulldome immersive programme, anchored by the Wits Anglo American Digital Dome — an 8K projection environment in which the distinction between image and space dissolves entirely. In October, the Dome becomes a portal into speculative futures, collective memory, and African imagination at scale.</p>
       <a class="hero-cta" href="tickets.html" id="immersive-cta">GET YOUR TICKETS</a>
     </div>
 
@@ -271,7 +271,7 @@ body>.hero:first-child{padding-top:58px !important;}
 
   <div class="premiering-content">
     <h2 class="section-header-label">Premiering</h2>
-    <p class="section-dates">07 — 21.04.2026</p>
+    <p class="section-dates">13 — 17.10.2026</p>
     <p class="premiere-badge">South African Digital Dome Premiere</p>
     <h3 class="premiere-title">Kancícà</h3>
     <p class="premiere-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
@@ -299,16 +299,15 @@ body>.hero:first-child{padding-top:58px !important;}
 
   <div class="ongoing-content">
     <h2 class="section-header-label">On-going</h2>
-    <p class="section-dates">07 — 21.04.2026</p>
+    <p class="section-dates">13 — 17.10.2026</p>
     <p class="premiere-badge">Digital Dome Screening</p>
     <h3 class="premiere-title">Kwasukasukela</h3>
     <p class="premiere-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit.</p>
     <div class="premiere-links">
       <a href="#">More about Kwasukasukela</a>
     </div>
-    <div class="premiere-co">
-      <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Digital Dome" style="height:28px;"/>
-      <img src="images/logos/immersiveAfrica/habitatxr.png" alt="HabitatXR" style="height:28px;object-fit:contain;filter:brightness(0) invert(1);"/>
+    <div class="premiere-co" style="justify-content:flex-start;">
+      <img src="images/logos/immersiveAfrica/habitatxr.png" alt="HabitatXR" style="height:48px;object-fit:contain;filter:brightness(0) invert(1);"/>
     </div>
     <a class="section-cta" href="tickets.html">GET YOUR TICKETS</a>
   </div>
@@ -414,13 +413,7 @@ const track = document.getElementById('partnersTrack');
   function run() {
     const hero = document.querySelector('.hero');
     if (hero) {
-      hero.querySelectorAll('.cross-icon').forEach(el => el.remove());
-      const CROSS_SVG = `<svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/></svg>`;
-      [{style:'top:16px;left:200px;'},{style:'top:16px;right:200px;'}].forEach(({style}) => {
-        const el = document.createElement('div');
-        el.className = 'cross-icon'; el.style.cssText = style; el.innerHTML = CROSS_SVG;
-        hero.appendChild(el);
-      });
+
     }
     const ticker = document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
     if (ticker) ticker.after(buildStrip());

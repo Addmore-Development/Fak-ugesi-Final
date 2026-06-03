@@ -207,7 +207,7 @@
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
       padding: 110px var(--band) 60px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: flex-end; justify-content: space-between;
       animation: fadeUp 0.9s ease both;
     }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
@@ -219,10 +219,10 @@
     .hero-title {font-size: 72px; font-weight: 900; line-height: 1.0; margin-bottom: 18px;max-width: 900px;}
     .hero-body { font-size: 13px; line-height: 1.7; max-width: 100%; opacity: 0.82; }
     .hero-logo {
-      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; display: flex; align-items: center; align-self: flex-start; justify-content: center;
       animation: fadeUp 1.1s ease both;
     }
-    .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); margin-bottom: 45px;}
+    .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); margin-bottom: 0;}
 
     /* ── TICKER ── */
     .ticker-wrapper {

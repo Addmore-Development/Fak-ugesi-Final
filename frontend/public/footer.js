@@ -254,8 +254,9 @@
 
         <!-- Col 1: Brand + Address -->
         <div class="fug-footer-col">
-          <p class="fug-footer-brand">Fak'ugesi Festival</p>
-          <p class="fug-footer-addr">41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
+          <p class="fug-footer-brand">Fak'ugesi African Digital Innovation Festival</p>
+          <p class="fug-footer-addr">Tshimologong Digital Innovation Precinct<br>41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
+          <a href="https://fakugesi.co.za" target="_blank" rel="noopener" style="margin-top:10px;font-size:13px;color:#1a2744;display:block;">fakugesi.co.za</a>
         </div>
 
         <!-- Col 2: Contact -->
@@ -263,13 +264,16 @@
           <p class="fug-footer-col-title">Contact us</p>
           <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
           <a href="tel:+27117178156">+27 11 717 8156</a>
+          <p class="fug-footer-col-title" style="margin-top:20px;">Festival Director</p>
+          <a href="mailto:alby@tshimologong.joburg">Alby Michaels</a>
+          <a href="mailto:alby@tshimologong.joburg" style="font-size:12px;color:#5a6070;margin-top:-4px;">alby@tshimologong.joburg</a>
         </div>
 
         <!-- Col 3: Logo + Copyright -->
         <div class="fug-footer-col">
           <div class="fug-footer-right">
             <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
-            <p class="fug-footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved</p>
+            <p class="fug-footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved<br><span style="font-size:12px;font-weight:400;color:#5a6070;">13–17 October 2026</span></p>
           </div>
         </div>
 
