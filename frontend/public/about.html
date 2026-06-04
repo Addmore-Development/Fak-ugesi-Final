@@ -27,32 +27,32 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
-    /* ── CROSS ICONS ── */
-.cross-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px; height: 18px;
-  flex-shrink: 0;
-  position: absolute;
-  z-index: 6;
-  opacity: 0.45;
-  transition: transform 0.1s linear !important;
-  animation: none !important;
-}
+    /* ── CROSS ICONS (original — only used in non-hero sections) ── */
+    .cross-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      position: absolute;
+      z-index: 6;
+      opacity: 0.45;
+      transition: transform 0.1s linear !important;
+      animation: none !important;
+    }
     .cross-icon svg { width: 100%; height: 100%; }
-    .cross-icon--navy{opacity:1;}
-    .cross-icon--navy svg line{stroke:#1a2744;stroke-width:0.4;}
-    .cross-icon.cross-icon--navy{opacity:1 !important;}
+    .cross-icon--navy { opacity: 1; }
+    .cross-icon--navy svg line { stroke:#1a2744; stroke-width:0.4; }
+    .cross-icon.cross-icon--navy { opacity: 1 !important; }
 
-    /* ── HERO ── */
+    /* ── HERO — matches image 2: subtitle row with logo, full-width title, body, date ── */
     .hero {
       position: relative;
       width: 100%;
-      min-height: 490px;
+      min-height: 520px;
       overflow: hidden;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
     }
     .hero-bg {
       position: absolute;
@@ -64,52 +64,88 @@
       transform: scaleX(-1);
     }
     .hero-overlay {
-  position: absolute; inset: 0;
-  background: transparent;
-}
+      position: absolute; inset: 0;
+      background: transparent;
+    }
 
+    /* Hero inner: column layout, content stacks top to bottom */
     .hero-inner {
       position: relative;
       z-index: 3;
       width: 100%;
-      padding: 110px var(--band) 60px;
+      padding: 120px var(--band) 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    /* Top row: eyebrow left, logo right — logo is position:absolute top-right */
+    .hero-top-row {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
+      margin-bottom: 14px;
     }
 
-    .hero-content { flex: 1;  }
-    .hero-subtitle {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      opacity: 0.8; margin-bottom: 10px;
-    }
- .hero-title {
-  font-size: 72px; font-weight: 900;
-  line-height: 1.0; margin-bottom: 18px;
-  max-width: 560px;
-}
-    .hero-body {
-      font-size: 12px; line-height: 1.7;
-      max-width: 510px; opacity: 0.85; margin-bottom: 18px;
-    }
-    .hero-dates {
-      font-size: 30px; font-weight: 700; letter-spacing: 0.02em;
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      color: var(--white);
+      font-family: 'InterDisplay', sans-serif;
     }
 
+    /* Logo positioned beside the title */
     .hero-logo {
+      position: absolute;
+      bottom: 165px;
+      right: var(--band);
       flex-shrink: 0;
       display: flex;
-      align-items: center;
-      align-self: flex-start; 
+      align-items: flex-start;
       justify-content: center;
+      z-index: 4;
     }
     .hero-logo img {
       height: 110px;
       width: auto;
       display: block;
       filter: brightness(0) invert(1) contrast(1.2);
-      margin-bottom: 0;
+      mix-blend-mode: screen;
+    }
+
+    /* Title — reduced to 52px so it sits comfortably left of the logo */
+    .hero-title {
+      font-size: 52px;
+      font-weight: 600;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 20px;
+      font-family: 'InterDisplay', sans-serif;
+      max-width: calc(100% - 180px);
+    }
+
+    /* Body — matches expo hero .hero-body */
+    .hero-body {
+      font-size: 13px;
+      line-height: 1.72;
+      max-width: 480px;
+      opacity: 0.85;
+      margin-bottom: 20px;
+      color: var(--white);
+      font-family: 'InterDisplay', sans-serif;
+    }
+
+    /* Date — matches expo hero .hero-date: font-size:28px, font-weight:400 */
+    .hero-dates {
+      font-size: 28px;
+      font-weight: 400;
+      opacity: 0.9;
+      color: var(--white);
+      font-family: 'InterDisplay', sans-serif;
+      letter-spacing: 0.01em;
     }
 
     /* ── WHO WE ARE ── */
@@ -121,7 +157,7 @@
       align-items: flex-start; padding: 0 248px 60px; gap: 64px;
     }
     .who-title { font-size: 50px; font-weight: 900; color: var(--dark-text); line-height: 1.05; }
-    .who-body { font-size: 14px; line-height: 1.75; color: var(--dark-text);  }
+    .who-body { font-size: 14px; line-height: 1.75; color: var(--dark-text); }
     .who-body p { margin-top: 64px; }
     .who-body-paragraph { margin-top: 12px; }
 
@@ -152,7 +188,7 @@
     }
     .edition-card {
       flex: 0 0 300px; cursor: pointer;
-      border: 1px solid rgba(26,39,68,0.1);;
+      border: 1px solid rgba(26,39,68,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .edition-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,39,68,0.12); }
@@ -231,343 +267,111 @@
     .partner-logo-box img { max-width: 100%; max-height: 160px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
+    /* ── Fak'ugesi shared link hover effect ── */
+    .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
+    .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
+    .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
+    .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
-/* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
+    /* ── TICKER ── */
+    .ticker-wrapper {
+      background: var(--navy);
+      border-top: 1px solid rgba(26,39,68,0.1);
+      border-bottom: 1px solid rgba(26,39,68,0.1);
+      overflow: hidden; white-space: nowrap; padding: 10px 0; position: relative; z-index: 10;
+      transition: background 0.28s ease;
+    }
+    .ticker-wrapper:hover { background: var(--white) !important; }
+    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+    .ticker-wrapper:hover .ticker-track span { color: var(--navy) !important; }
+    .ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
+    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: var(--white); letter-spacing: 0.02em; }
+    @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
-
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
-
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
-
-@media (min-width: 1440px) and (max-width: 1440px) {
-    .hero-title { font-size: 69px; max-width: 560px; }
-}
-
-    /* ═══════════════════════════════════════════════════
-       MOBILE RESPONSIVE — Tablet: 1024px, Mobile: 768px
-    ═══════════════════════════════════════════════════ */
-
-    /* ── TABLET (≤1024px) ── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       :root { --band: 48px; }
-
-      .hero-inner { padding: 100px 48px 52px; }
-      .hero-title { font-size: 40px; }
+      .hero-inner { padding: 80px 48px 48px; }
+      .hero-title { font-size: 40px; max-width: calc(100% - 140px); }
       .hero-dates { font-size: 24px; }
-      .hero-logo img { height: 80px; margin-bottom: 1px; }
-
-      .crosses-bar,
-      .crosses-bar-3,
-      .team-crosses-top { padding: 18px 48px; }
-
+      .hero-logo { bottom: 120px; right: 48px; }
+      .hero-logo img { height: 80px; }
+      .crosses-bar,.crosses-bar-3,.team-crosses-top { padding: 18px 48px; }
       .who-layout { padding: 0 48px 48px; gap: 40px; }
       .who-title { font-size: 38px; }
-
       .editions-header { padding: 40px 48px 28px; }
       .editions-title { font-size: 36px; }
       .editions-strip { padding: 0 48px; }
-
       .team-inner { padding: 0 48px; }
       .team-title { font-size: 36px; margin-bottom: 28px; }
-
       .contact-section { padding: 52px 48px 60px; }
       .contact-layout { gap: 48px; }
       .contact-title { font-size: 36px; margin-bottom: 28px; }
       .contact-info-val { font-size: 17px; }
-
       .partners-section { padding: 52px 48px 60px; }
       .partners-title { font-size: 34px; }
     }
 
-    /* ── MOBILE (≤768px) ── */
     @media (max-width: 768px) {
       :root { --band: 20px; }
-
-      /* HERO */
       .hero { min-height: auto; }
       .hero-bg { background-position: center center; }
-
-      .hero-inner {
-        padding: 80px 20px 40px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 28px;
-      }
-
-      .hero-content { max-width: 100%; }
-      .hero-subtitle { font-size: 10px; margin-bottom: 8px; }
-      .hero-title { font-size: 28px; margin-bottom: 14px; }
+      .hero-inner { padding: 80px 20px 40px; }
+      .hero-top-row { margin-bottom: 10px; }
+      .hero-logo { bottom: 120px; right: 20px; top: auto; }
+      .hero-logo img { height: 60px; }
+      .hero-title { font-size: 28px; margin-bottom: 14px; max-width: calc(100% - 90px); }
       .hero-body { font-size: 12px; max-width: 100%; margin-bottom: 14px; }
       .hero-dates { font-size: 22px; }
-
-      .hero-logo { width: 100%; justify-content: flex-start; }
-      .hero-logo img { height: 56px; }
-
-      /* Cross bars */
-      .crosses-bar,
-      .crosses-bar-3,
-      .team-crosses-top { padding: 14px 20px; }
-
-      /* WHO WE ARE */
-      .who-layout {
-        grid-template-columns: 1fr;
-        padding: 0 20px 40px;
-        gap: 20px;
-      }
+      .crosses-bar,.crosses-bar-3,.team-crosses-top { padding: 14px 20px; }
+      .who-layout { grid-template-columns: 1fr; padding: 0 20px 40px; gap: 20px; }
       .who-title { font-size: 32px; }
       .who-body { font-size: 13px; line-height: 1.7; }
-      .who-body p + p { margin-top: 16px; }
-
-      /* IMAGE STRIP — smaller tiles on mobile */
       .strip-img-item { flex: 0 0 240px; height: 240px; }
-
-      /* PREVIOUS EDITIONS */
       .editions-header { padding: 32px 20px 20px; }
       .editions-title { font-size: 28px; }
       .editions-strip { padding: 0 20px; gap: 14px; }
       .edition-card { flex: 0 0 240px; }
       .edition-img { width: 240px; height: 350px; }
-      .edition-name { font-size: 16px; }
-      .edition-desc { font-size: 11.5px; }
-
-      /* TEAM */
       .team-inner { padding: 0 20px; }
       .team-title { font-size: 28px; margin-bottom: 20px; }
-      .team-grid,
-      .team-grid-row2 {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
+      .team-grid,.team-grid-row2 { grid-template-columns: 1fr 1fr; gap: 12px; }
       .team-grid-row2 { margin-top: 12px; }
       .team-name { font-size: 23px; }
       .team-role { font-size: 15px; }
       .team-email { font-size: 9.5px; word-break: break-all; }
       .team-info { padding: 10px 10px 12px; }
-
-      /* CONTACT */
       .contact-section { padding: 40px 20px 48px; }
-      .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
       .contact-title { font-size: 28px; margin-bottom: 24px; }
       .contact-info-val { font-size: 15px; margin-bottom: 20px; }
-      .contact-info-label { font-size: 10px; }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        margin-bottom: 12px;
-      }
-      .form-input,
-      .form-select,
-      .form-textarea {
-        padding: 12px 14px;
-        font-size: 13px;
-      }
+      .form-row { grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
+      .form-input,.form-select,.form-textarea { padding: 12px 14px; font-size: 13px; }
       .form-textarea { min-height: 120px; }
-      .form-full { margin-bottom: 12px; }
-      .form-check label { font-size: 12px; }
-
-      /* PARTNERS */
       .partners-section { padding: 40px 20px 48px; }
-      .partners-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 28px;
-      }
+      .partners-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 28px; }
       .partners-title { font-size: 28px; }
-      .partners-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
+      .partners-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .partner-logo-box { padding: 24px 20px; margin-bottom: 10px; }
       .partner-logo-box img { max-height: 80px; }
       .partner-desc { font-size: 11px; }
-
-      /* Cross icons near partners — reposition on mobile */
       .partners-section .cross-icon { display: none; }
     }
 
-    /* ── SMALL MOBILE (≤480px) ── */
     @media (max-width: 480px) {
       .hero-title { font-size: 24px; }
       .hero-dates { font-size: 19px; }
-
       .who-title { font-size: 26px; }
-
       .editions-title { font-size: 24px; }
-
       .team-title { font-size: 24px; }
-      .team-grid,
-      .team-grid-row2 {
-        grid-template-columns: 1fr;
-      }
-
+      .team-grid,.team-grid-row2 { grid-template-columns: 1fr; }
       .contact-title { font-size: 24px; }
-
       .partners-title { font-size: 24px; }
       .partners-grid { grid-template-columns: 1fr; }
-
       .strip-img-item { flex: 0 0 200px; height: 200px; }
       .edition-card { flex: 0 0 200px; }
       .edition-img { width: 200px; height: 290px; }
     }
-
-    /* ── TICKER — WHITE ── */
-.ticker-wrapper {
-  background: var(--navy);
-  border-top: 1px solid rgba(26,39,68,0.1);
-  border-bottom: 1px solid rgba(26,39,68,0.1);
-  overflow: hidden; white-space: nowrap; padding: 10px 0; position: relative; z-index: 10;
-  transition: background 0.28s ease;
-}
-.ticker-wrapper:hover { background: var(--white) !important; border-top-color: rgba(26,39,68,0.35) !important; border-bottom-color: rgba(26,39,68,0.35) !important; }
-.ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
-.ticker-wrapper:hover .ticker-track span {color: var(--navy) !important; }
-.ticker-track { display: inline-flex; animation: tickerScroll 35s linear infinite; }
-.ticker-track span {
-  padding: 0 32px; font-size: 12.5px; font-weight: 500;
-  color: var(--white); letter-spacing: 0.02em;
-}
-@keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
   </style>
   <link rel="preload" href="fonts/DxWideground-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
@@ -575,29 +379,28 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════
-     HERO
-══════════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <!-- nav injected by nav.js -->
-
   <div class="hero-inner">
-    <div class="hero-content">
-      <p class="hero-subtitle">Who we are</p>
-      <h1 class="hero-title">Fak'ugesi African Digital<br>&amp; Innovation Festival</h1>
-      <p class="hero-body">Fak’ugesi African Digital Innovation Festival is a cross-disciplinary innovation platform operating at the intersection of African imagination and systemic technological practice. Founded in 2014 at the Tshimologong Digital Innovation Precinct, Wits University, Johannesburg.</p>
-      <p class="hero-dates">13 — 17.10.2026</p>
+    <!-- Row 1: eyebrow left, logo right -->
+    <div class="hero-top-row">
+      <p class="hero-eyebrow">Who we are</p>
+      <div class="hero-logo">
+        <img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
+      </div>
     </div>
-    <div class="hero-logo">
-      <img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
-    </div>
+
+    <!-- Row 2: title, body, date stacked -->
+    <h1 class="hero-title">Fak'ugesi African Digital<br>&amp; Innovation Festival</h1>
+    <p class="hero-body">Fak'ugesi African Digital Innovation Festival is a cross-disciplinary innovation platform operating at the intersection of African imagination and systemic technological practice. Founded in 2014 at the Tshimologong Digital Innovation Precinct, Wits University, Johannesburg.</p>
+    <p class="hero-dates">13 — 17.10.2026</p>
   </div>
 </section>
 
-<!-- TICKER — white, single -->
+<!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
     <span>View venues and map &nbsp;→&nbsp;</span>
@@ -611,30 +414,26 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     WHO WE ARE
-══════════════════════════════════════════════ -->
+<!-- WHO WE ARE -->
 <section class="who-section">
- <div class="crosses-bar">
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-</div>
+  <div class="crosses-bar">
+    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  </div>
   <div class="who-layout">
     <div class="who-left">
       <h2 class="who-title">Who we are</h2>
     </div>
     <div class="who-right">
       <div class="who-body">
-        <p>Fak’ugesi African Digital Innovation Festival is a cross-disciplinary innovation platform operating at the intersection of African imagination and systemic technological practice. Founded in 2014 at the Tshimologong Digital Innovation Precinct, Wits University, Johannesburg, it has run for twelve consecutive editions, each one a public test of what African digital practice can produce and where it can go.</p>
-        <p style="margin-top: 16px;">The festival convenes practitioners who build without waiting for permission or precedent. Creatives, coders, archivists, urban planners, climate technologists, sound artists, researchers, and policy professionals gather to build, test, exhibit, and release work that matters well beyond the five days of the festival. Fak’ugesi does not describe the African digital future. It is a working environment in which that future is actively constructed.</p>
+        <p>Fak'ugesi African Digital Innovation Festival is a cross-disciplinary innovation platform operating at the intersection of African imagination and systemic technological practice. Founded in 2014 at the Tshimologong Digital Innovation Precinct, Wits University, Johannesburg, it has run for twelve consecutive editions, each one a public test of what African digital practice can produce and where it can go.</p>
+        <p style="margin-top: 16px;">The festival convenes practitioners who build without waiting for permission or precedent. Creatives, coders, archivists, urban planners, climate technologists, sound artists, researchers, and policy professionals gather to build, test, exhibit, and release work that matters well beyond the five days of the festival. Fak'ugesi does not describe the African digital future. It is a working environment in which that future is actively constructed.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════
-     IMAGE STRIP
-══════════════════════════════════════════════ -->
+<!-- IMAGE STRIP -->
 <section class="img-strip-section">
   <div class="img-strip">
     <div class="strip-img-item"><img src="images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
@@ -643,7 +442,6 @@
     <div class="strip-img-item"><img src="images/_C6A0500.jpg" alt="Festival" /></div>
     <div class="strip-img-item"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival" /></div>
     <div class="strip-img-item"><img src="images/Copy_of__MGL3584.jpg" alt="Festival" /></div>
-    <!-- duplicated for seamless loop -->
     <div class="strip-img-item"><img src="images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
     <div class="strip-img-item"><img src="images/_MGL7139.jpg" alt="Festival" /></div>
     <div class="strip-img-item"><img src="images/Copy_of__MGL4129.jpg" alt="Festival" /></div>
@@ -652,15 +450,13 @@
     <div class="strip-img-item"><img src="images/Copy_of__MGL3584.jpg" alt="Festival" /></div>
   </div>
   <div class="crosses-bar-3">
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-</div>
+    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  </div>
 </section>
 
-<!-- ══════════════════════════════════════════════
-     PREVIOUS EDITIONS
-══════════════════════════════════════════════ -->
+<!-- PREVIOUS EDITIONS -->
 <section class="editions-section">
   <div class="editions-header">
     <h2 class="editions-title">Previous Editions</h2>
@@ -672,7 +468,6 @@
       <div class="edition-card"><div class="edition-img"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2022 Edition" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">05.10 — 09.10</span><span class="edition-year">2022</span></div><div class="edition-name">Reconnect</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
       <div class="edition-card"><div class="edition-img"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2021 Edition" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">06.10 — 10.10</span><span class="edition-year">2021</span></div><div class="edition-name">African Origins</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
       <div class="edition-card"><div class="edition-img"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2020 Edition" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">07.10 — 11.10</span><span class="edition-year">2020</span></div><div class="edition-name">New Worlds</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
-      <!-- duplicated for seamless loop -->
       <div class="edition-card"><div class="edition-img"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="UntilUnlocked 2024" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">02.10 — 05.10</span><span class="edition-year">2024</span></div><div class="edition-name">UntilUnlocked</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
       <div class="edition-card"><div class="edition-img"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2023 Edition" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">04.10 — 08.10</span><span class="edition-year">2023</span></div><div class="edition-name">Digital Futures</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
       <div class="edition-card"><div class="edition-img"><img src="images/FP01_Fak_ugesi_Festival_Poster.jpg" alt="2022 Edition" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-dates">05.10 — 09.10</span><span class="edition-year">2022</span></div><div class="edition-name">Reconnect</div><div class="edition-desc">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div></div></div>
@@ -682,14 +477,12 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════
-     THE TEAM
-══════════════════════════════════════════════ -->
+<!-- THE TEAM -->
 <section class="team-section">
- <div class="team-crosses-top">
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-</div>
+  <div class="team-crosses-top">
+    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  </div>
   <div class="team-inner">
     <h2 class="team-title">The Team</h2>
     <div class="team-grid">
@@ -707,9 +500,7 @@
   <div class="cross-icon cross-icon--navy" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
 </section>
 
-<!-- ══════════════════════════════════════════════
-     GET IN TOUCH
-══════════════════════════════════════════════ -->
+<!-- GET IN TOUCH -->
 <section class="contact-section">
   <div class="contact-layout">
     <div class="contact-left">
@@ -756,9 +547,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════
-     OUR MAIN PARTNERS
-══════════════════════════════════════════════ -->
+<!-- OUR MAIN PARTNERS -->
 <section class="partners-section" id="partners">
   <div class="cross-icon cross-icon--navy" style="top:20px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
@@ -791,7 +580,6 @@
 <script src="starArrows.js"></script>
 
 <script>
-/* Cross icon scroll spin */
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
   function resetRot(){

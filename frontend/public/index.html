@@ -39,9 +39,9 @@
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
     .hero-overlay {
-    position: absolute; inset: 0;
-     background: transparent;
-}
+      position: absolute; inset: 0;
+      background: transparent;
+    }
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
       padding: 110px var(--band) 60px;
@@ -133,9 +133,8 @@
     .theme-bg-img{position:absolute;right:-3cm;bottom:0;top:0;width:52%;height:100%;background-image:url('images/cyber1.png');background-size:contain;background-position:right bottom;background-repeat:no-repeat;transform:scaleX(-1);filter:brightness(1.15);}
     .theme-fade{position:absolute;inset:0;background:linear-gradient(to right,#3a4a88 18%,rgba(58,74,136,0.92) 35%,rgba(58,74,136,0.4) 58%,rgba(58,74,136,0.0) 100%);}
     .theme-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
-    .theme-content{max-width:480px;}
+    .theme-content{max-width:560px;}
 
-    /* "2026 Theme" title — large bold heading matching the image */
     .theme-year-label{
       font-family:'InterDisplay','Inter',Arial,sans-serif !important;
       font-size:52px !important;
@@ -149,9 +148,8 @@
     }
     .theme-sub{font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.06em;opacity:0.75;margin-bottom:12px;color:var(--white);}
     .theme-head{font-family:'InterDisplay',sans-serif;font-size:38px;font-weight:600;line-height:1.05;margin-bottom:18px;color:var(--white);}
-    .theme-body{font-family:'InterDisplay',sans-serif;font-size:13px;font-weight:400;line-height:1.72;opacity:0.84;max-width:380px;margin-bottom:28px;color:var(--white);}
+    .theme-body{font-family:'InterDisplay',sans-serif;font-size:13px;font-weight:400;line-height:1.72;opacity:0.84;max-width:460px;margin-bottom:28px;color:var(--white);}
     .btn-row{display:flex;gap:14px;margin-bottom:32px;flex-wrap:wrap;}
-    /* Date — InterDisplay, same size as hero-dates on other pages */
     .theme-dates{
       font-family:'InterDisplay','Inter',Arial,Helvetica,sans-serif !important;
       font-size:28px !important;
@@ -163,7 +161,7 @@
     }
 
     /* GET INVOLVED */
-    .involved-section{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden;}
+    .involved-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;}
     .involved-bg{position:absolute;inset:0;background-image:url('images/Copy_of__MGL4129.jpg');background-size:cover;background-position:center;filter:brightness(0.55);animation:kenBurns 22s ease-in-out infinite alternate;}
     .involved-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
     .involved-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;}
@@ -175,15 +173,115 @@
     .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
-    /* Force white on the get-involved link — overrides any inherited link color */
     .involved-link{color:#ffffff !important;}
 
-    .inv-card{border:1px solid rgba(255,255,255,0.45);position:relative;min-height:280px;display:flex;flex-direction:column;}
+    .inv-card{border:1px solid rgba(255,255,255,0.45);position:relative;min-height:240px;display:flex;flex-direction:column;}
     .inv-card-front{flex:1;padding:20px;display:flex;flex-direction:column;background:transparent;justify-content:flex-start;}
     .card-num{position:absolute;top:14px;right:16px;font-family:'InterDisplay',sans-serif;font-size:36px;font-weight:700;color:#ffffff;line-height:1;}
     .card-tag{font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;margin-bottom:8px;margin-top:28px;color:var(--white);}
     .card-title{font-size:20px;font-weight:600;margin-bottom:12px;color:var(--white);}
-    .card-body{font-size:11.5px;font-weight:400;line-height:1.65;opacity:0.82;color:var(--white);}
+    .card-body{font-size:11.5px;font-weight:400;line-height:1.65;opacity:0.82;color:var(--white);flex:1;}
+
+    /* SPOTLIGHT */
+    .spotlight-section{background:var(--lavender);padding:72px 0;position:relative;}
+    .spotlight-inner{padding:0 var(--band);}
+    .spotlight-title{font-size:44px;font-weight:600;color:var(--dark-text);margin-bottom:40px;}
+    .spotlight-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+    .spotlight-img-wrap{overflow:hidden;aspect-ratio:4/3;}
+    .spotlight-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.55s ease;display:block;}
+    .spotlight-img-wrap:hover img{transform:scale(1.05);}
+    .spotlight-tag{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;}
+    .spotlight-head{font-size:30px;font-weight:600;color:var(--dark-text);line-height:1.1;margin-bottom:20px;}
+    .spotlight-body{font-size:13px;font-weight:400;line-height:1.72;color:var(--body-gray);margin-bottom:32px;}
+
+    /* WHAT'S HAPPENING */
+    .happening-section{background:var(--white);padding:72px 0;overflow:hidden;position:relative;}
+    .happening-inner{padding:0 var(--band);}
+    .happening-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;}
+    .happening-title{font-size:44px;font-weight:600;color:var(--dark-text);}
+    .soc-tabs{display:flex;gap:16px;align-items:center;}
+    .soc-tab{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1.5px solid transparent;background:transparent;cursor:pointer;color:var(--body-gray);transition:color 0.2s,background 0.2s,border-color 0.2s,transform 0.18s;padding:0;}
+    .soc-tab svg{width:22px;height:22px;}
+    .soc-tab:hover{color:var(--navy);background:rgba(26,39,68,0.08);border-color:rgba(26,39,68,0.2);transform:translateY(-2px) scale(1.08);}
+    .soc-tab.active{color:var(--navy);border-color:rgba(26,39,68,0.3);background:rgba(26,39,68,0.06);}
+    .soc-feed-panel{display:none;} .soc-feed-panel.active{display:block;}
+    .happening-strip-outer{overflow:hidden;margin:0;}
+    .happening-strip{display:flex;gap:14px;width:max-content;animation:stripScroll 28s linear infinite;}
+    .happening-strip:hover{animation-play-state:paused;}
+    @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .strip-img{flex:0 0 320px;height:280px;overflow:hidden;}
+    .strip-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;display:block;}
+    .strip-img:hover img{transform:scale(1.04);}
+    .tweet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .tweet-card{border:1px solid rgba(26,39,68,0.1);padding:22px;background:var(--white);transition:box-shadow 0.25s,transform 0.25s;}
+    .tweet-card:hover{box-shadow:0 8px 28px rgba(26,39,68,0.1);transform:translateY(-3px);}
+    .tweet-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+    .tweet-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue-mid));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--white);flex-shrink:0;}
+    .tweet-name{font-size:13px;font-weight:700;color:var(--dark-text);}
+    .tweet-handle{font-size:12px;color:var(--body-gray);}
+    .tweet-x-icon{margin-left:auto;}
+    .tweet-x-icon svg{width:16px;height:16px;}
+    .tweet-text{font-size:13px;line-height:1.65;color:var(--dark-text);margin-bottom:14px;}
+    .tweet-text a{color:var(--blue-mid);text-decoration:none;}
+    .tweet-meta{font-size:11px;color:var(--body-gray);display:flex;gap:16px;}
+    .fb-feed{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+    .fb-card{border:1px solid rgba(26,39,68,0.1);background:var(--white);overflow:hidden;transition:box-shadow 0.25s,transform 0.25s;}
+    .fb-card:hover{box-shadow:0 8px 28px rgba(26,39,68,0.1);transform:translateY(-3px);}
+    .fb-card-img{width:100%;height:200px;overflow:hidden;}
+    .fb-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;}
+    .fb-card:hover .fb-card-img img{transform:scale(1.04);}
+    .fb-card-body{padding:18px 20px;}
+    .fb-card-date{font-size:11px;color:var(--body-gray);letter-spacing:0.06em;margin-bottom:8px;text-transform:uppercase;}
+    .fb-card-text{font-size:13px;line-height:1.65;color:var(--dark-text);}
+    .fb-card-actions{display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(26,39,68,0.07);}
+    .fb-card-actions span{font-size:12px;color:var(--body-gray);}
+    .happening-caption{text-align:right;margin-top:16px;font-size:12px;color:var(--body-gray);line-height:1.65;padding:0 var(--band);}
+
+    /* PARTNERS */
+    .partners-section{background:var(--lavender);padding:72px 0;position:relative;}
+    .partners-inner{padding:0 var(--band);}
+    .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
+    .partners-title{font-size:38px;font-weight:600;color:var(--dark-text);}
+    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;cursor:pointer;}
+    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+    .partner-card{display:flex;flex-direction:column;}
+    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;}
+    .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
+    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    /* Force InterDisplay on all theme section text */
+    .theme-section .theme-year-label,.theme-section .theme-sub,.theme-section .theme-head,.theme-section .theme-body,.theme-section .theme-dates{font-family:'InterDisplay','Inter',Arial,sans-serif !important;}
+
+    @media(max-width:1024px){
+      .hero-inner{padding:100px 48px 52px;}.hero-title{font-size:40px;}
+      .theme-inner{padding:52px 48px;}.theme-year-label{font-size:40px !important;}.theme-head{font-size:30px;}
+      .theme-bg-img{width:50%;opacity:0.6;}
+      .involved-inner{padding:52px 48px;}.involved-title{font-size:34px;}
+      .spotlight-inner{padding:0 48px;}.spotlight-title{font-size:36px;}
+      .happening-inner{padding:0 48px;}.happening-title{font-size:36px;}
+      .tweet-grid{grid-template-columns:1fr 1fr;}
+      .happening-caption{padding:0 48px;}
+      .partners-inner{padding:0 48px;}.partners-title{font-size:32px;}
+    }
+    @media(max-width:768px){
+      .hero{min-height:auto;}.hero-inner{padding:80px 20px 40px;flex-direction:column;align-items:flex-start;gap:24px;}
+      .hero-content{max-width:100%;}.hero-title{font-size:32px;}.hero-logo{display:none;}
+      .theme-section{min-height:auto;}.theme-bg-img,.theme-fade{display:none;}
+      .theme-inner{padding:40px 20px 44px;}.theme-content{max-width:100%;}
+      .theme-year-label{font-size:32px !important;margin-bottom:12px !important;}.theme-head{font-size:26px;margin-bottom:14px;}
+      .theme-body{font-size:12px;max-width:100%;margin-bottom:20px;}
+      .btn-row{flex-direction:column;gap:10px;margin-bottom:20px;}
+      .btn-row .btn-outline-white{width:100%;justify-content:center;}
+      .theme-dates{font-size:20px !important;}
+      .involved-inner{padding:40px 20px;}.involved-header{flex-direction:column;align-items:flex-start;gap:10px;}
+      .involved-title{font-size:28px;}.involved-cards{grid-template-columns:1fr;gap:12px;}
+      .spotlight-section{padding:48px 0;}.spotlight-inner{padding:0 20px;}
+      .spotlight-title{font-size:28px;margin-bottom:28px;}.spotlight-grid{grid-template-columns:1fr;gap:24px;}
+      .spotlight-head{font-size:22px;}.btn-outline-dark{width:100%;justify-content:center;}
       .happening-section{padding:48px 0;}.happening-inner{padding:0 20px;}
       .happening-header{flex-direction:column;align-items:flex-start;gap:16px;}.happening-title{font-size:28px;}
       .strip-img{flex:0 0 200px;height:180px;}
@@ -192,7 +290,6 @@
       .partners-section{padding:40px 0 48px;}.partners-inner{padding:0 20px;}
       .partners-header{flex-direction:column;align-items:flex-start;gap:10px;}.partners-title{font-size:26px;}
       .partners-grid{grid-template-columns:1fr 1fr;gap:14px;}
-      .cross-strip{padding:0 20px;height:28px;}.sec-crosses{padding:0 20px;}
     }
     @media(max-width:480px){.hero-title{font-size:26px;}.theme-head{font-size:22px;}.involved-title{font-size:24px;}.spotlight-title{font-size:24px;}.happening-title{font-size:24px;}.partners-title{font-size:22px;}.partners-grid{grid-template-columns:1fr;}}
   </style>
@@ -211,7 +308,7 @@
     <div class="hero-content">
       <p class="hero-subtitle">African Digital &amp; Innovation Festival</p>
       <h1 class="hero-title">Fak'ugesi<br>Festival</h1>
-      <p class="hero-body">African thinkers, makers, coders, creatives, and archivists are already building the systems through which the future will be lived, remembered, and shared. Fak&apos;ugesi 2026 is where that work becomes public.</p>
+      <p class="hero-body">African thinkers, makers, coders, creatives, and archivists are already building the systems through which the future will be lived, remembered, and shared. Fak'ugesi 2026 is where that work becomes public.</p>
       <a class="hero-link" href="about.html">What is Fak'ugesi? <span class="hero-link-arrow">→</span></a>
     </div>
     <div class="hero-logo"><img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div>
@@ -221,7 +318,7 @@
 <!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Fak’ugesi 2026 · African Imaginaries · 13–17 October · Tshimologong Digital Innovation Precinct · Johannesburg &nbsp;·&nbsp; </span><span>Fak’ugesi 2026 · African Imaginaries · 13–17 October · Tshimologong Digital Innovation Precinct · Johannesburg &nbsp;·&nbsp; </span><span>Fak’ugesi 2026 · African Imaginaries · 13–17 October · Tshimologong Digital Innovation Precinct · Johannesburg &nbsp;·&nbsp; </span><span>Fak’ugesi 2026 · African Imaginaries · 13–17 October · Tshimologong Digital Innovation Precinct · Johannesburg &nbsp;·&nbsp; </span><span>Fak’ugesi 2026 · African Imaginaries · 13–17 October · Tshimologong Digital Innovation Precinct · Johannesburg &nbsp;·&nbsp; </span><span>Fak’ugesi 2026 · African Imaginaries · 13–17 October · Tshimologong Digital Innovation Precinct · Johannesburg &nbsp;·&nbsp; </span><span>Fak’ugesi 2026 · African Imaginaries · 13–17 October · Tshimologong Digital Innovation Precinct · Johannesburg &nbsp;·&nbsp; </span><span>Fak’ugesi 2026 · African Imaginaries · 13–17 October · Tshimologong Digital Innovation Precinct · Johannesburg &nbsp;·&nbsp; </span>
+    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
   </div>
 </div>
 
@@ -229,28 +326,16 @@
 <section class="theme-section reveal">
   <div class="theme-bg-img"></div>
   <div class="theme-fade"></div>
-
-  <!-- Only 2 cross icons at top — left and right -->
-  <div class="cross-icon" style="top:16px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/></svg>
-  </div>
-  <!-- NO bottom crosses for theme section -->
-
   <div class="theme-inner">
     <div class="theme-content">
-      <!-- "2026 Theme" — large bold heading, InterDisplay SemiBold ~52px, matching the image -->
       <span class="theme-year-label">2026 Theme</span>
       <p class="theme-sub">Africa's creative energy unleashed</p>
       <h3 class="theme-head">African<br>Imaginaries</h3>
-      <p class="theme-body">African thinkers, makers, coders, creatives, and archivists are already building the systems through which the future will be lived, remembered, and shared. Fak&apos;ugesi 2026 is where that work becomes public. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+      <p class="theme-body">From 13 to 17 October 2026, the festival returns to the Tshimologong Digital Innovation Precinct in Johannesburg. An Imaginary, in this context, is not a fantasy. It is a framework: a set of conditions under which alternative futures become real. Three frequencies organise the work — Memory Engines, Imagination Engines, and Future Engines.</p>
       <div class="btn-row">
         <button class="btn-outline-white" onclick="location.href='programme.html'">VIEW PROGRAMME</button>
         <button class="btn-outline-white" onclick="location.href='tickets.html'">GET TICKETS</button>
       </div>
-      <!-- Date — InterDisplay, font-weight 400, 28px — same as hero-dates on other pages -->
       <span class="theme-dates">13 — 17.10.2026</span>
     </div>
   </div>
@@ -263,21 +348,9 @@
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
-  </div>
-  <!-- 3 crosses at BOTTOM — solid bright white -->
-  <div class="cross-icon" style="bottom:16px;left:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#ffffff" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#ffffff" stroke-width="1.5"/></svg>
+  <div class="sec-crosses sec-crosses-bottom">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
   </div>
 
   <div class="involved-inner">
@@ -286,13 +359,49 @@
       <a class="involved-link" href="about.html">What is Fak'ugesi?</a>
     </div>
     <div class="involved-cards">
-      <div class="inv-card"><div class="inv-card-front"><span class="card-num">01</span><p class="card-tag">Festival Collaboration</p><h3 class="card-title">Investors &amp; Funders</h3><p class="card-body">African thinkers, makers, coders, creatives, and archivists are already building the systems through which the future will be lived, remembered, and shared. Fak&apos;ugesi 2026 is where that work becomes public.</p></div></div>
-      <div class="inv-card"><div class="inv-card-front"><span class="card-num">02</span><p class="card-tag">Curated Festival Experiences</p><h3 class="card-title">Expo &amp; Showcases</h3><p class="card-body">African thinkers, makers, coders, creatives, and archivists are already building the systems through which the future will be lived, remembered, and shared. Fak&apos;ugesi 2026 is where that work becomes public.</p></div></div>
-      <div class="inv-card"><div class="inv-card-front"><span class="card-num">03</span><p class="card-tag">Lend a Hand</p><h3 class="card-title">Volunteers</h3><p class="card-body">African thinkers, makers, coders, creatives, and archivists are already building the systems through which the future will be lived, remembered, and shared. Fak&apos;ugesi 2026 is where that work becomes public.</p></div></div>
+      <div class="inv-card">
+        <div class="inv-card-front">
+          <span class="card-num">01</span>
+          <p class="card-tag">Festival Collaboration</p>
+          <h3 class="card-title">Investors &amp; Funders</h3>
+          <p class="card-body">Partner with Africa's premier digital innovation festival. Support programmes, build visibility, and connect with a practitioner community operating at the frontier of African technology and creativity.</p>
+        </div>
+      </div>
+      <div class="inv-card">
+        <div class="inv-card-front">
+          <span class="card-num">02</span>
+          <p class="card-tag">Curated Festival Experiences</p>
+          <h3 class="card-title">Expo &amp; Showcases</h3>
+          <p class="card-body">Exhibit your project, product, or research at the Fak'ugesi Expo. Five days of foot traffic from creatives, investors, researchers, and policymakers across the African digital ecosystem.</p>
+        </div>
+      </div>
+      <div class="inv-card">
+        <div class="inv-card-front">
+          <span class="card-num">03</span>
+          <p class="card-tag">Lend a Hand</p>
+          <h3 class="card-title">Volunteers</h3>
+          <p class="card-body">Be part of the team that makes Fak'ugesi run. Volunteers gain access to the full festival programme, behind-the-scenes experience, and a direct connection to the people building African digital culture.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- SPOTLIGHT -->
+<section class="spotlight-section reveal">
+  <div class="spotlight-inner">
+    <h2 class="spotlight-title">Spotlight</h2>
+    <div class="spotlight-grid">
+      <div class="spotlight-img-wrap"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival spotlight"/></div>
+      <div>
+        <p class="spotlight-tag">Fak'ugesi Awards</p>
+        <h3 class="spotlight-head">Awards applications<br>now open</h3>
+        <p class="spotlight-body">The Fak'ugesi Awards recognise the most significant work emerging from Africa's digital creative and technology community. Applications are now open across all categories. Submit your work before the deadline and put your project in front of the continent's most important innovation jury.</p>
+        <button class="btn-outline-dark" onclick="location.href='awards.html'">LEARN MORE</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WHAT'S HAPPENING -->
 <section class="happening-section reveal">
@@ -300,21 +409,9 @@
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
   </div>
-  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="top:16px;right:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <!-- 3 crosses at BOTTOM — solid dark navy -->
-  <div class="cross-icon" style="bottom:16px;left:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:16px;right:200px;opacity:1;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="1.5"/></svg>
+  <div class="sec-crosses sec-crosses-bottom">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
   </div>
 
   <div class="happening-inner">
@@ -348,7 +445,7 @@
     <div class="happening-inner" style="padding-top:0;">
       <div class="tweet-grid">
         <div class="tweet-card"><div class="tweet-header"><div class="tweet-avatar">F</div><div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div><div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div></div><p class="tweet-text">Awards applications are now OPEN! Submit your project and be part of Africa's most celebrated digital innovation awards. <a href="#">#FakugesiAwards</a></p><div class="tweet-meta"><span>2h ago</span><span>💬 12</span><span>🔁 34</span><span>❤️ 98</span></div></div>
-        <div class="tweet-card"><div class="tweet-header"><div class="tweet-avatar">F</div><div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div><div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div></div><p class="tweet-text">The theme is "African Imaginaries" — a celebration of Africa's speculative futures and creative visions. Join us 07–12 October. <a href="#">#Fakugesi2026</a></p><div class="tweet-meta"><span>1d ago</span><span>💬 28</span><span>🔁 71</span><span>❤️ 210</span></div></div>
+        <div class="tweet-card"><div class="tweet-header"><div class="tweet-avatar">F</div><div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div><div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div></div><p class="tweet-text">The theme is "African Imaginaries" — a celebration of Africa's speculative futures and creative visions. Join us 13–17 October. <a href="#">#Fakugesi2026</a></p><div class="tweet-meta"><span>1d ago</span><span>💬 28</span><span>🔁 71</span><span>❤️ 210</span></div></div>
         <div class="tweet-card"><div class="tweet-header"><div class="tweet-avatar">F</div><div><div class="tweet-name">Fak'ugesi Festival</div><div class="tweet-handle">@fakugesi</div></div><div class="tweet-x-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></div></div><p class="tweet-text">Immersive Africa returns. Experience cutting-edge XR, VR and dome installations at the Wits Anglo American Digital Dome. <a href="#">#ImmersiveAfrica</a></p><div class="tweet-meta"><span>3d ago</span><span>💬 19</span><span>🔁 55</span><span>❤️ 174</span></div></div>
       </div>
       <p class="happening-caption" style="padding:0;">Follow <a href="https://x.com/fakugesi" target="_blank" rel="noopener" style="color:var(--navy)">@fakugesi</a> on X for real-time updates</p>
