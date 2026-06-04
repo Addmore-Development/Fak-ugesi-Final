@@ -49,8 +49,8 @@
     }
     .hero-content { max-width: 420px; }
     .hero-subtitle {
-      font-size: 11px;
-      font-weight: 400;
+      font-size:11px;
+      font-weight:600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       opacity: 0.8;
@@ -58,19 +58,19 @@
       color: var(--white);
     }
     .hero-title {
-      font-size: 52px;
-      font-weight: 700;
+      font-size:48px;
+      font-weight:600;
       line-height: 1.0;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       color: var(--white);
     }
     .hero-body {
-      font-size: 12px;
+      font-size:13px;
       font-weight: 400;
       line-height: 1.7;
       max-width: 340px;
       opacity: 0.85;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       color: var(--white);
     }
 
@@ -241,11 +241,11 @@
     .partners-section{background:var(--lavender);padding:72px 0;position:relative;}
     .partners-inner{padding:0 var(--band);}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
-    .partners-title{font-size:38px;font-weight:600;color:var(--dark-text);}
-    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;cursor:pointer;}
+    .partners-title{font-size:38px;font-weight:700;color:var(--dark-text);}
+    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;cursor:pointer;letter-spacing:0.04em;}
     .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
     .partner-card{display:flex;flex-direction:column;}
-    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;}
+    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:48px 40px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;aspect-ratio:1/1;}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
     .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;}
@@ -318,7 +318,7 @@
 <!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span><span>Awards applications now open. Learn more &nbsp;→&nbsp;</span>
+    <span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span>
   </div>
 </div>
 
@@ -333,8 +333,21 @@
       <h3 class="theme-head">African<br>Imaginaries</h3>
       <p class="theme-body">From 13 to 17 October 2026, the festival returns to the Tshimologong Digital Innovation Precinct in Johannesburg. An Imaginary, in this context, is not a fantasy. It is a framework: a set of conditions under which alternative futures become real. Three frequencies organise the work — Memory Engines, Imagination Engines, and Future Engines.</p>
       <div class="btn-row">
-        <button class="btn-outline-white" onclick="location.href='programme.html'">VIEW PROGRAMME</button>
+        <button class="btn-outline-white" id="viewProgrammeBtn" onclick="toggleThemeInfo()">VIEW PROGRAMME ▾</button>
         <button class="btn-outline-white" onclick="location.href='tickets.html'">GET TICKETS</button>
+      </div>
+      <div id="themeInfoPanel" style="max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.4s ease;opacity:0;">
+        <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);padding:24px 20px;margin-bottom:24px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:10px;">Theme: African Imaginaries</p>
+          <p style="font-size:13px;line-height:1.78;color:rgba(255,255,255,0.88);margin-bottom:14px;">An Imaginary, in this context, is not a fantasy or a wishful projection. It is a framework: a structured set of conditions under which alternative futures become real. African Imaginaries spotlights the intellectual and creative work currently happening across the continent.</p>
+          <p style="font-size:13px;line-height:1.78;color:rgba(255,255,255,0.88);margin-bottom:14px;">Practitioners in Nairobi, Lagos, Accra, Johannesburg, and Kigali are not waiting to see what the future looks like. They are designing it. Prototyping it. Archiving it. Building the infrastructure to scale. Fak'ugesi is where that work is assembled and showcased.</p>
+          <p style="font-size:13px;line-height:1.78;color:rgba(255,255,255,0.88);margin-bottom:8px;">The theme organises across three frequencies:</p>
+          <ul style="font-size:13px;line-height:1.9;color:rgba(255,255,255,0.85);padding-left:18px;margin-bottom:0;">
+            <li><strong>Memory Engines</strong> — how African communities preserve, classify, and transmit heritage for the future.</li>
+            <li><strong>Imagination Engines</strong> — the relationship between machine intelligence and African creative agency.</li>
+            <li><strong>Future Engines</strong> — urban, climatic, and policy systems that African practitioners are building in real time.</li>
+          </ul>
+        </div>
       </div>
       <span class="theme-dates">13 — 17.10.2026</span>
     </div>
@@ -482,9 +495,9 @@
   <div class="partners-inner">
     <div class="partners-header"><h2 class="partners-title">Our Main Partners</h2><a class="partners-link" href="about.html#partners">View all partners</a></div>
     <div class="partners-grid">
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus.</p></div>
+      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p></div>
+      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p></div>
+      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p></div>
     </div>
   </div>
 </section>
@@ -509,6 +522,23 @@
     function sp(){if(!t){requestAnimationFrame(()=>{var y=window.scrollY,d=y-lY;if(Math.abs(d)>0){r+=d>0?15:-15;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.1s linear';el.style.transform='rotate('+r+'deg)';});}lY=y;t=false;clearTimeout(tm);tm=setTimeout(rs,300);});t=true;}}
     window.addEventListener('scroll',sp,{passive:true});
   })();
+
+  /* ── THEME INFO TOGGLE ── */
+  var themeInfoOpen = false;
+  function toggleThemeInfo() {
+    var panel = document.getElementById('themeInfoPanel');
+    var btn = document.getElementById('viewProgrammeBtn');
+    themeInfoOpen = !themeInfoOpen;
+    if (themeInfoOpen) {
+      panel.style.maxHeight = '600px';
+      panel.style.opacity = '1';
+      btn.textContent = 'VIEW PROGRAMME ▴';
+    } else {
+      panel.style.maxHeight = '0';
+      panel.style.opacity = '0';
+      btn.textContent = 'VIEW PROGRAMME ▾';
+    }
+  }
 </script>
 <script src="nav.js"></script>
 <script src="footer.js"></script>

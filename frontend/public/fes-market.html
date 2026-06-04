@@ -97,6 +97,32 @@
     @media(max-width:1024px){.hero-inner{padding:52px 48px 48px;}.hero-title{font-size:52px;}.market-info-section{padding:60px 48px 56px;}.market-info-title{font-size:36px;}.exhibitors-header{padding:0 48px;}.exhibitors-grid{padding:0 48px;gap:16px;}.exhibitor-detail-content{padding:40px 48px 52px;}.spot-cta-content{padding:52px 48px;}.partners-header{padding:0 48px;}.cross-strip{padding:0 48px;}.sec-crosses{padding:0 48px;}}
     @media(max-width:768px){.hero{min-height:auto;}.hero-inner{padding:80px 20px 40px!important;flex-direction:column!important;align-items:flex-start!important;gap:20px!important;}.hero-title{font-size:32px!important;}.hero-logo{display:none!important;}.market-info-section{padding:40px 20px 36px;}.market-info-top{flex-direction:column;align-items:flex-start;gap:10px;}.market-info-title{font-size:28px;}.market-info-link{margin-left:0;}.exhibitors-section{padding:40px 0 48px;}.exhibitors-header{padding:0 20px;flex-direction:column;align-items:flex-start;gap:10px;}.exhibitors-title{font-size:28px;}.exhibitors-grid{grid-template-columns:1fr!important;padding:0 20px;gap:16px;}.exhibitor-detail-content{padding:32px 20px 48px;grid-template-columns:1fr;}.spot-cta-content{padding:48px 20px;}.spot-cta-title{font-size:26px;max-width:100%;}.partners-section{padding:48px 0 0;}.partners-header{padding:0 20px!important;flex-direction:column!important;align-items:flex-start!important;gap:10px!important;}.partners-title{font-size:28px!important;}.cross-strip{padding:0 20px;height:28px;}.sec-crosses{padding:0 20px;}}
     @media(max-width:480px){.hero-title{font-size:26px!important;}.market-info-title{font-size:24px;}.exhibitors-title{font-size:24px;}}
+
+    /* ══════════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════════ */
+    .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
+    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
+    .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
+    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+    .faq-apply-link { font-size: 11px; font-weight: 600; color: var(--navy); text-decoration: underline; letter-spacing: .06em; display: block; margin-top: 40px; cursor: pointer; text-underline-offset: 3px; transition: opacity .2s; }
+    .faq-apply-link:hover { opacity: .6; }
+    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
+    .faq-items-wrap { display: flex; flex-direction: column; }
+    .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background .28s ease; }
+    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
+    .faq-item:hover { background: var(--navy); }
+    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-t-icon { color: var(--white); }
+    .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
+    .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color .28s ease; max-width: calc(100% - 40px); }
+    .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color .28s ease, transform .3s ease; }
+    .faq-item.open .faq-t-icon { transform: rotate(45deg); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color .28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
+    .faq-item.open .faq-ans { max-height: 400px; padding: 0 16px 22px; }
+
   </style>
   <style id="nav-fix">@media(max-width:768px){#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}}#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;}#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px;overflow-y:auto;}#mobile-nav-drawer.open{display:flex;}#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}</style>
 </head>
@@ -124,7 +150,52 @@
   <div class="exhibitor-detail" id="exhibitor-detail"><div class="exhibitor-detail-inner"><div class="exhibitor-detail-bg" id="exhibitor-detail-bg"></div><div class="exhibitor-detail-content"><button class="exhibitor-detail-back" id="exhibitor-detail-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back to All Exhibitors</button><div><h2 class="exhibitor-detail-title" id="ed-title"></h2><p class="exhibitor-detail-subtitle" id="ed-subtitle"></p><p class="exhibitor-detail-body" id="ed-body"></p></div><div><div class="exhibitor-detail-badge" id="ed-badge"></div><div class="exhibitor-detail-meta"><div><p class="exhibitor-detail-meta-label">Viewing Dates</p><p class="exhibitor-detail-meta-value" id="ed-dates"></p></div><div><p class="exhibitor-detail-meta-label">Market Type</p><p class="exhibitor-detail-meta-value" id="ed-type"></p></div><div><p class="exhibitor-detail-meta-label">Location</p><p class="exhibitor-detail-meta-value" id="ed-location"></p></div></div></div></div></div></div>
 </section>
 <section class="spot-cta-section reveal" id="spot-cta-section"><div class="spot-cta-bg"></div><div class="spot-cta-overlay"></div><div class="spot-cta-content"><h2 class="spot-cta-title">Want a Spot at Fak'ugesi Market?</h2><p class="spot-cta-body">Apply to exhibit at the Fak’ugesi Market. Contact hello@fakugesi.co.za for exhibitor enquiries.</p><a class="spot-cta-btn" href="#">GET INVOLVED</a></div></section>
+
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section class="faq-section reveal">
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Everything you need to know about exhibiting at and attending the Fak'ugesi Market.</p>
+      <a class="faq-apply-link" href="#">Apply to exhibit →</a>
+    </div>
+    <div>
+      <div class="faq-right-hdr"><a class="faq-apply-top" href="#">Apply to exhibit →</a></div>
+      <div class="faq-items-wrap" id="faqAccordion">
+        <div class="faq-item open">
+          <button class="faq-q-btn" aria-expanded="true"><span class="faq-q-text">Who can exhibit at the Market?</span><span class="faq-t-icon">×</span></button>
+          <div class="faq-ans">The Market is open to digital creative practitioners, collectives, studios, and small ventures presenting work, products, or services that connect to the festival's Frequencies. Contact hello@fakugesi.co.za for exhibitor enquiries.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">How do I apply to exhibit?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">Applications are open through the Get Involved section. Exhibitor enquiries can also be directed to hello@fakugesi.co.za.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Is there a cost to exhibit?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">Exhibitor pricing and terms will be confirmed with your application. Contact hello@fakugesi.co.za for a current rate card.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Where is the Market held?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">The Market takes place at the Tshimologong Digital Innovation Precinct, 41 Juta Street, Braamfontein, Johannesburg, across all five days of the festival.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="partners-section reveal"><div class="partners-header"><h2 class="partners-title">Our Market Partners</h2><a class="partners-link" href="#">Join as Partner →</a></div><div class="partners-carousel-outer"><div class="partners-carousel-track" id="market-partners-track"></div></div></section>
+
+/* ── FAQ ACCORDION ── */
+(function() {
+  const faqContainer = document.getElementById('faqAccordion');
+  if (!faqContainer) return;
+  faqContainer.querySelectorAll('.faq-item').forEach((item, i) => {
+    if (i === 0) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+    item.querySelector('.faq-q-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-t-icon').textContent = '+'; el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false'); });
+      if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+    });
+  });
+})();
+
 <script src="footer.js"></script>
 <script>
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}}),{threshold:0.06});

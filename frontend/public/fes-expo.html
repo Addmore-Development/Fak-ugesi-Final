@@ -167,6 +167,32 @@
       .cross-strip{padding:0 20px;height:28px;}.sec-crosses{padding:0 20px;}
     }
     @media(max-width:480px){.hero-title{font-size:26px!important;}.curatorial-title{font-size:24px;}.showcases-title{font-size:24px;}}
+
+    /* ══════════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════════ */
+    .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
+    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
+    .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
+    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+    .faq-apply-link { font-size: 11px; font-weight: 600; color: var(--navy); text-decoration: underline; letter-spacing: .06em; display: block; margin-top: 40px; cursor: pointer; text-underline-offset: 3px; transition: opacity .2s; }
+    .faq-apply-link:hover { opacity: .6; }
+    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
+    .faq-items-wrap { display: flex; flex-direction: column; }
+    .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background .28s ease; }
+    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
+    .faq-item:hover { background: var(--navy); }
+    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-t-icon { color: var(--white); }
+    .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
+    .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color .28s ease; max-width: calc(100% - 40px); }
+    .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color .28s ease, transform .3s ease; }
+    .faq-item.open .faq-t-icon { transform: rotate(45deg); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color .28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
+    .faq-item.open .faq-ans { max-height: 400px; padding: 0 16px 22px; }
+
   </style>
   <style id="nav-fix">
     @media(max-width:768px){#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}}
@@ -255,7 +281,7 @@
 </section>
 
 <!-- CROSS STRIP — below Curatorial Frequencies -->
-<div class="cross-strip" style="background:#1a2462;">
+<div class="cross-strip" style="background:linear-gradient(135deg,#1a2462 0%,#2a3a8f 30%,#3a52b0 55%,#6878c8 80%,#8898d8 100%);">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
 </div>
@@ -319,6 +345,48 @@
 </section>
 
 <!-- EXPO PARTNERS -->
+
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section class="faq-section reveal">
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Everything you need to know about the Fak'ugesi Expo and showcases.</p>
+      <a class="faq-apply-link" href="#">Get involved →</a>
+    </div>
+    <div>
+      <div class="faq-right-hdr"><a class="faq-apply-top" href="#">Get involved →</a></div>
+      <div class="faq-items-wrap" id="faqAccordion">
+        <div class="faq-item open">
+          <button class="faq-q-btn" aria-expanded="true"><span class="faq-q-text">What is the difference between the expo and the showcase?</span><span class="faq-t-icon">×</span></button>
+          <div class="faq-ans">The expo is where work is encountered: displayed and engaged with at the viewer's own pace. The showcase is a structured programme in which work is experienced sequentially, curated, timed, and fully immersive. The programme will indicate which format applies to each work.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Can I submit work for the Expo?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">Programme submissions are open. Work that is technically rigorous, contextually grounded, and advancing the field is prioritised. Visit the Get Involved section for details.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">What are the three Frequencies?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">Memory Engines, Imagination Engines, and Future Engines. Each is a distinct curatorial strand; together they form the architecture for the 2026 programme.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Who attends Fak'ugesi?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">The festival draws digital creatives, coders, animators, sound artists, archivists, urban planners, climate technologists, investors, educators, policymakers, and students. The primary audience is 18 to 35; the legacy audience extends to 70. Both are welcome.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">What is a community-managed knowledge system?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">A community-managed knowledge system is a digital archive or database built and governed by the community whose knowledge it holds, rather than by an external institution. These platforms allow communities to determine what is preserved, how it is classified, who can access it, and under what conditions. A direct response to the misattribution and displacement of African knowledge.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Why is AI relevant to archiving and memory?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">AI tools, particularly large language models and classification systems, are increasingly used to process, organise, and surface archival material. When those tools are built on African knowledge systems and governed by African practitioners, they become instruments of sovereignty. When they are not, they risk reproducing the same misattributions that they were meant to correct.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Is this programme only about AI?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">No. AI is the dominant technology of the moment and receives significant attention. But Imagination Engines addresses the full range of tools through which African creatives are expanding what is possible: generative media, synthetic sound, algorithmic curation, immersive environments, and the policy and ethical frameworks that govern all of it.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Can I submit work or present?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">Programme submissions are open. The Get Involved section has details. Selection prioritises work that is technically rigorous, contextually grounded, and advancing the field.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="partners-section reveal">
   <h2 class="partners-title">Our Expo Partners</h2>
   <div class="partners-carousel-outer">
@@ -328,6 +396,21 @@
     <p class="partners-disclaimer">By attending this event, you acknowledge and consent to photography and video recordings that may include your image.</p>
   </div>
 </section>
+
+
+/* ── FAQ ACCORDION ── */
+(function() {
+  const faqContainer = document.getElementById('faqAccordion');
+  if (!faqContainer) return;
+  faqContainer.querySelectorAll('.faq-item').forEach((item, i) => {
+    if (i === 0) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+    item.querySelector('.faq-q-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-t-icon').textContent = '+'; el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false'); });
+      if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+    });
+  });
+})();
 
 <script src="footer.js"></script>
 <script>

@@ -295,6 +295,32 @@
       .partners-section { padding: 40px 20px 48px !important; } .partners-grid { grid-template-columns: 1fr 1fr !important; }
     }
     @media (max-width: 480px) { .hero-title { font-size: 28px !important; } .partners-grid { grid-template-columns: 1fr !important; } }
+
+    /* ══════════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════════ */
+    .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
+    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
+    .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
+    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+    .faq-apply-link { font-size: 11px; font-weight: 600; color: var(--navy); text-decoration: underline; letter-spacing: .06em; display: block; margin-top: 40px; cursor: pointer; text-underline-offset: 3px; transition: opacity .2s; }
+    .faq-apply-link:hover { opacity: .6; }
+    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
+    .faq-items-wrap { display: flex; flex-direction: column; }
+    .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background .28s ease; }
+    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
+    .faq-item:hover { background: var(--navy); }
+    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-t-icon { color: var(--white); }
+    .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
+    .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color .28s ease; max-width: calc(100% - 40px); }
+    .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color .28s ease, transform .3s ease; }
+    .faq-item.open .faq-t-icon { transform: rotate(45deg); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color .28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
+    .faq-item.open .faq-ans { max-height: 400px; padding: 0 16px 22px; }
+
   </style>
   <style id="nav-fix">
     #main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
@@ -893,14 +919,59 @@
 </section>
 
 <!-- PARTNERS -->
+
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section class="faq-section reveal">
+  <div class="faq-layout">
+    <div>
+      <h2 class="faq-title-left">FAQ</h2>
+      <p class="faq-intro-text">Dates, access, and programme information for Fak'ugesi 2026.</p>
+      
+    </div>
+    <div>
+      <div class="faq-right-hdr"></div>
+      <div class="faq-items-wrap" id="faqAccordion">
+        <div class="faq-item open">
+          <button class="faq-q-btn" aria-expanded="true"><span class="faq-q-text">When does the festival take place?</span><span class="faq-t-icon">×</span></button>
+          <div class="faq-ans">Fak'ugesi 2026 runs from 13 to 17 October at the Tshimologong Digital Innovation Precinct, Johannesburg.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">How is the programme organised?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">The programme is organised across three Frequencies — Memory Engines, Imagination Engines, and Future Engines — running concurrently across the five days.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Are all events free?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">Some programme elements are open access. Others require registration or ticketing. Full details are published with the festival programme. Visit the Tickets page for current information.</div>
+        </div><div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Where can I find accessibility information?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">The Tshimologong Precinct is wheelchair accessible. Full accessibility information will be published on the Visit page ahead of the festival. For specific requirements, contact hello@fakugesi.co.za in advance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="partners-section reveal">
   <div class="partners-header"><h2 class="partners-title">Our Main Partners</h2><a class="partners-link" href="about.html">View all partners →</a></div>
   <div class="partners-grid">
-    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" /></div><p class="partner-desc">Tshimologong Digital Innovation Precinct, Wits University.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/wits/logo_wits_dark_colloquial_extended.svg" alt="Wits University" /></div><p class="partner-desc">The University of the Witwatersrand.</p></div>
-    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" /></div><p class="partner-desc">The Wits Anglo American Digital Dome.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/wits/logo_wits_dark_colloquial_extended.svg" alt="Wits University" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
+    <div class="partner-card"><div class="partner-logo-box"><img src="/images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" /></div><p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p></div>
   </div>
 </section>
+
+
+/* ── FAQ ACCORDION ── */
+(function() {
+  const faqContainer = document.getElementById('faqAccordion');
+  if (!faqContainer) return;
+  faqContainer.querySelectorAll('.faq-item').forEach((item, i) => {
+    if (i === 0) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+    item.querySelector('.faq-q-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-t-icon').textContent = '+'; el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false'); });
+      if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+    });
+  });
+})();
 
 <script src="footer.js"></script>
 <script>

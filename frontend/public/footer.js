@@ -1,7 +1,6 @@
 /**
  * Fak'ugesi Shared Footer
  * Injects consistent footer + social band on every page.
- * Drop <script src="footer.js"></script> before </body> on each page.
  */
 (function () {
 
@@ -51,7 +50,6 @@
       padding: 0;
     }
 
-    /* Cross icons — 18px, absolutely positioned */
     .fug-footer-cross {
       display: inline-flex;
       align-items: center;
@@ -64,12 +62,12 @@
     }
     .fug-footer-cross svg { width: 18px; height: 18px; }
 
-    /* Three-column grid aligned to 200px margins */
+    /* Three-column grid */
     #fug-footer .fug-footer-inner {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      padding: 64px 200px;
-      gap: 0 40px;
+      grid-template-columns: 1.2fr 1fr 1.4fr;
+      padding: 48px 200px;
+      gap: 0 32px;
       position: relative;
     }
 
@@ -78,78 +76,80 @@
       flex-direction: column;
     }
 
-    /* Col 1 — brand name */
+    /* Col 1 — brand + address */
     #fug-footer .fug-footer-brand {
       font-weight: 700;
-      font-size: 16px;
+      font-size: 14px;
       color: #0d1b3e;
-      margin: 0 0 10px 0;
+      margin: 0 0 8px 0;
       font-family: 'InterDisplay', sans-serif;
       letter-spacing: -0.01em;
+      line-height: 1.3;
     }
-
-    /* Col 1 — address */
     #fug-footer .fug-footer-addr {
-      font-size: 14px;
-      line-height: 1.8;
+      font-size: 12px;
+      line-height: 1.7;
       color: #5a6070;
       margin: 0;
       font-family: 'InterDisplay', sans-serif;
     }
 
-    /* Col 2 — "Contact us" label */
+    /* Col 2 — contact stacked */
     #fug-footer .fug-footer-col-title {
-      font-size: 16px;
+      font-size: 10px;
       font-weight: 700;
       color: #0d1b3e;
-      margin: 0 0 12px 0;
+      margin: 0 0 2px 0;
       font-family: 'InterDisplay', sans-serif;
-      letter-spacing: -0.01em;
-      text-transform: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    /* Plain links */
     #fug-footer a {
       color: #1a2744;
-      font-size: 14px;
+      font-size: 12px;
       display: block;
-      line-height: 2.1;
+      line-height: 1.7;
       text-decoration: none;
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-footer a:hover { text-decoration: underline; }
 
-    /* Third column: logo + copyright side by side — KEY FIX */
+    /* Col 3 — logo left, copyright + link right */
     #fug-footer .fug-footer-right {
       display: flex;
+      flex-direction: row;
       align-items: flex-start;
       gap: 16px;
-      /* Prevent wrapping at any width */
-      flex-wrap: nowrap;
-      min-width: 0;
     }
-
-    /* Logo — fixed size, never shrinks */
     #fug-footer .fug-footer-logo {
-      height: 90px;
+      height: 72px;
       width: auto;
       display: block;
-      flex-shrink: 0; /* never compress the logo */
+      flex-shrink: 0;
     }
-
-    /* Copyright — stays beside the logo, never pushes below */
     #fug-footer .fug-footer-copy {
-      font-size: 16px;
-      font-weight: 700;
-      color: #0d1b3e;
-      line-height: 1.8;
+      font-size: 11px;
+      font-weight: 400;
+      color: #5a6070;
+      line-height: 1.65;
       margin: 0;
       font-family: 'InterDisplay', sans-serif;
-      letter-spacing: -0.01em;
-      flex-shrink: 1;   /* can compress text if needed */
-      min-width: 0;     /* allows text to shrink inside flex */
-      white-space: nowrap; /* keeps each line on one line */
     }
+    #fug-footer .fug-footer-copy strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0d1b3e;
+      margin-bottom: 2px;
+    }
+    #fug-footer .fug-footer-logo-email {
+      font-size: 11px;
+      color: #5a6070 !important;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+    #fug-footer .fug-footer-logo-email:hover { text-decoration: underline; }
 
     /* ── TABLET (≤1024px) ── */
     @media (max-width: 1024px) {
@@ -170,46 +170,36 @@
       #fug-social-band p { font-size: 12px; }
       #fug-social-band .fsb-icons { justify-content: center; gap: 20px; }
       #fug-social-band .fsb-icons a svg { width: 22px; height: 22px; }
-
       #fug-footer .fug-footer-inner {
         grid-template-columns: 1fr;
         padding: 32px 20px 28px;
-        gap: 28px 0;
+        gap: 24px 0;
       }
       #fug-footer .fug-footer-col { width: 100%; }
-      #fug-footer .fug-footer-brand { font-size: 15px; }
-      #fug-footer .fug-footer-addr { font-size: 13px; }
-      #fug-footer .fug-footer-col-title { font-size: 15px; }
-      #fug-footer a { font-size: 13px; line-height: 2.1; }
-
-      /* On mobile: logo + copyright still side-by-side, never stacked */
+      #fug-footer .fug-footer-brand { font-size: 13px; }
+      #fug-footer .fug-footer-addr { font-size: 12px; }
+      #fug-footer .fug-footer-col-title { font-size: 10px; }
+      #fug-footer a { font-size: 12px; line-height: 1.7; }
       #fug-footer .fug-footer-right {
-        align-items: center;
         padding-top: 8px;
         border-top: 1px solid rgba(26,39,68,0.08);
-        flex-wrap: nowrap; /* enforce side-by-side even on mobile */
-        gap: 12px;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
       }
       #fug-footer .fug-footer-logo { height: 56px; }
-      #fug-footer .fug-footer-copy {
-        font-size: 13px;
-        white-space: nowrap;
-      }
+      #fug-footer .fug-footer-copy { font-size: 11px; }
       .fug-footer-cross { display: none; }
     }
 
-    /* ── SMALL MOBILE (≤480px) ── */
     @media (max-width: 480px) {
       #fug-social-band p { font-size: 11px; }
-      #fug-footer .fug-footer-copy {
-        font-size: 12px;
-      }
       #fug-footer .fug-footer-logo { height: 48px; }
+      #fug-footer .fug-footer-copy { font-size: 11px; }
     }
   `;
   document.head.appendChild(style);
 
-  /* SVG cross helper — 18px viewBox */
   const crossSVG = `<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/>
     <line x1="0"  y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/>
@@ -241,12 +231,9 @@
 
     <footer id="fug-footer">
 
-      <!-- TOP ROW crosses — 18px size -->
       <span class="fug-footer-cross" style="top:24px; left:calc(200px - 9px);">${crossSVG}</span>
       <span class="fug-footer-cross" style="top:24px; left:calc(50% - 9px);">${crossSVG}</span>
       <span class="fug-footer-cross" style="top:24px; right:calc(200px - 9px);">${crossSVG}</span>
-
-      <!-- BOTTOM ROW crosses — 18px size -->
       <span class="fug-footer-cross" style="bottom:24px; left:calc(200px - 9px);">${crossSVG}</span>
       <span class="fug-footer-cross" style="bottom:24px; right:calc(200px - 9px);">${crossSVG}</span>
 
@@ -255,25 +242,36 @@
         <!-- Col 1: Brand + Address -->
         <div class="fug-footer-col">
           <p class="fug-footer-brand">Fak'ugesi African Digital Innovation Festival</p>
-          <p class="fug-footer-addr">Tshimologong Digital Innovation Precinct<br>41 Juta Street, Braamfontein<br>Johannesburg, South Africa</p>
-          <a href="https://fakugesi.co.za" target="_blank" rel="noopener" style="margin-top:10px;font-size:13px;color:#1a2744;display:block;">fakugesi.co.za</a>
+          <p class="fug-footer-addr">
+            Tshimologong Digital Innovation Precinct<br>
+            41 Juta Street, Braamfontein<br>
+            Johannesburg, South Africa
+          </p>
         </div>
 
-        <!-- Col 2: Contact -->
+        <!-- Col 2: Contact then Festival Director, stacked -->
         <div class="fug-footer-col">
-          <p class="fug-footer-col-title">Contact us</p>
+          <p class="fug-footer-col-title">Contact</p>
           <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
           <a href="tel:+27117178156">+27 11 717 8156</a>
-          <p class="fug-footer-col-title" style="margin-top:20px;">Festival Director</p>
+          <p class="fug-footer-col-title" style="margin-top:7px;">Festival Director</p>
           <a href="mailto:alby@tshimologong.joburg">Alby Michaels</a>
-          <a href="mailto:alby@tshimologong.joburg" style="font-size:12px;color:#5a6070;margin-top:-4px;">alby@tshimologong.joburg</a>
         </div>
 
-        <!-- Col 3: Logo + Copyright -->
+        <!-- Col 3: Logo left, copyright + website link right -->
         <div class="fug-footer-col">
           <div class="fug-footer-right">
-            <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
-            <p class="fug-footer-copy">© 2026<br>Fak'ugesi Festival<br>All Rights Reserved<br><span style="font-size:12px;font-weight:400;color:#5a6070;">13–17 October 2026</span></p>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;flex-shrink:0;">
+              <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
+              <a href="mailto:alby@tshimologong.joburg" class="fug-footer-logo-email">alby@tshimologong.joburg</a>
+            </div>
+            <p class="fug-footer-copy">
+              <strong>© 2026 Fak'ugesi Festival</strong>
+              All Rights Reserved<br>
+              13–17 October 2026<br>
+              Tshimologong, Johannesburg<br>
+              <a href="https://fakugesi.co.za/" target="_blank" rel="noopener" style="font-size:11px;color:#5a6070;margin-top:2px;display:inline-block;">fakugesi.co.za</a>
+            </p>
           </div>
         </div>
 

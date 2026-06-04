@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Venues – Fak'ugesi Festival</title>
   <link rel="stylesheet" href="../css/styles.css">
-  <!-- Leaflet CSS — free, no API key required -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 
   <style>
@@ -22,37 +21,25 @@
       --lavender:  #dde3f0;
       --card-blue: #e8edf5;
       --white:     #ffffff;
-      --orange:    #e05a1e;
       --dark-text: #0d1b3e;
       --body-gray: #3a4060;
       --band:      248px;
     }
 
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'InterDisplay', sans-serif;
-      background: var(--white);
-      color: var(--white);
-      overflow-x: hidden;
-    }
+    body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
-    /* ── CROSS ICONS ── */
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
       opacity: 0.45; transition: transform 0.1s linear;
     }
     .cross-icon svg { width: 100%; height: 100%; }
-    .cross-icon--navy{opacity:1;}
-    .cross-icon--navy svg line{stroke:#1a2744;stroke-width:0.4;}
-    .cross-icon.cross-icon--navy{opacity:1 !important;}
-
+    .cross-icon--navy { opacity: 1; }
+    .cross-icon--navy svg line { stroke:#1a2744; stroke-width:0.4; }
 
     /* ── HERO ── */
-    .hero {
-      position: relative; width: 100%; min-height: 490px; overflow: hidden;
-      display: flex; align-items: center;
-    }
+    .hero { position: relative; width: 100%; min-height: 490px; overflow: hidden; display: flex; align-items: center; }
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('imgs/Copy of _MGL3220.jpg');
@@ -61,10 +48,7 @@
       animation: kenBurns 16s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
-   .hero-overlay {
-  position: absolute; inset: 0;
-  background: transparent;
-}
+    .hero-overlay { position: absolute; inset: 0; background: transparent; }
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
       padding: 110px var(--band) 60px;
@@ -72,117 +56,84 @@
       animation: fadeUp 0.9s ease both;
     }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-content { flex: 1 }
-    .hero-subtitle {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; opacity: 0.8; margin-bottom: 14px;
-    }
-    .hero-title {font-size: 72px; font-weight: 900; line-height: 1.0; margin-bottom: 18px;max-width: 900px;}
-
+    .hero-content { flex: 1; }
+    .hero-subtitle { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; margin-bottom: 14px; }
+    .hero-title { font-size: 52px; font-weight: 600; line-height: 1.0; margin-bottom: 18px; max-width: calc(100% - 180px); }
     .hero-body { font-size: 13px; line-height: 1.7; max-width: 510px; opacity: 0.82; }
-    .hero-logo {
-      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-      animation: fadeUp 1.1s ease both;
-    }
+    .hero-logo { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); margin-bottom: 75px; }
-    
-    /* ── WHO WE ARE ── */
-    .who-section { background: var(--white); padding: 0 0 0; position: relative; }
-    .crosses-bar { display: flex; justify-content: space-between; padding: 22px 200px; }
-    .crosses-bar svg { width: 18px; height: 18px; }
-    .who-layout {
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: flex-start; padding: 0 248px 60px; gap: 64px;
-    }
-    .who-title { font-size: 50px; font-weight: 900; color: var(--dark-text); line-height: 1.05; }
-    .who-body { font-size: 14px; line-height: 1.75; color: var(--dark-text);  }
-    .who-body p { margin-top: 64px; }
-    .who-body-paragraph { margin-top: 12px; }
 
     /* ── TICKER ── */
-    .ticker-wrapper {
-      background: var(--navy);
-      overflow: hidden; white-space: nowrap;
-      padding: 11px 0; position: relative; z-index: 10;
-    }
+    .ticker-wrapper { background: var(--navy); overflow: hidden; white-space: nowrap; padding: 11px 0; position: relative; z-index: 10; transition: background 0.28s ease; }
+    .ticker-wrapper:hover { background: #ffffff !important; }
+    .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+    .ticker-wrapper:hover .ticker-track span { color: var(--navy) !important; }
     .ticker-track { display: inline-flex; animation: tickerScroll 30s linear infinite; }
-    .ticker-track span {
-      padding: 0 32px; font-size: 12.5px; font-weight: 500;
-      color: rgba(255,255,255,0.88); letter-spacing: 0.02em;
-    }
+    .ticker-track span { padding: 0 32px; font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,0.88); letter-spacing: 0.02em; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .ticker-wrapper { transition: background 0.28s ease; }
-.ticker-wrapper:hover { background: #ffffff !important; }
-.ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
-.ticker-wrapper:hover .ticker-track span { color: var(--navy) !important; }
     /* ── LOCATIONS SECTION ── */
-    .locations-section {
-      background: var(--white); position: relative;
-      padding: 64px 0 72px;
-    }
+    .locations-section { background: var(--white); position: relative; padding: 64px 0 72px; }
     .locations-inner { padding: 0 var(--band); position: relative; z-index: 2; }
-
-    .locations-header {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      margin-bottom: 28px;
-    }
+    .locations-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; }
     .locations-title { font-size: 52px; font-weight: 600; color: var(--dark-text); line-height: 1.0; }
-    .locations-map-link {
-      font-size: 11.5px; color: var(--navy); font-weight: 500; text-decoration: none;
-      letter-spacing: 0.03em; border-bottom: 1px solid rgba(26,39,68,0.4);
-      padding-bottom: 1px; margin-bottom: 6px;
-    }
+    .locations-map-link { font-size: 11.5px; color: var(--navy); font-weight: 500; text-decoration: none; letter-spacing: 0.03em; border-bottom: 1px solid rgba(26,39,68,0.4); padding-bottom: 1px; margin-bottom: 6px; }
     .locations-map-link:hover { opacity: 0.65; }
-
-    /* Two-column grid — map is ~2.5× the width of the cards column */
-    .locations-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 3fr;
-      gap: 20px;
-      align-items: stretch;
-    }
-
-    /* Cards column */
+    .locations-grid { display: grid; grid-template-columns: 1.6fr 3fr; gap: 20px; align-items: stretch; }
     .location-cards { display: flex; flex-direction: column; gap: 10px; }
-
-    .location-card {
-      border: 1px solid rgba(26,39,68,0.15);
-      padding: 14px 16px 16px;
-      background: var(--card-blue);
-      cursor: pointer;
-      transition: border-color 0.22s, background 0.22s;
-    }
+    .location-card { border: 1px solid rgba(26,39,68,0.15); padding: 14px 16px 16px; background: var(--card-blue); cursor: pointer; transition: border-color 0.22s, background 0.22s; }
     .location-card:hover { border-color: rgba(26,39,68,0.4); }
-    .location-card.active {
-      background: var(--card-blue);
-      border-color: rgba(26,39,68,0.35);
-    }
-    .location-card-header {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 8px;
-    }
+    .location-card.active { background: var(--card-blue); border-color: rgba(26,39,68,0.35); }
+    .location-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
     .location-name { font-size: 8pt; font-weight: 400; color: var(--dark-text); }
-    .directions-link {
-      font-size: 8pt; color: var(--navy); font-weight: 500; text-decoration: none;
-      display: flex; align-items: center; gap: 3px; white-space: nowrap;
-      flex-shrink: 0; border-bottom: 1px solid rgba(26,39,68,0.3);
-      padding-bottom: 1px; margin-left: 12px;
-    }
+    .directions-link { font-size: 8pt; color: var(--navy); font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 3px; white-space: nowrap; flex-shrink: 0; border-bottom: 1px solid rgba(26,39,68,0.3); padding-bottom: 1px; margin-left: 12px; }
     .directions-link:hover { border-color: var(--navy); }
     .location-address { font-size: 7pt; color: var(--body-gray); line-height: 1.75; }
-
-    /* Map */
-    .map-wrap {
-      position: relative; width: 100%; overflow: hidden;
-      border: 1px solid rgba(26,39,68,0.12);
-    }
+    .map-wrap { position: relative; width: 100%; overflow: hidden; border: 1px solid rgba(26,39,68,0.12); }
     #venue-map { width: 100%; height: 100%; min-height: 380px; }
     .leaflet-control-attribution { font-size: 9px !important; }
 
-    /* ══════════════════════════════════════════════
-       FAQ
-    ══════════════════════════════════════════════ */
+    /* ── TSHIMOLOGONG ACCORDION ── */
+    .tsimi-section { background: var(--white); padding: 0 0 0; position: relative; }
+    .tsimi-accordion {
+      border-top: 1px solid rgba(26,39,68,0.15);
+      border-bottom: 1px solid rgba(26,39,68,0.15);
+    }
+    .tsimi-trigger {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px var(--band);
+      cursor: pointer; background: none; border: none; width: 100%;
+      text-align: left; font-family: 'InterDisplay', sans-serif;
+      transition: background 0.22s;
+    }
+    .tsimi-trigger:hover { background: var(--navy); }
+    .tsimi-trigger:hover .tsimi-trigger-label { color: var(--white); }
+    .tsimi-trigger:hover .tsimi-trigger-icon { color: var(--white); }
+    .tsimi-trigger-label {
+      font-size: 22px; font-weight: 600; color: var(--dark-text);
+      transition: color 0.22s;
+    }
+    .tsimi-trigger-icon {
+      font-size: 22px; color: var(--dark-text); font-weight: 300; line-height: 1;
+      transition: color 0.22s, transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .tsimi-accordion.open .tsimi-trigger-icon { transform: rotate(45deg); }
+    .tsimi-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.45s ease, padding 0.35s ease;
+      padding: 0 var(--band);
+    }
+    .tsimi-accordion.open .tsimi-body {
+      max-height: 600px;
+      padding: 36px var(--band) 56px;
+    }
+    .tsimi-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: flex-start; gap: 64px; }
+    .tsimi-title { font-size: 50px; font-weight: 900; color: var(--dark-text); line-height: 1.05; }
+    .tsimi-body-text { font-size: 14px; line-height: 1.75; color: var(--dark-text); }
+    .tsimi-body-text p + p { margin-top: 16px; }
+
+    /* ── FAQ ── */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
@@ -197,301 +148,78 @@
     .faq-item:hover .faq-t-icon { color: var(--white); }
     .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
     .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
-    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; max-width: calc(100% - 40px); }
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease; max-width: calc(100% - 40px); }
     .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
     .faq-item.open .faq-t-icon { transform: rotate(45deg); }
     .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
     .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
-    .faq-apply-link {
-      font-size: 11px; font-weight: 600; color: var(--navy);
-      text-decoration: underline; letter-spacing: 0.06em;
-      display: block; margin-top: 40px; cursor: pointer;
-      text-underline-offset: 3px; transition: opacity 0.2s;
-    }
+    .faq-apply-link { font-size: 11px; font-weight: 600; color: var(--navy); text-decoration: underline; letter-spacing: 0.06em; display: block; margin-top: 40px; cursor: pointer; text-underline-offset: 3px; transition: opacity 0.2s; }
     .faq-apply-link:hover { opacity: 0.6; }
-
 
     /* ── PARTNERS ── */
     .partners-section { background: var(--lavender); padding: 72px 0; position: relative; border-top: 2px solid var(--navy); }
     .partners-inner { padding: 0 var(--band); }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
     .partners-title { font-size: 38px; font-weight: 600; color: var(--dark-text); }
-    .partners-link {
-      font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: none;
-      letter-spacing: 0.06em; border-bottom: 1px solid var(--navy); padding-bottom: 1px;
-    }
+    .partners-link { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: none; letter-spacing: 0.06em; border-bottom: 1px solid var(--navy); padding-bottom: 1px; }
     .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
     .partner-card { display: flex; flex-direction: column; }
-    .partner-logo-box {
-      background: var(--white); border: 1px solid rgba(26,39,68,0.12);
-      aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
-      padding: 40px 32px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px;
-    }
+    .partner-logo-box { background: var(--white); border: 1px solid rgba(26,39,68,0.12); aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; padding: 40px 32px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px; }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
     .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
-    .partner-logo-box img.keep-color { filter: none; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
-    /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-/* ── Fak'ugesi shared link hover effect ── */
-.involved-link,
-.curatorial-view-link,
-.showcases-link,
-.showcases-header a,
-.showcase-card-more,
-.winners-view-link,
-.highlights-view-link,
-.intro-view-link,
-.network-view-link,
-.faq-tickets-link,
-.faq-apply-link,
-.faq-apply-top,
-.partners-link,
-.partners-view-link,
-.main-partners-link,
-.market-info-link,
-.exhibitors-link,
-.exhibitor-card-more,
-.more-card-link,
-.prizes-apply-link,
-.cat-apply-link,
-.req-apply-link,
-.challenge-apply-link,
-.section-link,
-.media-link,
-.locations-map-link,
-.directions-link,
-.hero-link,
-[data-fug-link] {
-  position: relative !important;
-  text-decoration: none !important;
-  padding-bottom: 2px !important;
-  transition: opacity 0.25s ease, transform 0.25s ease !important;
-}
+    /* Shared link hover */
+    .involved-link,.locations-map-link,.directions-link,.faq-apply-link,.faq-apply-top,.partners-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
+    .involved-link::after,.locations-map-link::after,.directions-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
+    .involved-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
+    .involved-link:hover,.locations-map-link:hover,.directions-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
-.involved-link::after,
-.curatorial-view-link::after,
-.showcases-link::after,
-.showcases-header a::after,
-.showcase-card-more::after,
-.winners-view-link::after,
-.highlights-view-link::after,
-.intro-view-link::after,
-.network-view-link::after,
-.faq-tickets-link::after,
-.faq-apply-link::after,
-.faq-apply-top::after,
-.partners-link::after,
-.partners-view-link::after,
-.main-partners-link::after,
-.market-info-link::after,
-.exhibitors-link::after,
-.exhibitor-card-more::after,
-.more-card-link::after,
-.prizes-apply-link::after,
-.cat-apply-link::after,
-.req-apply-link::after,
-.challenge-apply-link::after,
-.section-link::after,
-.media-link::after,
-.locations-map-link::after,
-.directions-link::after,
-.hero-link::after,
-[data-fug-link]::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left center;
-  transition: transform 0.28s ease;
-}
-
-.involved-link:hover::after,
-.curatorial-view-link:hover::after,
-.showcases-link:hover::after,
-.showcases-header a:hover::after,
-.showcase-card-more:hover::after,
-.winners-view-link:hover::after,
-.highlights-view-link:hover::after,
-.intro-view-link:hover::after,
-.network-view-link:hover::after,
-.faq-tickets-link:hover::after,
-.faq-apply-link:hover::after,
-.faq-apply-top:hover::after,
-.partners-link:hover::after,
-.partners-view-link:hover::after,
-.main-partners-link:hover::after,
-.market-info-link:hover::after,
-.exhibitors-link:hover::after,
-.exhibitor-card-more:hover::after,
-.more-card-link:hover::after,
-.prizes-apply-link:hover::after,
-.cat-apply-link:hover::after,
-.req-apply-link:hover::after,
-.challenge-apply-link:hover::after,
-.section-link:hover::after,
-.media-link:hover::after,
-.locations-map-link:hover::after,
-.directions-link:hover::after,
-.hero-link:hover::after,
-[data-fug-link]:hover::after {
-  transform: scaleX(0);
-  transform-origin: right center;
-}
-
-.involved-link:hover,
-.curatorial-view-link:hover,
-.showcases-link:hover,
-.showcases-header a:hover,
-.showcase-card-more:hover,
-.winners-view-link:hover,
-.highlights-view-link:hover,
-.intro-view-link:hover,
-.network-view-link:hover,
-.faq-tickets-link:hover,
-.faq-apply-link:hover,
-.faq-apply-top:hover,
-.partners-link:hover,
-.partners-view-link:hover,
-.main-partners-link:hover,
-.market-info-link:hover,
-.exhibitors-link:hover,
-.exhibitor-card-more:hover,
-.more-card-link:hover,
-.prizes-apply-link:hover,
-.cat-apply-link:hover,
-.req-apply-link:hover,
-.challenge-apply-link:hover,
-.section-link:hover,
-.media-link:hover,
-.locations-map-link:hover,
-.directions-link:hover,
-.hero-link:hover,
-[data-fug-link]:hover {
-  transform: translateX(3px);
-}
-    /* ═══════════════════════════════════════════════════
-       MOBILE RESPONSIVE
-    ═══════════════════════════════════════════════════ */
-
-    /* ── TABLET (≤1024px) ── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       :root { --band: 48px; }
-
       .hero-inner { padding: 100px 48px 52px; }
       .hero-title { font-size: 44px; }
-      .hero-body { font-size: 12px; max-width: 100%; }
-      .hero-logo img { height: 80px; }
-
-      .locations-title { font-size: 40px; }
-
-      /* Map sits below cards on tablet — full width */
-      .locations-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+      .locations-grid { grid-template-columns: 1fr; gap: 16px; }
       .location-cards { flex-direction: row; flex-wrap: wrap; gap: 10px; }
       .location-card { flex: 1 1 calc(50% - 5px); min-width: 220px; }
       #venue-map { min-height: 340px; }
-
+      .tsimi-layout { grid-template-columns: 1fr; gap: 24px; }
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
-      .partners-section { padding: 52px 0; }
-      .partners-title { font-size: 30px; }
-      .partners-grid { gap: 16px; }
-      .partner-logo-box { padding: 28px 20px; }
-
-      /* Hide distant cross icons */
-      .cross-icon[style*="left:200px"],
-      .cross-icon[style*="right:200px"] { display: none; }
     }
-
-    /* ── MOBILE (≤768px) ── */
     @media (max-width: 768px) {
       :root { --band: 20px; }
-
-      /* HERO */
       .hero { min-height: auto; }
-      .hero-bg { background-position: center center; }
-      .hero-inner {
-        padding: 80px 20px 40px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-      .hero-content { max-width: 100%; }
-      .hero-subtitle { font-size: 10px; margin-bottom: 10px; }
-      .hero-title { font-size: 30px; margin-bottom: 14px; }
-      .hero-body { font-size: 12px; }
-      .hero-logo { width: 100%; justify-content: flex-start; }
-      .hero-logo img { height: 52px; margin-bottom: 1px;}
-
-      /* TICKER */
-      .ticker-track span { font-size: 11px; padding: 0 20px; }
-
-      /* LOCATIONS */
+      .hero-inner { padding: 80px 20px 40px; flex-direction: column; align-items: flex-start; gap: 24px; }
+      .hero-title { font-size: 30px; max-width: 100%; }
+      .hero-logo { display: none; }
       .locations-section { padding: 40px 0 52px; }
-      .locations-inner { padding: 0 20px; }
-
-      .locations-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 20px;
-      }
+      .locations-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 20px; }
       .locations-title { font-size: 28px; }
-      .locations-map-link { font-size: 11px; margin-bottom: 0; }
-
-      /* Stack cards vertically on mobile */
-      .locations-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .location-cards {
-        flex-direction: column;
-        gap: 8px;
-      }
-      .location-card { flex: none; width: 100%; padding: 12px 14px 14px; }
-      .location-card-header { margin-bottom: 6px; }
-      .location-name { font-size: 12px; }
-      .directions-link { font-size: 11px; }
-      .location-address { font-size: 11px; }
-
-      /* Map full width below cards */
-      .map-wrap { border: none; border-top: 1px solid rgba(26,39,68,0.12); }
+      .locations-grid { grid-template-columns: 1fr; gap: 16px; }
+      .location-cards { flex-direction: column; gap: 8px; }
+      .location-card { flex: none; width: 100%; }
       #venue-map { min-height: 280px; }
-
+      .tsimi-trigger { padding: 18px 20px; }
+      .tsimi-trigger-label { font-size: 18px; }
+      .tsimi-accordion.open .tsimi-body { padding: 24px 20px 40px; }
+      .tsimi-layout { grid-template-columns: 1fr; gap: 16px; }
+      .tsimi-title { font-size: 32px; }
+      .tsimi-body-text { font-size: 13px; }
       .faq-section { padding: 40px 20px 56px; }
       .faq-layout { grid-template-columns: 1fr; gap: 24px; }
       .faq-title-left { font-size: 32px; }
-
-      /* PARTNERS */
       .partners-section { padding: 40px 0 48px; }
       .partners-inner { padding: 0 20px; }
-      .partners-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 24px;
-      }
+      .partners-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 24px; }
       .partners-title { font-size: 24px; }
       .partners-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-      .partner-logo-box { padding: 20px 16px; margin-bottom: 10px; }
-      .partner-logo-box img { max-height: 80px; }
-      .partner-desc { font-size: 11px; }
-
-      /* Cross icons — hide all on mobile, too tight */
       .cross-icon { display: none; }
     }
-
-    /* ── SMALL MOBILE (≤480px) ── */
     @media (max-width: 480px) {
       .hero-title { font-size: 26px; }
       .locations-title { font-size: 24px; }
@@ -500,10 +228,6 @@
       #venue-map { min-height: 240px; }
     }
   </style>
-
-  <link rel="preload" href="../fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="../fonts/InterDisplay-SemiBold.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="../fonts/InterDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
 </head>
 <body>
 
@@ -511,8 +235,6 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <!-- nav injected by nav.js -->
-
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-subtitle">Venues</p>
@@ -539,34 +261,7 @@
   </div>
 </div>
 
-<section class="who-section">
- <div class="crosses-bar">
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-</div>
-  <div class="who-layout">
-    <div class="who-left">
-      <h2 class="who-title">Tshimologong</h2>
-    </div>
-    <div class="who-right">
-      <div class="who-body">
-        <p>The Tshimologong Digital Innovation Precinct is a purpose-built environment adjacent to the campus of
-Wits University in Johannesburg. Designed to accelerate the conditions under which African digital
-innovation occurs, scales, and circulates, the Precinct houses research groups, start-up incubators,
-creative studios, and industry partnerships inside a shared innovation environment.</p>
-        <p style="margin-top: 16px;">Its mandate is practical: reduce the distance between discovery and deployment, between the laboratory
-and the market, between the individual practitioner and the structural support they need to build something
-that lasts.</p>
-        <p style="margin-top: 16px;">During Fak'ugesi, the Precinct becomes the physical centre of gravity for the festival's five days. A place
-where the African Imaginaries are not only discussed but built, tested, exhibited, and released into the
-world.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- LOCATIONS -->
+<!-- LOCATIONS — now comes first -->
 <section class="locations-section reveal">
 
   <div class="cross-icon cross-icon--navy" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -584,7 +279,6 @@ world.</p>
     </div>
 
     <div class="locations-grid">
-
       <!-- Cards -->
       <div class="location-cards">
 
@@ -597,12 +291,7 @@ world.</p>
               Get directions &nbsp;→
             </a>
           </div>
-          <div class="location-address">
-            41 Juta Street<br>
-            Braamfontein<br>
-            Johannesburg<br>
-            South Africa
-          </div>
+          <div class="location-address">41 Juta Street<br>Braamfontein<br>Johannesburg<br>South Africa</div>
         </div>
 
         <div class="location-card" id="card-2" onclick="activateCard(2)">
@@ -614,12 +303,7 @@ world.</p>
               Get directions &nbsp;→
             </a>
           </div>
-          <div class="location-address">
-            University of the Witwatersrand, Yale Rd<br>
-            Braamfontein<br>
-            Johannesburg<br>
-            South Africa
-          </div>
+          <div class="location-address">University of the Witwatersrand, Yale Rd<br>Braamfontein<br>Johannesburg<br>South Africa</div>
         </div>
 
         <div class="location-card" id="card-3" onclick="activateCard(3)">
@@ -631,30 +315,42 @@ world.</p>
               Get directions &nbsp;→
             </a>
           </div>
-          <div class="location-address">
-            University of the Witwatersrand, Yale Rd<br>
-            Braamfontein<br>
-            Johannesburg<br>
-            South Africa
-          </div>
+          <div class="location-address">University of the Witwatersrand, Yale Rd<br>Braamfontein<br>Johannesburg<br>South Africa</div>
         </div>
 
       </div>
 
-      <!-- Leaflet map -->
+      <!-- Map -->
       <div class="map-wrap">
         <div id="venue-map"></div>
       </div>
-
     </div>
   </div>
-
-  <!-- <div class="cross-icon cross-icon--navy" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="bottom:20px;left:50%;transform:translateX(-50%);"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div> -->
 </section>
 
-<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<!-- TSHIMOLOGONG — accordion, collapsed by default -->
+<section class="tsimi-section">
+  <div class="tsimi-accordion" id="tsimiAccordion">
+    <button class="tsimi-trigger" onclick="toggleTsimi()" aria-expanded="false">
+      <span class="tsimi-trigger-label">Tshimologong</span>
+      <span class="tsimi-trigger-icon">+</span>
+    </button>
+    <div class="tsimi-body">
+      <div class="tsimi-layout">
+        <div>
+          <h2 class="tsimi-title">Tshimologong</h2>
+        </div>
+        <div class="tsimi-body-text">
+          <p>The Tshimologong Digital Innovation Precinct is a purpose-built environment adjacent to the campus of Wits University in Johannesburg. Designed to accelerate the conditions under which African digital innovation occurs, scales, and circulates, the Precinct houses research groups, start-up incubators, creative studios, and industry partnerships inside a shared innovation environment.</p>
+          <p>Its mandate is practical: reduce the distance between discovery and deployment, between the laboratory and the market, between the individual practitioner and the structural support they need to build something that lasts.</p>
+          <p>During Fak'ugesi, the Precinct becomes the physical centre of gravity for the festival's five days. A place where the African Imaginaries are not only discussed but built, tested, exhibited, and released into the world.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
 <section class="faq-section reveal">
   <div class="cross-icon" style="top:16px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
@@ -688,13 +384,8 @@ world.</p>
   </div>
 </section>
 
-<!-- OUR MAIN PARTNERS -->
+<!-- PARTNERS -->
 <section class="partners-section reveal">
-  <!-- <div class="cross-icon cross-icon--navy" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon cross-icon--navy" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
-  <div class="cross-icon" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div> -->
-
   <div class="partners-inner">
     <div class="partners-header">
       <h2 class="partners-title">Our Main Partners</h2>
@@ -702,199 +393,129 @@ world.</p>
     </div>
     <div class="partners-grid">
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" />
-        </div>
+        <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" /></div>
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" />
-        </div>
+        <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" /></div>
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" />
-        </div>
+        <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" /></div>
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Leaflet JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-  // ── Venue data ──
   const venues = [
-    { id:1, name:'Tshimologong Precinct',             lat:-26.1946, lng:28.0319, address:'41 Juta Street, Braamfontein' },
-    { id:2, name:'Wits Anglo American Digital Dome',  lat:-26.1884, lng:28.0282, address:'Yale Rd, Braamfontein' },
-    { id:3, name:'Wits Anglo American Digital Dome',  lat:-26.1884, lng:28.0282, address:'Yale Rd, Braamfontein' }
+    { id:1, name:'Tshimologong Precinct',            lat:-26.1946, lng:28.0319, address:'41 Juta Street, Braamfontein' },
+    { id:2, name:'Wits Anglo American Digital Dome', lat:-26.1884, lng:28.0282, address:'Yale Rd, Braamfontein' },
+    { id:3, name:'Wits Anglo American Digital Dome', lat:-26.1884, lng:28.0282, address:'Yale Rd, Braamfontein' }
   ];
 
-  // ── Init Leaflet map ──
-const map = L.map('venue-map', {
-  center: [-26.1915, 28.0300],
-  zoom: 15,
-  zoomControl: true,
-  scrollWheelZoom: false,
-  tap: false
-});
+  const map = L.map('venue-map', { center:[-26.1915,28.0300], zoom:15, zoomControl:true, scrollWheelZoom:false, tap:false });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution:'© OpenStreetMap contributors © CARTO', subdomains:'abcd', maxZoom:19 }).addTo(map);
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
-  subdomains: 'abcd',
-  maxZoom: 19
-}).addTo(map);
-
-// Custom dot marker
-function makeIcon(active) {
-  return L.divIcon({
-    className: '',
-    html: `<div style="
-      width:14px;height:14px;
-      background:${active ? '#e05a1e' : '#1a2744'};
-      border:2.5px solid #fff;
-      border-radius:50%;
-      box-shadow:0 2px 8px rgba(0,0,0,0.4);
-    "></div>`,
-    iconSize: [14,14], iconAnchor: [7,7], popupAnchor: [0,-10]
-  });
-}
-
-// Add markers with persistent popups (autoClose: false) for first two venues
-const markers = venues.map((v, i) => {
-  const marker = L.marker([v.lat, v.lng], { icon: makeIcon(i === 0) }).addTo(map);
-  
-  // For Tshimologong Precinct (index 0) and Wits Digital Dome (index 1)
-  // bind popup with autoClose: false so multiple popups can stay open
-  if (i === 0 || i === 1) {
-    marker.bindPopup(
-      `<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br>` +
-      `<span style="font-size:10px;color:#3a4060;">${v.address}</span>`,
-      { autoClose: false, closeOnClick: false }
-    );
-  } else {
-    // Default popup for any extra venues (closes others on open)
-    marker.bindPopup(
-      `<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br>` +
-      `<span style="font-size:10px;color:#3a4060;">${v.address}</span>`
-    );
-  }
-  return marker;
-});
-
-// Open BOTH Tshimologong and Wits Digital Dome popups by default (simultaneously)
-markers[0].openPopup();
-markers[1].openPopup();
-
-// ── Card interaction with popup management ──
-function activateCard(num) {
-  // Close ALL marker popups first to ensure only the selected one shows after click
-  markers.forEach(marker => marker.closePopup());
-  
-  // Update active card UI
-  document.querySelectorAll('.location-card').forEach(c => c.classList.remove('active'));
-  document.getElementById('card-' + num).classList.add('active');
-  
-  // Update marker icons
-  markers.forEach((m, i) => m.setIcon(makeIcon(i === num - 1)));
-  
-  // Fly to selected venue and open its popup
-  const v = venues[num - 1];
-  map.flyTo([v.lat, v.lng], 16, { duration: 0.8 });
-  markers[num - 1].openPopup();
-
-  // On mobile, scroll map into view
-  if (window.innerWidth <= 768) {
-    document.querySelector('.map-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-}
-
-// ── Reveal on scroll ──
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      setTimeout(() => map.invalidateSize(), 800);
-    }
-  });
-}, { threshold: 0.08 });
-revealEls.forEach(el => io.observe(el));
-
-// Invalidate map on resize
-window.addEventListener('resize', () => {
-  clearTimeout(window._mapResizeTimer);
-  window._mapResizeTimer = setTimeout(() => map.invalidateSize(), 200);
-});
-
-/* ── FAQ ── */
-const faqData = [
-  { q: "Where is the Tshimologong Precinct?", a: "41 Juta Street, Braamfontein, Johannesburg. The Precinct is on the edge of the Wits University campus, visit tshimologong.joburg" },
-  { q: "Is the Precinct accessible to the public all year-round?", a: "The Precinct operates as an active innovation environment throughout they year. Some facilities are open to the public; others are accessible through specific programmes and residencies. During Fak'ugesi, the full range of spaces is activated for the Festival." },
-  { q: "Are there other venues beyond Tshimologong?", a: "Yes. Partner venues host specific programme elements during the Festival. Details are on the Partner Venues page." },
-];
-
-const faqContainer = document.getElementById('faqAccordion');
-faqData.forEach((faq, i) => {
-  const item = document.createElement('div');
-  item.className = 'faq-item' + (i === 0 ? ' open' : '');
-  item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
-  item.querySelector('.faq-q-btn').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    faqContainer.querySelectorAll('.faq-item').forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.faq-t-icon').textContent = '+';
-      el.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'false');
+  function makeIcon(active) {
+    return L.divIcon({
+      className:'',
+      html:`<div style="width:14px;height:14px;background:${active?'#e05a1e':'#1a2744'};border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.4);"></div>`,
+      iconSize:[14,14], iconAnchor:[7,7], popupAnchor:[0,-10]
     });
-    if (!isOpen) {
-      item.classList.add('open');
-      item.querySelector('.faq-t-icon').textContent = '×';
-      item.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'true');
-    }
+  }
+
+  const markers = venues.map((v,i) => {
+    const marker = L.marker([v.lat,v.lng], { icon:makeIcon(i===0) }).addTo(map);
+    marker.bindPopup(
+      `<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br><span style="font-size:10px;color:#3a4060;">${v.address}</span>`,
+      { autoClose:false, closeOnClick:false }
+    );
+    return marker;
   });
-  faqContainer.appendChild(item);
-});
+  markers[0].openPopup();
+  markers[1].openPopup();
+
+  function activateCard(num) {
+    markers.forEach(m => m.closePopup());
+    document.querySelectorAll('.location-card').forEach(c => c.classList.remove('active'));
+    document.getElementById('card-'+num).classList.add('active');
+    markers.forEach((m,i) => m.setIcon(makeIcon(i===num-1)));
+    const v = venues[num-1];
+    map.flyTo([v.lat,v.lng], 16, { duration:0.8 });
+    markers[num-1].openPopup();
+    if (window.innerWidth <= 768) {
+      document.querySelector('.map-wrap').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+  }
+
+  /* Tshimologong accordion */
+  function toggleTsimi() {
+    const acc = document.getElementById('tsimiAccordion');
+    const icon = acc.querySelector('.tsimi-trigger-icon');
+    const btn = acc.querySelector('.tsimi-trigger');
+    const isOpen = acc.classList.contains('open');
+    acc.classList.toggle('open');
+    icon.textContent = isOpen ? '+' : '×';
+    btn.setAttribute('aria-expanded', !isOpen);
+  }
+
+  /* FAQ */
+  const faqData = [
+    { q: "Where is the Tshimologong Precinct?", a: "41 Juta Street, Braamfontein, Johannesburg. The Precinct is on the edge of the Wits University campus, visit tshimologong.joburg" },
+    { q: "Is the Precinct accessible to the public all year-round?", a: "The Precinct operates as an active innovation environment throughout the year. Some facilities are open to the public; others are accessible through specific programmes and residencies. During Fak'ugesi, the full range of spaces is activated for the Festival." },
+    { q: "Are there other venues beyond Tshimologong?", a: "Yes. Partner venues host specific programme elements during the Festival. Details are on the Partner Venues page." },
+  ];
+
+  const faqContainer = document.getElementById('faqAccordion');
+  faqData.forEach((faq,i) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item' + (i===0?' open':'');
+    item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i===0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i===0?'×':'+'}</span></button><div class="faq-ans">${faq.a}</div>`;
+    item.querySelector('.faq-q-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqContainer.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-t-icon').textContent = '+';
+        el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-t-icon').textContent = '×';
+        item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true');
+      }
+    });
+    faqContainer.appendChild(item);
+  });
+
+  /* Reveal */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        setTimeout(() => map.invalidateSize(), 800);
+      }
+    });
+  }, { threshold:0.08 });
+  revealEls.forEach(el => io.observe(el));
+
+  window.addEventListener('resize', () => {
+    clearTimeout(window._mapResizeTimer);
+    window._mapResizeTimer = setTimeout(() => map.invalidateSize(), 200);
+  });
+
+  /* Cross icon scroll spin */
+  (function(){
+    var lastY=window.scrollY, rot=0, ticking=false, scrollTimer=null;
+    function resetRot(){ rot=0; document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(el=>{ el.style.transition='transform 0.45s ease'; el.style.transform='rotate(0deg)'; }); }
+    function onScroll(){ if(!ticking){ requestAnimationFrame(()=>{ var y=window.scrollY,delta=y-lastY; if(Math.abs(delta)>0){ rot+=delta>0?15:-15; document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(el=>{ el.style.transition='transform 0.1s linear'; el.style.transform='rotate('+rot+'deg)'; }); } lastY=y; ticking=false; clearTimeout(scrollTimer); scrollTimer=setTimeout(resetRot,300); }); ticking=true; } }
+    window.addEventListener('scroll', onScroll, {passive:true});
+  })();
 </script>
 <script src="../nav.js"></script>
-<script src="../fakugesi-cross-patch.js"></script>
-<script src="../starArrows.js"></script>
 <script src="../footer.js"></script>
-
-<script>
-/* Cross icon scroll spin */
-(function(){
-  var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
-  function resetRot(){
-    rot = 0;
-    document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-      el.style.transition = 'transform 0.45s ease';
-      el.style.transform = 'rotate(0deg)';
-    });
-  }
-  function onScroll(){
-    if(!ticking){
-      requestAnimationFrame(function(){
-        var y = window.scrollY, delta = y - lastY;
-        if(Math.abs(delta) > 0){
-          rot += delta > 0 ? 15 : -15;
-          document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-            el.style.transition = 'transform 0.1s linear';
-            el.style.transform = 'rotate('+rot+'deg)';
-          });
-        }
-        lastY = y;
-        ticking = false;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(resetRot, 300);
-      });
-      ticking = true;
-    }
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-})();
-</script>
 </body>
 </html>
