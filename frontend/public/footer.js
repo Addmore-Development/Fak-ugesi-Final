@@ -115,6 +115,14 @@
     }
     #fug-footer a:hover { text-decoration: underline; }
 
+    /* Col 2 — align contact block with logo height */
+    #fug-footer .fug-footer-contact-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 72px;
+    }
+
     /* Col 3 — logo left, copyright + link right */
     #fug-footer .fug-footer-right {
       display: flex;
@@ -143,13 +151,6 @@
       color: #0d1b3e;
       margin-bottom: 2px;
     }
-    #fug-footer .fug-footer-logo-email {
-      font-size: 11px;
-      color: #5a6070 !important;
-      margin-top: 6px;
-      line-height: 1.5;
-    }
-    #fug-footer .fug-footer-logo-email:hover { text-decoration: underline; }
 
     /* ── TABLET (≤1024px) ── */
     @media (max-width: 1024px) {
@@ -180,6 +181,7 @@
       #fug-footer .fug-footer-addr { font-size: 12px; }
       #fug-footer .fug-footer-col-title { font-size: 10px; }
       #fug-footer a { font-size: 12px; line-height: 1.7; }
+      #fug-footer .fug-footer-contact-block { height: auto; }
       #fug-footer .fug-footer-right {
         padding-top: 8px;
         border-top: 1px solid rgba(26,39,68,0.08);
@@ -249,28 +251,25 @@
           </p>
         </div>
 
-        <!-- Col 2: Contact then Festival Director, stacked -->
+        <!-- Col 2: Contact — same height as logo -->
         <div class="fug-footer-col">
           <p class="fug-footer-col-title">Contact</p>
-          <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
-          <a href="tel:+27117178156">+27 11 717 8156</a>
-          <p class="fug-footer-col-title" style="margin-top:7px;">Festival Director</p>
-          <a href="mailto:alby@tshimologong.joburg">Alby Michaels</a>
+          <div class="fug-footer-contact-block">
+            <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
+            <a href="tel:+27117178156">+27 11 717 8156</a>
+            <a href="https://fakugesi.co.za/" target="_blank" rel="noopener">fakugesi.co.za</a>
+          </div>
         </div>
 
         <!-- Col 3: Logo left, copyright + website link right -->
         <div class="fug-footer-col">
           <div class="fug-footer-right">
-            <div style="display:flex;flex-direction:column;align-items:flex-start;flex-shrink:0;">
-              <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
-              <a href="mailto:alby@tshimologong.joburg" class="fug-footer-logo-email">alby@tshimologong.joburg</a>
-            </div>
+            <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
             <p class="fug-footer-copy">
               <strong>© 2026 Fak'ugesi Festival</strong>
               All Rights Reserved<br>
               13–17 October 2026<br>
-              Tshimologong, Johannesburg<br>
-              <a href="https://fakugesi.co.za/" target="_blank" rel="noopener" style="font-size:11px;color:#5a6070;margin-top:2px;display:inline-block;">fakugesi.co.za</a>
+              Tshimologong, Johannesburg
             </p>
           </div>
         </div>
