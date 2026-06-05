@@ -26,11 +26,7 @@
     .hero { position: relative; width: 100%; min-height: 520px; overflow: hidden; display: flex; align-items: flex-start; }
     .hero-bg { position: absolute; inset: 0; background-image: url('/images/0A9A9164.jpg'); background-size: cover; background-position: center 35%; filter: brightness(0.70); animation: kenBurns 18s ease-in-out infinite alternate; }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
-   .hero-overlay {
-    position: absolute; inset: 0;
-    background: transparent;
-    }
-
+    .hero-overlay { position: absolute; inset: 0; background: transparent; }
     .hero-inner {
       position: relative; z-index: 4; width: 100%;
       padding: 120px 248px 56px;
@@ -75,8 +71,6 @@
 
     /* SCHEDULE SECTION */
     .schedule-section { background: var(--schedule-bg); position: relative; overflow: hidden; }
-
-    /* Full-section bg image + dark overlay — revealed on hover/active */
     .schedule-section-bg { position: absolute; inset: 0; background-size: cover; background-position: center 20%; opacity: 0; transition: opacity 0.4s ease; z-index: 0; pointer-events: none; }
     .schedule-section-bg-overlay { position: absolute; inset: 0; background: rgba(5,10,35,0.72); opacity: 0; transition: opacity 0.4s ease; z-index: 1; pointer-events: none; }
     .schedule-section.has-hover .schedule-section-bg,
@@ -89,7 +83,6 @@
     .sched-crosses-bottom { bottom: 20px; }
     .schedule-inner { position: relative; z-index: 3; padding: 56px 248px 72px; }
 
-    /* Title + col labels dim to white when section is lit */
     .schedule-title { font-size: 52px; font-weight: 600; color: var(--dark-text); margin-bottom: 40px; line-height: 1.05; transition: color 0.35s; }
     .schedule-section.has-hover .schedule-title,
     .schedule-section.has-active .schedule-title { color: #fff; }
@@ -100,15 +93,9 @@
     .schedule-section.has-hover .schedule-cols,
     .schedule-section.has-active .schedule-cols { border-color: rgba(255,255,255,0.15); }
 
-    /* PANELS */
     .sched-panel { display: none; flex-direction: column; gap: 2px; }
     .sched-panel.active { display: flex; }
 
-    /* ── SCHED ROW ──
-       3-column grid: time | panel+desc | speakers(collapsed/expanded)
-       Hover effect: panel dims all rows, hovered row stays white.
-       Active/open: clicked row stays white, others dim.
-    */
     .sched-row {
       display: grid;
       grid-template-columns: 200px 1fr 240px;
@@ -119,33 +106,12 @@
       z-index: 2;
       transition: background 0.35s, border-color 0.28s, box-shadow 0.28s;
     }
+    .sched-panel.panel-hover .sched-row { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.12); }
+    .sched-panel.panel-hover .sched-row:hover { background: var(--white); border-color: rgba(255,255,255,0.8); box-shadow: 0 4px 24px rgba(0,0,0,0.35); }
+    .sched-panel.panel-active .sched-row { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.12); }
+    .sched-panel.panel-active .sched-row.open { background: var(--white); border-color: rgba(255,255,255,0.8); box-shadow: 0 4px 24px rgba(0,0,0,0.35); }
+    .sched-panel.panel-active .sched-row:not(.open):hover { background: rgba(255,255,255,0.14); }
 
-    /* ── PANEL-LEVEL HOVER STATE (mouse is over any row in the panel) ── */
-    .sched-panel.panel-hover .sched-row {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.12);
-    }
-    .sched-panel.panel-hover .sched-row:hover {
-      background: var(--white);
-      border-color: rgba(255,255,255,0.8);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
-    }
-
-    /* ── PANEL-LEVEL ACTIVE STATE (a row is clicked/open) ── */
-    .sched-panel.panel-active .sched-row {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.12);
-    }
-    .sched-panel.panel-active .sched-row.open {
-      background: var(--white);
-      border-color: rgba(255,255,255,0.8);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
-    }
-    .sched-panel.panel-active .sched-row:not(.open):hover {
-      background: rgba(255,255,255,0.14);
-    }
-
-    /* TIME CELL */
     .sched-cell-time { padding: 22px 20px 22px; border-right: 1px solid rgba(26,39,68,0.08); transition: border-color 0.35s; }
     .sched-panel.panel-hover .sched-row .sched-cell-time,
     .sched-panel.panel-active .sched-row .sched-cell-time { border-right-color: rgba(255,255,255,0.08); }
@@ -164,7 +130,6 @@
     .sched-panel.panel-hover .sched-row:hover .sched-location,
     .sched-panel.panel-active .sched-row.open .sched-location { color: var(--navy); }
 
-    /* MIDDLE CELL */
     .sched-cell-middle { padding: 22px 24px 22px 20px; border-right: 1px solid rgba(26,39,68,0.08); display: flex; flex-direction: column; transition: border-color 0.35s; }
     .sched-panel.panel-hover .sched-row .sched-cell-middle,
     .sched-panel.panel-active .sched-row .sched-cell-middle { border-right-color: rgba(255,255,255,0.08); }
@@ -190,21 +155,10 @@
     .sched-panel.panel-hover .sched-row:hover .tag,
     .sched-panel.panel-active .sched-row.open .tag { background: rgba(26,39,68,0.1); color: var(--navy); }
 
-    /* Description — hidden until open */
-    .sched-desc {
-      display: none;
-      font-size: 12px;
-      line-height: 1.72;
-      color: var(--body-gray);
-      margin-top: 14px;
-      max-width: 460px;
-    }
+    .sched-desc { display: none; font-size: 12px; line-height: 1.72; color: var(--body-gray); margin-top: 14px; max-width: 460px; }
     .sched-row.open .sched-desc { display: block; }
 
-    /* SPEAKERS CELL */
     .sched-cell-speakers { padding: 22px 20px 22px; display: flex; flex-direction: column; gap: 0; }
-
-    /* Collapsed: plain name list */
     .sched-speakers-collapsed { display: flex; flex-direction: column; gap: 2px; }
     .sched-speaker-name-plain { font-size: 12px; color: var(--dark-text); line-height: 1.75; transition: color 0.35s; }
     .sched-panel.panel-hover .sched-row .sched-speaker-name-plain,
@@ -212,36 +166,25 @@
     .sched-panel.panel-hover .sched-row:hover .sched-speaker-name-plain,
     .sched-panel.panel-active .sched-row.open .sched-speaker-name-plain { color: var(--dark-text); }
 
-    /* Expanded: speaker cards with photo */
     .sched-speakers-expanded { display: none; flex-direction: column; gap: 12px; }
     .sched-row.open .sched-speakers-collapsed { display: none; }
     .sched-row.open .sched-speakers-expanded { display: flex; }
 
     .sp-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
     .sp-card-info { flex: 1; min-width: 0; }
-    .sp-card-name {
-      font-size: 12px; font-weight: 700; color: var(--navy);
-      text-decoration: none; display: inline-flex; align-items: center;
-      gap: 4px; margin-bottom: 2px; transition: opacity 0.2s;
-    }
+    .sp-card-name { font-size: 12px; font-weight: 700; color: var(--navy); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 2px; transition: opacity 0.2s; }
     .sp-card-name:hover { opacity: 0.7; }
     .sp-card-name::after { content: ' →'; font-size: 10px; font-weight: 400; }
     .sp-card-role { font-size: 11px; color: var(--body-gray); line-height: 1.4; }
     .sp-card-org  { font-size: 11px; color: var(--body-gray); line-height: 1.4; }
-    .sp-card-photo {
-      width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
-      background: rgba(26,39,68,0.12); display: flex; align-items: center;
-      justify-content: center; font-size: 12px; font-weight: 700; color: var(--navy);
-    }
+    .sp-card-photo { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: rgba(26,39,68,0.12); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--navy); }
     .sp-card-photo img { width: 44px; height: 44px; object-fit: cover; display: block; border-radius: 50%; }
 
-    /* Shared link hover */
     .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
     .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform 0.28s ease;}
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
-    /* MORE */
     .more-section { background: var(--more-bg); padding: 56px 0 72px; position: relative; border-top: 2px solid rgba(26,39,68,0.18); }
     .more-title { font-size: 42px; font-weight: 600; color: var(--dark-text); margin-bottom: 40px; padding: 0 248px; }
     .more-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; padding: 0 248px; }
@@ -257,7 +200,6 @@
     .more-card-name { font-size: 28px; font-weight: 600; color: var(--dark-text); margin-bottom: 4px; line-height: 1.05; }
     .more-card-time { font-size: 13px; color: var(--body-gray); }
 
-    /* PARTNERS */
     .partners-section { background: var(--lavender); padding: 64px 248px 72px; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
     .partners-title { font-size: 42px; font-weight: 600; color: var(--dark-text); }
@@ -296,9 +238,7 @@
     }
     @media (max-width: 480px) { .hero-title { font-size: 28px !important; } .partners-grid { grid-template-columns: 1fr !important; } }
 
-    /* ══════════════════════════════════════════════
-       FAQ
-    ══════════════════════════════════════════════ */
+    /* FAQ */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
@@ -320,7 +260,6 @@
     .faq-item.open .faq-t-icon { transform: rotate(45deg); }
     .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color .28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
     .faq-item.open .faq-ans { max-height: 400px; padding: 0 16px 22px; }
-
   </style>
   <style id="nav-fix">
     #main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
@@ -387,518 +326,104 @@
       <span class="col-label">Speakers</span>
     </div>
 
-    <!-- ══════════════════════════════════
-         DAY 0 — Tuesday 7
-    ══════════════════════════════════ -->
+    <!-- DAY 0 — Tuesday 7 -->
     <div class="sched-panel active" id="day-0">
-
-      <!-- Row 1: A Provocation -->
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">09:45 — 10:15</div>
-          <a class="sched-location" href="#">Tshimologong Precinct →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">A Provocation</div>
-          <div class="sched-event-sub">Keynote Address</div>
-          <div class="sched-desc">An opening provocation that sets the intellectual and creative tone for the AI Symposium — a challenge to think differently about the role of technology in shaping African futures.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Adam Pantanowitz</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Adam Pantanowitz</a>
-                <div class="sp-card-role">Director</div>
-                <div class="sp-card-org">Tshimologong Precinct</div>
-              </div>
-              <div class="sp-card-photo"><img src="/images/Speakers/Adam Pantanowitz.jpg" alt="Adam Pantanowitz" onerror="this.parentElement.textContent='AP'" /></div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">09:45 — 10:15</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">A Provocation</div><div class="sched-event-sub">Keynote Address</div><div class="sched-desc">An opening provocation that sets the intellectual and creative tone for the AI Symposium — a challenge to think differently about the role of technology in shaping African futures.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Adam Pantanowitz</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Adam Pantanowitz</a><div class="sp-card-role">Director</div><div class="sp-card-org">Tshimologong Precinct</div></div><div class="sp-card-photo"><img src="/images/Speakers/Adam Pantanowitz.jpg" alt="Adam Pantanowitz" onerror="this.parentElement.textContent='AP'" /></div></div></div></div>
       </div>
-
-      <!-- Row 2: Setting the Charge -->
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">10:15 — 11:45</div>
-          <a class="sched-location" href="#">Tshimologong Precinct →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">Setting the Charge</div>
-          <div class="sched-event-sub">An AI Research Presentation</div>
-          <div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div>
-          <div class="sched-desc">A deep-dive research presentation on the intersection of machine learning and African cultural production. Explores how AI systems can be designed with African epistemologies in mind.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Masilakhe Njomane</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Masilakhe Njomane</a>
-                <div class="sp-card-role">Researcher</div>
-                <div class="sp-card-org">Independent Research</div>
-              </div>
-              <div class="sp-card-photo"><img src="/images/Speakers/Masilakhe Njomane.jpg" alt="Masilakhe Njomane" onerror="this.parentElement.textContent='MN'" /></div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">10:15 — 11:45</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">Setting the Charge</div><div class="sched-event-sub">An AI Research Presentation</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div><div class="sched-desc">A deep-dive research presentation on the intersection of machine learning and African cultural production. Explores how AI systems can be designed with African epistemologies in mind.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Masilakhe Njomane</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Masilakhe Njomane</a><div class="sp-card-role">Researcher</div><div class="sp-card-org">Independent Research</div></div><div class="sp-card-photo"><img src="/images/Speakers/Masilakhe Njomane.jpg" alt="Masilakhe Njomane" onerror="this.parentElement.textContent='MN'" /></div></div></div></div>
       </div>
-
-      <!-- Row 3: Policy by Design -->
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">11:45 — 12:45</div>
-          <a class="sched-location" href="#">Tshimologong Precinct →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">Policy by Design</div>
-          <div class="sched-event-sub">Shaping Creative Futures in the Age of AI</div>
-          <div class="tags"><span class="tag">AI</span><span class="tag">Creative Policy</span></div>
-          <div class="sched-desc">We assemble a strategic conversation between policymakers, cultural practitioners, researchers, and technologists to co-develop actionable policy recommendations that enable innovation, inclusion, ethical considerations and sustainability in the creative and digital sectors, especially in the context of emerging technologies like AI. Ethical considerations, policy, and sectoral impact.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Avril Joffe</span>
-            <span class="sched-speaker-name-plain">Adwoa Ankoma</span>
-            <span class="sched-speaker-name-plain">Pierre Saal</span>
-            <span class="sched-speaker-name-plain">Altaye Tedla</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Avril Joffe</a>
-                <div class="sp-card-role">Chairperson</div>
-                <div class="sp-card-org">UNESCO</div>
-              </div>
-              <div class="sp-card-photo"><img src="/images/Speakers/Avril Joffe.jpg" alt="Avril Joffe" onerror="this.parentElement.textContent='AJ'" /></div>
-            </div>
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Adwoa Ankoma</a>
-                <div class="sp-card-role">Director of Policy &amp; Research</div>
-                <div class="sp-card-org">Electric South</div>
-              </div>
-              <div class="sp-card-photo">AA</div>
-            </div>
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Pierre Saal</a>
-                <div class="sp-card-role">Founder</div>
-                <div class="sp-card-org">Elessar Labs</div>
-              </div>
-              <div class="sp-card-photo"><img src="/images/Speakers/pierresaal-astronaute.jpg" alt="Pierre Saal" onerror="this.parentElement.textContent='PS'" /></div>
-            </div>
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Altaye Tedla</a>
-                <div class="sp-card-role">Director</div>
-                <div class="sp-card-org">WIPO Academy</div>
-              </div>
-              <div class="sp-card-photo">AT</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">11:45 — 12:45</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">Policy by Design</div><div class="sched-event-sub">Shaping Creative Futures in the Age of AI</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Policy</span></div><div class="sched-desc">We assemble a strategic conversation between policymakers, cultural practitioners, researchers, and technologists to co-develop actionable policy recommendations that enable innovation, inclusion, ethical considerations and sustainability in the creative and digital sectors, especially in the context of emerging technologies like AI.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Avril Joffe</span><span class="sched-speaker-name-plain">Adwoa Ankoma</span><span class="sched-speaker-name-plain">Pierre Saal</span><span class="sched-speaker-name-plain">Altaye Tedla</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Avril Joffe</a><div class="sp-card-role">Chairperson</div><div class="sp-card-org">UNESCO</div></div><div class="sp-card-photo"><img src="/images/Speakers/Avril Joffe.jpg" alt="Avril Joffe" onerror="this.parentElement.textContent='AJ'" /></div></div><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Adwoa Ankoma</a><div class="sp-card-role">Director of Policy &amp; Research</div><div class="sp-card-org">Electric South</div></div><div class="sp-card-photo">AA</div></div><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Pierre Saal</a><div class="sp-card-role">Founder</div><div class="sp-card-org">Elessar Labs</div></div><div class="sp-card-photo"><img src="/images/Speakers/pierresaal-astronaute.jpg" alt="Pierre Saal" onerror="this.parentElement.textContent='PS'" /></div></div><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Altaye Tedla</a><div class="sp-card-role">Director</div><div class="sp-card-org">WIPO Academy</div></div><div class="sp-card-photo">AT</div></div></div></div>
       </div>
-
-      <!-- Row 4: A Radical Reimagining -->
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">13:45 — 15:00</div>
-          <a class="sched-location" href="#">Tshimologong Precinct →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">A Radical Reimagining</div>
-          <div class="sched-event-sub">African AI from the Artist's Perspective</div>
-          <div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div>
-          <div class="sched-desc">Artists and data scientists in dialogue — exploring what it means to build AI tools rooted in African aesthetics, language, and lived experience. A provocative conversation at the frontier of creative technology.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Hannah Andrews</span>
-            <span class="sched-speaker-name-plain">Vukosi Marivate</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Hannah Andrews</a>
-                <div class="sp-card-role">Artist &amp; Researcher</div>
-                <div class="sp-card-org">Independent Practice</div>
-              </div>
-              <div class="sp-card-photo"><img src="/images/Speakers/Hannah Andrews.jpg" alt="Hannah Andrews" onerror="this.parentElement.textContent='HA'" /></div>
-            </div>
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Vukosi Marivate</a>
-                <div class="sp-card-role">Professor</div>
-                <div class="sp-card-org">University of Pretoria</div>
-              </div>
-              <div class="sp-card-photo"><img src="/images/Speakers/Vukosi Marivate.jpg" alt="Vukosi Marivate" onerror="this.parentElement.textContent='VM'" /></div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">13:45 — 15:00</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">A Radical Reimagining</div><div class="sched-event-sub">African AI from the Artist's Perspective</div><div class="tags"><span class="tag">AI</span><span class="tag">Creative Economy</span></div><div class="sched-desc">Artists and data scientists in dialogue — exploring what it means to build AI tools rooted in African aesthetics, language, and lived experience. A provocative conversation at the frontier of creative technology.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Hannah Andrews</span><span class="sched-speaker-name-plain">Vukosi Marivate</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Hannah Andrews</a><div class="sp-card-role">Artist &amp; Researcher</div><div class="sp-card-org">Independent Practice</div></div><div class="sp-card-photo"><img src="/images/Speakers/Hannah Andrews.jpg" alt="Hannah Andrews" onerror="this.parentElement.textContent='HA'" /></div></div><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Vukosi Marivate</a><div class="sp-card-role">Professor</div><div class="sp-card-org">University of Pretoria</div></div><div class="sp-card-photo"><img src="/images/Speakers/Vukosi Marivate.jpg" alt="Vukosi Marivate" onerror="this.parentElement.textContent='VM'" /></div></div></div></div>
       </div>
-
-      <!-- Row 5: The AI Workshop -->
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">15:15 — 16:30</div>
-          <a class="sched-location" href="#">Tshimologong Precinct →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">The AI Workshop</div>
-          <div class="tags"><span class="tag">AI</span></div>
-          <div class="sched-desc">A hands-on practical workshop exploring AI tools for creative practitioners. Participants will experiment with generative systems and leave with frameworks for integrating AI into their own practice.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Pierre Saal</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Pierre Saal</a>
-                <div class="sp-card-role">Founder</div>
-                <div class="sp-card-org">Elessar Labs</div>
-              </div>
-              <div class="sp-card-photo"><img src="/images/Speakers/pierresaal-astronaute.jpg" alt="Pierre Saal" onerror="this.parentElement.textContent='PS'" /></div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">15:15 — 16:30</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">The AI Workshop</div><div class="tags"><span class="tag">AI</span></div><div class="sched-desc">A hands-on practical workshop exploring AI tools for creative practitioners. Participants will experiment with generative systems and leave with frameworks for integrating AI into their own practice.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Pierre Saal</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Pierre Saal</a><div class="sp-card-role">Founder</div><div class="sp-card-org">Elessar Labs</div></div><div class="sp-card-photo"><img src="/images/Speakers/pierresaal-astronaute.jpg" alt="Pierre Saal" onerror="this.parentElement.textContent='PS'" /></div></div></div></div>
       </div>
-
     </div><!-- /day-0 -->
 
-    <!-- ══════════════════════════════════
-         DAY 1 — Wednesday 8
-    ══════════════════════════════════ -->
+    <!-- DAY 1 — Wednesday 8 -->
     <div class="sched-panel" id="day-1">
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">09:00 — 10:00</div>
-          <a class="sched-location" href="#">Tshimologong Precinct →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">A Seat at the Table of Change</div>
-          <div class="sched-event-sub">Power &amp; Representation in Creative Tech</div>
-          <div class="tags"><span class="tag">PRO</span></div>
-          <div class="sched-desc">An incisive talk on power, representation, and structural barriers that shape who gets to participate in the creative tech industry. A call to action for industry leaders and practitioners alike.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Thobile Chittenden</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Thobile Chittenden</a>
-                <div class="sp-card-role">Speaker</div>
-                <div class="sp-card-org">Creative Industries</div>
-              </div>
-              <div class="sp-card-photo">TC</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">09:00 — 10:00</div><a class="sched-location" href="#">Tshimologong Precinct →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">A Seat at the Table of Change</div><div class="sched-event-sub">Power &amp; Representation in Creative Tech</div><div class="tags"><span class="tag">PRO</span></div><div class="sched-desc">An incisive talk on power, representation, and structural barriers that shape who gets to participate in the creative tech industry.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Thobile Chittenden</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Thobile Chittenden</a><div class="sp-card-role">Speaker</div><div class="sp-card-org">Creative Industries</div></div><div class="sp-card-photo">TC</div></div></div></div>
       </div>
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">12:00 — 15:00</div>
-          <a class="sched-location" href="#">Gaming Arena →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">JAMZ Video Game Challenge — League Day 1</div>
-          <div class="tags"><span class="tag">JAMZ</span><span class="tag">Gaming</span></div>
-          <div class="sched-desc">Day one of the JAMZ Video Game Challenge league stage. Competitors from across the continent go head-to-head in a showcase of skill, strategy, and African gaming culture.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">JAMZ Competitors</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">JAMZ Competitors</a>
-                <div class="sp-card-role">League Participants</div>
-                <div class="sp-card-org">JAMZ Challenge</div>
-              </div>
-              <div class="sp-card-photo">JC</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">12:00 — 15:00</div><a class="sched-location" href="#">Gaming Arena →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">JAMZ Video Game Challenge — League Day 1</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Gaming</span></div><div class="sched-desc">Day one of the JAMZ Video Game Challenge league stage. Competitors from across the continent go head-to-head in a showcase of skill, strategy, and African gaming culture.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">JAMZ Competitors</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">JAMZ Competitors</a><div class="sp-card-role">League Participants</div><div class="sp-card-org">JAMZ Challenge</div></div><div class="sp-card-photo">JC</div></div></div></div>
       </div>
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">16:00 — 17:30</div>
-          <a class="sched-location" href="#">Main Stage →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">Awards: Jury Q&amp;A</div>
-          <div class="sched-event-sub">Meet the 2026 Jury — Open to All Pass Holders</div>
-          <div class="tags"><span class="tag">Awards</span></div>
-          <div class="sched-desc">An open Q&amp;A session with the Fak'ugesi Awards jury. A rare opportunity to hear directly from jurors about what they are looking for and the significance of the awards.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">2026 Awards Jury</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">2026 Awards Jury</a>
-                <div class="sp-card-role">Jury Panel</div>
-                <div class="sp-card-org">Fak'ugesi Awards</div>
-              </div>
-              <div class="sp-card-photo">JY</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">16:00 — 17:30</div><a class="sched-location" href="#">Main Stage →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">Awards: Jury Q&amp;A</div><div class="sched-event-sub">Meet the 2026 Jury — Open to All Pass Holders</div><div class="tags"><span class="tag">Awards</span></div><div class="sched-desc">An open Q&amp;A session with the Fak'ugesi Awards jury. A rare opportunity to hear directly from jurors about what they are looking for and the significance of the awards.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">2026 Awards Jury</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">2026 Awards Jury</a><div class="sp-card-role">Jury Panel</div><div class="sp-card-org">Fak'ugesi Awards</div></div><div class="sp-card-photo">JY</div></div></div></div>
       </div>
-
     </div><!-- /day-1 -->
 
-    <!-- ══════════════════════════════════
-         DAY 2 — Friday 9
-    ══════════════════════════════════ -->
+    <!-- DAY 2 — Friday 9 -->
     <div class="sched-panel" id="day-2">
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">09:00 — 10:30</div>
-          <a class="sched-location" href="#">PRO Lounge →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">Entrepreneurs &amp; Investors Breakfast</div>
-          <div class="tags"><span class="tag">PRO</span></div>
-          <div class="sched-desc">An exclusive breakfast bringing together entrepreneurs and investors from across the African digital creative ecosystem. A curated space for meaningful introductions and strategic alignment.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Invited Investors</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Invited Investors</a>
-                <div class="sp-card-role">Venture Capital &amp; Angels</div>
-                <div class="sp-card-org">PRO Programme</div>
-              </div>
-              <div class="sp-card-photo">IV</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">09:00 — 10:30</div><a class="sched-location" href="#">PRO Lounge →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">Entrepreneurs &amp; Investors Breakfast</div><div class="tags"><span class="tag">PRO</span></div><div class="sched-desc">An exclusive breakfast bringing together entrepreneurs and investors from across the African digital creative ecosystem.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Invited Investors</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Invited Investors</a><div class="sp-card-role">Venture Capital &amp; Angels</div><div class="sp-card-org">PRO Programme</div></div><div class="sp-card-photo">IV</div></div></div></div>
       </div>
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">10:30 — 13:00</div>
-          <a class="sched-location" href="#">Main Stage →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">JAMZ Animation Challenge — Quarterfinals</div>
-          <div class="tags"><span class="tag">JAMZ</span></div>
-          <div class="sched-desc">The quarterfinal round of the JAMZ Animation Challenge. Eight teams present their animated works to a live audience and jury panel, competing for a place in the final.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">JAMZ Competitors</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">JAMZ Competitors</a>
-                <div class="sp-card-role">Quarterfinal Participants</div>
-                <div class="sp-card-org">JAMZ Animation Challenge</div>
-              </div>
-              <div class="sp-card-photo">JC</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">10:30 — 13:00</div><a class="sched-location" href="#">Main Stage →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">JAMZ Animation Challenge — Quarterfinals</div><div class="tags"><span class="tag">JAMZ</span></div><div class="sched-desc">The quarterfinal round of the JAMZ Animation Challenge. Eight teams present their animated works to a live audience and jury panel.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">JAMZ Competitors</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">JAMZ Competitors</a><div class="sp-card-role">Quarterfinal Participants</div><div class="sp-card-org">JAMZ Animation Challenge</div></div><div class="sp-card-photo">JC</div></div></div></div>
       </div>
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">15:00 — 17:00</div>
-          <a class="sched-location" href="#">Tshimologong Auditorium →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">Pitchathon: Semifinal Pitches</div>
-          <div class="tags"><span class="tag">Pitchathon</span></div>
-          <div class="sched-desc">Ten finalist startups take the stage for their semifinal pitches. Each team has five minutes to present their venture to a panel of investors and industry experts, followed by rapid Q&amp;A.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">10 Finalist Startups</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">10 Finalist Startups</a>
-                <div class="sp-card-role">Pitchathon Finalists</div>
-                <div class="sp-card-org">Fak'ugesi Pitchathon</div>
-              </div>
-              <div class="sp-card-photo">FS</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">15:00 — 17:00</div><a class="sched-location" href="#">Tshimologong Auditorium →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">Pitchathon: Semifinal Pitches</div><div class="tags"><span class="tag">Pitchathon</span></div><div class="sched-desc">Ten finalist startups take the stage for their semifinal pitches. Each team has five minutes to present their venture to a panel of investors and industry experts, followed by rapid Q&amp;A.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">10 Finalist Startups</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">10 Finalist Startups</a><div class="sp-card-role">Pitchathon Finalists</div><div class="sp-card-org">Fak'ugesi Pitchathon</div></div><div class="sp-card-photo">FS</div></div></div></div>
       </div>
-
     </div><!-- /day-2 -->
 
-    <!-- ══════════════════════════════════
-         DAY 3 — Saturday 10
-    ══════════════════════════════════ -->
+    <!-- DAY 3 — Saturday 10 -->
     <div class="sched-panel" id="day-3">
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">09:00 — 12:00</div>
-          <a class="sched-location" href="#">Wits Innovation Centre →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">Pitchathon Grand Finale</div>
-          <div class="tags"><span class="tag">Pitchathon</span></div>
-          <div class="sched-desc">The grand finale of the Fak'ugesi Pitchathon. The top five startups compete for the prize in front of a live audience and high-profile jury at the Wits Innovation Centre.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">WIC Jury Panel</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">WIC Jury Panel</a>
-                <div class="sp-card-role">Investment Jury</div>
-                <div class="sp-card-org">Wits Innovation Centre</div>
-              </div>
-              <div class="sp-card-photo">WJ</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">09:00 — 12:00</div><a class="sched-location" href="#">Wits Innovation Centre →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">Pitchathon Grand Finale</div><div class="tags"><span class="tag">Pitchathon</span></div><div class="sched-desc">The grand finale of the Fak'ugesi Pitchathon. The top five startups compete for the prize in front of a live audience and high-profile jury at the Wits Innovation Centre.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">WIC Jury Panel</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">WIC Jury Panel</a><div class="sp-card-role">Investment Jury</div><div class="sp-card-org">Wits Innovation Centre</div></div><div class="sp-card-photo">WJ</div></div></div></div>
       </div>
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">11:00 — 16:00</div>
-          <a class="sched-location" href="#">Tshimologong Courtyard →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">Dala Khona: Speedrun Marathon</div>
-          <div class="tags"><span class="tag">Gaming</span></div>
-          <div class="sched-desc">A five-hour speedrun marathon in the Tshimologong Courtyard, celebrating the art and science of speedrunning. Community members race through iconic titles while commentators break down strategy live.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Speedrun Community</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Speedrun Community</a>
-                <div class="sp-card-role">Runners &amp; Commentators</div>
-                <div class="sp-card-org">Dala Khona</div>
-              </div>
-              <div class="sp-card-photo">SC</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">11:00 — 16:00</div><a class="sched-location" href="#">Tshimologong Courtyard →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">Dala Khona: Speedrun Marathon</div><div class="tags"><span class="tag">Gaming</span></div><div class="sched-desc">A five-hour speedrun marathon in the Tshimologong Courtyard, celebrating the art and science of speedrunning.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Speedrun Community</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Speedrun Community</a><div class="sp-card-role">Runners &amp; Commentators</div><div class="sp-card-org">Dala Khona</div></div><div class="sp-card-photo">SC</div></div></div></div>
       </div>
-
     </div><!-- /day-3 -->
 
-    <!-- ══════════════════════════════════
-         DAY 4 — Sunday 11
-    ══════════════════════════════════ -->
+    <!-- DAY 4 — Sunday 11 -->
     <div class="sched-panel" id="day-4">
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">10:00 — 12:00</div>
-          <a class="sched-location" href="#">Main Stage →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">JAMZ Animation Challenge — Grand Final</div>
-          <div class="tags"><span class="tag">JAMZ</span></div>
-          <div class="sched-desc">The grand final of the JAMZ Animation Challenge. The top four teams present their animated works to a packed Main Stage audience. Winners announced live across Best Animation, Best Sound Design, and People's Choice.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">JAMZ Finalists</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">JAMZ Finalists</a>
-                <div class="sp-card-role">Grand Final Participants</div>
-                <div class="sp-card-org">JAMZ Animation Challenge</div>
-              </div>
-              <div class="sp-card-photo">JF</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">10:00 — 12:00</div><a class="sched-location" href="#">Main Stage →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">JAMZ Animation Challenge — Grand Final</div><div class="tags"><span class="tag">JAMZ</span></div><div class="sched-desc">The grand final of the JAMZ Animation Challenge. The top four teams present their animated works to a packed Main Stage audience. Winners announced live across Best Animation, Best Sound Design, and People's Choice.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">JAMZ Finalists</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">JAMZ Finalists</a><div class="sp-card-role">Grand Final Participants</div><div class="sp-card-org">JAMZ Animation Challenge</div></div><div class="sp-card-photo">JF</div></div></div></div>
       </div>
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">16:00 — 17:30</div>
-          <a class="sched-location" href="#">Tshimologong Auditorium →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">PRO: Future of African Digital Creative Industry</div>
-          <div class="sched-event-sub">Closing Keynote — All Welcome</div>
-          <div class="tags"><span class="tag">PRO</span></div>
-          <div class="sched-desc">A forward-looking closing keynote that takes stock of the week's conversations and looks to the horizon of African digital creative industries. Open to all festival pass holders.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">Keynote Speaker</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">Keynote Speaker</a>
-                <div class="sp-card-role">TBC</div>
-                <div class="sp-card-org">PRO Programme</div>
-              </div>
-              <div class="sp-card-photo">KS</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">16:00 — 17:30</div><a class="sched-location" href="#">Tshimologong Auditorium →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">PRO: Future of African Digital Creative Industry</div><div class="sched-event-sub">Closing Keynote — All Welcome</div><div class="tags"><span class="tag">PRO</span></div><div class="sched-desc">A forward-looking closing keynote that takes stock of the week's conversations and looks to the horizon of African digital creative industries. Open to all festival pass holders.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">Keynote Speaker</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">Keynote Speaker</a><div class="sp-card-role">TBC</div><div class="sp-card-org">PRO Programme</div></div><div class="sp-card-photo">KS</div></div></div></div>
       </div>
-
       <div class="sched-row">
-        <div class="sched-cell-time">
-          <div class="sched-time">18:00 — 19:00</div>
-          <a class="sched-location" href="#">Main Stage →</a>
-        </div>
-        <div class="sched-cell-middle">
-          <div class="sched-event-title">JAMZ Winners Announced</div>
-          <div class="tags"><span class="tag">JAMZ</span><span class="tag">Awards</span></div>
-          <div class="sched-desc">The closing ceremony of JAMZ 2026. The jury announces winners across all JAMZ challenge categories — Video Game, Animation, and People's Choice. A celebration of African digital creativity.</div>
-        </div>
-        <div class="sched-cell-speakers">
-          <div class="sched-speakers-collapsed">
-            <span class="sched-speaker-name-plain">JAMZ Jury</span>
-          </div>
-          <div class="sched-speakers-expanded">
-            <div class="sp-card">
-              <div class="sp-card-info">
-                <a class="sp-card-name" href="#">JAMZ Jury</a>
-                <div class="sp-card-role">Awards Jury</div>
-                <div class="sp-card-org">JAMZ 2026</div>
-              </div>
-              <div class="sp-card-photo">JJ</div>
-            </div>
-          </div>
-        </div>
+        <div class="sched-cell-time"><div class="sched-time">18:00 — 19:00</div><a class="sched-location" href="#">Main Stage →</a></div>
+        <div class="sched-cell-middle"><div class="sched-event-title">JAMZ Winners Announced</div><div class="tags"><span class="tag">JAMZ</span><span class="tag">Awards</span></div><div class="sched-desc">The closing ceremony of JAMZ 2026. The jury announces winners across all JAMZ challenge categories — Video Game, Animation, and People's Choice. A celebration of African digital creativity.</div></div>
+        <div class="sched-cell-speakers"><div class="sched-speakers-collapsed"><span class="sched-speaker-name-plain">JAMZ Jury</span></div><div class="sched-speakers-expanded"><div class="sp-card"><div class="sp-card-info"><a class="sp-card-name" href="#">JAMZ Jury</a><div class="sp-card-role">Awards Jury</div><div class="sp-card-org">JAMZ 2026</div></div><div class="sp-card-photo">JJ</div></div></div></div>
       </div>
-
     </div><!-- /day-4 -->
 
   </div><!-- /schedule-inner -->
@@ -918,15 +443,12 @@
   </div>
 </section>
 
-<!-- PARTNERS -->
-
-<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<!-- FAQ -->
 <section class="faq-section reveal">
   <div class="faq-layout">
     <div>
       <h2 class="faq-title-left">FAQ</h2>
       <p class="faq-intro-text">Dates, access, and programme information for Fak'ugesi 2026.</p>
-      
     </div>
     <div>
       <div class="faq-right-hdr"></div>
@@ -934,13 +456,16 @@
         <div class="faq-item open">
           <button class="faq-q-btn" aria-expanded="true"><span class="faq-q-text">When does the festival take place?</span><span class="faq-t-icon">×</span></button>
           <div class="faq-ans">Fak'ugesi 2026 runs from 13 to 17 October at the Tshimologong Digital Innovation Precinct, Johannesburg.</div>
-        </div><div class="faq-item">
+        </div>
+        <div class="faq-item">
           <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">How is the programme organised?</span><span class="faq-t-icon">+</span></button>
           <div class="faq-ans">The programme is organised across three Frequencies — Memory Engines, Imagination Engines, and Future Engines — running concurrently across the five days.</div>
-        </div><div class="faq-item">
+        </div>
+        <div class="faq-item">
           <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Are all events free?</span><span class="faq-t-icon">+</span></button>
           <div class="faq-ans">Some programme elements are open access. Others require registration or ticketing. Full details are published with the festival programme. Visit the Tickets page for current information.</div>
-        </div><div class="faq-item">
+        </div>
+        <div class="faq-item">
           <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Where can I find accessibility information?</span><span class="faq-t-icon">+</span></button>
           <div class="faq-ans">The Tshimologong Precinct is wheelchair accessible. Full accessibility information will be published on the Visit page ahead of the festival. For specific requirements, contact hello@fakugesi.co.za in advance.</div>
         </div>
@@ -958,23 +483,22 @@
   </div>
 </section>
 
-
-/* ── FAQ ACCORDION ── */
-(function() {
-  const faqContainer = document.getElementById('faqAccordion');
-  if (!faqContainer) return;
-  faqContainer.querySelectorAll('.faq-item').forEach((item, i) => {
-    if (i === 0) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
-    item.querySelector('.faq-q-btn').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-t-icon').textContent = '+'; el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false'); });
-      if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
-    });
-  });
-})();
-
 <script src="footer.js"></script>
 <script>
+  /* ── FAQ ACCORDION ── */
+  (function() {
+    const faqContainer = document.getElementById('faqAccordion');
+    if (!faqContainer) return;
+    faqContainer.querySelectorAll('.faq-item').forEach((item, i) => {
+      if (i === 0) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+      item.querySelector('.faq-q-btn').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-t-icon').textContent = '+'; el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false'); });
+        if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+      });
+    });
+  })();
+
   /* ── DAY SELECTOR ── */
   document.querySelectorAll('.day-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -983,83 +507,47 @@
       document.querySelectorAll('.sched-panel').forEach(p => p.classList.remove('active','panel-hover','panel-active'));
       const panel = document.getElementById('day-' + card.dataset.day);
       if (panel) panel.classList.add('active');
-      /* close any open row + clear section state when switching day */
       document.querySelectorAll('.sched-row.open').forEach(r => r.classList.remove('open'));
       clearSectionState();
     });
   });
 
-  const schedSection   = document.getElementById('scheduleSection');
+  const schedSection = document.getElementById('scheduleSection');
   const scheduleSectionBg = document.getElementById('scheduleSectionBg');
   let activeRow = null;
 
-  function setSectionBg(src) {
-    scheduleSectionBg.style.backgroundImage = src ? `url('${src}')` : '';
-  }
+  function setSectionBg(src) { scheduleSectionBg.style.backgroundImage = src ? `url('${src}')` : ''; }
   function clearSectionState() {
     schedSection.classList.remove('has-hover', 'has-active');
     document.querySelectorAll('.sched-panel').forEach(p => p.classList.remove('panel-hover', 'panel-active'));
     setSectionBg('');
   }
 
-  /* ── ROW HOVER + ACCORDION ── */
   document.querySelectorAll('.sched-row').forEach(row => {
-    const panel  = row.closest('.sched-panel');
-    /* each row can optionally carry data-speaker-img for the bg */
+    const panel = row.closest('.sched-panel');
     const imgSrc = row.getAttribute('data-speaker-img') || null;
-
-    /* HOVER IN */
     row.addEventListener('mouseenter', () => {
-      if (activeRow) return; /* don't override active state */
+      if (activeRow) return;
       setSectionBg(imgSrc);
       panel.classList.add('panel-hover');
       schedSection.classList.add('has-hover');
     });
-
-    /* HOVER OUT */
     row.addEventListener('mouseleave', () => {
       if (activeRow) return;
       panel.classList.remove('panel-hover');
       schedSection.classList.remove('has-hover');
       setSectionBg('');
     });
-
-    /* CLICK — accordion open/close AND section active state */
     row.addEventListener('click', e => {
       if (e.target.tagName === 'A') return;
-
       const isOpen = row.classList.contains('open');
-
-      /* close whatever is currently open */
-      if (activeRow) {
-        activeRow.classList.remove('open');
-        activeRow.closest('.sched-panel').classList.remove('panel-active');
-        activeRow = null;
-        clearSectionState();
-      }
-
-      if (!isOpen) {
-        /* open this row */
-        activeRow = row;
-        row.classList.add('open');
-        setSectionBg(imgSrc);
-        panel.classList.remove('panel-hover');
-        panel.classList.add('panel-active');
-        schedSection.classList.remove('has-hover');
-        schedSection.classList.add('has-active');
-        setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
-      }
+      if (activeRow) { activeRow.classList.remove('open'); activeRow.closest('.sched-panel').classList.remove('panel-active'); activeRow = null; clearSectionState(); }
+      if (!isOpen) { activeRow = row; row.classList.add('open'); setSectionBg(imgSrc); panel.classList.remove('panel-hover'); panel.classList.add('panel-active'); schedSection.classList.remove('has-hover'); schedSection.classList.add('has-active'); setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50); }
     });
   });
 
-  /* Click outside rows clears state */
   document.addEventListener('click', e => {
-    if (!e.target.closest('.sched-row') && activeRow) {
-      activeRow.classList.remove('open');
-      activeRow.closest('.sched-panel').classList.remove('panel-active');
-      activeRow = null;
-      clearSectionState();
-    }
+    if (!e.target.closest('.sched-row') && activeRow) { activeRow.classList.remove('open'); activeRow.closest('.sched-panel').classList.remove('panel-active'); activeRow = null; clearSectionState(); }
   });
 
   /* ── CROSS SCROLL SPIN ── */
