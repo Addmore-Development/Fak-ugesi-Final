@@ -66,7 +66,7 @@
       background-image: url('images/signature/_MGL7139.jpg');
       background-size: cover;
       background-position: center 30%;
-      filter: brightness(0.55);
+      filter: brightness(0.3);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
@@ -655,7 +655,11 @@
       box-shadow: 0 10px 32px rgba(26,39,68,0.13);
       transform: translateY(-5px);
     }
-    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
+    .partner-logo-box img {
+      max-width: 100%; max-height: 120px;
+      object-fit: contain; display: block;
+      filter: brightness(0) saturate(100%) invert(13%) sepia(53%) saturate(780%) hue-rotate(198deg) brightness(82%);
+    }
     .partner-desc {
       font-size: 12px; font-weight: 400;
       color: var(--body-gray); line-height: 1.65;
@@ -1166,7 +1170,7 @@
       </div>
       <div class="partner-card">
         <div class="partner-logo-box">
-          <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
+          <img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" />
         </div>
         <p class="partner-desc">The University of the Witwatersrand — research partner and academic anchor of the festival.</p>
       </div>

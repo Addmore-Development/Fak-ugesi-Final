@@ -17,7 +17,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 180px;
+      padding: 18px 200px;
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-social-band p {
@@ -54,7 +54,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 18px;5
+      width: 18px;
       height: 18px;
       position: absolute;
       z-index: 2;
