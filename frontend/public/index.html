@@ -33,7 +33,7 @@
       position: absolute; inset: 0;
       background-image: url('images/_MGL2775.jpg');
       background-size: cover; background-position: center 20%;
-      filter: brightness(0.52);
+      filter: brightness(0.55);
       animation: kenBurns 16s ease-in-out infinite alternate;
       transform-origin: center center;
     }
@@ -58,8 +58,9 @@
       color: var(--white);
     }
     .hero-title {
-      font-size:48px;
-      font-weight:600;
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 72px;
+      font-weight: 600;
       line-height: 1.0;
       margin-bottom: 14px;
       color: var(--white);
@@ -247,7 +248,7 @@
     .partner-card{display:flex;flex-direction:column;}
     .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:48px 40px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;aspect-ratio:1/1;}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
-    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
     .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;}
 
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
@@ -292,6 +293,9 @@
       .partners-grid{grid-template-columns:1fr 1fr;gap:14px;}
     }
     @media(max-width:480px){.hero-title{font-size:26px;}.theme-head{font-size:22px;}.involved-title{font-size:24px;}.spotlight-title{font-size:24px;}.happening-title{font-size:24px;}.partners-title{font-size:22px;}.partners-grid{grid-template-columns:1fr;}}
+    a.inv-card{display:block;text-decoration:none;color:inherit;cursor:pointer;}
+    a.inv-card:hover .inv-card-front{box-shadow:0 6px 24px rgba(26,39,68,0.14);transform:translateY(-2px);}
+    .inv-card-front{transition:box-shadow 0.22s,transform 0.2s;}
   </style>
   <style id="nav-fix">@media(max-width:768px){#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}}#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;}#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px;overflow-y:auto;}#mobile-nav-drawer.open{display:flex;}#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}</style>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
@@ -309,7 +313,7 @@
       <p class="hero-subtitle">African Digital &amp; Innovation Festival</p>
       <h1 class="hero-title">Fak'ugesi<br>Festival</h1>
       <p class="hero-body">African thinkers, makers, coders, creatives, and archivists are already building the systems through which the future will be lived, remembered, and shared. Fak'ugesi 2026 is where that work becomes public.</p>
-      <a class="hero-link" href="about.html">What is Fak'ugesi? <span class="hero-link-arrow">→</span></a>
+      <a class="hero-link" href="get-involved.html">What is Fak'ugesi? <span class="hero-link-arrow">→</span></a>
     </div>
     <div class="hero-logo"><img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div>
   </div>
@@ -369,33 +373,33 @@
   <div class="involved-inner">
     <div class="involved-header">
       <h2 class="involved-title">Get involved</h2>
-      <a class="involved-link" href="about.html">What is Fak'ugesi?</a>
+      <a class="involved-link" href="get-involved.html">What is Fak'ugesi?</a>
     </div>
     <div class="involved-cards">
-      <div class="inv-card">
+      <a class="inv-card" href="get-involved.html?type=investor" data-no-redirect>
         <div class="inv-card-front">
           <span class="card-num">01</span>
           <p class="card-tag">Festival Collaboration</p>
           <h3 class="card-title">Investors &amp; Funders</h3>
           <p class="card-body">Partner with Africa's premier digital innovation festival. Support programmes, build visibility, and connect with a practitioner community operating at the frontier of African technology and creativity.</p>
         </div>
-      </div>
-      <div class="inv-card">
+      </a>
+      <a class="inv-card" href="get-involved.html?type=exhibitor" data-no-redirect>
         <div class="inv-card-front">
           <span class="card-num">02</span>
           <p class="card-tag">Curated Festival Experiences</p>
           <h3 class="card-title">Expo &amp; Showcases</h3>
           <p class="card-body">Exhibit your project, product, or research at the Fak'ugesi Expo. Five days of foot traffic from creatives, investors, researchers, and policymakers across the African digital ecosystem.</p>
         </div>
-      </div>
-      <div class="inv-card">
+      </a>
+      <a class="inv-card" href="get-involved.html?type=volunteer" data-no-redirect>
         <div class="inv-card-front">
           <span class="card-num">03</span>
           <p class="card-tag">Lend a Hand</p>
           <h3 class="card-title">Volunteers</h3>
           <p class="card-body">Be part of the team that makes Fak'ugesi run. Volunteers gain access to the full festival programme, behind-the-scenes experience, and a direct connection to the people building African digital culture.</p>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -410,7 +414,6 @@
         <p class="spotlight-tag">Fak'ugesi Awards</p>
         <h3 class="spotlight-head">Awards applications<br>now open</h3>
         <p class="spotlight-body">The Fak'ugesi Awards recognise the most significant work emerging from Africa's digital creative and technology community. Applications are now open across all categories. Submit your work before the deadline and put your project in front of the continent's most important innovation jury.</p>
-        <button class="btn-outline-dark" onclick="location.href='awards.html'">LEARN MORE</button>
       </div>
     </div>
   </div>
@@ -496,7 +499,7 @@
     <div class="partners-header"><h2 class="partners-title">Our Main Partners</h2><a class="partners-link" href="about.html#partners">View all partners</a></div>
     <div class="partners-grid">
       <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div><p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p></div>
+      <div class="partner-card"><div class="partner-logo-box"><img src="images\logos\wits\logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div><p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p></div>
       <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p></div>
     </div>
   </div>

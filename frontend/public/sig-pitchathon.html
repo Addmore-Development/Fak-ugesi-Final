@@ -67,7 +67,7 @@
       position: absolute; inset: 0;
       background-image: url('/images/image00044.jpeg');
       background-size: cover; background-position: center 35%;
-      filter: brightness(0.52);
+      filter: brightness(0.55);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
@@ -85,7 +85,8 @@
     @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
     .hero-text-wrapper { flex:1; min-width:0; }
     .hero-eyebrow { font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.75); margin-bottom:14px; }
-    .hero-title { font-size:53px; font-weight:600; line-height:1.05; color:#fff; margin-bottom:20px; max-width:640px; }
+    .hero-title {
+      font-family: 'InterDisplay', sans-serif; font-size: 58px; font-weight: 600; line-height:1.05; color:#fff; margin-bottom:20px; max-width:640px; }
     .hero-body { font-size:13px; line-height:1.72; max-width:510px; color:rgba(255,255,255,.85); margin-bottom:16px; }
     /* ── CHANGED: matched to schedule hero ── */
     .hero-dates { font-size:28px; font-weight:400; opacity:0.9; color:#fff; margin-bottom:20px; }
@@ -305,10 +306,7 @@
       padding:40px 32px; transition:box-shadow .3s, transform .3s; margin-bottom:16px;
     }
     .partner-card:hover .partner-logo-box { box-shadow:0 10px 32px rgba(26,39,68,.13); transform:translateY(-5px); }
-    .partner-logo-box img {
-      max-width:100%; max-height:140px; object-fit:contain; display:block;
-      filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);
-    }
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
     .partner-desc { font-size:12px; color:var(--body-gray); line-height:1.65; }
 
     /* ── RESPONSIVE ── */
@@ -512,9 +510,6 @@
       <a href="programme.html" class="faq-apply-link">View 2026 programme</a>
     </div>
     <div>
-      <div class="faq-right-hdr">
-        <a class="faq-apply-top" href="tickets.html">Get Tickets</a>
-      </div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
     </div>
   </div>
@@ -533,7 +528,7 @@
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="/images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University"/></div>
+        <div class="partner-logo-box"><img src="/images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University"class="keep-color"/></div>
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
       <div class="partner-card">
@@ -609,8 +604,8 @@ const faqData = [
 const faqContainer = document.getElementById('faqAccordion');
 faqData.forEach((faq, i) => {
   const item = document.createElement('div');
-  item.className = 'faq-item' + (i === 0 ? ' open' : '');
-  item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
+  item.className = 'faq-item';
+  item.innerHTML = `<button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
   item.querySelector('.faq-q-btn').addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
     faqContainer.querySelectorAll('.faq-item').forEach(el => {

@@ -17,7 +17,7 @@
     .sec-crosses{position:absolute;left:0;right:0;display:flex;justify-content:space-between;padding:0 var(--band);pointer-events:none;z-index:20;}
     .sec-crosses-top{top:20px;} .sec-crosses-bottom{bottom:20px;}
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;}
-    .hero-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL3273.jpg');background-size:cover;background-position:center 40%;filter:brightness(0.7);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('/images/Copy of _MGL3273.jpg');background-size:cover;background-position:center 40%;filter:brightness(0.55);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
 .hero-overlay {
     position: absolute; inset: 0;
@@ -26,7 +26,8 @@
     .hero-inner{position:relative;z-index:3;padding:120px 248px 56px;width:100%;display:flex;align-items:flex-start;justify-content:space-between;}
     .hero-content{max-width:620px;}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:72px;font-weight:600;line-height:1.0;margin-bottom:20px;max-width:700px}
+    .hero-title{
+      font-family: 'InterDisplay', sans-serif;font-size: 72px;font-weight: 600;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
     .hero-logo{position:relative;z-index:4;flex-shrink:0;display:flex;align-items:center;justify-content:center;align-self:center;}
@@ -113,7 +114,7 @@
     .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background .28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
     .faq-item:hover { background: var(--navy); }
-    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-q-text { color: var(--white); }
     .faq-item:hover .faq-t-icon { color: var(--white); }
     .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
     .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
@@ -128,11 +129,11 @@
 </head>
 <body>
 <script src="nav.js"></script><script src="ticker-hover.js"></script>
-<section class="hero"><div class="hero-bg"></div><div class="hero-inner"><div class="hero-content"><p class="hero-eyebrow">Market</p><h1 class="hero-title">Explore Our<br>Marketplace</h1><p class="hero-body">The Fak’ugesi Market brings together digital creatives, makers, and practitioners during the festival. A curated space for encountering, acquiring, and engaging with African digital creative work.</p><p class="hero-date">13 — 17.10.2026</p></div><div class="hero-logo"><img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div></div></section>
+<section class="hero"><div class="hero-bg"></div><div class="hero-inner"><div class="hero-content"><p class="hero-eyebrow">Market</p><h1 class="hero-title">Explore Fakugesi's<br>Market</h1><p class="hero-body">The Fak’ugesi Market brings together digital creatives, makers, and practitioners during the festival. A curated space for encountering, acquiring, and engaging with African digital creative work.</p><p class="hero-date">13 — 17.10.2026</p></div><div class="hero-logo"><img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div></div></section>
 <div class="ticker-wrap"><div class="ticker-track"><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span></div></div>
 <section class="market-info-section reveal" id="market-info-section">
   <div class="sec-crosses sec-crosses-top"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg></div>
-  <div class="market-info-top"><h2 class="market-info-title">Fak'ugesi Market</h2><a class="market-info-link" href="programme.html">View 2026 Programme →</a></div>
+  <div class="market-info-top"><h2 class="market-info-title">Fak'ugesi</h2><a class="market-info-link" href="programme.html">View 2026 Programme →</a></div>
   <p class="market-info-body">The Market is part of the broader festival programme at the Tshimologong Digital Innovation Precinct, 41 Juta Street, Braamfontein, Johannesburg. 13 to 17 October 2026. Applications and exhibitor details will be published ahead of the festival.</p>
 </section>
 <section class="exhibitors-section reveal" id="exhibitors-section">
@@ -149,7 +150,7 @@
   <div class="sec-crosses sec-crosses-bottom"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg></div>
   <div class="exhibitor-detail" id="exhibitor-detail"><div class="exhibitor-detail-inner"><div class="exhibitor-detail-bg" id="exhibitor-detail-bg"></div><div class="exhibitor-detail-content"><button class="exhibitor-detail-back" id="exhibitor-detail-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Back to All Exhibitors</button><div><h2 class="exhibitor-detail-title" id="ed-title"></h2><p class="exhibitor-detail-subtitle" id="ed-subtitle"></p><p class="exhibitor-detail-body" id="ed-body"></p></div><div><div class="exhibitor-detail-badge" id="ed-badge"></div><div class="exhibitor-detail-meta"><div><p class="exhibitor-detail-meta-label">Viewing Dates</p><p class="exhibitor-detail-meta-value" id="ed-dates"></p></div><div><p class="exhibitor-detail-meta-label">Market Type</p><p class="exhibitor-detail-meta-value" id="ed-type"></p></div><div><p class="exhibitor-detail-meta-label">Location</p><p class="exhibitor-detail-meta-value" id="ed-location"></p></div></div></div></div></div></div>
 </section>
-<section class="spot-cta-section reveal" id="spot-cta-section"><div class="spot-cta-bg"></div><div class="spot-cta-overlay"></div><div class="spot-cta-content"><h2 class="spot-cta-title">Want a Spot at Fak'ugesi Market?</h2><p class="spot-cta-body">Apply to exhibit at the Fak’ugesi Market. Contact hello@fakugesi.co.za for exhibitor enquiries.</p><a class="spot-cta-btn" href="#">GET INVOLVED</a></div></section>
+<section class="spot-cta-section reveal" id="spot-cta-section"><div class="spot-cta-bg"></div><div class="spot-cta-overlay"></div><div class="spot-cta-content"><h2 class="spot-cta-title">Want a Spot?</h2><a class="spot-cta-btn" href="#">GET INVOLVED</a></div></section>
 
 <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
@@ -160,7 +161,6 @@
       <a class="faq-apply-link" href="#">Apply to exhibit →</a>
     </div>
     <div>
-      <div class="faq-right-hdr"><a class="faq-apply-top" href="#">Apply to exhibit →</a></div>
       <div class="faq-items-wrap" id="faqAccordion">
         <div class="faq-item open">
           <button class="faq-q-btn" aria-expanded="true"><span class="faq-q-text">Who can exhibit at the Market?</span><span class="faq-t-icon">×</span></button>
@@ -186,11 +186,7 @@
 (function() {
   const faqContainer = document.getElementById('faqAccordion');
   if (!faqContainer) return;
-  faqContainer.querySelectorAll('.faq-item').forEach((item, i) => {
-    if (i === 0) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
-    item.querySelector('.faq-q-btn').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-t-icon').textContent = '+'; el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false'); });
+  
       if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
     });
   });
@@ -208,6 +204,34 @@ const eS=document.getElementById('exhibitors-section'),cV=document.getElementByI
 document.querySelectorAll('.exhibitor-card[data-id]').forEach(c=>{c.addEventListener('click',()=>{const d=ED[parseInt(c.dataset.id)]||ED[0];const img=c.querySelector('img')?.src||'';document.getElementById('ed-title').textContent=d.title;document.getElementById('ed-subtitle').textContent=d.subtitle;document.getElementById('ed-body').textContent=d.body;document.getElementById('ed-dates').textContent=d.dates;document.getElementById('ed-type').textContent=d.type;document.getElementById('ed-location').textContent=d.location;document.getElementById('ed-badge').textContent=d.badge;dBg.style.backgroundImage=`url('${img}')`;if(mI)mI.style.display='none';if(sC)sC.style.display='none';cV.style.display='none';dV.classList.add('active');eS.scrollIntoView({behavior:'smooth',block:'start'});});});
 dB.addEventListener('click',()=>{dV.classList.remove('active');cV.style.display='';if(mI)mI.style.display='';if(sC)sC.style.display='';eS.scrollIntoView({behavior:'smooth',block:'start'});});
 (function(){var lY=window.scrollY,r=0,t=false,tm=null;function rs(){r=0;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.45s ease';el.style.transform='rotate(0deg)';});}function sp(){if(!t){requestAnimationFrame(()=>{var y=window.scrollY,d=y-lY;if(Math.abs(d)>0){r+=d>0?15:-15;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.1s linear';el.style.transform='rotate('+r+'deg)';});}lY=y;t=false;clearTimeout(tm);tm=setTimeout(rs,300);});t=true;}}window.addEventListener('scroll',sp,{passive:true});})();
+  /* ── FAQ ACCORDION ── */
+  (function() {
+    const faqContainer = document.getElementById('faqAccordion');
+    if (!faqContainer) return;
+    faqContainer.querySelectorAll('.faq-item').forEach((item) => {
+      // Ensure all start closed
+      item.classList.remove('open');
+      const icon = item.querySelector('.faq-t-icon');
+      const btn = item.querySelector('.faq-q-btn');
+      if (icon) icon.textContent = '+';
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (btn) btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        faqContainer.querySelectorAll('.faq-item').forEach(el => {
+          el.classList.remove('open');
+          const ic = el.querySelector('.faq-t-icon');
+          const b = el.querySelector('.faq-q-btn');
+          if (ic) ic.textContent = '+';
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          if (icon) icon.textContent = '×';
+          if (btn) btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
 </script>
 </body>
 </html>

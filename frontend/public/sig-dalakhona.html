@@ -63,7 +63,7 @@
       position: absolute; inset: 0;
       background-image: url('images/image00038.jpg');
       background-size: cover; background-position: center 35%;
-      filter: brightness(0.50);
+      filter: brightness(0.55);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
@@ -85,7 +85,8 @@
       text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 14px;
     }
      .hero-title {
-      font-size:62px; font-weight:600; line-height: 1.05;
+      font-family: 'InterDisplay', sans-serif;
+      font-size: 72px; font-weight: 600; line-height: 1.05;
       color: #fff; margin-bottom: 20px; max-width: 640px;
     }
     .hero-body {
@@ -262,14 +263,12 @@
       text-decoration: none;
       transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.18s;
     }
-    .network-cta .btn-lightning { display: none; font-size: 14px; line-height: 1; }
     .network-cta:hover {
       background: var(--navy);
       border-color: var(--navy);
       color: #fff;
       transform: translateY(-1px);
     }
-    .network-cta:hover .btn-lightning { display: inline; }
     .network-view-link {
       font-size: 11px; font-weight: 600;
       color: rgba(255,255,255,0.65); text-decoration: underline;
@@ -415,11 +414,11 @@
     .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
     .faq-item:hover { background: var(--navy); }
-    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-q-text { color: var(--white); }
     .faq-item:hover .faq-t-icon { color: var(--white); }
     .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
     .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
-    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease, font-family 0.1s; max-width: calc(100% - 40px); }
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color 0.28s ease; max-width: calc(100% - 40px); }
     .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
     .faq-item.open .faq-t-icon { transform: rotate(45deg); }
     .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
@@ -465,10 +464,7 @@
     .partner-card:hover .partner-logo-box {
       box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px);
     }
-    .partner-logo-box img {
-      max-width: 100%; max-height: 120px; object-fit: contain; display: block;
-      filter: brightness(0) saturate(100%) invert(13%) sepia(53%) saturate(780%) hue-rotate(198deg) brightness(82%);
-    }
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
     .partner-desc { font-size: 12px; font-weight: 400; color: var(--body-gray); line-height: 1.65; }
 
     /* ── RESPONSIVE ── */
@@ -591,34 +587,6 @@
     <a class="intro-view-link" href="programme.html">View 2026 programme</a>
   </div>
   <p class="intro-body">Dala Khona brings together game developers, players, and digital creatives at the Tshimologong Digital Innovation Precinct. The arcade showcases African-made games alongside workshops, activations, and conversations about the future of African gaming. Open to festival attendees across all five days.</p>
-
-  <div class="intro-cards">
-    <div class="intro-card">
-      <div class="intro-card-header">
-        <span class="intro-card-tag">Nam sit amet</span>
-        <span class="intro-card-num">01</span>
-      </div>
-      <h3 class="intro-card-title">Intermediaries<br>&amp; Policymakers</h3>
-      <p class="intro-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
-    </div>
-    <div class="intro-card">
-      <div class="intro-card-header">
-        <span class="intro-card-tag">Nam sit amet</span>
-        <span class="intro-card-num">02</span>
-      </div>
-      <h3 class="intro-card-title">Entrepreneurs<br>&amp; Investors</h3>
-      <p class="intro-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
-    </div>
-    <div class="intro-card">
-      <div class="intro-card-header">
-        <span class="intro-card-tag">Nam sit amet</span>
-        <span class="intro-card-num">03</span>
-      </div>
-      <h3 class="intro-card-title">Creative<br>Organisations</h3>
-      <p class="intro-card-body">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in, ultricies sit amet, malesuada et, diam.</p>
-    </div>
-  </div>
-
   <div class="cross-icon" style="bottom:16px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
@@ -637,7 +605,6 @@
       <h2 class="network-title">Join our developer<br>network</h2>
       <p class="network-body">Connect with the African game development community at Fak’ugesi. Whether you’re a developer, player, or studio, Dala Khona is the space for encounter, exchange, and collaboration. Contact hello@fakugesi.co.za to get involved.</p>
       <a class="network-cta" href="#">
-        <span class="btn-lightning"> </span>
         GET INVOLVED
       </a>
     </div>
@@ -798,9 +765,6 @@
       <a class="faq-apply-link" href="programme.html">View 2026 programme</a>
     </div>
     <div>
-      <div class="faq-right-hdr">
-        <a class="faq-apply-top" href="programme.html">View 2026 programme</a>
-      </div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
     </div>
   </div>
@@ -822,7 +786,7 @@
       </div>
       <div class="partner-card">
         <div class="partner-logo-box">
-          <img src="images/logos/wits/logo_wits_light_colloquial_extended.svg" alt="Wits University" />
+          <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
         </div>
         <p class="partner-desc">Integer justo dui, faucibus dictum, convallis sodales, accumsan id, risus. Aenean risus. Vestibulum scelerisque placerat sem.</p>
       </div>
@@ -884,8 +848,8 @@ const faqData = [
 const faqContainer = document.getElementById('faqAccordion');
 faqData.forEach((faq, i) => {
   const item = document.createElement('div');
-  item.className = 'faq-item' + (i === 0 ? ' open' : '');
-  item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
+  item.className = 'faq-item';
+  item.innerHTML = `<button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
   item.querySelector('.faq-q-btn').addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
     faqContainer.querySelectorAll('.faq-item').forEach(el => {

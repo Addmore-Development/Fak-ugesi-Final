@@ -25,7 +25,7 @@
       align-items:stretch;
       padding-top:0;
     }
-    .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.52);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.55);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay {
        position: absolute; inset: 0;
@@ -46,7 +46,8 @@
     .hero-text-wrapper{flex:1;min-width:0;}
 
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{font-size:70px;font-weight:600;line-height:1.0;margin-bottom:20px;max-width:700px}
+    .hero-title{
+      font-family: 'InterDisplay', sans-serif;font-size: 72px;font-weight: 600;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:510px;opacity:.85;margin-bottom:28px}
 
     /* ── Digital Dome logo — inline flex child, matching Dala Khona .hero-signia ── */
@@ -209,7 +210,7 @@
     .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background .28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
     .faq-item:hover { background: var(--navy); }
-    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-q-text { color: var(--white); }
     .faq-item:hover .faq-t-icon { color: var(--white); }
     .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
     .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
@@ -349,7 +350,6 @@ body>.hero:first-child{padding-top:58px !important;}
       <a class="faq-apply-link" href="#">Submit your work →</a>
     </div>
     <div>
-      <div class="faq-right-hdr"><a class="faq-apply-top" href="#">Submit your work →</a></div>
       <div class="faq-items-wrap" id="faqAccordion">
         <div class="faq-item open">
           <button class="faq-q-btn" aria-expanded="true"><span class="faq-q-text">What is fulldome projection?</span><span class="faq-t-icon">×</span></button>

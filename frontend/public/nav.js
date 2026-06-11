@@ -267,7 +267,6 @@
       transition:background .22s,border-color .22s,transform .15s;
     }
     #main-nav .nav-tickets:hover{background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px);}
-    #main-nav .nav-tickets canvas{position:absolute;inset:0;pointer-events:none;z-index:0;}
     #main-nav .nav-tickets span{position:relative;z-index:1;}
 
     /* ── HAMBURGER BUTTON (mobile only) ── */
@@ -414,40 +413,19 @@
     }
     #nav-mobile-menu .mob-socials a:hover { color: #fff; }
 
-    /* ── Global electric button effects ── */
+    /* Button hover transitions */
     .btn-primary, .btn-outline-dark, .btn-outline-white,
     .btn-apply, .btn-cta-white, .btn-cta-filled, .btn-learn,
     .hero-cta, .intro-cta, .network-cta, .section-cta,
     .challenge-cta, a.btn-tickets, button.btn-tickets, .btn-get-pass,
-    .showcase-cta-btn, .day-card, .more-card,
+    .showcase-cta-btn,
     [class*="btn-"]:not(.req-btn):not(.faq-q-btn):not(.nav-tickets):not(.nav-search):not(.showcase-detail-back):not(.speaker-detail-back) {
-      position:relative !important;
-      overflow:hidden !important;
       transition: background 0.28s ease, color 0.22s ease,
                   border-color 0.28s ease, transform 0.18s ease !important;
     }
     .btn-primary:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
     .btn-outline-dark:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
     .btn-outline-white:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
-    .btn-primary canvas, .btn-outline-dark canvas, .btn-outline-white canvas,
-    .btn-apply canvas, .btn-cta-white canvas, .btn-cta-filled canvas,
-    .btn-learn canvas, .hero-cta canvas, .intro-cta canvas,
-    .network-cta canvas, .section-cta canvas, .challenge-cta canvas,
-    a.btn-tickets canvas, button.btn-tickets canvas, .btn-get-pass canvas,
-    .showcase-cta-btn canvas,
-    [class*="btn-"] canvas {
-      position:absolute !important; inset:0 !important;
-      pointer-events:none !important; z-index:0 !important;
-    }
-    .btn-primary > *, .btn-outline-dark > *, .btn-outline-white > *,
-    .btn-apply > *, .btn-cta-white > *, .btn-cta-filled > *,
-    .btn-learn > *, .hero-cta > *, .intro-cta > *,
-    .network-cta > *, .section-cta > *, .challenge-cta > *,
-    a.btn-tickets > *, button.btn-tickets > *, .btn-get-pass > *,
-    .showcase-cta-btn > *,
-    [class*="btn-"] > * {
-      position:relative !important; z-index:1 !important;
-    }
 
     .curatorial-view-link, .showcases-link, .showcase-card-more,
     .showcase-detail-link, .partners-link, .more-card-link,
@@ -619,7 +597,6 @@
         </button>
 
         <a class="nav-tickets" id="nav-tickets" href="/tickets.html">
-          <canvas id="nav-bolt-canvas"></canvas>
           <span>GET TICKETS</span>
         </a>
       </div>
@@ -849,107 +826,44 @@
     }
   });
 
-  /* ── Electric lightning on GET TICKETS ── */
-  (function () {
-    const btn = document.getElementById('nav-tickets');
-    const cv  = document.getElementById('nav-bolt-canvas');
-    if (!btn || !cv) return;
-    const ctx = cv.getContext('2d');
-    let raf = null, on = false, bolts = [], f = 0;
-    function rs() { cv.width = btn.offsetWidth; cv.height = btn.offsetHeight; }
-    function seg(x1, y1, x2, y2, r, d) {
-      if (d <= 0) return [[x1,y1],[x2,y2]];
-      const mx = (x1+x2)/2 + (Math.random()-.5)*r, my = (y1+y2)/2 + (Math.random()-.5)*r*.4;
-      return [...seg(x1,y1,mx,my,r*.55,d-1), ...seg(mx,my,x2,y2,r*.55,d-1).slice(1)];
-    }
-    function spawn() {
-      const W = cv.width, H = cv.height;
-      return { pts: seg(W*(.1+Math.random()*.8),0,W*(.1+Math.random()*.8),H,W*.28,4),
-               life: 1, decay: .08+Math.random()*.06, w: .7+Math.random()*.9 };
-    }
-    function draw(b) {
-      const a = Math.max(0, b.life);
-      [[b.w*5,`rgba(60,120,255,${a*.28})`,'rgba(60,140,255,.7)',12],
-       [b.w*.7,`rgba(200,230,255,${a*.8})`,'rgba(180,220,255,.9)',4]]
-      .forEach(([lw,sc,sh,sb]) => {
-        ctx.save(); ctx.beginPath(); ctx.moveTo(b.pts[0][0],b.pts[0][1]);
-        b.pts.slice(1).forEach(p => ctx.lineTo(p[0],p[1]));
-        ctx.strokeStyle=sc; ctx.lineWidth=lw; ctx.shadowColor=sh; ctx.shadowBlur=sb;
-        ctx.stroke(); ctx.restore();
-      });
-    }
-    function tick() {
-      if (!on) return; rs(); ctx.clearRect(0,0,cv.width,cv.height); f++;
-      if (f%9 === 0) { bolts.push(spawn()); if (Math.random() > .55) bolts.push(spawn()); }
-      bolts = bolts.filter(b => b.life > 0);
-      bolts.forEach(b => { draw(b); b.life -= b.decay; });
-      raf = requestAnimationFrame(tick);
-    }
-    btn.addEventListener('mouseenter', () => { on=true; rs(); bolts=[]; f=0; if (!raf) raf=requestAnimationFrame(tick); });
-    btn.addEventListener('mouseleave', () => { on=false; if(raf){cancelAnimationFrame(raf);raf=null;} ctx.clearRect(0,0,cv.width,cv.height); });
-  })();
+})();
 
-  /* ── Apply electric lightning to ALL site buttons ── */
-  (function applyGlobalElectric() {
-    const BTN_SEL = [
-      '.btn-primary', '.btn-outline-dark', '.btn-outline-white',
-      '.btn-apply', '.btn-cta-white', '.btn-cta-filled', '.btn-learn',
-      '.hero-cta', '.intro-cta', '.network-cta', '.section-cta',
-      '.challenge-cta', 'a.btn-tickets', 'button.btn-tickets', '.btn-get-pass',
-      '.showcase-cta-btn',
-      '[class*="btn-"]:not(.req-btn):not(.faq-q-btn):not(.nav-search):not(.showcase-detail-back):not(.speaker-detail-back)'
-    ].join(',');
+/* ── Redirect all non-submit, non-nav links to get-involved form ── */
+(function () {
+  const EXEMPT_PAGES = ['get-involved.html'];
+  const currentPage = window.location.pathname.split('/').pop();
+  if (EXEMPT_PAGES.includes(currentPage)) return;
 
-    function makeElectric(btn) {
-      if (btn.dataset.electricDone) return;
-      if (btn.closest('#main-nav')) return;
-      btn.dataset.electricDone = '1';
-      const cv = document.createElement('canvas');
-      cv.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:0;';
-      btn.appendChild(cv);
-      const ctx = cv.getContext('2d');
-      let raf = null, on = false, bolts = [], f = 0;
-      function rs() { cv.width = btn.offsetWidth; cv.height = btn.offsetHeight; }
-      function seg(x1, y1, x2, y2, r, d) {
-        if (d <= 0) return [[x1,y1],[x2,y2]];
-        const mx = (x1+x2)/2 + (Math.random()-.5)*r, my = (y1+y2)/2 + (Math.random()-.5)*r*.4;
-        return [...seg(x1,y1,mx,my,r*.55,d-1), ...seg(mx,my,x2,y2,r*.55,d-1).slice(1)];
-      }
-      function spawn() {
-        const W = cv.width, H = cv.height;
-        return { pts: seg(W*(.1+Math.random()*.8),0,W*(.1+Math.random()*.8),H,W*.28,4),
-                 life: 1, decay: .08+Math.random()*.06, w: .7+Math.random()*.9 };
-      }
-      function draw(b) {
-        const a = Math.max(0, b.life);
-        [[b.w*5,`rgba(60,120,255,${a*.28})`,'rgba(60,140,255,.7)',12],
-         [b.w*.7,`rgba(200,230,255,${a*.8})`,'rgba(180,220,255,.9)',4]]
-        .forEach(([lw,sc,sh,sb]) => {
-          ctx.save(); ctx.beginPath(); ctx.moveTo(b.pts[0][0],b.pts[0][1]);
-          b.pts.slice(1).forEach(p => ctx.lineTo(p[0],p[1]));
-          ctx.strokeStyle=sc; ctx.lineWidth=lw; ctx.shadowColor=sh; ctx.shadowBlur=sb;
-          ctx.stroke(); ctx.restore();
-        });
-      }
-      function tick() {
-        if (!on) return; rs(); ctx.clearRect(0,0,cv.width,cv.height); f++;
-        if (f%9 === 0) { bolts.push(spawn()); if (Math.random() > .55) bolts.push(spawn()); }
-        bolts = bolts.filter(b => b.life > 0);
-        bolts.forEach(b => { draw(b); b.life -= b.decay; });
-        raf = requestAnimationFrame(tick);
-      }
-      btn.addEventListener('mouseenter', () => { on=true; rs(); bolts=[]; f=0; if (!raf) raf=requestAnimationFrame(tick); });
-      btn.addEventListener('mouseleave', () => { on=false; if(raf){cancelAnimationFrame(raf);raf=null;} ctx.clearRect(0,0,cv.width,cv.height); });
+  function getFormPath() {
+    const depth = window.location.pathname.split('/').length - 2;
+    return depth > 0 ? '../'.repeat(depth) + 'public/get-involved.html' : 'get-involved.html';
+  }
+
+  const EXEMPT_SELECTORS = [
+    '.nav-tickets', '#nav-tickets', '[data-no-redirect]', '.gi-submit',
+  ];
+
+  function isExempt(el) {
+    if (!el) return true;
+    if (el.type === 'submit' || el.tagName === 'BUTTON') return true;
+    const href = el.getAttribute('href') || '';
+    if (href === '#' || href.startsWith('#') || href === '') return true;
+    if (href.startsWith('mailto:') || href.startsWith('tel:')) return true;
+    if (href.includes('get-involved')) return true;
+    if (href.startsWith('http://') || href.startsWith('https://')) return true;
+    if (el.closest('#main-nav') || el.closest('.mob-nav-links')) return true;
+    if (el.closest('#main-footer')) return true;
+    for (const sel of EXEMPT_SELECTORS) {
+      try { if (el.matches(sel) || el.closest(sel)) return true; } catch(e) {}
     }
+    return false;
+  }
 
-    function attachAll() {
-      try { document.querySelectorAll(BTN_SEL).forEach(makeElectric); } catch(e) {}
-    }
-
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attachAll);
-    else attachAll();
-    setTimeout(attachAll, 600);
-    setTimeout(attachAll, 1800);
-  })();
-
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a');
+    if (!link) return;
+    if (isExempt(link)) return;
+    e.preventDefault();
+    window.location.href = getFormPath();
+  }, true);
 })();

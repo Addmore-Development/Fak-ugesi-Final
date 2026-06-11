@@ -24,7 +24,7 @@
 
     /* HERO */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-start;}
-    .hero-bg{position:absolute;inset:0;background-image:url('/images/_C6A2009.JPG');background-size:cover;background-position:center 40%;filter:brightness(0.72);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('/images/_C6A2009.JPG');background-size:cover;background-position:center 40%;filter:brightness(0.55);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     .hero-overlay {
      position: absolute; inset: 0;
@@ -39,7 +39,8 @@
     .hero-content{max-width:620px;}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
     /* SemiBold hero title */
-    .hero-title{font-size:72px;font-weight:600;line-height:1.0;margin-bottom:20px;max-width:700px}
+    .hero-title{
+      font-family: 'InterDisplay', sans-serif;font-size: 72px;font-weight: 600;line-height:1.0;margin-bottom:20px;max-width:700px}
     .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px}
     .hero-date{font-size:28px;font-weight:400;opacity:.9;margin-top:8px;}
     .hero-logo{position:relative;z-index:4;flex-shrink:0;display:flex;align-items:center;justify-content:center;align-self:center;}
@@ -183,7 +184,7 @@
     .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background .28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
     .faq-item:hover { background: var(--navy); }
-    .faq-item:hover .faq-q-text { color: var(--white); font-family: 'Georgia', serif; }
+    .faq-item:hover .faq-q-text { color: var(--white); }
     .faq-item:hover .faq-t-icon { color: var(--white); }
     .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
     .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
@@ -224,12 +225,12 @@
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
-    <span class="ticker-item">Get Your Tickets Now <span>→</span></span><span class="ticker-item">Get Your Tickets Now <span>→</span></span>
+    <span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span>
+    <span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span>
+    <span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span>
+    <span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span>
+    <span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span>
+    <span class="ticker-item">Get your tickets now <span>→</span></span><span class="ticker-item">Get your tickets now <span>→</span></span>
   </div>
 </div>
 
@@ -338,8 +339,7 @@
   <div class="showcase-cta-bg"></div>
   <div class="showcase-cta-overlay"></div>
   <div class="showcase-cta-content">
-    <h2 class="showcase-cta-title">Want to Showcase Your Work at Fak'ugesi Expo?</h2>
-    <p class="showcase-cta-body">Programme submissions are open. The festival draws digital creatives, coders, animators, sound artists, archivists, urban planners, and climate technologists. Work that is technically rigorous, contextually grounded, and advancing the field is prioritised.</p>
+    <h2 class="showcase-cta-title">Showcase Your Work at Fak'ugesi Expo</h2>
     <a class="showcase-cta-btn" href="#">GET INVOLVED</a>
   </div>
 </section>
@@ -355,7 +355,6 @@
       <a class="faq-apply-link" href="#">Get involved →</a>
     </div>
     <div>
-      <div class="faq-right-hdr"><a class="faq-apply-top" href="#">Get involved →</a></div>
       <div class="faq-items-wrap" id="faqAccordion">
         <div class="faq-item open">
           <button class="faq-q-btn" aria-expanded="true"><span class="faq-q-text">What is the difference between the expo and the showcase?</span><span class="faq-t-icon">×</span></button>
@@ -402,11 +401,7 @@
 (function() {
   const faqContainer = document.getElementById('faqAccordion');
   if (!faqContainer) return;
-  faqContainer.querySelectorAll('.faq-item').forEach((item, i) => {
-    if (i === 0) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
-    item.querySelector('.faq-q-btn').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-t-icon').textContent = '+'; el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false'); });
+  
       if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
     });
   });
@@ -527,6 +522,34 @@ showcaseDetailBack.addEventListener('click',()=>{
   function spin(){if(!ticking){requestAnimationFrame(()=>{var y=window.scrollY,d=y-lastY;if(Math.abs(d)>0){rot+=d>0?15:-15;document.querySelectorAll('.cross-strip svg,.sec-crosses svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.1s linear';el.style.transform='rotate('+rot+'deg)';});}lastY=y;ticking=false;clearTimeout(timer);timer=setTimeout(reset,300);});ticking=true;}}
   window.addEventListener('scroll',spin,{passive:true});
 })();
+  /* ── FAQ ACCORDION ── */
+  (function() {
+    const faqContainer = document.getElementById('faqAccordion');
+    if (!faqContainer) return;
+    faqContainer.querySelectorAll('.faq-item').forEach((item) => {
+      // Ensure all start closed
+      item.classList.remove('open');
+      const icon = item.querySelector('.faq-t-icon');
+      const btn = item.querySelector('.faq-q-btn');
+      if (icon) icon.textContent = '+';
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (btn) btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        faqContainer.querySelectorAll('.faq-item').forEach(el => {
+          el.classList.remove('open');
+          const ic = el.querySelector('.faq-t-icon');
+          const b = el.querySelector('.faq-q-btn');
+          if (ic) ic.textContent = '+';
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          if (icon) icon.textContent = '×';
+          if (btn) btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
 </script>
 </body>
 </html>
