@@ -480,7 +480,7 @@
   const SIG_PAGES = [
     { label: 'Awards',           href: '/sig-awards.html'      },
     { label: 'Dala Khona',       href: '/sig-dalakhona.html'   },
-    { label: 'PRO',              href: '/sig-fakugesipro.html'  },
+    { label: 'PRO',              href: '/sig-fakugesiPRO.html'  },
     { label: 'Immersive Africa', href: '/sig-immersive.html'   },
     { label: 'JAMZ',             href: '/sig-jamz.html'         },
     { label: 'Pitchathon',       href: '/sig-pitchathon.html'  },
@@ -688,7 +688,7 @@
     { title: 'Awards Jury 2026', section: 'Awards', url: '/sig-awards.html', tags: ['jury','judges'] },
     { title: 'Awards 2025 Winners', section: 'Awards', url: '/sig-awards.html', tags: ['winners','2025','past winners'] },
     { title: 'Dala Khona – African Gaming Arcade', section: 'Dala Khona', url: '/sig-dalakhona.html', tags: ['gaming','arcade','african games','indie','speedrun'] },
-    { title: "Fak'ugesiPRO", section: 'PRO', url: '/sig-fakugesipro.html', tags: ['pro','industry','professional','networking'] },
+    { title: "Fak'ugesiPRO", section: 'PRO', url: '/sig-fakugesiPRO.html', tags: ['pro','industry','professional','networking'] },
     { title: 'Immersive Africa', section: 'Immersive Africa', url: '/sig-immersive.html', tags: ['immersive','xr','vr','dome','digital dome'] },
     { title: 'JAMZ – Animation & Video Game Hackathon', section: 'JAMZ', url: '/sig-jamz.html', tags: ['jamz','animation','hackathon','esports'] },
     { title: 'Pitchathon', section: 'Pitchathon', url: '/sig-pitchathon.html', tags: ['pitchathon','pitch','startup','entrepreneur','apply'] },
