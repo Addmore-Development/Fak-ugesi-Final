@@ -496,16 +496,13 @@
   const links = [
     { label: 'Home',                  href: '/index.html' },
     { label: 'Festival Programme',    href: '/programme.html', dd: [
-      { label: 'Expo',     href: '/fes-expo.html' },
       { label: 'Market',   href: '/fes-market.html' },
-      { label: 'Schedule', href: '/fes-schedule.html' },
+      
     ]},
     { label: 'Signature Programmes',  href: '/sig-awards.html', sigDd: true },
     { label: 'Discover',              href: '#', dd: [
       { label: 'About Us',   href: '/about.html' },
       { label: 'Venues',     href: '/discover/venues.html' },
-      { label: 'Partners',   href: '/discover/partners.html' },
-      { label: 'Archive',    href: '/discover/archive.html' },
       { label: 'Resources',  href: '/discover/resources.html' },
     ]},
   ];
@@ -841,6 +838,7 @@
 
   const EXEMPT_SELECTORS = [
     '.nav-tickets', '#nav-tickets', '[data-no-redirect]', '.gi-submit',
+    '.fug-sig-item', '.hero-link',
   ];
 
   function isExempt(el) {
