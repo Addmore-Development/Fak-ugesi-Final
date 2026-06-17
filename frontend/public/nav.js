@@ -851,7 +851,7 @@
     if (href.startsWith('mailto:') || href.startsWith('tel:')) return true;
     if (href.includes('get-involved')) return true;
     if (href.startsWith('http://') || href.startsWith('https://')) return true;
-    if (el.closest('#main-nav') || el.closest('.mob-nav-links')) return true;
+    if (el.closest('#main-nav') || el.closest('.mob-nav-links') || el.closest('.fug-sig-strip')) return true;
     if (el.closest('#main-footer')) return true;
     for (const sel of EXEMPT_SELECTORS) {
       try { if (el.matches(sel) || el.closest(sel)) return true; } catch(e) {}
