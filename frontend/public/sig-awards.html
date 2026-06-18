@@ -612,13 +612,6 @@
       padding: 0;
       position: relative;
     }
-    .partners-section::before {
-      content: '';
-      display: block;
-      height: 1px;
-      background: var(--navy);
-      width: 100%;
-    }
     .partners-inner { padding: 40px 248px 72px; }
     .partners-header {
       display: flex;
@@ -636,7 +629,7 @@
     .partners-view-link:hover { opacity: 0.6; }
     .partners-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
     .partner-card { display: flex; flex-direction: column; }
@@ -674,6 +667,7 @@
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
       .partners-inner { padding: 40px 48px 72px; }
+      .partners-grid { gap: 16px; }
     }
 
     @media (max-width: 768px) {
@@ -703,7 +697,7 @@
     @media (max-width: 480px) {
       .hero-title { font-size:24px !important; }
       .jury-grid { grid-template-columns: 1fr; }
-      .partners-grid { grid-template-columns: 1fr; }
+      .partners-grid { grid-template-columns: 1fr 1fr; }
       .faq-q-text { font-size: 14px; }
     }
   </style>
@@ -1155,6 +1149,7 @@
       <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p></div>
       <div class="partner-card"><div class="partner-logo-box"><img src="images\logos\wits\logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div><p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p></div>
       <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p></div>
+      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/></div><p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p></div>
     </div>
   </div>
 </section>
