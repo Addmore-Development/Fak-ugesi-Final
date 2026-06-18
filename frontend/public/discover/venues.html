@@ -379,6 +379,8 @@
       padding: 0 var(--band);
     }
     .tsim-toggle {
+      position: relative;
+      z-index: 1;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -391,7 +393,21 @@
       text-align: left;
       transition: background 0.2s;
     }
-    .tsim-toggle:hover { background: var(--navy) !important; }
+    /* Hover background sits on a pseudo-element so it can extend
+       2px beyond the toggle's edges on both sides without
+       shifting the layout of the content inside it. */
+    .tsim-toggle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -2px;
+      right: -2px;
+      background: transparent;
+      transition: background 0.2s;
+      z-index: -1;
+    }
+    .tsim-toggle:hover::before { background: var(--navy); }
     .tsim-toggle:hover .tsim-title { color: #fff; }
     .tsim-toggle:hover .tsim-icon { color: #fff; }
     .tsim-toggle:hover .tsim-num { background: rgba(255,255,255,0.2); color: #fff; }
@@ -650,17 +666,17 @@
 
         <div class="location-card" id="card-3" onclick="activateCard(3)">
           <div class="location-card-header">
-            <span class="location-name">Wits Anglo American Digital Dome</span>
+            <span class="location-name">Origins Center</span>
             <a class="directions-link"
-               href="https://www.google.com/maps/dir/?api=1&destination=Wits+Anglo+American+Digital+Dome,Yale+Rd,Braamfontein,Johannesburg"
+               href="https://www.google.com/maps/dir/?api=1&destination=Origins+Center,University+of+the+Witwatersrand,Braamfontein,Johannesburg,2050"
                target="_blank" rel="noopener" onclick="event.stopPropagation()">
               Get directions &nbsp;→
             </a>
           </div>
           <div class="location-address">
-            University of the Witwatersrand, Yale Rd<br>
+            Origins Center, University of the Witwatersrand<br>
             Braamfontein<br>
-            Johannesburg<br>
+            Johannesburg, 2050<br>
             South Africa
           </div>
         </div>
@@ -723,7 +739,7 @@ world.</p>
     <div>
       <h2 class="faq-title-left">FAQ</h2>
       <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
-      <a class="faq-apply-link" href="programme.html">View 2026 programme</a>
+   
     </div>
     <div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
@@ -790,7 +806,7 @@ function toggleTsim() {
   const venues = [
     { id:1, name:'Tshimologong Precinct',             lat:-26.1946, lng:28.0319, address:'41 Juta Street, Braamfontein' },
     { id:2, name:'Wits Anglo American Digital Dome',  lat:-26.1884, lng:28.0282, address:'Yale Rd, Braamfontein' },
-    { id:3, name:'Wits Anglo American Digital Dome',  lat:-26.1884, lng:28.0282, address:'Yale Rd, Braamfontein' }
+    { id:3, name:'Origins Center',                    lat:-26.1925, lng:28.0281, address:'University of the Witwatersrand, Braamfontein, Johannesburg,' }
   ];
 
   // ── Init Leaflet map ──
