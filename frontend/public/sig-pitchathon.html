@@ -284,30 +284,36 @@
     }
     .faq-apply-link:hover { opacity:.6; }
 
-    /* ══ PARTNERS ══ */
+    /* ══ PARTNERS (matched to sig-jamz.html — 4 columns, no card outline) ══ */
     .partners-section {
-      background:var(--lavender); padding:0; position:relative;
-      border-top:1px solid var(--navy);
+      background:var(--lavender); padding:72px 0; position:relative;
     }
-    .partners-inner { padding:40px 248px 72px; }
-    .partners-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:44px; }
-    .partners-title { font-size:42px; font-weight:700; color:var(--dark-text); }
+    .partners-inner { padding:0 248px; }
+    .partners-header {
+      display:flex; justify-content:space-between;
+      align-items:center; margin-bottom:40px;
+    }
+    .partners-title { font-size:38px; font-weight:700; color:var(--dark-text); }
     .partners-link {
       font-size:12px; color:var(--navy); font-weight:600;
-      text-decoration:underline; letter-spacing:.06em; cursor:pointer;
-      text-underline-offset:3px; transition:opacity .2s;
+      text-decoration:underline; cursor:pointer; letter-spacing:.04em;
     }
-    .partners-link:hover { opacity:.6; }
-    .partners-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .partners-view-link {
+      font-size:11px; font-weight:600; color:var(--navy);
+      text-decoration:underline; letter-spacing:.06em;
+      cursor:pointer; text-underline-offset:3px; transition:opacity .2s;
+    }
+    .partners-view-link:hover { opacity:.6; }
+    .partners-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
     .partner-card { display:flex; flex-direction:column; }
     .partner-logo-box {
-      background:var(--white); border:1px solid rgba(26,39,68,.12);
+      background:var(--white); border:1px solid rgba(26,39,68,.10);
       aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
-      padding:40px 32px; transition:box-shadow .3s, transform .3s; margin-bottom:16px;
+      padding:32px 28px; transition:box-shadow .3s, transform .3s; margin-bottom:16px;
     }
     .partner-card:hover .partner-logo-box { box-shadow:0 10px 32px rgba(26,39,68,.13); transform:translateY(-5px); }
-    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
-    .partner-desc { font-size:12px; color:var(--body-gray); line-height:1.65; }
+    .partner-logo-box img{max-width:100%;max-height:110px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
+    .partner-desc { font-size:11.5px; font-weight:400; color:var(--body-gray); line-height:1.65; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
@@ -320,8 +326,10 @@
       .prizes-grid { grid-template-columns:repeat(2,1fr); }
       .faq-section { padding:48px 40px 56px; }
       .faq-layout { grid-template-columns:220px 1fr; gap:48px; }
-      .partners-inner { padding:40px 40px 56px; }
-      .partners-grid { grid-template-columns:repeat(2,1fr); }
+      .partners-inner { padding:0 40px; }
+      .partners-title { font-size:32px; }
+      .partners-grid { grid-template-columns:repeat(4,1fr); gap:16px; }
+      .partner-logo-box { padding:24px 20px; }
       .jury-grid { grid-template-columns:repeat(2,1fr); }
     }
     @media (max-width: 768px) {
@@ -344,9 +352,11 @@
       .faq-layout { grid-template-columns:1fr; gap:24px; }
       .faq-title-left { font-size:32px; }
       .faq-right-hdr { justify-content:flex-start; }
-      .partners-inner { padding:32px 20px 48px; }
-      .partners-title { font-size:28px; }
-      .partners-grid { grid-template-columns:1fr; }
+      .partners-section { padding:40px 0 48px; }
+      .partners-inner { padding:0 20px; }
+      .partners-title { font-size:26px; }
+      .partners-grid { grid-template-columns:1fr 1fr; gap:14px; }
+      .partner-logo-box { padding:20px 16px; }
       .cross-icon { display:none; }
       .fug-sig-strip-inner { justify-content:flex-start; }
     }
@@ -354,7 +364,7 @@
       .hero-title { font-size:22px; }
       .jury-grid { grid-template-columns:1fr; }
       .prizes-grid { grid-template-columns:1fr; }
-      .partners-grid { grid-template-columns:1fr; }
+      .partners-grid { grid-template-columns:1fr 1fr; }
     }
     @media (max-width: 768px) {
       #fug-footer .fug-footer-inner { flex-direction:column !important; align-items:center !important; gap:32px !important; text-align:center !important; padding:32px 20px !important; }
@@ -520,13 +530,24 @@
   <div class="partners-inner">
     <div class="partners-header">
       <h2 class="partners-title">Our Pitchathon Partners</h2>
-      
     </div>
     <div class="partners-grid">
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images\logos\wits\logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div><p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p></div>
-    </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
+        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div>
+        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/></div>
+        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+      </div>
     </div>
   </div>
 </section>
