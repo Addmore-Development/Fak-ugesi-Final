@@ -108,8 +108,6 @@
     }
     #main-nav .nav-dd a:hover { background:rgba(255,255,255,0.07); padding-left:28px; }
 
-
-
     /* Right-side controls */
     #main-nav .nav-right {
       display:flex; align-items:center; gap:0; padding-right:32px;
@@ -490,15 +488,12 @@
   const sigHrefs = SIG_PAGES.map(p => p.href.replace(/^\//, '').replace(/\.html$/, ''));
   const isAnySigPage = sigHrefs.includes(page);
 
-  /* Build the sig dropdown HTML — plain text links, same style as Discover */
+  /* Build the sig dropdown HTML */
   const sigDropHTML = SIG_PAGES.map(p => `<a href="${p.href}">${p.label}</a>`).join('');
 
   const links = [
     { label: 'Home',                  href: '/index.html' },
-    { label: 'Festival Programme',    href: '/programme.html', dd: [
-      { label: 'Market',   href: '/fes-market.html' },
-      
-    ]},
+    { label: 'Festival Programme',    href: '/fes-market.html' },
     { label: 'Signature Programmes',  href: '/sig-awards.html', sigDd: true },
     { label: 'Discover',              href: '#', dd: [
       { label: 'About Us',   href: '/about.html' },
@@ -672,7 +667,7 @@
     { title: '2026 Theme: African Imaginaries', section: 'Home', url: '/index.html', tags: ['african imaginaries','2026 theme','afrofuturism','speculative','creative energy','october'] },
     { title: 'Get Involved', section: 'Home', url: '/index.html', tags: ['get involved','investors','funders','volunteers','expo showcases','sponsors'] },
     { title: 'Festival Dates', section: 'Home', url: '/index.html', tags: ['07 october','12 october','2026','dates','when','braamfontein'] },
-    { title: 'Festival Programme', section: 'Programme', url: '/programme.html', tags: ['programme','events','lineup'] },
+    { title: 'Festival Programme', section: 'Programme', url: '/fes-market.html', tags: ['programme','events','lineup'] },
     { title: "Fak'ugesi Expo", section: 'Expo', url: '/fes-expo.html', tags: ['expo','showcases','exhibitions','digital art','immersive media'] },
     { title: 'Curatorial Frequencies', section: 'Expo', url: '/fes-expo.html', tags: ['curatorial','imagination engines','memory engines','future engines','ai','heritage'] },
     { title: 'Want to Showcase', section: 'Expo', url: '/fes-expo.html', tags: ['exhibit','showcase your work','apply'] },
