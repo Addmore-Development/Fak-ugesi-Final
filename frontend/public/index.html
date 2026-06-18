@@ -244,12 +244,14 @@
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
     .partners-title{font-size:38px;font-weight:700;color:var(--dark-text);}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;cursor:pointer;letter-spacing:0.04em;}
-    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+    /* 4-column grid — cards are naturally smaller to fit the same total width */
+    .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
     .partner-card{display:flex;flex-direction:column;}
-    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:48px 40px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;aspect-ratio:1/1;}
+    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:32px 28px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;aspect-ratio:1/1;}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
-    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
-    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;}
+    .partner-logo-box img{max-width:100%;max-height:110px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
+    .partner-logo-box img.keep-color{filter:none !important;}
+    .partner-desc{font-size:11.5px;color:var(--body-gray);line-height:1.65;}
 
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
     .reveal.visible{opacity:1;transform:none;}
@@ -267,6 +269,8 @@
       .tweet-grid{grid-template-columns:1fr 1fr;}
       .happening-caption{padding:0 48px;}
       .partners-inner{padding:0 48px;}.partners-title{font-size:32px;}
+      .partners-grid{grid-template-columns:repeat(4,1fr);gap:16px;}
+      .partner-logo-box{padding:24px 20px;}
     }
     @media(max-width:768px){
       .hero{min-height:auto;}.hero-inner{padding:80px 20px 40px;flex-direction:column;align-items:flex-start;gap:24px;}
@@ -290,9 +294,11 @@
       .happening-caption{padding:0 20px;}
       .partners-section{padding:40px 0 48px;}.partners-inner{padding:0 20px;}
       .partners-header{flex-direction:column;align-items:flex-start;gap:10px;}.partners-title{font-size:26px;}
+      /* 2-column on tablet/mobile */
       .partners-grid{grid-template-columns:1fr 1fr;gap:14px;}
+      .partner-logo-box{padding:20px 16px;}
     }
-    @media(max-width:480px){.hero-title{font-size:26px;}.theme-head{font-size:22px;}.involved-title{font-size:24px;}.spotlight-title{font-size:24px;}.happening-title{font-size:24px;}.partners-title{font-size:22px;}.partners-grid{grid-template-columns:1fr;}}
+    @media(max-width:480px){.hero-title{font-size:26px;}.theme-head{font-size:22px;}.involved-title{font-size:24px;}.spotlight-title{font-size:24px;}.happening-title{font-size:24px;}.partners-title{font-size:22px;}.partners-grid{grid-template-columns:1fr 1fr;}}
     a.inv-card{display:block;text-decoration:none;color:inherit;cursor:pointer;}
     a.inv-card:hover .inv-card-front{box-shadow:0 6px 24px rgba(26,39,68,0.14);transform:translateY(-2px);}
     .inv-card-front{transition:box-shadow 0.22s,transform 0.2s;}
@@ -372,7 +378,6 @@
   <div class="involved-inner">
     <div class="involved-header">
       <h2 class="involved-title">Get involved</h2>
-      
     </div>
     <div class="involved-cards">
       <a class="inv-card" href="get-involved.html?type=investor" data-no-redirect>
@@ -497,9 +502,22 @@
   <div class="partners-inner">
     <div class="partners-header"><h2 class="partners-title">Our Main Partners</h2></div>
     <div class="partners-grid">
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images\logos\wits\logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div><p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p></div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
+        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div>
+        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/></div>
+        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+      </div>
     </div>
   </div>
 </section>
