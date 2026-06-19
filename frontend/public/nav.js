@@ -484,11 +484,9 @@
     { label: 'Pitchathon',       href: '/sig-pitchathon.html'  },
   ];
 
-  /* Check if current page is any sig page (used to mark parent as active) */
   const sigHrefs = SIG_PAGES.map(p => p.href.replace(/^\//, '').replace(/\.html$/, ''));
   const isAnySigPage = sigHrefs.includes(page);
 
-  /* Build the sig dropdown HTML */
   const sigDropHTML = SIG_PAGES.map(p => `<a href="${p.href}">${p.label}</a>`).join('');
 
   const links = [
@@ -515,7 +513,7 @@
     return `<li data-i="${i}"><a href="${l.href}"${active ? ' class="active"' : ''}>${l.label}</a></li>`;
   }).join('');
 
-  /* ── Mobile menu items (includes Home) ── */
+  /* ── Mobile menu items ── */
   const mobileLinks = [{ label: 'Home', href: '/index.html' }, ...links.slice(1)];
   const mobItems = mobileLinks.map((l, i) => {
     const active = l.sigDd ? isAnySigPage : isActive(l.href);
@@ -820,7 +818,7 @@
 
 })();
 
-/* ── Redirect all non-submit, non-nav links to get-involved form ── */
+/* ── Redirect all non-exempt links to get-involved form ── */
 (function () {
   const EXEMPT_PAGES = ['get-involved.html'];
   const currentPage = window.location.pathname.split('/').pop();
@@ -839,11 +837,15 @@
   function isExempt(el) {
     if (!el) return true;
     if (el.type === 'submit' || el.tagName === 'BUTTON') return true;
+    // Allow any link with a download attribute
+    if (el.hasAttribute('download')) return true;
     const href = el.getAttribute('href') || '';
     if (href === '#' || href.startsWith('#') || href === '') return true;
     if (href.startsWith('mailto:') || href.startsWith('tel:')) return true;
     if (href.includes('get-involved')) return true;
     if (href.startsWith('http://') || href.startsWith('https://')) return true;
+    // Allow any link pointing directly to a PDF
+    if (href.toLowerCase().includes('.pdf')) return true;
     if (el.closest('#main-nav') || el.closest('.mob-nav-links') || el.closest('.fug-sig-strip')) return true;
     if (el.closest('#main-footer')) return true;
     for (const sel of EXEMPT_SELECTORS) {

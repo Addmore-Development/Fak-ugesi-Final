@@ -64,10 +64,10 @@
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
-   .hero-overlay {
+    .hero-overlay {
       position: absolute; inset: 0;
       background: transparent;
-      }
+    }
     .hero-content {
       grid-row: 2; grid-column: 2; position: relative; z-index: 4;
       display: flex; flex-direction: row;
@@ -105,7 +105,6 @@
     }
 
     /* ── TICKER ── */
-    /* CHANGED: white bg + navy font on hover */
     .ticker-wrapper {
       background: var(--dark-text); overflow: hidden; white-space: nowrap;
       padding: 12px 0; position: relative; z-index: 10;
@@ -167,72 +166,28 @@
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
     /* ══════════════════════════════════════════════
-       2025 WINNERS
+       WHAT IS JAMZ — about section
     ══════════════════════════════════════════════ */
-    .winners-section {
-      background: #fff; padding: 0; position: relative; overflow: hidden;
+    .about-section {
+      background: #fff; padding: 88px 248px; position: relative; overflow: hidden;
     }
-    .winners-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 56px 248px 36px; position: relative;
+    .about-layout {
+      display: flex; flex-direction: column; gap: 32px;
     }
-    .winners-title {
-      font-size: 52px; font-weight: 700; color: var(--dark-text);
+    .about-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--navy); margin-bottom: 14px; display: block;
     }
-    .winners-nav-wrap {
-      display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    .about-title {
+      font-size: 50px; font-weight: 700; color: var(--dark-text); line-height: 1.08; margin-bottom: 0;
     }
-    .winners-nav { display: flex; align-items: center; gap: 16px; }
-
-    .winners-nav button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 22px;
-      color: var(--dark-text);
-      padding: 4px 8px;
-      transition: opacity 0.22s;
-      font-family: 'InterDisplay', sans-serif;
+    .about-body {
+      display: flex; flex-direction: column; max-width: 760px;
     }
-    .winners-nav button:hover {
-      opacity: 0.38;
-      background: none !important;
-      color: var(--dark-text) !important;
+    .about-body p {
+      font-size: 14px; line-height: 1.85; color: var(--body-gray); margin-bottom: 18px;
     }
-
-    .winners-view-link {
-      font-size: 11px; font-weight: 600; color: var(--navy);
-      text-decoration: underline; letter-spacing: 0.06em;
-      cursor: pointer; text-underline-offset: 3px;
-      white-space: nowrap; transition: opacity 0.2s;
-    }
-    .winners-view-link:hover { opacity: 0.6; }
-    .winners-strip-outer { overflow: hidden; }
-   .winners-strip {
-  display: flex; gap: 16px; width: max-content;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-}
-    .winner-card { flex: 0 0 360px; min-width: 0; cursor: pointer; }
-    .winner-img-wrap {
-      width: 100%; height: 360px; overflow: hidden; position: relative;
-    }
-    .winner-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.5s ease;
-    }
-    .winner-card:hover .winner-img-wrap img { transform: scale(1.04); }
-    .winner-info { padding: 12px 0 28px; }
-    .winner-cat {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--body-gray); margin-bottom: 6px;
-    }
-    .winner-name {
-      font-size: 17px; font-weight: 700;
-      color: var(--dark-text); margin-bottom: 6px; line-height: 1.2;
-    }
-    .winner-meta { font-size: 12px; color: var(--body-gray); line-height: 1.65; margin-bottom: 10px; }
-    .winner-speakers { margin-top: 6px; }
-    .winner-speakers p { font-size: 11px; font-weight: 500; color: var(--dark-text); line-height: 1.7; }
+    .about-body p:last-child { margin-bottom: 0; }
 
     /* ══════════════════════════════════════════════
        CHALLENGE SECTIONS
@@ -282,57 +237,6 @@
       transition: background 0.22s, color 0.22s, transform 0.18s;
     }
     .challenge-cta:hover { background: var(--navy); color: #fff; border-color: var(--navy); transform: translateY(-1px); }
-    .challenge-apply-link {
-      font-size: 11px; font-weight: 600;
-      color: rgba(255,255,255,0.65); text-decoration: underline;
-      letter-spacing: 0.06em; white-space: nowrap;
-      margin-top: 12px; cursor: pointer;
-      text-underline-offset: 3px; transition: color 0.2s;
-    }
-    .challenge-apply-link:hover { color: #fff; }
-
-    /* ══════════════════════════════════════════════
-       2026 PRIZES
-    ══════════════════════════════════════════════ */
-    .prizes-section {
-      background: var(--white); padding: 0; position: relative;
-    }
-    .prizes-inner { padding: 80px 248px 100px; position: relative; }
-    .prizes-header {
-      display: flex; justify-content: space-between;
-      align-items: flex-start; margin-bottom: 36px;
-    }
-    .prizes-title {
-      font-size: 52px; font-weight: 700; color: var(--dark-text);
-    }
-    .prizes-apply-link {
-      font-size: 11px; font-weight: 600; color: var(--navy);
-      text-decoration: underline; letter-spacing: 0.06em;
-      cursor: pointer; text-underline-offset: 3px;
-      white-space: nowrap; margin-top: 14px; transition: opacity 0.2s;
-    }
-    .prizes-apply-link:hover { opacity: 0.6; }
-    .prizes-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    }
-    .prize-card {
-  border: 2px solid rgba(26,39,68,0.35);
-  background: var(--lavender);
-  padding: 24px 22px 28px;
-}
-    .prize-card-tag {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--body-gray);
-      margin-bottom: 12px; display: block;
-    }
-    .prize-amount {
-      font-size: 32px; font-weight: 700;
-      color: var(--navy); line-height: 1; margin-bottom: 16px;
-    }
-    .prize-desc {
-      font-size: 12px; font-weight: 400;
-      color: var(--body-gray); line-height: 1.65;
-    }
 
     /* ══════════════════════════════════════════════
        REQUIREMENTS
@@ -340,13 +244,6 @@
     .req-section { background: var(--navy); padding: 56px 248px; position: relative; }
     .req-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
     .req-title { font-size: 52px; font-weight: 700; color: #fff; line-height: 1.0; }
-    .req-apply-link {
-      font-size: 11px; font-weight: 600;
-      color: rgba(255,255,255,0.6); text-decoration: underline;
-      letter-spacing: 0.06em; cursor: pointer; margin-top: 14px;
-      text-underline-offset: 3px; white-space: nowrap; transition: color 0.2s;
-    }
-    .req-apply-link:hover { color: #fff; }
     .req-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
     .req-list li {
       display: flex; gap: 16px; font-size: 11px; font-weight: 400;
@@ -367,8 +264,6 @@
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
-    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
     .faq-items-wrap { display: flex; flex-direction: column; }
     .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
@@ -382,16 +277,9 @@
     .faq-item.open .faq-t-icon { transform: rotate(45deg); }
     .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
     .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
-    .faq-apply-link {
-      font-size: 11px; font-weight: 600; color: var(--navy);
-      text-decoration: underline; letter-spacing: 0.06em;
-      display: block; margin-top: 40px; cursor: pointer;
-      text-underline-offset: 3px; transition: opacity 0.2s;
-    }
-    .faq-apply-link:hover { opacity: 0.6; }
 
     /* ══════════════════════════════════════════════
-       PARTNERS (matched to index page — 4 columns, no card outline)
+       PARTNERS
     ══════════════════════════════════════════════ */
     .partners-section {
       background: var(--lavender); padding: 72px 0; position: relative;
@@ -431,9 +319,8 @@
       :root { --band: 48px; }
       .hero { grid-template-columns: 48px 1fr 48px; }
       .hero-title { font-size:52px; }
-      .winners-header { padding: 40px 48px 28px; }
+      .about-section { padding: 64px 48px; }
       .challenge-inner { padding: 56px 48px; }
-      .prizes-inner { padding: 72px 48px 88px; }
       .req-section { padding: 48px 48px; }
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
@@ -441,7 +328,6 @@
       .partners-title { font-size: 32px; }
       .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
       .partner-logo-box { padding: 24px 20px; }
-      .prizes-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       :root { --band: 20px; }
@@ -450,15 +336,10 @@
       .hero-content { padding: 90px 24px 48px !important; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
       .hero-title { font-size:36px; max-width: 100%; }
       .hero-signia { max-width: 160px; padding-top: 0; }
-      .winners-header { padding: 40px 20px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
-      .winners-title { font-size: 32px; }
-      .winner-card { flex: 0 0 280px; }
-      .winner-img-wrap { height: 280px; }
+      .about-section { padding: 48px 20px; }
+      .about-title { font-size: 32px; }
       .challenge-inner { padding: 48px 20px; flex-direction: column; gap: 24px; }
       .challenge-title { font-size: 32px; }
-      .prizes-inner { padding: 40px 20px 48px; }
-      .prizes-title { font-size: 32px; }
-      .prizes-grid { grid-template-columns: 1fr; }
       .req-section { padding: 48px 20px; }
       .req-title { font-size: 32px; }
       .faq-section { padding: 40px 20px 56px; }
@@ -476,7 +357,6 @@
       .hero-title { font-size:26px; }
       .partners-title { font-size: 22px; }
       .partners-grid { grid-template-columns: 1fr 1fr; }
-      .prizes-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -492,7 +372,7 @@
     <div class="hero-text-wrapper">
       <p class="hero-eyebrow">Jamz</p>
       <h1 class="hero-title">High-octane Animation &amp; Video Game Hackathon</h1>
-      <p class="hero-body">Fak’ugesi Jamz is the festival’s rapid prototyping hackathon environment. Open to practitioners across disciplines, participants gather as teams responding to provocations drawn from the Frequencies, iterating content under strict time constraints. The emphasis is not polish — it is experimentation with genuine stakes.</p>
+      <p class="hero-body">Fak'ugesi Jamz is the festival's rapid prototyping hackathon environment. Open to practitioners across disciplines, participants gather as teams responding to provocations drawn from the Frequencies, iterating content under strict time constraints. The emphasis is not polish — it is experimentation with genuine stakes.</p>
       <p class="hero-dates">13 — 17.10.2026</p>
     </div>
     <div class="hero-signia">
@@ -539,8 +419,8 @@
   </div>
 </nav>
 
-<!-- ═══════════════════════════════ 2025 WINNERS ═══════════════════════════════ -->
-<section class="winners-section reveal">
+<!-- ═══════════════════════════════ WHAT IS JAMZ ═══════════════════════════════ -->
+<section class="about-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
@@ -548,146 +428,24 @@
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
-  <div class="winners-header">
-    <h2 class="winners-title">2025 Winners</h2>
-    <div class="winners-nav-wrap">
-      <div class="winners-nav">
-        <button id="prevWinner" aria-label="Previous">←</button>
-        <button id="nextWinner" aria-label="Next">→</button>
-      </div>
-      
+  <div class="about-layout">
+    <div>
+      <span class="about-eyebrow">About the Programme</span>
+      <h2 class="about-title">What is Jamz?</h2>
+    </div>
+    <div class="about-body">
+      <p>Fak'ugesi Jamz is the festival's high-pressure, rapid-prototyping environment — a space where makers stop talking about ideas and start building them. Structured around tight time constraints and open provocations, Jamz brings together practitioners from animation, game development, design, and digital art to collaborate under real creative pressure.</p>
+      <p>Participants work in teams responding to provocations drawn from the festival's three Frequencies: Memory Engines, Imagination Engines, and Future Engines. The format is deliberately unpolished — what matters is the thinking, the experimentation, and the willingness to iterate fast and fail forward. Each strand runs in a structured heats format, with teams progressing through rounds to a final showcase.</p>
+      <p>Jamz is open to practitioners at all career stages. Whether you are a student making your first game, a seasoned animator looking for a creative challenge, or a developer who has never worked in a festival context before — the only requirement is genuine commitment to the process and a readiness to collaborate with people you may have just met.</p>
     </div>
   </div>
 
-  <div class="winners-strip-outer">
-    <div class="winners-strip" id="winnersStrip">
-
-      <!-- SET 1 -->
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Team Sakuga" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Runner-up</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation Winner" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Animation</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Runner-up" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Runner-up</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Animation</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Runner-up" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Runner-up</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Animation</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-
-      <!-- SET 2 (duplicate for seamless loop) -->
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Team Sakuga" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Runner-up</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation Winner" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Animation</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Runner-up" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Runner-up</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Animation</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Runner-up" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Runner-up</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-      <div class="winner-card">
-        <div class="winner-img-wrap"><img src="images/team-sokuga.png" alt="Animation" /></div>
-        <div class="winner-info">
-          <p class="winner-cat">Animation</p>
-          <p class="winner-name">Team Sakuga</p>
-          <div class="winner-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-          <div class="winner-speakers"><p>Thobile Chittenden</p><p>Samukelisiwe Dube</p><p>Masentle Nzimande</p><p>Tadeo Lopez-Sendon</p><p>Meghna Singh</p></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div style="position:relative;height:36px;margin-top:0;">
   <div class="cross-icon" style="bottom:20px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
-  </div>
-  <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="bottom:20px;right:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
-</div>
 </section>
 
 <!-- ═══════════════════════════════ 2026 ANIMATION CHALLENGE ═══════════════════════════════ -->
@@ -700,9 +458,8 @@
       <p class="challenge-sub-label">Single elimination animation tournament</p>
       <h3 class="challenge-sub-title">Open to All Career Stages</h3>
       <p class="challenge-body">Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure. Provocations are drawn from the three Frequencies: Memory Engines, Imagination Engines, and Future Engines.</p>
-      <a class="challenge-cta" href="#">APPLY NOW</a>
+      <a class="challenge-cta" href="get-involved.html">GET INVOLVED</a>
     </div>
-    <a class="challenge-apply-link" href="#">Apply now</a>
   </div>
 </section>
 
@@ -716,70 +473,8 @@
       <p class="challenge-sub-label">Esports league</p>
       <h3 class="challenge-sub-title">Open to All Career Stages</h3>
       <p class="challenge-body">Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure. Provocations are drawn from the three Frequencies: Memory Engines, Imagination Engines, and Future Engines.</p>
-      <a class="challenge-cta" href="#">APPLY NOW</a>
+      <a class="challenge-cta" href="get-involved.html">GET INVOLVED</a>
     </div>
-    <a class="challenge-apply-link" href="#">Apply now</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ 2026 PRIZES ═══════════════════════════════ -->
-<section class="prizes-section reveal">
-  <div class="prizes-inner">
-
-    <div class="cross-icon" style="top:20px;left:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
-    </div>
-    <div class="cross-icon" style="top:20px;right:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
-    </div>
-
-    <div class="prizes-header">
-      <h2 class="prizes-title">2026 Prizes</h2>
-      <a class="prizes-apply-link" href="#">Apply now</a>
-    </div>
-    <div class="prizes-grid">
-      <div class="prize-card">
-        <span class="prize-card-tag">Animation Winner</span>
-        <div class="prize-amount">R20,000</div>
-        <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-      </div>
-      <div class="prize-card">
-        <span class="prize-card-tag">Animation Winner</span>
-        <div class="prize-amount">R20,000</div>
-        <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-      </div>
-      <div class="prize-card">
-        <span class="prize-card-tag">Animation Winner</span>
-        <div class="prize-amount">R20,000</div>
-        <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-      </div>
-      <div class="prize-card">
-        <span class="prize-card-tag">Animation Winner</span>
-        <div class="prize-amount">R20,000</div>
-        <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-      </div>
-      <div class="prize-card">
-        <span class="prize-card-tag">Animation Winner</span>
-        <div class="prize-amount">R20,000</div>
-        <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-      </div>
-      <div class="prize-card">
-        <span class="prize-card-tag">Animation Winner</span>
-        <div class="prize-amount">R20,000</div>
-        <p class="prize-desc">Duis bibendum adipiscing nibh. Maecenas diam risus, molestie ut, porta et, malesuada eget, nisi. In fermentum leo sed turpis. Sed lacus velit, consequat in,</p>
-      </div>
-    </div>
-
-    <div class="cross-icon" style="bottom:20px;left:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
-    </div>
-    <div class="cross-icon" style="bottom:20px;left:50%;transform:translateX(-50%);">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
-    </div>
-    <div class="cross-icon" style="bottom:20px;right:200px;">
-      <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
-    </div>
-
   </div>
 </section>
 
@@ -787,12 +482,11 @@
 <section class="req-section reveal">
   <div class="req-top">
     <h2 class="req-title">Requirements</h2>
-    <a class="req-apply-link" href="#">Apply now</a>
   </div>
   <ol class="req-list">
     <li>
       <span class="req-num">1.</span>
-      <span>Fak’ugesi Jamz is open to practitioners across disciplines and career stages. You do not need to be an experienced professional to participate.</span>
+      <span>Fak'ugesi Jamz is open to practitioners across disciplines and career stages. You do not need to be an experienced professional to participate.</span>
     </li>
     <li>
       <span class="req-num">2.</span>
@@ -800,7 +494,7 @@
     </li>
     <li>
       <span class="req-num">3.</span>
-      <span>This year’s animation Jam is presented by Mollo Animation Academy and Studio and runs in a structured heats format, with teams progressing through rounds to a final showdown.</span>
+      <span>This year's animation Jam is presented by Mollo Animation Academy and Studio and runs in a structured heats format, with teams progressing through rounds to a final showdown.</span>
     </li>
     <li>
       <span class="req-num">4.</span>
@@ -816,7 +510,6 @@
     <div>
       <h2 class="faq-title-left">FAQ</h2>
       <p class="faq-intro-text">Common questions about Jamz participation, format, and what to expect on the day.</p>
-      <a class="faq-apply-link" href="#">Apply now</a>
     </div>
     <div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
@@ -870,39 +563,13 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/* ── WINNERS: arrow buttons only ── */
-(function () {
-  const strip = document.getElementById('winnersStrip');
-  const prevBtn = document.getElementById('prevWinner');
-  const nextBtn = document.getElementById('nextWinner');
-  let offset = 0;
-
-  function getCardWidth() {
-    const card = strip.querySelector('.winner-card');
-    return card ? card.getBoundingClientRect().width + 16 : 376;
-  }
-  function getTotalWidth() { return strip.scrollWidth / 2; }
-  function move(direction) {
-    const cw = getCardWidth();
-    const total = getTotalWidth();
-    offset += direction * cw;
-    if (offset <= -total) offset = 0;
-    if (offset > 0) offset = -(total - cw);
-    strip.style.transform = `translateX(${offset}px)`;
-  }
-
-  nextBtn.addEventListener('click', () => move(-1));
-  prevBtn.addEventListener('click', () => move(1));
-})();
-
 /* ── FAQ ── */
 const faqData = [
-  { q: 'What is a Jam?', a: 'A time-constrained collaborative structured process with an open outcome. Not a workshop — it is a working environment with real pressure and real results.' },
   { q: 'Do I need to be an experienced practitioner to participate?', a: 'No. Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure.' },
   { q: 'What is Mollo Animation Academy and Studio?', a: 'A Johannesburg-based training and production hub that develops emerging African animators through paid internships, industry-focused skills development, and studio projects. Operating through the Tshimologong Digital Innovation Precinct.' },
-  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'In non massa quis odio feugiat sagittis. Quisque ac lorem. Maecenas ut sem sed ipsum suscipit malesuada.' },
-  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Mauris purus. Donec est nunc, ornare non, aliquet non, tempus vel, dolor.' },
-  { q: 'Nulla gravida, arcu eget dictum eleifend, velit', a: 'Nullam lorem sapien, tempus ac, fringilla at, elementum sed, purus.' }
+  { q: 'Do I need to bring my own equipment?', a: 'A laptop with your preferred software installed is recommended. Limited shared workstations may be available on-site — sign up to the newsletter for confirmed details closer to the event.' },
+  { q: 'Can I enter as an individual rather than a team?', a: 'You can apply individually and be matched into a team during the opening session, or apply together with collaborators you already work with.' },
+  { q: 'What happens to the work created during Jamz?', a: 'Teams retain ownership of what they create. Selected projects may be featured in festival showcases and promotional material, with credit given to all contributors.' }
 ];
 
 const faqContainer = document.getElementById('faqAccordion');
