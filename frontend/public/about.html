@@ -27,134 +27,35 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--white); overflow-x: hidden; }
 
-    /* ── CROSS ICONS (original — only used in non-hero sections) ── */
+    /* ── CROSS ICONS ── */
     .cross-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px; height: 18px;
-      flex-shrink: 0;
-      position: absolute;
-      z-index: 6;
-      opacity: 0.45;
-      transition: transform 0.1s linear !important;
-      animation: none !important;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
+      opacity: 0.45; transition: transform 0.1s linear !important; animation: none !important;
     }
     .cross-icon svg { width: 100%; height: 100%; }
     .cross-icon--navy { opacity: 1; }
     .cross-icon--navy svg line { stroke:#1a2744; stroke-width:0.4; }
     .cross-icon.cross-icon--navy { opacity: 1 !important; }
 
-    /* ── HERO — matches image 2: subtitle row with logo, full-width title, body, date ── */
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: 520px;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('images/Copy_of__MGL3584.jpg');
-      background-size: cover;
-      background-position: center 10%;
-      filter: brightness(0.55);
-      transform: scaleX(-1);
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: transparent;
-    }
+    /* ── HERO ── */
+    .hero { position: relative; width: 100%; min-height: 520px; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('images/Copy_of__MGL3584.jpg'); background-size: cover; background-position: center 10%; filter: brightness(0.55); transform: scaleX(-1); }
+    .hero-overlay { position: absolute; inset: 0; background: transparent; }
+    .hero-inner { position: relative; z-index: 3; width: 100%; padding: 120px var(--band) 52px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-top-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 14px; }
+    .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; color: var(--white); font-family: 'InterDisplay', sans-serif; }
+    .hero-logo { position: absolute; bottom: 165px; right: var(--band); flex-shrink: 0; display: flex; align-items: flex-start; justify-content: center; z-index: 4; }
+    .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); mix-blend-mode: screen; }
+    .hero-title { font-size: 50px; font-weight: 600; line-height: 1.0; color: var(--white); margin-bottom: 20px; font-family: 'InterDisplay', sans-serif; max-width: calc(100% - 180px); }
+    .hero-body { font-size: 13px; line-height: 1.72; max-width: 480px; opacity: 0.85; margin-bottom: 20px; color: var(--white); font-family: 'InterDisplay', sans-serif; }
+    .hero-dates { font-size: 28px; font-weight: 400; opacity: 0.9; color: var(--white); font-family: 'InterDisplay', sans-serif; letter-spacing: 0.01em; }
 
-    /* Hero inner: column layout, content stacks top to bottom */
-    .hero-inner {
-      position: relative;
-      z-index: 3;
-      width: 100%;
-      padding: 120px var(--band) 52px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    /* Top row: eyebrow left, logo right — logo is position:absolute top-right */
-    .hero-top-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-
-    .hero-eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.8;
-      color: var(--white);
-      font-family: 'InterDisplay', sans-serif;
-    }
-
-    /* Logo positioned beside the title */
-    .hero-logo {
-      position: absolute;
-      bottom: 165px;
-      right: var(--band);
-      flex-shrink: 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      z-index: 4;
-    }
-    .hero-logo img {
-      height: 110px;
-      width: auto;
-      display: block;
-      filter: brightness(0) invert(1) contrast(1.2);
-      mix-blend-mode: screen;
-    }
-
-    /* Title — reduced to 52px so it sits comfortably left of the logo */
-    .hero-title {
-      font-size: 50px;
-      font-weight: 600;
-      line-height: 1.0;
-      color: var(--white);
-      margin-bottom: 20px;
-      font-family: 'InterDisplay', sans-serif;
-      max-width: calc(100% - 180px);
-    }
-
-    /* Body — matches expo hero .hero-body */
-    .hero-body {
-      font-size: 13px;
-      line-height: 1.72;
-      max-width: 480px;
-      opacity: 0.85;
-      margin-bottom: 20px;
-      color: var(--white);
-      font-family: 'InterDisplay', sans-serif;
-    }
-
-    /* Date — matches expo hero .hero-date: font-size:28px, font-weight:400 */
-    .hero-dates {
-      font-size: 28px;
-      font-weight: 400;
-      opacity: 0.9;
-      color: var(--white);
-      font-family: 'InterDisplay', sans-serif;
-      letter-spacing: 0.01em;
-    }
-
-    /* ── WHO WE ARE — now single-column, full-width paragraphs ── */
+    /* ── WHO WE ARE ── */
     .who-section { background: var(--white); padding: 0 0 0; position: relative; }
     .crosses-bar { display: flex; justify-content: space-between; padding: 22px 200px; }
     .crosses-bar svg { width: 18px; height: 18px; }
-    .who-layout {
-      padding: 0 248px 60px;
-    }
+    .who-layout { padding: 0 248px 60px; }
     .who-title { font-size: 50px; font-weight: 900; color: var(--dark-text); line-height: 1.05; margin-bottom: 32px; }
     .who-body { font-size: 14px; line-height: 1.75; color: var(--dark-text); max-width: 100%; }
     .who-body p { margin-top: 0; }
@@ -172,33 +73,14 @@
 
     /* ── PREVIOUS EDITIONS ── */
     .editions-section { background: var(--lavender); padding: 0 0 60px; position: relative; overflow: hidden; }
-    .editions-header {
-      padding: 52px 248px 36px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    .editions-header { padding: 52px 248px 36px; display: flex; align-items: center; justify-content: space-between; }
     .editions-title { font-size: 46px; font-weight: 900; color: var(--dark-text); }
     .editions-nav { display: flex; align-items: center; gap: 16px; }
-    .editions-nav button {
-      background: none; border: none; cursor: pointer;
-      font-size: 22px; color: var(--dark-text);
-      padding: 4px 8px;
-      transition: opacity 0.2s;
-      font-family: 'InterDisplay', sans-serif;
-    }
+    .editions-nav button { background: none; border: none; cursor: pointer; font-size: 22px; color: var(--dark-text); padding: 4px 8px; transition: opacity 0.2s; font-family: 'InterDisplay', sans-serif; }
     .editions-nav button:hover { opacity: 0.5; }
     .editions-strip-outer { overflow: hidden; padding: 0; }
-    .editions-strip {
-      display: flex; gap: 20px;
-      width: max-content; padding: 0;
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .edition-card {
-      flex: 0 0 300px; cursor: pointer;
-      border: 1px solid rgba(26,39,68,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+    .editions-strip { display: flex; gap: 20px; width: max-content; padding: 0; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
+    .edition-card { flex: 0 0 300px; cursor: pointer; border: 1px solid rgba(26,39,68,0.1); transition: transform 0.3s, box-shadow 0.3s; }
     .edition-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,39,68,0.12); }
     .edition-img { width: 300px; height: 420px; overflow: hidden; background: #fff; }
     .edition-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
@@ -217,35 +99,14 @@
     .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .team-grid-row2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
     .team-card { border: 1px solid rgba(26,39,68,0.15); overflow: hidden; }
-
-    /* Flip mechanics: perspective on the image wrapper, inner element rotates on hover */
-    .team-img {
-      width: 100%; aspect-ratio: 3/2.4; overflow: hidden;
-      perspective: 1200px;
-    }
-    .team-img-flip {
-      position: relative;
-      width: 100%; height: 100%;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      transform-style: preserve-3d;
-    }
+    .team-img { width: 100%; aspect-ratio: 3/2.4; overflow: hidden; perspective: 1200px; }
+    .team-img-flip { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
     .team-card:hover .team-img-flip { transform: rotateY(180deg); }
-    .team-img-face {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
+    .team-img-face { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
     .team-img-face img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .team-img-front { transform: rotateY(0deg); }
-    .team-img-back {
-      transform: rotateY(180deg);
-      background: var(--lavender);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
+    .team-img-back { transform: rotateY(180deg); background: var(--lavender); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .team-img-back img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-
     .team-info { background: var(--lavender); padding: 12px 14px 16px; }
     .team-name { font-size: 26px; font-weight: 500; color: var(--dark-text); line-height: 1.2; margin-bottom: 6px; }
     .team-role { font-size: 18px; font-weight: 500; color: var(--dark-text); margin-bottom: 6px; }
@@ -265,38 +126,44 @@
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 14px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; color: var(--white); }
-    .form-input, .form-select, .form-textarea {
-      background: transparent; border: 1px solid rgba(255,255,255,0.35); color: var(--white);
-      padding: 14px 16px; font-family: 'InterDisplay', sans-serif; font-size: 14px;
-      outline: none; transition: border-color 0.2s; width: 100%;
-    }
+    .form-input, .form-select, .form-textarea { background: transparent; border: 1px solid rgba(255,255,255,0.35); color: var(--white); padding: 14px 16px; font-family: 'InterDisplay', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; width: 100%; }
     .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.45); }
     .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(255,255,255,0.8); }
-    .form-select {
-      appearance: none; cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 16px center; background-size: 14px;
-    }
+    .form-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2'%3E%3Cline x1='12' y1='5' x2='12' y2='19'/%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 14px; }
     .form-select option { background: var(--navy); color: var(--white); }
     .form-textarea { min-height: 160px; resize: vertical; }
     .form-full { margin-bottom: 14px; }
 
-    /* ── PARTNERS ── */
-    .partners-section { background: var(--lavender); padding: 64px 248px 72px; position: relative; border-top: 2px solid var(--navy); }
-    .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 44px; }
-    .partners-title { font-size: 42px; font-weight: 900; color: var(--dark-text); }
-    .partners-link { font-size: 12px; color: var(--navy); font-weight: 600; text-decoration: underline; letter-spacing: 0.06em; cursor: pointer; }
-    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    /* ══════════════════════════════════════════════
+       PARTNERS — matched to sig-awards.html exactly
+    ══════════════════════════════════════════════ */
+    .partners-section {
+      background: var(--lavender);
+      padding: 0;
+      position: relative;
+      border-top: 2px solid var(--navy);
+    }
+    .partners-inner { padding: 40px 248px 72px; }
+    .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
-      background: var(--white); border: 1px solid rgba(26,39,68,0.12);
+      background: var(--white);
+      border: 1px solid rgba(26,39,68,0.12);
       aspect-ratio: 1 / 1;
       display: flex; align-items: center; justify-content: center;
-      padding: 40px 32px; margin-bottom: 16px;
+      padding: 40px 32px;
       transition: box-shadow 0.3s, transform 0.3s;
+      margin-bottom: 14px;
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
+    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
+    .partner-logo-box img.keep-color { filter: none !important; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
 
     /* ── Fak'ugesi shared link hover effect ── */
@@ -306,13 +173,7 @@
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
     /* ── TICKER ── */
-    .ticker-wrapper {
-      background: var(--navy);
-      border-top: 1px solid rgba(26,39,68,0.1);
-      border-bottom: 1px solid rgba(26,39,68,0.1);
-      overflow: hidden; white-space: nowrap; padding: 10px 0; position: relative; z-index: 10;
-      transition: background 0.28s ease;
-    }
+    .ticker-wrapper { background: var(--navy); border-top: 1px solid rgba(26,39,68,0.1); border-bottom: 1px solid rgba(26,39,68,0.1); overflow: hidden; white-space: nowrap; padding: 10px 0; position: relative; z-index: 10; transition: background 0.28s ease; }
     .ticker-wrapper:hover { background: var(--white) !important; }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
     .ticker-wrapper:hover .ticker-track span { color: var(--navy) !important; }
@@ -333,15 +194,16 @@
       .who-title { font-size: 38px; }
       .editions-header { padding: 40px 48px 28px; }
       .editions-title { font-size: 36px; }
-      .editions-strip { padding: 0; }
       .team-inner { padding: 0 48px; }
       .team-title { font-size: 36px; margin-bottom: 28px; }
       .contact-section { padding: 52px 48px 60px; }
       .contact-layout { gap: 48px; }
       .contact-title { font-size: 36px; margin-bottom: 28px; }
       .contact-info-val { font-size: 17px; }
-      .partners-section { padding: 52px 48px 60px; }
-      .partners-title { font-size: 34px; }
+      .partners-inner { padding: 40px 48px 72px; }
+      .partners-title { font-size: 32px; }
+      .partners-grid { gap: 16px; }
+      .partner-logo-box { padding: 28px 20px; }
     }
 
     @media (max-width: 768px) {
@@ -362,7 +224,7 @@
       .strip-img-item { flex: 0 0 240px; height: 240px; }
       .editions-header { padding: 32px 20px 20px; }
       .editions-title { font-size: 28px; }
-      .editions-strip { padding: 0; gap: 14px; }
+      .editions-strip { gap: 14px; }
       .edition-card { flex: 0 0 240px; }
       .edition-img { width: 240px; height: 350px; }
       .team-inner { padding: 0 20px; }
@@ -380,11 +242,11 @@
       .form-row { grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
       .form-input,.form-select,.form-textarea { padding: 12px 14px; font-size: 13px; }
       .form-textarea { min-height: 120px; }
-      .partners-section { padding: 40px 20px 48px; }
+      .partners-inner { padding: 32px 20px 48px; }
       .partners-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 28px; }
-      .partners-title { font-size: 28px; }
-      .partners-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-      .partner-logo-box { padding: 24px 20px; margin-bottom: 10px; }
+      .partners-title { font-size: 26px; }
+      .partners-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .partner-logo-box { padding: 20px 16px; margin-bottom: 10px; }
       .partner-logo-box img { max-height: 80px; }
       .partner-desc { font-size: 11px; }
       .partners-section .cross-icon { display: none; }
@@ -398,8 +260,8 @@
       .team-title { font-size: 24px; }
       .team-grid,.team-grid-row2 { grid-template-columns: 1fr; }
       .contact-title { font-size: 24px; }
-      .partners-title { font-size: 24px; }
-      .partners-grid { grid-template-columns: 1fr; }
+      .partners-title { font-size: 22px; }
+      .partners-grid { grid-template-columns: 1fr 1fr; }
       .strip-img-item { flex: 0 0 200px; height: 200px; }
       .edition-card { flex: 0 0 200px; }
       .edition-img { width: 200px; height: 290px; }
@@ -415,17 +277,13 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-
   <div class="hero-inner">
-    <!-- Row 1: eyebrow left, logo right -->
     <div class="hero-top-row">
       <p class="hero-eyebrow">Who we are</p>
       <div class="hero-logo">
         <img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
       </div>
     </div>
-
-    <!-- Row 2: title, body, date stacked -->
     <h1 class="hero-title">Fak'ugesi African Digital<br>&amp; Innovation Festival</h1>
     <p class="hero-body">Fak'ugesi African Digital Innovation Festival is a cross-disciplinary innovation platform operating at the intersection of African imagination and systemic technological practice. Founded in 2014 at the Tshimologong Digital Innovation Precinct, Wits University, Johannesburg.</p>
     <p class="hero-dates">13 — 17.10.2026</p>
@@ -446,7 +304,7 @@
   </div>
 </div>
 
-<!-- WHO WE ARE — full-width paragraphs, title stacked above body -->
+<!-- WHO WE ARE -->
 <section class="who-section">
   <div class="crosses-bar">
     <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
@@ -485,7 +343,7 @@
   </div>
 </section>
 
-<!-- PREVIOUS EDITIONS — real posters 2017–2025, arrow-controlled -->
+<!-- PREVIOUS EDITIONS -->
 <section class="editions-section">
   <div class="editions-header">
     <h2 class="editions-title">Previous Editions</h2>
@@ -518,62 +376,14 @@
   <div class="team-inner">
     <h2 class="team-title">The Team</h2>
     <div class="team-grid">
-      <div class="team-card">
-        <div class="team-img">
-          <div class="team-img-flip">
-            <div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Alby Michaels" /></div>
-            <div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Alby%20Michaels&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Alby Michaels avatar placeholder" /></div>
-          </div>
-        </div>
-        <div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div>
-      </div>
-      <div class="team-card">
-        <div class="team-img">
-          <div class="team-img-flip">
-            <div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div>
-            <div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Programme%20Manager&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div>
-          </div>
-        </div>
-        <div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Programme Manager</div><div class="team-email">info@fakugesi.co.za</div></div>
-      </div>
-      <div class="team-card">
-        <div class="team-img">
-          <div class="team-img-flip">
-            <div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div>
-            <div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Communications&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div>
-          </div>
-        </div>
-        <div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Communications</div><div class="team-email">info@fakugesi.co.za</div></div>
-      </div>
+      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Alby Michaels" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Alby%20Michaels&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Alby Michaels avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div></div>
+      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Programme%20Manager&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Programme Manager</div><div class="team-email">info@fakugesi.co.za</div></div></div>
+      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Communications&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Communications</div><div class="team-email">info@fakugesi.co.za</div></div></div>
     </div>
     <div class="team-grid-row2">
-      <div class="team-card">
-        <div class="team-img">
-          <div class="team-img-flip">
-            <div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div>
-            <div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Production%20Lead&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div>
-          </div>
-        </div>
-        <div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Production Lead</div><div class="team-email">info@fakugesi.co.za</div></div>
-      </div>
-      <div class="team-card">
-        <div class="team-img">
-          <div class="team-img-flip">
-            <div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div>
-            <div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Sponsorships&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div>
-          </div>
-        </div>
-        <div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Sponsorships</div><div class="team-email">info@fakugesi.co.za</div></div>
-      </div>
-      <div class="team-card">
-        <div class="team-img">
-          <div class="team-img-flip">
-            <div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div>
-            <div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Digital%20Creative&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div>
-          </div>
-        </div>
-        <div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Digital &amp; Creative</div><div class="team-email">info@fakugesi.co.za</div></div>
-      </div>
+      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Production%20Lead&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Production Lead</div><div class="team-email">info@fakugesi.co.za</div></div></div>
+      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Sponsorships&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Sponsorships</div><div class="team-email">info@fakugesi.co.za</div></div></div>
+      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Digital%20Creative&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Digital &amp; Creative</div><div class="team-email">info@fakugesi.co.za</div></div></div>
     </div>
   </div>
   <div class="cross-icon cross-icon--navy" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -594,15 +404,9 @@
       <div style="margin-top:40px;">
         <p class="contact-socials-label">Follow us</p>
         <div class="contact-social-icons">
-          <a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-          </a>
-          <a href="https://x.com/fakugesi" target="_blank" rel="noopener" aria-label="X">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
+          <a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+          <a href="https://x.com/fakugesi" target="_blank" rel="noopener" aria-label="X"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
         </div>
       </div>
     </div>
@@ -628,30 +432,29 @@
 
 <!-- OUR MAIN PARTNERS -->
 <section class="partners-section" id="partners">
-  <div class="cross-icon cross-icon--navy" style="top:20px;left:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="cross-icon cross-icon--navy" style="top:20px;right:200px;">
-    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg>
-  </div>
-  <div class="partners-header">
-    <h2 class="partners-title">Our Main Partners</h2>
-    
-  </div>
-  <div class="partners-grid">
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong – Wits University" /></div>
-      <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+  <div class="cross-icon cross-icon--navy" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="cross-icon cross-icon--navy" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
+  <div class="partners-inner">
+    <div class="partners-header">
+      <h2 class="partners-title">Our Main Partners</h2>
     </div>
-    <div class="partner-card">
-
-      <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div>
-   
-      <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
-    </div>
-    <div class="partner-card">
-      <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome" /></div>
-      <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" /></div>
+        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color" /></div>
+        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" /></div>
+        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color" /></div>
+        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -659,36 +462,11 @@
 <script src="nav.js"></script>
 <script src="footer.js"></script>
 <script src="starArrows.js"></script>
-
 <script>
 (function(){
   var lastY = window.scrollY, rot = 0, ticking = false, scrollTimer = null;
-  function resetRot(){
-    rot = 0;
-    document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-      el.style.transition = 'transform 0.45s ease';
-      el.style.transform = 'rotate(0deg)';
-    });
-  }
-  function onScroll(){
-    if(!ticking){
-      requestAnimationFrame(function(){
-        var y = window.scrollY, delta = y - lastY;
-        if(Math.abs(delta) > 0){
-          rot += delta > 0 ? 15 : -15;
-          document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){
-            el.style.transition = 'transform 0.1s linear';
-            el.style.transform = 'rotate('+rot+'deg)';
-          });
-        }
-        lastY = y;
-        ticking = false;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(resetRot, 300);
-      });
-      ticking = true;
-    }
-  }
+  function resetRot(){ rot = 0; document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){ el.style.transition = 'transform 0.45s ease'; el.style.transform = 'rotate(0deg)'; }); }
+  function onScroll(){ if(!ticking){ requestAnimationFrame(function(){ var y = window.scrollY, delta = y - lastY; if(Math.abs(delta) > 0){ rot += delta > 0 ? 15 : -15; document.querySelectorAll('.cross-icon,.fug-footer-cross').forEach(function(el){ el.style.transition = 'transform 0.1s linear'; el.style.transform = 'rotate('+rot+'deg)'; }); } lastY = y; ticking = false; clearTimeout(scrollTimer); scrollTimer = setTimeout(resetRot, 300); }); ticking = true; } }
   window.addEventListener('scroll', onScroll, {passive:true});
 })();
 
@@ -698,24 +476,10 @@
   const prevBtn = document.getElementById('prevEdition');
   const nextBtn = document.getElementById('nextEdition');
   if (!strip || !prevBtn || !nextBtn) return;
-
   let offset = 0;
-
-  function getCardWidth() {
-    const card = strip.querySelector('.edition-card');
-    return card ? card.getBoundingClientRect().width + 20 : 320;
-  }
-  function maxOffset() {
-    const outerW = strip.parentElement.getBoundingClientRect().width;
-    return Math.max(0, strip.scrollWidth - outerW);
-  }
-  function move(direction) {
-    const cw = getCardWidth();
-    offset += direction * cw;
-    offset = Math.max(0, Math.min(offset, maxOffset()));
-    strip.style.transform = `translateX(${-offset}px)`;
-  }
-
+  function getCardWidth() { const card = strip.querySelector('.edition-card'); return card ? card.getBoundingClientRect().width + 20 : 320; }
+  function maxOffset() { const outerW = strip.parentElement.getBoundingClientRect().width; return Math.max(0, strip.scrollWidth - outerW); }
+  function move(direction) { const cw = getCardWidth(); offset += direction * cw; offset = Math.max(0, Math.min(offset, maxOffset())); strip.style.transform = `translateX(${-offset}px)`; }
   nextBtn.addEventListener('click', () => move(1));
   prevBtn.addEventListener('click', () => move(-1));
 })();
