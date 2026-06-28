@@ -25,149 +25,57 @@
     .btn-outline-dark:hover{background:var(--dark-text);color:var(--white);transform:translateY(-1px);}
 
     /* ── HERO ── */
-    .hero {
-      position: relative; width: 100%; min-height: 490px; overflow: hidden;
-      display: flex; align-items: center;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('images/_MGL2775.jpg');
-      background-size: cover; background-position: center 20%;
-      filter: brightness(0.55);
-      animation: kenBurns 16s ease-in-out infinite alternate;
-      transform-origin: center center;
-    }
-    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: transparent;
-    }
-    .hero-inner {
-      position: relative; z-index: 3; width: 100%;
-      padding: 110px var(--band) 60px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .hero-content { max-width: 420px; }
-    .hero-subtitle {
-      font-size:11px;
-      font-weight:600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.8;
-      margin-bottom: 10px;
-      color: var(--white);
-    }
-    .hero-title {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 72px;
-      font-weight: 600;
-      line-height: 1.0;
-      margin-bottom: 14px;
-      color: var(--white);
-    }
-    .hero-body {
-      font-size:13px;
-      font-weight: 400;
-      line-height: 1.7;
-      max-width: 340px;
-      opacity: 0.85;
-      margin-bottom: 14px;
-      color: var(--white);
-    }
-
-    /* ── HERO LINK ── */
-    .hero-link {
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-      padding-bottom: 2px;
-      transition: transform 0.25s ease;
-    }
-    .hero-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 1px;
-      background: var(--white);
-      transform: scaleX(1);
-      transform-origin: left;
-      transition: transform 0.25s ease;
-    }
-    .hero-link:hover::after {
-      transform: scaleX(0);
-      transform-origin: right;
-    }
-    .hero-link:hover {
-      opacity: 0.75;
-      transform: scale(1.02);
-    }
-    .hero-link-arrow {
-      display: inline-block;
-      transition: transform 0.22s ease;
-      font-size: 14px;
-    }
-    .hero-link:hover .hero-link-arrow {
-      transform: translateX(4px);
-    }
-
-    .hero-logo { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); }
+    .hero{position:relative;width:100%;min-height:490px;overflow:hidden;display:flex;align-items:center;}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:brightness(0.55);z-index:0;}
+    .hero-overlay{position:absolute;inset:0;background:transparent;z-index:1;}
+    .hero-inner{position:relative;z-index:3;width:100%;padding:110px var(--band) 60px;display:flex;align-items:center;justify-content:space-between;}
+    .hero-content{max-width:420px;}
+    .hero-subtitle{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:10px;color:var(--white);}
+    .hero-title{font-family:'InterDisplay',sans-serif;font-size:72px;font-weight:600;line-height:1.0;margin-bottom:14px;color:var(--white);}
+    .hero-body{font-size:13px;font-weight:400;line-height:1.7;max-width:340px;opacity:0.85;margin-bottom:14px;color:var(--white);}
+    .hero-link{color:var(--white);font-size:12px;font-weight:600;text-decoration:none;letter-spacing:0.06em;cursor:pointer;display:inline-flex;align-items:center;gap:8px;position:relative;padding-bottom:2px;transition:transform 0.25s ease;}
+    .hero-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--white);transform:scaleX(1);transform-origin:left;transition:transform 0.25s ease;}
+    .hero-link:hover::after{transform:scaleX(0);transform-origin:right;}
+    .hero-link:hover{opacity:0.75;transform:scale(1.02);}
+    .hero-link-arrow{display:inline-block;transition:transform 0.22s ease;font-size:14px;}
+    .hero-link:hover .hero-link-arrow{transform:translateX(4px);}
+    .hero-logo{flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+    .hero-logo img{height:110px;width:auto;display:block;filter:brightness(0) invert(1) contrast(1.2);}
 
     /* TICKER */
     .ticker-wrapper{background:var(--white);overflow:hidden;white-space:nowrap;padding:11px 0;position:relative;z-index:10;border-top:1px solid rgba(26,39,68,0.08);border-bottom:1px solid rgba(26,39,68,0.08);transition:background 0.28s ease;}
     .ticker-wrapper:hover{background:var(--navy)!important;}
     .ticker-wrapper:hover .ticker-track{animation-play-state:paused;}
     .ticker-wrapper:hover .ticker-track span{color:#ffffff!important;}
-    .ticker-track{display:inline-flex;animation:tickerScroll 30s linear infinite;}
-    .ticker-track span{padding:0 32px;font-size:12.5px;font-weight:500;color:var(--navy);letter-spacing:0.02em;}
+    .ticker-track{display:inline-flex;animation:tickerScroll 55s linear infinite;}
+    .ticker-track span{padding:0 32px;font-size:12.5px;font-weight:700;color:var(--navy);letter-spacing:0.06em;}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* THEME SECTION */
-    .theme-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(180deg,#3a4a88 0%,#4a5899 40%,#5a6aaa 70%,#6878bb 100%);}
-    .theme-bg-img{position:absolute;right:-3cm;bottom:0;top:0;width:52%;height:100%;background-image:url('images/cyber1.png');background-size:contain;background-position:right bottom;background-repeat:no-repeat;transform:scaleX(-1);filter:brightness(1.15);}
-    .theme-fade{position:absolute;inset:0;background:linear-gradient(to right,#3a4a88 18%,rgba(58,74,136,0.92) 35%,rgba(58,74,136,0.4) 58%,rgba(58,74,136,0.0) 100%);}
+    .theme-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(180deg,#c8cede 0%,#e5e7ef 100%);}
+    .theme-poster-img{position:absolute;right:0;bottom:0;top:0;width:46%;height:115%;background-image:url('/images/image updates/banner_poster_transparent.png');background-size:contain;background-position:right bottom;background-repeat:no-repeat;transform:translateY(-10%);}
+    .theme-fade{position:absolute;inset:0;background:linear-gradient(to right,#c8cede 32%,rgba(200,206,222,0.88) 50%,rgba(200,206,222,0.25) 72%,rgba(200,206,222,0.0) 100%);}
     .theme-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
     .theme-content{max-width:560px;}
-
-    .theme-year-label{
-      font-family:'InterDisplay','Inter',Arial,sans-serif !important;
-      font-size:52px !important;
-      font-weight:600 !important;
-      color:var(--white) !important;
-      opacity:1 !important;
-      display:block !important;
-      margin-bottom:16px !important;
-      letter-spacing:-0.01em !important;
-      line-height:1.05 !important;
-    }
-    .theme-sub{font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.06em;opacity:0.75;margin-bottom:12px;color:var(--white);}
-    .theme-head{font-family:'InterDisplay',sans-serif;font-size:38px;font-weight:600;line-height:1.05;margin-bottom:18px;color:var(--white);}
-    .theme-body{font-family:'InterDisplay',sans-serif;font-size:13px;font-weight:400;line-height:1.72;opacity:0.84;max-width:460px;margin-bottom:28px;color:var(--white);}
+    .theme-year-label{font-family:'InterDisplay','Inter',Arial,sans-serif !important;font-size:52px !important;font-weight:600 !important;color:var(--dark-text) !important;opacity:1 !important;display:block !important;margin-bottom:16px !important;letter-spacing:-0.01em !important;line-height:1.05 !important;}
+    .theme-sub{font-family:'InterDisplay',sans-serif;font-size:16px;font-weight:400;letter-spacing:0.06em;opacity:0.75;margin-bottom:12px;color:var(--dark-text);}
+    .theme-head{font-family:'InterDisplay',sans-serif;font-size:38px;font-weight:600;line-height:1.05;margin-bottom:18px;color:var(--dark-text);}
+    .theme-body{font-family:'InterDisplay',sans-serif;font-size:13px;font-weight:400;line-height:1.72;opacity:0.84;max-width:460px;margin-bottom:28px;color:var(--dark-text);}
     .btn-row{display:flex;gap:14px;margin-bottom:32px;flex-wrap:wrap;}
-    .theme-dates{
-      font-family:'InterDisplay','Inter',Arial,Helvetica,sans-serif !important;
-      font-size:28px !important;
-      font-weight:400 !important;
-      letter-spacing:0.01em !important;
-      color:var(--white) !important;
-      opacity:0.9 !important;
-      display:block !important;
-    }
+    .theme-dates{font-family:'InterDisplay','Inter',Arial,Helvetica,sans-serif !important;font-size:28px !important;font-weight:400 !important;letter-spacing:0.01em !important;color:var(--dark-text) !important;opacity:0.9 !important;display:block !important;}
+    .theme-section .btn-outline-white{border-color:var(--dark-text);color:var(--dark-text);}
+    .theme-section .btn-outline-white:hover{background:var(--dark-text);color:var(--white);}
+    .theme-section .theme-year-label,.theme-section .theme-sub,.theme-section .theme-head,.theme-section .theme-body,.theme-section .theme-dates{font-family:'InterDisplay','Inter',Arial,sans-serif !important;}
 
     /* GET INVOLVED */
     .involved-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;}
     .involved-bg{position:absolute;inset:0;background-image:url('images/Copy_of__MGL4129.jpg');background-size:cover;background-position:center;filter:brightness(0.55);animation:kenBurns 22s ease-in-out infinite alternate;}
+    @keyframes kenBurns{from{transform:scale(1);}to{transform:scale(1.07);}}
     .involved-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
-    .involved-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;}
-    .involved-title{font-size:42px;font-weight:600;color:var(--white);}
-    .involved-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;}
+    .involved-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;margin-bottom:32px;}
+    .btn-get-involved{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1.5px solid var(--white);color:var(--white);background:transparent;padding:14px 36px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'InterDisplay',sans-serif;transition:background 0.22s,color 0.22s,border-color 0.22s,transform 0.18s;text-decoration:none;}
+    .btn-get-involved:hover{background:#2a3f72;color:var(--white);border-color:#2a3f72;transform:translateY(-1px);}
+    .involved-cta-row{display:flex;justify-content:flex-start;}
 
     /* Shared link hover */
     .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
@@ -238,52 +146,76 @@
     .fb-card-actions span{font-size:12px;color:var(--body-gray);}
     .happening-caption{text-align:right;margin-top:16px;font-size:12px;color:var(--body-gray);line-height:1.65;padding:0 var(--band);}
 
+    /* ── FAQ SECTION ── */
+    .faq-section{background:var(--white);padding:72px 0;position:relative;}
+    .faq-inner{padding:0 var(--band);}
+    .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start;}
+    .faq-title-left{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px;}
+    .faq-items-wrap{display:flex;flex-direction:column;}
+    .faq-item{border-top:1px solid rgba(26,39,68,.15);background:transparent;transition:background 0.28s ease;}
+    .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,.15);}
+    .faq-item:hover{background:var(--navy);}
+    .faq-item:hover .faq-q-text{color:var(--white);}
+    .faq-item:hover .faq-t-icon{color:var(--white);}
+    .faq-item:hover .faq-ans{color:rgba(255,255,255,.8);}
+    .faq-q-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 16px;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif;}
+    .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color 0.28s ease;max-width:calc(100% - 40px);}
+    .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color 0.28s ease,transform 0.3s ease;}
+    .faq-item.open .faq-t-icon{transform:rotate(45deg);}
+    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color 0.28s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0 16px;}
+    .faq-item.open .faq-ans{max-height:300px;padding:0 16px 22px;}
+
     /* PARTNERS */
     .partners-section{background:var(--lavender);padding:72px 0;position:relative;}
     .partners-inner{padding:0 var(--band);}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
     .partners-title{font-size:38px;font-weight:700;color:var(--dark-text);}
     .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;cursor:pointer;letter-spacing:0.04em;}
-    /* 4-column grid — cards are naturally smaller to fit the same total width */
-    .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+    .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
     .partner-card{display:flex;flex-direction:column;}
     .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:32px 28px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;aspect-ratio:1/1;}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
     .partner-logo-box img{max-width:100%;max-height:110px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
     .partner-logo-box img.keep-color{filter:none !important;}
+    .partner-logo-link{display:contents;text-decoration:none;}
     .partner-desc{font-size:11.5px;color:var(--body-gray);line-height:1.65;}
 
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
     .reveal.visible{opacity:1;transform:none;}
 
-    /* Force InterDisplay on all theme section text */
-    .theme-section .theme-year-label,.theme-section .theme-sub,.theme-section .theme-head,.theme-section .theme-body,.theme-section .theme-dates{font-family:'InterDisplay','Inter',Arial,sans-serif !important;}
+    a.inv-card{display:block;text-decoration:none;color:inherit;cursor:pointer;}
+    a.inv-card:hover .inv-card-front{box-shadow:0 6px 24px rgba(26,39,68,0.14);transform:translateY(-2px);}
+    .inv-card-front{transition:box-shadow 0.22s,transform 0.2s;}
 
     @media(max-width:1024px){
       .hero-inner{padding:100px 48px 52px;}.hero-title{font-size:40px;}
       .theme-inner{padding:52px 48px;}.theme-year-label{font-size:40px !important;}.theme-head{font-size:30px;}
-      .theme-bg-img{width:50%;opacity:0.6;}
-      .involved-inner{padding:52px 48px;}.involved-title{font-size:34px;}
+      .theme-poster-img{width:50%;opacity:0.6;}
+      .involved-inner{padding:52px 48px;}
       .spotlight-inner{padding:0 48px;}.spotlight-title{font-size:36px;}
       .happening-inner{padding:0 48px;}.happening-title{font-size:36px;}
       .tweet-grid{grid-template-columns:1fr 1fr;}
       .happening-caption{padding:0 48px;}
+      .faq-inner{padding:0 48px;}.faq-layout{gap:48px;}
       .partners-inner{padding:0 48px;}.partners-title{font-size:32px;}
-      .partners-grid{grid-template-columns:repeat(4,1fr);gap:16px;}
-      .partner-logo-box{padding:24px 20px;}
+      .partners-grid{grid-template-columns:repeat(4,1fr);gap:12px;}
+      .partner-logo-box{padding:18px 14px;}
+    }
+    @media(max-width:900px){
+      .partners-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
     }
     @media(max-width:768px){
       .hero{min-height:auto;}.hero-inner{padding:80px 20px 40px;flex-direction:column;align-items:flex-start;gap:24px;}
       .hero-content{max-width:100%;}.hero-title{font-size:32px;}.hero-logo{display:none;}
-      .theme-section{min-height:auto;}.theme-bg-img,.theme-fade{display:none;}
+      .theme-section{min-height:auto;}.theme-poster-img,.theme-fade{display:none;}
       .theme-inner{padding:40px 20px 44px;}.theme-content{max-width:100%;}
       .theme-year-label{font-size:32px !important;margin-bottom:12px !important;}.theme-head{font-size:26px;margin-bottom:14px;}
       .theme-body{font-size:12px;max-width:100%;margin-bottom:20px;}
       .btn-row{flex-direction:column;gap:10px;margin-bottom:20px;}
       .btn-row .btn-outline-white{width:100%;justify-content:center;}
       .theme-dates{font-size:20px !important;}
-      .involved-inner{padding:40px 20px;}.involved-header{flex-direction:column;align-items:flex-start;gap:10px;}
-      .involved-title{font-size:28px;}.involved-cards{grid-template-columns:1fr;gap:12px;}
+      .involved-inner{padding:40px 20px;}
+      .involved-cards{grid-template-columns:1fr;gap:12px;}
       .spotlight-section{padding:48px 0;}.spotlight-inner{padding:0 20px;}
       .spotlight-title{font-size:28px;margin-bottom:28px;}.spotlight-grid{grid-template-columns:1fr;gap:24px;}
       .spotlight-head{font-size:22px;}.btn-outline-dark{width:100%;justify-content:center;}
@@ -292,16 +224,19 @@
       .strip-img{flex:0 0 200px;height:180px;}
       .tweet-grid{grid-template-columns:1fr;gap:12px;}.fb-feed{grid-template-columns:1fr;}
       .happening-caption{padding:0 20px;}
+      .faq-section{padding:40px 0 56px;}.faq-inner{padding:0 20px;}
+      .faq-layout{grid-template-columns:1fr;gap:24px;}.faq-title-left{font-size:32px;}
       .partners-section{padding:40px 0 48px;}.partners-inner{padding:0 20px;}
       .partners-header{flex-direction:column;align-items:flex-start;gap:10px;}.partners-title{font-size:26px;}
-      /* 2-column on tablet/mobile */
-      .partners-grid{grid-template-columns:1fr 1fr;gap:14px;}
-      .partner-logo-box{padding:20px 16px;}
+      .partners-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+      .partner-logo-box{padding:18px 14px;}
+      .btn-get-involved{width:100%;justify-content:center;}
     }
-    @media(max-width:480px){.hero-title{font-size:26px;}.theme-head{font-size:22px;}.involved-title{font-size:24px;}.spotlight-title{font-size:24px;}.happening-title{font-size:24px;}.partners-title{font-size:22px;}.partners-grid{grid-template-columns:1fr 1fr;}}
-    a.inv-card{display:block;text-decoration:none;color:inherit;cursor:pointer;}
-    a.inv-card:hover .inv-card-front{box-shadow:0 6px 24px rgba(26,39,68,0.14);transform:translateY(-2px);}
-    .inv-card-front{transition:box-shadow 0.22s,transform 0.2s;}
+    @media(max-width:480px){
+      .hero-title{font-size:26px;}.theme-head{font-size:22px;}.spotlight-title{font-size:24px;}
+      .happening-title{font-size:24px;}.partners-title{font-size:22px;}
+      .partners-grid{grid-template-columns:repeat(2,1fr);}
+    }
   </style>
   <style id="nav-fix">@media(max-width:768px){#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}}#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;}#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px;overflow-y:auto;}#mobile-nav-drawer.open{display:flex;}#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}</style>
   <link rel="preload" href="fonts/InterDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
@@ -311,9 +246,12 @@
 </head>
 <body>
 
+<script src="nav.js"></script>
+
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <video class="hero-video" src="/images/image updates/web_hero_home_10mb.mp4" autoplay muted loop playsinline preload="auto"></video>
+  <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-subtitle">African Digital &amp; Innovation Festival</p>
@@ -328,40 +266,30 @@
 <!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span><span>13–17 October 2026 · Tshimologong Digital Innovation Precinct · Johannesburg  &nbsp;→&nbsp;</span>
+    <span>TICKETS ON SALE NOW &nbsp;•&nbsp; EARLY BIRD PRICING &nbsp;•&nbsp; 13–17 OCTOBER 2026 &nbsp;•&nbsp; JOHANNESBURG &nbsp;•&nbsp; AFRICAN IMAGINARIES &nbsp;•&nbsp; FAK'UGESI FESTIVAL 2026 &nbsp;&nbsp;→&nbsp;&nbsp;</span><span>TICKETS ON SALE NOW &nbsp;•&nbsp; EARLY BIRD PRICING &nbsp;•&nbsp; 13–17 OCTOBER 2026 &nbsp;•&nbsp; JOHANNESBURG &nbsp;•&nbsp; AFRICAN IMAGINARIES &nbsp;•&nbsp; FAK'UGESI FESTIVAL 2026 &nbsp;&nbsp;→&nbsp;&nbsp;</span><span>TICKETS ON SALE NOW &nbsp;•&nbsp; EARLY BIRD PRICING &nbsp;•&nbsp; 13–17 OCTOBER 2026 &nbsp;•&nbsp; JOHANNESBURG &nbsp;•&nbsp; AFRICAN IMAGINARIES &nbsp;•&nbsp; FAK'UGESI FESTIVAL 2026 &nbsp;&nbsp;→&nbsp;&nbsp;</span><span>TICKETS ON SALE NOW &nbsp;•&nbsp; EARLY BIRD PRICING &nbsp;•&nbsp; 13–17 OCTOBER 2026 &nbsp;•&nbsp; JOHANNESBURG &nbsp;•&nbsp; AFRICAN IMAGINARIES &nbsp;•&nbsp; FAK'UGESI FESTIVAL 2026 &nbsp;&nbsp;→&nbsp;&nbsp;</span><span>TICKETS ON SALE NOW &nbsp;•&nbsp; EARLY BIRD PRICING &nbsp;•&nbsp; 13–17 OCTOBER 2026 &nbsp;•&nbsp; JOHANNESBURG &nbsp;•&nbsp; AFRICAN IMAGINARIES &nbsp;•&nbsp; FAK'UGESI FESTIVAL 2026 &nbsp;&nbsp;→&nbsp;&nbsp;</span><span>TICKETS ON SALE NOW &nbsp;•&nbsp; EARLY BIRD PRICING &nbsp;•&nbsp; 13–17 OCTOBER 2026 &nbsp;•&nbsp; JOHANNESBURG &nbsp;•&nbsp; AFRICAN IMAGINARIES &nbsp;•&nbsp; FAK'UGESI FESTIVAL 2026 &nbsp;&nbsp;→&nbsp;&nbsp;</span><span>TICKETS ON SALE NOW &nbsp;•&nbsp; EARLY BIRD PRICING &nbsp;•&nbsp; 13–17 OCTOBER 2026 &nbsp;•&nbsp; JOHANNESBURG &nbsp;•&nbsp; AFRICAN IMAGINARIES &nbsp;•&nbsp; FAK'UGESI FESTIVAL 2026 &nbsp;&nbsp;→&nbsp;&nbsp;</span><span>TICKETS ON SALE NOW &nbsp;•&nbsp; EARLY BIRD PRICING &nbsp;•&nbsp; 13–17 OCTOBER 2026 &nbsp;•&nbsp; JOHANNESBURG &nbsp;•&nbsp; AFRICAN IMAGINARIES &nbsp;•&nbsp; FAK'UGESI FESTIVAL 2026 &nbsp;&nbsp;→&nbsp;&nbsp;</span>
   </div>
 </div>
 
 <!-- THEME SECTION -->
 <section class="theme-section reveal">
-  <div class="theme-bg-img"></div>
+  <div class="theme-poster-img"></div>
   <div class="theme-fade"></div>
   <div class="theme-inner">
     <div class="theme-content">
       <span class="theme-year-label">2026 Theme</span>
-      <p class="theme-sub">Africa's creative energy unleashed</p>
-      <h3 class="theme-head">African<br>Imaginaries</h3>
-      <p class="theme-body">From 13 to 17 October 2026, the festival returns to the Tshimologong Digital Innovation Precinct in 
-Johannesburg under the theme African Imaginaries. An Imaginary, in this context, is not a fantasy. It is a 
-framework: a set of conditions under which alternative futures become real.. </br>
-
-<br>Three frequencies organise the work. Memory Engines: how African communities preserve and transmit 
-knowledge on their own terms. Imagination Engines: how African creatives and technologists are retraining 
-the tools of machine intelligence. Future Engines: how African cities and systems are being built, right now, 
-ahead of global precedent. Each one a distinct signal; together, a system for producing, interrogating, and 
-deploying African knowledge at the highest level of creative and technological ambition. </br>
-
-<br>The work has already begun. Five days in October are where it becomes visible. </br></p>
+      <p class="theme-sub">Imagination Precedes Innovation</p>
+      <h3 class="theme-head">African Imaginaries</h3>
+      <p class="theme-body">From 13 to 17 October 2026, the festival returns to the Tshimologong Digital Innovation Precinct in Johannesburg under the theme African Imaginaries. An Imaginary, in this context, is not a fantasy. It is a framework: a set of conditions under which alternative futures become real.<br><br>Three frequencies organise the work. Memory Engines: how African communities preserve and transmit knowledge on their own terms. Imagination Engines: how African creatives and technologists are retraining the tools of machine intelligence. Future Engines: how African cities and systems are being built, right now, ahead of global precedent. Each one a distinct signal; together, a system for producing, interrogating, and deploying African knowledge at the highest level of creative and technological ambition.<br><br>The work has already begun. Five days in October are where it becomes visible.</p>
       <div class="btn-row">
         <button class="btn-outline-white" onclick="location.href='tickets.html'">GET TICKETS</button>
       </div>
       <div id="themeInfoPanel" style="max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.4s ease;opacity:0;">
-        <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);padding:24px 20px;margin-bottom:24px;">
-          <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:10px;">Theme: African Imaginaries</p>
-          <p style="font-size:13px;line-height:1.78;color:rgba(255,255,255,0.88);margin-bottom:14px;">An Imaginary, in this context, is not a fantasy or a wishful projection. It is a framework: a structured set of conditions under which alternative futures become real. African Imaginaries spotlights the intellectual and creative work currently happening across the continent.</p>
-          <p style="font-size:13px;line-height:1.78;color:rgba(255,255,255,0.88);margin-bottom:14px;">Practitioners in Nairobi, Lagos, Accra, Johannesburg, and Kigali are not waiting to see what the future looks like. They are designing it. Prototyping it. Archiving it. Building the infrastructure to scale. Fak'ugesi is where that work is assembled and showcased.</p>
-          <p style="font-size:13px;line-height:1.78;color:rgba(255,255,255,0.88);margin-bottom:8px;">The theme organises across three frequencies:</p>
-          <ul style="font-size:13px;line-height:1.9;color:rgba(255,255,255,0.85);padding-left:18px;margin-bottom:0;">
+        <div style="background:rgba(26,39,68,0.08);border:1px solid rgba(26,39,68,0.2);padding:24px 20px;margin-bottom:24px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(13,27,62,0.7);margin-bottom:10px;">Theme: African Imaginaries</p>
+          <p style="font-size:13px;line-height:1.78;color:rgba(13,27,62,0.88);margin-bottom:14px;">An Imaginary, in this context, is not a fantasy or a wishful projection. It is a framework: a structured set of conditions under which alternative futures become real. African Imaginaries spotlights the intellectual and creative work currently happening across the continent.</p>
+          <p style="font-size:13px;line-height:1.78;color:rgba(13,27,62,0.88);margin-bottom:14px;">Practitioners in Nairobi, Lagos, Accra, Johannesburg, and Kigali are not waiting to see what the future looks like. They are designing it. Prototyping it. Archiving it. Building the infrastructure to scale. Fak'ugesi is where that work is assembled and showcased.</p>
+          <p style="font-size:13px;line-height:1.78;color:rgba(13,27,62,0.88);margin-bottom:8px;">The theme organises across three frequencies:</p>
+          <ul style="font-size:13px;line-height:1.9;color:rgba(13,27,62,0.85);padding-left:18px;margin-bottom:0;">
             <li><strong>Memory Engines</strong> — how African communities preserve, classify, and transmit heritage for the future.</li>
             <li><strong>Imagination Engines</strong> — the relationship between machine intelligence and African creative agency.</li>
             <li><strong>Future Engines</strong> — urban, climatic, and policy systems that African practitioners are building in real time.</li>
@@ -384,11 +312,7 @@ deploying African knowledge at the highest level of creative and technological a
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,0.55)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(255,255,255,0.55)" stroke-width="1"/></svg>
   </div>
-
   <div class="involved-inner">
-    <div class="involved-header">
-      <h2 class="involved-title">Get involved</h2>
-    </div>
     <div class="involved-cards">
       <a class="inv-card" href="get-involved.html?type=investor" data-no-redirect>
         <div class="inv-card-front">
@@ -414,6 +338,9 @@ deploying African knowledge at the highest level of creative and technological a
           <p class="card-body">Be part of the team that makes Fak'ugesi run. Volunteers gain access to the full festival programme, behind-the-scenes experience, and a direct connection to the people building African digital culture.</p>
         </div>
       </a>
+    </div>
+    <div class="involved-cta-row">
+      <a class="btn-get-involved" href="get-involved.html">Get Involved</a>
     </div>
   </div>
 </section>
@@ -443,7 +370,6 @@ deploying African knowledge at the highest level of creative and technological a
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
   </div>
-
   <div class="happening-inner">
     <div class="happening-header">
       <h2 class="happening-title">What's happening</h2>
@@ -486,7 +412,7 @@ deploying African knowledge at the highest level of creative and technological a
     <div class="happening-inner" style="padding-top:0;">
       <div class="fb-feed">
         <div class="fb-card">
-          <div class="fb-card-img"><img src="images/Copy_of__MGL4129.jpg" alt="Festival post" /></div>
+          <div class="fb-card-img"><img src="images/Copy_of__MGL4129.jpg" alt="Festival post"/></div>
           <div class="fb-card-body">
             <div class="fb-card-date">April 7, 2026</div>
             <p class="fb-card-text">Awards applications are now open! Submit your project before the deadline and join Africa's most exciting digital innovation celebration.</p>
@@ -494,15 +420,29 @@ deploying African knowledge at the highest level of creative and technological a
           </div>
         </div>
         <div class="fb-card">
-          <div class="fb-card-img"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival post" /></div>
+          <div class="fb-card-img"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival post"/></div>
           <div class="fb-card-body">
             <div class="fb-card-date">March 28, 2026</div>
-            <p class="fb-card-text">2026 Theme Announcement: African Imaginaries. Explore speculative futures, Afrofuturism, and African creative visions across 6 days of programming.</p>
+            <p class="fb-card-text">2026 Theme Announcement: African Imaginaries. Explore speculative futures, Afrofuturism, and African creative visions across 5 days of programming.</p>
             <div class="fb-card-actions"><span>287 Likes</span><span>41 Comments</span><span>93 Shares</span></div>
           </div>
         </div>
       </div>
       <p class="happening-caption" style="padding:0;">Follow <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" style="color:var(--navy)">Fak'ugesi Festival</a> on Facebook for news and updates</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section reveal">
+  <div class="faq-inner">
+    <div class="faq-layout">
+      <div>
+        <h2 class="faq-title-left">FAQ</h2>
+      </div>
+      <div>
+        <div class="faq-items-wrap" id="faqAccordion"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -513,44 +453,98 @@ deploying African knowledge at the highest level of creative and technological a
     <div class="partners-header"><h2 class="partners-title">Our Main Partners</h2></div>
     <div class="partners-grid">
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
-        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+        <a href="https://tshimologong.joburg/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Tshimologong">
+          <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div>
-        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+        <a href="https://www.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits University">
+          <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
-        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+        <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits Digital Dome">
+          <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/></div>
-        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+        <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
+          <div class="partner-logo-box"><img src="/images/image updates/WT New CI Short-03.png" alt="Web Tickets" class="keep-color"/></div>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  const revealEls=document.querySelectorAll('.reveal');
-  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.08});
-  revealEls.forEach(el=>io.observe(el));
+<script src="footer.js"></script>
+<script src="ticker-hover.js"></script>
 
-  document.querySelectorAll('.soc-tab').forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      const feed=tab.dataset.feed;
-      document.querySelectorAll('.soc-tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');
-      document.querySelectorAll('.soc-feed-panel').forEach(p=>p.classList.remove('active'));
-      document.getElementById('feed-'+feed).classList.add('active');
+<script>
+  /* ── REVEAL ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  }), { threshold: 0.08 });
+  revealEls.forEach(el => io.observe(el));
+
+  /* ── SOCIAL TABS ── */
+  document.querySelectorAll('.soc-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const feed = tab.dataset.feed;
+      document.querySelectorAll('.soc-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.soc-feed-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById('feed-' + feed).classList.add('active');
     });
   });
 
-  (function(){
-    var lY=window.scrollY,r=0,t=false,tm=null;
-    function rs(){r=0;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.45s ease';el.style.transform='rotate(0deg)';});}
-    function sp(){if(!t){requestAnimationFrame(()=>{var y=window.scrollY,d=y-lY;if(Math.abs(d)>0){r+=d>0?15:-15;document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.1s linear';el.style.transform='rotate('+r+'deg)';});}lY=y;t=false;clearTimeout(tm);tm=setTimeout(rs,300);});t=true;}}
-    window.addEventListener('scroll',sp,{passive:true});
+  /* ── FAQ ── */
+  const faqData = [
+    { q: 'What is Fak\'ugesi?', a: 'Fak\'ugesi is Africa\'s premier digital innovation festival, held annually at the Tshimologong Digital Innovation Precinct in Johannesburg. Now in its twelfth year, it convenes creatives, technologists, researchers, policymakers, and industry practitioners across five intensive days of programme, exhibition, and exchange.' },
+    { q: 'What does Fak\'ugesi mean?', a: 'Fak\'ugesi is South African township slang for "switch on the electricity." It captures the festival\'s founding spirit: activating energy, illuminating possibility, and connecting people to systems that move things forward.' },
+    { q: 'Who attends?', a: 'The festival draws digital creatives, coders, animators, sound artists, archivists, urban planners, climate technologists, investors, educators, policymakers, and students. The primary audience is 18 to 35. The legacy audience extends to 70. Both are welcome.' },
+    { q: 'Where is it held?', a: 'The main venue is the Tshimologong Digital Innovation Precinct on the campus of Wits University, Johannesburg. The Wits Anglo American Digital Dome hosts the AfriVerse immersive programme. Partner venues are listed on the Venues page.' },
+    { q: 'Is there a cost to attend?', a: 'Ticketing and registration details are available on the Get Tickets page. Some programme elements are open access. Others require registration. Specific pricing is confirmed closer to the festival.' }
+  ];
+  const faqContainer = document.getElementById('faqAccordion');
+  faqData.forEach((faq) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `<button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">+</span></button><div class="faq-ans">${faq.a}</div>`;
+    item.querySelector('.faq-q-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqContainer.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-t-icon').textContent = '+';
+        el.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-t-icon').textContent = '×';
+        item.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'true');
+      }
+    });
+    faqContainer.appendChild(item);
+  });
+
+  /* ── CROSS SPIN ── */
+  (function () {
+    var lY = window.scrollY, r = 0, t = false, tm = null;
+    function rs() { r = 0; document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el => { el.style.transition = 'transform 0.45s ease'; el.style.transform = 'rotate(0deg)'; }); }
+    function sp() {
+      if (!t) {
+        requestAnimationFrame(() => {
+          var y = window.scrollY, d = y - lY;
+          if (Math.abs(d) > 0) {
+            r += d > 0 ? 15 : -15;
+            document.querySelectorAll('.sec-crosses svg,.cross-strip svg,.fug-footer-cross').forEach(el => { el.style.transition = 'transform 0.1s linear'; el.style.transform = 'rotate(' + r + 'deg)'; });
+          }
+          lY = y; t = false; clearTimeout(tm); tm = setTimeout(rs, 300);
+        });
+        t = true;
+      }
+    }
+    window.addEventListener('scroll', sp, { passive: true });
   })();
 
   /* ── THEME INFO TOGGLE ── */
@@ -559,19 +553,9 @@ deploying African knowledge at the highest level of creative and technological a
     var panel = document.getElementById('themeInfoPanel');
     var btn = document.getElementById('viewProgrammeBtn');
     themeInfoOpen = !themeInfoOpen;
-    if (themeInfoOpen) {
-      panel.style.maxHeight = '600px';
-      panel.style.opacity = '1';
-      btn.textContent = 'VIEW PROGRAMME ▴';
-    } else {
-      panel.style.maxHeight = '0';
-      panel.style.opacity = '0';
-      btn.textContent = 'VIEW PROGRAMME ▾';
-    }
+    if (themeInfoOpen) { panel.style.maxHeight = '600px'; panel.style.opacity = '1'; if (btn) btn.textContent = 'VIEW PROGRAMME ▴'; }
+    else { panel.style.maxHeight = '0'; panel.style.opacity = '0'; if (btn) btn.textContent = 'VIEW PROGRAMME ▾'; }
   }
 </script>
-<script src="nav.js"></script>
-<script src="footer.js"></script>
-<script src="ticker-hover.js"></script>
 </body>
 </html>

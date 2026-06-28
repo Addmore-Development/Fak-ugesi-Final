@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JAMZ – High-Octane Animation & Video Game Hackathon – Fak'ugesi Festival</title>
+  <title>JAMZ – Animation & Game Hackathon – Fak'ugesi Festival</title>
   <style>
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Regular.otf') format('opentype'); font-weight:400; font-style:normal; }
     @font-face { font-family:'InterDisplay'; src:url('fonts/InterDisplay-Medium.otf') format('opentype'); font-weight:500; font-style:normal; }
@@ -60,7 +60,7 @@
       position: absolute; inset: 0;
       background-image: url('../images/0A9A0222.JPG');
       background-size: cover; background-position: center 35%;
-      filter: brightness(0.55);
+      filter: brightness(0.50);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
@@ -82,21 +82,22 @@
       text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 14px;
     }
     .hero-title {
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 58px; font-weight: 600; line-height: 1.05;
+      font-size: 52px; font-weight: 700; line-height: 1.05;
       color: #fff; margin-bottom: 20px; max-width: 640px;
     }
     .hero-body {
-      font-size:13px; font-weight: 400; line-height: 1.72;
+      font-size: 13px; font-weight: 400; line-height: 1.72;
       color: rgba(255,255,255,0.85); max-width: 510px; margin-bottom: 20px;
     }
     .hero-dates {
-      font-size:28px; font-weight:400; opacity: 0.9;
+      font-size: 24px; font-weight: 700; letter-spacing: 0.02em;
       color: #fff; margin-bottom: 0;
     }
+    /* Hero logo: right-side, static, aligned to the gap between heading and paragraph */
     .hero-signia {
       flex-shrink: 0; width: auto; max-width: 280px;
-      padding-top: 38px; display: flex;
+      padding-top: 110px;
+      display: flex;
       align-items: flex-start; justify-content: flex-end;
     }
     .hero-signia img {
@@ -166,28 +167,19 @@
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
     /* ══════════════════════════════════════════════
-       WHAT IS JAMZ — about section
+       JAMZ INTRO SECTION (replaces 2025 Winners)
     ══════════════════════════════════════════════ */
-    .about-section {
-      background: #fff; padding: 88px 248px; position: relative; overflow: hidden;
+    .jamz-intro-section {
+      background: #fff; padding: 80px 248px 88px; position: relative; overflow: hidden;
     }
-    .about-layout {
-      display: flex; flex-direction: column; gap: 32px;
+    .jamz-intro-inner { max-width: 720px; }
+    .jamz-intro-title {
+      font-size: 52px; font-weight: 700; color: var(--dark-text);
+      line-height: 1.05; margin-bottom: 28px;
     }
-    .about-eyebrow {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--navy); margin-bottom: 14px; display: block;
+    .jamz-intro-body {
+      font-size: 14px; line-height: 1.78; color: var(--body-gray);
     }
-    .about-title {
-      font-size: 50px; font-weight: 700; color: var(--dark-text); line-height: 1.08; margin-bottom: 0;
-    }
-    .about-body {
-      display: flex; flex-direction: column; max-width: 760px;
-    }
-    .about-body p {
-      font-size: 14px; line-height: 1.85; color: var(--body-gray); margin-bottom: 18px;
-    }
-    .about-body p:last-child { margin-bottom: 0; }
 
     /* ══════════════════════════════════════════════
        CHALLENGE SECTIONS
@@ -200,10 +192,8 @@
       background-size: cover; background-position: center center;
       filter: brightness(0.45);
     }
-    .challenge-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.72) 50%, transparent 85%);
-    }
+    /* No overlay color */
+    .challenge-overlay { display: none; }
     .challenge-inner {
       position: relative; z-index: 3;
       padding: 88px 248px;
@@ -237,33 +227,25 @@
       transition: background 0.22s, color 0.22s, transform 0.18s;
     }
     .challenge-cta:hover { background: var(--navy); color: #fff; border-color: var(--navy); transform: translateY(-1px); }
+    .challenge-apply-link {
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,255,255,0.65); text-decoration: underline;
+      letter-spacing: 0.06em; white-space: nowrap;
+      margin-top: 12px; cursor: pointer;
+      text-underline-offset: 3px; transition: color 0.2s;
+    }
+    .challenge-apply-link:hover { color: #fff; }
+
 
     /* ══════════════════════════════════════════════
-       REQUIREMENTS
-    ══════════════════════════════════════════════ */
-    .req-section { background: var(--navy); padding: 56px 248px; position: relative; }
-    .req-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
-    .req-title { font-size: 52px; font-weight: 700; color: #fff; line-height: 1.0; }
-    .req-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
-    .req-list li {
-      display: flex; gap: 16px; font-size: 11px; font-weight: 400;
-      line-height: 1.65; color: rgba(255,255,255,0.82);
-      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.10);
-    }
-    .req-list li:first-child { border-top: 1px solid rgba(255,255,255,0.10); }
-    .req-num {
-      font-size: 12px; font-weight: 700;
-      color: rgba(255,255,255,0.45); min-width: 22px;
-      flex-shrink: 0; margin-top: 1px;
-    }
-
-    /* ══════════════════════════════════════════════
-       FAQ
+       FAQ — styled like sig-immersive.html
     ══════════════════════════════════════════════ */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
     .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
+    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
     .faq-items-wrap { display: flex; flex-direction: column; }
     .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
@@ -276,68 +258,75 @@
     .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color 0.28s ease, transform 0.3s ease; }
     .faq-item.open .faq-t-icon { transform: rotate(45deg); }
     .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
-    .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
+    .faq-item.open .faq-ans { max-height: 500px; padding: 0 16px 22px; }
+    .faq-apply-link {
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      text-decoration: underline; letter-spacing: 0.06em;
+      display: block; margin-top: 40px; cursor: pointer;
+      text-underline-offset: 3px; transition: opacity 0.2s;
+    }
+    .faq-apply-link:hover { opacity: 0.6; }
 
     /* ══════════════════════════════════════════════
        PARTNERS
     ══════════════════════════════════════════════ */
     .partners-section {
-      background: var(--lavender); padding: 72px 0; position: relative;
+      background: var(--lavender); padding: 0; position: relative;
+      border-top: 1px solid var(--navy);
     }
-    .partners-inner { padding: 0 248px; }
+    .partners-inner { padding: 40px 248px 72px; }
     .partners-header {
       display: flex; justify-content: space-between;
       align-items: center; margin-bottom: 40px;
     }
     .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
-    .partners-link {
-      font-size: 12px; color: var(--navy); font-weight: 600;
-      text-decoration: underline; cursor: pointer; letter-spacing: 0.04em;
-    }
     .partners-view-link {
       font-size: 11px; font-weight: 600; color: var(--navy);
       text-decoration: underline; letter-spacing: 0.06em;
       cursor: pointer; text-underline-offset: 3px; transition: opacity 0.2s;
     }
     .partners-view-link:hover { opacity: 0.6; }
-    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .partner-card { display: flex; flex-direction: column; }
+    .partner-logo-link { display: block; text-decoration: none; }
     .partner-logo-box {
-      background: #fff; border: 1px solid rgba(26,39,68,0.10);
+      background: #fff;
+      border: 1px solid rgba(26,39,68,0.12);
       aspect-ratio: 1 / 1; display: flex; align-items: center;
-      justify-content: center; padding: 32px 28px;
-      transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px;
+      justify-content: center; padding: 40px 32px;
+      transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 14px;
     }
     .partner-card:hover .partner-logo-box {
       box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px);
     }
-    .partner-logo-box img{max-width:100%;max-height:110px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
-    .partner-desc { font-size: 11.5px; font-weight: 400; color: var(--body-gray); line-height: 1.65; }
+    .partner-logo-box img {
+      max-width: 100%; max-height: 120px; object-fit: contain; display: block;
+      filter: brightness(0) saturate(100%) invert(13%) sepia(53%) saturate(780%) hue-rotate(198deg) brightness(82%);
+    }
+    .partner-logo-box img.keep-color { filter: none; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       :root { --band: 48px; }
       .hero { grid-template-columns: 48px 1fr 48px; }
-      .hero-title { font-size:52px; }
-      .about-section { padding: 64px 48px; }
+      .hero-title { font-size: 40px; }
+      .jamz-intro-section { padding: 64px 48px 72px; }
       .challenge-inner { padding: 56px 48px; }
       .req-section { padding: 48px 48px; }
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
-      .partners-inner { padding: 0 48px; }
-      .partners-title { font-size: 32px; }
-      .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
-      .partner-logo-box { padding: 24px 20px; }
+      .partners-inner { padding: 40px 48px 56px; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       :root { --band: 20px; }
       .cross-icon { display: none !important; }
       .hero { display: flex; flex-direction: column; min-height: auto; }
       .hero-content { padding: 90px 24px 48px !important; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
-      .hero-title { font-size:36px; max-width: 100%; }
+      .hero-title { font-size: 32px; max-width: 100%; }
       .hero-signia { max-width: 160px; padding-top: 0; }
-      .about-section { padding: 48px 20px; }
-      .about-title { font-size: 32px; }
+      .jamz-intro-section { padding: 48px 20px 56px; }
+      .jamz-intro-title { font-size: 32px; }
       .challenge-inner { padding: 48px 20px; flex-direction: column; gap: 24px; }
       .challenge-title { font-size: 32px; }
       .req-section { padding: 48px 20px; }
@@ -345,18 +334,14 @@
       .faq-section { padding: 40px 20px 56px; }
       .faq-layout { grid-template-columns: 1fr; gap: 24px; }
       .faq-title-left { font-size: 32px; }
-      .partners-section { padding: 40px 0 48px; }
-      .partners-inner { padding: 0 20px; }
-      .partners-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .partners-inner { padding: 32px 20px 48px; }
       .partners-title { font-size: 26px; }
-      .partners-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-      .partner-logo-box { padding: 20px 16px; }
+      .partners-grid { grid-template-columns: 1fr 1fr; }
       .fug-sig-strip-inner { justify-content: flex-start; }
     }
     @media (max-width: 480px) {
-      .hero-title { font-size:26px; }
-      .partners-title { font-size: 22px; }
-      .partners-grid { grid-template-columns: 1fr 1fr; }
+      .hero-title { font-size: 26px; }
+      .partners-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -372,8 +357,8 @@
     <div class="hero-text-wrapper">
       <p class="hero-eyebrow">Jamz</p>
       <h1 class="hero-title">High-octane Animation &amp; Video Game Hackathon</h1>
-      <p class="hero-body">Fak'ugesi Jamz is the festival's rapid prototyping hackathon environment. Open to practitioners across disciplines, participants gather as teams responding to provocations drawn from the Frequencies, iterating content under strict time constraints. The emphasis is not polish — it is experimentation with genuine stakes.</p>
-      <p class="hero-dates">13 — 17.10.2026</p>
+      <p class="hero-body">Fak'ugesi Jamz is the festival's rapid prototyping hackathon environment. Open to practitioners across disciplines, participants gather as teams responding to provocations drawn from the Frequencies. Working under a strict time constraint, they iterate content. The emphasis is not polish. It is experimentation with genuine stakes.</p>
+      <p class="hero-dates">07 — 12.10.2026</p>
     </div>
     <div class="hero-signia">
       <img src="images/logos/signatureProgrammes/jamz_logo_colour.svg" alt="JAMZ" />
@@ -384,27 +369,27 @@
 <!-- ═══════════════════════════════ TICKER ═══════════════════════════════ -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Applications close in 3 days, 2 hours. Apply now &nbsp;→&nbsp;</span>
-    <span>Applications close in 3 days, 2 hours. Apply now &nbsp;→&nbsp;</span>
-    <span>Applications close in 3 days, 2 hours. Apply now &nbsp;→&nbsp;</span>
-    <span>Applications close in 3 days, 2 hours. Apply now &nbsp;→&nbsp;</span>
-    <span>Applications close in 3 days, 2 hours. Apply now &nbsp;→&nbsp;</span>
-    <span>Applications close in 3 days, 2 hours. Apply now &nbsp;→&nbsp;</span>
-    <span>Applications close in 3 days, 2 hours. Apply now &nbsp;→&nbsp;</span>
-    <span>Applications close in 3 days, 2 hours. Apply now &nbsp;→&nbsp;</span>
+    <span>TAKE PART IN JAMZ ANIMATION + GAME HACKATHON &nbsp;→&nbsp;</span>
+    <span>TAKE PART IN JAMZ ANIMATION + GAME HACKATHON &nbsp;→&nbsp;</span>
+    <span>TAKE PART IN JAMZ ANIMATION + GAME HACKATHON &nbsp;→&nbsp;</span>
+    <span>TAKE PART IN JAMZ ANIMATION + GAME HACKATHON &nbsp;→&nbsp;</span>
+    <span>TAKE PART IN JAMZ ANIMATION + GAME HACKATHON &nbsp;→&nbsp;</span>
+    <span>TAKE PART IN JAMZ ANIMATION + GAME HACKATHON &nbsp;→&nbsp;</span>
+    <span>TAKE PART IN JAMZ ANIMATION + GAME HACKATHON &nbsp;→&nbsp;</span>
+    <span>TAKE PART IN JAMZ ANIMATION + GAME HACKATHON &nbsp;→&nbsp;</span>
   </div>
 </div>
 
 <!-- ═══════════════════════════════ SIG NAV ═══════════════════════════════ -->
 <nav class="fug-sig-strip">
- <div class="fug-sig-strip-inner">
+  <div class="fug-sig-strip-inner">
     <a class="fug-sig-item" href="sig-awards.html">
       <img src="images/logos/signatureProgrammes/awards_logo_light.svg" alt="Awards" style="height:38px;"/>
     </a>
     <a class="fug-sig-item" href="sig-dalakhona.html">
       <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona" style="height:38px;"/>
     </a>
-    <a class="fug-sig-item" href="sig-fakugesipro.html">
+    <a class="fug-sig-item" href="sig-fakugesiPRO.html">
       <img src="images/logos/signatureProgrammes/pro_logo_logo_light.svg" alt="PRO" style="height:34px;"/>
     </a>
     <a class="fug-sig-item" href="sig-immersive.html">
@@ -419,30 +404,18 @@
   </div>
 </nav>
 
-<!-- ═══════════════════════════════ WHAT IS JAMZ ═══════════════════════════════ -->
-<section class="about-section reveal">
+<!-- ═══════════════════════════════ JAMZ INTRO ═══════════════════════════════ -->
+<section class="jamz-intro-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="cross-icon" style="top:20px;right:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
-
-  <div class="about-layout">
-    <div>
-      <span class="about-eyebrow">About the Programme</span>
-      <h2 class="about-title">What is Jamz?</h2>
-    </div>
-    <div class="about-body">
-      <p>Fak'ugesi Jamz is the festival's high-pressure, rapid-prototyping environment — a space where makers stop talking about ideas and start building them. Structured around tight time constraints and open provocations, Jamz brings together practitioners from animation, game development, design, and digital art to collaborate under real creative pressure.</p>
-      <p>This year’s animation Jam presented by Mollo Animation Academy and Studio will run in a structured heats 
-format, with teams progressing through rounds and the strongest work advancing to a final showdown.  
-[CONTENT NOTE: Duration per strand to be confirmed. Update before launch.] </p>
-      <p>Participants test unfinished ideas publicly, collaborate across disciplines, and pursue concepts that would 
-be difficult to realise inside traditional production structures. </p>
-    </div>
+  <div class="jamz-intro-inner">
+    <h2 class="jamz-intro-title">Jamz: A Frequency of Gathering</h2>
+    <p class="jamz-intro-body">The festival's high-pressure, rapid-prototyping environment is a space where makers stop talking about ideas and start building them. Structured around tight time constraints and open provocations, Jamz brings together practitioners from animation, game development, design, and digital art to collaborate under real creative pressure. <br/>Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure. Provocations are drawn from the Festival Frequencies: Memory Engines, Imagination Engines, and Future Engines.</p>
   </div>
-
   <div class="cross-icon" style="bottom:20px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
@@ -454,104 +427,136 @@ be difficult to realise inside traditional production structures. </p>
 <!-- ═══════════════════════════════ 2026 ANIMATION CHALLENGE ═══════════════════════════════ -->
 <section class="challenge-section reveal">
   <div class="challenge-bg" style="background-image:url('../images/trailer.png');"></div>
-  <div class="challenge-overlay"></div>
   <div class="challenge-inner">
     <div class="challenge-content">
       <h2 class="challenge-title">2026 Animation<br>Challenge</h2>
-      <p class="challenge-sub-label">Single elimination animation tournament</p>
-      <h3 class="challenge-sub-title">Open to All Career Stages</h3>
-      <p class="challenge-body">Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure. Provocations are drawn from the three Frequencies: Memory Engines, Imagination Engines, and Future Engines.</p>
+      <p class="challenge-sub-label">A multi-round elimination animation tournament</p>
+      <h3 class="challenge-sub-title">Tournament of Power</h3>
+      <p class="challenge-body">This year's Animation Jam, presented by Mollo Animation Academy and Studio, adopts a structured heats format that mirrors the pace and pressure of professional production environments. Teams will compete through successive rounds of creative challenges, responding to new briefs, technical constraints and limited production time. At the end of each round, selected teams will advance, culminating in a final showcase where the strongest concepts, execution and collaboration will determine the overall winner.</p>
       <a class="challenge-cta" href="get-involved.html">GET INVOLVED</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ 2026 VIDEO GAME CHALLENGE ═══════════════════════════════ -->
+<!-- ═══════════════════════════════ 2026 GAMING CHALLENGE ═══════════════════════════════ -->
 <section class="challenge-section reveal">
   <div class="challenge-bg" style="background-image:url('../images/ruka.jpg');background-position:center 20%;"></div>
-  <div class="challenge-overlay"></div>
   <div class="challenge-inner">
     <div class="challenge-content">
-      <h2 class="challenge-title">2026 Video Game<br>Challenge</h2>
-      <p class="challenge-sub-label">Esports league</p>
-      <h3 class="challenge-sub-title">Open to All Career Stages</h3>
-      <p class="challenge-body">Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure. Provocations are drawn from the three Frequencies: Memory Engines, Imagination Engines, and Future Engines.</p>
+      <h2 class="challenge-title">2026 Gaming<br>Challenge</h2>
+      <p class="challenge-sub-label">Competitive Development League</p>
+      <h3 class="challenge-sub-title">For the love of making games</h3>
+      <p class="challenge-body">This challenge brings together developers, designers, artists, writers and audio creators to build original playable games within a live competition format. Working in multidisciplinary teams, participants respond to themed briefs, develop prototypes under strict time constraints and present their work to a panel of industry judges. The challenge rewards creativity, technical execution, collaboration and the ability to transform ambitious ideas into compelling playable experiences.</p>
       <a class="challenge-cta" href="get-involved.html">GET INVOLVED</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ REQUIREMENTS ═══════════════════════════════ -->
-<section class="req-section reveal">
-  <div class="req-top">
-    <h2 class="req-title">Requirements</h2>
-  </div>
-  <ol class="req-list">
-    <li>
-      <span class="req-num">1.</span>
-      <span>Fak'ugesi Jamz is open to practitioners across disciplines and career stages. You do not need to be an experienced professional to participate.</span>
-    </li>
-    <li>
-      <span class="req-num">2.</span>
-      <span>The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure. Participants work in teams responding to provocations drawn from the Frequencies.</span>
-    </li>
-    <li>
-      <span class="req-num">3.</span>
-      <span>This year's animation Jam is presented by Mollo Animation Academy and Studio and runs in a structured heats format, with teams progressing through rounds to a final showdown.</span>
-    </li>
-    <li>
-      <span class="req-num">4.</span>
-      <span>Duration per strand to be confirmed. Sign up to the newsletter to be notified when applications open.</span>
-    </li>
-  </ol>
-</section>
 
 <!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
 <section class="faq-section reveal">
 
+  <div class="cross-icon" style="top:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;left:50%;transform:translateX(-50%);">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+  <div class="cross-icon" style="top:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+
   <div class="faq-layout">
     <div>
       <h2 class="faq-title-left">FAQ</h2>
-      <p class="faq-intro-text">Common questions about Jamz participation, format, and what to expect on the day.</p>
     </div>
     <div>
-      <div class="faq-items-wrap" id="faqAccordion"></div>
+      <div class="faq-items-wrap" id="faqAccordion">
+
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false">
+            <span class="faq-q-text">What is a Jam?</span>
+            <span class="faq-t-icon">+</span>
+          </button>
+          <div class="faq-ans">A time-constrained collaborative structured process structured with an open outcome. Not workshop, it is a working environment with real pressure and real results.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false">
+            <span class="faq-q-text">What is Mollo Animation Academy and Studio?</span>
+            <span class="faq-t-icon">+</span>
+          </button>
+          <div class="faq-ans">A Johannesburg-based training and production hub, Mollo Animation Academy and Studio develops emerging African animators through paid internships, industry-focused skills development, and studio projects. Operating through the Tshimologong Digital Innovation Precinct, it combines world-class animation training with authentic African storytelling, helping artists build careers in the global animation industry.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false">
+            <span class="faq-q-text">Do I need to be an experienced practitioner to participate?</span>
+            <span class="faq-t-icon">+</span>
+          </button>
+          <div class="faq-ans">No. Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure.</div>
+        </div>
+
+      </div>
     </div>
+  </div>
+
+  <div class="cross-icon" style="bottom:16px;left:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;left:50%;transform:translateX(-50%);">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
+  </div>
+  <div class="cross-icon" style="bottom:16px;right:200px;">
+    <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 
 </section>
 
-<!-- ═══════════════════════════════ PARTNERS ═══════════════════════════════ -->
+<!-- ═══════════════════════════════ OUR MAIN PARTNERS ═══════════════════════════════ -->
 <section class="partners-section reveal">
   <div class="partners-inner">
     <div class="partners-header">
-      <h2 class="partners-title">Our Jamz Partners</h2>
+      <h2 class="partners-title">Our Main Partners</h2>
     </div>
     <div class="partners-grid">
+
+      <!-- 1 — Tshimologong -->
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" />
-        </div>
-        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+        <a href="https://tshimologong.joburg/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Tshimologong">
+          <div class="partner-logo-box">
+            <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/>
+          </div>
+        </a>
       </div>
+
+      <!-- 2 — Wits -->
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
-        </div>
-        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+        <a href="https://www.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits University">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
+          </div>
+        </a>
       </div>
+
+      <!-- 3 — Digital Dome -->
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" />
-        </div>
-        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+        <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits Digital Dome">
+          <div class="partner-logo-box">
+            <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/>
+          </div>
+        </a>
       </div>
+
+      <!-- 4 — Web Tickets -->
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/>
-        </div>
-        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+        <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
+          <div class="partner-logo-box">
+            <img src="/images/image updates/WT New CI Short-03.png" alt="Web Tickets" class="keep-color"/>
+          </div>
+        </a>
       </div>
+
     </div>
   </div>
 </section>
@@ -566,35 +571,26 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/* ── FAQ ── */
-const faqData = [
-  { q: 'Do I need to be an experienced practitioner to participate?', a: 'No. Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure.' },
-  { q: 'What is Mollo Animation Academy and Studio?', a: 'A Johannesburg-based training and production hub that develops emerging African animators through paid internships, industry-focused skills development, and studio projects. Operating through the Tshimologong Digital Innovation Precinct.' },
-  { q: 'Do I need to bring my own equipment?', a: 'A laptop with your preferred software installed is recommended. Limited shared workstations may be available on-site — sign up to the newsletter for confirmed details closer to the event.' },
-  { q: 'Can I enter as an individual rather than a team?', a: 'You can apply individually and be matched into a team during the opening session, or apply together with collaborators you already work with.' },
-  { q: 'What happens to the work created during Jamz?', a: 'Teams retain ownership of what they create. Selected projects may be featured in festival showcases and promotional material, with credit given to all contributors.' }
-];
-
-const faqContainer = document.getElementById('faqAccordion');
-faqData.forEach((faq, i) => {
-  const item = document.createElement('div');
-  item.className = 'faq-item';
-  item.innerHTML = `<button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
-  item.querySelector('.faq-q-btn').addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    faqContainer.querySelectorAll('.faq-item').forEach(el => {
-      el.classList.remove('open');
-      el.querySelector('.faq-t-icon').textContent = '+';
-      el.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'false');
+/* ── FAQ ACCORDION ── */
+(function() {
+  const faqContainer = document.getElementById('faqAccordion');
+  if (!faqContainer) return;
+  faqContainer.querySelectorAll('.faq-item').forEach((item) => {
+    item.querySelector('.faq-q-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqContainer.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-t-icon').textContent = '+';
+        el.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-t-icon').textContent = '×';
+        item.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'true');
+      }
     });
-    if (!isOpen) {
-      item.classList.add('open');
-      item.querySelector('.faq-t-icon').textContent = '×';
-      item.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'true');
-    }
   });
-  faqContainer.appendChild(item);
-});
+})();
 
 /* ── CROSS ICON SCROLL SPIN ── */
 (function () {

@@ -40,15 +40,17 @@
 
     /* ── HERO ── */
     .hero { position: relative; width: 100%; min-height: 520px; overflow: hidden; display: flex; align-items: flex-end; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('images/Copy_of__MGL3584.jpg'); background-size: cover; background-position: center 10%; filter: brightness(0.55); transform: scaleX(-1); }
-    .hero-overlay { position: absolute; inset: 0; background: transparent; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('images/image updates/Copy of 0A9A2679.JPG'); background-size: cover; background-position: center 10%; filter: brightness(0.55); }
+   
     .hero-inner { position: relative; z-index: 3; width: 100%; padding: 120px var(--band) 52px; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero-top-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 14px; }
     .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; color: var(--white); font-family: 'InterDisplay', sans-serif; }
     .hero-logo { position: absolute; bottom: 165px; right: var(--band); flex-shrink: 0; display: flex; align-items: flex-start; justify-content: center; z-index: 4; }
     .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); mix-blend-mode: screen; }
     .hero-title { font-size: 50px; font-weight: 600; line-height: 1.0; color: var(--white); margin-bottom: 20px; font-family: 'InterDisplay', sans-serif; max-width: calc(100% - 180px); }
-    .hero-body { font-size: 13px; line-height: 1.72; max-width: 480px; opacity: 0.85; margin-bottom: 20px; color: var(--white); font-family: 'InterDisplay', sans-serif; }
+    .hero-body { font-size: 13px; line-height: 1.72; max-width: 480px; opacity: 1; margin-bottom: 0; color: var(--white); font-family: 'InterDisplay', sans-serif; }
+    .hero-body p { margin-bottom: 6px; }
+    .hero-body .hero-tagline { margin-top: 16px; font-style: italic; opacity: 1; }
     .hero-dates { font-size: 28px; font-weight: 400; opacity: 0.9; color: var(--white); font-family: 'InterDisplay', sans-serif; letter-spacing: 0.01em; }
 
     /* ── WHO WE ARE ── */
@@ -61,16 +63,6 @@
     .who-body p { margin-top: 0; }
     .who-body-paragraph { margin-top: 40px; }
 
-    /* ── IMAGE STRIP ── */
-    .img-strip-section { background: var(--white); overflow: hidden; position: relative; }
-    .img-strip { display: flex; gap: 16px; width: max-content; animation: stripScroll 60s linear infinite; }
-    .img-strip:hover { animation-play-state: paused; }
-    @keyframes stripScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .strip-img-item { flex: 0 0 380px; height: 380px; overflow: hidden; }
-    .strip-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .crosses-bar-3 { display: flex; justify-content: space-between; padding: 22px 200px; }
-    .crosses-bar-3 svg { width: 18px; height: 18px; }
-
     /* ── PREVIOUS EDITIONS ── */
     .editions-section { background: var(--lavender); padding: 0 0 60px; position: relative; overflow: hidden; }
     .editions-header { padding: 52px 248px 36px; display: flex; align-items: center; justify-content: space-between; }
@@ -78,39 +70,37 @@
     .editions-nav { display: flex; align-items: center; gap: 16px; }
     .editions-nav button { background: none; border: none; cursor: pointer; font-size: 22px; color: var(--dark-text); padding: 4px 8px; transition: opacity 0.2s; font-family: 'InterDisplay', sans-serif; }
     .editions-nav button:hover { opacity: 0.5; }
-    .editions-strip-outer { overflow: hidden; padding: 0; }
+    .editions-strip-outer { overflow: hidden; padding: 0 0 0 6px; }
     .editions-strip { display: flex; gap: 20px; width: max-content; padding: 0; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
     .edition-card { flex: 0 0 300px; cursor: pointer; border: 1px solid rgba(26,39,68,0.1); transition: transform 0.3s, box-shadow 0.3s; }
     .edition-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,39,68,0.12); }
     .edition-img { width: 300px; height: 420px; overflow: hidden; background: #fff; }
     .edition-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
     .edition-meta { padding: 16px 16px 20px; }
-    .edition-top-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
-    .edition-dates, .edition-year { font-size: 12px; color: var(--body-gray); }
-    .edition-name { font-size: 20px; font-weight: 700; color: var(--dark-text); margin-bottom: 10px; }
+    .edition-top-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .edition-year { font-size: 13px; font-weight: 700; color: var(--dark-text); letter-spacing: 0.05em; }
+    .edition-name { font-size: 14px; font-weight: 600; color: var(--dark-text); margin-bottom: 0; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.04em; }
     .edition-desc { font-size: 12.5px; color: var(--body-gray); line-height: 1.65; }
 
     /* ── THE TEAM ── */
     .team-section { background: var(--white); padding: 0 0 72px; position: relative; }
     .team-crosses-top { display: flex; justify-content: space-between; padding: 22px 200px; }
     .team-crosses-top svg { width: 18px; height: 18px; }
-    .team-inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    .team-inner { padding: 0 248px; }
     .team-title { font-size: 46px; font-weight: 900; color: var(--dark-text); margin-bottom: 36px; }
     .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .team-grid-row2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .team-grid-row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .team-grid-row4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
     .team-card { border: 1px solid rgba(26,39,68,0.15); overflow: hidden; }
-    .team-img { width: 100%; aspect-ratio: 3/2.4; overflow: hidden; perspective: 1200px; }
-    .team-img-flip { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
-    .team-card:hover .team-img-flip { transform: rotateY(180deg); }
-    .team-img-face { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-    .team-img-face img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-    .team-img-front { transform: rotateY(0deg); }
-    .team-img-back { transform: rotateY(180deg); background: var(--lavender); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .team-img-back img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .team-img { width: 100%; aspect-ratio: 3/2.4; overflow: hidden; }
+    .team-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .team-info { background: var(--lavender); padding: 12px 14px 16px; }
     .team-name { font-size: 26px; font-weight: 500; color: var(--dark-text); line-height: 1.2; margin-bottom: 6px; }
     .team-role { font-size: 18px; font-weight: 500; color: var(--dark-text); margin-bottom: 6px; }
     .team-email { font-size: 11px; color: var(--body-gray); }
+    .team-email a { color: var(--body-gray); text-decoration: none; }
+    .team-email a:hover { text-decoration: underline; }
 
     /* ── GET IN TOUCH ── */
     .contact-section { background: var(--navy); padding: 64px 248px 72px; position: relative; }
@@ -134,9 +124,7 @@
     .form-textarea { min-height: 160px; resize: vertical; }
     .form-full { margin-bottom: 14px; }
 
-    /* ══════════════════════════════════════════════
-       PARTNERS — matched to sig-awards.html exactly
-    ══════════════════════════════════════════════ */
+    /* ── PARTNERS ── */
     .partners-section {
       background: var(--lavender);
       padding: 0;
@@ -152,6 +140,7 @@
       gap: 20px;
     }
     .partner-card { display: flex; flex-direction: column; }
+    .partner-logo-link { display: block; text-decoration: none; }
     .partner-logo-box {
       background: var(--white);
       border: 1px solid rgba(26,39,68,0.12);
@@ -186,13 +175,13 @@
       :root { --band: 48px; }
       .hero-inner { padding: 80px 48px 48px; }
       .hero-title { font-size: 40px; max-width: calc(100% - 140px); }
-      .hero-dates { font-size: 24px; }
       .hero-logo { bottom: 120px; right: 48px; }
       .hero-logo img { height: 80px; }
-      .crosses-bar,.crosses-bar-3,.team-crosses-top { padding: 18px 48px; }
+      .crosses-bar,.team-crosses-top { padding: 18px 48px; }
       .who-layout { padding: 0 48px 48px; }
       .who-title { font-size: 38px; }
       .editions-header { padding: 40px 48px 28px; }
+      .editions-strip-outer { padding: 0 0 0 6px; }
       .editions-title { font-size: 36px; }
       .team-inner { padding: 0 48px; }
       .team-title { font-size: 36px; margin-bottom: 28px; }
@@ -215,22 +204,22 @@
       .hero-logo { bottom: 120px; right: 20px; top: auto; }
       .hero-logo img { height: 60px; }
       .hero-title { font-size: 28px; margin-bottom: 14px; max-width: calc(100% - 90px); }
-      .hero-body { font-size: 12px; max-width: 100%; margin-bottom: 14px; }
-      .hero-dates { font-size: 22px; }
-      .crosses-bar,.crosses-bar-3,.team-crosses-top { padding: 14px 20px; }
+      .hero-body { font-size: 12px; max-width: 100%; margin-bottom: 0; }
+      .crosses-bar,.team-crosses-top { padding: 14px 20px; }
       .who-layout { padding: 0 20px 40px; }
       .who-title { font-size: 32px; margin-bottom: 20px; }
       .who-body { font-size: 13px; line-height: 1.7; }
-      .strip-img-item { flex: 0 0 240px; height: 240px; }
       .editions-header { padding: 32px 20px 20px; }
+      .editions-strip-outer { padding: 0 0 0 6px; }
       .editions-title { font-size: 28px; }
       .editions-strip { gap: 14px; }
       .edition-card { flex: 0 0 240px; }
       .edition-img { width: 240px; height: 350px; }
       .team-inner { padding: 0 20px; }
       .team-title { font-size: 28px; margin-bottom: 20px; }
-      .team-grid,.team-grid-row2 { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .team-grid-row2 { margin-top: 12px; }
+      .team-grid,.team-grid-row2,.team-grid-row3 { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .team-grid-row2,.team-grid-row3 { margin-top: 12px; }
+      .team-grid-row4 { grid-template-columns: 1fr 1fr; margin-top: 12px; }
       .team-name { font-size: 23px; }
       .team-role { font-size: 15px; }
       .team-email { font-size: 9.5px; word-break: break-all; }
@@ -254,15 +243,14 @@
 
     @media (max-width: 480px) {
       .hero-title { font-size: 24px; }
-      .hero-dates { font-size: 19px; }
       .who-title { font-size: 26px; }
       .editions-title { font-size: 24px; }
       .team-title { font-size: 24px; }
-      .team-grid,.team-grid-row2 { grid-template-columns: 1fr; }
+      .team-grid,.team-grid-row2,.team-grid-row3 { grid-template-columns: 1fr; }
+      .team-grid-row4 { grid-template-columns: 1fr; }
       .contact-title { font-size: 24px; }
       .partners-title { font-size: 22px; }
       .partners-grid { grid-template-columns: 1fr 1fr; }
-      .strip-img-item { flex: 0 0 200px; height: 200px; }
       .edition-card { flex: 0 0 200px; }
       .edition-img { width: 200px; height: 290px; }
     }
@@ -285,22 +273,40 @@
       </div>
     </div>
     <h1 class="hero-title">Fak'ugesi African Digital<br>&amp; Innovation Festival</h1>
-    <p class="hero-body">Fak'ugesi African Digital Innovation Festival is a cross-disciplinary innovation platform operating at the intersection of African imagination and systemic technological practice. Founded in 2014 at the Tshimologong Digital Innovation Precinct, Wits University, Johannesburg.</p>
-    <p class="hero-dates">13 — 17.10.2026</p>
+    <div class="hero-body">
+      <p>Fak'ugesi exists to switch on ideas at the intersection of imagination and innovation. The Festival brings together African and international creatives, technologists, researchers and innovators to build, question and share new forms of digital and innovation practice.</p>
+      <p class="hero-tagline">Grounded locally.<br>Connected continentally,<br>Relevant globally.</p>
+    </div>
   </div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>View venues and map &nbsp;→&nbsp;</span>
-    <span>View venues and map &nbsp;→&nbsp;</span>
-    <span>View venues and map &nbsp;→&nbsp;</span>
-    <span>View venues and map &nbsp;→&nbsp;</span>
-    <span>View venues and map &nbsp;→&nbsp;</span>
-    <span>View venues and map &nbsp;→&nbsp;</span>
-    <span>View venues and map &nbsp;→&nbsp;</span>
-    <span>View venues and map &nbsp;→&nbsp;</span>
+    <span>TICKETS ON SALE NOW</span>
+    <span>•</span>
+    <span>EARLY BIRD PRICING</span>
+    <span>•</span>
+    <span>13–17 OCTOBER 2026</span>
+    <span>•</span>
+    <span>JOHANNESBURG</span>
+    <span>•</span>
+    <span>AFRICAN IMAGINARIES</span>
+    <span>•</span>
+    <span>FAK'UGESI 2026</span>
+    <span>•</span>
+    <span>TICKETS ON SALE NOW</span>
+    <span>•</span>
+    <span>EARLY BIRD PRICING</span>
+    <span>•</span>
+    <span>13–17 OCTOBER 2026</span>
+    <span>•</span>
+    <span>JOHANNESBURG</span>
+    <span>•</span>
+    <span>AFRICAN IMAGINARIES</span>
+    <span>•</span>
+    <span>FAK'UGESI 2026</span>
+    <span>•</span>
   </div>
 </div>
 
@@ -311,39 +317,16 @@
     <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   </div>
   <div class="who-layout">
-    <h2 class="who-title">Who we are</h2>
+    <h2 class="who-title">Who We Are</h2>
     <div class="who-body">
-      <p>Fak'ugesi African Digital Innovation Festival is a cross-disciplinary innovation platform operating at the intersection of African imagination and systemic technological practice. Founded in 2014 at the Tshimologong Digital Innovation Precinct, Wits University, Johannesburg, it has run for twelve consecutive editions, each one a public test of what African digital practice can produce and where it can go.</p>
+      <p>Fak'ugesi is derived from urban Zulu slang. Literally, it means "switch on the electricity" or "give it power."</p>
       <br />
-      <p class="who-body-paragraph">The festival convenes practitioners who build without waiting for permission or precedent. Creatives, coders, archivists, urban planners, climate technologists, sound artists, researchers, and policy professionals gather to build, test, exhibit, and release work that matters well beyond the five days of the festival. Fak'ugesi does not describe the African digital future. It is a working environment in which that future is actively constructed.The distinction is not rhetorical. It determines everything about how the programme is 
-designed, who is invited to participate, and what counts as a meaningful outcome. 
-<br>Twelve editions.</br>
-<br>Twelve years of public experimentation.</br>
-<br>Founded 2014  ·  Tshimologong Digital Innovation Precinct  ·  Wits University  ·  Johannesburg</br></p>
+      <p>That meaning captures the festival's purpose. Since 2014, Fak'ugesi African Digital &amp; Innovation Festival has brought together artists, technologists, researchers, designers, entrepreneurs and cultural practitioners to activate ideas, exchange knowledge, build collaborations and share new work.</p>
+      <br />
+      <p>Founded through the Wits Schools of Arts (WSOA), the Festival found its home at the Tshimologong Digital Innovation Precinct. Fak'ugesi is the continent's premier platform for African digital innovation, creating the conditions for new practices, technologies and cultural conversations to emerge.</p>
+      <br />
+      <p>Twelve editions.<br>Twelve years of adding power to African digital practice.</p>
     </div>
-  </div>
-</section>
-
-<!-- IMAGE STRIP -->
-<section class="img-strip-section">
-  <div class="img-strip">
-    <div class="strip-img-item"><img src="images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/_MGL7139.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/Copy_of__MGL4129.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/_C6A0500.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/Copy_of__MGL3584.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/Copy_of__MGL0176.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/_MGL7139.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/Copy_of__MGL4129.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/_C6A0500.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/Fak_ugesi_2025-32.jpg" alt="Festival" /></div>
-    <div class="strip-img-item"><img src="images/Copy_of__MGL3584.jpg" alt="Festival" /></div>
-  </div>
-  <div class="crosses-bar-3">
-    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
-    <div class="cross-icon cross-icon--navy" style="position:relative;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.3)" stroke-width="1.5"/></svg></div>
   </div>
 </section>
 
@@ -358,15 +341,15 @@ designed, who is invited to participate, and what counts as a meaningful outcome
   </div>
   <div class="editions-strip-outer">
     <div class="editions-strip" id="editionsStrip">
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2017_Poster.jpg" alt="Fak'ugesi 2017" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2017</span></div><div class="edition-name">2017 Edition</div></div></div>
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2018_Poster.jpg" alt="Fak'ugesi 2018" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2018</span></div><div class="edition-name">2018 Edition</div></div></div>
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2019_Poster.jpg" alt="Fak'ugesi 2019" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2019</span></div><div class="edition-name">2019 Edition</div></div></div>
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2020_Poster.png" alt="Fak'ugesi 2020" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2020</span></div><div class="edition-name">2020 Edition</div></div></div>
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2021_Poster.jpg" alt="Fak'ugesi 2021" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2021</span></div><div class="edition-name">2021 Edition</div></div></div>
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2022_Poster.png" alt="Fak'ugesi 2022" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2022</span></div><div class="edition-name">2022 Edition</div></div></div>
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2023_Poster.jpg" alt="Fak'ugesi 2023" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2023</span></div><div class="edition-name">2023 Edition</div></div></div>
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2024_Poster.jpg" alt="Fak'ugesi 2024" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2024</span></div><div class="edition-name">2024 Edition</div></div></div>
-      <div class="edition-card"><div class="edition-img"><img src="images/posters/2025_Poster.png" alt="Fak'ugesi 2025" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2025</span></div><div class="edition-name">2025 Edition</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2017_Poster.jpg" alt="Fak'ugesi 2017" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2017</span></div><div class="edition-name">Brave Tech Hearts Beats as One</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2018_Poster.jpg" alt="Fak'ugesi 2018" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2018</span></div><div class="edition-name">Tap Your Afro Source Code</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2019_Poster.jpg" alt="Fak'ugesi 2019" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2019</span></div><div class="edition-name">Own Your Force</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2020_Poster.png" alt="Fak'ugesi 2020" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2020</span></div><div class="edition-name">Power to the Pixel</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2021_Poster.jpg" alt="Fak'ugesi 2021" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2021</span></div><div class="edition-name">Build Coz You Have To</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2022_Poster.png" alt="Fak'ugesi 2022" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2022</span></div><div class="edition-name">From Now On</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2023_Poster.jpg" alt="Fak'ugesi 2023" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2023</span></div><div class="edition-name">More Flow</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2024_Poster.jpg" alt="Fak'ugesi 2024" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2024</span></div><div class="edition-name">Until Unlocked</div></div></div>
+      <div class="edition-card"><div class="edition-img"><img src="images/posters/2025_Poster.png" alt="Fak'ugesi 2025" /></div><div class="edition-meta"><div class="edition-top-row"><span class="edition-year">2025</span></div><div class="edition-name">Power Surge</div></div></div>
     </div>
   </div>
 </section>
@@ -379,16 +362,111 @@ designed, who is invited to participate, and what counts as a meaningful outcome
   </div>
   <div class="team-inner">
     <h2 class="team-title">The Team</h2>
+
+    <!-- Row 1: 3 cards -->
     <div class="team-grid">
-      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Alby Michaels" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Alby%20Michaels&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Alby Michaels avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Alby<br>Michaels</div><div class="team-role">Festival Director</div><div class="team-email">alby@tshimologong.joburg</div></div></div>
-      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Programme%20Manager&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Programme Manager</div><div class="team-email">info@fakugesi.co.za</div></div></div>
-      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Communications&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Communications</div><div class="team-email">info@fakugesi.co.za</div></div></div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Alby Michaels" /></div>
+        <div class="team-info">
+          <div class="team-name">Alby<br>Michaels</div>
+          <div class="team-role">Festival Director</div>
+          <div class="team-email"><a href="mailto:alby@tshimologong.joburg">alby@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Blythe Stuart Linger" /></div>
+        <div class="team-info">
+          <div class="team-name">Blythe<br>Stuart Linger</div>
+          <div class="team-role">Associate Producer</div>
+          <div class="team-email"><a href="mailto:blythe@tshimologong.joburg">blythe@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Erika Denis" /></div>
+        <div class="team-info">
+          <div class="team-name">Erika<br>Denis</div>
+          <div class="team-role">CCI Specialist</div>
+          <div class="team-email"><a href="mailto:erika@tshimologong.joburg">erika@tshimologong.joburg</a></div>
+        </div>
+      </div>
     </div>
+
+    <!-- Row 2: 3 cards -->
     <div class="team-grid-row2">
-      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Production%20Lead&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Production Lead</div><div class="team-email">info@fakugesi.co.za</div></div></div>
-      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Sponsorships&backgroundColor=1a2744&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Sponsorships</div><div class="team-email">info@fakugesi.co.za</div></div></div>
-      <div class="team-card"><div class="team-img"><div class="team-img-flip"><div class="team-img-face team-img-front"><img src="images/Alby 2.png" alt="Team member" /></div><div class="team-img-face team-img-back"><img src="https://api.dicebear.com/9.x/initials/svg?seed=Digital%20Creative&backgroundColor=2a3f72&textColor=ffffff&fontWeight=600" alt="Team member avatar placeholder" /></div></div></div><div class="team-info"><div class="team-name">Team<br>Member</div><div class="team-role">Digital &amp; Creative</div><div class="team-email">info@fakugesi.co.za</div></div></div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Avuzwa Ntshongwana" /></div>
+        <div class="team-info">
+          <div class="team-name">Avuzwa<br>Ntshongwana</div>
+          <div class="team-role">Programme Manager</div>
+          <div class="team-email"><a href="mailto:avuzwa@tshimologong.joburg">avuzwa@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Sam Gillham" /></div>
+        <div class="team-info">
+          <div class="team-name">Sam<br>Gillham</div>
+          <div class="team-role">Graphic Designer</div>
+          <div class="team-email"><a href="mailto:Samuel.Gillham@gmail.com">Samuel.Gillham@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Resego Matshediso" /></div>
+        <div class="team-info">
+          <div class="team-name">Resego<br>Matshediso</div>
+          <div class="team-role">Administrator</div>
+          <div class="team-email"><a href="mailto:resego@tshimologong.joburg">resego@tshimologong.joburg</a></div>
+        </div>
+      </div>
     </div>
+
+    <!-- Row 3: 3 cards -->
+    <div class="team-grid-row3">
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Mqalatjie Moretsele" /></div>
+        <div class="team-info">
+          <div class="team-name">Mqalatjie<br>Moretsele</div>
+          <div class="team-role">Project Manager</div>
+          <div class="team-email"><a href="mailto:mqalatjie@tshimologong.joburg">mqalatjie@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Diane Walker" /></div>
+        <div class="team-info">
+          <div class="team-name">Diane<br>Walker</div>
+          <div class="team-role">Project Manager</div>
+          <div class="team-email"><a href="mailto:diane@tshimologong.joburg">diane@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Edson Vilankulo" /></div>
+        <div class="team-info">
+          <div class="team-name">Edson<br>Vilankulo</div>
+          <div class="team-role">Marketing Coordinator</div>
+          <div class="team-email"><a href="mailto:edson@tshimologong.joburg">edson@tshimologong.joburg</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: 2 cards -->
+    <div class="team-grid-row4">
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Stanley Moloto" /></div>
+        <div class="team-info">
+          <div class="team-name">Stanley<br>Moloto</div>
+          <div class="team-role">Web Master</div>
+          <div class="team-email"><a href="mailto:stanley@tshimologong.joburg">stanley@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="Ashraf Johaardien" /></div>
+        <div class="team-info">
+          <div class="team-name">Ashraf<br>Johaardien</div>
+          <div class="team-role">Resident Festival Writer</div>
+          <div class="team-email"><a href="mailto:ashrafjohaardien@me.com">ashrafjohaardien@me.com</a></div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <div class="cross-icon cross-icon--navy" style="bottom:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon cross-icon--navy" style="bottom:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -398,7 +476,7 @@ designed, who is invited to participate, and what counts as a meaningful outcome
 <section class="contact-section">
   <div class="contact-layout">
     <div class="contact-left">
-      <h2 class="contact-title">Get in touch</h2>
+      <h2 class="contact-title">Get In Touch</h2>
       <p class="contact-info-label">Email</p>
       <p class="contact-info-val">hello@fakugesi.co.za</p>
       <p class="contact-info-label">Phone</p>
@@ -443,22 +521,43 @@ designed, who is invited to participate, and what counts as a meaningful outcome
       <h2 class="partners-title">Our Main Partners</h2>
     </div>
     <div class="partners-grid">
+
+      <!-- 1 — Tshimologong -->
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" /></div>
-        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+        <a href="https://tshimologong.joburg/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Tshimologong">
+          <div class="partner-logo-box">
+            <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" />
+          </div>
+        </a>
       </div>
+
+      <!-- 2 — Wits -->
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color" /></div>
-        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+        <a href="https://www.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits University">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color" />
+          </div>
+        </a>
       </div>
+
+      <!-- 3 — Digital Dome -->
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" /></div>
-        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+        <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits Digital Dome">
+          <div class="partner-logo-box">
+            <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" />
+          </div>
+        </a>
       </div>
+
+      <!-- 4 — Web Tickets -->
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color" /></div>
-        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+        <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
+          <div class="partner-logo-box">
+            <img src="images/image updates/WT New CI Short-03.png" alt="Web Tickets" class="keep-color" />
+          </div>
+        </a>
       </div>
+
     </div>
   </div>
 </section>

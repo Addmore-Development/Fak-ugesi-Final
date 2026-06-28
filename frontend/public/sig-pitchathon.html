@@ -22,7 +22,7 @@
     html { scroll-behavior:smooth; scroll-padding-top:70px; overflow-x:hidden; width:100%; }
     body { font-family:'InterDisplay',sans-serif; background:var(--white); color:var(--dark-text); overflow-x:hidden; width:100%; position:relative; }
 
-    /* ── CROSS ICONS – all navy blue ── */
+    /* ── CROSS ICONS ── */
     .cross-icon {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0; position: absolute; z-index: 6;
@@ -30,7 +30,6 @@
     }
     .cross-icon svg { width: 100%; height: 100%; }
 
-    /* ── INLINE CROSS (flow, not absolute) ── */
     .cross-inline {
       display: inline-flex; align-items: center; justify-content: center;
       width: 18px; height: 18px; flex-shrink: 0;
@@ -42,7 +41,7 @@
     .reveal { opacity:0; transform:translateY(28px); transition:opacity .75s ease,transform .75s ease; }
     .reveal.visible { opacity:1; transform:none; }
 
-    /* ── GLOBAL: navy bg on all button hover ── */
+    /* ── GLOBAL button hover ── */
     button:hover,
     .hero-cta:hover,
     .intro-cta:hover,
@@ -65,7 +64,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('/images/image00044.jpeg');
+      background-image: url('/images/image updates/image00041.jpeg');
       background-size: cover; background-position: center 35%;
       filter: brightness(0.55);
       animation: kenBurns 18s ease-in-out infinite alternate;
@@ -79,7 +78,7 @@
       grid-row: 2; grid-column: 2; position: relative; z-index: 4;
       display: flex; flex-direction: row;
       justify-content: space-between; align-items: flex-start;
-      gap: 48px; padding-top: 100px; padding-bottom: 48px ; /* ← was 32px 0, shifted down 2 units */
+      gap: 48px; padding-top: 100px; padding-bottom: 48px;
       animation: fadeUp .9s ease both;
     }
     @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
@@ -88,7 +87,6 @@
     .hero-title {
       font-family: 'InterDisplay', sans-serif; font-size: 58px; font-weight: 600; line-height:1.05; color:#fff; margin-bottom:20px; max-width:640px; }
     .hero-body { font-size:13px; line-height:1.72; max-width:510px; color:rgba(255,255,255,.85); margin-bottom:16px; }
-    /* ── CHANGED: matched to schedule hero ── */
     .hero-dates { font-size:28px; font-weight:400; opacity:0.9; color:#fff; margin-bottom:20px; }
     .hero-cta-wrapper { display:flex; gap:12px; flex-wrap:wrap; }
     .hero-cta {
@@ -99,9 +97,8 @@
       text-decoration:none;
       transition:background .22s, color .22s, border-color .22s;
     }
-    /* ── CHANGED: down 2 + right 2 units ── */
-    .hero-signia { flex-shrink:0; width:auto; max-width:280px; padding-top:54px; margin-right:-16px; }
-    .hero-signia img { display:block; width:100%; height:auto; max-height:90px; object-fit:contain; }
+    .hero-signia { flex-shrink:0; width:auto; max-width:280px; padding-top:60px; margin-right:-16px; }
+    .hero-signia img { display:block; width:100%; height:auto; max-height:100px; object-fit:contain; }
 
     /* ── Fak'ugesi shared link hover ── */
     .involved-link, .curatorial-view-link, .showcases-link, .showcases-header a,
@@ -185,7 +182,7 @@
     }
     .fug-sig-item:hover img, .fug-sig-item.fug-active img { transform:scale(1.08); opacity:1; }
 
-    /* ══ WHAT IS PITCHATHON ══ */
+    /* ══ ABOUT / WHAT IS PITCHATHON ══ */
     .about-section {
       background:#fff; padding:88px 248px; position:relative; overflow:hidden;
     }
@@ -229,7 +226,7 @@
     }
     .faq-apply-link:hover { opacity:.6; }
 
-    /* ══ PARTNERS (matched to sig-jamz.html — 4 columns, no card outline) ══ */
+    /* ══ PARTNERS ══ */
     .partners-section {
       background:var(--lavender); padding:72px 0; position:relative;
     }
@@ -239,10 +236,6 @@
       align-items:center; margin-bottom:40px;
     }
     .partners-title { font-size:38px; font-weight:700; color:var(--dark-text); }
-    .partners-link {
-      font-size:12px; color:var(--navy); font-weight:600;
-      text-decoration:underline; cursor:pointer; letter-spacing:.04em;
-    }
     .partners-view-link {
       font-size:11px; font-weight:600; color:var(--navy);
       text-decoration:underline; letter-spacing:.06em;
@@ -251,14 +244,15 @@
     .partners-view-link:hover { opacity:.6; }
     .partners-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
     .partner-card { display:flex; flex-direction:column; }
+    .partner-logo-link { display:block; text-decoration:none; }
     .partner-logo-box {
       background:var(--white); border:1px solid rgba(26,39,68,.10);
       aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
       padding:32px 28px; transition:box-shadow .3s, transform .3s; margin-bottom:16px;
     }
     .partner-card:hover .partner-logo-box { box-shadow:0 10px 32px rgba(26,39,68,.13); transform:translateY(-5px); }
-    .partner-logo-box img{max-width:100%;max-height:110px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
-    .partner-desc { font-size:11.5px; font-weight:400; color:var(--body-gray); line-height:1.65; }
+    .partner-logo-box img { max-width:100%; max-height:110px; object-fit:contain; display:block; filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
+    .partner-logo-box img.keep-color { filter:none !important; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
@@ -266,7 +260,6 @@
       .hero-content { padding-top:110px !important; padding-bottom:60px !important; flex-direction:column; align-items:flex-start; gap:28px; }
       .hero-title { font-size:36px; }
       .about-section { padding:64px 40px; }
-      .about-body { gap:32px; }
       .faq-section { padding:48px 40px 56px; }
       .faq-layout { grid-template-columns:220px 1fr; gap:48px; }
       .partners-inner { padding:0 40px; }
@@ -317,15 +310,8 @@
   <div class="hero-content">
     <div class="hero-text-wrapper">
       <h1 class="hero-title">High Stakes, Shark<br>Tank Style Pitches</h1>
-      <p class="hero-body">The Fak'ugesi Pitchathon is where ideas and prototypes stop existing as slides and start facing the 
-conditions of the real world. Particpants present projects to a panel of investors, venture capitalists, 
-accelerator leads, producers, and industry strategists working across African markets and cultural sectors. 
-Potential projects range from animation, gaming and immersive technology to AI in music and various other 
-fieds.</p>
-      <p class="hero-dates">13 — 17.10.2026</p>
-      <div class="hero-cta-wrapper">
-        <a class="hero-cta" href="tickets.html">Get Tickets</a>
-      </div>
+      <p class="hero-body">The Fak'ugesi Pitchathon is where ideas and prototypes stop existing as slides and start facing the conditions of the real world. Participants present projects to a panel of investors, venture capitalists, accelerator leads, producers, and industry strategists working across African markets and cultural sectors.</p>
+      
     </div>
     <div class="hero-signia">
       <img src="/images/logos/signatureProgrammes/pitchathon_logo_light.svg" alt="Pitchathon"/>
@@ -336,14 +322,14 @@ fieds.</p>
 <!-- ═══ TICKER ═══ -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING &nbsp;• 13-17 OCTOBER 2026 &nbsp;• JOHANNESBURG &nbsp;• AFRICAN IMAGINARIES &nbsp;• FAK'UGESI FESTIVAL 2026 &nbsp;</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING &nbsp;• 13-17 OCTOBER 2026 &nbsp;• JOHANNESBURG &nbsp;• AFRICAN IMAGINARIES &nbsp;• FAK'UGESI FESTIVAL 2026 &nbsp;</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING &nbsp;• 13-17 OCTOBER 2026 &nbsp;• JOHANNESBURG &nbsp;• AFRICAN IMAGINARIES &nbsp;• FAK'UGESI FESTIVAL 2026 &nbsp;</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING &nbsp;• 13-17 OCTOBER 2026 &nbsp;• JOHANNESBURG &nbsp;• AFRICAN IMAGINARIES &nbsp;• FAK'UGESI FESTIVAL 2026 &nbsp;</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING &nbsp;• 13-17 OCTOBER 2026 &nbsp;• JOHANNESBURG &nbsp;• AFRICAN IMAGINARIES &nbsp;• FAK'UGESI FESTIVAL 2026 &nbsp;</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING &nbsp;• 13-17 OCTOBER 2026 &nbsp;• JOHANNESBURG &nbsp;• AFRICAN IMAGINARIES &nbsp;• FAK'UGESI FESTIVAL 2026 &nbsp;</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING &nbsp;• 13-17 OCTOBER 2026 &nbsp;• JOHANNESBURG &nbsp;• AFRICAN IMAGINARIES &nbsp;• FAK'UGESI FESTIVAL 2026 &nbsp;</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING &nbsp;• 13-17 OCTOBER 2026 &nbsp;• JOHANNESBURG &nbsp;• AFRICAN IMAGINARIES &nbsp;• FAK'UGESI FESTIVAL 2026 &nbsp;</span>
   </div>
 </div>
 
@@ -371,7 +357,7 @@ fieds.</p>
   </div>
 </nav>
 
-<!-- ═══ WHAT IS PITCHATHON ═══ -->
+<!-- ═══ ABOUT / WHAT IS PITCHATHON ═══ -->
 <section class="about-section reveal">
   <div class="cross-icon" style="top:20px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
@@ -383,18 +369,12 @@ fieds.</p>
   <div class="about-layout">
     <div>
       <span class="about-eyebrow">About the Programme</span>
-      <h2 class="about-title">What is Pitchathon?</h2>
+      <h2 class="about-title">Pitchathon: Building Tomorrow<br>One Pitch at a Time</h2>
     </div>
     <div class="about-body">
-      <p>Pitchathon is Fak'ugesi's flagship startup pitching programme, bringing African digital entrepreneurs face to face with the investors, accelerator leads, and industry strategists who can move their ventures forward. It is built for founders working at the intersection of technology and creative industries — gaming, animation, immersive media, fintech, and digital culture more broadly.</p>
-      <p>The process is rigorous and always specific. Particpants are challenged on sustainability, audience 
-understanding, intellectual property, market positioning, and operational clarity. Strong projects stand to 
-recieve mentorship, partnership, and/or funding support. </p>
-      <p>Applications are open to digital practitioners, collectives, and early-stage ventures from across the 
-continent. Ventures are evaluated on conceptual rigour, market readiness, and their contribution to the 
-wider African Imaginaries ecosystem. Applications open in July 2026. </p>
-<p>Several projects first presented at Fak'ugesi have gone on to become studios, platforms, research 
-initiatives, and sustainable creative businesses. Others arrived with strong ideas and left with sharper ones.</p>
+      <p>The stage where ideas and prototypes stop existing as slides and start facing the conditions of the real world. Participants present projects to a panel of investors, venture capitalists, accelerator leads, producers, and industry strategists working across African markets and cultural sectors. Potential projects range from animation, gaming and immersive technology to AI in music and various other fields.</p>
+      <p>The process is rigorous and always specific. Participants are challenged on sustainability, audience understanding, intellectual property, market positioning, and operational clarity. Strong projects stand to receive mentorship, partnership, and/or funding support.</p>
+      <p>Applications are open to digital practitioners, collectives, and early-stage ventures from across the continent. Ventures are evaluated on conceptual rigour, market readiness, and their contribution to the wider African Imaginaries ecosystem.</p>
     </div>
   </div>
 
@@ -408,12 +388,9 @@ initiatives, and sustainable creative businesses. Others arrived with strong ide
 
 <!-- ═══ FAQ ═══ -->
 <section class="faq-section reveal">
-
   <div class="faq-layout" style="margin-top:32px;">
     <div>
       <h2 class="faq-title-left">FAQ</h2>
-      <p class="faq-intro-text">Applications open July 2026. Everything you need to know about eligibility, the process, and what winning teams receive.</p>
-      
     </div>
     <div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
@@ -425,25 +402,42 @@ initiatives, and sustainable creative businesses. Others arrived with strong ide
 <section class="partners-section reveal">
   <div class="partners-inner">
     <div class="partners-header">
-      <h2 class="partners-title">Our Pitchathon Partners</h2>
+      <h2 class="partners-title">Our 2026 Pitchathon Partners</h2>
     </div>
     <div class="partners-grid">
+
+      <!-- Tshimologong -->
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
-        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+        <a href="https://tshimologong.joburg/" target="_blank" rel="noopener" class="partner-logo-link">
+          <div class="partner-logo-box">
+            <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/>
+          </div>
+        </a>
       </div>
+
+      <!-- Wits -->
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div>
-        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+        <a href="https://www.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
+          </div>
+        </a>
       </div>
+
+      <!-- MIND -->
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
-        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+        <div class="partner-logo-box">
+          <img src="images/logos/MIND-BLACK-logomark+tp.png" alt="MIND"/>
+        </div>
       </div>
+
+      <!-- WIC -->
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/></div>
-        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+        <div class="partner-logo-box">
+          <img src="images/logos/wic.svg" alt="WIC"/>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -460,18 +454,16 @@ revealEls.forEach(el => io.observe(el));
 
 /* ── FAQ ── */
 const faqData = [
-  { q: 'Who can apply to Pitchathon?', a: 'Any African digital entrepreneur, startup, or creative business is eligible to apply. Applicants must be based on the African continent or be of African origin, and the venture must have been operational for no more than five years.' },
-  { q: 'What is the submission deadline?', a: 'Applications close at 23:59 SAST on 15 August 2026. Late submissions will not be accepted under any circumstances.' },
-  { q: 'How many applicants are shortlisted?', a: 'A maximum of twelve applicants are shortlisted for the live pitch round. All shortlisted participants will be notified by email at least six weeks before the festival.' },
-  { q: 'What does a winner receive?', a: 'Winners receive a cash prize, mentorship access, a featured profile on the Fak\'ugesi platform, and introductions to our network of investors and industry partners.' },
-  { q: 'What stage does my venture need to be at? ', a: 'Early-stage ventures are eligible for entry. Minimal viable products and prototypes are welcomed. There does need to be a clear concept, evidence of the problem being solved, and a credible sense of the intended audience. ' },
-  { q: 'Is the event open to the public?', a: 'Yes, the Pitchathon finals are open to all festival attendees with a valid ticket. The live audience vote determines the Audience Choice Award winner.' },
+  { q: 'Who can participate?', a: 'Eligible participants are drawn from the university and Tshimologong ecosystems.' },
+  { q: 'What stage does my venture need to be at?', a: 'Early-stage ventures are eligible for entry. Minimal viable products and prototypes are welcomed. There does need to be a clear concept, evidence of the problem being solved, and a credible sense of the intended audience.' },
+  { q: 'What are the criteria?', a: 'Conceptual rigour, market readiness, and contribution to the African Imaginaries ecosystem. The jury includes investors, venture capitalists, accelerator leads, producers, and industry strategists. They are looking for clarity, honesty about limitations, and genuine understanding of the market.' },
+  { q: 'What do winning teams receive?', a: 'Winning teams receive prizes and access to post-festival mentorship and funding conversations. Full prize details will be announced with the application opening.' },
 ];
 const faqContainer = document.getElementById('faqAccordion');
 faqData.forEach((faq, i) => {
   const item = document.createElement('div');
   item.className = 'faq-item';
-  item.innerHTML = `<button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
+  item.innerHTML = `<button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">+</span></button><div class="faq-ans">${faq.a}</div>`;
   item.querySelector('.faq-q-btn').addEventListener('click', () => {
     const isOpen = item.classList.contains('open');
     faqContainer.querySelectorAll('.faq-item').forEach(el => {

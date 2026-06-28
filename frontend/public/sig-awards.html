@@ -57,13 +57,14 @@
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
-    .hero-overlay { position: absolute; inset: 0; background: transparent; }
+    /* Overlay removed — was background: linear-gradient(...) */
+    .hero-overlay { display: none; }
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
       padding: 120px 248px 56px;
       display: flex; align-items: flex-start; justify-content: space-between;
     }
-    .hero-content { max-width: 620px; }
+    .hero-content { max-width: 560px; display: flex; flex-direction: column; align-items: flex-start; }
     .hero-eyebrow {
       font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
       text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff;
@@ -73,6 +74,7 @@
       font-size: 56px; font-weight: 600; line-height: 1.0;
       margin-bottom: 20px; color: #fff;
     }
+    .hero-divider { width: 100%; height: 0; margin-bottom: 20px; }
     .hero-body {
       font-size: 13px; line-height: 1.72; max-width: 480px;
       opacity: 0.85; margin-bottom: 20px; color: #fff;
@@ -87,13 +89,14 @@
       transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s;
     }
     .btn-apply:hover { background: var(--navy); border-color: var(--navy); color: #fff; transform: translateY(-1px); }
-    .hero-logo {
-      position: relative; z-index: 4; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center; align-self: center;
+
+    .hero-logo-col {
+      display: flex; align-items: flex-start;
+      padding-top: 158px; flex-shrink: 0;
     }
-    .hero-logo img {
-      height: 110px; width: auto; display: block;
-      filter: brightness(0) invert(1) contrast(1.2); mix-blend-mode: screen;
+    .hero-logo-col img {
+      height: 120px; width: auto; display: block;
+      filter: brightness(0) invert(1) contrast(1.2);
     }
 
     /* ── TICKER ── */
@@ -146,135 +149,118 @@
     .fug-sig-item:hover img, .fug-sig-item.fug-active img { transform: scale(1.18); opacity: 1; }
 
     /* ══════════════════════════════════════════════
-       2025 WINNERS — TABBED + SCROLLING STRIP
+       INTRO TEXT SECTION
     ══════════════════════════════════════════════ */
-    .winners-section {
-      background: #fff; padding: 0; position: relative; overflow: hidden;
+    .intro-section {
+      background: var(--white);
+      padding: 72px 248px 64px;
+      position: relative;
+    }
+    .intro-grid {
+      display: flex; flex-direction: column; gap: 20px; max-width: 720px;
+    }
+    .intro-para { font-size: 13px; line-height: 1.80; color: var(--body-gray); }
+    .intro-para:first-child {
+      font-size: 14px; font-weight: 500; color: var(--dark-text); line-height: 1.72;
     }
 
-    /* Top spacer with cross icons */
+    /* ══════════════════════════════════════════════
+       2025 WINNERS — TABBED + SCROLLING STRIP
+    ══════════════════════════════════════════════ */
+    .winners-section { background: #fff; padding: 0; position: relative; overflow: hidden; }
     .winners-top-spacer { position: relative; height: 64px; }
-
-    /* Header row: title left, nav right (matching dalakhona highlights) */
     .winners-header {
       display: flex; align-items: flex-start; justify-content: space-between;
       padding: 16px 248px 0; position: relative;
     }
-    .winners-title {
-      font-size: 52px; font-weight: 700; color: var(--dark-text);
-    }
-    .winners-nav-wrap {
-      display: flex; flex-direction: column;
-      align-items: flex-end; gap: 12px; padding-top: 8px;
-    }
-    .winners-nav {
-      display: flex; align-items: center; gap: 16px;
-    }
-    .winners-nav button {
-      background: none; border: none; cursor: pointer;
-      font-size: 22px; color: var(--dark-text);
-      padding: 4px 8px; transition: opacity 0.2s;
-      font-family: 'InterDisplay', sans-serif;
-    }
-    .winners-nav button:hover { opacity: 0.5; }
+    .winners-title { font-size: 52px; font-weight: 700; color: var(--dark-text); }
 
     /* ── TABS ── */
     .winners-tabs {
-      display: flex; gap: 0;
-      padding: 32px 248px 0;
+      display: flex; gap: 0; padding: 32px 248px 0;
       border-bottom: 1px solid rgba(26,39,68,0.12);
       overflow-x: auto; scrollbar-width: none;
     }
     .winners-tabs::-webkit-scrollbar { display: none; }
     .winners-tab {
-      padding: 10px 22px 12px;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--body-gray);
-      cursor: pointer; border: none; background: none;
-      font-family: 'InterDisplay', sans-serif;
-      position: relative; white-space: nowrap;
-      transition: color 0.22s;
-      flex-shrink: 0;
+      padding: 10px 22px 12px; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--body-gray);
+      opacity: 0.45; cursor: pointer; border: none; background: none;
+      font-family: 'InterDisplay', sans-serif; position: relative; white-space: nowrap;
+      transition: color 0.22s, opacity 0.22s, font-size 0.22s; flex-shrink: 0;
     }
     .winners-tab::after {
       content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
       height: 2px; background: var(--navy);
       transform: scaleX(0); transition: transform 0.25s ease;
     }
-    .winners-tab:hover { color: var(--navy); }
-    .winners-tab.active { color: var(--navy); }
+    .winners-tab:hover { color: var(--navy); opacity: 0.75; }
+    .winners-tab.active { color: var(--navy); opacity: 1; font-size: 11.5px; }
     .winners-tab.active::after { transform: scaleX(1); }
 
     /* ── TAB PANELS ── */
-    .winners-panel { display: none; }
+    .winners-panel { display: none; padding-top: 32px; }
     .winners-panel.active { display: block; }
 
-    /* ── STRIP (matching dalakhona highlights exactly) ── */
-    .winners-strip-outer {
-      overflow: hidden;
-    }
+    /* ── STRIP ── */
+    .winners-strip-outer { overflow: hidden; padding: 0 248px; }
     .winners-strip {
-      display: flex; gap: 2px;
-      width: max-content;
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; width: 100%;
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
     }
 
-    /* ── WINNER CARDS (matching highlight-card style) ── */
-    .winner-card {
-      flex: 0 0 360px; min-width: 0; cursor: pointer;
-    }
+    /* ── WINNER CARDS ── */
+    .winner-card { min-width: 0; cursor: pointer; }
     .winner-img-wrap {
-      width: 100%; height: 360px; overflow: hidden; position: relative;
+      width: 100%; height: 320px; overflow: hidden; position: relative; background: #0d1b3e;
     }
     .winner-img-wrap img {
       width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.5s ease;
+      transition: transform 0.55s ease;
     }
-    .winner-card:hover .winner-img-wrap img { transform: scale(1.04); }
+    .winner-card:hover .winner-img-wrap img { transform: scale(1.06); }
+
+    /* ── LIGHTBOX ── */
+    .winner-lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(10,15,35,0.92); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .winner-lightbox.open { opacity: 1; pointer-events: all; }
+    .winner-lightbox-inner {
+      position: relative; max-width: 880px; width: 92vw;
+      display: flex; flex-direction: column; background: var(--navy); overflow: hidden;
+    }
+    .winner-lightbox-img { width: 100%; max-height: 56vh; object-fit: contain; display: block; background: #0d1b3e; }
+    .winner-lightbox-info { padding: 24px 28px 28px; }
+    .winner-lightbox-cat { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+    .winner-lightbox-name { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 6px; }
+    .winner-lightbox-meta { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 3px; }
+    .winner-lightbox-country { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; }
+    .winner-lightbox-close {
+      position: absolute; top: 14px; right: 16px; background: none; border: none;
+      cursor: pointer; font-size: 28px; color: rgba(255,255,255,0.6); line-height: 1;
+      font-weight: 300; transition: color 0.2s;
+    }
+    .winner-lightbox-close:hover { color: #fff; }
     .winner-info { padding: 12px 0 28px; }
-    .winner-cat {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--body-gray); margin-bottom: 6px;
-    }
-    .winner-name {
-      font-size: 17px; font-weight: 700; color: var(--dark-text);
-      margin-bottom: 6px; line-height: 1.2;
-    }
+    .winner-cat { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--body-gray); margin-bottom: 6px; }
+    .winner-name { font-size: 17px; font-weight: 700; color: var(--dark-text); margin-bottom: 6px; line-height: 1.2; }
     .winner-meta { font-size: 12px; color: var(--body-gray); }
+    .winner-country { font-size: 11px; color: var(--body-gray); margin-top: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
 
     /* ══════════════════════════════════════════════
        AWARDS SUPERCUT
     ══════════════════════════════════════════════ */
-    .supercut-section {
-      background: var(--navy); position: relative; overflow: hidden;
-    }
-    .supercut-inner {
-      padding: 64px 248px;
-      display: flex; flex-direction: column; gap: 28px;
-    }
-    .supercut-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-    }
-    .supercut-title {
-      font-size: 42px; font-weight: 700; color: #fff; line-height: 1.0;
-    }
-    .supercut-sub {
-      font-size: 12px; color: rgba(255,255,255,0.55);
-      font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-    }
-    .supercut-video-wrap {
-      position: relative; width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
-    }
-    .supercut-video-wrap video {
-      width: 100%; height: 100%; display: block; object-fit: cover;
-    }
-    .supercut-play-btn {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: opacity 0.3s;
-    }
+    .supercut-section { background: var(--navy); position: relative; overflow: hidden; }
+    .supercut-inner { padding: 64px 248px; display: flex; flex-direction: column; gap: 28px; }
+    .supercut-header { display: flex; align-items: flex-end; justify-content: space-between; }
+    .supercut-title { font-size: 42px; font-weight: 700; color: #fff; line-height: 1.0; }
+    .supercut-sub { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+    .supercut-video-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+    .supercut-video-wrap video { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .supercut-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: opacity 0.3s; }
     .supercut-play-btn.hidden { opacity: 0; pointer-events: none; }
     .supercut-play-circle {
       width: 72px; height: 72px; border-radius: 50%;
@@ -283,9 +269,7 @@
       display: flex; align-items: center; justify-content: center;
       transition: background 0.22s, transform 0.22s;
     }
-    .supercut-play-btn:hover .supercut-play-circle {
-      background: rgba(255,255,255,0.25); transform: scale(1.08);
-    }
+    .supercut-play-btn:hover .supercut-play-circle { background: rgba(255,255,255,0.25); transform: scale(1.08); }
     .supercut-play-circle svg { width: 28px; height: 28px; margin-left: 4px; }
 
     /* ── Shared link hover effect ── */
@@ -318,35 +302,23 @@
     /* ══════════════════════════════════════════════
        ELIGIBLE CATEGORIES
     ══════════════════════════════════════════════ */
-    .categories-section {
-      position: relative; min-height: 580px; overflow: hidden; padding: 0;
-    }
+    .categories-section { position: relative; min-height: 580px; overflow: hidden; padding: 0; }
     .cat-bg {
       position: absolute; inset: 0;
-      background-image: url('images/signature/Poster - Akende Muyumbana.png');
-      background-size: cover; background-position: center top;
-      filter: brightness(0.38); transition: opacity 0.45s ease;
+      background-image: url('images/supercut/winners/animation/NAJIAMINI- Poster - Dianne Maryline Charles Rwativenga.png');
+      background-size: cover; background-position: center center; filter: brightness(0.45);
+      transition: opacity 0.45s ease;
     }
-    .cat-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(5,10,28,0.75) 0%, rgba(5,10,28,0.45) 60%, rgba(5,10,28,0.2) 100%);
-    }
+    .cat-overlay { position: absolute; inset: 0; background: transparent; }
     .cat-inner { position: relative; z-index: 3; padding: 60px var(--band) 64px; }
-    .cat-header {
-      display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 40px;
-    }
+    .cat-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
     .cat-title { font-size: 52px; font-weight: 700; color: #fff; line-height: 1.0; }
-    .cat-apply-link {
-      font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.65);
-      text-decoration: underline; letter-spacing: 0.06em; white-space: nowrap;
-      margin-top: 12px; cursor: pointer; text-underline-offset: 3px; transition: color 0.2s;
-    }
+    .cat-subtitle { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 400; line-height: 1.6; margin-bottom: 32px; max-width: 560px; }
+    .cat-subtitle em { font-style: normal; color: rgba(255,255,255,0.75); }
+    .cat-apply-link { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.65); text-decoration: underline; letter-spacing: 0.06em; white-space: nowrap; margin-top: 12px; cursor: pointer; text-underline-offset: 3px; transition: color 0.2s; }
     .cat-apply-link:hover { color: #fff; }
     .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .cat-card {
-      cursor: pointer; border: 1px solid rgba(255,255,255,0.35);
-      padding: 18px 18px 22px; position: relative; transition: background 0.22s;
-    }
+    .cat-card { cursor: pointer; border: 1px solid rgba(255,255,255,0.35); padding: 18px 18px 22px; position: relative; transition: background 0.22s; }
     .cat-card.active { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.75); }
     .cat-card.active .cat-card-tag, .cat-card.active .cat-card-title,
     .cat-card.active .cat-card-items li { color: #fff; }
@@ -359,6 +331,7 @@
     .cat-card-items { list-style: none; }
     .cat-card-items li { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.75); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
     .cat-card-items li::before { content: '→'; font-size: 10px; }
+    .cat-card-director { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.20); margin-top: 4px; }
 
     /* ══════════════════════════════════════════════
        REQUIREMENTS
@@ -367,10 +340,7 @@
     .req-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
     .req-title { font-size: 28px; font-weight: 700; color: #fff; line-height: 1.0; }
     .req-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
-    .req-list li {
-      display: flex; gap: 16px; font-size: 11px; font-weight: 400; line-height: 1.65;
-      color: rgba(255,255,255,0.82); padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.10);
-    }
+    .req-list li { display: flex; gap: 16px; font-size: 11px; font-weight: 400; line-height: 1.65; color: rgba(255,255,255,0.82); padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.10); }
     .req-list li:first-child { border-top: 1px solid rgba(255,255,255,0.10); }
     .req-num { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.45); min-width: 22px; flex-shrink: 0; margin-top: 1px; }
 
@@ -410,7 +380,8 @@
       padding: 40px 32px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 14px;
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
+    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
+    .partner-logo-box img.keep-color { filter: none !important; }
     .partner-desc { font-size: 12px; font-weight: 400; color: var(--body-gray); line-height: 1.65; }
 
     /* ══════════════════════════════════════════════
@@ -419,9 +390,12 @@
     @media (max-width: 1024px) {
       .hero-inner { padding: 52px 48px 48px; }
       .hero-title { font-size: 48px !important; }
-      .hero-logo img { height: 80px; }
+      .hero-logo-col { padding-top: 130px; }
+      .hero-logo-col img { height: 90px; }
+      .intro-section { padding: 56px 48px 48px; }
       .winners-header { padding: 16px 48px 0; }
       .winners-tabs { padding: 24px 48px 0; }
+      .winners-strip-outer { padding: 0 48px; }
       .supercut-inner { padding: 48px 48px; }
       .supercut-title { font-size: 32px; }
       .cat-grid { grid-template-columns: repeat(2, 1fr); }
@@ -433,14 +407,15 @@
     @media (max-width: 768px) {
       .hero { min-height: auto; }
       .hero-inner { padding: 80px 20px 40px !important; flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
-      .hero-logo { display: none !important; }
+      .hero-logo-col { display: none !important; }
       .hero-title { font-size: 36px !important; }
+      .intro-section { padding: 40px 20px 36px; }
       .winners-header { padding: 16px 20px 0; }
       .winners-title { font-size: 32px; }
       .winners-tabs { padding: 16px 20px 0; gap: 0; }
       .winners-tab { padding: 10px 14px 12px; font-size: 9px; }
-      .winner-card { flex: 0 0 280px; }
-      .winner-img-wrap { height: 280px; }
+      .winners-strip-outer { padding: 0 20px; }
+      .winner-img-wrap { height: 240px; }
       .supercut-inner { padding: 40px 20px; }
       .supercut-title { font-size: 26px; }
       .cat-title { font-size: 32px; }
@@ -471,15 +446,15 @@
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Fak'ugesi Awards</p>
-      <h1 class="hero-title">Celebrating The Best<br> in African Digital Creativity</h1>
+      <h1 class="hero-title">Celebrating the Best<br> in African Digital Creativity</h1>
+      <div class="hero-divider"></div>
       <p class="hero-body">The Fak'ugesi Awards are the premier recognition of digital creative excellence across the African 
 continent, presented annually as a highlight of the Fak'ugesi African Digital Innovation Festival. Founded in 
 2014 as a collaboration between the Tshimologong Precinct and the Wits School of Arts Digital Arts 
 Department, the Awards honour outstanding creative work in immersive media, video games, animation, 
-digital art, design, and music. </p>
-      <a class="btn-apply" href="get-involved.html">GET INVOLVED</a>
+digital art, design, and music.</p>
     </div>
-    <div class="hero-logo">
+    <div class="hero-logo-col">
       <img src="images/logos/signatureProgrammes/awards_logo_light.svg" alt="Fak'ugesi Awards" />
     </div>
   </div>
@@ -488,14 +463,14 @@ digital art, design, and music. </p>
 <!-- ═══════════════════════════════ TICKER ═══════════════════════════════ -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
-    <span>Submissions close in 3 days, 2 hours. Submit your application now &nbsp;→&nbsp;</span>
+    <span>APPLICATIONS CLOSED &nbsp;•&nbsp; AWARDS CEREMONY 17 OCTOBER 2026 &nbsp;•&nbsp; WITS ANGLO AMERICAN DIGITAL DOME &nbsp;&nbsp;→&nbsp;&nbsp;</span>
+    <span>APPLICATIONS CLOSED &nbsp;•&nbsp; AWARDS CEREMONY 17 OCTOBER 2026 &nbsp;•&nbsp; WITS ANGLO AMERICAN DIGITAL DOME &nbsp;&nbsp;→&nbsp;&nbsp;</span>
+    <span>APPLICATIONS CLOSED &nbsp;•&nbsp; AWARDS CEREMONY 17 OCTOBER 2026 &nbsp;•&nbsp; WITS ANGLO AMERICAN DIGITAL DOME &nbsp;&nbsp;→&nbsp;&nbsp;</span>
+    <span>APPLICATIONS CLOSED &nbsp;•&nbsp; AWARDS CEREMONY 17 OCTOBER 2026 &nbsp;•&nbsp; WITS ANGLO AMERICAN DIGITAL DOME &nbsp;&nbsp;→&nbsp;&nbsp;</span>
+    <span>APPLICATIONS CLOSED &nbsp;•&nbsp; AWARDS CEREMONY 17 OCTOBER 2026 &nbsp;•&nbsp; WITS ANGLO AMERICAN DIGITAL DOME &nbsp;&nbsp;→&nbsp;&nbsp;</span>
+    <span>APPLICATIONS CLOSED &nbsp;•&nbsp; AWARDS CEREMONY 17 OCTOBER 2026 &nbsp;•&nbsp; WITS ANGLO AMERICAN DIGITAL DOME &nbsp;&nbsp;→&nbsp;&nbsp;</span>
+    <span>APPLICATIONS CLOSED &nbsp;•&nbsp; AWARDS CEREMONY 17 OCTOBER 2026 &nbsp;•&nbsp; WITS ANGLO AMERICAN DIGITAL DOME &nbsp;&nbsp;→&nbsp;&nbsp;</span>
+    <span>APPLICATIONS CLOSED &nbsp;•&nbsp; AWARDS CEREMONY 17 OCTOBER 2026 &nbsp;•&nbsp; WITS ANGLO AMERICAN DIGITAL DOME &nbsp;&nbsp;→&nbsp;&nbsp;</span>
   </div>
 </div>
 
@@ -523,10 +498,10 @@ digital art, design, and music. </p>
   </div>
 </nav>
 
+
 <!-- ═══════════════════════════════ 2025 WINNERS ═══════════════════════════════ -->
 <section class="winners-section reveal">
 
-  <!-- Top spacer with cross icons -->
   <div class="winners-top-spacer">
     <div class="cross-icon" style="top:16px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
@@ -539,15 +514,8 @@ digital art, design, and music. </p>
     </div>
   </div>
 
-  <!-- Header: title + arrow nav on right -->
   <div class="winners-header">
     <h2 class="winners-title">2025 Winners</h2>
-    <div class="winners-nav-wrap">
-      <div class="winners-nav">
-        <button id="prevWinner" aria-label="Previous">←</button>
-        <button id="nextWinner" aria-label="Next">→</button>
-      </div>
-    </div>
   </div>
 
   <!-- TABS -->
@@ -564,52 +532,31 @@ digital art, design, and music. </p>
   <div class="winners-panel active" data-panel="animation">
     <div class="winners-strip-outer">
       <div class="winners-strip" id="winnersStrip-animation">
-        <div class="winner-card">
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/animation/NAJIAMINI- Poster - Dianne Maryline Charles Rwativenga.png","cat":"Animation · Short Films","name":"NAJIAMINI","meta":"Tai Impact","country":"Tanzania"}'>
           <div class="winner-img-wrap"><img src="images/supercut/winners/animation/NAJIAMINI- Poster - Dianne Maryline Charles Rwativenga.png" alt="NAJIAMINI" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Animation</p>
+            <p class="winner-cat">Animation · Short Films</p>
             <p class="winner-name">NAJIAMINI</p>
-            <p class="winner-meta">Dianne Maryline Charles Rwativenga</p>
+            <p class="winner-meta">Tai Impact</p>
+            <p class="winner-country">Tanzania</p>
           </div>
         </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/animation/socials_nominees_animation-06.png" alt="Animation Nominee" /></div>
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/animation/Super_poster - Justin Yarrow.jpg","cat":"Animation · Short Films","name":"Superscientists: Origins","meta":"Superscientists","country":"South Africa"}'>
+          <div class="winner-img-wrap"><img src="images/supercut/winners/animation/Super_poster - Justin Yarrow.jpg" alt="Superscientists: Origins" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Animation</p>
-            <p class="winner-name">Animation Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
+            <p class="winner-cat">Animation · Short Films</p>
+            <p class="winner-name">Superscientists: Origins</p>
+            <p class="winner-meta">Superscientists</p>
+            <p class="winner-country">South Africa</p>
           </div>
         </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/animation/socials_nominees_animation-07.png" alt="Animation Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Animation</p>
-            <p class="winner-name">Animation Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/animation/socials_nominees_animation-08.png" alt="Animation Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Animation</p>
-            <p class="winner-name">Animation Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/animation/Super_poster - Justin Yarrow.jpg" alt="Super Poster" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Animation</p>
-            <p class="winner-name">Super Poster</p>
-            <p class="winner-meta">Justin Yarrow</p>
-          </div>
-        </div>
-        <div class="winner-card">
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/animation/The Fortune Teller - Still - Puleng Manganye.jpg","cat":"Animation · Student Films","name":"The Fortune Teller","meta":"Puleng Manganye","country":"South Africa"}'>
           <div class="winner-img-wrap"><img src="images/supercut/winners/animation/The Fortune Teller - Still - Puleng Manganye.jpg" alt="The Fortune Teller" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Animation</p>
+            <p class="winner-cat">Animation · Student Films</p>
             <p class="winner-name">The Fortune Teller</p>
             <p class="winner-meta">Puleng Manganye</p>
+            <p class="winner-country">South Africa</p>
           </div>
         </div>
       </div>
@@ -620,20 +567,13 @@ digital art, design, and music. </p>
   <div class="winners-panel" data-panel="design">
     <div class="winners-strip-outer">
       <div class="winners-strip" id="winnersStrip-design">
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/design/IMG_8523 - Athanasius Johnson.jpeg" alt="Design Work" /></div>
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/design/IMG_8523 - Athanasius Johnson.jpeg","cat":"Design","name":"The Apo Chair","meta":"Athanasius Johnson","country":"Nigeria"}'>
+          <div class="winner-img-wrap"><img src="images/supercut/winners/design/IMG_8523 - Athanasius Johnson.jpeg" alt="The Apo Chair" /></div>
           <div class="winner-info">
             <p class="winner-cat">Design</p>
-            <p class="winner-name">Design Work</p>
+            <p class="winner-name">The Apo Chair</p>
             <p class="winner-meta">Athanasius Johnson</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/design/socials_nominees_design-02.png" alt="Design Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Design</p>
-            <p class="winner-name">Design Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
+            <p class="winner-country">Nigeria</p>
           </div>
         </div>
       </div>
@@ -644,52 +584,31 @@ digital art, design, and music. </p>
   <div class="winners-panel" data-panel="digital-art">
     <div class="winners-strip-outer">
       <div class="winners-strip" id="winnersStrip-digital-art">
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/digital art/1 - goodwill mokoka.jpg" alt="Goodwill Mokoka" /></div>
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/digital art/1 - goodwill mokoka.jpg","cat":"Digital Art · Screen Based","name":"Venus in Fur: An Ode to Mosadi","meta":"Studio Taki","country":"South Africa"}'>
+          <div class="winner-img-wrap"><img src="images/supercut/winners/digital art/1 - goodwill mokoka.jpg" alt="Venus in Fur: An Ode to Mosadi" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Digital Art</p>
-            <p class="winner-name">Digital Art</p>
-            <p class="winner-meta">Goodwill Mokoka</p>
+            <p class="winner-cat">Digital Art · Screen Based</p>
+            <p class="winner-name">Venus in Fur: An Ode to Mosadi</p>
+            <p class="winner-meta">Studio Taki</p>
+            <p class="winner-country">South Africa</p>
           </div>
         </div>
-        <div class="winner-card">
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/digital art/Alienated cover - Khumo Ramaila.jpg","cat":"Digital Art · Photography","name":"Alienated","meta":"Khumo Ramaila","country":"South Africa"}'>
           <div class="winner-img-wrap"><img src="images/supercut/winners/digital art/Alienated cover - Khumo Ramaila.jpg" alt="Alienated" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Digital Art</p>
+            <p class="winner-cat">Digital Art · Photography</p>
             <p class="winner-name">Alienated</p>
             <p class="winner-meta">Khumo Ramaila</p>
+            <p class="winner-country">South Africa</p>
           </div>
         </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/digital art/socials_nominees_digital art-01.png" alt="Digital Art Nominee" /></div>
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/digital art/VOF Voices of fire print - Joseph Dairo.jpg","cat":"Digital Art · Photography","name":"Unmuted: The Power of African Youth Movements","meta":"Jopee Dairo","country":"Nigeria"}'>
+          <div class="winner-img-wrap"><img src="images/supercut/winners/digital art/VOF Voices of fire print - Joseph Dairo.jpg" alt="Unmuted: The Power of African Youth Movements" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Digital Art</p>
-            <p class="winner-name">Digital Art Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/digital art/socials_nominees_digital art-07.png" alt="Digital Art Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Digital Art</p>
-            <p class="winner-name">Digital Art Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/digital art/socials_nominees_digital art-09.png" alt="Digital Art Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Digital Art</p>
-            <p class="winner-name">Digital Art Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/digital art/VOF Voices of fire print - Joseph Dairo.jpg" alt="Voices of Fire" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Digital Art</p>
-            <p class="winner-name">Voices of Fire</p>
-            <p class="winner-meta">Joseph Dairo</p>
+            <p class="winner-cat">Digital Art · Photography</p>
+            <p class="winner-name">Unmuted: The Power of African Youth Movements</p>
+            <p class="winner-meta">Jopee Dairo</p>
+            <p class="winner-country">Nigeria</p>
           </div>
         </div>
       </div>
@@ -700,52 +619,31 @@ digital art, design, and music. </p>
   <div class="winners-panel" data-panel="immersive-media">
     <div class="winners-strip-outer">
       <div class="winners-strip" id="winnersStrip-immersive-media">
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/immersive media/cradlecover - Mariam Yusuff.jpg" alt="Cradle" /></div>
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/immersive media/unnamed (2) - DOBIISON VR.jpg","cat":"Immersive Media · Immersive Reality","name":"Experience Africa","meta":"Dobiison Ghana Ltd","country":"Ghana"}'>
+          <div class="winner-img-wrap"><img src="images/supercut/winners/immersive media/unnamed (2) - DOBIISON VR.jpg" alt="Experience Africa" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Immersive Media</p>
-            <p class="winner-name">Cradle</p>
-            <p class="winner-meta">Mariam Yusuff</p>
+            <p class="winner-cat">Immersive Media · Immersive Reality</p>
+            <p class="winner-name">Experience Africa</p>
+            <p class="winner-meta">Dobiison Ghana Ltd</p>
+            <p class="winner-country">Ghana</p>
           </div>
         </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/immersive media/socials_nominees_xr-03.png" alt="XR Nominee" /></div>
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/immersive media/cradlecover - Mariam Yusuff.jpg","cat":"Immersive Media · Immersive Reality","name":"Cradle MR","meta":"Cradle","country":"Nigeria"}'>
+          <div class="winner-img-wrap"><img src="images/supercut/winners/immersive media/cradlecover - Mariam Yusuff.jpg" alt="Cradle MR" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Immersive Media</p>
-            <p class="winner-name">XR Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
+            <p class="winner-cat">Immersive Media · Immersive Reality</p>
+            <p class="winner-name">Cradle MR</p>
+            <p class="winner-meta">Cradle</p>
+            <p class="winner-country">Nigeria</p>
           </div>
         </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/immersive media/socials_nominees_xr-08.png" alt="XR Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Immersive Media</p>
-            <p class="winner-name">XR Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/immersive media/socials_nominees_xr-10.png" alt="XR Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Immersive Media</p>
-            <p class="winner-name">XR Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/immersive media/Still from The Well of Hajar - shameelah khan.png","cat":"Immersive Media · Virtual Reality","name":"The Well of Hajar","meta":"Shameelah Khan in collaboration with Nicola Pilkington and Geoffrey Diver","country":"South Africa"}'>
           <div class="winner-img-wrap"><img src="images/supercut/winners/immersive media/Still from The Well of Hajar - shameelah khan.png" alt="The Well of Hajar" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Immersive Media</p>
+            <p class="winner-cat">Immersive Media · Virtual Reality</p>
             <p class="winner-name">The Well of Hajar</p>
-            <p class="winner-meta">Shameelah Khan</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/immersive media/unnamed (2) - DOBIISON VR.jpg" alt="DOBIISON VR" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Immersive Media</p>
-            <p class="winner-name">DOBIISON VR</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
+            <p class="winner-meta">Shameelah Khan in collaboration with Nicola Pilkington and Geoffrey Diver</p>
+            <p class="winner-country">South Africa</p>
           </div>
         </div>
       </div>
@@ -756,20 +654,13 @@ digital art, design, and music. </p>
   <div class="winners-panel" data-panel="prototype">
     <div class="winners-strip-outer">
       <div class="winners-strip" id="winnersStrip-prototype">
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/prototype of the year/LuandaImage.png" alt="Luanda" /></div>
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/prototype of the year/LuandaImage.png","cat":"Prototype of the Year","name":"Tales of Luanda","meta":"Jiwe Games","country":"Kenya"}'>
+          <div class="winner-img-wrap"><img src="images/supercut/winners/prototype of the year/LuandaImage.png" alt="Tales of Luanda" /></div>
           <div class="winner-info">
             <p class="winner-cat">Prototype of the Year</p>
-            <p class="winner-name">Luanda</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/prototype of the year/socials_nominees_video games-10.png" alt="Prototype Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Prototype of the Year</p>
-            <p class="winner-name">Prototype Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
+            <p class="winner-name">Tales of Luanda</p>
+            <p class="winner-meta">Jiwe Games</p>
+            <p class="winner-country">Kenya</p>
           </div>
         </div>
       </div>
@@ -780,59 +671,37 @@ digital art, design, and music. </p>
   <div class="winners-panel" data-panel="video-games">
     <div class="winners-strip-outer">
       <div class="winners-strip" id="winnersStrip-video-games">
-        <div class="winner-card">
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/video games/JPEG_Relooted_Thumbnail_Image 1920 x 1080p (4) - Ben Myres.jpg","cat":"Video Games · Desktop Games","name":"Relooted","meta":"Nyamakop","country":"South Africa"}'>
           <div class="winner-img-wrap"><img src="images/supercut/winners/video games/JPEG_Relooted_Thumbnail_Image 1920 x 1080p (4) - Ben Myres.jpg" alt="Relooted" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Video Games</p>
+            <p class="winner-cat">Video Games · Desktop Games</p>
             <p class="winner-name">Relooted</p>
-            <p class="winner-meta">Ben Myres</p>
+            <p class="winner-meta">Nyamakop</p>
+            <p class="winner-country">South Africa</p>
           </div>
         </div>
-        <div class="winner-card">
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/video games/Queen Idia - Still Image - Joshua Tadesse.png","cat":"Video Games · Desktop Games","name":"Queen Idia","meta":"Elder Studios","country":"Ethiopia"}'>
           <div class="winner-img-wrap"><img src="images/supercut/winners/video games/Queen Idia - Still Image - Joshua Tadesse.png" alt="Queen Idia" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Video Games</p>
+            <p class="winner-cat">Video Games · Desktop Games</p>
             <p class="winner-name">Queen Idia</p>
-            <p class="winner-meta">Joshua Tadesse</p>
+            <p class="winner-meta">Elder Studios</p>
+            <p class="winner-country">Ethiopia</p>
           </div>
         </div>
-        <div class="winner-card">
+        <div class="winner-card" data-lightbox='{"src":"images/supercut/winners/video games/Rasta-Santa-Action-battle-angry-kid - Edu Shola.jpeg","cat":"Video Games · Mobile Games","name":"Rasta Santa","meta":"Deluxe Creation Studios","country":"Nigeria"}'>
           <div class="winner-img-wrap"><img src="images/supercut/winners/video games/Rasta-Santa-Action-battle-angry-kid - Edu Shola.jpeg" alt="Rasta Santa" /></div>
           <div class="winner-info">
-            <p class="winner-cat">Video Games</p>
-            <p class="winner-name">Rasta Santa: Action Battle</p>
-            <p class="winner-meta">Edu Shola</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/video games/socials_nominees_video games-01.png" alt="Video Game Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Video Games</p>
-            <p class="winner-name">Video Game Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/video games/socials_nominees_video games-04.png" alt="Video Game Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Video Games</p>
-            <p class="winner-name">Video Game Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
-          </div>
-        </div>
-        <div class="winner-card">
-          <div class="winner-img-wrap"><img src="images/supercut/winners/video games/socials_nominees_video games-06.png" alt="Video Game Nominee" /></div>
-          <div class="winner-info">
-            <p class="winner-cat">Video Games</p>
-            <p class="winner-name">Video Game Nominee</p>
-            <p class="winner-meta">2025 Fak'ugesi Awards</p>
+            <p class="winner-cat">Video Games · Mobile Games</p>
+            <p class="winner-name">Rasta Santa</p>
+            <p class="winner-meta">Deluxe Creation Studios</p>
+            <p class="winner-country">Nigeria</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bottom cross icons row -->
   <div style="position:relative;height:52px;margin-top:0;">
     <div class="cross-icon" style="top:8px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
@@ -868,44 +737,84 @@ digital art, design, and music. </p>
   </div>
 </section>
 
+<!-- ═══════════════════════════════ INTRO TEXT ═══════════════════════════════ -->
+<section class="intro-section reveal">
+  <div class="intro-grid">
+    <p class="intro-para">Each category recognises projects that expand the field, work that challenges inherited assumptions, opens new creative territory, or reframes how technology is used within African contexts.</p>
+    <p class="intro-para">The Awards are not a retrospective exercise. They are a live record of the active fields they recognise. Applications and nominations are open to completed projects, prototypes, and early-stage work. The core criterion is not the state of completion but a compelling minimum viable product.</p>
+    <p class="intro-para">The Awards are adjudicated by a panel drawn from creative technology, academia, design, media, and industry leadership. To be shortlisted is to enter serious conversation with some of the most consequential digital work being produced on the continent today. The Awards do not reward proximity to a global standard. They reward the work that is building the next one.</p>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════ ELIGIBLE CATEGORIES ═══════════════════════════════ -->
 <section class="categories-section reveal">
-  <div class="cat-bg"></div>
+  <div class="cat-bg" id="catBg"></div>
   <div class="cat-overlay"></div>
   <div class="cat-inner">
     <div class="cat-header">
-      <h2 class="cat-title">Eligible Categories</h2>
+      <h2 class="cat-title">Categories</h2>
     </div>
+    <p class="cat-subtitle">Six established categories are recognised for 2026, with a seventh, the <em>Festival Director's Award</em>, introduced this edition. Applications must be submitted in one category only.</p>
     <div class="cat-grid">
-      <div class="cat-card" data-bg="images/trailer.png">
-        <div class="cat-card-header"><span class="cat-card-tag">Immersive Media</span><span class="cat-card-num">01</span></div>
+      <div class="cat-card" data-bg="images/supercut/winners/animation/NAJIAMINI- Poster - Dianne Maryline Charles Rwativenga.png">
+        <div class="cat-card-header"><span class="cat-card-tag">Animation</span><span class="cat-card-num">01</span></div>
         <h3 class="cat-card-title">Animation</h3>
-        <ul class="cat-card-items"><li>Short films</li><li>Student animations</li><li>Teasers & trailers</li></ul>
+        <ul class="cat-card-items">
+          <li>Short films, feature length, title animations</li>
+          <li>Student animations</li>
+          <li>Teasers &amp; trailers, animated series</li>
+        </ul>
       </div>
-      <div class="cat-card" data-bg="images/VOF_Voices_of_fire_print_Joseph_Dairo.jpg">
-        <div class="cat-card-header"><span class="cat-card-tag">Digital Art</span><span class="cat-card-num">02</span></div>
+      <div class="cat-card" data-bg="images/supercut/winners/video games/JPEG_Relooted_Thumbnail_Image 1920 x 1080p (4) - Ben Myres.jpg">
+        <div class="cat-card-header"><span class="cat-card-tag">Video Games</span><span class="cat-card-num">02</span></div>
         <h3 class="cat-card-title">Video Games</h3>
-        <ul class="cat-card-items"><li>Mobile</li><li>Desktop</li><li>Demo & student games</li></ul>
+        <ul class="cat-card-items">
+          <li>Mobile</li>
+          <li>Desktop</li>
+          <li>Demo &amp; student games</li>
+        </ul>
       </div>
-      <div class="cat-card" data-bg="images/Screenshot-2024-05-21-at-21.36.37.webp">
-        <div class="cat-card-header"><span class="cat-card-tag">Interactive Design</span><span class="cat-card-num">03</span></div>
+      <div class="cat-card" data-bg="images/supercut/winners/immersive media/Still from The Well of Hajar - shameelah khan.png">
+        <div class="cat-card-header"><span class="cat-card-tag">Immersive Media (XR)</span><span class="cat-card-num">03</span></div>
         <h3 class="cat-card-title">Immersive Media (XR)</h3>
-        <ul class="cat-card-items"><li>Augmented Reality (AR)</li><li> Virtual Reality (VR)</li><li>Student XR projects</li></ul>
+        <ul class="cat-card-items">
+          <li>Augmented Reality (AR)</li>
+          <li>Virtual Reality (VR)</li>
+          <li>Student XR projects</li>
+        </ul>
       </div>
-      <div class="cat-card" data-bg="images/Joburg-planetarium-1-2022.jpg">
-        <div class="cat-card-header"><span class="cat-card-tag">Game Design</span><span class="cat-card-num">04</span></div>
+      <div class="cat-card" data-bg="images/supercut/winners/digital art/VOF Voices of fire print - Joseph Dairo.jpg">
+        <div class="cat-card-header"><span class="cat-card-tag">Digital Arts</span><span class="cat-card-num">04</span></div>
         <h3 class="cat-card-title">Digital Arts</h3>
-        <ul class="cat-card-items"><li>Mobile Games</li><li>PC / Console Games</li><li>Serious Games</li></ul>
+        <ul class="cat-card-items">
+          <li>Digital film, photography &amp; digi-manipulation</li>
+          <li>Performance with digital components</li>
+          <li>Screen-based digital art</li>
+        </ul>
       </div>
-      <div class="cat-card" data-bg="images/Fak_ugesi_2025-32.jpg">
-        <div class="cat-card-header"><span class="cat-card-tag">Motion &amp; Sound</span><span class="cat-card-num">05</span></div>
+      <div class="cat-card" data-bg="images/supercut/winners/design/IMG_8523 - Athanasius Johnson.jpeg">
+        <div class="cat-card-header"><span class="cat-card-tag">Design</span><span class="cat-card-num">05</span></div>
         <h3 class="cat-card-title">Design</h3>
-        <ul class="cat-card-items"><li>Motion Graphics</li><li>Music Visualisation</li><li>Sound Art</li></ul>
+        <ul class="cat-card-items">
+          <li>Industrial design, architecture &amp; fashion</li>
+          <li><em style="font-style:italic;font-size:10px;color:rgba(255,255,255,0.55);">Supported by the British Council</em></li>
+        </ul>
       </div>
-      <div class="cat-card" data-bg="images/digital-dome-image-inside.jpg">
-        <div class="cat-card-header"><span class="cat-card-tag">Tech Innovation</span><span class="cat-card-num">06</span></div>
+      <div class="cat-card" data-bg="images/supercut/winners/digital art/1 - goodwill mokoka.jpg">
+        <div class="cat-card-header"><span class="cat-card-tag">Cross-Sector Music</span><span class="cat-card-num">06</span></div>
         <h3 class="cat-card-title">Cross-Sector Music</h3>
-        <ul class="cat-card-items"><li>AI Tools</li><li>Creative Tech Platforms</li><li>Social Impact Tech</li></ul>
+        <ul class="cat-card-items">
+          <li>Compositions linked to animation</li>
+          <li>Video games, immersive media, digital art</li>
+          <li>And design</li>
+        </ul>
+      </div>
+      <div class="cat-card cat-card-director" data-bg="images/supercut/winners/prototype of the year/LuandaImage.png">
+        <div class="cat-card-header"><span class="cat-card-tag">Festival Director's Award</span><span class="cat-card-num">07</span></div>
+        <h3 class="cat-card-title">Festival Director's Award</h3>
+        <ul class="cat-card-items">
+          <li>Selected at the discretion of the Festival Director</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -941,7 +850,6 @@ digital art, design, and music. </p>
   <div class="faq-layout">
     <div>
       <h2 class="faq-title-left">FAQ</h2>
-      <p class="faq-intro-text">Everything you need to know about submitting, eligibility, and the adjudication process.</p>
     </div>
     <div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
@@ -953,13 +861,33 @@ digital art, design, and music. </p>
 <section class="partners-section reveal">
   <div class="partners-inner">
     <div class="partners-header">
-      <h2 class="partners-title">Our Awards Partners</h2>
+      <h2 class="partners-title">Our 2026 Awards Partners</h2>
     </div>
     <div class="partners-grid">
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div><p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/></div><p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p></div>
+      <!-- Tshimologong -->
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/>
+        </div>
+      </div>
+      <!-- Wits -->
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
+        </div>
+      </div>
+      <!-- British Council -->
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/britishcouncil.svg" alt="British Council" class="keep-color"/>
+        </div>
+      </div>
+      <!-- Jiwe -->
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/jiwe.svg" alt="Jiwe"/>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -976,32 +904,25 @@ revealEls.forEach(el => io.observe(el));
 
 /* ══════════════════════════════════════════════
    WINNERS TABS + PER-PANEL STRIP CAROUSEL
-   Each panel has its own offset, reset on tab switch
 ══════════════════════════════════════════════ */
 (function () {
-  const tabs = document.querySelectorAll('.winners-tab');
-  const panels = document.querySelectorAll('.winners-panel');
+  const tabs    = document.querySelectorAll('.winners-tab');
+  const panels  = document.querySelectorAll('.winners-panel');
   const prevBtn = document.getElementById('prevWinner');
   const nextBtn = document.getElementById('nextWinner');
 
-  // Per-panel offset store
   const offsets = {};
   panels.forEach(p => { offsets[p.dataset.panel] = 0; });
 
-  function getActivePanel() {
-    return document.querySelector('.winners-panel.active');
-  }
-
+  function getActivePanel() { return document.querySelector('.winners-panel.active'); }
   function getActiveStrip() {
     const panel = getActivePanel();
     return panel ? panel.querySelector('.winners-strip') : null;
   }
-
   function getCardWidth(strip) {
     const card = strip ? strip.querySelector('.winner-card') : null;
     return card ? card.getBoundingClientRect().width + 2 : 362;
   }
-
   function getMaxOffset(strip) {
     if (!strip) return 0;
     const outer = strip.closest('.winners-strip-outer');
@@ -1009,30 +930,25 @@ revealEls.forEach(el => io.observe(el));
     const totalW = strip.scrollWidth;
     return Math.max(0, totalW - outerW);
   }
-
   function applyOffset(strip, panelKey) {
     if (!strip) return;
     strip.style.transform = `translateX(${offsets[panelKey]}px)`;
   }
-
   function move(direction) {
     const panel = getActivePanel();
     if (!panel) return;
-    const key = panel.dataset.panel;
+    const key   = panel.dataset.panel;
     const strip = getActiveStrip();
-    const cw = getCardWidth(strip);
+    const cw    = getCardWidth(strip);
     const maxOff = getMaxOffset(strip);
-
     offsets[key] += direction * cw;
-    // Clamp: can't go beyond start or end
-    offsets[key] = Math.max(-maxOff, Math.min(0, offsets[key]));
+    offsets[key]  = Math.max(-maxOff, Math.min(0, offsets[key]));
     applyOffset(strip, key);
   }
 
-  nextBtn.addEventListener('click', () => move(-1));
-  prevBtn.addEventListener('click', () => move(1));
+  if (prevBtn) prevBtn.addEventListener('click', () => move(1));
+  if (nextBtn) nextBtn.addEventListener('click', () => move(-1));
 
-  // Tab switching — reset strip offset for newly shown panel
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
@@ -1042,7 +958,6 @@ revealEls.forEach(el => io.observe(el));
       const panel = document.querySelector(`.winners-panel[data-panel="${target}"]`);
       if (panel) {
         panel.classList.add('active');
-        // Reset offset for this panel on every tab switch
         offsets[target] = 0;
         const strip = panel.querySelector('.winners-strip');
         if (strip) strip.style.transform = 'translateX(0px)';
@@ -1053,16 +968,13 @@ revealEls.forEach(el => io.observe(el));
 
 /* ── SUPERCUT VIDEO ── */
 (function () {
-  const video = document.getElementById('supercutVideo');
+  const video   = document.getElementById('supercutVideo');
   const playBtn = document.getElementById('supercutPlayBtn');
   if (!video || !playBtn) return;
-  playBtn.addEventListener('click', () => {
-    video.play();
-    playBtn.classList.add('hidden');
-  });
-  video.addEventListener('pause', () => { playBtn.classList.remove('hidden'); });
-  video.addEventListener('ended', () => { playBtn.classList.remove('hidden'); });
-  video.addEventListener('click', () => {
+  playBtn.addEventListener('click', () => { video.play(); playBtn.classList.add('hidden'); });
+  video.addEventListener('pause',  () => { playBtn.classList.remove('hidden'); });
+  video.addEventListener('ended',  () => { playBtn.classList.remove('hidden'); });
+  video.addEventListener('click',  () => {
     if (video.paused) { video.play(); playBtn.classList.add('hidden'); }
     else { video.pause(); }
   });
@@ -1070,12 +982,18 @@ revealEls.forEach(el => io.observe(el));
 
 /* ── FAQ ── */
 const faqData = [
-  { q: 'Can I nominate a prototype or work-in-progress?', a: 'Yes. Prototypes and early-stage work are eligible alongside completed projects. Adjudication focuses on the ambition and consequence of the work, not its state of completion.' },
-  { q: "Can I nominate someone else's work?", a: "Yes. Nominations may be submitted by the practitioner, a collaborator, an institution, or a third party who can speak credibly to the work's significance. Self-nominations are accepted." },
-  { q: 'Who is eligible to apply?', a: "Applicants must be 18 or older and reside in any African country. Submitted work must be the applicant's own original creation. Work involving jointly owned IP must include written consent from all rights holders." },
-  { q: 'When do nominations open?', a: 'August 2026. Sign up to the newsletter to be notified.' },
-  { q: 'Who judges the Awards?', a: 'The adjudication panel is drawn from creative technology, academia, design, media, and industry leadership. Panel members are announced when nominations open.' },
-  { q: "What is the Festival Director's Award?", a: "The Festival Director's Award is a new category for 2026, selected at the discretion of the Festival Director. It recognises outstanding work that does not fit neatly into the established categories." },
+  {
+    q: 'How long has the awards been running?',
+    a: 'Since launching in 2022, the Fak\'ugesi Awards have recognised more than 34 projects and practitioners across the continent.'
+  },
+  {
+    q: 'Who judges the Awards?',
+    a: 'The adjudication panel is drawn from creative technology, academia, design, media, and industry leadership. Panel members are announced when nominations open.'
+  },
+  {
+    q: "What is the Festival Director's Award?",
+    a: "The Festival Director's Award is a new category introduced for the 2026 edition. It is selected entirely at the discretion of the Festival Director and may recognise any work, practitioner, or contribution the Director considers of exceptional significance to the field."
+  },
 ];
 const faqContainer = document.getElementById('faqAccordion');
 faqData.forEach((faq, i) => {
@@ -1105,7 +1023,7 @@ faqData.forEach((faq, i) => {
     rot = 0;
     document.querySelectorAll('.cross-icon, .fug-footer-cross').forEach(function (el) {
       el.style.transition = 'transform 0.45s ease';
-      el.style.transform = 'rotate(0deg)';
+      el.style.transform  = 'rotate(0deg)';
     });
   }
   function onScroll() {
@@ -1116,11 +1034,10 @@ faqData.forEach((faq, i) => {
           rot += delta > 0 ? 15 : -15;
           document.querySelectorAll('.cross-icon, .fug-footer-cross').forEach(function (el) {
             el.style.transition = 'transform 0.1s linear';
-            el.style.transform = 'rotate(' + rot + 'deg)';
+            el.style.transform  = 'rotate(' + rot + 'deg)';
           });
         }
-        lastY = y;
-        ticking = false;
+        lastY = y; ticking = false;
         clearTimeout(scrollTimer);
         scrollTimer = setTimeout(resetRot, 300);
       });
@@ -1130,24 +1047,88 @@ faqData.forEach((faq, i) => {
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-/* ── CATEGORIES: click to swap section background ── */
+/* ── CATEGORIES: click cards to swap background image ── */
 (function () {
-  const section = document.querySelector('.categories-section');
-  const bg = section.querySelector('.cat-bg');
-  const originalBg = "url('images/signature/Poster - Akende Muyumbana.png')";
-  document.querySelectorAll('.cat-card').forEach(card => {
-    card.addEventListener('click', () => {
+  const bg = document.getElementById('catBg');
+  const defaultBg = "images/supercut/winners/animation/NAJIAMINI- Poster - Dianne Maryline Charles Rwativenga.png";
+
+  function swapBg(imgPath) {
+    bg.style.transition = 'opacity 0.35s ease';
+    bg.style.opacity = '0';
+    setTimeout(function () {
+      bg.style.backgroundImage = "url('" + imgPath + "')";
+      bg.style.opacity = '1';
+    }, 350);
+  }
+
+  document.querySelectorAll('.cat-card').forEach(function (card) {
+    card.addEventListener('click', function () {
       const already = card.classList.contains('active');
-      document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
-      bg.style.transition = 'opacity 0.45s ease';
-      bg.style.opacity = '0';
-      setTimeout(() => {
-        if (already) { bg.style.backgroundImage = originalBg; }
-        else { card.classList.add('active'); bg.style.backgroundImage = `url('${card.getAttribute('data-bg')}')`; }
-        bg.style.opacity = '1';
-      }, 250);
+      document.querySelectorAll('.cat-card').forEach(function (c) { c.classList.remove('active'); });
+      if (already) {
+        swapBg(defaultBg);
+      } else {
+        card.classList.add('active');
+        const imgPath = card.getAttribute('data-bg');
+        if (imgPath) swapBg(imgPath);
+      }
     });
   });
+})();
+
+/* ── WINNER LIGHTBOX ── */
+(function () {
+  const lb = document.createElement('div');
+  lb.className = 'winner-lightbox';
+  lb.id = 'winnerLightbox';
+  lb.innerHTML = `
+    <div class="winner-lightbox-inner">
+      <button class="winner-lightbox-close" id="lbClose">×</button>
+      <img class="winner-lightbox-img" id="lbImg" src="" alt="" />
+      <div class="winner-lightbox-info">
+        <p class="winner-lightbox-cat" id="lbCat"></p>
+        <p class="winner-lightbox-name" id="lbName"></p>
+        <p class="winner-lightbox-meta" id="lbMeta"></p>
+        <p class="winner-lightbox-country" id="lbCountry"></p>
+      </div>
+    </div>`;
+  document.body.appendChild(lb);
+
+  const lbImg     = document.getElementById('lbImg');
+  const lbCat     = document.getElementById('lbCat');
+  const lbName    = document.getElementById('lbName');
+  const lbMeta    = document.getElementById('lbMeta');
+  const lbCountry = document.getElementById('lbCountry');
+  const lbClose   = document.getElementById('lbClose');
+
+  function openLightbox(data) {
+    lbImg.src             = data.src;
+    lbImg.alt             = data.name;
+    lbCat.textContent     = data.cat     || '';
+    lbName.textContent    = data.name    || '';
+    lbMeta.textContent    = data.meta    || '';
+    lbCountry.textContent = data.country || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { lbImg.src = ''; }, 300);
+  }
+
+  document.querySelectorAll('.winner-card[data-lightbox]').forEach(card => {
+    card.addEventListener('click', () => {
+      try {
+        const data = JSON.parse(card.getAttribute('data-lightbox'));
+        openLightbox(data);
+      } catch(e) {}
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 })();
 </script>
 

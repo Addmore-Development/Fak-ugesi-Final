@@ -79,10 +79,10 @@
     }
     .hero-body { font-size: 13px; line-height: 1.7; max-width: 510px; opacity: 0.82; }
     .hero-logo {
-      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center;
       animation: fadeUp 1.1s ease both;
     }
-    .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); margin-bottom: 75px; }
+    .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); margin-bottom: 0; margin-top: 80px; }
 
     /* ── TICKER ── */
     .ticker-wrapper {
@@ -154,11 +154,58 @@
     #venue-map { width: 100%; height: 100%; min-height: 380px; }
     .leaflet-control-attribution { font-size: 9px !important; }
 
+    /* ── VENUE ACCORDIONS ── */
+    .tsim-section { background: var(--white); border-top: 1px solid rgba(26,39,68,0.12); }
+    .tsim-inner { padding: 0 var(--band); }
+    .tsim-toggle {
+      position: relative; z-index: 1;
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; padding: 28px 0;
+      background: none; border: none; cursor: pointer;
+      font-family: 'InterDisplay', sans-serif; text-align: left; transition: background 0.2s;
+    }
+    .tsim-toggle::before {
+      content: ''; position: absolute; top: 0; bottom: 0; left: -2px; right: -2px;
+      background: transparent; transition: background 0.2s; z-index: -1;
+    }
+    .tsim-toggle:hover::before { background: var(--navy); }
+    .tsim-toggle:hover .tsim-title { color: #fff; }
+    .tsim-toggle:hover .tsim-icon { color: #fff; }
+    .tsim-toggle:hover .tsim-num { background: rgba(255,255,255,0.2); color: #fff; }
+    .tsim-toggle-left { display: flex; align-items: center; gap: 20px; }
+    .tsim-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      color: #fff; background: var(--navy); padding: 4px 8px; flex-shrink: 0;
+    }
+    .tsim-title { font-size: 28px; font-weight: 600; color: var(--dark-text); line-height: 1.1; }
+    .tsim-icon {
+      font-size: 26px; font-weight: 300; color: var(--dark-text);
+      flex-shrink: 0; transition: transform 0.3s ease; line-height: 1;
+    }
+    .tsim-toggle[aria-expanded="true"] .tsim-icon { transform: rotate(45deg); }
+    .tsim-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .tsim-body.open { max-height: 600px; }
+    .tsim-body-inner {
+      padding: 0 0 40px 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px;
+      align-items: start;
+    }
+    .tsim-body-inner p {
+      font-size: 14px; line-height: 1.75; color: var(--dark-text);
+      margin-top: 0;
+    }
+    .tsim-body-inner p + p { margin-top: 16px; }
+
+    /* For venues with single-column body text */
+    .tsim-body-inner.single-col {
+      grid-template-columns: 1fr;
+    }
+    .tsim-body-inner.single-col p + p { margin-top: 16px; }
+
     /* ── FAQ ── */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
-    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
     .faq-items-wrap { display: flex; flex-direction: column; }
     .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
@@ -173,9 +220,7 @@
     .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
     .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
 
-    /* ══════════════════════════════════════════════
-       PARTNERS — matched to sig-awards.html exactly
-    ══════════════════════════════════════════════ */
+    /* ── PARTNERS ── */
     .partners-section {
       background: var(--lavender);
       padding: 0;
@@ -223,53 +268,13 @@
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
-    /* ── TSHIMOLOGONG ACCORDION ── */
-    .tsim-section { background: var(--white); border-top: 1px solid rgba(26,39,68,0.12); }
-    .tsim-inner { padding: 0 var(--band); }
-    .tsim-toggle {
-      position: relative; z-index: 1;
-      display: flex; justify-content: space-between; align-items: center;
-      width: 100%; padding: 28px 0;
-      background: none; border: none; cursor: pointer;
-      font-family: 'InterDisplay', sans-serif; text-align: left; transition: background 0.2s;
-    }
-    .tsim-toggle::before {
-      content: ''; position: absolute; top: 0; bottom: 0; left: -2px; right: -2px;
-      background: transparent; transition: background 0.2s; z-index: -1;
-    }
-    .tsim-toggle:hover::before { background: var(--navy); }
-    .tsim-toggle:hover .tsim-title { color: #fff; }
-    .tsim-toggle:hover .tsim-icon { color: #fff; }
-    .tsim-toggle:hover .tsim-num { background: rgba(255,255,255,0.2); color: #fff; }
-    .tsim-toggle-left { display: flex; align-items: center; gap: 20px; }
-    .tsim-num {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      color: #fff; background: var(--navy); padding: 4px 8px; flex-shrink: 0;
-    }
-    .tsim-title { font-size: 28px; font-weight: 600; color: var(--dark-text); line-height: 1.1; }
-    .tsim-icon {
-      font-size: 26px; font-weight: 300; color: var(--dark-text);
-      flex-shrink: 0; transition: transform 0.3s ease; line-height: 1;
-    }
-    .tsim-toggle[aria-expanded="true"] .tsim-icon { transform: rotate(45deg); }
-    .tsim-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    .tsim-body.open { max-height: 600px; }
-    .tsim-body-inner {
-      padding: 0 0 40px 0;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px;
-    }
-    .tsim-body-inner p { font-size: 14px; line-height: 1.75; color: var(--dark-text); }
-    .tsim-body-inner p:first-child { grid-column: 1; }
-    .tsim-body-inner p:nth-child(2) { grid-column: 2; grid-row: 1; margin-top: 0; }
-    .tsim-body-inner p:nth-child(3) { grid-column: 2; margin-top: 0; }
-
     /* ══════════════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       :root { --band: 48px; }
       .hero-inner { padding: 100px 48px 52px; }
-      .hero-title { font-size: 72px; }
+      .hero-title { font-size: 56px; }
       .hero-logo img { height: 80px; }
       .locations-title { font-size: 40px; }
       .locations-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -285,8 +290,6 @@
       .cross-icon[style*="left:200px"],
       .cross-icon[style*="right:200px"] { display: none; }
       .tsim-body-inner { grid-template-columns: 1fr; gap: 0; }
-      .tsim-body-inner p:nth-child(2),
-      .tsim-body-inner p:nth-child(3) { grid-column: 1; margin-top: 16px; }
       .tsim-title { font-size: 22px; }
     }
 
@@ -295,10 +298,10 @@
       .hero { min-height: auto; }
       .hero-bg { background-position: center center; }
       .hero-inner { padding: 80px 20px 40px; flex-direction: column; align-items: flex-start; gap: 24px; }
-      .hero-title { font-size: 72px; margin-bottom: 14px; }
+      .hero-title { font-size: 40px; margin-bottom: 14px; }
       .hero-body { font-size: 12px; }
       .hero-logo { width: 100%; justify-content: flex-start; }
-      .hero-logo img { height: 52px; margin-bottom: 1px; }
+      .hero-logo img { height: 52px; margin-top: 0; }
       .ticker-track span { font-size: 11px; padding: 0 20px; }
       .locations-section { padding: 40px 0 52px; }
       .locations-inner { padding: 0 20px; }
@@ -320,10 +323,11 @@
       .partner-logo-box img { max-height: 80px; }
       .partner-desc { font-size: 11px; }
       .cross-icon { display: none; }
+      .tsim-body-inner { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 72px; }
+      .hero-title { font-size: 32px; }
       .locations-title { font-size: 24px; }
       .partners-title { font-size: 22px; }
       .partners-grid { grid-template-columns: 1fr 1fr; }
@@ -345,8 +349,8 @@
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-subtitle">Venues</p>
-      <h1 class="hero-title">Getting the Lay<br>of the Land</h1>
-      <p class="hero-body">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis parturient montes,</p>
+      <h1 class="hero-title">Map Your Festival</h1>
+      <p class="hero-body">Navigate the precinct, find venues, plan your route and make the most of your time at Fak'ugesi. From finding the precinct to navigating venues, accessibility, transport and tickets, we've gathered the answers to the questions we're most often asked.</p>
     </div>
     <div class="hero-logo">
       <img src="../images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
@@ -357,14 +361,18 @@
 <!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
+    <span>&nbsp;·&nbsp;</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
+    <span>&nbsp;·&nbsp;</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
+    <span>&nbsp;·&nbsp;</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
+    <span>&nbsp;·&nbsp;</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
+    <span>&nbsp;·&nbsp;</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
+    <span>&nbsp;·&nbsp;</span>
   </div>
 </div>
 
@@ -387,24 +395,31 @@
       <div class="location-cards">
         <div class="location-card active" id="card-1" onclick="activateCard(1)">
           <div class="location-card-header">
-            <span class="location-name">Tshimologong Precinct</span>
+            <span class="location-name">Tshimologong Digital Innovation Precinct</span>
             <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Tshimologong+Precinct,41+Juta+Street,Braamfontein,Johannesburg" target="_blank" rel="noopener" onclick="event.stopPropagation()">Get directions &nbsp;→</a>
           </div>
-          <div class="location-address">41 Juta Street<br>Braamfontein<br>Johannesburg<br>South Africa</div>
+          <div class="location-address">41 Juta Street<br>Braamfontein<br>Johannesburg, 2001<br>South Africa</div>
         </div>
         <div class="location-card" id="card-2" onclick="activateCard(2)">
           <div class="location-card-header">
             <span class="location-name">Wits Anglo American Digital Dome</span>
-            <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Wits+Anglo+American+Digital+Dome,Yale+Rd,Braamfontein,Johannesburg" target="_blank" rel="noopener" onclick="event.stopPropagation()">Get directions &nbsp;→</a>
+            <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Wits+Anglo+American+Digital+Dome,Yale+Road,Braamfontein,Johannesburg" target="_blank" rel="noopener" onclick="event.stopPropagation()">Get directions &nbsp;→</a>
           </div>
-          <div class="location-address">University of the Witwatersrand, Yale Rd<br>Braamfontein<br>Johannesburg<br>South Africa</div>
+          <div class="location-address">University of the Witwatersrand, Yale Road<br>Braamfontein<br>Johannesburg, 2001<br>South Africa</div>
         </div>
         <div class="location-card" id="card-3" onclick="activateCard(3)">
           <div class="location-card-header">
-            <span class="location-name">Origins Center</span>
+            <span class="location-name">Origins Centre</span>
             <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Origins+Center,University+of+the+Witwatersrand,Braamfontein,Johannesburg,2050" target="_blank" rel="noopener" onclick="event.stopPropagation()">Get directions &nbsp;→</a>
           </div>
-          <div class="location-address">Origins Center, University of the Witwatersrand<br>Braamfontein<br>Johannesburg, 2050<br>South Africa</div>
+          <div class="location-address">University of the Witwatersrand<br>Yale Road &amp; Enoch Sontonga Avenue<br>Braamfontein<br>Johannesburg, 2000<br>South Africa</div>
+        </div>
+        <div class="location-card" id="card-4" onclick="activateCard(4)">
+          <div class="location-card-header">
+            <span class="location-name">Chris Seabrooke Music Hall</span>
+            <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Chris+Seabrooke+Music+Hall,24+Station+Street,Braamfontein,Johannesburg" target="_blank" rel="noopener" onclick="event.stopPropagation()">Get directions &nbsp;→</a>
+          </div>
+          <div class="location-address">24 Station Street<br>Braamfontein<br>Johannesburg, 2000<br>South Africa</div>
         </div>
       </div>
       <div class="map-wrap">
@@ -414,23 +429,68 @@
   </div>
 </section>
 
-<!-- TSHIMOLOGONG ACCORDION -->
+<!-- VENUE ACCORDIONS -->
 <section class="tsim-section reveal">
   <div class="tsim-inner">
-    <button class="tsim-toggle" id="tsimToggle" aria-expanded="false" onclick="toggleTsim()">
+
+    <!-- 01 Tshimologong Digital Innovation Precinct -->
+    <button class="tsim-toggle" id="tsimToggle1" aria-expanded="false" onclick="toggleAccordion(1)">
       <div class="tsim-toggle-left">
         <span class="tsim-num">01</span>
-        <h2 class="tsim-title">Tshimologong</h2>
+        <h2 class="tsim-title">Tshimologong Digital Innovation Precinct</h2>
       </div>
       <span class="tsim-icon">+</span>
     </button>
-    <div class="tsim-body" id="tsimBody">
-      <div class="tsim-body-inner">
+    <div class="tsim-body" id="tsimBody1">
+      <div class="tsim-body-inner single-col">
         <p>The Tshimologong Digital Innovation Precinct is a purpose-built environment adjacent to the campus of Wits University in Johannesburg. Designed to accelerate the conditions under which African digital innovation occurs, scales, and circulates, the Precinct houses research groups, start-up incubators, creative studios, and industry partnerships inside a shared innovation environment.</p>
-        <p style="margin-top: 16px;">Its mandate is practical: reduce the distance between discovery and deployment, between the laboratory and the market, between the individual practitioner and the structural support they need to build something that lasts.</p>
-        <p style="margin-top: 16px;">During Fak'ugesi, the Precinct becomes the physical centre of gravity for the festival's five days. A place where the African Imaginaries are not only discussed but built, tested, exhibited, and released into the world.</p>
+        <p>Its mandate is practical: reduce the distance between discovery and deployment, between the laboratory and the market, between the individual practitioner and the structural support they need to build something that lasts.</p>
+        <p>During Fak'ugesi, the Precinct becomes the physical centre of gravity for the festival's five days. A place where the African Imaginaries are not only discussed but built, tested, exhibited, and released into the world.</p>
       </div>
     </div>
+
+    <!-- 02 Wits Anglo American Digital Dome -->
+    <button class="tsim-toggle" id="tsimToggle2" aria-expanded="false" onclick="toggleAccordion(2)">
+      <div class="tsim-toggle-left">
+        <span class="tsim-num">02</span>
+        <h2 class="tsim-title">Wits Anglo American Digital Dome</h2>
+      </div>
+      <span class="tsim-icon">+</span>
+    </button>
+    <div class="tsim-body" id="tsimBody2">
+      <div class="tsim-body-inner single-col">
+        <p>Opened as Africa's first full-sized planetarium, the Wits Anglo American Digital Dome has been reimagined as a state-of-the-art immersive venue for digital storytelling, research and innovation. Its 360° projection environment makes it the only one of its kind on the continent and a distinctive space for exploring the intersection of art, science and technology, hosting everything from fulldome cinema and live performance to experimental digital works.</p>
+      </div>
+    </div>
+
+    <!-- 03 Origins Centre -->
+    <button class="tsim-toggle" id="tsimToggle3" aria-expanded="false" onclick="toggleAccordion(3)">
+      <div class="tsim-toggle-left">
+        <span class="tsim-num">03</span>
+        <h2 class="tsim-title">Origins Centre</h2>
+      </div>
+      <span class="tsim-icon">+</span>
+    </button>
+    <div class="tsim-body" id="tsimBody3">
+      <div class="tsim-body-inner single-col">
+        <p>Located at the heart of the University of the Witwatersrand in Braamfontein, the Origins Centre is one of Africa's leading museums dedicated to the story of humankind. Through world-renowned rock art, archaeology, fossils, contemporary installations and immersive exhibitions, it celebrates Africa as the birthplace of humanity, creativity and innovation. As the home of Fak'ugesi's opening programme, the Origins Centre provides a powerful setting where deep history meets bold digital futures.</p>
+      </div>
+    </div>
+
+    <!-- 04 Chris Seabrooke Music Hall -->
+    <button class="tsim-toggle" id="tsimToggle4" aria-expanded="false" onclick="toggleAccordion(4)">
+      <div class="tsim-toggle-left">
+        <span class="tsim-num">04</span>
+        <h2 class="tsim-title">Chris Seabrooke Music Hall</h2>
+      </div>
+      <span class="tsim-icon">+</span>
+    </button>
+    <div class="tsim-body" id="tsimBody4">
+      <div class="tsim-body-inner single-col">
+        <p>Johannesburg's only purpose-built live music venue designed with modern acoustic engineering, offering an intimate setting for exceptional performances across jazz, classical, contemporary and experimental music. Located in the Wits cultural precinct between the Origins Centre and Wits Art Museum, the award-winning venue blends striking contemporary architecture with a restored heritage foyer, making it one of the city's premier spaces for music, conversation and creative exchange.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -442,7 +502,6 @@
   <div class="faq-layout">
     <div>
       <h2 class="faq-title-left">FAQ</h2>
-      <p class="faq-intro-text">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus. Donec laoreet sem at elit. Cum sociis natoque penatibus et magnis dis</p>
     </div>
     <div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
@@ -460,47 +519,71 @@
     </div>
     <div class="partners-grid">
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" /></div>
-        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+        <a href="https://tshimologong.joburg/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
+          <div class="partner-logo-box">
+            <img src="../images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" />
+          </div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color" /></div>
-        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+        <a href="https://www.wits.ac.za/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
+          <div class="partner-logo-box">
+            <img src="../images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color" />
+          </div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" /></div>
-        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+        <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
+          <div class="partner-logo-box">
+            <img src="../images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" />
+          </div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box"><img src="../images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color" /></div>
-        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+        <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
+          <div class="partner-logo-box">
+            <img src="../images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color" />
+          </div>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Leaflet JS -->
-<script>
-function toggleTsim() {
-  const btn = document.getElementById('tsimToggle');
-  const body = document.getElementById('tsimBody');
-  const isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  btn.setAttribute('aria-expanded', String(!isOpen));
-}
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
+  /* ── VENUE ACCORDION ── */
+  function toggleAccordion(num) {
+    const btn  = document.getElementById('tsimToggle' + num);
+    const body = document.getElementById('tsimBody' + num);
+    const isOpen = body.classList.contains('open');
+    // close all
+    [1,2,3,4].forEach(function(n) {
+      document.getElementById('tsimBody' + n).classList.remove('open');
+      document.getElementById('tsimToggle' + n).setAttribute('aria-expanded', 'false');
+    });
+    // open this one if it was closed
+    if (!isOpen) {
+      body.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  /* ── MAP ── */
   const venues = [
-    { id:1, name:'Tshimologong Precinct',             lat:-26.1946, lng:28.0319, address:'41 Juta Street, Braamfontein' },
-    { id:2, name:'Wits Anglo American Digital Dome',  lat:-26.1884, lng:28.0282, address:'Yale Rd, Braamfontein' },
-    { id:3, name:'Origins Center',                    lat:-26.1925, lng:28.0281, address:'University of the Witwatersrand, Braamfontein, Johannesburg,' }
+    { id:1, name:'Tshimologong Digital Innovation Precinct', lat:-26.1946, lng:28.0319, address:'41 Juta Street, Braamfontein, 2001' },
+    { id:2, name:'Wits Anglo American Digital Dome',         lat:-26.1884, lng:28.0282, address:'University of the Witwatersrand, Yale Road, Braamfontein, 2001' },
+    { id:3, name:'Origins Centre',                           lat:-26.1925, lng:28.0281, address:'Yale Road & Enoch Sontonga Avenue, Braamfontein, 2000' },
+    { id:4, name:'Chris Seabrooke Music Hall',               lat:-26.1910, lng:28.0298, address:'24 Station Street, Braamfontein, 2000' }
   ];
-  const map = L.map('venue-map', { center: [-26.1915, 28.0300], zoom: 15, zoomControl: true, scrollWheelZoom: false, tap: false });
+
+  const map = L.map('venue-map', { center: [-26.1915, 28.0295], zoom: 15, zoomControl: true, scrollWheelZoom: false, tap: false });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd', maxZoom: 19
   }).addTo(map);
+
   function makeIcon(active) {
     return L.divIcon({
       className: '',
@@ -508,22 +591,23 @@ function toggleTsim() {
       iconSize: [14,14], iconAnchor: [7,7], popupAnchor: [0,-10]
     });
   }
-  const markers = venues.map((v, i) => {
+
+  const markers = venues.map(function(v, i) {
     const marker = L.marker([v.lat, v.lng], { icon: makeIcon(i === 0) }).addTo(map);
-    if (i === 0 || i === 1) {
-      marker.bindPopup(`<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br><span style="font-size:10px;color:#3a4060;">${v.address}</span>`, { autoClose: false, closeOnClick: false });
-    } else {
-      marker.bindPopup(`<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br><span style="font-size:10px;color:#3a4060;">${v.address}</span>`);
-    }
+    marker.bindPopup(
+      `<strong style="font-size:11px;color:#0d1b3e;">${v.name}</strong><br><span style="font-size:10px;color:#3a4060;">${v.address}</span>`
+    );
     return marker;
   });
+
+  // open first two by default
   markers[0].openPopup();
-  markers[1].openPopup();
+
   function activateCard(num) {
-    markers.forEach(marker => marker.closePopup());
-    document.querySelectorAll('.location-card').forEach(c => c.classList.remove('active'));
+    markers.forEach(function(m) { m.closePopup(); });
+    document.querySelectorAll('.location-card').forEach(function(c) { c.classList.remove('active'); });
     document.getElementById('card-' + num).classList.add('active');
-    markers.forEach((m, i) => m.setIcon(makeIcon(i === num - 1)));
+    markers.forEach(function(m, i) { m.setIcon(makeIcon(i === num - 1)); });
     const v = venues[num - 1];
     map.flyTo([v.lat, v.lng], 16, { duration: 0.8 });
     markers[num - 1].openPopup();
@@ -531,32 +615,38 @@ function toggleTsim() {
       document.querySelector('.map-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
+
+  /* ── REVEAL ── */
   const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); setTimeout(() => map.invalidateSize(), 800); }
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        setTimeout(function() { map.invalidateSize(); }, 800);
+      }
     });
   }, { threshold: 0.08 });
-  revealEls.forEach(el => io.observe(el));
-  window.addEventListener('resize', () => {
+  revealEls.forEach(function(el) { io.observe(el); });
+
+  window.addEventListener('resize', function() {
     clearTimeout(window._mapResizeTimer);
-    window._mapResizeTimer = setTimeout(() => map.invalidateSize(), 200);
+    window._mapResizeTimer = setTimeout(function() { map.invalidateSize(); }, 200);
   });
 
   /* ── FAQ ── */
   const faqData = [
-    { q: "Where is the Tshimologong Precinct?", a: "41 Juta Street, Braamfontein, Johannesburg. The Precinct is on the edge of the Wits University campus, visit tshimologong.joburg" },
+    { q: "Where is the Tshimologong Precinct?", a: "41 Juta Street, Braamfontein, Johannesburg, 2001. The Precinct is on the edge of the Wits University campus. Visit tshimologong.joburg for more." },
     { q: "Is the Precinct accessible to the public all year-round?", a: "The Precinct operates as an active innovation environment throughout the year. Some facilities are open to the public; others are accessible through specific programmes and residencies. During Fak'ugesi, the full range of spaces is activated for the Festival." },
     { q: "Are there other venues beyond Tshimologong?", a: "Yes. Partner venues host specific programme elements during the Festival. Details are on the Partner Venues page." },
   ];
   const faqContainer = document.getElementById('faqAccordion');
-  faqData.forEach((faq, i) => {
+  faqData.forEach(function(faq, i) {
     const item = document.createElement('div');
     item.className = 'faq-item' + (i === 0 ? ' open' : '');
     item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
-    item.querySelector('.faq-q-btn').addEventListener('click', () => {
+    item.querySelector('.faq-q-btn').addEventListener('click', function() {
       const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => {
+      faqContainer.querySelectorAll('.faq-item').forEach(function(el) {
         el.classList.remove('open');
         el.querySelector('.faq-t-icon').textContent = '+';
         el.querySelector('.faq-q-btn').setAttribute('aria-expanded', 'false');

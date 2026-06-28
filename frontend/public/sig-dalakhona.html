@@ -23,25 +23,13 @@
     }
 
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'InterDisplay', sans-serif;
-      background: var(--white);
-      color: var(--dark-text);
-      overflow-x: hidden;
-    }
+    body { font-family: 'InterDisplay', sans-serif; background: var(--white); color: var(--dark-text); overflow-x: hidden; }
 
     /* ── CROSS ICONS ── */
     .cross-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      position: absolute;
-      z-index: 6;
-      opacity: 0.55;
-      transition: transform 0.1s linear;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 18px; height: 18px; flex-shrink: 0; position: absolute;
+      z-index: 6; opacity: 0.55; transition: transform 0.1s linear;
     }
     .cross-icon svg { width: 100%; height: 100%; }
 
@@ -49,82 +37,66 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ══════════════════════════════════════════════
-       HERO
-    ══════════════════════════════════════════════ */
+    /* ══ HERO — matched to sig-awards layout ══ */
     .hero {
-      position: relative; width: 100%; min-height: 580px; overflow: hidden;
-      display: grid;
-      grid-template-rows: calc(16px + 9px) 1fr calc(16px + 9px);
-      grid-template-columns: 248px 1fr 248px;
-      align-items: stretch; padding-top: 0;
+      position: relative; width: 100%; min-height: 520px; overflow: hidden;
+      display: flex; align-items: flex-start;
     }
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('images/image00038.jpg');
       background-size: cover; background-position: center 30%;
-      filter: brightness(0.55);
+      filter: brightness(0.3);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
-    .hero-overlay {
-     position: absolute; inset: 0;
-      background: transparent;
-     }
-    .hero-content {
-      grid-row: 2; grid-column: 2; position: relative; z-index: 4;
-      display: flex; flex-direction: row;
-      justify-content: space-between; align-items: flex-start;
-      gap: 48px; padding: 110px 0 60px;
-      animation: fadeUp 0.9s ease both;
+    .hero-overlay { display: none; }
+    .hero-inner {
+      position: relative; z-index: 3; width: 100%;
+      padding: 120px 248px 56px;
+      display: flex; align-items: flex-start; justify-content: space-between;
     }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-text-wrapper { flex: 1; min-width: 0; }
+    .hero-content { max-width: 560px; display: flex; flex-direction: column; align-items: flex-start; }
     .hero-eyebrow {
       font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 14px;
+      text-transform: uppercase; opacity: 0.75; margin-bottom: 14px; color: #fff;
     }
-     .hero-title {
+    .hero-title {
       font-family: 'InterDisplay', sans-serif;
       font-size: 72px; font-weight: 600; line-height: 1.05;
-      color: #fff; margin-bottom: 20px; max-width: 640px;
+      color: #fff; margin-bottom: 20px;
     }
     .hero-body {
-      font-size:13px; font-weight: 400; line-height: 1.72;
-      color: rgba(255,255,255,0.85); max-width: 510px; margin-bottom: 20px;
-    }.hero-body {
-      font-size:13px; font-weight: 400; line-height: 1.72;
-      color: rgba(255,255,255,0.85); max-width: 510px; margin-bottom: 20px;
+      font-size: 13px; font-weight: 400; line-height: 1.72;
+      color: rgba(255,255,255,0.85); max-width: 480px; margin-bottom: 20px;
     }
-    .hero-dates {
-      font-size:28px; font-weight:400; opacity: 0.9;
-      color: #fff; margin-bottom: 0;
+    .hero-dates { font-size: 28px; font-weight: 400; opacity: 0.9; color: #fff; margin-bottom: 0; }
+
+    /* ── LOGO COL — exactly as sig-awards ── */
+    .hero-logo-col {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 120px;
+      flex-shrink: 0;
     }
-    .hero-signia {
-      flex-shrink: 0; width: auto; max-width: 280px;
-      padding-top: 38px; display: flex;
-      align-items: flex-start; justify-content: flex-end;
-    }
-    .hero-signia img {
-      display: block; width: 100%; height: auto;
-       max-height: 123px; object-fit: contain; background: transparent;
+    .hero-logo-col img {
+      height: 150px;
+      width: auto;
+      display: block;
+     
     }
 
     /* ── TICKER ── */
     .ticker-wrapper {
       background: var(--dark-text); overflow: hidden; white-space: nowrap;
-      padding: 12px 0; position: relative; z-index: 10;
+      padding: 12px 0; position: relative; z-index: 10; transition: background 0.25s;
     }
+    .ticker-wrapper:hover { background: #fff; }
+    .ticker-wrapper:hover .ticker-track span { color: var(--dark-text); }
     .ticker-track { display: inline-flex; animation: tickerScroll 22s linear infinite; }
     .ticker-track span {
       padding: 0 40px; font-size: 12px; font-weight: 500;
-      color: #fff; letter-spacing: 0.04em;
-      transition: background 0.2s, color 0.2s;
-    }
-    .ticker-track span:hover {
-      background: #fff;
-      color: var(--dark-text);
-      cursor: pointer;
+      color: #fff; letter-spacing: 0.04em; transition: color 0.25s;
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
@@ -141,17 +113,13 @@
     }
     .fug-sig-strip-inner::-webkit-scrollbar { display: none; }
     .fug-sig-item {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 7px; padding: 12px 38px;
-      text-decoration: none; color: rgba(255,255,255,0.60);
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 9px; font-weight: 700;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 7px; padding: 12px 38px; text-decoration: none; color: rgba(255,255,255,0.60);
+      font-family: 'InterDisplay', sans-serif; font-size: 9px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
       border-right: 1px solid rgba(255,255,255,0.07);
       transition: background 0.22s, color 0.22s;
-      flex-shrink: 0; min-width: 100px;
-      position: relative; white-space: nowrap;
+      flex-shrink: 0; min-width: 100px; position: relative; white-space: nowrap;
     }
     .fug-sig-item:first-child { border-left: 1px solid rgba(255,255,255,0.07); }
     .fug-sig-item:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.95); }
@@ -162,137 +130,54 @@
     }
     .fug-sig-item img {
       display: block; max-width: 88px; max-height: 40px; object-fit: contain;
-      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s;
-      opacity: 0.65;
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s; opacity: 0.65;
     }
     .fug-sig-item:hover img, .fug-sig-item.fug-active img { transform: scale(1.18); opacity: 1; }
 
-    /* ══════════════════════════════════════════════
-       INTRO — "What is Dala Khona"
-    ══════════════════════════════════════════════ */
-    .intro-section {
-      background: var(--white); padding: 72px 248px;
-      position: relative;
-    }
-    .intro-header {
-      display: flex; justify-content: space-between;
-      align-items: flex-start; margin-bottom: 32px;
-    }
-    .intro-title {
-      font-size: 44px; font-weight: 700;
-      color: var(--dark-text); line-height: 1.05;
-    }
-    .intro-view-link {
-      font-size: 11px; font-weight: 600; color: var(--navy);
-      text-decoration: underline; letter-spacing: 0.06em;
-      cursor: pointer; text-underline-offset: 3px;
-      white-space: nowrap; margin-top: 12px;
-      transition: opacity 0.2s;
-    }
-    .intro-view-link:hover { opacity: 0.6; }
-    .intro-body {
-      font-size: 14px; line-height: 1.78; color: var(--dark-text);
-      max-width: 860px; margin-bottom: 48px;
-    }
-    .intro-cards {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    }
-    .intro-card {
-      border: 2px solid rgba(26,39,68,0.35);
-      background: var(--lavender);
-      padding: 24px 22px 28px;
-    }
-    .intro-card-header {
-      display: flex; justify-content: space-between;
-      align-items: flex-start; margin-bottom: 12px;
-    }
-    .intro-card-tag {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--body-gray);
-    }
-    .intro-card-num {
-      font-size: 36px; font-weight: 700;
-      color: var(--navy); line-height: 1;
-    }
-    .intro-card-title {
-      font-size: 20px; font-weight: 700;
-      color: var(--dark-text); line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .intro-card-body {
-      font-size: 12px; font-weight: 400;
-      color: var(--body-gray); line-height: 1.65;
-    }
+    /* ══ INTRO ══ */
+    .intro-section { background: var(--white); padding: 72px 248px; position: relative; }
+    .intro-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
+    .intro-title { font-size: 44px; font-weight: 700; color: var(--dark-text); line-height: 1.05; }
+    .intro-body { font-size: 14px; line-height: 1.78; color: var(--dark-text); max-width: 860px; margin-bottom: 48px; }
+    .intro-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
-    /* ══════════════════════════════════════════════
-       NETWORK
-    ══════════════════════════════════════════════ */
-    .network-section {
-      position: relative; min-height: 420px; overflow: hidden;
-    }
+    /* ══ NETWORK ══ */
+    .network-section { position: relative; min-height: 420px; overflow: hidden; }
     .network-bg {
       position: absolute; inset: 0;
       background-image: url('images/0A9A8876.jpg');
       background-size: cover; background-position: center 30%;
       filter: brightness(0.45);
     }
-    .network-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(105deg, rgba(10,18,48,0.72) 50%, transparent 85%);
-    }
+    /* overlay removed — no colour tint */
+    .network-overlay { display: none; }
     .network-inner {
-      position: relative; z-index: 3;
-      padding: 64px 248px;
+      position: relative; z-index: 3; padding: 64px 248px;
       display: flex; justify-content: space-between; align-items: flex-start;
     }
     .network-content { max-width: 500px; }
-    .network-title {
-      font-size: 44px; font-weight: 700;
-      color: #fff; line-height: 1.05; margin-bottom: 24px;
-    }
-    .network-body {
-      font-size: 13px; line-height: 1.72;
-      color: rgba(255,255,255,0.85); margin-bottom: 32px;
-    }
+    .network-title { font-size: 44px; font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 24px; }
+    .network-body { font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.85); margin-bottom: 32px; }
     .network-cta {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border: 1.5px solid #fff; color: #fff; background: transparent;
       padding: 13px 32px; font-size: 11px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
-      cursor: pointer; font-family: 'InterDisplay', sans-serif;
-      text-decoration: none;
+      cursor: pointer; font-family: 'InterDisplay', sans-serif; text-decoration: none;
       transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.18s;
     }
-    .network-cta:hover {
-      background: var(--navy);
-      border-color: var(--navy);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-    .network-view-link {
-      font-size: 11px; font-weight: 600;
-      color: rgba(255,255,255,0.65); text-decoration: underline;
-      letter-spacing: 0.06em; white-space: nowrap;
-      margin-top: 12px; cursor: pointer;
-      text-underline-offset: 3px; transition: color 0.2s;
-    }
-    .network-view-link:hover { color: #fff; }
+    .network-cta:hover { background: var(--navy); border-color: var(--navy); color: #fff; transform: translateY(-1px); }
 
-    /* ── Fak'ugesi shared link hover effect ── */
-    .involved-link, .curatorial-view-link, .showcases-link,
-    .showcases-header a, .showcase-card-more, .winners-view-link,
-    .highlights-view-link, .intro-view-link, .network-view-link,
-    .faq-tickets-link, .faq-apply-link, .faq-apply-top,
-    .partners-link, .partners-view-link, .main-partners-link,
-    .market-info-link, .exhibitors-link, .exhibitor-card-more,
-    .more-card-link, .prizes-apply-link, .cat-apply-link,
-    .req-apply-link, .challenge-apply-link, .section-link,
-    .media-link, .locations-map-link, .directions-link,
-    .hero-link, [data-fug-link] {
-      position: relative !important;
-      text-decoration: none !important;
-      padding-bottom: 2px !important;
-      transition: opacity 0.25s ease, transform 0.25s ease !important;
+    /* ── Shared link hover ── */
+    .involved-link, .curatorial-view-link, .showcases-link, .showcases-header a,
+    .showcase-card-more, .winners-view-link, .highlights-view-link, .intro-view-link,
+    .network-view-link, .faq-tickets-link, .faq-apply-link, .faq-apply-top,
+    .partners-link, .partners-view-link, .main-partners-link, .market-info-link,
+    .exhibitors-link, .exhibitor-card-more, .more-card-link, .prizes-apply-link,
+    .cat-apply-link, .req-apply-link, .challenge-apply-link, .section-link,
+    .media-link, .locations-map-link, .directions-link, .hero-link, [data-fug-link] {
+      position: relative !important; text-decoration: none !important;
+      padding-bottom: 2px !important; transition: opacity 0.25s ease, transform 0.25s ease !important;
     }
     .involved-link::after, .curatorial-view-link::after, .showcases-link::after,
     .showcases-header a::after, .showcase-card-more::after, .winners-view-link::after,
@@ -304,32 +189,21 @@
     .req-apply-link::after, .challenge-apply-link::after, .section-link::after,
     .media-link::after, .locations-map-link::after, .directions-link::after,
     .hero-link::after, [data-fug-link]::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 1px;
-      background: currentColor;
-      transform: scaleX(1);
-      transform-origin: left center;
-      transition: transform 0.28s ease;
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 1px; background: currentColor;
+      transform: scaleX(1); transform-origin: left center; transition: transform 0.28s ease;
     }
-    .involved-link:hover::after, .curatorial-view-link:hover::after,
-    .showcases-link:hover::after, .showcases-header a:hover::after,
-    .showcase-card-more:hover::after, .winners-view-link:hover::after,
-    .highlights-view-link:hover::after, .intro-view-link:hover::after,
-    .network-view-link:hover::after, .faq-tickets-link:hover::after,
-    .faq-apply-link:hover::after, .faq-apply-top:hover::after,
-    .partners-link:hover::after, .partners-view-link:hover::after,
-    .main-partners-link:hover::after, .market-info-link:hover::after,
-    .exhibitors-link:hover::after, .exhibitor-card-more:hover::after,
-    .more-card-link:hover::after, .prizes-apply-link:hover::after,
-    .cat-apply-link:hover::after, .req-apply-link:hover::after,
-    .challenge-apply-link:hover::after, .section-link:hover::after,
-    .media-link:hover::after, .locations-map-link:hover::after,
-    .directions-link:hover::after, .hero-link:hover::after,
-    [data-fug-link]:hover::after {
-      transform: scaleX(0);
-      transform-origin: right center;
+    .involved-link:hover::after, .curatorial-view-link:hover::after, .showcases-link:hover::after,
+    .showcases-header a:hover::after, .showcase-card-more:hover::after, .winners-view-link:hover::after,
+    .highlights-view-link:hover::after, .intro-view-link:hover::after, .network-view-link:hover::after,
+    .faq-tickets-link:hover::after, .faq-apply-link:hover::after, .faq-apply-top:hover::after,
+    .partners-link:hover::after, .partners-view-link:hover::after, .main-partners-link:hover::after,
+    .market-info-link:hover::after, .exhibitors-link:hover::after, .exhibitor-card-more:hover::after,
+    .more-card-link:hover::after, .prizes-apply-link:hover::after, .cat-apply-link:hover::after,
+    .req-apply-link:hover::after, .challenge-apply-link:hover::after, .section-link:hover::after,
+    .media-link:hover::after, .locations-map-link:hover::after, .directions-link:hover::after,
+    .hero-link:hover::after, [data-fug-link]:hover::after {
+      transform: scaleX(0); transform-origin: right center;
     }
     .involved-link:hover, .curatorial-view-link:hover, .showcases-link:hover,
     .showcases-header a:hover, .showcase-card-more:hover, .winners-view-link:hover,
@@ -340,76 +214,32 @@
     .more-card-link:hover, .prizes-apply-link:hover, .cat-apply-link:hover,
     .req-apply-link:hover, .challenge-apply-link:hover, .section-link:hover,
     .media-link:hover, .locations-map-link:hover, .directions-link:hover,
-    .hero-link:hover, [data-fug-link]:hover {
-      transform: translateX(3px);
-    }
+    .hero-link:hover, [data-fug-link]:hover { transform: translateX(3px); }
 
-    /* ══════════════════════════════════════════════
-       2025 HIGHLIGHTS
-    ══════════════════════════════════════════════ */
-    .highlights-section {
-      background: #fff; padding: 0; position: relative; overflow: hidden;
-    }
+    /* ══ 2025 HIGHLIGHTS ══ */
+    .highlights-section { background: #fff; padding: 0; position: relative; overflow: hidden; }
     .highlights-top-spacer { position: relative; height: 64px; }
     .highlights-header {
       display: flex; align-items: flex-start; justify-content: space-between;
       padding: 16px 248px 36px; position: relative;
     }
-    .highlights-title {
-      font-size: 52px; font-weight: 700; color: var(--dark-text);
-    }
-    .highlights-nav-wrap {
-      display: flex; flex-direction: column;
-      align-items: flex-end; gap: 12px; padding-top: 8px;
-    }
-    .highlights-nav { display: flex; align-items: center; gap: 16px; }
-    .highlights-nav button {
-      background: none; border: none; cursor: pointer;
-      font-size: 22px; color: var(--dark-text); padding: 4px 8px;
-      transition: opacity 0.2s; font-family: 'InterDisplay', sans-serif;
-    }
-    .highlights-nav button:hover { opacity: 0.5; }
-    .highlights-view-link {
-      font-size: 11px; font-weight: 600; color: var(--navy);
-      text-decoration: underline; letter-spacing: 0.06em;
-      cursor: pointer; text-underline-offset: 3px;
-      white-space: nowrap; transition: opacity 0.2s;
-    }
-    .highlights-view-link:hover { opacity: 0.6; }
-    .highlights-strip-outer { overflow: hidden; }
+    .highlights-title { font-size: 52px; font-weight: 700; color: var(--dark-text); }
+    .highlights-strip-outer { padding: 0 248px 64px; }
     .highlights-strip {
-      display: flex; gap: 2px; width: max-content;
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%;
     }
-    .highlight-card { flex: 0 0 360px; min-width: 0; cursor: pointer; }
-    .highlight-img-wrap {
-      width: 100%; height: 360px; overflow: hidden; position: relative;
-    }
+    .highlight-card { min-width: 0; cursor: pointer; }
+    .highlight-img-wrap { width: 100%; height: 280px; overflow: hidden; position: relative; }
     .highlight-img-wrap img {
       width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform 0.5s ease;
     }
     .highlight-card:hover .highlight-img-wrap img { transform: scale(1.04); }
-    .highlight-info { padding: 12px 0 28px; }
-    .highlight-cat {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--body-gray); margin-bottom: 6px;
-    }
-    .highlight-name {
-      font-size: 17px; font-weight: 700;
-      color: var(--dark-text); margin-bottom: 6px; line-height: 1.2;
-    }
-    .highlight-meta { font-size: 12px; color: var(--body-gray); }
 
-    /* ══════════════════════════════════════════════
-       FAQ
-    ══════════════════════════════════════════════ */
+    /* ══ FAQ ══ */
     .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
     .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
     .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
-    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
-    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
     .faq-items-wrap { display: flex; flex-direction: column; }
     .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background 0.28s ease; }
     .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
@@ -423,31 +253,13 @@
     .faq-item.open .faq-t-icon { transform: rotate(45deg); }
     .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color 0.28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
     .faq-item.open .faq-ans { max-height: 300px; padding: 0 16px 22px; }
-    .faq-apply-link {
-      font-size: 11px; font-weight: 600; color: var(--navy);
-      text-decoration: underline; letter-spacing: 0.06em;
-      display: block; margin-top: 40px; cursor: pointer;
-      text-underline-offset: 3px; transition: opacity 0.2s;
-    }
-    .faq-apply-link:hover { opacity: 0.6; }
 
-    /* ══════════════════════════════════════════════
-       PARTNERS (matched to index page — 4 columns, no card outline)
-    ══════════════════════════════════════════════ */
-    .partners-section {
-      background: var(--lavender); padding: 72px 0; position: relative;
-    }
+    /* ══ PARTNERS — matched to index.html ══ */
+    .partners-section { background: var(--lavender); padding: 72px 0; position: relative; }
     .partners-inner { padding: 0 248px; }
-    .partners-header {
-      display: flex; justify-content: space-between;
-      align-items: center; margin-bottom: 40px;
-    }
+    .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
     .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
-    .partners-link {
-      font-size: 12px; color: var(--navy); font-weight: 600;
-      text-decoration: underline; cursor: pointer; letter-spacing: 0.04em;
-    }
-    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
       background: #fff; border: 1px solid rgba(26,39,68,0.10);
@@ -455,44 +267,48 @@
       justify-content: center; padding: 32px 28px;
       transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px;
     }
-    .partner-card:hover .partner-logo-box {
-      box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px);
-    }
-    .partner-logo-box img{max-width:100%;max-height:110px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
-    .partner-desc { font-size: 11.5px; font-weight: 400; color: var(--body-gray); line-height: 1.65; }
+    .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
+    .partner-logo-box img { max-width: 100%; max-height: 110px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
+    .partner-logo-box img.keep-color { filter: none !important; }
+    .partner-logo-link { display: contents; text-decoration: none; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       :root { --band: 48px; }
-      .hero { grid-template-columns: 48px 1fr 48px; }
-      .hero-title { font-size:52px; }
+      .hero-inner { padding: 52px 48px 48px; }
+      .hero-title { font-size: 52px; }
+      .hero-logo-col { padding-top: 130px; }
+      .hero-logo-col img { height: 90px; }
       .intro-section { padding: 56px 48px; }
       .intro-cards { grid-template-columns: repeat(2, 1fr); }
       .network-inner { padding: 56px 48px; }
       .highlights-header { padding: 16px 48px 28px; }
+      .highlights-strip-outer { padding: 0 48px 48px; }
+      .highlights-strip { grid-template-columns: repeat(2, 1fr); }
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
       .partners-inner { padding: 0 48px; }
       .partners-title { font-size: 32px; }
-      .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
       .partner-logo-box { padding: 24px 20px; }
     }
     @media (max-width: 768px) {
       :root { --band: 20px; }
       .cross-icon { display: none; }
-      .hero { display: flex; flex-direction: column; min-height: auto; }
-      .hero-content { padding: 90px 24px 48px !important; flex-direction: column; align-items: flex-start; gap: 20px; width: 100%; }
-      .hero-title { font-size:36px; max-width: 100%; }
-      .hero-signia { max-width: 160px; padding-top: 0; }
+      .hero { min-height: auto; }
+      .hero-inner { padding: 80px 20px 40px !important; flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+      .hero-logo-col { display: none !important; }
+      .hero-title { font-size: 36px; }
       .intro-section { padding: 40px 20px; }
       .intro-title { font-size: 30px; }
       .intro-cards { grid-template-columns: 1fr; }
       .network-inner { padding: 48px 20px; flex-direction: column; gap: 24px; }
       .network-title { font-size: 30px; }
       .highlights-header { padding: 16px 20px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .highlights-strip-outer { padding: 0 20px 40px; }
+      .highlights-strip { grid-template-columns: 1fr 1fr; }
       .highlights-title { font-size: 32px; }
-      .highlight-card { flex: 0 0 280px; }
-      .highlight-img-wrap { height: 280px; }
+      .highlight-img-wrap { height: 200px; }
       .faq-section { padding: 40px 20px 56px; }
       .faq-layout { grid-template-columns: 1fr; gap: 24px; }
       .faq-title-left { font-size: 32px; }
@@ -505,8 +321,9 @@
       .fug-sig-strip-inner { justify-content: flex-start; }
     }
     @media (max-width: 480px) {
-      .hero-title { font-size:26px; }
+      .hero-title { font-size: 26px; }
       .intro-title { font-size: 24px; }
+      .highlights-strip { grid-template-columns: 1fr; }
       .partners-title { font-size: 22px; }
       .partners-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -516,41 +333,40 @@
 
 <script src="nav.js"></script>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<!-- ═══ HERO — sig-awards layout ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <div class="hero-text-wrapper">
+  <div class="hero-inner">
+    <div class="hero-content">
       <p class="hero-eyebrow">Dala Khona</p>
       <h1 class="hero-title">African Gaming<br>Arcade</h1>
       <p class="hero-body">Brings together game developers, players, and digital creatives at the Tshimologong Digital Innovation Precinct. The arcade showcases African-made games alongside workshops, activations, and conversations about the future of African gaming. Open to festival attendees across all five days.</p>
       <p class="hero-dates">13 — 17.10.2026</p>
     </div>
-    <div class="hero-signia">
-      <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona" />
+    <div class="hero-logo-col">
+      <img src="images/logos/signatureProgrammes/dalakhona_logo_colour.svg" alt="Dala Khona"/>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ TICKER ═══════════════════════════════ -->
+<!-- ═══ TICKER ═══ -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
-    <span>Get your tickets now &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
+    <span>PLAY THE LATEST AFRICAN GAMES AT DALA KHONA &nbsp;→&nbsp;</span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════ SIG NAV ═══════════════════════════════ -->
+<!-- ═══ SIG NAV ═══ -->
 <nav class="fug-sig-strip">
   <div class="fug-sig-strip-inner">
     <a class="fug-sig-item" href="sig-awards.html">
@@ -574,7 +390,7 @@
   </div>
 </nav>
 
-<!-- ═══════════════════════════════ WHAT IS DALA KHONA ═══════════════════════════════ -->
+<!-- ═══ WHAT IS DALA KHONA ═══ -->
 <section class="intro-section reveal">
   <div class="cross-icon" style="top:16px;left:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
@@ -582,37 +398,31 @@
   <div class="cross-icon" style="top:16px;right:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
-
   <div class="intro-header">
-    <h2 class="intro-title">What is Dala Khona</h2>
+    <h2 class="intro-title">What is Dala Khona ?</h2>
   </div>
   <p class="intro-body">African-made and global games take centre stage at this dedicated space. From independent developers to established studios, or new voices developed through the Digital Lab Africa pipeline and our Gaming Hub, Dala Khona is where game development becomes visible, playable, and public. Discover new games. Meet the developers. Test prototypes. Compete. Come back. Players, families, students, educators, researchers, industry professionals, and people who have never held a controller before are all welcomed.</p>
-  <div class="intro-cards">
-  </div>
+  <div class="intro-cards"></div>
   <div class="cross-icon" style="bottom:16px;right:200px;">
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ JOIN OUR DEVELOPER NETWORK ═══════════════════════════════ -->
+<!-- ═══ JOIN OUR DEVELOPER NETWORK ═══ -->
 <section class="network-section reveal">
   <div class="network-bg"></div>
   <div class="network-overlay"></div>
-
   <div class="network-inner">
     <div class="network-content">
-      <h2 class="network-title">Join our developer<br>network</h2>
-      <p class="network-body">Connect with the African game development community at Fak’ugesi. Whether you’re a developer, player, or studio, Dala Khona is the space for encounter, exchange, and collaboration.</p>
-      <a class="network-cta" href="get-involved.html">
-        GET INVOLVED
-      </a>
+      <h2 class="network-title">Join Our Developer<br>Network</h2>
+      <p class="network-body">Connect with the African game development community at Fak'ugesi. Whether you're a developer, player, or studio, Dala Khona is the space for encounter, exchange, and collaboration.</p>
+      <a class="network-cta" href="get-involved.html">GET INVOLVED</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ 2025 HIGHLIGHTS ═══════════════════════════════ -->
+<!-- ═══ 2025 HIGHLIGHTS ═══ -->
 <section class="highlights-section reveal">
-
   <div class="highlights-top-spacer">
     <div class="cross-icon" style="top:16px;left:200px;">
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
@@ -624,141 +434,40 @@
       <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
     </div>
   </div>
-
   <div class="highlights-header">
     <h2 class="highlights-title">2025 Highlights</h2>
-    <div class="highlights-nav-wrap">
-      <div class="highlights-nav">
-        <button id="prevHighlight" aria-label="Previous">←</button>
-        <button id="nextHighlight" aria-label="Next">→</button>
-      </div>
-    </div>
   </div>
-
   <div class="highlights-strip-outer">
     <div class="highlights-strip" id="highlightsStrip">
-
-      <!-- SET 1 -->
       <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Joburg Games Fest Pop-up" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Activation</p>
-          <p class="highlight-name">Joburg Games Fest Pop-up</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</div>
+        <div class="highlight-img-wrap">
+          <img src="images/Games fest/SnapInsta.to_572142043_17942021358068213_767821241154148027_n.jpg" alt="Dala Khona 2025" />
         </div>
       </div>
-
       <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Game Dev Workshop" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Workshop</p>
-          <p class="highlight-name">African Game Dev Intensive</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
+        <div class="highlight-img-wrap">
+          <img src="images/Games fest/SnapInsta.to_572375557_17942021340068213_2725168363063215036_n.jpg" alt="Dala Khona 2025" />
         </div>
       </div>
-
       <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Retro Arcade Night" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Event</p>
-          <p class="highlight-name">Retro Arcade Night</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
+        <div class="highlight-img-wrap">
+          <img src="images/Games fest/SnapInsta.to_572506984_17942021349068213_3364227357369328922_n.jpg" alt="Dala Khona 2025" />
         </div>
       </div>
-
       <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Indie Showcase" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Showcase</p>
-          <p class="highlight-name">African Indie Game Showcase</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
+        <div class="highlight-img-wrap">
+          <img src="images/Games fest/SnapInsta.to_574035987_17942021331068213_9184609626578961899_n.jpg" alt="Dala Khona 2025" />
         </div>
       </div>
-
-      <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Panel Discussion" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Panel</p>
-          <p class="highlight-name">The Future of African Gaming</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
-        </div>
-      </div>
-
-      <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Tournament" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Competition</p>
-          <p class="highlight-name">Dala Khona Tournament 2025</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
-        </div>
-      </div>
-
-      <!-- SET 2 (duplicate for seamless loop) -->
-      <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Joburg Games Fest Pop-up" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Activation</p>
-          <p class="highlight-name">Joburg Games Fest Pop-up</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</div>
-        </div>
-      </div>
-
-      <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Game Dev Workshop" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Workshop</p>
-          <p class="highlight-name">African Game Dev Intensive</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
-        </div>
-      </div>
-
-      <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Retro Arcade Night" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Event</p>
-          <p class="highlight-name">Retro Arcade Night</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
-        </div>
-      </div>
-
-      <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Indie Showcase" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Showcase</p>
-          <p class="highlight-name">African Indie Game Showcase</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
-        </div>
-      </div>
-
-      <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Panel Discussion" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Panel</p>
-          <p class="highlight-name">The Future of African Gaming</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
-        </div>
-      </div>
-
-      <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image00057.jpeg" alt="Tournament" /></div>
-        <div class="highlight-info">
-          <p class="highlight-cat">Competition</p>
-          <p class="highlight-name">Dala Khona Tournament 2025</p>
-          <div class="highlight-meta">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede.</div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<!-- ═══ FAQ ═══ -->
 <section class="faq-section reveal">
-
   <div class="faq-layout">
     <div>
       <h2 class="faq-title-left">FAQ</h2>
-      <p class="faq-intro-text">Everything you need to know about visiting the Arcade, meeting developers, and getting your own game in front of players.</p>
     </div>
     <div>
       <div class="faq-items-wrap" id="faqAccordion"></div>
@@ -766,7 +475,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ PARTNERS ═══════════════════════════════ -->
+<!-- ═══ PARTNERS — matched to index.html ═══ -->
 <section class="partners-section reveal">
   <div class="partners-inner">
     <div class="partners-header">
@@ -774,28 +483,32 @@
     </div>
     <div class="partners-grid">
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong" />
-        </div>
-        <p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p>
+        <a href="https://tshimologong.joburg/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Tshimologong">
+          <div class="partner-logo-box">
+            <img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/>
+          </div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
-        </div>
-        <p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p>
+        <a href="https://www.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits University">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
+          </div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome" />
-        </div>
-        <p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p>
+        <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits Digital Dome">
+          <div class="partner-logo-box">
+            <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/>
+          </div>
+        </a>
       </div>
       <div class="partner-card">
-        <div class="partner-logo-box">
-          <img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/>
-        </div>
-        <p class="partner-desc">The Origins Centre at Wits University is a world-class museum exploring the origins of humankind and southern African rock art heritage.</p>
+        <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
+          <div class="partner-logo-box">
+            <img src="images/image updates/WT New CI Short-03.png" alt="Web Tickets" class="keep-color"/>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -811,41 +524,15 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.06 });
 revealEls.forEach(el => io.observe(el));
 
-/* ── HIGHLIGHTS: arrow buttons only ── */
-(function () {
-  const strip = document.getElementById('highlightsStrip');
-  const prevBtn = document.getElementById('prevHighlight');
-  const nextBtn = document.getElementById('nextHighlight');
-  let offset = 0;
-
-  function getCardWidth() {
-    const card = strip.querySelector('.highlight-card');
-    return card ? card.getBoundingClientRect().width + 2 : 362;
-  }
-  function getTotalWidth() { return strip.scrollWidth / 2; }
-  function move(direction) {
-    const cw = getCardWidth();
-    const total = getTotalWidth();
-    offset += direction * cw;
-    if (offset <= -total) offset = 0;
-    if (offset > 0) offset = -(total - cw);
-    strip.style.transform = `translateX(${offset}px)`;
-  }
-
-  nextBtn.addEventListener('click', () => move(-1));
-  prevBtn.addEventListener('click', () => move(1));
-})();
-
 /* ── FAQ ── */
 const faqData = [
   { q: 'Do I need gaming experience?', a: 'No. Discovery and participation matter more than skill.' },
   { q: 'Can I meet the developers?', a: 'Yes. Many attend the festival and spend time in the Arcade.' },
-  { q: 'Are prototypes accepted?', a: 'Yes. This about experimentation not necessarily finished products.' },
+  { q: 'Are prototypes accepted?', a: 'Yes. This is about experimentation, not necessarily finished products.' },
   { q: 'Can I submit a game?', a: 'Yes. Watch Fak\'ugesi channels for calls and submission deadlines.' },
   { q: 'Is it only South African games?', a: 'No. The selection reflects game development from across the African continent and beyond.' },
-  { q: 'Why does this exist?', a: 'African developers are producing world-class work that most players never encounter. The Arcarde intentionally addresses this.' }
+  { q: 'Why does this exist?', a: 'African developers are producing world-class work that most players never encounter. The Arcade intentionally addresses this.' }
 ];
-
 const faqContainer = document.getElementById('faqAccordion');
 faqData.forEach((faq, i) => {
   const item = document.createElement('div');

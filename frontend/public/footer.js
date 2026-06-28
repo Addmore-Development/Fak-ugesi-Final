@@ -15,8 +15,9 @@
     #fug-social-band {
       background: #1a2744;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      gap: 24px;
       padding: 18px 200px;
       font-family: 'InterDisplay', sans-serif;
     }
@@ -243,7 +244,7 @@
 
         <!-- Col 1: Brand + Address -->
         <div class="fug-footer-col">
-          <p class="fug-footer-brand">Fak'ugesi African Digital Innovation Festival</p>
+          <p class="fug-footer-brand">Fak'ugesi African Digital & Innovation Festival</p>
           <p class="fug-footer-addr">
             Tshimologong Digital Innovation Precinct<br>
             41 Juta Street, Braamfontein<br>

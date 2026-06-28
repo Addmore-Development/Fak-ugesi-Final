@@ -18,96 +18,77 @@
 
     /* ── HERO ── */
     .hero{
-      position:relative;width:100%;min-height:100vh;overflow:hidden;
-      display:grid;
-      grid-template-rows:calc(16px + 9px) 1fr calc(16px + 9px);
-      grid-template-columns:248px 1fr 248px;
-      align-items:stretch;
+      position:relative;width:100%;min-height:520px;overflow:hidden;
+      display:flex;align-items:flex-start;
       padding-top:0;
     }
-    .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.55);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.3);animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
-    .hero-overlay {
-       position: absolute; inset: 0;
-       background: transparent;
-      }
-    /* ── Hero content: flex row matching Dala Khona ── */
+    /* Overlay removed */
+    .hero-overlay{display:none;}
+
+    .hero-inner{
+      position:relative;z-index:3;width:100%;
+      padding:96px 248px 56px;
+      display:flex;align-items:flex-start;justify-content:space-between;
+    }
+
     .hero-content{
-      grid-row:2;grid-column:2;
-      position:relative;z-index:4;
-      display:flex;flex-direction:row;
-      justify-content:space-between;align-items:flex-start;
-      gap:48px;
-      padding:110px 0 60px;
+      max-width:560px;display:flex;flex-direction:column;align-items:flex-start;
       animation:fadeUp .9s ease both;
     }
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-    .hero-text-wrapper{flex:1;min-width:0;}
+    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px;color:#fff}
+    .hero-title{font-family:'InterDisplay',sans-serif;font-size:56px;font-weight:600;line-height:1.0;margin-bottom:20px;color:#fff;}
+    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px;color:#fff}
 
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px}
-    .hero-title{
-      font-family: 'InterDisplay', sans-serif;font-size: 72px;font-weight: 600;line-height:1.0;margin-bottom:20px;max-width:700px}
-    .hero-body{font-size:13px;line-height:1.72;max-width:510px;opacity:.85;margin-bottom:28px}
-
-    /* ── Digital Dome logo — inline flex child, matching Dala Khona .hero-signia ── */
-    .hero-signia{
-      flex-shrink:0;
-      width:auto;max-width:320px;
-      padding-top:38px;
-      display:flex;align-items:flex-start;justify-content:flex-end;
+    .hero-logo-col{
+      display:flex;align-items:flex-start;
+      padding-top:96px;flex-shrink:0;
     }
-    .hero-signia img{
-      display:block;width:100%;height:auto;
-      max-height:160px;
-      object-fit:contain;
-      filter:brightness(0) invert(1);
-      opacity:0.82;
+    .hero-logo-col img{
+      height:120px;width:auto;display:block;
+      filter:brightness(0) invert(1) contrast(1.2);
     }
 
     /* ══ BUTTONS ══ */
-    .hero-cta,
-    .section-cta {
+    .hero-cta,.section-cta{
       display:inline-flex;align-items:center;gap:10px;
       border:1.5px solid #fff;color:#fff;background:transparent;
       padding:13px 30px;font-size:11px;font-weight:700;
       letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
       text-decoration:none;
-      transition:background .22s, color .22s, border-color .22s;
+      transition:background .22s,color .22s,border-color .22s;
     }
-    .hero-cta:hover,
-    .section-cta:hover {
-      background: var(--navy) !important;
-      color: #fff !important;
-      border-color: var(--navy) !important;
-    }
-    .hero-cta::before,
-    .section-cta::before {
-      display: none !important;
-      content: none !important;
-    }
+    .hero-cta:hover,.section-cta:hover{background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important;}
+    .hero-cta::before,.section-cta::before{display:none!important;content:none!important;}
 
     /* ── TICKER ── */
     .ticker-wrap{width:100%;overflow:hidden;background:#fff;border-top:1px solid rgba(26,39,68,.1);border-bottom:1px solid rgba(26,39,68,.1);padding:12px 0;position:relative;z-index:10}
-    .ticker-track{display:flex;width:max-content;animation:tickerScroll 28s linear infinite}
+    .ticker-track{display:flex;width:max-content;animation:tickerScroll 55s linear infinite}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-item{display:flex;align-items:center;gap:6px;color:var(--dark-text);font-size:12px;font-weight:500;white-space:nowrap;padding:0 40px}
     .ticker-item .ticker-arrow{font-size:13px;opacity:.6}
     .ticker-wrap{transition:background 0.28s ease;}
-    .ticker-wrap:hover{background:var(--navy) !important;border-top-color:rgba(26,39,68,0.35) !important;border-bottom-color:rgba(26,39,68,0.35) !important;}
+    .ticker-wrap:hover{background:var(--navy)!important;border-top-color:rgba(26,39,68,0.35)!important;border-bottom-color:rgba(26,39,68,0.35)!important;}
     .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
-    .ticker-wrap:hover .ticker-item{color:#ffffff !important;}
-    .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff !important;}
+    .ticker-wrap:hover .ticker-item{color:#ffffff!important;}
+    .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff!important;}
 
     /* ── PREMIERING SECTION ── */
-    .premiering-section{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end}
+    .premiering-section{position:relative;width:100%;min-height:75vh;overflow:hidden;display:flex;align-items:stretch;flex-direction:column;}
     .premiering-bg{position:absolute;inset:0;background-image:url('images/8-Dotou-arbre-Fin.png');background-size:cover;background-position:center top;filter:brightness(0.45)}
     .premiering-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,10,28,.85) 0%,rgba(5,10,28,.3) 50%,transparent 100%)}
-    .premiering-content{position:relative;z-index:3;padding:0 248px 80px;width:100%}
-    .section-header-label{font-size:48px;font-weight:900;line-height:1;margin-bottom:8px}
-    .section-dates{font-size:22px;font-weight:400;opacity:.75;margin-bottom:56px}
+    .premiering-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;margin-top:auto;}
+
+    /* ── NOW SHOWING label ── */
+    .section-header-label{font-size:23px;font-weight:700;line-height:1;margin-bottom:8px;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
+
+    .section-dates{font-size:16px;font-weight:400;opacity:.65;margin-bottom:24px;letter-spacing:.03em;}
     .premiere-badge{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
-    .premiere-title{font-size:36px;font-weight:900;margin-bottom:14px}
+    .premiere-title{font-size:52px;font-weight:900;margin-bottom:6px;line-height:1.0;}
+    .premiere-subtitle-date{font-size:13px;opacity:.65;margin-bottom:14px;letter-spacing:.03em;}
     .premiere-body{font-size:13px;line-height:1.7;max-width:400px;opacity:.82;margin-bottom:20px}
     .premiere-links{display:flex;gap:24px;margin-bottom:32px;flex-wrap:wrap}
     .premiere-links a{font-size:12px;font-weight:600;color:#fff;text-decoration:underline;text-underline-offset:3px;opacity:.8;cursor:pointer;transition:opacity .2s}
@@ -116,134 +97,162 @@
     .premiere-co img{width:auto;filter:invert(1) brightness(2)}
 
     /* ── ON-GOING SECTION ── */
-    .ongoing-section{position:relative;width:100%;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end}
+    .ongoing-section{position:relative;width:100%;min-height:75vh;overflow:hidden;display:flex;align-items:stretch;flex-direction:column;}
     .ongoing-bg{position:absolute;inset:0;background-image:url('images/Screenshot-2024-05-21-at-21.36.37.webp');background-size:cover;background-position:center;filter:brightness(0.40)}
     .ongoing-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,10,28,.9) 0%,rgba(5,10,28,.4) 50%,transparent 100%)}
-    .ongoing-content{position:relative;z-index:3;padding:0 248px 80px;width:100%}
+    .ongoing-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;margin-top:auto;}
 
-    /* ── PARTNERS ── */
-    .partners-section{background:#ffffff !important;padding:80px 0 0;position:relative;overflow:hidden;}
-    .partners-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse at 20% 50%,rgba(120,160,200,0.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(100,150,195,0.06) 0%,transparent 50%);pointer-events:none;}
-    .partners-title{font-size:48px;font-weight:900;color:#1a2744;text-align:center;margin-bottom:56px;font-family:'InterDisplay',sans-serif;padding:0 248px;position:relative;z-index:2;}
-    .partners-carousel-outer{overflow:hidden;width:100%;position:relative;z-index:2;}
-    .partners-carousel-track{display:flex;align-items:center;gap:56px;width:max-content;animation:partnerScroll 24s linear infinite;padding:8px 0;}
+    /* ── CROSS ICONS ── */
+    .cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:1!important;animation:none!important;transition:transform 0.1s linear!important;}
+    .cross-icon svg{width:100%;height:100%;}
+
+    /* ── PARTNERS CAROUSEL ── */
+    .partners-section{
+      background:var(--lavender);
+      padding:60px 0 0;
+      position:relative;
+      overflow:hidden;
+    }
+    .partners-title{
+      font-size:38px;font-weight:700;color:var(--dark-text);
+      text-align:center;margin-bottom:40px;padding:0 248px;
+    }
+    .partners-carousel-outer{
+      overflow:hidden;width:100%;position:relative;
+    }
+    .partners-carousel-track{
+      display:flex;gap:0;width:max-content;
+      animation:carouselScroll 38s linear infinite;
+    }
     .partners-carousel-track:hover{animation-play-state:paused;}
-    @keyframes partnerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .carousel-logo{min-width:150px;flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;cursor:pointer;text-decoration:none;}
-    .carousel-logo-img-wrap{width:150px;height:90px;background:#e8eaed;border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:14px 18px;transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.28s ease,background 0.28s ease;}
-    .carousel-logo:hover .carousel-logo-img-wrap{transform:translateY(-5px) scale(1.05);box-shadow:0 10px 32px rgba(26,39,68,0.14);background:#dde0e5;}
-    .carousel-logo-img-wrap img{max-height:56px;max-width:118px;object-fit:contain;display:block;}
-    .carousel-logo-name{display:none !important;}
-    .partners-blue-band{width:100%;background:rgba(26,39,68,0.05);border-top:1px solid rgba(26,39,68,0.08);margin-top:56px;padding:40px 248px;position:relative;z-index:2;}
-    .partners-disclaimer{font-size:11px;line-height:1.7;color:rgba(26,39,68,0.5);text-align:center;max-width:840px;margin:0 auto;}
+    @keyframes carouselScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .carousel-logo{
+      display:flex;align-items:center;justify-content:center;
+      background:#fff;border:1px solid rgba(26,39,68,0.10);
+      width:200px;height:110px;flex-shrink:0;
+      padding:20px 24px;
+      margin:0 1px;
+      transition:box-shadow 0.3s;
+      text-decoration:none;
+    }
+    .carousel-logo:hover{box-shadow:0 6px 24px rgba(26,39,68,0.13);}
+    .carousel-logo-img-wrap{display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
+    .carousel-logo img{
+      max-width:100%;max-height:64px;object-fit:contain;display:block;
+    }
+    /* Special: Digital Dome logo should be dark (not inverted) */
+    .carousel-logo img.logo-dome{
+      filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);
+    }
+    .partners-blue-band{
+      background:var(--lavender);
+      padding:24px 248px;
+      margin-top:0;
+    }
+    .partners-disclaimer{
+      font-size:11px;line-height:1.72;color:var(--body-gray);
+      text-align:center;max-width:900px;margin:0 auto;
+    }
 
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
     /* ── Fak'ugesi shared link hover effect ── */
-    .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
+    .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative!important;text-decoration:none!important;padding-bottom:2px!important;transition:opacity 0.25s ease,transform 0.25s ease!important;}
     .involved-link::after,.curatorial-view-link::after,.showcases-link::after,.showcases-header a::after,.showcase-card-more::after,.winners-view-link::after,.highlights-view-link::after,.intro-view-link::after,.network-view-link::after,.faq-tickets-link::after,.faq-apply-link::after,.faq-apply-top::after,.partners-link::after,.partners-view-link::after,.main-partners-link::after,.market-info-link::after,.exhibitors-link::after,.exhibitor-card-more::after,.more-card-link::after,.prizes-apply-link::after,.cat-apply-link::after,.req-apply-link::after,.challenge-apply-link::after,.section-link::after,.media-link::after,.locations-map-link::after,.directions-link::after,.hero-link::after,[data-fug-link]::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(1);transform-origin:left center;transition:transform .28s ease;}
     .involved-link:hover::after,.curatorial-view-link:hover::after,.showcases-link:hover::after,.showcases-header a:hover::after,.showcase-card-more:hover::after,.winners-view-link:hover::after,.highlights-view-link:hover::after,.intro-view-link:hover::after,.network-view-link:hover::after,.faq-tickets-link:hover::after,.faq-apply-link:hover::after,.faq-apply-top:hover::after,.partners-link:hover::after,.partners-view-link:hover::after,.main-partners-link:hover::after,.market-info-link:hover::after,.exhibitors-link:hover::after,.exhibitor-card-more:hover::after,.more-card-link:hover::after,.prizes-apply-link:hover::after,.cat-apply-link:hover::after,.req-apply-link:hover::after,.challenge-apply-link:hover::after,.section-link:hover::after,.media-link:hover::after,.locations-map-link:hover::after,.directions-link:hover::after,.hero-link:hover::after,[data-fug-link]:hover::after{transform:scaleX(0);transform-origin:right center;}
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
 
     /* ── RESPONSIVE ── */
     @media(max-width:1024px){
-      .hero{grid-template-columns:48px 1fr 48px;}
-      .hero-title{font-size:40px !important;}
-      .premiering-content,.ongoing-content{padding-left:48px;padding-right:48px}
-      .section-header-label{font-size:36px}
-      .partners-title,.partners-blue-band{padding-left:48px;padding-right:48px}
+      .hero-inner{padding:52px 48px 48px;}
+      .hero-title{font-size:48px!important;}
+      .hero-logo-col{padding-top:130px;}
+      .hero-logo-col img{height:90px;}
+      .premiering-content,.ongoing-content{padding-left:48px;padding-right:48px;padding-top:80px;}
+      .section-header-label{font-size:16px}
+      .partners-title{padding:0 48px;}
+      .partners-blue-band{padding:24px 48px;}
     }
     @media(max-width:900px){
       .hero-title{font-size:44px}
-      .hero-content,.premiering-content,.ongoing-content{padding-left:32px;padding-right:32px}
-      .partners-title,.partners-blue-band{padding-left:32px;padding-right:32px}
-      .section-header-label{font-size:36px}
+      .hero-inner,.premiering-content,.ongoing-content{padding-left:32px;padding-right:32px}
+      .section-header-label{font-size:16px}
     }
     @media(max-width:768px){
-      .hero{display:flex;flex-direction:column;min-height:auto;}
-      .hero-content{
-        padding:90px 24px 48px !important;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:20px;
-        width:100%;
-      }
-      .hero-title{font-size:36px !important;line-height:1.1 !important;}
-      .hero-body{font-size:12px !important;max-width:100% !important;}
+      .hero{min-height:auto;}
+      .hero-inner{padding:80px 20px 40px!important;flex-direction:column!important;align-items:flex-start!important;gap:20px!important;}
+      .hero-logo-col{display:none!important;}
+      .hero-title{font-size:36px!important;line-height:1.1!important;}
+      .hero-body{font-size:12px!important;max-width:100%!important;}
       .hero-body br{display:none;}
-      .hero-signia{padding-top:0;max-width:160px;}
-      .premiering-section,.ongoing-section{min-height:70vh !important;}
-      .premiering-content,.ongoing-content{padding:0 24px 48px !important;}
-      .section-header-label{font-size:32px !important;}
-      .section-dates{font-size:16px !important;margin-bottom:32px !important;}
-      .premiere-title{font-size:26px !important;}
-      .premiere-body{font-size:12px !important;max-width:100% !important;}
-      .premiere-links{flex-direction:column !important;gap:10px !important;}
-      .partners-section{padding:48px 0 0 !important;}
-      .partners-title{font-size:24px !important;padding:0 24px !important;margin-bottom:32px !important;}
-      .partners-blue-band{padding:24px 20px !important;margin-top:32px !important;}
-      .partners-disclaimer{font-size:10px !important;}
-      .cross-icon[style*="left:200px"]{left:16px !important;}
-      .cross-icon[style*="right:200px"]{right:16px !important;}
+      .premiering-section,.ongoing-section{min-height:auto!important;}
+      .premiering-content,.ongoing-content{padding:60px 24px 48px!important;}
+      .section-header-label{font-size:13px!important;}
+      .premiere-title{font-size:34px!important;}
+      .premiere-body{font-size:12px!important;max-width:100%!important;}
+      .partners-section{padding:40px 0 0!important;}
+      .partners-title{font-size:26px!important;padding:0 24px!important;margin-bottom:28px!important;}
+      .partners-blue-band{padding:20px 24px!important;}
+      .carousel-logo{width:150px;height:90px;padding:16px 18px;}
+      .cross-icon[style*="left:200px"]{left:16px!important;}
+      .cross-icon[style*="right:200px"]{right:16px!important;}
     }
     @media(max-width:480px){
-      .hero-title{font-size:28px !important;}
-      .section-header-label{font-size:26px !important;}
-      .premiere-title{font-size:22px !important;}
-      .hero-content,.premiering-content,.ongoing-content{padding:0 16px 36px !important;}
-      .hero-signia{max-width:100px;}
+      .hero-title{font-size:28px!important;}
+      .section-header-label{font-size:12px!important;}
+      .premiere-title{font-size:28px!important;}
+      .hero-inner,.premiering-content,.ongoing-content{padding:0 16px 36px!important;}
     }
 
-    /* ══════════════════════════════════════════════
-       FAQ
-    ══════════════════════════════════════════════ */
-    .faq-section { background: var(--white); padding: 64px 248px; position: relative; }
-    .faq-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: flex-start; }
-    .faq-title-left { font-size: 50px; font-weight: 600; color: var(--dark-text); margin-bottom: 20px; }
-    .faq-intro-text { font-size: 13px; line-height: 1.7; color: var(--body-gray); max-width: 280px; }
-    .faq-apply-link { font-size: 11px; font-weight: 600; color: var(--navy); text-decoration: underline; letter-spacing: .06em; display: block; margin-top: 40px; cursor: pointer; text-underline-offset: 3px; transition: opacity .2s; }
-    .faq-apply-link:hover { opacity: .6; }
-    .faq-right-hdr { display: flex; justify-content: flex-end; margin-bottom: 8px; }
-    .faq-apply-top { font-size: 12px; color: var(--dark-text); text-decoration: underline; letter-spacing: .06em; cursor: pointer; }
-    .faq-items-wrap { display: flex; flex-direction: column; }
-    .faq-item { border-top: 1px solid rgba(26,39,68,.15); background: transparent; transition: background .28s ease; }
-    .faq-item:last-child { border-bottom: 1px solid rgba(26,39,68,.15); }
-    .faq-item:hover { background: var(--navy); }
-    .faq-item:hover .faq-q-text { color: var(--white); }
-    .faq-item:hover .faq-t-icon { color: var(--white); }
-    .faq-item:hover .faq-ans { color: rgba(255,255,255,.8); }
-    .faq-q-btn { display: flex; justify-content: space-between; align-items: center; padding: 22px 16px; cursor: pointer; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: 'InterDisplay', sans-serif; }
-    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--dark-text); line-height: 1.35; transition: color .28s ease; max-width: calc(100% - 40px); }
-    .faq-t-icon { font-size: 22px; color: var(--dark-text); flex-shrink: 0; font-weight: 300; line-height: 1; transition: color .28s ease, transform .3s ease; }
-    .faq-item.open .faq-t-icon { transform: rotate(45deg); }
-    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease, color .28s ease; font-size: 13px; line-height: 1.72; color: var(--body-gray); padding: 0 16px; }
-    .faq-item.open .faq-ans { max-height: 400px; padding: 0 16px 22px; }
+    /* ══ FAQ ══ */
+    .faq-section{background:var(--white);padding:64px 248px;position:relative;}
+    .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start;}
+    .faq-title-left{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px;}
+    .faq-intro-text{font-size:13px;line-height:1.7;color:var(--body-gray);max-width:280px;}
+    .faq-apply-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;display:block;margin-top:40px;cursor:pointer;text-underline-offset:3px;transition:opacity .2s;}
+    .faq-apply-link:hover{opacity:.6;}
+    .faq-right-hdr{display:flex;justify-content:flex-end;margin-bottom:8px;}
+    .faq-apply-top{font-size:12px;color:var(--dark-text);text-decoration:underline;letter-spacing:.06em;cursor:pointer;}
+    .faq-items-wrap{display:flex;flex-direction:column;}
+    .faq-item{border-top:1px solid rgba(26,39,68,.15);background:transparent;transition:background .28s ease;}
+    .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,.15);}
+    .faq-item:hover{background:var(--navy);}
+    .faq-item:hover .faq-q-text{color:var(--white);}
+    .faq-item:hover .faq-t-icon{color:var(--white);}
+    .faq-item:hover .faq-ans{color:rgba(255,255,255,.8);}
+    .faq-q-btn{display:flex;justify-content:space-between;align-items:center;padding:22px 16px;cursor:pointer;gap:16px;background:none;border:none;width:100%;text-align:left;font-family:'InterDisplay',sans-serif;}
+    .faq-q-text{font-size:16px;font-weight:500;color:var(--dark-text);line-height:1.35;transition:color .28s ease;max-width:calc(100% - 40px);}
+    .faq-t-icon{font-size:22px;color:var(--dark-text);flex-shrink:0;font-weight:300;line-height:1;transition:color .28s ease,transform .3s ease;}
+    .faq-item.open .faq-t-icon{transform:rotate(45deg);}
+    .faq-ans{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,color .28s ease;font-size:13px;line-height:1.72;color:var(--body-gray);padding:0 16px;}
+    .faq-item.open .faq-ans{max-height:400px;padding:0 16px 22px;}
 
+    @media(max-width:768px){
+      .faq-section{padding:48px 24px!important;}
+      .faq-layout{grid-template-columns:1fr!important;gap:32px!important;}
+      .faq-title-left{font-size:32px!important;}
+    }
   </style>
 
-<style id="fug-global-fixes">
-.hero{padding-top:58px !important;}
-body>.hero:first-child{padding-top:58px !important;}
-/* ── Global button hover: navy bg ── */
-.btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative !important;overflow:hidden !important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s !important;}
-.btn-primary:hover,.btn-outline-dark:hover,.btn-outline-white:hover,.btn-apply:hover,.btn-cta-white:hover,.btn-cta-filled:hover,.btn-learn:hover,.hero-cta:hover,.intro-cta:hover,.network-cta:hover,.section-cta:hover,.challenge-cta:hover,a.btn-tickets:hover,button.btn-tickets:hover,.btn-get-pass:hover,.btn-primary-dark:hover,.btn-white:hover,.btn-dark:hover,.cta-btn:hover{background:var(--navy) !important;color:#fff !important;border-color:var(--navy) !important;}
-.cross-icon{display:inline-flex !important;align-items:center !important;justify-content:center !important;width:18px !important;height:18px !important;flex-shrink:0 !important;position:absolute !important;z-index:6 !important;opacity:1 !important;animation:none !important;transition:transform 0.1s linear !important;}
-.cross-icon svg{width:100%;height:100%;}
-@media(max-width:1400px){:root{--band:160px !important;}}
-@media(max-width:1200px){:root{--band:80px !important;}}
-@media(max-width:1024px){:root{--band:40px !important;}.hero-title{font-size:40px !important;}}
-@media(max-width:768px){:root{--band:20px !important;}#main-nav .nav-links-wrap{display:none !important;}#main-nav .nav-mobile-toggle{display:flex !important;}.hero-inner{flex-direction:column !important;padding:80px 20px 40px !important;gap:24px !important;}.hero-logo{display:none !important;}.hero-title{font-size:36px !important;}.hero-content{max-width:100% !important;}.partners-title{font-size:28px !important;}#main-nav{height:58px !important;}}
-@media(max-width:480px){.hero-title{font-size:28px !important;}}
-#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
-#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
-#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px 24px;overflow-y:auto;}
-#mobile-nav-drawer.open{display:flex;}
-#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}
-#mobile-nav-drawer a:hover{color:#fff;}
-#mobile-nav-drawer .drawer-tickets{margin-top:24px;border:1.5px solid rgba(255,255,255,0.4);text-align:center;padding:14px;font-weight:700;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
-</style>
-
+  <style id="fug-global-fixes">
+    .hero{padding-top:58px!important;}
+    body>.hero:first-child{padding-top:58px!important;}
+    .btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative!important;overflow:hidden!important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s!important;}
+    .btn-primary:hover,.btn-outline-dark:hover,.btn-outline-white:hover,.btn-apply:hover,.btn-cta-white:hover,.btn-cta-filled:hover,.btn-learn:hover,.hero-cta:hover,.intro-cta:hover,.network-cta:hover,.section-cta:hover,.challenge-cta:hover,a.btn-tickets:hover,button.btn-tickets:hover,.btn-get-pass:hover,.btn-primary-dark:hover,.btn-white:hover,.btn-dark:hover,.cta-btn:hover{background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important;}
+    @media(max-width:1400px){:root{--band:160px!important;}}
+    @media(max-width:1200px){:root{--band:80px!important;}}
+    @media(max-width:1024px){:root{--band:40px!important;}.hero-title{font-size:40px!important;}}
+    @media(max-width:768px){:root{--band:20px!important;}#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}.hero-title{font-size:36px!important;}#main-nav{height:58px!important;}}
+    @media(max-width:480px){.hero-title{font-size:28px!important;}}
+    #main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}
+    #main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;transition:transform 0.3s,opacity 0.3s;}
+    #mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px 24px;overflow-y:auto;}
+    #mobile-nav-drawer.open{display:flex;}
+    #mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}
+    #mobile-nav-drawer a:hover{color:#fff;}
+    #mobile-nav-drawer .drawer-tickets{margin-top:24px;border:1.5px solid rgba(255,255,255,0.4);text-align:center;padding:14px;font-weight:700;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
+  </style>
 </head>
 <body>
 <script src="nav.js"></script>
@@ -253,20 +262,15 @@ body>.hero:first-child{padding-top:58px !important;}
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
 
-  <div class="hero-content">
-    <!-- Text block -->
-    <div class="hero-text-wrapper">
+  <div class="hero-inner">
+    <div class="hero-content">
       <p class="hero-eyebrow">Immersive Africa</p>
-      <h1 class="hero-title">Explore The<br>AfriVerse</h1>
-      <p class="hero-body">AfriVerse is Fak'ugesi's signature fulldome immersive programme, anchored by the Wits Anglo American 
-Digital Dome, an 8K projection environment in which the distinction between image and space dissolves 
-entirely. In October, the Dome becomes a portal into speculative futures, collective memory, and African 
-imagination at scale.</p>
-      <a class="hero-cta" href="tickets.html" id="immersive-cta">GET YOUR TICKETS</a>
+      <h1 class="hero-title">Explore The<br>Immersive Africa</h1>
+      <p class="hero-body">The programme presents fulldome immersions, extended-reality works, and spatial sound environments developed by creatives from across the continent. Works include both originals conceived specifically for the Dome's architecture and adaptations that find new form inside it. Each selection rests on a single principle: by Africans, for Africans, and through an African lens. Global best practice and global practitioners are incorporated and showcased.</p>
+      <a class="hero-cta" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer" id="immersive-cta">GET YOUR TICKETS</a>
     </div>
 
-    <!-- Logo — inline flex child, matching Dala Khona layout -->
-    <div class="hero-signia">
+    <div class="hero-logo-col">
       <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Wits Anglo American Digital Dome"/>
     </div>
   </div>
@@ -275,18 +279,14 @@ imagination at scale.</p>
 <!-- ═══ TICKER ═══ -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
-    <span class="ticker-item">Don't miss out on the South African Dome Premiere of Kancícà <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">EXPERIENCE IMMERSIVE AFRICA AT THE WITS ANGLO AMERICAN DIGITAL DOME • TICKETS NOW AVAILABLE AT WEBTICKETS <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">EXPERIENCE IMMERSIVE AFRICA AT THE WITS ANGLO AMERICAN DIGITAL DOME • TICKETS NOW AVAILABLE AT WEBTICKETS <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">EXPERIENCE IMMERSIVE AFRICA AT THE WITS ANGLO AMERICAN DIGITAL DOME • TICKETS NOW AVAILABLE AT WEBTICKETS <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">EXPERIENCE IMMERSIVE AFRICA AT THE WITS ANGLO AMERICAN DIGITAL DOME • TICKETS NOW AVAILABLE AT WEBTICKETS <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">EXPERIENCE IMMERSIVE AFRICA AT THE WITS ANGLO AMERICAN DIGITAL DOME • TICKETS NOW AVAILABLE AT WEBTICKETS <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">EXPERIENCE IMMERSIVE AFRICA AT THE WITS ANGLO AMERICAN DIGITAL DOME • TICKETS NOW AVAILABLE AT WEBTICKETS <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">EXPERIENCE IMMERSIVE AFRICA AT THE WITS ANGLO AMERICAN DIGITAL DOME • TICKETS NOW AVAILABLE AT WEBTICKETS <span class="ticker-arrow">→</span></span>
+    <span class="ticker-item">EXPERIENCE IMMERSIVE AFRICA AT THE WITS ANGLO AMERICAN DIGITAL DOME • TICKETS NOW AVAILABLE AT WEBTICKETS <span class="ticker-arrow">→</span></span>
   </div>
 </div>
 
@@ -300,25 +300,17 @@ imagination at scale.</p>
   <div class="cross-icon" style="bottom:30px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,1)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,1)" stroke-width="1.5"/></svg></div>
 
   <div class="premiering-content">
-    <h2 class="section-header-label">Premiering</h2>
-    <p class="section-dates">13 — 17.10.2026</p>
-    <p class="premiere-badge">South African Digital Dome Premiere</p>
-    <h3 class="premiere-title">AfriVerse: Step Inside Our Stories  </h3>
-    <p class="premiere-body">The programme presents fulldome immersions, extended-reality works, and spatial sound environments 
-developed by creatives from across the continent. Works include both originals conceived specifically for 
-the Dome's architecture and adaptations that find new form inside it. Each selection rests on a single 
-principle: by Africans, for Africans, and through an African lens.  Global best practice and global 
-practitioners are incporated and showcased. </p>
-    <div class="premiere-links">
-      <a href="#">More about Kancícà</a>
-      <a href="#">More about Dream Feel Factory</a>
-      <a href="#">More about MansA</a>
-    </div>
+    <h2 class="section-header-label">NOW SHOWING</h2>
+    <p class="section-dates">Oct 2025 — Aug 2026</p>
+
+    <p class="premiere-badge">Digital Dome Screening</p>
+    <h3 class="premiere-title">Kancícà</h3>
+    <p class="premiere-body">Kancícà (meaning "link" in Fongbe) is an immersive art and film experience that traces the journey of Na Agontimé, queen-mother of Danxomè's Kingdom, and the living cultural heritage she carried across the Atlantic through generations.</p>
     <div class="premiere-co">
       <img class="dream-feel-image" src="images/logos/immersiveAfrica/dreamfeel.svg" alt="Dream Feel Factory" style="height:20px;filter:invert(1) brightness(2)"/>
-      <img src="images/logos/immersiveAfrica/acf.svg" alt="Maison des Mondes Africains" style="height:32px;filter:invert(1) brightness(2)"/>
+      <img src="images/logos/immersiveAfrica/mansab.png" alt="MansA" style="height:36px;filter:brightness(0) invert(1);opacity:.85;"/>
     </div>
-    <a class="section-cta" href="tickets.html">GET YOUR TICKETS</a>
+    <a class="section-cta" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer">GET YOUR TICKETS</a>
   </div>
 </section>
 
@@ -332,50 +324,47 @@ practitioners are incporated and showcased. </p>
   <div class="cross-icon" style="bottom:30px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/></svg></div>
 
   <div class="ongoing-content">
-    <h2 class="section-header-label">On-going</h2>
-    <p class="section-dates">13 — 17.10.2026</p>
+    <h2 class="section-header-label">NOW SHOWING</h2>
+    <p class="section-dates">Oct 2025 — Aug 2026</p>
+
     <p class="premiere-badge">Digital Dome Screening</p>
     <h3 class="premiere-title">Kwasukasukela</h3>
     <p class="premiere-body">The canvas of the Dome is not a frame. It is a 360-degree field. Audiences immerse themselves in the 
-experience. Sound locates in the body and narrative surrounds the viewer.
-<br>
-AfriVerse is part of a broader Immersive Africa: Bridging Continents Through Digital Creativity Programme 
-presented in partnership with the EUNIC’s Spaces of Culture initiative. </p>
-    <div class="premiere-links">
-      <a href="#">More about Kwasukasukela</a>
-    </div>
+experience. Sound locates in the body and narrative surrounds the viewer.<br/><br/> Immersive Africa: Bridging Continents Through Digital Creativity Programme presented in partnership with the EUNIC's Spaces of Culture initiative.
+</p>
     <div class="premiere-co" style="justify-content:flex-start;">
       <img src="images/logos/immersiveAfrica/habitatxr.png" alt="HabitatXR" style="height:48px;object-fit:contain;filter:brightness(0) invert(1);"/>
     </div>
-    <a class="section-cta" href="tickets.html">GET YOUR TICKETS</a>
+    <a class="section-cta" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer">GET YOUR TICKETS</a>
   </div>
 </section>
 
-
-<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<!-- ═══ FAQ ═══ -->
 <section class="faq-section reveal">
   <div class="faq-layout">
     <div>
       <h2 class="faq-title-left">FAQ</h2>
-      <p class="faq-intro-text">Everything you need to know about AfriVerse and the Wits Anglo American Digital Dome programme.</p>
-      
     </div>
     <div>
       <div class="faq-items-wrap" id="faqAccordion">
-        <div class="faq-item open">
-          <button class="faq-q-btn" aria-expanded="true"><span class="faq-q-text">What is fulldome projection?</span><span class="faq-t-icon">×</span></button>
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">What is fulldome projection?</span><span class="faq-t-icon">+</span></button>
           <div class="faq-ans">Fulldome projection is an immersive projection format designed for dome-shaped architecture. A fulldome environment surrounds the viewer 360 degrees. The Wits Anglo American Digital Dome uses an 8K projection system, making it the most technically advanced public storytelling infrastructure on the African continent.</div>
-        </div><div class="faq-item">
+        </div>
+        <div class="faq-item">
           <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">What is the difference between the expo and the showcase?</span><span class="faq-t-icon">+</span></button>
-          <div class="faq-ans">The expo is where work is encountered: displayed and engaged with at the viewer's own pace. The showcase is a structured programme in which work is experienced sequentially, curated, timed, and fully immersive. Some AfriVerse works sit in one category; others bridge both. The programme will indicate which format applies.</div>
-        </div><div class="faq-item">
-          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Can I submit work for AfriVerse?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">The expo is where work is encountered: displayed and engaged with at the viewer's own pace. The showcase is a structured programme in which work is experienced sequentially, curated, timed, and fully immersive. Some Immersive Afrika works sit in one category; others bridge both. The programme will indicate which format applies.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Can I submit work for Immersive Afrika?</span><span class="faq-t-icon">+</span></button>
           <div class="faq-ans">Commissioning and selection follows a curated process. Both original works and adaptations of existing work are considered. Proposals from African creatives working in fulldome, XR, and spatial sound are welcomed through the Get Involved section.</div>
-        </div><div class="faq-item">
+        </div>
+        <div class="faq-item">
           <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">What is the EUNIC partnership?</span><span class="faq-t-icon">+</span></button>
-          <div class="faq-ans">EUNIC is the European Network of National Cultural Institutes. AfriVerse is part of a broader Immersive Africa collaboration with the EUNIC network, running through to August 2026.</div>
-        </div><div class="faq-item">
-          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Do I need specialist equipment to experience AfriVerse?</span><span class="faq-t-icon">+</span></button>
+          <div class="faq-ans">EUNIC is the European Network of National Cultural Institutes.Immersive Africa is in collaboration with the EUNIC network, running through to August 2026.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Do I need specialist equipment to experience Immersive Afrika ?</span><span class="faq-t-icon">+</span></button>
           <div class="faq-ans">No. The Dome environment provides the full immersive experience. Audiences need only to arrive and enter.</div>
         </div>
       </div>
@@ -383,7 +372,7 @@ presented in partnership with the EUNIC’s Spaces of Culture initiative. </p>
   </div>
 </section>
 
-<!-- ═══ PARTNERS ═══ -->
+<!-- ═══ PARTNERS CAROUSEL ═══ -->
 <section class="partners-section reveal">
   <h2 class="partners-title">Our Immersive Africa Partners</h2>
   <div class="partners-carousel-outer">
@@ -391,25 +380,83 @@ presented in partnership with the EUNIC’s Spaces of Culture initiative. </p>
   </div>
   <div class="partners-blue-band">
     <p class="partners-disclaimer">
-      Immersive Africa is supported by the Spaces of Culture PROgramme under Africa-Europe Partnerships for Culture, managed by EUNIC. By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, PROmotional, archival, and communication purposes across our print and digital platforms, including social media.
+      Immersive Africa is supported by the Spaces of Culture Programme under Africa-Europe Partnerships for Culture, managed by EUNIC. By attending this event, you acknowledge and consent to photography and video recordings that may include your image. These materials may be used by Fak'ugesi African Digital Innovation Festival for marketing, promotional, archival, and communication purposes across our print and digital platforms, including social media.
     </p>
   </div>
 </section>
 
-
+<script>
 /* ── FAQ ACCORDION ── */
 (function() {
   const faqContainer = document.getElementById('faqAccordion');
   if (!faqContainer) return;
-  faqContainer.querySelectorAll('.faq-item').forEach((item, i) => {
-    if (i === 0) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+  faqContainer.querySelectorAll('.faq-item').forEach((item) => {
     item.querySelector('.faq-q-btn').addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-t-icon').textContent = '+'; el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false'); });
-      if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-t-icon').textContent = '×'; item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true'); }
+      faqContainer.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-t-icon').textContent = '+';
+        el.querySelector('.faq-q-btn').setAttribute('aria-expanded','false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-t-icon').textContent = '×';
+        item.querySelector('.faq-q-btn').setAttribute('aria-expanded','true');
+      }
     });
   });
 })();
+</script>
+
+<!-- ═══ PARTNERS CAROUSEL JS ═══ -->
+<script>
+(function(){
+  const partners = [
+    { img: 'images/logos/immersiveAfrica/acf.svg',              name: 'Maison des Mondes Africains',  url: 'https://www.institutfrancais.com/en/' },
+    { img: 'images/logos/immersiveAfrica/austrianembassy.svg',  name: 'Austrian Embassy Pretoria',    url: 'https://www.bmeia.gv.at/en/austrian-embassy-pretoria/' },
+    { img: 'images/logos/immersiveAfrica/austrianforum.svg',    name: 'Austrian Cultural Forum',      url: 'https://www.bmeia.gv.at/en/austrian-cultural-forum-pretoria', biglogo: true },
+    { img: 'images/logos/immersiveAfrica/eunic.svg',            name: 'EUNIC',                        url: 'https://www.eunic.eu/' },
+    { img: 'images/logos/immersiveAfrica/eudelegation.svg',     name: 'EU Delegation',                url: 'https://www.eeas.europa.eu/delegations/south-africa_en' },
+    { img: 'images/logos/immersiveAfrica/PROhelvetia.svg',      name: 'PRO Helvetia',                 url: 'https://prohelvetia.ch/en/' },
+    { img: 'images/logos/immersiveAfrica/goethe.svg',           name: 'Goethe Institut',              url: 'https://www.goethe.de/ins/za/en/index.html' },
+    { img: 'images/logos/immersiveAfrica/dreamfeel.svg',        name: 'Dream Feel Factory',           url: 'https://dreamfeel.ie/' },
+    { img: 'images/logos/immersiveAfrica/digitaldome.svg',      name: 'Wits Anglo American Digital Dome', url: 'https://www.wits.ac.za/tshimologong/', isDome: true },
+    { img: 'images/logos/immersiveAfrica/habitatxr.png',        name: 'HabitatXR',                   url: 'https://www.habitatxr.com/' },
+    { img: 'images/logos/immersiveAfrica/ifas.png',             name: 'IFAS',                         url: 'https://frenchinstitute.org.za/' },
+    { img: 'images/logos/immersiveAfrica/mansab.png',           name: 'MansA',                        url: 'https://www.mansaafrica.com/' },
+    { img: 'images/logos/immersiveAfrica/SoC logo.png',         name: 'Spaces of Culture',             url: 'https://eunic.eu/news/spaces-of-culture-2026', biglogo: true },
+  ];
+
+  const track = document.getElementById('partnersTrack');
+  if (!track) return;
+
+  [...partners, ...partners].forEach(p => {
+    const a = document.createElement('a');
+    a.href = p.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.className = 'carousel-logo';
+
+    const wrap = document.createElement('div');
+    wrap.className = 'carousel-logo-img-wrap';
+
+    const img = document.createElement('img');
+    img.src = p.img;
+    img.alt = p.name;
+    if (p.isDome) {
+      img.className = 'logo-dome';
+    }
+    if (p.biglogo) {
+      img.style.maxHeight = '80px';
+    }
+    img.onerror = function() { this.closest('.carousel-logo').style.display = 'none'; };
+
+    wrap.appendChild(img);
+    a.appendChild(wrap);
+    track.appendChild(a);
+  });
+})();
+</script>
 
 <script src="footer.js"></script>
 <script>
@@ -420,36 +467,11 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 revealEls.forEach(el => io.observe(el));
 
-/* ── PARTNERS ── */
-const partners = [
-  { img: 'images/logos/immersiveAfrica/acf.svg',            name: 'Maison des Mondes Africains', url: 'https://www.institutfrancais.com/en/' },
-  { img: 'images/logos/immersiveAfrica/eunic.svg',           name: 'EUNIC',                        url: 'https://www.eunic.eu/' },
-  { img: 'images/logos/immersiveAfrica/eudelegation.svg',    name: 'EU Delegation',                url: 'https://www.eeas.europa.eu/delegations/south-africa_en' },
-  { img: 'images/logos/immersiveAfrica/PROhelvetia.svg',     name: 'PRO Helvetia',                 url: 'https://PROhelvetia.ch/en/' },
-  { img: 'images/logos/immersiveAfrica/goethe.svg',          name: 'Goethe Institut',              url: 'https://www.goethe.de/ins/za/en/index.html' },
-  { img: 'images/logos/immersiveAfrica/austrianembassy.svg', name: 'Austrian Embassy Pretoria',    url: 'https://www.bmeia.gv.at/en/austrian-embassy-pretoria/' },
-  { img: 'images/logos/immersiveAfrica/dreamfeel.svg',       name: 'Dream Feel Factory',           url: 'https://dreamfeel.ie/' },
-  { img: 'images/logos/immersiveAfrica/digitaldome.svg',     name: 'Digital Dome',                 url: 'https://www.wits.ac.za/tshimologong/' },
-  { img: 'images/logos/immersiveAfrica/habitatxr.png',       name: 'HabitatXR',                   url: '#' },
-  { img: 'images/logos/immersiveAfrica/ifas.png',            name: 'IFAS',                         url: '#' },
-  { img: 'images/logos/immersiveAfrica/mansab.png',          name: 'MansA',                        url: '#' },
-  { img: 'images/logos/immersiveAfrica/SoC logo.png',        name: 'Spaces of Culture',            url: '#' },
-];
-const track = document.getElementById('partnersTrack');
-[...partners, ...partners].forEach(p => {
-  const a = document.createElement('a');
-  a.href = p.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-  a.className = 'carousel-logo';
-  a.innerHTML = `<div class="carousel-logo-img-wrap"><img src="${p.img}" alt="${p.name}" onerror="this.closest('.carousel-logo').style.display='none'"/></div>`;
-  track.appendChild(a);
-});
-
 /* ── SIG-STRIP INJECT ── */
 (function(){
   const styleEl = document.createElement('style');
   styleEl.textContent = `
-    .hero{min-height:490px!important;align-items:flex-end!important;padding-top:110px!important;}
-    .hero-content{padding-top:0!important;padding-bottom:72px!important;}
+    .hero{min-height:490px!important;padding-top:58px!important;}
     .cross-icon{transition:transform 0.1s linear;}
     .fug-sig-strip{background:rgba(26,39,68,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;z-index:20;}
     .fug-sig-strip-inner{display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;justify-content:center;}
@@ -466,12 +488,12 @@ const track = document.getElementById('partnersTrack');
   document.head.appendChild(styleEl);
 
   const PAGES = [
-    {label:'Awards',           href:'sig-awards.html',       img:'images/logos/signaturePROgrammes/awards_logo_light.svg',     imgStyle:'height:38px;'},
-    {label:'Dala Khona',       href:'sig-dalakhona.html',    img:'images/logos/signaturePROgrammes/dalakhona_logo_colour.svg', imgStyle:'height:38px;'},
-    {label:'PRO',              href:'sig-fakugesipro.html',   img:'images/logos/signaturePROgrammes/PRO_logo_logo_light.svg',  imgStyle:'height:34px;'},
-    {label:'Immersive Africa', href:'sig-immersive.html',    img:'images/logos/immersiveAfrica/digitaldome.svg',              imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
-    {label:'JAMZ',             href:'sig-jamz.html',          img:'images/logos/signaturePROgrammes/jamz_logo_colour.svg',     imgStyle:'height:42px;'},
-    {label:'Pitchathon',       href:'sig-pitchathon.html',    img:'images/logos/signaturePROgrammes/pitchathon_logo_light.svg',imgStyle:'height:36px;'}
+    {label:'Awards',           href:'sig-awards.html',       img:'images/logos/signatureProgrammes/awards_logo_light.svg',     imgStyle:'height:38px;'},
+    {label:'Dala Khona',       href:'sig-dalakhona.html',    img:'images/logos/signatureProgrammes/dalakhona_logo_colour.svg', imgStyle:'height:38px;'},
+    {label:'PRO',              href:'sig-fakugesipro.html',  img:'images/logos/signatureProgrammes/PRO_logo_logo_light.svg',   imgStyle:'height:34px;'},
+    {label:'Immersive Africa', href:'sig-immersive.html',    img:'images/logos/immersiveAfrica/digitaldome.svg',               imgStyle:'height:32px;filter:brightness(0) invert(1);opacity:.8;'},
+    {label:'JAMZ',             href:'sig-jamz.html',         img:'images/logos/signatureProgrammes/jamz_logo_colour.svg',      imgStyle:'height:42px;'},
+    {label:'Pitchathon',       href:'sig-pitchathon.html',   img:'images/logos/signatureProgrammes/pitchathon_logo_light.svg', imgStyle:'height:36px;'}
   ];
 
   const currentPage = window.location.pathname.split('/').pop() || '';
@@ -496,10 +518,6 @@ const track = document.getElementById('partnersTrack');
   }
 
   function run() {
-    const hero = document.querySelector('.hero');
-    if (hero) {
-
-    }
     const ticker = document.querySelector('.ticker-wrapper,.ticker-bar,.ticker-wrap');
     if (ticker) ticker.after(buildStrip());
   }

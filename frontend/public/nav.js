@@ -34,59 +34,35 @@
     #main-nav.scrolled::before { opacity: 1; }
     #main-nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.18); }
 
-    /* ── HOME LOGO (non-linked, far left) ── */
+    /* ── HOME LOGO ── */
     #nav-home-logo {
-      position: absolute;
-      left: 32px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      pointer-events: none;
-      user-select: none;
+      position: absolute; left: 32px; top: 50%; transform: translateY(-50%);
+      z-index: 2; display: flex; align-items: center;
+      text-decoration: none; pointer-events: none; user-select: none;
     }
     #nav-home-logo img {
-      height: 26px;
-      width: auto;
-      display: block;
-      filter: brightness(0) invert(1);
-      opacity: 0.88;
+      height: 26px; width: auto; display: block;
+      filter: brightness(0) invert(1); opacity: 0.88;
     }
 
     /* ── Desktop nav links ── */
     #main-nav .nav-links-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      padding-left: 248px;
-      position: relative;
-      z-index: 1;
-      overflow: visible;
-      transition: opacity 0.3s ease;
+      flex: 1; display: flex; align-items: center;
+      padding-left: 248px; position: relative; z-index: 1;
+      overflow: visible; transition: opacity 0.3s ease;
     }
     #main-nav .nav-links {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      overflow: visible;
+      display: flex; align-items: center; list-style: none; margin: 0; padding: 0; overflow: visible;
     }
     #main-nav .nav-links>li { position:relative; overflow:visible; }
     #main-nav .nav-links>li>a,
     #main-nav .nav-links>li>span {
       color:rgba(255,255,255,0.82); font-size:13px; font-weight:500;
       letter-spacing:.01em; text-decoration:none; line-height:58px;
-      white-space:nowrap; display:block;
-      padding:0 20px;
-      cursor:pointer;
+      white-space:nowrap; display:block; padding:0 20px; cursor:pointer;
     }
     #main-nav .nav-links>li:first-child>a,
-    #main-nav .nav-links>li:first-child>span {
-      padding-left: 0;
-    }
+    #main-nav .nav-links>li:first-child>span { padding-left: 0; }
     #main-nav .nav-links>li>a.active,
     #main-nav .nav-links>li>span.active { color:#fff; font-weight:400; }
 
@@ -95,16 +71,14 @@
       position:absolute; top:57px; left:0; min-width:200px;
       background:rgba(8,15,44,0.97); border:1px solid rgba(255,255,255,0.1);
       backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-      padding:8px 0;
-      opacity:0; pointer-events:none; transform:translateY(-8px);
+      padding:8px 0; opacity:0; pointer-events:none; transform:translateY(-8px);
       transition:opacity .22s,transform .22s; z-index:200;
     }
-    #main-nav .nav-links>li:hover .nav-dd { opacity:1;pointer-events:auto;transform:translateY(0); }
+    #main-nav .nav-links>li:hover .nav-dd { opacity:1; pointer-events:auto; transform:translateY(0); }
     #main-nav .nav-dd a {
       display:block; padding:9px 20px;
-      color:rgba(255,255,255,0.75);
-      font-size:12.5px; font-weight:500; text-decoration:none;
-      transition:background .18s, padding-left .2s ease; line-height:1.4;
+      color:rgba(255,255,255,0.75); font-size:12.5px; font-weight:500;
+      text-decoration:none; transition:background .18s, padding-left .2s ease; line-height:1.4;
     }
     #main-nav .nav-dd a:hover { background:rgba(255,255,255,0.07); padding-left:28px; }
 
@@ -118,138 +92,73 @@
     #main-nav .nav-search {
       background:none; border:none; cursor:pointer; color:rgba(255,255,255,0.78);
       display:flex; align-items:center; padding:6px 12px 6px 6px;
-      position: relative;
-      z-index: 2;
-      transition: color 0.18s;
-      flex-shrink: 0;
+      position: relative; z-index: 2; transition: color 0.18s; flex-shrink: 0;
     }
     #main-nav .nav-search svg{width:18px;height:18px;}
     #main-nav .nav-search:hover { color: #fff; }
 
     /* ── COMPACT INLINE SEARCH ── */
     #nav-search-bar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      overflow: hidden;
-      max-width: 0;
-      opacity: 0;
-      pointer-events: none;
+      display: flex; align-items: center; gap: 8px;
+      overflow: hidden; max-width: 0; opacity: 0; pointer-events: none;
       transition: max-width 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.28s ease;
-      position: relative;
-      z-index: 2;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0);
-      border-radius: 2px;
-      height: 34px;
-      padding: 0;
+      position: relative; z-index: 2;
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0);
+      border-radius: 2px; height: 34px; padding: 0;
     }
     #nav-search-bar.open {
-      max-width: 260px;
-      opacity: 1;
-      pointer-events: auto;
-      border-color: rgba(255,255,255,0.22);
-      padding: 0 10px 0 12px;
+      max-width: 260px; opacity: 1; pointer-events: auto;
+      border-color: rgba(255,255,255,0.22); padding: 0 10px 0 12px;
     }
     #nav-search-inline-input {
-      flex: 1;
-      background: none;
-      border: none;
-      outline: none;
-      color: #fff;
-      font-family: 'InterDisplay', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      caret-color: rgba(255,255,255,0.8);
-      min-width: 0;
-      width: 180px;
+      flex: 1; background: none; border: none; outline: none; color: #fff;
+      font-family: 'InterDisplay', sans-serif; font-size: 13px; font-weight: 400;
+      letter-spacing: 0.01em; caret-color: rgba(255,255,255,0.8); min-width: 0; width: 180px;
     }
     #nav-search-inline-input::placeholder { color: rgba(255,255,255,0.4); }
     #nav-search-close-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: rgba(255,255,255,0.45);
-      font-size: 18px;
-      line-height: 1;
-      padding: 2px 0 2px 4px;
-      font-family: sans-serif;
-      flex-shrink: 0;
-      transition: color 0.18s;
+      background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.45);
+      font-size: 18px; line-height: 1; padding: 2px 0 2px 4px; font-family: sans-serif;
+      flex-shrink: 0; transition: color 0.18s;
     }
     #nav-search-close-btn:hover { color: #fff; }
 
     /* ── SEARCH RESULTS DROPDOWN ── */
     #nav-search-results-drop {
-      position: fixed;
-      top: 58px;
-      right: 32px;
-      width: 340px;
-      background: rgba(8,15,44,0.98);
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      max-height: 420px;
-      overflow-y: auto;
-      scrollbar-width: thin;
+      position: fixed; top: 58px; right: 32px; width: 340px;
+      background: rgba(8,15,44,0.98); border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      max-height: 420px; overflow-y: auto; scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.15) transparent;
-      z-index: 9999;
-      display: none;
-      border-top: none;
+      z-index: 9999; display: none; border-top: none;
     }
     #nav-search-results-drop.open { display: block; }
     #nav-search-results-drop::-webkit-scrollbar { width: 4px; }
     #nav-search-results-drop::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
 
     .nsr-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 13px 20px;
-      text-decoration: none;
-      cursor: pointer;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: background 0.15s;
+      display: flex; align-items: flex-start; gap: 14px; padding: 13px 20px;
+      text-decoration: none; cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s;
     }
     .nsr-item:last-child { border-bottom: none; }
     .nsr-item:hover { background: rgba(255,255,255,0.07); }
     .nsr-section {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      min-width: 80px;
-      flex-shrink: 0;
-      padding-top: 2px;
-      font-family: 'InterDisplay', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      min-width: 80px; flex-shrink: 0; padding-top: 2px; font-family: 'InterDisplay', sans-serif;
     }
     .nsr-title {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #fff;
-      font-family: 'InterDisplay', sans-serif;
-      line-height: 1.3;
+      font-size: 13.5px; font-weight: 600; color: #fff;
+      font-family: 'InterDisplay', sans-serif; line-height: 1.3;
     }
-    .nsr-title mark {
-      background: none;
-      color: rgba(255,220,60,0.95);
-      font-weight: 700;
-    }
+    .nsr-title mark { background: none; color: rgba(255,220,60,0.95); font-weight: 700; }
     .nsr-no-results {
-      padding: 20px;
-      text-align: center;
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      font-family: 'InterDisplay', sans-serif;
+      padding: 20px; text-align: center; font-size: 13px;
+      color: rgba(255,255,255,0.4); font-family: 'InterDisplay', sans-serif;
     }
     .nsr-hint {
-      padding: 8px 20px;
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-      font-family: 'InterDisplay', sans-serif;
+      padding: 8px 20px; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.28); font-family: 'InterDisplay', sans-serif;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -267,147 +176,76 @@
     #main-nav .nav-tickets:hover{background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px);}
     #main-nav .nav-tickets span{position:relative;z-index:1;}
 
-    /* ── HAMBURGER BUTTON (mobile only) ── */
+    /* ── HAMBURGER BUTTON ── */
     #nav-hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      width: 40px; height: 40px;
-      background: none; border: none;
-      cursor: pointer;
-      position: relative; z-index: 1001;
-      padding: 8px;
-      margin-right: 12px;
+      display: none; flex-direction: column; justify-content: center;
+      align-items: center; gap: 5px; width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      position: relative; z-index: 1001; padding: 8px; margin-right: 12px;
     }
     #nav-hamburger span {
-      display: block;
-      width: 22px; height: 1.5px;
-      background: #fff;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform-origin: center;
+      display: block; width: 22px; height: 1.5px; background: #fff;
+      transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center;
     }
     #nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     #nav-hamburger.open span:nth-child(2) { opacity: 0; }
     #nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* ── MOBILE LOGO (left side, mobile only) ── */
+    /* ── MOBILE LOGO ── */
     #nav-mobile-logo {
-      display: none;
-      position: relative; z-index: 1;
-      padding-left: 20px;
-      flex: 1;
+      display: none; position: relative; z-index: 1; padding-left: 20px; flex: 1;
     }
-    #nav-mobile-logo img {
-      height: 24px; width: auto;
-      display: block;
-      filter: brightness(0) invert(1);
-    }
+    #nav-mobile-logo img { height: 24px; width: auto; display: block; filter: brightness(0) invert(1); }
 
     /* ── MOBILE MENU OVERLAY ── */
     #nav-mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(10,18,48,0.98);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      z-index: 999;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 28px 48px;
-      overflow-y: auto;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
+      display: none; position: fixed; inset: 0;
+      background: rgba(10,18,48,0.98); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px); z-index: 999;
+      flex-direction: column; justify-content: center;
+      padding: 80px 28px 48px; overflow-y: auto;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
     }
-    #nav-mobile-menu.open {
-      display: flex;
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    #nav-mobile-menu .mob-nav-list {
-      list-style: none; margin: 0; padding: 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    #nav-mobile-menu .mob-nav-list li {
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
+    #nav-mobile-menu.open { display: flex; opacity: 1; pointer-events: auto; }
+    #nav-mobile-menu .mob-nav-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,0.1); }
+    #nav-mobile-menu .mob-nav-list li { border-bottom: 1px solid rgba(255,255,255,0.1); }
     #nav-mobile-menu .mob-nav-list > li > a,
     #nav-mobile-menu .mob-nav-list > li > span {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 0;
-      color: #fff; text-decoration: none;
-      font-size: 22px; font-weight: 700;
-      letter-spacing: -0.01em;
-      font-family: 'InterDisplay', sans-serif;
-      cursor: pointer;
-      transition: opacity 0.2s;
+      display: flex; align-items: center; justify-content: space-between; padding: 18px 0;
+      color: #fff; text-decoration: none; font-size: 22px; font-weight: 700;
+      letter-spacing: -0.01em; font-family: 'InterDisplay', sans-serif;
+      cursor: pointer; transition: opacity 0.2s;
     }
     #nav-mobile-menu .mob-nav-list > li > a:hover,
     #nav-mobile-menu .mob-nav-list > li > span:hover { opacity: 0.65; }
     #nav-mobile-menu .mob-nav-list > li > a.active { opacity: 0.5; }
-
-    /* Mobile sub-menu */
-    #nav-mobile-menu .mob-sub {
-      list-style: none; margin: 0; padding: 0 0 12px 12px;
-      display: none;
-    }
+    #nav-mobile-menu .mob-sub { list-style: none; margin: 0; padding: 0 0 12px 12px; display: none; }
     #nav-mobile-menu .mob-sub.open { display: block; }
     #nav-mobile-menu .mob-sub li a {
-      display: block; padding: 9px 0;
-      color: rgba(255,255,255,0.65);
-      font-size: 14px; font-weight: 500;
-      font-family: 'InterDisplay', sans-serif;
-      text-decoration: none;
-      transition: color 0.2s;
+      display: block; padding: 9px 0; color: rgba(255,255,255,0.65);
+      font-size: 14px; font-weight: 500; font-family: 'InterDisplay', sans-serif;
+      text-decoration: none; transition: color 0.2s;
     }
     #nav-mobile-menu .mob-sub li a:hover { color: #fff; }
-
-    /* Mobile chevron */
     .mob-chevron {
-      display: inline-block;
-      width: 20px; height: 20px;
-      border-right: 2px solid rgba(255,255,255,0.5);
-      border-bottom: 2px solid rgba(255,255,255,0.5);
-      transform: rotate(45deg);
-      transition: transform 0.25s;
-      flex-shrink: 0;
-      margin-left: 12px;
-      position: relative; top: -3px;
+      display: inline-block; width: 20px; height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.5); border-bottom: 2px solid rgba(255,255,255,0.5);
+      transform: rotate(45deg); transition: transform 0.25s; flex-shrink: 0;
+      margin-left: 12px; position: relative; top: -3px;
     }
     .mob-chevron.open { transform: rotate(-135deg); top: 3px; }
-
-    /* Mobile GET TICKETS button */
     #nav-mobile-menu .mob-tickets {
-      display: block; margin-top: 32px;
-      padding: 16px 28px;
-      background: transparent;
-      border: 1.5px solid rgba(255,255,255,0.4);
-      color: #fff;
-      font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; text-decoration: none;
-      font-family: 'InterDisplay', sans-serif;
-      text-align: center;
-      transition: background 0.2s, border-color 0.2s;
+      display: block; margin-top: 32px; padding: 16px 28px;
+      background: transparent; border: 1.5px solid rgba(255,255,255,0.4); color: #fff;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; font-family: 'InterDisplay', sans-serif;
+      text-align: center; transition: background 0.2s, border-color 0.2s;
     }
-    #nav-mobile-menu .mob-tickets:hover {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,220,60,0.6);
-    }
-
-    /* Mobile social icons in menu */
-    #nav-mobile-menu .mob-socials {
-      display: flex; gap: 20px; align-items: center;
-      margin-top: 28px;
-    }
+    #nav-mobile-menu .mob-tickets:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,220,60,0.6); }
+    #nav-mobile-menu .mob-socials { display: flex; gap: 20px; align-items: center; margin-top: 28px; }
     #nav-mobile-menu .mob-socials a {
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      display: flex; align-items: center;
-      transition: color 0.2s;
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      display: flex; align-items: center; transition: color 0.2s;
     }
     #nav-mobile-menu .mob-socials a:hover { color: #fff; }
 
@@ -425,43 +263,16 @@
     .btn-outline-dark:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
     .btn-outline-white:hover { background: #0d1b3e; color: #fff; border-color: rgba(100,160,255,0.65); transform: translateY(-1px); }
 
-    .curatorial-view-link, .showcases-link, .showcase-card-more,
-    .showcase-detail-link, .partners-link, .more-card-link,
-    .sched-location, .sched-speakers a, .nav-dd a, .ticker-item,
-    .carousel-logo-name, .hero-eyebrow, .showcases-header a,
-    .curatorial-view-link, .more-card-top span, .jury-prog-link,
-    [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back) {
-      display:inline-block;
-      transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
-                  color 0.2s ease,
-                  letter-spacing 0.22s ease !important;
-    }
-    .curatorial-view-link:hover, .showcases-link:hover, .showcase-card-more:hover,
-    .showcase-detail-link:hover, .partners-link:hover, .more-card-link:hover,
-    .sched-location:hover, .sched-speakers a:hover, .showcases-header a:hover,
-    .more-card-top span:hover, .jury-prog-link:hover,
-    [class*="-link"]:not(#main-nav *):not(.showcase-detail-back):not(.speaker-detail-back):hover {
-      transform: scale(1.1);
-      transform-origin: left center;
-      letter-spacing: 0.07em;
-    }
-    #main-nav .nav-dd a {
-      transition: background 0.18s, color 0.18s, padding-left 0.2s ease !important;
-    }
-
-    /* ══ RESPONSIVE BREAKPOINTS ══ */
+    /* ══ RESPONSIVE ══ */
     @media (max-width: 1024px) {
       #nav-home-logo { left: 24px; }
       #main-nav .nav-links-wrap { padding-left: 200px; }
       #main-nav .nav-right { padding-right: 24px; }
-      #main-nav .nav-links>li>a,
-      #main-nav .nav-links>li>span { font-size: 12px; padding: 0 14px; }
+      #main-nav .nav-links>li>a, #main-nav .nav-links>li>span { font-size: 12px; padding: 0 14px; }
       #main-nav .nav-tickets { padding: 8px 16px; font-size: 10.5px; }
       #nav-search-bar.open { max-width: 200px; }
       #nav-search-results-drop { right: 24px; width: 300px; }
-      #main-nav .nav-dd-sig { width: 420px; }
     }
-
     @media (max-width: 768px) {
       #main-nav .nav-links-wrap { display: none; }
       #main-nav .nav-right { display: none; }
@@ -474,26 +285,27 @@
     }
   </style>`);
 
-  /* ── Signature Programmes sub-pages ── */
+  /* ── Signature Programmes pages ── */
   const SIG_PAGES = [
     { label: 'Awards',           href: '/sig-awards.html'      },
     { label: 'Dala Khona',       href: '/sig-dalakhona.html'   },
     { label: 'PRO',              href: '/sig-fakugesipro.html'  },
     { label: 'Immersive Africa', href: '/sig-immersive.html'   },
-    { label: 'JAMZ',             href: '/sig-jamz.html'         },
+    { label: 'JAMZ',             href: '/sig-jamz.html'        },
     { label: 'Pitchathon',       href: '/sig-pitchathon.html'  },
   ];
 
   const sigHrefs = SIG_PAGES.map(p => p.href.replace(/^\//, '').replace(/\.html$/, ''));
   const isAnySigPage = sigHrefs.includes(page);
 
+  /* ── Desktop dropdown: build each item individually to avoid any href bleed ── */
   const sigDropHTML = SIG_PAGES.map(p => `<a href="${p.href}">${p.label}</a>`).join('');
 
   const links = [
-    { label: 'Home',                  href: '/index.html' },
-    { label: 'Festival Programme',    href: '/fes-market.html' },
-    { label: 'Signature Programmes',  href: '/sig-awards.html', sigDd: true },
-    { label: 'Discover',              href: '#', dd: [
+    { label: 'Home',                 href: '/index.html' },
+    { label: 'Festival Programme',   href: '/festival-programmes.html' },
+    { label: 'Signature Programmes', href: '/sig-awards.html', sigDd: true },
+    { label: 'Discover',             href: '#', dd: [
       { label: 'About Us',   href: '/about.html' },
       { label: 'Venues',     href: '/discover/venues.html' },
       { label: 'Resources',  href: '/discover/resources.html' },
@@ -518,7 +330,8 @@
   const mobItems = mobileLinks.map((l, i) => {
     const active = l.sigDd ? isAnySigPage : isActive(l.href);
     if (l.sigDd) {
-      const subItems = SIG_PAGES.map(p => `<li><a href="${p.href}">${p.label}</a></li>`).join('');
+      /* Build each mobile sub-item explicitly from SIG_PAGES to avoid any copy-paste drift */
+      const subItems = SIG_PAGES.map(p => `<li><a href="${p.href}" data-nav-link>${p.label}</a></li>`).join('');
       return `
         <li>
           <span class="${active ? 'active' : ''}" data-mob-toggle="${i}">
@@ -529,7 +342,7 @@
         </li>`;
     }
     if (l.dd) {
-      const subItems = l.dd.map(d => `<li><a href="${d.href}">${d.label}</a></li>`).join('');
+      const subItems = l.dd.map(d => `<li><a href="${d.href}" data-nav-link>${d.label}</a></li>`).join('');
       return `
         <li>
           <span class="${active ? 'active' : ''}" data-mob-toggle="${i}">
@@ -539,76 +352,53 @@
           <ul class="mob-sub" id="mob-sub-${i}">${subItems}</ul>
         </li>`;
     }
-    return `<li><a href="${l.href}"${active ? ' class="active"' : ''}>${l.label}</a></li>`;
+    return `<li><a href="${l.href}"${active ? ' class="active"' : ''} data-nav-link>${l.label}</a></li>`;
   }).join('');
 
   document.body.insertAdjacentHTML('afterbegin', `
     <nav id="main-nav">
-      <!-- Home logo (desktop left, not linked) -->
       <div id="nav-home-logo" aria-label="Fak'ugesi Festival">
         <img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
       </div>
-
-      <!-- Mobile logo (left, mobile only) -->
       <div id="nav-mobile-logo">
-        <a href="/index.html">
+        <a href="/index.html" data-nav-link>
           <img src="/images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival" />
         </a>
       </div>
-
-      <!-- Desktop links -->
       <div class="nav-links-wrap" id="nav-links-wrap">
         <ul class="nav-links" id="nav-list">${items}</ul>
       </div>
-
-      <!-- Search results dropdown -->
       <div id="nav-search-results-drop"></div>
-
-      <!-- Desktop right: compact search box + search icon + tickets -->
       <div class="nav-right" id="nav-right">
-        <!-- Compact search bar -->
         <div id="nav-search-bar" role="search" aria-label="Site search">
-          <input
-            type="text"
-            id="nav-search-inline-input"
-            placeholder="Search…"
-            autocomplete="off"
-            spellcheck="false"
-            aria-label="Search"
-          />
+          <input type="text" id="nav-search-inline-input" placeholder="Search…" autocomplete="off" spellcheck="false" aria-label="Search" />
           <button id="nav-search-close-btn" aria-label="Close search">×</button>
         </div>
-
-        <!-- Search icon button -->
         <button class="nav-search" id="nav-search-btn" aria-label="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
         </button>
-
-        <a class="nav-tickets" id="nav-tickets" href="/tickets.html">
+        <a class="nav-tickets" id="nav-tickets" href="/tickets.html" data-nav-link>
           <span>GET TICKETS</span>
         </a>
       </div>
-
-      <!-- Hamburger (mobile) -->
       <button id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </nav>
 
-    <!-- Mobile full-screen menu -->
     <div id="nav-mobile-menu" role="dialog" aria-label="Navigation menu">
       <ul class="mob-nav-list">${mobItems}</ul>
-      <a class="mob-tickets" href="/tickets.html">Get Tickets →</a>
+      <a class="mob-tickets" href="/tickets.html" data-nav-link>Get Tickets →</a>
       <div class="mob-socials">
-        <a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener" aria-label="Instagram">
+        <a href="https://www.instagram.com/fakugesi/" target="_blank" rel="noopener" aria-label="Instagram" data-nav-link>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
         </a>
-        <a href="https://x.com/fakugesi" target="_blank" rel="noopener" aria-label="X">
+        <a href="https://x.com/fakugesi" target="_blank" rel="noopener" aria-label="X" data-nav-link>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg>
         </a>
-        <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" aria-label="Facebook">
+        <a href="https://www.facebook.com/fakugesi" target="_blank" rel="noopener" aria-label="Facebook" data-nav-link>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         </a>
       </div>
@@ -657,19 +447,19 @@
     });
   });
 
-  /* ══════════════════════════════════════
+  /* ══════════════════════════════════════════════
      INLINE SEARCH SYSTEM
-  ══════════════════════════════════════ */
+  ══════════════════════════════════════════════ */
   const SEARCH_INDEX = [
     { title: 'Home', section: 'Home', url: '/index.html', tags: ['home','festival','fakugesi','2026','african','digital','innovation','african imaginaries','theme','johannesburg'] },
     { title: '2026 Theme: African Imaginaries', section: 'Home', url: '/index.html', tags: ['african imaginaries','2026 theme','afrofuturism','speculative','creative energy','october'] },
     { title: 'Get Involved', section: 'Home', url: '/index.html', tags: ['get involved','investors','funders','volunteers','expo showcases','sponsors'] },
     { title: 'Festival Dates', section: 'Home', url: '/index.html', tags: ['07 october','12 october','2026','dates','when','braamfontein'] },
-    { title: 'Festival Programme', section: 'Programme', url: '/fes-market.html', tags: ['programme','events','lineup'] },
+    { title: 'Festival Programme', section: 'Programme', url: '/festival-programmes.html', tags: ['programme','events','lineup'] },
     { title: "Fak'ugesi Expo", section: 'Expo', url: '/fes-expo.html', tags: ['expo','showcases','exhibitions','digital art','immersive media'] },
     { title: 'Curatorial Frequencies', section: 'Expo', url: '/fes-expo.html', tags: ['curatorial','imagination engines','memory engines','future engines','ai','heritage'] },
     { title: 'Want to Showcase', section: 'Expo', url: '/fes-expo.html', tags: ['exhibit','showcase your work','apply'] },
-    { title: "Fak'ugesi Market", section: 'Market', url: '/fes-market.html', tags: ['market','exhibitors','startup','business','vendors'] },
+    { title: "Fak'ugesi Market", section: 'Market', url: '/festival-programmes.html', tags: ['market','exhibitors','startup','business','vendors'] },
     { title: 'Festival Schedule', section: 'Schedule', url: '/fes-schedule.html', tags: ['schedule','timetable','sessions','panels','keynotes','talks','workshops'] },
     { title: 'AI Symposium', section: 'Schedule', url: '/fes-schedule.html', tags: ['ai symposium','artificial intelligence','research'] },
     { title: 'Pitchathon Coaching Workshop', section: 'Schedule', url: '/fes-schedule.html', tags: ['pitchathon','pitch','coaching'] },
@@ -710,24 +500,20 @@
     setTimeout(() => searchInput.focus(), 60);
     renderResults('');
   }
-
   function closeSearch() {
     searchBar.classList.remove('open');
     searchDrop.classList.remove('open');
     searchInput.value = '';
     searchDrop.innerHTML = '';
   }
-
   function highlight(text, query) {
     if (!query) return text;
     const esc = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     return text.replace(new RegExp(`(${esc})`, 'gi'), '<mark>$1</mark>');
   }
-
   function renderResults(query) {
     const q = query.trim().toLowerCase();
     let results = SEARCH_INDEX;
-
     if (q) {
       results = results.filter(r => {
         const combined = (r.title + ' ' + r.section + ' ' + r.tags.join(' ')).toLowerCase();
@@ -740,22 +526,17 @@
     } else {
       results = results.slice(0, 6);
     }
-
     searchDrop.innerHTML = '';
-
-    if (!q) {
-      searchDrop.innerHTML = `<div class="nsr-hint">Suggested pages</div>`;
-    }
-
+    if (!q) searchDrop.innerHTML = `<div class="nsr-hint">Suggested pages</div>`;
     if (results.length === 0) {
       searchDrop.innerHTML = `<div class="nsr-no-results">No results found — try a different search.</div>`;
       return;
     }
-
     results.slice(0, 10).forEach(r => {
       const el = document.createElement('a');
       el.href = r.url;
       el.className = 'nsr-item';
+      el.dataset.navLink = '';
       el.innerHTML = `
         <div class="nsr-section" style="color:${categoryColors[r.section] || 'rgba(255,255,255,0.35)'}">${r.section}</div>
         <div class="nsr-title">${highlight(r.title, q)}</div>
@@ -765,45 +546,25 @@
     });
   }
 
-  /* Open/close search */
   navSearchBtn.addEventListener('click', function (e) {
     e.stopPropagation();
-    if (searchBar.classList.contains('open')) {
-      closeSearch();
-    } else {
-      openSearch();
-    }
+    if (searchBar.classList.contains('open')) { closeSearch(); } else { openSearch(); }
   });
   searchClose.addEventListener('click', (e) => { e.stopPropagation(); closeSearch(); });
-
-  /* Live filtering */
   searchInput.addEventListener('input', () => renderResults(searchInput.value));
-
-  /* Keyboard shortcuts */
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeSearch();
-    if (e.key === 'Enter') {
-      const first = searchDrop.querySelector('.nsr-item');
-      if (first) { first.click(); }
-    }
+    if (e.key === 'Enter') { const first = searchDrop.querySelector('.nsr-item'); if (first) first.click(); }
   });
-
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && searchBar.classList.contains('open')) {
-      closeSearch();
-    }
+    if (e.key === 'Escape' && searchBar.classList.contains('open')) closeSearch();
     if (
       (e.key === '/' || (e.metaKey && e.key === 'k') || (e.ctrlKey && e.key === 'k')) &&
       !searchBar.classList.contains('open') &&
       document.activeElement.tagName !== 'INPUT' &&
       document.activeElement.tagName !== 'TEXTAREA'
-    ) {
-      e.preventDefault();
-      openSearch();
-    }
+    ) { e.preventDefault(); openSearch(); }
   });
-
-  /* Click outside to close */
   document.addEventListener('click', (e) => {
     if (
       searchBar.classList.contains('open') &&
@@ -811,14 +572,12 @@
       !searchDrop.contains(e.target) &&
       e.target !== navSearchBtn &&
       !navSearchBtn.contains(e.target)
-    ) {
-      closeSearch();
-    }
+    ) closeSearch();
   });
 
 })();
 
-/* ── Redirect all non-exempt links to get-involved form ── */
+/* ── Redirect non-exempt links to get-involved form ── */
 (function () {
   const EXEMPT_PAGES = ['get-involved.html'];
   const currentPage = window.location.pathname.split('/').pop();
@@ -831,22 +590,23 @@
 
   const EXEMPT_SELECTORS = [
     '.nav-tickets', '#nav-tickets', '[data-no-redirect]', '.gi-submit',
-    '.fug-sig-item', '.hero-link',
+    '.fug-sig-item', '.hero-link', '[data-nav-link]',
   ];
 
   function isExempt(el) {
     if (!el) return true;
     if (el.type === 'submit' || el.tagName === 'BUTTON') return true;
-    // Allow any link with a download attribute
     if (el.hasAttribute('download')) return true;
     const href = el.getAttribute('href') || '';
     if (href === '#' || href.startsWith('#') || href === '') return true;
     if (href.startsWith('mailto:') || href.startsWith('tel:')) return true;
     if (href.includes('get-involved')) return true;
     if (href.startsWith('http://') || href.startsWith('https://')) return true;
-    // Allow any link pointing directly to a PDF
     if (href.toLowerCase().includes('.pdf')) return true;
-    if (el.closest('#main-nav') || el.closest('.mob-nav-links') || el.closest('.fug-sig-strip')) return true;
+    /* Exempt anything inside the nav or mobile menu */
+    if (el.closest('#main-nav') || el.closest('#nav-mobile-menu')) return true;
+    if (el.closest('.mob-nav-list') || el.closest('.mob-sub')) return true;
+    if (el.closest('.fug-sig-strip')) return true;
     if (el.closest('#main-footer')) return true;
     for (const sel of EXEMPT_SELECTORS) {
       try { if (el.matches(sel) || el.closest(sel)) return true; } catch(e) {}

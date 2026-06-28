@@ -17,30 +17,29 @@
     .sec-crosses{position:absolute;left:0;right:0;display:flex;justify-content:space-between;padding:0 248px;pointer-events:none;z-index:20;}
     .sec-crosses-top{top:20px;} .sec-crosses-bottom{bottom:20px;}
 
-    /* HERO */
-   .hero{position:relative;width:100%;min-height:480px;overflow:hidden;display:flex;align-items:flex-end;}
-    .hero-bg{position:absolute;inset:0;background-image:url('images/_C6A0500.jpg');background-size:cover;background-position:center 30%;filter:brightness(0.55);animation:kenBurns 18s ease-in-out infinite alternate;transform:scaleX(-1);}
-    @keyframes kenBurns{from{transform:scaleX(-1) scale(1)}to{transform:scaleX(-1) scale(1.06)}}
+    /* ══ HERO — matched to sig-dalakhona layout ══ */
+    .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-start;}
+    .hero-bg{position:absolute;inset:0;background-image:url('images/image updates/Copy of 0A9A7964.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.45);animation:kenBurns 18s ease-in-out infinite alternate;}
+    @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.07)}}
     .hero-blue-tint{position:absolute;inset:0;background:rgba(30,60,160,0.18);z-index:1;}
-    .hero-inner{position:relative;z-index:3;width:100%;padding:0 248px 56px;display:flex;align-items:flex-end;justify-content:space-between;}
-    .hero-content{max-width:520px;}
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;opacity:0.75;margin-bottom:14px;}
-    /* SemiBold hero title */
-    .hero-title{
-      font-family: 'InterDisplay', sans-serif;font-size: 58px;font-weight: 600;line-height:1.0;margin-bottom:18px;}
-    .hero-body{font-size:12.5px;line-height:1.7;max-width:420px;opacity:0.85;margin-bottom:24px;}
-    .btn-tickets{display:inline-block;border:1.5px solid var(--white);color:var(--white);background:transparent;padding:11px 28px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background 0.22s,color 0.22s;}
-    .btn-tickets:hover{background:#1a2744;color:var(--white);border-color:rgba(255,220,60,0.75);transform:translateY(-1px);}
-    .hero-logo{flex-shrink:0;display:flex;align-items:center;justify-content:center;align-self:center;}
-    .hero-logo img{height:110px;width:auto;display:block;filter:brightness(0) invert(1) contrast(1.2);mix-blend-mode:screen;}
+    .hero-inner{position:relative;z-index:3;width:100%;padding:120px 248px 56px;display:flex;align-items:flex-start;justify-content:space-between;}
+    .hero-content{max-width:480px;display:flex;flex-direction:column;align-items:flex-start;}
+    .hero-title{font-family:'InterDisplay',sans-serif;font-size:50px;font-weight:500;line-height:1;color:#fff;margin-bottom:20px;}
+    .hero-body{font-size:13px;font-weight:400;line-height:1.72;color:rgba(255,255,255,0.85);max-width:420px;margin-bottom:24px;}
+    .btn-tickets{display:inline-block;border:1.5px solid var(--white);color:var(--white);background:transparent;padding:11px 28px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background 0.22s,color 0.22s,border-color 0.22s;}
+    .btn-tickets:hover{background:var(--white);color:var(--navy);border-color:var(--white);transform:translateY(-1px);}
+
+    /* Logo col — padding-top drops it down to sit level with the heading/paragraph gap */
+    .hero-logo-col{display:flex;align-items:flex-start;padding-top:120px;flex-shrink:0;}
+    .hero-logo-col img{height:110px;width:auto;display:block;filter:brightness(0) invert(1) contrast(1.2);mix-blend-mode:screen;}
 
     /* TICKER */
-    .ticker-wrapper{background:var(--white);border-top:1px solid rgba(26,39,68,0.1);border-bottom:1px solid rgba(26,39,68,0.1);overflow:hidden;white-space:nowrap;padding:10px 0;position:relative;z-index:10;transition:background 0.28s ease;}
-    .ticker-wrapper:hover{background:var(--navy)!important;}
+    .ticker-wrapper{background:var(--navy);overflow:hidden;white-space:nowrap;padding:10px 0;position:relative;z-index:10;transition:background 0.28s ease;}
+    .ticker-wrapper:hover{background:#ffffff!important;}
     .ticker-wrapper:hover .ticker-track{animation-play-state:paused;}
-    .ticker-wrapper:hover .ticker-track span{color:#ffffff!important;}
+    .ticker-wrapper:hover .ticker-track span{color:var(--navy)!important;}
     .ticker-track{display:inline-flex;animation:tickerScroll 35s linear infinite;}
-    .ticker-track span{padding:0 32px;font-size:12.5px;font-weight:500;color:var(--navy);letter-spacing:0.02em;}
+    .ticker-track span{padding:0 32px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.88);letter-spacing:0.02em;}
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* Shared link hover */
@@ -57,73 +56,86 @@
     .passes-body{display:flex;flex-direction:column;gap:0;}
     .passes-left{margin-bottom:36px;}
     .passes-heading{font-size:40px;font-weight:600;color:var(--white);line-height:1.05;margin-bottom:16px;}
-    .passes-subtext{font-size:11px;line-height:1.75;color:rgba(255,255,255,0.55);}
+    .passes-subtext{font-size:13px;line-height:1.75;color:rgba(255,255,255,0.70);max-width:600px;}
     .passes-right{display:flex;flex-direction:column;gap:32px;}
     .ticket-row{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:start;}
     .ticket-blurb{font-size:11px;line-height:1.75;color:rgba(255,255,255,0.65);padding-top:12px;}
-    .ticket-card{position:relative;overflow:hidden;--perf:72%;width:100%;}
+
+    /* TICKET CARD — unified base style for all passes */
+    .ticket-card{position:relative;overflow:hidden;--perf:72%;width:100%;background:rgba(6,10,28,0.45);backdrop-filter:blur(12px);cursor:pointer;transition:background 0.32s ease;}
     .ticket-card-wrap{position:relative;flex:1;min-width:0;}
-    .ticket-card.full-pass{background:var(--white);}
-    .ticket-card.day-pass,.ticket-card.industry-pass{background:rgba(6,10,28,0.45);backdrop-filter:blur(12px);}
     .ticket-border-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:20;overflow:visible;}
-    .ticket-border-svg path{fill:none;stroke-width:1.5;}
-    .ticket-card.full-pass .ticket-border-svg path{stroke:rgba(200,210,230,0.5);}
-    .ticket-card.day-pass .ticket-border-svg path,.ticket-card.industry-pass .ticket-border-svg path{stroke:rgba(255,255,255,0.6);}
+    .ticket-border-svg path{fill:none;stroke-width:1.5;stroke:rgba(255,255,255,0.6);transition:stroke 0.32s ease;}
     .ticket-inner{display:grid;grid-template-columns:calc(var(--perf) - 10px) 20px 1fr;align-items:stretch;min-height:210px;}
     .ticket-main{padding:26px 32px 24px 28px;display:flex;flex-direction:column;justify-content:space-between;}
     .ticket-main-top{display:flex;flex-direction:column;gap:0;}
     .ticket-dots-col{position:absolute;top:0;bottom:0;left:var(--perf);transform:translateX(-50%);width:14px;z-index:5;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;pointer-events:none;}
-    .ticket-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-    .ticket-card.full-pass .ticket-dot{background:rgba(26,39,68,0.45);}
-    .ticket-card.day-pass .ticket-dot,.ticket-card.industry-pass .ticket-dot{background:transparent;border:1.5px solid rgba(255,255,255,0.5);}
+    .ticket-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;background:transparent;border:1.5px solid rgba(255,255,255,0.5);transition:background 0.32s ease,border-color 0.32s ease;}
     .ticket-price-col{padding:24px 24px 20px 12px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;}
-    .ticket-card.full-pass .ticket-label{color:var(--body-gray);}
-    .ticket-card.full-pass .ticket-title{color:var(--dark-text);}
-    .ticket-card.full-pass .ticket-desc{color:var(--body-gray);}
-    .ticket-card.full-pass .ticket-features li{color:var(--dark-text);}
-    .ticket-card.full-pass .ticket-features li::before{color:var(--body-gray);}
-    .ticket-card.day-pass .ticket-label,.ticket-card.industry-pass .ticket-label{color:rgba(255,255,255,0.52);}
-    .ticket-card.day-pass .ticket-title,.ticket-card.industry-pass .ticket-title{color:var(--white);}
-    .ticket-card.day-pass .ticket-desc,.ticket-card.industry-pass .ticket-desc{color:rgba(255,255,255,0.70);}
-    .ticket-card.day-pass .ticket-features li,.ticket-card.industry-pass .ticket-features li{color:rgba(255,255,255,0.85);}
+
+    /* Default (dark glass) text colors — apply to every ticket card */
+    .ticket-card .ticket-label{color:rgba(255,255,255,0.52);transition:color 0.32s ease;}
+    .ticket-card .ticket-title{color:var(--white);transition:color 0.32s ease;}
+    .ticket-card .ticket-desc{color:rgba(255,255,255,0.70);transition:color 0.32s ease;}
+    .ticket-card .ticket-features li{color:rgba(255,255,255,0.85);transition:color 0.32s ease;}
+    .ticket-card .price-amount{color:var(--white);transition:color 0.32s ease;}
+    .ticket-card .price-label{color:rgba(255,255,255,0.52);transition:color 0.32s ease;}
+    .ticket-card .price-divider{background:rgba(255,255,255,0.18);transition:background 0.32s ease;}
+    .ticket-card .student-note{color:rgba(255,255,255,0.45);transition:color 0.32s ease;}
+    .ticket-card .btn-get-pass{background:transparent;border-color:rgba(255,255,255,0.60);color:var(--white);}
+
     .ticket-label{font-size:8px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;}
     .ticket-title{font-size:28px;font-weight:600;letter-spacing:-0.02em;line-height:1.1;margin-bottom:10px;}
     .ticket-desc{font-size:10.5px;line-height:1.65;margin-bottom:12px;}
     .ticket-features{list-style:none;display:flex;flex-direction:column;gap:4px;}
     .ticket-features li{font-size:10.5px;display:flex;align-items:center;gap:7px;}
-    .ticket-features li::before{content:'→';font-size:9px;flex-shrink:0;}
+    .ticket-features li::before{content:'→';font-size:9px;flex-shrink:0;color:currentColor;}
     .price-block{text-align:right;}
     .price-amount{font-weight:600;letter-spacing:-0.03em;line-height:1;}
     .price-amount.large{font-size:44px;} .price-amount.xlarge{font-size:38px;}
-    .ticket-card.full-pass .price-amount{color:var(--dark-text);}
-    .ticket-card.day-pass .price-amount,.ticket-card.industry-pass .price-amount{color:var(--white);}
     .price-curr{font-size:16px;vertical-align:top;margin-top:7px;display:inline-block;font-weight:700;}
     .price-label{font-size:8px;letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;margin-bottom:3px;}
-    .ticket-card.full-pass .price-label{color:var(--body-gray);}
-    .ticket-card.day-pass .price-label,.ticket-card.industry-pass .price-label{color:rgba(255,255,255,0.52);}
     .price-divider{width:100%;height:1px;margin:10px 0;}
-    .ticket-card.full-pass .price-divider{background:rgba(0,0,0,0.12);}
-    .ticket-card.day-pass .price-divider,.ticket-card.industry-pass .price-divider{background:rgba(255,255,255,0.18);}
     .student-note{font-size:8px;text-align:right;margin-bottom:10px;line-height:1.4;}
-    .ticket-card.full-pass .student-note{color:var(--body-gray);}
-    .ticket-card.day-pass .student-note,.ticket-card.industry-pass .student-note{color:rgba(255,255,255,0.45);}
     .btn-get-pass{display:inline-block;padding:9px 18px;font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.22s,color 0.22s,border-color 0.22s;white-space:nowrap;border:1.5px solid transparent;}
-    .ticket-card.full-pass .btn-get-pass{background:transparent;border-color:var(--dark-text);color:var(--dark-text);}
-    .ticket-card.full-pass .btn-get-pass:hover{background:#0d1b3e;color:var(--white);border-color:rgba(255,220,60,0.75);transform:translateY(-1px);}
-    .ticket-card.day-pass .btn-get-pass,.ticket-card.industry-pass .btn-get-pass{background:transparent;border-color:rgba(255,255,255,0.60);color:var(--white);}
-    .ticket-card.day-pass .btn-get-pass:hover,.ticket-card.industry-pass .btn-get-pass:hover{background:#0d1b3e;color:var(--white);border-color:rgba(255,220,60,0.75);transform:translateY(-1px);}
+    .btn-get-pass:hover{background:#0d1b3e;color:var(--white);border-color:rgba(255,220,60,0.75);transform:translateY(-1px);}
 
-    /* FAQ */
+    /* WHITE click / hover state — applies identically to ALL ticket cards */
+    .ticket-card:hover,
+    .ticket-card.active{
+      background:var(--white);
+    }
+    .ticket-card:hover .ticket-border-svg path,
+    .ticket-card.active .ticket-border-svg path{stroke:rgba(26,39,68,0.5);}
+    .ticket-card:hover .ticket-dot,
+    .ticket-card.active .ticket-dot{background:rgba(26,39,68,0.45);border-color:rgba(26,39,68,0.45);}
+    .ticket-card:hover .ticket-label,
+    .ticket-card.active .ticket-label{color:var(--body-gray);}
+    .ticket-card:hover .ticket-title,
+    .ticket-card.active .ticket-title{color:var(--dark-text);}
+    .ticket-card:hover .ticket-desc,
+    .ticket-card.active .ticket-desc{color:var(--body-gray);}
+    .ticket-card:hover .ticket-features li,
+    .ticket-card.active .ticket-features li{color:var(--dark-text);}
+    .ticket-card:hover .price-amount,
+    .ticket-card.active .price-amount{color:var(--dark-text);}
+    .ticket-card:hover .price-label,
+    .ticket-card.active .price-label{color:var(--body-gray);}
+    .ticket-card:hover .price-divider,
+    .ticket-card.active .price-divider{background:rgba(0,0,0,0.12);}
+    .ticket-card:hover .student-note,
+    .ticket-card.active .student-note{color:var(--body-gray);}
+    .ticket-card:hover .btn-get-pass,
+    .ticket-card.active .btn-get-pass{background:transparent;border-color:var(--dark-text);color:var(--dark-text);}
+    .ticket-card:hover .btn-get-pass:hover,
+    .ticket-card.active .btn-get-pass:hover{background:#0d1b3e;color:var(--white);border-color:rgba(255,220,60,0.75);}
+
+    /* FAQ — highlight box inset slightly from the text via padding + negative margin */
     .faq-section{background:var(--white);padding:64px 248px;position:relative;}
     .faq-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:64px;align-items:flex-start;}
-    .faq-title{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:20px;}
-    .faq-intro{font-size:13px;line-height:1.7;color:var(--body-gray);max-width:280px;}
-    .faq-apply-link{font-size:11px;font-weight:600;color:var(--navy);text-decoration:underline;letter-spacing:.06em;display:block;margin-top:40px;cursor:pointer;text-underline-offset:3px;transition:opacity .2s;}
-    .faq-apply-link:hover{opacity:.6;}
-    .faq-right-header{display:flex;justify-content:flex-end;margin-bottom:8px;}
-    .faq-tickets-link{font-size:12px;color:var(--dark-text);text-decoration:underline;cursor:pointer;}
+    .faq-title{font-size:50px;font-weight:600;color:var(--dark-text);margin-bottom:0;}
     .faq-items{display:flex;flex-direction:column;}
-    .faq-item{border-top:1px solid rgba(26,39,68,0.15);background:transparent;transition:background 0.28s ease;}
+    .faq-item{border-top:1px solid rgba(26,39,68,0.15);background:transparent;transition:background 0.28s ease;margin:0 -16px;padding:0 16px;}
     .faq-item:last-child{border-bottom:1px solid rgba(26,39,68,0.15);}
     .faq-item:hover{background:var(--navy);}
     .faq-item:hover .faq-question-text{color:var(--white);}
@@ -140,21 +152,29 @@
     .partners-section{background:var(--lavender);padding:64px 248px 72px;position:relative;}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;}
     .partners-title{font-size:42px;font-weight:600;color:var(--dark-text);}
-    .partners-link{font-size:12px;color:var(--navy);font-weight:600;text-decoration:underline;}
-    .partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
     .partner-card{display:flex;flex-direction:column;}
-    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;margin-bottom:16px;transition:box-shadow 0.3s,transform 0.3s;}
+    .partner-logo-link{display:block;text-decoration:none;}
+    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow 0.3s,transform 0.3s;}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
-    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}.partner-logo-box img.keep-color{filter:none !important;}
-    .partner-desc{font-size:12px;color:var(--body-gray);line-height:1.65;}
+    .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
+    .partner-logo-box img.keep-color{filter:none !important;}
 
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
     .reveal.visible{opacity:1;transform:none;}
 
+    @media(max-width:1024px){
+      .hero-inner{padding:90px 48px 48px;}
+      .hero-title{font-size:46px;}
+      .hero-logo-col{padding-top:120px;}
+      .hero-logo-col img{height:90px;}
+    }
     @media(max-width:768px){
-      .hero{height:auto!important;min-height:auto!important;align-items:flex-end!important;}
-      .hero-inner{padding:0 24px 40px!important;flex-direction:column!important;align-items:flex-start!important;gap:20px!important;}
-      .hero-title{font-size:32px!important;}.hero-logo{display:none!important;}
+      .hero{min-height:auto!important;}
+      .hero-inner{padding:80px 24px 40px!important;flex-direction:column!important;align-items:flex-start!important;gap:20px!important;}
+      .hero-content{max-width:100%!important;}
+      .hero-logo-col{display:none!important;}
+      .hero-title{font-size:32px!important;}
       .passes-content{padding:40px 24px 48px!important;}.passes-heading{font-size:28px!important;}
       .ticket-row{grid-template-columns:1fr!important;gap:16px!important;}
       .ticket-blurb{padding-top:0!important;order:2!important;}
@@ -166,32 +186,55 @@
       .price-amount.large{font-size:32px!important;}.price-amount.xlarge{font-size:28px!important;}
       .ticket-main{padding:20px 20px 16px!important;}.ticket-title{font-size:22px!important;}
       .faq-section{padding:48px 24px!important;}.faq-layout{grid-template-columns:1fr!important;gap:24px!important;}
-      .faq-title{font-size:32px!important;}.faq-right-header{justify-content:flex-start!important;}
+      .faq-title{font-size:32px!important;}
+      .faq-item{margin:0 -8px!important;padding:0 8px!important;}
       .partners-section{padding:48px 24px 56px!important;}
       .partners-header{flex-direction:column!important;align-items:flex-start!important;gap:12px!important;}
-      .partners-title{font-size:28px!important;}.partners-grid{grid-template-columns:1fr!important;}
+      .partners-title{font-size:28px!important;}.partners-grid{grid-template-columns:1fr 1fr!important;gap:14px!important;}
       .sec-crosses{padding:0 24px;}
     }
-    @media(max-width:480px){.hero-title{font-size:26px!important;}.passes-heading{font-size:24px!important;}.faq-title{font-size:26px!important;},.partners-title{font-size:24px!important;}}
+    @media(max-width:480px){
+      .hero-title{font-size:26px!important;}.passes-heading{font-size:24px!important;}.faq-title{font-size:26px!important;}.partners-title{font-size:24px!important;}
+      .partners-grid{grid-template-columns:1fr 1fr!important;}
+    }
   </style>
   <style id="nav-fix">@media(max-width:768px){#main-nav .nav-links-wrap{display:none!important;}#main-nav .nav-mobile-toggle{display:flex!important;}}#main-nav .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:8px;margin-left:auto;margin-right:16px;flex-direction:column;gap:5px;align-items:center;justify-content:center;}#main-nav .nav-mobile-toggle span{display:block;width:22px;height:2px;background:#fff;}#mobile-nav-drawer{display:none;position:fixed;top:58px;left:0;right:0;bottom:0;background:rgba(10,18,50,0.98);z-index:999;flex-direction:column;padding:24px;overflow-y:auto;}#mobile-nav-drawer.open{display:flex;}#mobile-nav-drawer a{color:rgba(255,255,255,0.85);font-size:16px;font-weight:500;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'InterDisplay',sans-serif;}</style>
 </head>
 <body>
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-blue-tint"></div>
+  <!-- nav injected by nav.js -->
   <div class="hero-inner">
     <div class="hero-content">
-      <p class="hero-eyebrow">Fak'ugesi Festival 2026 · 13 — 17 October</p>
-      <h1 class="hero-title">Join us Between<br>13 and 17 October</h1>
-      <p class="hero-body">Fak'ugesi 2026 takes place from 13 to 17 October at the Tshimologong Digital Innovation Precinct, 41 Juta Street, Braamfontein, Johannesburg. Programme submissions, Pitchathon applications, and Fak'ugesiPRO registrations are currently open.</p>
+      <h1 class="hero-title">Switch on Five Days of African Digital Practice</h1>
+      <p class="hero-body">Join Africa's leading festival of digital culture, creativity and innovation. Explore exhibitions, talks, workshops, performances, installations, screenings and collaborations as practitioners from across the continent gather to build, exchange and imagine together.</p>
       <a class="btn-tickets" href="#passes">GET YOUR TICKETS</a>
     </div>
-    <div class="hero-logo"><img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/></div>
+    <div class="hero-logo-col">
+      <img src="images/logos/fakugesi/logo_fakugesi_light.svg" alt="Fak'ugesi Festival"/>
+    </div>
   </div>
 </section>
+
+<!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>View venues and map &nbsp;→&nbsp;</span><span>View venues and map &nbsp;→&nbsp;</span><span>View venues and map &nbsp;→&nbsp;</span><span>View venues and map &nbsp;→&nbsp;</span><span>View venues and map &nbsp;→&nbsp;</span><span>View venues and map &nbsp;→&nbsp;</span><span>View venues and map &nbsp;→&nbsp;</span><span>View venues and map &nbsp;→&nbsp;</span>
+    <span>GET YOUR TICKETS</span><span>•</span>
+    <span>PLAN YOUR FESTIVAL</span><span>•</span>
+    <span>EXPLORE THE VENUES</span><span>•</span>
+    <span>BUILD YOUR SCHEDULE</span><span>•</span>
+    <span>FAK'UGESI 2026</span><span>•</span>
+    <span>13–17 OCTOBER</span><span>•</span>
+    <span>JOHANNESBURG</span><span>•</span>
+    <span>GET YOUR TICKETS</span><span>•</span>
+    <span>PLAN YOUR FESTIVAL</span><span>•</span>
+    <span>EXPLORE THE VENUES</span><span>•</span>
+    <span>BUILD YOUR SCHEDULE</span><span>•</span>
+    <span>FAK'UGESI 2026</span><span>•</span>
+    <span>13–17 OCTOBER</span><span>•</span>
+    <span>JOHANNESBURG</span><span>•</span>
   </div>
 </div>
 
@@ -206,12 +249,13 @@
     <div class="passes-body">
       <div class="passes-left">
         <h2 class="passes-heading">Festival Passes</h2>
-        <p class="passes-subtext">Choose the pass that works for you. All passes include access to the main festival programme.</p>
+        <p class="passes-subtext">Whether you're joining us for a day or the full week, every pass opens a different way into the festival. Choose the experience that works for you.</p>
       </div>
       <div class="passes-right">
+
         <!-- FULL PASS -->
         <div class="ticket-row">
-          <div class="ticket-blurb">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus. Cras non metus.</div>
+          <div class="ticket-blurb">The complete Fak'ugesi experience. Five days of exhibitions, talks, workshops, performances, screenings, networking and the unexpected conversations that happen in between.</div>
           <div class="ticket-card-wrap"><div class="ticket-card full-pass">
             <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
             <div class="ticket-dots-col"><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div></div>
@@ -220,7 +264,7 @@
                 <div class="ticket-title">Full Pass</div>
                 <p class="ticket-desc">Prepaid access to all festival offerings including panels, workshops, exhibitions, screenings, performances and the Awards Ceremony.</p>
                 <ul class="ticket-features"><li>Panels &amp; workshops</li><li>Expo &amp; showcases</li><li>Access to Market</li><li>Performances (excluding invitation-only events)</li><li>15% off group purchases of 10 – 20 passes</li></ul>
-              </div><div style="margin-top:18px;"><a class="btn-get-pass" href="#">GET FULL PASS</a></div></div>
+              </div><div style="margin-top:18px;"><a class="btn-get-pass" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer">GET FULL PASS</a></div></div>
               <div></div>
               <div class="ticket-price-col"><div>
                 <div class="price-block"><div class="price-amount large"><span class="price-curr">R</span>200</div><div class="price-label">For Students*</div></div>
@@ -230,9 +274,10 @@
             </div>
           </div></div>
         </div>
+
         <!-- DAY PASS -->
         <div class="ticket-row">
-          <div class="ticket-blurb">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</div>
+          <div class="ticket-blurb">Perfect if you're dropping in for a day. Build your own programme from exhibitions, talks, workshops and live events happening across the precinct.</div>
           <div class="ticket-card-wrap"><div class="ticket-card day-pass">
             <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
             <div class="ticket-dots-col"><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div></div>
@@ -242,7 +287,7 @@
                 <div class="ticket-title">Day Pass</div>
                 <p class="ticket-desc">Full access on your chosen festival day including all panels, workshops and expo.</p>
                 <ul class="ticket-features"><li>Full access on your chosen day</li><li>All panels &amp; workshops that day</li><li>Expo access included</li></ul>
-              </div><div style="margin-top:18px;"><a class="btn-get-pass" href="#">GET DAY PASS</a></div></div>
+              </div><div style="margin-top:18px;"><a class="btn-get-pass" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer">GET DAY PASS</a></div></div>
               <div></div>
               <div class="ticket-price-col"><div>
                 <div class="price-block"><div class="price-amount large"><span class="price-curr">R</span>135</div><div class="price-label">For Students*</div></div>
@@ -252,9 +297,10 @@
             </div>
           </div></div>
         </div>
+
         <!-- INDUSTRY PASS -->
         <div class="ticket-row">
-          <div class="ticket-blurb">Nam sit amet metus vitae lectus ullamcorper dignissim. Suspendisse leo. Praesent turpis justo, aliquet ac, accumsan vel, posuere quis, pede. Morbi pretium lacus.</div>
+          <div class="ticket-blurb">Designed for practitioners, researchers, producers, funders, partners and collaborators looking to connect, exchange knowledge and grow new opportunities across Africa's digital ecosystem.</div>
           <div class="ticket-card-wrap"><div class="ticket-card industry-pass">
             <svg class="ticket-border-svg" aria-hidden="true"><path class="ticket-outline"/></svg>
             <div class="ticket-dots-col"><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div><div class="ticket-dot"></div></div>
@@ -264,7 +310,7 @@
                 <div class="ticket-title">Industry Pass</div>
                 <p class="ticket-desc">All Full Pass benefits plus exclusive networking, VIP lounge and priority awards seating.</p>
                 <ul class="ticket-features"><li>All Full Pass benefits</li><li>Exclusive networking sessions</li><li>VIP lounge access</li><li>Awards ceremony priority seating</li></ul>
-              </div><div style="margin-top:18px;"><a class="btn-get-pass" href="#">GET INDUSTRY PASS</a></div></div>
+              </div><div style="margin-top:18px;"><a class="btn-get-pass" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer">GET INDUSTRY PASS</a></div></div>
               <div></div>
               <div class="ticket-price-col"><div>
                 <div class="price-block"><div class="price-amount xlarge"><span class="price-curr">R</span>3,500</div><div class="price-label">For VIPs</div></div>
@@ -272,6 +318,7 @@
             </div>
           </div></div>
         </div>
+
       </div>
     </div>
     <div class="sec-crosses sec-crosses-bottom">
@@ -288,7 +335,7 @@
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="0" x2="8" y2="16" stroke="rgba(26,39,68,0.28)" stroke-width="1"/><line x1="0" y1="8" x2="16" y2="8" stroke="rgba(26,39,68,0.28)" stroke-width="1"/></svg>
   </div>
   <div class="faq-layout">
-    <div><h2 class="faq-title">FAQ</h2><p class="faq-intro">Common questions about ticketing, access, and getting to the venue.</p><a class="faq-apply-link" href="#passes">View all passes →</a></div>
+    <div><h2 class="faq-title">FAQ</h2></div>
     <div>
       <div class="faq-items" id="faqAccordion"></div>
     </div>
@@ -303,52 +350,81 @@
   </div>
   <div class="partners-header"><h2 class="partners-title">Our Main Partners</h2></div>
   <div class="partners-grid">
-    <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div><p class="partner-desc">Tshimologong Digital Innovation Precinct is the home of Fak'ugesi and a hub for Africa's digital creative and technology ecosystem.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div><p class="partner-desc">The University of the Witwatersrand provides the academic and research infrastructure underpinning the Fak'ugesi festival and its programmes.</p></div>
-      <div class="partner-card"><div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div><p class="partner-desc">The Wits Anglo American Digital Dome is Africa's premier immersive environment, hosting the Immersive Africa strand of the festival.</p></div>
+    <div class="partner-card">
+      <a href="https://tshimologong.joburg/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
+        <div class="partner-logo-box"><img src="images/logos/tshimologong/logo_tshimologong_dark.svg" alt="Tshimologong"/></div>
+      </a>
+    </div>
+    <div class="partner-card">
+      <a href="https://www.wits.ac.za/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
+        <div class="partner-logo-box"><img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/></div>
+      </a>
+    </div>
+    <div class="partner-card">
+      <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
+        <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+      </a>
+    </div>
+    <div class="partner-card">
+        <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
+          <div class="partner-logo-box">
+            <img src="images/image updates/WT New CI Short-03.png" alt="Web Tickets" class="keep-color"/>
+          </div>
+        </a>
+      </div>
   </div>
 </section>
 
 <script src="nav.js"></script><script src="footer.js"></script>
 <script>
-  const rEls=document.querySelectorAll('.reveal');
-  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0.06});
-  rEls.forEach(el=>io.observe(el));
-  function revealVisible(){rEls.forEach(el=>{const r=el.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0)el.classList.add('visible');});}
-  revealVisible();window.addEventListener('load',revealVisible);
+  const rEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  }), { threshold: 0.06 });
+  rEls.forEach(el => io.observe(el));
+  function revealVisible() { rEls.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('visible'); }); }
+  revealVisible(); window.addEventListener('load', revealVisible);
 
-  const faqData=[
-    {q:'When do ticket sales open?',a:'Early bird tickets are currently available. Sign up to the newsletter to be notified when general registration opens.'},
-    {q:'Are any events free to attend?',a:'Some programme elements are open access. Others require registration or ticketing. Full details will be published with the festival programme.'},
-    {q:'Is the venue wheelchair accessible?',a:'The Tshimologong Precinct is wheelchair accessible. Full accessibility information will be published ahead of the festival. For specific requirements, contact hello@fakugesi.co.za in advance.'},
-    {q:'How do I register for Fak\'ugesiPRO?',a:'Fak\'ugesiPRO registration is included with your ticket, but seats are limited. Visit the Fak\'ugesiPRO page to secure your place.'},
-    {q:'How do I get to Tshimologong?',a:'The Tshimologong Digital Innovation Precinct is at 41 Juta Street, Braamfontein. Accessible by car, Gautrain, and Rea Vaya bus. Detailed travel information is available at tshimologong.joburg.'},
+  const faqData = [
+    { q: 'Are any events free to attend?', a: 'Some programme elements are open access. Others require registration or ticketing. Full details will be published with the festival programme.' },
+    { q: 'Is the venue wheelchair accessible?', a: 'The Tshimologong Precinct is wheelchair accessible. Full accessibility information will be published ahead of the festival. For specific requirements, contact hello@fakugesi.co.za in advance.' },
+    { q: 'How do I register for Fak\'ugesiPRO?', a: 'Fak\'ugesiPRO registration is included with your ticket, but seats are limited. Visit the Fak\'ugesiPRO page to secure your place.' },
+    { q: 'How do I get to Tshimologong?', a: 'The Tshimologong Digital Innovation Precinct is at 41 Juta Street, Braamfontein. Accessible by car, Gautrain, and Rea Vaya bus. Detailed travel information is available at tshimologong.joburg.' },
   ];
-  const faqContainer=document.getElementById('faqAccordion');
-  faqData.forEach((faq,i)=>{
-    const item=document.createElement('div');item.className='faq-item'+(i===0?' open':'');
-    item.innerHTML=`<button class="faq-question" aria-expanded="${i===0}" style="padding-left:0;padding-right:0;"><span class="faq-question-text">${faq.q}</span><span class="faq-toggle" style="margin-right:0;">${i===0?'×':'+'}</span></button><div class="faq-answer">${faq.a}</div>`;
-    item.querySelector('.faq-question').addEventListener('click',()=>{
-      const isOpen=item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el=>{el.classList.remove('open');el.querySelector('.faq-toggle').textContent='+';el.querySelector('.faq-question').setAttribute('aria-expanded','false');});
-      if(!isOpen){item.classList.add('open');item.querySelector('.faq-toggle').textContent='×';item.querySelector('.faq-question').setAttribute('aria-expanded','true');}
+  const faqContainer = document.getElementById('faqAccordion');
+  faqData.forEach((faq, i) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item' + (i === 0 ? ' open' : '');
+    item.innerHTML = `<button class="faq-question" aria-expanded="${i === 0}" style="padding-left:0;padding-right:0;"><span class="faq-question-text">${faq.q}</span><span class="faq-toggle" style="margin-right:0;">${i === 0 ? '×' : '+'}</span></button><div class="faq-answer">${faq.a}</div>`;
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-toggle').textContent = '+'; el.querySelector('.faq-question').setAttribute('aria-expanded', 'false'); });
+      if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-toggle').textContent = '×'; item.querySelector('.faq-question').setAttribute('aria-expanded', 'true'); }
     });
     faqContainer.appendChild(item);
   });
 
-  function drawTicketBorder(card){
-    const svg=card.querySelector('.ticket-border-svg');const path=card.querySelector('.ticket-outline');if(!svg||!path)return;
-    const W=card.offsetWidth,H=card.offsetHeight;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);path.setAttribute('d',`M 0 0 L ${W} 0 L ${W} ${H} L 0 ${H} Z`);
-    if(!svg.querySelector('.perf-line')){const s=getComputedStyle(card),pR=s.getPropertyValue('--perf').trim();let p=pR.endsWith('%')?W*parseFloat(pR)/100:(parseFloat(pR)||W*0.72);const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('class','perf-line');l.setAttribute('x1',p);l.setAttribute('y1',0);l.setAttribute('x2',p);l.setAttribute('y2',H);l.setAttribute('stroke-dasharray','4 6');l.setAttribute('stroke-width','1');l.setAttribute('stroke',card.classList.contains('full-pass')?'rgba(26,39,68,0.2)':'rgba(255,255,255,0.25)');svg.appendChild(l);}
+  function drawTicketBorder(card) {
+    const svg = card.querySelector('.ticket-border-svg'); const path = card.querySelector('.ticket-outline'); if (!svg || !path) return;
+    const W = card.offsetWidth, H = card.offsetHeight; svg.setAttribute('viewBox', `0 0 ${W} ${H}`); path.setAttribute('d', `M 0 0 L ${W} 0 L ${W} ${H} L 0 ${H} Z`);
+    if (!svg.querySelector('.perf-line')) { const s = getComputedStyle(card), pR = s.getPropertyValue('--perf').trim(); let p = pR.endsWith('%') ? W * parseFloat(pR) / 100 : (parseFloat(pR) || W * 0.72); const l = document.createElementNS('http://www.w3.org/2000/svg', 'line'); l.setAttribute('class', 'perf-line'); l.setAttribute('x1', p); l.setAttribute('y1', 0); l.setAttribute('x2', p); l.setAttribute('y2', H); l.setAttribute('stroke-dasharray', '4 6'); l.setAttribute('stroke-width', '1'); l.setAttribute('stroke', 'rgba(255,255,255,0.25)'); svg.appendChild(l); }
   }
-  function drawAll(){document.querySelectorAll('.ticket-card').forEach(c=>{const s=c.querySelector('.ticket-border-svg');if(s)s.querySelectorAll('.perf-line').forEach(el=>el.remove());drawTicketBorder(c);});}
-  window.addEventListener('load',drawAll);window.addEventListener('resize',drawAll);drawAll();
+  function drawAll() { document.querySelectorAll('.ticket-card').forEach(c => { const s = c.querySelector('.ticket-border-svg'); if (s) s.querySelectorAll('.perf-line').forEach(el => el.remove()); drawTicketBorder(c); }); }
+  window.addEventListener('load', drawAll); window.addEventListener('resize', drawAll); drawAll();
 
-  (function(){
-    var lY=window.scrollY,r=0,t=false,tm=null;
-    function rs(){r=0;document.querySelectorAll('.sec-crosses svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.45s ease';el.style.transform='rotate(0deg)';});}
-    function sp(){if(!t){requestAnimationFrame(()=>{var y=window.scrollY,d=y-lY;if(Math.abs(d)>0){r+=d>0?15:-15;document.querySelectorAll('.sec-crosses svg,.fug-footer-cross').forEach(el=>{el.style.transition='transform 0.1s linear';el.style.transform='rotate('+r+'deg)';});}lY=y;t=false;clearTimeout(tm);tm=setTimeout(rs,300);});t=true;}}
-    window.addEventListener('scroll',sp,{passive:true});
+  // Click-to-activate white state for ticket cards (in addition to hover)
+  document.querySelectorAll('.ticket-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return; // don't toggle when clicking the actual ticket link
+      card.classList.toggle('active');
+    });
+  });
+
+  (function () {
+    var lY = window.scrollY, r = 0, t = false, tm = null;
+    function rs() { r = 0; document.querySelectorAll('.sec-crosses svg,.fug-footer-cross').forEach(el => { el.style.transition = 'transform 0.45s ease'; el.style.transform = 'rotate(0deg)'; }); }
+    function sp() { if (!t) { requestAnimationFrame(() => { var y = window.scrollY, d = y - lY; if (Math.abs(d) > 0) { r += d > 0 ? 15 : -15; document.querySelectorAll('.sec-crosses svg,.fug-footer-cross').forEach(el => { el.style.transition = 'transform 0.1s linear'; el.style.transform = 'rotate(' + r + 'deg)'; }); } lY = y; t = false; clearTimeout(tm); tm = setTimeout(rs, 300); }); t = true; } }
+    window.addEventListener('scroll', sp, { passive: true });
   })();
 </script>
 </body>
