@@ -196,24 +196,7 @@
 
     .research-body-text {
       font-size: 16px; line-height: 1.75;
-      color: var(--dark-text); margin-bottom: 36px;
-    }
-
-    .research-guidelines { margin-bottom: 0; }
-    .guidelines-flex-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-    }
-    .research-guidelines-title {
-      font-size: 10px; font-weight: 600;
-      color: var(--body-gray); letter-spacing: 0.08em; margin-bottom: 10px;
-    }
-    .research-guidelines ol { padding-left: 16px; }
-    .research-guidelines li {
-      font-size: 8px; font-weight: 700;
-      color: var(--body-gray); line-height: 1.2;
+      color: var(--dark-text); margin-bottom: 24px;
     }
 
     /* ── DOWNLOAD BUTTON ── */
@@ -228,7 +211,8 @@
       text-decoration: none; cursor: pointer;
       transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.15s;
       position: relative !important; overflow: hidden !important;
-      align-self: flex-end; white-space: nowrap; min-width: fit-content; flex-shrink: 0;
+      white-space: nowrap;
+      margin-bottom: 28px;
     }
     .download-btn:hover {
       background: var(--navy); color: #fff;
@@ -236,6 +220,18 @@
     }
     .download-btn canvas { position: absolute !important; inset: 0 !important; pointer-events: none !important; z-index: 0 !important; }
     .download-btn span { position: relative !important; z-index: 1 !important; }
+
+    /* ── GUIDELINES ── */
+    .research-guidelines { margin-bottom: 0; }
+    .research-guidelines-title {
+      font-size: 10px; font-weight: 600;
+      color: var(--body-gray); letter-spacing: 0.08em; margin-bottom: 10px;
+    }
+    .research-guidelines ol { padding-left: 16px; }
+    .research-guidelines li {
+      font-size: 8px; font-weight: 700;
+      color: var(--body-gray); line-height: 1.2;
+    }
 
     /* ── PARTNERS ── */
     .partners-section {
@@ -269,20 +265,19 @@
       box-shadow: 0 10px 32px rgba(26,39,68,0.13);
       transform: translateY(-5px);
     }
-   .partner-logo-box img {
-  max-width: 100%;
-  max-height: 110px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);
-}
-
-.partner-logo-box img[alt="Origins Centre"],
-.partner-logo-box img[alt="Tshimologong"] {
-  max-height: 80px;
-}
+    .partner-logo-box img {
+      max-width: 100%;
+      max-height: 110px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);
+    }
+    .partner-logo-box img[alt="Origins Centre"],
+    .partner-logo-box img[alt="Tshimologong"] {
+      max-height: 80px;
+    }
     .partner-logo-box img.keep-color { filter: none !important; }
 
     /* ── REVEAL ── */
@@ -292,6 +287,12 @@
     /* ══════════════════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════════════════ */
+
+      @media (max-width: 1400px) {
+  .hero-logo-col img { height: 60px; }
+  .hero-title { font-size: 60px; font-weight:700; }
+}
+
     @media (max-width: 1024px) {
       :root { --band: 48px; }
       .hero-inner { padding: 100px 48px 52px; }
@@ -324,9 +325,8 @@
       .research-inner { padding: 0 20px; }
       .research-title { font-size: 24px; margin-bottom: 24px; }
       .research-body { grid-template-columns: 1fr; gap: 24px; }
-      .research-body-text { font-size: 14px; margin-bottom: 28px; }
+      .research-body-text { font-size: 14px; margin-bottom: 20px; }
       .research-meta { gap: 16px; flex-wrap: wrap; }
-      .guidelines-flex-wrapper { flex-direction: column; align-items: flex-start; gap: 20px; }
       .download-btn { width: 100%; padding: 14px 20px; text-align: center; }
       .partners-inner { padding: 32px 20px 48px; }
       .partners-header { flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 28px; }
@@ -347,7 +347,7 @@
       .ticker-track span { font-size: 10px; padding: 0 18px; }
       .research-section { padding: 36px 0 44px; }
       .research-title { font-size: 22px; margin-bottom: 20px; }
-      .research-body-text { font-size: 13.5px; margin-bottom: 24px; }
+      .research-body-text { font-size: 13.5px; margin-bottom: 20px; }
       .research-meta-item { font-size: 10px; }
       .download-btn { padding: 12px 20px; font-size: 10px; }
       .partners-inner { padding: 28px 16px 44px; }
@@ -385,8 +385,6 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-
-  <!-- nav injected by nav.js -->
 
   <div class="hero-inner">
     <div class="hero-content">
@@ -430,7 +428,7 @@
   </div>
 </div>
 
-<!-- REPORT 1 — INTERMEDIARIES (first) -->
+<!-- REPORT 1 — INTERMEDIARIES -->
 <section class="research-section reveal">
   <div class="cross-icon cross-icon--navy" style="top:20px;left:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
   <div class="cross-icon cross-icon--navy" style="top:20px;right:200px;"><svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/><line x1="0" y1="9" x2="18" y2="9" stroke="rgba(26,39,68,0.35)" stroke-width="1.5"/></svg></div>
@@ -452,14 +450,12 @@
           </div>
         </div>
         <p class="research-body-text">This report investigates the role of intermediaries within Africa's digital creative economy, examining how organisations and individuals act as connectors between artists, technologists, funders, and audiences. Drawing on interviews and case studies from across the continent, it explores questions of trust, value exchange, and the structural conditions that shape creative ecosystems in rapidly evolving digital landscapes.</p>
-        <div class="guidelines-flex-wrapper">
-          <div class="research-guidelines">
-            <p class="research-guidelines-title">Guidelines &amp; usage:</p>
-            <ol>
-              <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
-            </ol>
-          </div>
-          <a class="download-btn" href="pdf resource/Intermediaries Report V1.0.pdf" download="Intermediaries Report V1.0.pdf"><span>DOWNLOAD PDF</span></a>
+        <a class="download-btn" href="pdf resource/Intermediaries Report V1.0.pdf" download="Intermediaries Report V1.0.pdf"><span>DOWNLOAD PDF</span></a>
+        <div class="research-guidelines">
+          <p class="research-guidelines-title">Guidelines &amp; usage:</p>
+          <ol>
+            <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -472,8 +468,6 @@
 
 <!-- REPORT 2 — 2022 In Review -->
 <section class="research-section reveal">
-  
-
   <div class="research-inner">
     <h2 class="research-title">Advancing African Digital Creativity Through Innovation and Collaboration</h2>
     <div class="research-body">
@@ -491,14 +485,12 @@
           </div>
         </div>
         <p class="research-body-text">Throughout the report, Fak'ugesi demonstrates its commitment to amplifying authentic African stories, fostering innovation, creating career opportunities within the digital creative economy, and strengthening Africa's position as a global leader in digital arts and creative technology.</p>
-        <div class="guidelines-flex-wrapper">
-          <div class="research-guidelines">
-            <p class="research-guidelines-title">Guidelines &amp; usage:</p>
-            <ol>
-              <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
-            </ol>
-          </div>
-          <a class="download-btn" href="pdf resource/2022 Fak_ugesi In-Review.pdf" download="2022 Fak_ugesi In-Review.pdf"><span>DOWNLOAD PDF</span></a>
+        <a class="download-btn" href="pdf resource/2022 Fak_ugesi In-Review.pdf" download="2022 Fak_ugesi In-Review.pdf"><span>DOWNLOAD PDF</span></a>
+        <div class="research-guidelines">
+          <p class="research-guidelines-title">Guidelines &amp; usage:</p>
+          <ol>
+            <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -511,8 +503,6 @@
 
 <!-- REPORT 3 — 2023 In Review -->
 <section class="research-section reveal">
-  
-
   <div class="research-inner">
     <h2 class="research-title">Celebrating 10 Years of African Digital Creativity</h2>
     <div class="research-body">
@@ -530,14 +520,12 @@
           </div>
         </div>
         <p class="research-body-text">A comprehensive overview of the 10th edition of the Fak'ugesi African Digital Innovation Festival, highlighting its role in advancing Africa's digital creative industries through innovation, collaboration, and cultural storytelling. The report documents five days of activities that included industry conferences, expert panels, student programmes, family workshops, exhibitions, hackathons, masterclasses, networking events, live music performances, and the Fak'ugesi Awards.</p>
-        <div class="guidelines-flex-wrapper">
-          <div class="research-guidelines">
-            <p class="research-guidelines-title">Guidelines &amp; usage:</p>
-            <ol>
-              <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
-            </ol>
-          </div>
-          <a class="download-btn" href="pdf resource/2023 Fak_ugesi In-Review.pdf" download="2023 Fak_ugesi In-Review.pdf"><span>DOWNLOAD PDF</span></a>
+        <a class="download-btn" href="pdf resource/2023 Fak_ugesi In-Review.pdf" download="2023 Fak_ugesi In-Review.pdf"><span>DOWNLOAD PDF</span></a>
+        <div class="research-guidelines">
+          <p class="research-guidelines-title">Guidelines &amp; usage:</p>
+          <ol>
+            <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -550,8 +538,6 @@
 
 <!-- REPORT 4 — 2024 In Review -->
 <section class="research-section reveal">
-  
-
   <div class="research-inner">
     <h2 class="research-title">Unlocking Africa's Digital Creative Potential</h2>
     <div class="research-body">
@@ -569,14 +555,12 @@
           </div>
         </div>
         <p class="research-body-text">The report demonstrates Fak'ugesi's growing impact through increased participation, international partnerships, and expanded opportunities for emerging creators, reinforcing its mission to position Africa as a global leader in digital creativity and innovation.</p>
-        <div class="guidelines-flex-wrapper">
-          <div class="research-guidelines">
-            <p class="research-guidelines-title">Guidelines &amp; usage:</p>
-            <ol>
-              <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
-            </ol>
-          </div>
-          <a class="download-btn" href="pdf resource/2025 Fak_ugesi In-Review.pdf" download="2024 Fak_ugesi In-Review.pdf"><span>DOWNLOAD PDF</span></a>
+        <a class="download-btn" href="pdf resource/2025 Fak_ugesi In-Review.pdf" download="2024 Fak_ugesi In-Review.pdf"><span>DOWNLOAD PDF</span></a>
+        <div class="research-guidelines">
+          <p class="research-guidelines-title">Guidelines &amp; usage:</p>
+          <ol>
+            <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -589,8 +573,6 @@
 
 <!-- REPORT 5 — 2025 In Review -->
 <section class="research-section reveal">
-  
-
   <div class="research-inner">
     <h2 class="research-title">Powering Africa's Digital Creative Future</h2>
     <div class="research-body">
@@ -608,14 +590,12 @@
           </div>
         </div>
         <p class="research-body-text">Highlights the festival's continued growth as Africa's leading digital innovation and creative technology platform under the theme "Power Surge." Bringing together artists, technologists, entrepreneurs, students, policymakers, and industry leaders, the festival celebrated the fusion of art, culture, and emerging technologies through immersive experiences, exhibitions, conferences, AI discussions, game and animation jams, industry networking, creative showcases, and the Fak'ugesi Awards.</p>
-        <div class="guidelines-flex-wrapper">
-          <div class="research-guidelines">
-            <p class="research-guidelines-title">Guidelines &amp; usage:</p>
-            <ol>
-              <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
-            </ol>
-          </div>
-          <a class="download-btn" href="pdf resource/2025 Fak_ugesi In-Review.pdf" download="2025 Fak_ugesi In-Review.pdf"><span>DOWNLOAD PDF</span></a>
+        <a class="download-btn" href="pdf resource/2025 Fak_ugesi In-Review.pdf" download="2025 Fak_ugesi In-Review.pdf"><span>DOWNLOAD PDF</span></a>
+        <div class="research-guidelines">
+          <p class="research-guidelines-title">Guidelines &amp; usage:</p>
+          <ol>
+            <li>This report is made available for educational and non-commercial use. Please cite the author and Fak'ugesi African Digital Innovation Festival when reproducing or referencing any part of this work. For commercial licensing or permissions beyond this scope, please contact the festival directly.</li>
+          </ol>
         </div>
       </div>
     </div>
@@ -664,6 +644,7 @@
     </div>
   </div>
 </section>
+
 <script>
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(function(entries) {

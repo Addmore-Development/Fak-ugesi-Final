@@ -63,7 +63,7 @@
       animation: fadeUp 0.9s ease both;
     }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-text-wrapper { flex: 1; min-width: 0; }
+    .hero-text-wrapper { flex: 1; min-width: 0; max-width: 580px; }
     .hero-eyebrow {
       font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
       text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 14px;
@@ -336,6 +336,15 @@
       .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
       .partner-logo-box { padding: 24px 20px; }
     }
+   @media (max-width: 1400px) {
+  .hero-logo-col img { height: 60px; }
+  .hero-title { font-size: 50px; font-weight:700; }
+}
+
+ @media (max-width: 1200px) {
+  .hero-title { font-size: 38px; }
+  .hero-logo-col { display: none; }
+}
     @media (max-width: 768px) {
       :root { --band: 20px; }
       .cross-icon { display: none; }
@@ -385,8 +394,7 @@
   <div class="hero-content">
     <div class="hero-text-wrapper">
       <p class="hero-eyebrow">Fak'ugesiPRO</p>
-      <h1 class="hero-title">Our Dedicated</h1>
-       <h1 class="hero-title">Industry Platform</h1>
+      <h1 class="hero-title">Our Dedicated<br>Industry Platform</h1>
       <p class="hero-body">An evolution of the Intermediaries legacy programme – Fak'ugesiPRO is the Festival's dedicated talks and industry platform. It is a working environment curated for organisations and practitioners operating at the intersection of creativity, technology, research, and policy, and for the professionals who move between those worlds with intent.</p>
      
     </div>
