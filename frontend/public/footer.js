@@ -97,7 +97,7 @@
 
     /* Col 2 — contact stacked */
     #fug-footer .fug-footer-col-title {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
       color: #0d1b3e;
       margin: 0 0 2px 0;
