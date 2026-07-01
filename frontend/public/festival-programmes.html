@@ -18,16 +18,26 @@
     .sec-crosses{position:absolute;left:0;right:0;display:flex;justify-content:space-between;padding:0 var(--band);pointer-events:none;z-index:20;}
     .sec-crosses-top{top:20px;} .sec-crosses-bottom{bottom:20px;}
 
-    /* ── HERO VIDEO ── */
-    .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;}
-    .hero-video{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center 40%;
-  filter:brightness(0.55);
-  z-index:0;
-  transform:scaleX(-1);
+    .hero{
+  position:relative;
+  width:100%;
+  min-height:520px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
 }
-    .hero-overlay{position:absolute;inset:0;background:rgba(100,149,220,0.25);;z-index:1;}
+
+    /* ── HERO VIDEO ── */
+  .hero-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:75% 40%;
+  z-index:0;
+}
+
     .hero-inner{position:relative;z-index:3;padding:120px var(--band) 56px;width:100%;display:flex;align-items:flex-start;justify-content:space-between;}
     .hero-content{max-width:620px;}
     .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px;color:var(--white);}
@@ -65,35 +75,53 @@
 
     /* 3-card grid */
     .freq-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;margin-bottom:0;}
-    .freq-card{border:1px solid var(--navy);position:relative;min-height:320px;display:flex;flex-direction:column;}
-    .freq-card-front{flex:1;padding:28px;display:flex;flex-direction:column;background:transparent;justify-content:flex-start;transition:box-shadow 0.22s,transform 0.2s;}
+    .freq-card{border:1px solid var(--navy);position:relative;min-height:320px;display:flex;flex-direction:column;overflow:hidden;}
+    .freq-card-front{flex:1;padding:28px;display:flex;flex-direction:column;background:transparent;justify-content:flex-start;transition:box-shadow 0.22s,transform 0.2s,color 0.4s ease;position:relative;z-index:2;}
     .freq-card:hover .freq-card-front{box-shadow:0 6px 24px rgba(26,39,68,0.10);transform:translateY(-2px);}
-    .freq-num{position:absolute;top:14px;right:16px;font-family:'InterDisplay',sans-serif;font-size:36px;font-weight:700;color:var(--navy);line-height:1;opacity:0.15;}
-    .freq-title{font-size:20px;font-weight:600;margin-bottom:14px;color:var(--dark-text);margin-top:32px;}
-    .freq-body{font-size:11.5px;font-weight:400;line-height:1.7;color:var(--body-gray);flex:1;}
-    .freq-closing{font-size:11px;font-weight:600;font-style:italic;letter-spacing:0.03em;color:var(--navy);opacity:0.65;margin-top:14px;padding-top:12px;border-top:1px solid rgba(26,39,68,0.25);}
+    .freq-num{position:absolute;top:14px;right:16px;font-family:'InterDisplay',sans-serif;font-size:36px;font-weight:700;color:var(--navy);line-height:1;opacity:0.15;transition:color 0.4s ease,opacity 0.4s ease;}
+    .freq-title{font-size:20px;font-weight:600;margin-bottom:14px;color:var(--dark-text);margin-top:32px;transition:color 0.4s ease;}
+    .freq-body{font-size:11.5px;font-weight:400;line-height:1.7;color:var(--body-gray);flex:1;transition:color 0.4s ease;}
+    .freq-closing{font-size:11px;font-weight:600;font-style:italic;letter-spacing:0.03em;color:var(--navy);opacity:0.65;margin-top:14px;padding-top:12px;border-top:1px solid rgba(26,39,68,0.25);transition:color 0.4s ease,border-color 0.4s ease;}
+
+    /* Background video shared by hoverable freq cards */
+    .freq-card-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.55s ease;z-index:0;pointer-events:none;}
+    .freq-card:hover .freq-card-bg-video{opacity:1;}
+
+    /* IMAGINATION ENGINES — video with dark overlay on hover */
+    .freq-card-imagination .freq-card-dark-overlay{position:absolute;inset:0;background:rgba(10,18,50,0.62);opacity:0;transition:opacity 0.55s ease;z-index:1;pointer-events:none;}
+    .freq-card-imagination:hover .freq-card-dark-overlay{opacity:1;}
+    .freq-card-imagination:hover .freq-title,
+    .freq-card-imagination:hover .freq-body{color:#ffffff;}
+    .freq-card-imagination:hover .freq-num{color:#ffffff;opacity:0.3;}
+    .freq-card-imagination:hover .freq-closing{color:#ffffff;opacity:0.85;border-top-color:rgba(255,255,255,0.3);}
+
+    /* MEMORY ENGINES — blurred video ("frosted glass") so text never fights the footage */
+    .freq-card-memory .freq-card-bg-video{filter:blur(1px);transform:scale(1.1);}
+    .freq-card-memory .freq-card-frost-overlay{position:absolute;inset:0;background:rgba(255,255,255,0.74);opacity:0;transition:opacity 0.55s ease;z-index:1;pointer-events:none;}
+    .freq-card-memory:hover .freq-card-frost-overlay{opacity:1;}
+    .freq-card-memory:hover .freq-title{color:var(--dark-text);}
+    .freq-card-memory:hover .freq-body{color:var(--body-gray);}
+    .freq-card-memory:hover .freq-closing{color:var(--navy);}
 
     /* ── SPOT CTA SECTION ── */
     .spot-cta-section{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden;}
     .spot-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of 2C6A3678.jpg');background-size:cover;background-position:center;z-index:0;}
-    .spot-cta-overlay{position:absolute;inset:0;background:rgba(10,18,50,0.62);z-index:1;}
     .spot-cta-content{position:relative;z-index:3;padding:80px var(--band);display:flex;flex-direction:column;align-items:flex-start;gap:24px;max-width:680px;}
     .spot-cta-title{font-size:36px;font-weight:600;color:var(--white);line-height:1.08;white-space:nowrap;}
     .spot-cta-btn{display:inline-block;padding:14px 36px;background:transparent;color:var(--white);border:1px solid var(--white);font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.22s,color 0.22s,border-color 0.22s,transform 0.2s;}
     .spot-cta-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);transform:translateY(-2px);}
 
-    /* ── OUR MAIN PARTNERS ── */
-    .partners-section{background:var(--lavender);padding:80px 0;position:relative;}
+    /* ── OUR MAIN PARTNERS (matching index.html) ── */
+    .partners-section{background:var(--lavender);padding:72px 0;position:relative;}
     .partners-inner{padding:0 var(--band);}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
     .partners-title{font-size:38px;font-weight:700;color:var(--dark-text);}
-    /* 4-column grid matching index */
-    .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .partners-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
     .partner-card{display:flex;flex-direction:column;}
     .partner-logo-link{display:contents;text-decoration:none;}
-    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:32px 28px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;aspect-ratio:1/1;}
+    .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.10);display:flex;align-items:center;justify-content:center;padding:18px 14px;transition:box-shadow 0.3s,transform 0.3s;margin-bottom:16px;aspect-ratio:1/1;}
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
-    .partner-logo-box img{max-width:100%;max-height:110px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
+    .partner-logo-box img{max-width:100%;max-height:68px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
     .partner-logo-box img.keep-color{filter:none !important;}
 
     /* Shared underline-link hover system */
@@ -115,13 +143,14 @@
       .spot-cta-title{font-size:36px;}
       .partners-inner{padding:0 48px;}
       .partners-title{font-size:32px;}
-      .partners-grid{grid-template-columns:repeat(4,1fr);gap:12px;}
-      .partner-logo-box{padding:24px 20px;}
+      .partners-grid{grid-template-columns:repeat(5,1fr);gap:10px;}
+      .partner-logo-box{padding:12px 10px;}
+      .partner-logo-box img{max-height:52px;}
       .cross-strip{padding:0 48px;}
       .sec-crosses{padding:0 48px;}
     }
     @media(max-width:900px){
-      .partners-grid{grid-template-columns:repeat(2,1fr);gap:14px;}
+      .partners-grid{grid-template-columns:repeat(3,1fr);gap:12px;}
     }
     @media(max-width:768px){
       :root{--band:20px;}
@@ -139,8 +168,9 @@
       .partners-inner{padding:0 20px;}
       .partners-header{flex-direction:column;align-items:flex-start;gap:10px;}
       .partners-title{font-size:26px;}
-      .partners-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
-      .partner-logo-box{padding:18px 14px;}
+      .partners-grid{grid-template-columns:repeat(3,1fr);gap:10px;}
+      .partner-logo-box{padding:12px 10px;}
+      .partner-logo-box img{max-height:46px;}
       .cross-strip{padding:0 20px;height:28px;}
       .sec-crosses{padding:0 20px;}
     }
@@ -158,12 +188,11 @@
 
 <!-- ── HERO ── -->
 <section class="hero">
-  <video
+  <img
     class="hero-video"
-    src="images/image updates/web_hero_programme.mp4"
-    autoplay muted loop playsinline preload="auto"
-  ></video>
-  <div class="hero-overlay"></div>
+    src="/images/Copy of _MGL3273.jpg"
+    
+  />
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-eyebrow">Festival Programme</p>
@@ -206,7 +235,7 @@
   <div class="freq-inner">
     <!-- Leader copy -->
     <div class="freq-leader">
-      <h2 class="freq-leader-eyebrow">Curatorial Frequencies · Fak'ugesi 2026</h2>
+      <h2 class="freq-leader-eyebrow">Fak'ugesi 2026 Curatorial Frequencies</h2>
       <p class="freq-leader-body">African futures are not waiting to be imagined. They are already being built. Across five days of conversation, exhibition, performance, and experimentation, Fak'ugesi 2026 convenes the thinkers, makers, storytellers, technologists, and cultural visionaries shaping the continent's next chapter. The curatorial frequencies for the 2026 programme transform the festival into a platform for exploring how African ideas move from possibility to practice, from memory to invention, and from imagination to impact.</p>
     </div>
 
@@ -214,7 +243,11 @@
     <div class="freq-cards">
 
       <!-- MEMORY ENGINES -->
-      <div class="freq-card">
+      <div class="freq-card freq-card-memory">
+        <video class="freq-card-bg-video" autoplay muted loop playsinline preload="none">
+          <source src="images/image updates/web_hero_programme.mp4" type="video/mp4">
+        </video>
+        <div class="freq-card-frost-overlay"></div>
         <div class="freq-card-front">
           <span class="freq-num">01</span>
           <h3 class="freq-title">Memory Engines</h3>
@@ -224,7 +257,11 @@
       </div>
 
       <!-- IMAGINATION ENGINES -->
-      <div class="freq-card">
+      <div class="freq-card freq-card-imagination">
+        <video class="freq-card-bg-video" autoplay muted loop playsinline preload="none">
+          <source src="images/image updates/web_hero_home_10mb.mp4" type="video/mp4">
+        </video>
+        <div class="freq-card-dark-overlay"></div>
         <div class="freq-card-front">
           <span class="freq-num">02</span>
           <h3 class="freq-title">Imagination Engines</h3>
@@ -250,7 +287,6 @@
 <!-- ── SPOT CTA ── -->
 <section class="spot-cta-section reveal" id="spot-cta-section">
   <div class="spot-cta-bg"></div>
-  <div class="spot-cta-overlay"></div>
   <div class="spot-cta-content">
     <h2 class="spot-cta-title">Want a Spot at Fak'ugesi?</h2>
     <a class="spot-cta-btn" href="get-involved.html">GET INVOLVED</a>
@@ -292,7 +328,16 @@
         </a>
       </div>
 
-      <!-- 4 — Web Tickets -->
+      <!-- 4 — Origins Centre -->
+      <div class="partner-card">
+        <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Origins Centre">
+          <div class="partner-logo-box">
+            <img src="/images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/>
+          </div>
+        </a>
+      </div>
+
+      <!-- 5 — Web Tickets -->
       <div class="partner-card">
         <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
           <div class="partner-logo-box">

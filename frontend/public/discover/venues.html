@@ -54,12 +54,10 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('imgs/Copy of _MGL3220.jpg');
+      background-image: url('../images/image updates/johannesburg.jpg');
       background-size: cover; background-position: center 30%;
       filter: brightness(0.55);
-      animation: kenBurns 16s ease-in-out infinite alternate;
     }
-    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
     .hero-overlay { position: absolute; inset: 0; background: transparent; }
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
@@ -96,6 +94,7 @@
       padding: 0 32px; font-size: 12.5px; font-weight: 500;
       color: rgba(255,255,255,0.88); letter-spacing: 0.02em;
     }
+    .ticker-dot { font-size: 20px; font-weight: 700; vertical-align: middle; line-height: 0; position: relative; top: 1px; }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrapper:hover { background: #ffffff !important; }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
@@ -234,7 +233,7 @@
     .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
     .partners-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 20px;
     }
     .partner-card { display: flex; flex-direction: column; }
@@ -371,18 +370,14 @@
 <!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
-    <span>&nbsp;·&nbsp;</span>
-    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
-    <span>&nbsp;·&nbsp;</span>
-    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
-    <span>&nbsp;·&nbsp;</span>
-    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
-    <span>&nbsp;·&nbsp;</span>
-    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
-    <span>&nbsp;·&nbsp;</span>
-    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL</span>
-    <span>&nbsp;·&nbsp;</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL&nbsp; •</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL&nbsp; •</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL&nbsp; •</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL&nbsp; •</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL&nbsp; •</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL&nbsp; •</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL&nbsp; •</span>
+    <span>PLAN YOUR VISIT TO FAK'UGESI AFRICAN DIGITAL &amp; INNOVATION FESTIVAL&nbsp; •</span>
   </div>
 </div>
 
@@ -395,8 +390,8 @@
   <div class="locations-inner">
     <div class="locations-header">
       <h2 class="locations-title">Locations</h2>
-      <a class="locations-map-link"
-         href="https://www.google.com/maps/search/Tshimologong+Precinct+Johannesburg"
+      <a class="locations-map-link" id="viewMapsLink"
+         href="https://www.google.com/maps/search/Tshimologong+Precinct,41+Juta+Street,Braamfontein,Johannesburg"
          target="_blank" rel="noopener">
         View on Google Maps &nbsp;→
       </a>
@@ -429,7 +424,7 @@
             <span class="location-name">Chris Seabrooke Music Hall</span>
             <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Chris+Seabrooke+Music+Hall,24+Station+Street,Braamfontein,Johannesburg" target="_blank" rel="noopener" onclick="event.stopPropagation()">Get directions &nbsp;→</a>
           </div>
-          <div class="location-address">24 Station Street<br>Braamfontein<br>Johannesburg, 2000<br>South Africa</div>
+          <div class="location-address">Braamfontein<br>Johannesburg, 2017<br>South Africa</div>
         </div>
       </div>
       <div class="map-wrap">
@@ -556,6 +551,13 @@
           </div>
         </a>
       </div>
+      <div class="partner-card">
+        <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
+          <div class="partner-logo-box">
+            <img src="../images/image updates/WT New CI Short-03.png" alt="Web Tickets" class="keep-color" />
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -582,10 +584,10 @@
 
   /* ── MAP ── */
   const venues = [
-    { id:1, name:'Tshimologong Digital Innovation Precinct', lat:-26.1946, lng:28.0319, address:'41 Juta Street, Braamfontein, 2001' },
-    { id:2, name:'Wits Anglo American Digital Dome',         lat:-26.1884, lng:28.0282, address:'University of the Witwatersrand, Yale Road, Braamfontein, 2001' },
-    { id:3, name:'Origins Centre',                           lat:-26.1925, lng:28.0281, address:'Yale Road & Enoch Sontonga Avenue, Braamfontein, 2000' },
-    { id:4, name:'Chris Seabrooke Music Hall',               lat:-26.1910, lng:28.0298, address:'24 Station Street, Braamfontein, 2000' }
+    { id:1, name:'Tshimologong Digital Innovation Precinct', lat:-26.1946, lng:28.0319, address:'41 Juta Street, Braamfontein, 2001', query:'Tshimologong Precinct, 41 Juta Street, Braamfontein, Johannesburg' },
+    { id:2, name:'Wits Anglo American Digital Dome',         lat:-26.1884, lng:28.0282, address:'University of the Witwatersrand, Yale Road, Braamfontein, 2001', query:'Wits Anglo American Digital Dome, Yale Road, Braamfontein, Johannesburg' },
+    { id:3, name:'Origins Centre',                           lat:-26.1925, lng:28.0281, address:'Yale Road & Enoch Sontonga Avenue, Braamfontein, 2000', query:'Origins Centre, University of the Witwatersrand, Braamfontein, Johannesburg, 2050' },
+    { id:4, name:'Chris Seabrooke Music Hall',               lat:-26.1910, lng:28.0298, address:'Braamfontein, Johannesburg, 2017', query:'Chris Seabrooke Music Hall, Braamfontein, Johannesburg' }
   ];
 
   const map = L.map('venue-map', { center: [-26.1915, 28.0295], zoom: 15, zoomControl: true, scrollWheelZoom: false, tap: false });
@@ -621,6 +623,10 @@
     const v = venues[num - 1];
     map.flyTo([v.lat, v.lng], 16, { duration: 0.8 });
     markers[num - 1].openPopup();
+    const mapsLink = document.getElementById('viewMapsLink');
+    if (mapsLink) {
+      mapsLink.href = 'https://www.google.com/maps/search/' + encodeURIComponent(v.query);
+    }
     if (window.innerWidth <= 768) {
       document.querySelector('.map-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
@@ -652,8 +658,8 @@
   const faqContainer = document.getElementById('faqAccordion');
   faqData.forEach(function(faq, i) {
     const item = document.createElement('div');
-    item.className = 'faq-item' + (i === 0 ? ' open' : '');
-    item.innerHTML = `<button class="faq-q-btn" aria-expanded="${i === 0}"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">${i === 0 ? '×' : '+'}</span></button><div class="faq-ans">${faq.a}</div>`;
+    item.className = 'faq-item';
+    item.innerHTML = `<button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">${faq.q}</span><span class="faq-t-icon">+</span></button><div class="faq-ans">${faq.a}</div>`;
     item.querySelector('.faq-q-btn').addEventListener('click', function() {
       const isOpen = item.classList.contains('open');
       faqContainer.querySelectorAll('.faq-item').forEach(function(el) {

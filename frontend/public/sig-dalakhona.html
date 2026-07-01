@@ -45,8 +45,7 @@
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('images/image00038.jpg');
-      background-size: cover; background-position: center 30%;
-      filter: brightness(0.3);
+      background-size: cover; background-position: center 35%;
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
@@ -65,18 +64,20 @@
       font-family: 'InterDisplay', sans-serif;
       font-size: 72px; font-weight: 600; line-height: 1.05;
       color: #fff; margin-bottom: 20px;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.35);
     }
     .hero-body {
       font-size: 13px; font-weight: 400; line-height: 1.72;
-      color: rgba(255,255,255,0.85); max-width: 480px; margin-bottom: 20px;
+      color: rgba(255,255,255,0.92); max-width: 480px; margin-bottom: 20px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.35);
     }
-    .hero-dates { font-size: 28px; font-weight: 400; opacity: 0.9; color: #fff; margin-bottom: 0; }
+    .hero-dates { font-size: 28px; font-weight: 400; opacity: 0.95; color: #fff; margin-bottom: 0; text-shadow: 0 1px 10px rgba(0,0,0,0.35); }
 
-    /* ── LOGO COL — exactly as sig-awards ── */
+   
     .hero-logo-col {
       display: flex;
       align-items: flex-start;
-      padding-top: 120px;
+      padding-top: 90px;
       flex-shrink: 0;
     }
     .hero-logo-col img {
@@ -100,6 +101,8 @@
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+
+  
 
     /* ── SIG NAV STRIP ── */
     .fug-sig-strip {
@@ -146,8 +149,7 @@
     .network-bg {
       position: absolute; inset: 0;
       background-image: url('images/0A9A8876.jpg');
-      background-size: cover; background-position: center 30%;
-      filter: brightness(0.45);
+      background-size: cover; background-position: center 20%;
     }
     /* overlay removed — no colour tint */
     .network-overlay { display: none; }
@@ -156,8 +158,8 @@
       display: flex; justify-content: space-between; align-items: flex-start;
     }
     .network-content { max-width: 500px; }
-    .network-title { font-size: 44px; font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 24px; }
-    .network-body { font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.85); margin-bottom: 32px; }
+    .network-title { font-size: 44px; font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 24px; text-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+    .network-body { font-size: 13px; line-height: 1.72; color: rgba(255,255,255,0.92); margin-bottom: 32px; text-shadow: 0 1px 10px rgba(0,0,0,0.4); }
     .network-cta {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border: 1.5px solid #fff; color: #fff; background: transparent;
@@ -259,16 +261,16 @@
     .partners-inner { padding: 0 248px; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
     .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
-    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
       background: #fff; border: 1px solid rgba(26,39,68,0.10);
       aspect-ratio: 1 / 1; display: flex; align-items: center;
-      justify-content: center; padding: 32px 28px;
+      justify-content: center; padding: 24px 20px;
       transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 16px;
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .partner-logo-box img { max-width: 100%; max-height: 110px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
+    .partner-logo-box img { max-width: 100%; max-height: 90px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
     .partner-logo-box img.keep-color { filter: none !important; }
     .partner-logo-link { display: contents; text-decoration: none; }
 
@@ -277,7 +279,7 @@
       :root { --band: 48px; }
       .hero-inner { padding: 52px 48px 48px; }
       .hero-title { font-size: 52px; }
-      .hero-logo-col { padding-top: 130px; }
+      .hero-logo-col { padding-top: 100px; }
       .hero-logo-col img { height: 90px; }
       .intro-section { padding: 56px 48px; }
       .intro-cards { grid-template-columns: repeat(2, 1fr); }
@@ -289,8 +291,12 @@
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
       .partners-inner { padding: 0 48px; }
       .partners-title { font-size: 32px; }
-      .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
-      .partner-logo-box { padding: 24px 20px; }
+      .partners-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
+      .partner-logo-box { padding: 16px 14px; }
+      .partner-logo-box img { max-height: 60px; }
+    }
+    @media (max-width: 900px) {
+      .partners-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
     }
     @media (max-width: 768px) {
       :root { --band: 20px; }
@@ -316,8 +322,9 @@
       .partners-inner { padding: 0 20px; }
       .partners-header { flex-direction: column; align-items: flex-start; gap: 10px; }
       .partners-title { font-size: 26px; }
-      .partners-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-      .partner-logo-box { padding: 20px 16px; }
+      .partners-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .partner-logo-box { padding: 12px 10px; }
+      .partner-logo-box img { max-height: 46px; }
       .fug-sig-strip-inner { justify-content: flex-start; }
     }
     @media (max-width: 480px) {
@@ -325,7 +332,7 @@
       .intro-title { font-size: 24px; }
       .highlights-strip { grid-template-columns: 1fr; }
       .partners-title { font-size: 22px; }
-      .partners-grid { grid-template-columns: 1fr 1fr; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -479,7 +486,7 @@
 <section class="partners-section reveal">
   <div class="partners-inner">
     <div class="partners-header">
-      <h2 class="partners-title">Our Main Partners</h2>
+      <h2 class="partners-title">Our 2026 Dlakhona Partners</h2>
     </div>
     <div class="partners-grid">
       <div class="partner-card">
@@ -500,6 +507,13 @@
         <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits Digital Dome">
           <div class="partner-logo-box">
             <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/>
+          </div>
+        </a>
+      </div>
+      <div class="partner-card">
+        <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Origins Centre">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/>
           </div>
         </a>
       </div>

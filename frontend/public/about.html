@@ -40,7 +40,7 @@
 
     /* ── HERO ── */
     .hero { position: relative; width: 100%; min-height: 520px; overflow: hidden; display: flex; align-items: flex-end; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('images/image updates/Copy of 0A9A2679.JPG'); background-size: cover; background-position: center 10%; filter: brightness(0.55); }
+    .hero-bg { position: absolute; inset: 0; background-image: url('images/image updates/Copy of 0A9A2679.JPG'); background-size: cover; background-position: center calc(10% - 20px); }
    
     .hero-inner { position: relative; z-index: 3; width: 100%; padding: 120px var(--band) 52px; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero-top-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 14px; }
@@ -91,7 +91,7 @@
     .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .team-grid-row2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
     .team-grid-row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
-    .team-grid-row4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
+    .team-grid-row4 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
     .team-card { border: 1px solid rgba(26,39,68,0.15); overflow: hidden; }
     .team-img { width: 100%; aspect-ratio: 3/2.4; overflow: hidden; }
     .team-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
@@ -136,7 +136,7 @@
     .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
     .partners-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 20px;
     }
     .partner-card { display: flex; flex-direction: column; }
@@ -264,7 +264,6 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-top-row">
       <p class="hero-eyebrow">Who we are</p>
@@ -283,30 +282,14 @@
 <!-- TICKER -->
 <div class="ticker-wrapper">
   <div class="ticker-track">
-    <span>TICKETS ON SALE NOW</span>
-    <span>•</span>
-    <span>EARLY BIRD PRICING</span>
-    <span>•</span>
-    <span>13–17 OCTOBER 2026</span>
-    <span>•</span>
-    <span>JOHANNESBURG</span>
-    <span>•</span>
-    <span>AFRICAN IMAGINARIES</span>
-    <span>•</span>
-    <span>FAK'UGESI 2026</span>
-    <span>•</span>
-    <span>TICKETS ON SALE NOW</span>
-    <span>•</span>
-    <span>EARLY BIRD PRICING</span>
-    <span>•</span>
-    <span>13–17 OCTOBER 2026</span>
-    <span>•</span>
-    <span>JOHANNESBURG</span>
-    <span>•</span>
-    <span>AFRICAN IMAGINARIES</span>
-    <span>•</span>
-    <span>FAK'UGESI 2026</span>
-    <span>•</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING&nbsp;• 13–17 OCTOBER 2026&nbsp;• JOHANNESBURG&nbsp;• AFRICAN IMAGINARIES&nbsp;• FAK'UGESI 2026&nbsp;•</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING&nbsp;• 13–17 OCTOBER 2026&nbsp;• JOHANNESBURG&nbsp;• AFRICAN IMAGINARIES&nbsp;• FAK'UGESI 2026&nbsp;•</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING&nbsp;• 13–17 OCTOBER 2026&nbsp;• JOHANNESBURG&nbsp;• AFRICAN IMAGINARIES&nbsp;• FAK'UGESI 2026&nbsp;•</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING&nbsp;• 13–17 OCTOBER 2026&nbsp;• JOHANNESBURG&nbsp;• AFRICAN IMAGINARIES&nbsp;• FAK'UGESI 2026&nbsp;•</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING&nbsp;• 13–17 OCTOBER 2026&nbsp;• JOHANNESBURG&nbsp;• AFRICAN IMAGINARIES&nbsp;• FAK'UGESI 2026&nbsp;•</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING&nbsp;• 13–17 OCTOBER 2026&nbsp;• JOHANNESBURG&nbsp;• AFRICAN IMAGINARIES&nbsp;• FAK'UGESI 2026&nbsp;•</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING&nbsp;• 13–17 OCTOBER 2026&nbsp;• JOHANNESBURG&nbsp;• AFRICAN IMAGINARIES&nbsp;• FAK'UGESI 2026&nbsp;•</span>
+    <span>TICKETS ON SALE NOW • EARLY BIRD PRICING&nbsp;• 13–17 OCTOBER 2026&nbsp;• JOHANNESBURG&nbsp;• AFRICAN IMAGINARIES&nbsp;• FAK'UGESI 2026&nbsp;•</span>
   </div>
 </div>
 
@@ -333,7 +316,7 @@
 <!-- PREVIOUS EDITIONS -->
 <section class="editions-section">
   <div class="editions-header">
-    <h2 class="editions-title">Previous Editions</h2>
+    <h2 class="editions-title">Editions</h2>
     <div class="editions-nav">
       <button id="prevEdition" aria-label="Previous">←</button>
       <button id="nextEdition" aria-label="Next">→</button>
@@ -447,7 +430,7 @@
       </div>
     </div>
 
-    <!-- Row 4: 2 cards -->
+    <!-- Row 4: 3 cards -->
     <div class="team-grid-row4">
       <div class="team-card">
         <div class="team-img"><img src="images/Alby 2.png" alt="Stanley Moloto" /></div>
@@ -465,6 +448,15 @@
           <div class="team-email"><a href="mailto:ashrafjohaardien@me.com">ashrafjohaardien@me.com</a></div>
         </div>
       </div>
+      <!-- NEW TEAM MEMBER — placeholder, please update name / role / email / photo -->
+      <div class="team-card">
+        <div class="team-img"><img src="images/Alby 2.png" alt="New Team Member" /></div>
+        <div class="team-info">
+          <div class="team-name">First<br>Last</div>
+          <div class="team-role">Role Title</div>
+          <div class="team-email"><a href="mailto:firstlast@tshimologong.joburg">firstlast@tshimologong.joburg</a></div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -476,7 +468,7 @@
 <section class="contact-section">
   <div class="contact-layout">
     <div class="contact-left">
-      <h2 class="contact-title">Get In Touch</h2>
+      <h2 class="contact-title">Get in Touch</h2>
       <p class="contact-info-label">Email</p>
       <p class="contact-info-val">hello@fakugesi.co.za</p>
       <p class="contact-info-label">Phone</p>
@@ -549,7 +541,16 @@
         </a>
       </div>
 
-      <!-- 4 — Web Tickets -->
+      <!-- 4 — Origins Centre -->
+      <div class="partner-card">
+        <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Origins Centre">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color" />
+          </div>
+        </a>
+      </div>
+
+      <!-- 5 — Web Tickets -->
       <div class="partner-card">
         <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
           <div class="partner-logo-box">

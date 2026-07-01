@@ -65,8 +65,7 @@
     .hero-bg {
       position: absolute; inset: 0;
       background-image: url('/images/image updates/image00041.jpeg');
-      background-size: cover; background-position: center 35%;
-      filter: brightness(0.55);
+      background-size: cover; background-position: right 20%;
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
@@ -97,7 +96,7 @@
       text-decoration:none;
       transition:background .22s, color .22s, border-color .22s;
     }
-    .hero-signia { flex-shrink:0; width:auto; max-width:280px; padding-top:60px; margin-right:-16px; }
+    .hero-signia { flex-shrink:none; width:auto; max-width:280px; padding-top:60px; margin-right:-16px; }
     .hero-signia img { display:block; width:100%; height:auto; max-height:100px; object-fit:contain; }
 
     /* ── Fak'ugesi shared link hover ── */
@@ -242,7 +241,7 @@
       cursor:pointer; text-underline-offset:3px; transition:opacity .2s;
     }
     .partners-view-link:hover { opacity:.6; }
-    .partners-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+    .partners-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:22px; }
     .partner-card { display:flex; flex-direction:column; }
     .partner-logo-link { display:block; text-decoration:none; }
     .partner-logo-box {
@@ -270,7 +269,7 @@
       .faq-layout { grid-template-columns:220px 1fr; gap:48px; }
       .partners-inner { padding:0 40px; }
       .partners-title { font-size:32px; }
-      .partners-grid { grid-template-columns:repeat(4,1fr); gap:16px; }
+      .partners-grid { grid-template-columns:repeat(5,1fr); gap:16px; }
       .partner-logo-box { padding:24px 20px; }
     }
     @media (max-width: 768px) {
@@ -374,8 +373,8 @@
 
   <div class="about-layout">
     <div>
-      <span class="about-eyebrow">About the Programme</span>
-      <h2 class="about-title">Pitchathon: Building Tomorrow<br>One Pitch at a Time</h2>
+      <span class="about-eyebrow">Pitchathon</span>
+      <h2 class="about-title">Building Tomorrow<br>One Pitch at a Time</h2>
     </div>
     <div class="about-body">
       <p>The stage where ideas and prototypes stop existing as slides and start facing the conditions of the real world. Participants present projects to a panel of investors, venture capitalists, accelerator leads, producers, and industry strategists working across African markets and cultural sectors. Potential projects range from animation, gaming and immersive technology to AI in music and various other fields.</p>
@@ -430,6 +429,15 @@
         </a>
       </div>
 
+      <!-- Origins Centre -->
+      <div class="partner-card">
+        <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Origins Centre">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/>
+          </div>
+        </a>
+      </div>
+
       <!-- MIND -->
       <div class="partner-card">
         <div class="partner-logo-box">
@@ -440,7 +448,7 @@
       <!-- WIC -->
       <div class="partner-card">
         <div class="partner-logo-box">
-          <img src="images/logos/wic.svg" alt="WIC"/>
+          <img src="images/logos/wic.svg" alt="WIC" class="keep-color"/>
         </div>
       </div>
 

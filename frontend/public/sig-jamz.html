@@ -60,7 +60,6 @@
       position: absolute; inset: 0;
       background-image: url('../images/0A9A0222.JPG');
       background-size: cover; background-position: center 35%;
-      filter: brightness(0.50);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
@@ -79,19 +78,23 @@
     .hero-text-wrapper { flex: 1; min-width: 0; }
     .hero-eyebrow {
       font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 14px;
+      text-transform: uppercase; color: rgb(247, 246, 250); margin-bottom: 14px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
     .hero-title {
       font-size: 52px; font-weight: 700; line-height: 1.05;
       color: #fff; margin-bottom: 20px; max-width: 640px;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.45);
     }
     .hero-body {
       font-size: 13px; font-weight: 400; line-height: 1.72;
-      color: rgba(255,255,255,0.85); max-width: 510px; margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.92); max-width: 510px; margin-bottom: 20px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.4);
     }
     .hero-dates {
-      font-size: 24px; font-weight: 700; letter-spacing: 0.02em;
+      font-size: 24px; font-weight: 500; letter-spacing: 0.02em;
       color: #fff; margin-bottom: 0;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.4);
     }
     /* Hero logo: right-side, static, aligned to the gap between heading and paragraph */
     .hero-signia {
@@ -190,7 +193,6 @@
     .challenge-bg {
       position: absolute; inset: 0;
       background-size: cover; background-position: center center;
-      filter: brightness(0.45);
     }
     /* No overlay color */
     .challenge-overlay { display: none; }
@@ -203,19 +205,23 @@
     .challenge-title {
       font-size: 52px; font-weight: 700;
       color: #fff; line-height: 1.05; margin-bottom: 32px;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.45);
     }
     .challenge-sub-label {
       font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
       text-transform: uppercase; color: #ffffff;
       margin-bottom: 8px; margin-top: 20px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
     .challenge-sub-title {
       font-size: 22px; font-weight: 700;
       color: #ffffff; margin-bottom: 18px; line-height: 1.2;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.4);
     }
     .challenge-body {
       font-size: 13px; line-height: 1.72;
       color: #ffffff; margin-bottom: 32px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.4);
     }
     .challenge-cta {
       display: inline-flex; align-items: center; justify-content: center;
@@ -286,21 +292,21 @@
       cursor: pointer; text-underline-offset: 3px; transition: opacity 0.2s;
     }
     .partners-view-link:hover { opacity: 0.6; }
-    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-link { display: block; text-decoration: none; }
     .partner-logo-box {
       background: #fff;
       border: 1px solid rgba(26,39,68,0.12);
       aspect-ratio: 1 / 1; display: flex; align-items: center;
-      justify-content: center; padding: 40px 32px;
+      justify-content: center; padding: 28px 22px;
       transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 14px;
     }
     .partner-card:hover .partner-logo-box {
       box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px);
     }
     .partner-logo-box img {
-      max-width: 100%; max-height: 120px; object-fit: contain; display: block;
+      max-width: 100%; max-height: 96px; object-fit: contain; display: block;
       filter: brightness(0) saturate(100%) invert(13%) sepia(53%) saturate(780%) hue-rotate(198deg) brightness(82%);
     }
     .partner-logo-box img.keep-color { filter: none; }
@@ -316,7 +322,12 @@
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
       .partners-inner { padding: 40px 48px 56px; }
-      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+      .partners-grid { grid-template-columns: repeat(5, 1fr); gap: 12px; }
+      .partner-logo-box { padding: 18px 14px; }
+      .partner-logo-box img { max-height: 60px; }
+    }
+    @media (max-width: 900px) {
+      .partners-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
     }
     @media (max-width: 768px) {
       :root { --band: 20px; }
@@ -336,12 +347,14 @@
       .faq-title-left { font-size: 32px; }
       .partners-inner { padding: 32px 20px 48px; }
       .partners-title { font-size: 26px; }
-      .partners-grid { grid-template-columns: 1fr 1fr; }
+      .partners-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .partner-logo-box { padding: 12px 10px; }
+      .partner-logo-box img { max-height: 46px; }
       .fug-sig-strip-inner { justify-content: flex-start; }
     }
     @media (max-width: 480px) {
       .hero-title { font-size: 26px; }
-      .partners-grid { grid-template-columns: 1fr; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -358,7 +371,7 @@
       <p class="hero-eyebrow">Jamz</p>
       <h1 class="hero-title">High-octane Animation + Video Game Hackathon</h1>
       <p class="hero-body">Fak'ugesi Jamz is the festival's rapid prototyping hackathon environment. Open to practitioners across disciplines, participants gather as teams responding to provocations drawn from the Frequencies. Working under a strict time constraint, they iterate content. The emphasis is not polish. It is experimentation with genuine stakes.</p>
-      <p class="hero-dates">07 — 12.10.2026</p>
+      <span class="hero-dates">07 — 12.10.2026</span>
     </div>
     <div class="hero-signia">
       <img src="images/logos/signatureProgrammes/jamz_logo_colour.svg" alt="JAMZ" />
@@ -413,7 +426,7 @@
     <svg viewBox="0 0 18 18" fill="none"><line x1="9" y1="0" x2="9" y2="18" stroke="#1a2744" stroke-width="0.75"/><line x1="0" y1="9" x2="18" y2="9" stroke="#1a2744" stroke-width="0.75"/></svg>
   </div>
   <div class="jamz-intro-inner">
-    <h2 class="jamz-intro-title">Jamz: A Frequency of Gathering</h2>
+    <h2 class="jamz-intro-title">A Frequency of Gathering</h2>
     <p class="jamz-intro-body">The festival's high-pressure, rapid-prototyping environment is a space where makers stop talking about ideas and start building them. Structured around tight time constraints and open provocations, Jamz brings together practitioners from animation, game development, design, and digital art to collaborate under real creative pressure. <br/>Jamz is open to practitioners at all career stages. The entry criterion is genuine commitment to the making process and willingness to collaborate under pressure. Provocations are drawn from the Festival Frequencies: Memory Engines, Imagination Engines, and Future Engines.</p>
   </div>
   <div class="cross-icon" style="bottom:20px;left:200px;">
@@ -426,7 +439,7 @@
 
 <!-- ═══════════════════════════════ 2026 ANIMATION CHALLENGE ═══════════════════════════════ -->
 <section class="challenge-section reveal">
-  <div class="challenge-bg" style="background-image:url('../images/trailer.png');"></div>
+  <div class="challenge-bg" style="background-image:url('../images/trailer.png');background-position:60% center;"></div>
   <div class="challenge-inner">
     <div class="challenge-content">
       <h2 class="challenge-title">2026 Animation<br>Challenge</h2>
@@ -513,11 +526,11 @@
 
 </section>
 
-<!-- ═══════════════════════════════ OUR MAIN PARTNERS ═══════════════════════════════ -->
+<!-- ═══════════════════════════════ OUR 2026 JAMZ PARTNERS ═══════════════════════════════ -->
 <section class="partners-section reveal">
   <div class="partners-inner">
     <div class="partners-header">
-      <h2 class="partners-title">Our Main Partners</h2>
+      <h2 class="partners-title">Our 2026 Jamz Partners</h2>
     </div>
     <div class="partners-grid">
 
@@ -548,7 +561,16 @@
         </a>
       </div>
 
-      <!-- 4 — Web Tickets -->
+      <!-- 4 — Origins Centre -->
+      <div class="partner-card">
+        <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Origins Centre">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/>
+          </div>
+        </a>
+      </div>
+
+      <!-- 5 — Web Tickets -->
       <div class="partner-card">
         <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
           <div class="partner-logo-box">

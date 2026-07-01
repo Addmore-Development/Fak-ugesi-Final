@@ -22,7 +22,7 @@
       display:flex;align-items:flex-start;
       padding-top:0;
     }
-    .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;filter:brightness(0.3);animation:kenBurns 18s ease-in-out infinite alternate}
+    .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
     /* Overlay removed */
     .hero-overlay{display:none;}
@@ -39,9 +39,9 @@
     }
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:14px;color:#fff}
-    .hero-title{font-family:'InterDisplay',sans-serif;font-size:56px;font-weight:600;line-height:1.0;margin-bottom:20px;color:#fff;}
-    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.85;margin-bottom:28px;color:#fff}
+    .hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.9;margin-bottom:14px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+    .hero-title{font-family:'InterDisplay',sans-serif;font-size:56px;font-weight:600;line-height:1.0;margin-bottom:20px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,0.4);}
+    .hero-body{font-size:13px;line-height:1.72;max-width:480px;opacity:.95;margin-bottom:28px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,0.4);}
 
     .hero-logo-col{
       display:flex;align-items:flex-start;
@@ -77,30 +77,35 @@
     .ticker-wrap:hover .ticker-item .ticker-arrow{color:#ffffff!important;}
 
     /* ── PREMIERING SECTION ── */
-    .premiering-section{position:relative;width:100%;min-height:75vh;overflow:hidden;display:flex;align-items:stretch;flex-direction:column;}
-    .premiering-bg{position:absolute;inset:0;background-image:url('images/8-Dotou-arbre-Fin.png');background-size:cover;background-position:center top;filter:brightness(0.45)}
-    .premiering-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,10,28,.85) 0%,rgba(5,10,28,.3) 50%,transparent 100%)}
-    .premiering-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;margin-top:auto;}
+    .premiering-section{position:relative;width:100%;min-height:75vh;overflow:hidden;display:flex;align-items:stretch;flex-direction:column;justify-content:flex-start;}
+    .premiering-bg{position:absolute;inset:-5%;background-image:url('images/8-Dotou-arbre-Fin.png');background-size:cover;background-position:center top;transform:scale(0.909);}
+    /* Overlay removed */
+    .premiering-overlay{display:none;}
+    .premiering-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;}
 
     /* ── NOW SHOWING label ── */
-    .section-header-label{font-size:23px;font-weight:700;line-height:1;margin-bottom:8px;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
+    .section-header-label{font-size:23px;font-weight:700;line-height:1;margin-bottom:8px;letter-spacing:.08em;text-transform:uppercase;opacity:.95;text-shadow:0 1px 10px rgba(0,0,0,0.45);}
 
-    .section-dates{font-size:16px;font-weight:400;opacity:.65;margin-bottom:24px;letter-spacing:.03em;}
-    .premiere-badge{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
-    .premiere-title{font-size:52px;font-weight:900;margin-bottom:6px;line-height:1.0;}
-    .premiere-subtitle-date{font-size:13px;opacity:.65;margin-bottom:14px;letter-spacing:.03em;}
-    .premiere-body{font-size:13px;line-height:1.7;max-width:400px;opacity:.82;margin-bottom:20px}
+    .section-dates{font-size:16px;font-weight:400;opacity:.85;margin-bottom:24px;letter-spacing:.03em;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+    .premiere-badge{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;opacity:.9;margin-bottom:8px;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+    .premiere-title{font-size:52px;font-weight:900;margin-bottom:6px;line-height:1.0;text-shadow:0 2px 18px rgba(0,0,0,0.45);}
+    .premiere-subtitle-date{font-size:13px;opacity:.85;margin-bottom:14px;letter-spacing:.03em;text-shadow:0 1px 8px rgba(0,0,0,0.4);}
+    .premiere-body{font-size:13px;line-height:1.7;max-width:400px;opacity:.95;margin-bottom:20px;text-shadow:0 1px 10px rgba(0,0,0,0.4);}
     .premiere-links{display:flex;gap:24px;margin-bottom:32px;flex-wrap:wrap}
-    .premiere-links a{font-size:12px;font-weight:600;color:#fff;text-decoration:underline;text-underline-offset:3px;opacity:.8;cursor:pointer;transition:opacity .2s}
+    .premiere-links a{font-size:12px;font-weight:600;color:#fff;text-decoration:underline;text-underline-offset:3px;opacity:.9;cursor:pointer;transition:opacity .2s}
     .premiere-links a:hover{opacity:1}
     .premiere-co{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
     .premiere-co img{width:auto;filter:invert(1) brightness(2)}
 
     /* ── ON-GOING SECTION ── */
-    .ongoing-section{position:relative;width:100%;min-height:75vh;overflow:hidden;display:flex;align-items:stretch;flex-direction:column;}
-    .ongoing-bg{position:absolute;inset:0;background-image:url('images/Screenshot-2024-05-21-at-21.36.37.webp');background-size:cover;background-position:center;filter:brightness(0.40)}
-    .ongoing-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,10,28,.9) 0%,rgba(5,10,28,.4) 50%,transparent 100%)}
-    .ongoing-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;margin-top:auto;}
+    .ongoing-section{position:relative;width:100%;min-height:75vh;overflow:hidden;display:flex;align-items:stretch;flex-direction:column;justify-content:flex-start;}
+    .ongoing-bg{position:absolute;inset:-5%;background-image:url('images/Screenshot-2024-05-21-at-21.36.37.webp');background-size:cover;background-position:center;transform:scale(0.909);}
+    /* Overlay removed */
+    .ongoing-overlay{display:none;}
+    .ongoing-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;}
+    .ongoing-title-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+    .ongoing-title-row .premiere-title{margin-bottom:0;}
+    .ongoing-eunic-logo{height:40px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.92;flex-shrink:0;margin-left:10px;}
 
     /* ── CROSS ICONS ── */
     .cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:1!important;animation:none!important;transition:transform 0.1s linear!important;}
@@ -115,7 +120,7 @@
     }
     .partners-title{
       font-size:38px;font-weight:700;color:var(--dark-text);
-      text-align:center;margin-bottom:40px;padding:0 248px;
+      text-align:left;margin-bottom:40px;padding:0 248px;
     }
     .partners-carousel-outer{
       overflow:hidden;width:100%;position:relative;
@@ -188,6 +193,7 @@
       .hero-body br{display:none;}
       .premiering-section,.ongoing-section{min-height:auto!important;}
       .premiering-content,.ongoing-content{padding:60px 24px 48px!important;}
+      .ongoing-eunic-logo{height:24px!important;}
       .section-header-label{font-size:13px!important;}
       .premiere-title{font-size:34px!important;}
       .premiere-body{font-size:12px!important;max-width:100%!important;}
@@ -328,9 +334,12 @@
     <p class="section-dates">Oct 2025 — Aug 2026</p>
 
     <p class="premiere-badge">Digital Dome Screening</p>
-    <h3 class="premiere-title">Kwasukasukela</h3>
-    <p class="premiere-body">The canvas of the Dome is not a frame. It is a 360-degree field. Audiences immerse themselves in the 
-experience. Sound locates in the body and narrative surrounds the viewer.<br/><br/> Immersive Africa: Bridging Continents Through Digital Creativity Programme presented in partnership with the EUNIC's Spaces of Culture initiative.
+    <div class="ongoing-title-row">
+      <h3 class="premiere-title">Kwasukasukela</h3>
+      <img class="ongoing-eunic-logo" src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/>
+    </div>
+    <p class="premiere-body">Kwasukasukela, meaning “In the Beginning” in isiZulu, is an immersive projection installation by South African poet Xabiso Vili and Tshimologong Alumni, as well as interdisciplinary artist and director, Inka Kendzia.<br/><br/> This 360° experience fuses poetry, animation, AI, and African mythology to reimagine creation stories within a sangoma’s hut, inviting audiences into a transformative space of healing and ancestral connection. It was produced by a French partner and originally commissioned for the inaugural Forum Création Africa in Paris, with funding from the French. <br/>Ministry for Europe and Foreign Affairs and the
+support of the French Institute of South Africa, and produced by Dream Feel Factory and Maison des Mondes Africans.
 </p>
     <div class="premiere-co" style="justify-content:flex-start;">
       <img src="images/logos/immersiveAfrica/habitatxr.png" alt="HabitatXR" style="height:48px;object-fit:contain;filter:brightness(0) invert(1);"/>
@@ -374,7 +383,7 @@ experience. Sound locates in the body and narrative surrounds the viewer.<br/><b
 
 <!-- ═══ PARTNERS CAROUSEL ═══ -->
 <section class="partners-section reveal">
-  <h2 class="partners-title">Our Immersive Africa Partners</h2>
+  <h2 class="partners-title">Our 2026 Immersive Africa Partners</h2>
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track" id="partnersTrack"></div>
   </div>

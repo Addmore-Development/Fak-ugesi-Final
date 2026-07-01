@@ -45,13 +45,12 @@
       grid-template-columns: 248px 1fr 248px;
       align-items: stretch; padding-top: 0;
     }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('images/image updates/Copy of 0A9A9140.jpg');
-      background-size: cover; background-position: center 35%;
-      filter: brightness(0.3);
-      animation: kenBurns 18s ease-in-out infinite alternate;
-    }
+   .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/image updates/Copy of 0A9A9140.jpg');
+  background-size: cover; background-position: center 20%;
+  animation: kenBurns 18s ease-in-out infinite alternate;
+}
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
     /* overlay removed */
     .hero-overlay { display: none; }
@@ -67,17 +66,20 @@
     .hero-eyebrow {
       font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
       text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 14px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
     .hero-title {
       font-family: 'InterDisplay', sans-serif;
       font-size: 50px; font-weight: 600; line-height: 1.05;
       color: #fff; margin-bottom: 20px; max-width: 640px;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.4);
     }
     .hero-body {
       font-size:13px; font-weight: 400; line-height: 1.72;
-      color: rgba(255,255,255,0.85); max-width: 510px; margin-bottom: 20px;
+      color: rgba(255,255,255,0.92); max-width: 510px; margin-bottom: 20px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.4);
     }
-    .hero-dates { font-size:28px; font-weight:400; opacity: 0.9; color: #fff; margin-bottom: 0; }
+    .hero-dates { font-size:28px; font-weight:400; opacity: 0.95; color: #fff; margin-bottom: 0; text-shadow: 0 1px 10px rgba(0,0,0,0.4); }
 
     /* ── LOGO COL — matched to sig-awards ── */
     .hero-logo-col {
@@ -154,18 +156,18 @@
     .network-bg {
       position: absolute; inset: 0;
       background-image: url('images/image updates/Copy of 0A9A9384.JPG');
-      background-size: cover; background-position: center 30%; filter: brightness(0.45);
+      background-size: cover; background-position: center 30%;
       transform: scaleX(-1);
     }
     /* overlay removed */
     .network-overlay { display: none; }
     .network-inner {
-      position: relative; z-index: 3; padding: 96px 248px;
+      position: relative; z-index: 3; padding: 100px 248px;
       display: flex; justify-content: space-between; align-items: flex-start;
     }
     .network-content { max-width: 560px; }
-    .network-title { font-size: 52px; font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 28px; }
-    .network-body { font-size: 14px; line-height: 1.78; color: rgba(255,255,255,0.85); margin-bottom: 40px; }
+    .network-title { font-size: 52px; font-weight: 700; color: #fff; line-height: 1.05; margin-bottom: 28px; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
+    .network-body { font-size: 14px; line-height: 1.78; color: rgba(255,255,255,0.92); margin-bottom: 40px; text-shadow: 0 1px 10px rgba(0,0,0,0.4); }
     .network-cta {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       border: 1.5px solid #fff; color: #fff; background: transparent;
@@ -346,6 +348,7 @@
   .hero-title { font-size: 38px; }
   .hero-logo-col { display: none; }
 }
+
     @media (max-width: 768px) {
       :root { --band: 20px; }
       .cross-icon { display: none; }

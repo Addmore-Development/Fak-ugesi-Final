@@ -18,7 +18,7 @@
       justify-content: center;
       align-items: center;
       gap: 24px;
-      padding: 18px 200px;
+      padding: 18px 248px;
       font-family: 'InterDisplay', sans-serif;
     }
     #fug-social-band p {
@@ -51,25 +51,55 @@
       padding: 0;
     }
 
+    /* Cross overlay — spans the same 248px-padded content box as
+       .fug-footer-inner. Left/right crosses sit at the box edges (0%
+       / 100%); the middle cross is positioned at true 50%, so it is
+       always exactly equidistant from the outer two regardless of
+       how the content columns below are sized. */
+    .fug-footer-crosses {
+      position: absolute;
+      left: 248px;
+      right: 248px;
+      height: 18px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .fug-footer-crosses-top { top: 52px; }
+    .fug-footer-crosses-bottom { bottom: 52px; }
+
     .fug-footer-cross {
+      position: absolute;
+      top: 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 18px;
       height: 18px;
-      position: absolute;
-      z-index: 2;
       opacity: 0.55;
     }
     .fug-footer-cross svg { width: 18px; height: 18px; }
 
-    /* Three-column grid */
+    .fug-footer-crosses .fc-left { left: 0; }
+    .fug-footer-crosses .fc-mid { left: 50%; transform: translateX(-50%); }
+    .fug-footer-crosses .fc-right { left: 100%; transform: translateX(-100%); }
+    .fug-footer-crosses-bottom .fc-mid { display: none; }
+
+    /* Outer grid: left half = Brand block, right half = Contact +
+       Logo/Copyright. The right half starts at exactly 50% of the
+       248px-padded box — the same coordinate system the crosses use
+       above — so the Contact heading lines up under the middle cross. */
     #fug-footer .fug-footer-inner {
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1.4fr;
-      padding: 128px 200px;
+      grid-template-columns: 1fr 1fr;
+      padding: 128px 248px;
       gap: 0 32px;
       position: relative;
+    }
+
+    #fug-footer .fug-footer-right-half {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 0 32px;
     }
 
     #fug-footer .fug-footer-col {
@@ -95,7 +125,7 @@
       font-family: 'InterDisplay', sans-serif;
     }
 
-    /* Col 2 — contact stacked */
+    /* Col 2 — contact stacked, aligned under the middle cross */
     #fug-footer .fug-footer-col-title {
       font-size: 12px;
       font-weight: 700;
@@ -158,7 +188,7 @@
       #fug-social-band { padding: 16px 48px; }
       #fug-social-band p { font-size: 13px; }
       #fug-footer .fug-footer-inner { padding: 40px 48px; gap: 0 32px; }
-      .fug-footer-cross { display: none; }
+      .fug-footer-crosses { display: none; }
     }
 
     /* ── MOBILE (≤768px) ── */
@@ -177,6 +207,10 @@
         padding: 32px 20px 28px;
         gap: 24px 0;
       }
+      #fug-footer .fug-footer-right-half {
+        grid-template-columns: 1fr;
+        gap: 24px 0;
+      }
       #fug-footer .fug-footer-col { width: 100%; }
       #fug-footer .fug-footer-brand { font-size: 13px; }
       #fug-footer .fug-footer-addr { font-size: 12px; }
@@ -192,7 +226,7 @@
       }
       #fug-footer .fug-footer-logo { height: 56px; }
       #fug-footer .fug-footer-copy { font-size: 11px; }
-      .fug-footer-cross { display: none; }
+      .fug-footer-crosses { display: none; }
     }
 
     @media (max-width: 480px) {
@@ -234,15 +268,15 @@
 
     <footer id="fug-footer">
 
-      <span class="fug-footer-cross" style="top:52px; left:calc(200px - 9px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="top:52px; left:calc(50% - 9px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="top:52px; right:calc(200px - 9px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="bottom:52px; left:calc(200px - 9px);">${crossSVG}</span>
-      <span class="fug-footer-cross" style="bottom:52px; right:calc(200px - 9px);">${crossSVG}</span>
+      <div class="fug-footer-crosses fug-footer-crosses-top">
+        <span class="fug-footer-cross fc-left">${crossSVG}</span>
+        <span class="fug-footer-cross fc-mid">${crossSVG}</span>
+        <span class="fug-footer-cross fc-right">${crossSVG}</span>
+      </div>
 
       <div class="fug-footer-inner">
 
-        <!-- Col 1: Brand + Address -->
+        <!-- Left half: Brand + Address -->
         <div class="fug-footer-col">
           <p class="fug-footer-brand">Fak'ugesi African Digital & Innovation Festival</p>
           <p class="fug-footer-addr">
@@ -252,30 +286,39 @@
           </p>
         </div>
 
-        <!-- Col 2: Contact — same height as logo -->
-        <div class="fug-footer-col">
-          <p class="fug-footer-col-title">Contact</p>
-          <div class="fug-footer-contact-block">
-            <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
-            <a href="tel:+27117178156">+27 11 717 8156</a>
-            <a href="https://fakugesi.co.za/" target="_blank" rel="noopener">fakugesi.co.za</a>
-          </div>
-        </div>
+        <!-- Right half: Contact (starts at exact 50% — under middle cross) + Logo/Copyright -->
+        <div class="fug-footer-right-half">
 
-        <!-- Col 3: Logo left, copyright + website link right -->
-        <div class="fug-footer-col">
-          <div class="fug-footer-right">
-            <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
-            <p class="fug-footer-copy">
-              <strong>© 2026 Fak'ugesi Festival</strong>
-              All Rights Reserved<br>
-              13–17 October 2026<br>
-              Tshimologong, Johannesburg
-            </p>
+          <div class="fug-footer-col">
+            <p class="fug-footer-col-title">Contact</p>
+            <div class="fug-footer-contact-block">
+              <a href="mailto:hello@fakugesi.co.za">hello@fakugesi.co.za</a>
+              <a href="tel:+27117178156">+27 11 717 8156</a>
+              <a href="https://fakugesi.co.za/" target="_blank" rel="noopener">fakugesi.co.za</a>
+            </div>
           </div>
+
+          <div class="fug-footer-col">
+            <div class="fug-footer-right">
+              <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
+              <p class="fug-footer-copy">
+                <strong>© 2026 Fak'ugesi Festival</strong>
+                All Rights Reserved<br>
+                13–17 October 2026<br>
+                Tshimologong, Johannesburg
+              </p>
+            </div>
+          </div>
+
         </div>
 
       </div>
+
+      <div class="fug-footer-crosses fug-footer-crosses-bottom">
+        <span class="fug-footer-cross fc-left">${crossSVG}</span>
+        <span class="fug-footer-cross fc-right">${crossSVG}</span>
+      </div>
+
     </footer>
   `;
 

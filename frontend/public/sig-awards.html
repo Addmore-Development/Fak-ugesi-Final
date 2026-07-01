@@ -53,11 +53,10 @@
       position: absolute; inset: 0;
       background-image: url('images/signature/_MGL7139.jpg');
       background-size: cover; background-position: center 30%;
-      filter: brightness(0.3);
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
-    /* Overlay removed — was background: linear-gradient(...) */
+    /* Overlay removed */
     .hero-overlay { display: none; }
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
@@ -113,6 +112,8 @@
     }
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
+
+   
 
     /* ── SIG NAV STRIP ── */
     .fug-sig-strip {
@@ -251,14 +252,14 @@
     .winner-country { font-size: 11px; color: var(--body-gray); margin-top: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
 
     /* ══════════════════════════════════════════════
-       AWARDS SUPERCUT
+       AWARDS SUPERCUT — content reduced by 50%, autoplay
     ══════════════════════════════════════════════ */
     .supercut-section { background: var(--navy); position: relative; overflow: hidden; }
-    .supercut-inner { padding: 64px 248px; display: flex; flex-direction: column; gap: 28px; }
-    .supercut-header { display: flex; align-items: flex-end; justify-content: space-between; }
+    .supercut-inner { padding: 32px 248px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .supercut-header { display: flex; align-items: flex-end; justify-content: space-between; width: 50%; }
     .supercut-title { font-size: 42px; font-weight: 700; color: #fff; line-height: 1.0; }
     .supercut-sub { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
-    .supercut-video-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+    .supercut-video-wrap { position: relative; width: 50%; aspect-ratio: 16 / 9; background: #000; }
     .supercut-video-wrap video { width: 100%; height: 100%; display: block; object-fit: cover; }
     .supercut-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: opacity 0.3s; }
     .supercut-play-btn.hidden { opacity: 0; pointer-events: none; }
@@ -306,10 +307,9 @@
     .cat-bg {
       position: absolute; inset: 0;
       background-image: url('images/supercut/winners/animation/NAJIAMINI- Poster - Dianne Maryline Charles Rwativenga.png');
-      background-size: cover; background-position: center center; filter: brightness(0.45);
+      background-size: cover; background-position: center center;
       transition: opacity 0.45s ease;
     }
-    .cat-overlay { position: absolute; inset: 0; background: transparent; }
     .cat-inner { position: relative; z-index: 3; padding: 60px var(--band) 64px; }
     .cat-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
     .cat-title { font-size: 52px; font-weight: 700; color: #fff; line-height: 1.0; }
@@ -319,7 +319,7 @@
     .cat-apply-link:hover { color: #fff; }
     .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .cat-card { cursor: pointer; border: 1px solid rgba(255,255,255,0.35); padding: 18px 18px 22px; position: relative; transition: background 0.22s; }
-    .cat-card.active { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.75); }
+    .cat-card.active { background: rgba(26,39,68,0.10); border-color: rgba(255,255,255,0.75); }
     .cat-card.active .cat-card-tag, .cat-card.active .cat-card-title,
     .cat-card.active .cat-card-items li { color: #fff; }
     .cat-card.active .cat-card-num { color: rgba(255,255,255,1); }
@@ -372,15 +372,15 @@
     .partners-inner { padding: 40px 248px 72px; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
     .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
-    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
       background: #fff; border: 1px solid rgba(26,39,68,0.12);
       aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;
-      padding: 40px 32px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 14px;
+      padding: 22px 18px; transition: box-shadow 0.3s, transform 0.3s; margin-bottom: 14px;
     }
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
-    .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
+    .partner-logo-box img { max-width: 100%; max-height: 82px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
     .partner-logo-box img.keep-color { filter: none !important; }
     .partner-desc { font-size: 12px; font-weight: 400; color: var(--body-gray); line-height: 1.65; }
 
@@ -396,13 +396,21 @@
       .winners-header { padding: 16px 48px 0; }
       .winners-tabs { padding: 24px 48px 0; }
       .winners-strip-outer { padding: 0 48px; }
-      .supercut-inner { padding: 48px 48px; }
+      .supercut-inner { padding: 28px 48px; }
       .supercut-title { font-size: 32px; }
+      .supercut-header { width: 70%; }
+      .supercut-video-wrap { width: 70%; }
       .cat-grid { grid-template-columns: repeat(2, 1fr); }
       .req-section { padding: 36px 48px; }
       .faq-section { padding: 56px 48px; }
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
       .partners-inner { padding: 40px 48px 72px; }
+      .partners-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
+      .partner-logo-box { padding: 14px 12px; }
+      .partner-logo-box img { max-height: 58px; }
+    }
+    @media (max-width: 900px) {
+      .partners-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
     }
     @media (max-width: 768px) {
       .hero { min-height: auto; }
@@ -416,8 +424,10 @@
       .winners-tab { padding: 10px 14px 12px; font-size: 9px; }
       .winners-strip-outer { padding: 0 20px; }
       .winner-img-wrap { height: 240px; }
-      .supercut-inner { padding: 40px 20px; }
-      .supercut-title { font-size: 26px; }
+      .supercut-inner { padding: 24px 20px; }
+      .supercut-title { font-size: 22px; }
+      .supercut-header { width: 100%; }
+      .supercut-video-wrap { width: 100%; }
       .cat-title { font-size: 32px; }
       .cat-grid { grid-template-columns: 1fr; }
       .req-section { padding: 48px 20px; }
@@ -426,7 +436,9 @@
       .faq-title-left { font-size: 32px; }
       .partners-inner { padding: 32px 20px 48px; }
       .partners-title { font-size: 26px; }
-      .partners-grid { grid-template-columns: 1fr 1fr; }
+      .partners-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .partner-logo-box { padding: 12px 10px; }
+      .partner-logo-box img { max-height: 48px; }
     }
     @media (max-width: 480px) {
       .hero-title { font-size: 24px !important; }
@@ -723,10 +735,10 @@ digital art, design, and music.</p>
       <span class="supercut-sub">Fak'ugesi 2025</span>
     </div>
     <div class="supercut-video-wrap" id="supercutWrap">
-      <video id="supercutVideo" preload="metadata" playsinline>
+      <video id="supercutVideo" preload="auto" playsinline autoplay muted loop>
         <source src="images/supercut/awards_supercut.mp4" type="video/mp4">
       </video>
-      <div class="supercut-play-btn" id="supercutPlayBtn">
+      <div class="supercut-play-btn hidden" id="supercutPlayBtn">
         <div class="supercut-play-circle">
           <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <polygon points="8,4 24,14 8,24" fill="#ffffff"/>
@@ -749,7 +761,6 @@ digital art, design, and music.</p>
 <!-- ═══════════════════════════════ ELIGIBLE CATEGORIES ═══════════════════════════════ -->
 <section class="categories-section reveal">
   <div class="cat-bg" id="catBg"></div>
-  <div class="cat-overlay"></div>
   <div class="cat-inner">
     <div class="cat-header">
       <h2 class="cat-title">Categories</h2>
@@ -876,6 +887,12 @@ digital art, design, and music.</p>
           <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
         </div>
       </div>
+      <!-- Digital Dome -->
+      <div class="partner-card">
+        <div class="partner-logo-box">
+          <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/>
+        </div>
+      </div>
       <!-- British Council -->
       <div class="partner-card">
         <div class="partner-logo-box">
@@ -885,7 +902,7 @@ digital art, design, and music.</p>
       <!-- Jiwe -->
       <div class="partner-card">
         <div class="partner-logo-box">
-          <img src="images/logos/jiwe.svg" alt="Jiwe"/>
+          <img src="images/logos/jiwe.svg" alt="Jiwe" class="keep-color"/>
         </div>
       </div>
     </div>
@@ -966,7 +983,7 @@ revealEls.forEach(el => io.observe(el));
   });
 })();
 
-/* ── SUPERCUT VIDEO ── */
+/* ── SUPERCUT VIDEO (autoplay, muted, looping — click to pause/play) ── */
 (function () {
   const video   = document.getElementById('supercutVideo');
   const playBtn = document.getElementById('supercutPlayBtn');
