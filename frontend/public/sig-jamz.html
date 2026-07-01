@@ -238,8 +238,8 @@
       transition: background 0.22s, color 0.22s, transform 0.18s, box-shadow 0.35s, border-color 0.3s;
     }
     .challenge-cta:hover {
-      background: #8b5cf6; color: #ffffff; border-color: #ffffff;
-      box-shadow: 0 0 20px #f8fafa, 0 0 44px #8b5cf6;
+      background: #8b5cf6; color: #ffffff; border-color: #8b5cf6;
+      box-shadow: 0 0 20px #8b5cf6, 0 0 44px #8b5cf6;
       transform: translateY(-1px);
     }
     .challenge-apply-link {
@@ -301,7 +301,14 @@
       cursor: pointer; text-underline-offset: 3px; transition: opacity 0.2s;
     }
     .partners-view-link:hover { opacity: 0.6; }
-    .partners-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+    .partners-grid {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+.partners-grid .partner-card {
+  flex: 0 0 calc((100% - 4 * 18px) / 5);
+}
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-link { display: block; text-decoration: none; }
     .partner-logo-box {
@@ -572,23 +579,6 @@
         </a>
       </div>
 
-      <!-- 4 — Origins Centre -->
-      <div class="partner-card">
-        <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Origins Centre">
-          <div class="partner-logo-box">
-            <img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/>
-          </div>
-        </a>
-      </div>
-
-      <!-- 5 — Web Tickets -->
-      <div class="partner-card">
-        <a href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Buy tickets on Web Tickets">
-          <div class="partner-logo-box">
-            <img src="/images/image updates/WT New CI Short-03.png" alt="Web Tickets" class="keep-color"/>
-          </div>
-        </a>
-      </div>
 
     </div>
   </div>

@@ -112,13 +112,29 @@
     .freq-card-memory:hover .freq-num{color:#ffffff;opacity:0.3;}
     .freq-card-memory:hover .freq-closing{color:#ffffff;opacity:0.85;border-top-color:rgba(255,255,255,0.3);}
 
+    /* FUTURE ENGINES — same dark overlay treatment as the other two cards */
+.freq-card-future .freq-card-dark-overlay{position:absolute;inset:0;background:rgba(10,18,50,0.62);opacity:0;transition:opacity 0.55s ease;z-index:1;pointer-events:none;}
+.freq-card-future:hover .freq-card-dark-overlay{opacity:1;}
+.freq-card-future:hover .freq-title,
+.freq-card-future:hover .freq-body{color:#ffffff;}
+.freq-card-future:hover .freq-num{color:#ffffff;opacity:0.3;}
+.freq-card-future:hover .freq-closing{color:#ffffff;opacity:0.85;border-top-color:rgba(255,255,255,0.3);}
+
     /* ── SPOT CTA SECTION ── */
     .spot-cta-section{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden;}
     .spot-cta-bg{position:absolute;inset:0;background-image:url('/images/Copy of 2C6A3678.jpg');background-size:cover;background-position:center calc(30% + 20px);z-index:0;transform:scaleX(-1);}
     .spot-cta-content{position:relative;z-index:3;padding:80px var(--band);display:flex;flex-direction:column;align-items:flex-start;gap:24px;max-width:680px;}
     .spot-cta-title{font-size:36px;font-weight:600;color:var(--white);line-height:1.08;white-space:nowrap;}
     .spot-cta-btn{display:inline-block;padding:14px 36px;background:transparent;color:var(--white);border:1.5px solid var(--white);font-family:'InterDisplay',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:background 0.22s,color 0.22s,transform 0.18s,box-shadow 0.35s,border-color 0.3s;}
-    .spot-cta-btn:hover{background:#8b5cf6;color:#ffffff;border-color:#ffffff;box-shadow:0 0 20px #f8fafa,0 0 44px #8b5cf6;transform:translateY(-1px);}
+    .spot-cta-btn:hover{background:#8b5cf6;color:#ffffff;border-color:#8b5cf6;box-shadow:0 0 20px #8b5cf6,0 0 44px #8b5cf6;transform:translateY(-1px);}
+
+    .spot-cta-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:1;
+  pointer-events:none;
+}
 
     /* ── OUR MAIN PARTNERS (matching index.html) ── */
     .partners-section{background:var(--lavender);padding:72px 0;position:relative;}
@@ -199,7 +215,7 @@
 <section class="hero">
   <img
     class="hero-video"
-    src="images/image updates/f-programmes bg.jpeg"
+    src="images/image updates/f-programmes bg.png"
     
   />
   <div class="hero-overlay"></div>
@@ -280,15 +296,19 @@
         </div>
       </div>
 
-      <!-- FUTURE ENGINES -->
-      <div class="freq-card">
-        <div class="freq-card-front">
-          <span class="freq-num">03</span>
-          <h3 class="freq-title">Future Engines</h3>
-          <p class="freq-body">African cities, infrastructures, and digital systems are being built in real time, often ahead of global precedent.<br><br>Future Engines examines the networks shaping how people move, work, communicate, adapt, and imagine the decades ahead. Urban planners, climate scientists, policymakers, civic technologists, researchers, and systems designers gather to explore the realities of implementation, evidence, and scale.<br><br>From climate resilience and mobility to data governance and public infrastructure, the programme focuses on the systems through which futures become operational.</p>
-          <p class="freq-closing">The future is not arriving. It is under construction.</p>
-        </div>
-      </div>
+     <!-- FUTURE ENGINES -->
+<div class="freq-card freq-card-future">
+  <video class="freq-card-bg-video" autoplay muted loop playsinline preload="none">
+    <source src="images/image updates/frequency_future.mp4" type="video/mp4">
+  </video>
+  <div class="freq-card-dark-overlay"></div>
+  <div class="freq-card-front">
+    <span class="freq-num">03</span>
+    <h3 class="freq-title">Future Engines</h3>
+    <p class="freq-body">African cities, infrastructures, and digital systems are being built in real time, often ahead of global precedent.<br><br>Future Engines examines the networks shaping how people move, work, communicate, adapt, and imagine the decades ahead. Urban planners, climate scientists, policymakers, civic technologists, researchers, and systems designers gather to explore the realities of implementation, evidence, and scale.<br><br>From climate resilience and mobility to data governance and public infrastructure, the programme focuses on the systems through which futures become operational.</p>
+    <p class="freq-closing">The future is not arriving. It is under construction.</p>
+  </div>
+</div>
 
     </div>
   </div>
@@ -297,6 +317,7 @@
 <!-- ── SPOT CTA ── -->
 <section class="spot-cta-section reveal" id="spot-cta-section">
   <div class="spot-cta-bg"></div>
+  <div class="spot-cta-overlay"></div>
   <div class="spot-cta-content">
     <h2 class="spot-cta-title">Want a Spot at Fak'ugesi?</h2>
     <a class="spot-cta-btn" href="get-involved.html">GET INVOLVED</a>

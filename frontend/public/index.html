@@ -54,11 +54,19 @@
     @keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* THEME SECTION */
-    .theme-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(180deg,#c8cede 0%,#e5e7ef 100%);}
+    .theme-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;}
     /* Poster is now a looping video instead of a static image, nudged
        10px to the right via the transform's X value. */
-    .theme-poster-video{position:absolute;right:0;bottom:0;top:0;width:60%;height:150%;object-fit:contain;object-position:right bottom;transform:translate(10px, calc(-25% + 20px));}
-
+  .theme-poster-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  z-index:0;;
+  transform-origin:center;
+}
     .theme-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
     .theme-content{max-width:560px;}
     .theme-year-label{font-family:'InterDisplay','Inter',Arial,sans-serif !important;font-size:52px !important;font-weight:600 !important;color:var(--dark-text) !important;opacity:1 !important;display:block !important;margin-bottom:16px !important;letter-spacing:-0.01em !important;line-height:1.05 !important;}
@@ -227,7 +235,7 @@
     @media(max-width:768px){
       .hero{min-height:auto;}.hero-inner{padding:80px 20px 40px;flex-direction:column;align-items:flex-start;gap:24px;}
       .hero-content{max-width:100%;}.hero-title{font-size:32px;}.hero-logo{display:none;}
-      .theme-section{min-height:auto;}.theme-poster-video,.theme-fade{display:none;}
+      .theme-section{min-height:auto;}.theme-poster-video,.theme-fade{display:visible;}
       .theme-inner{padding:40px 20px 44px;}.theme-content{max-width:100%;}
       .theme-year-label{font-size:32px !important;margin-bottom:12px !important;}.theme-head{font-size:26px;margin-bottom:14px;}.theme-head-logo{height:40px;margin-bottom:14px;}
       .theme-body{font-size:12px;max-width:100%;margin-bottom:20px;}
@@ -296,9 +304,9 @@
 <!-- THEME SECTION -->
 <section class="theme-section reveal">
   <video class="theme-poster-video" autoplay muted loop playsinline preload="auto">
-    <source src="images/image updates/web_poster_loop.mp4" type="video/mp4">
+    <source src="images/image updates/web_poster_banner_10mb.mp4" type="video/mp4">
   </video>
-  <div class="theme-fade"></div>
+  <div class="theme-overlay"></div>
   <div class="theme-inner">
     <div class="theme-content">
       <span class="theme-year-label">2026 Theme</span>

@@ -102,7 +102,20 @@
     .ongoing-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;}
     .ongoing-title-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
     .ongoing-title-row .premiere-title{margin-bottom:0;}
-    .ongoing-eunic-logo{height:36px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.85;flex-shrink:0;}
+  
+    .ongoing-eunic-logo{
+  width:auto;height:36px;
+  background-color:#fff;
+  -webkit-mask-image:url('images/logos/immersiveAfrica/eunic.svg');
+  mask-image:url('images/logos/immersiveAfrica/eunic.svg');
+  -webkit-mask-size:contain;
+  mask-size:contain;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+  -webkit-mask-position:center;
+  mask-position:center;
+  opacity:.85;
+}
 
     /* ── CROSS ICONS ── */
     .cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:1!important;animation:none!important;transition:transform 0.1s linear!important;}
@@ -339,7 +352,7 @@ support of the French Institute of South Africa, and produced by Dream Feel Fact
 </p>
     <div class="premiere-co" style="justify-content:flex-start;">
       <img src="images/logos/immersiveAfrica/habitatxr.png" alt="HabitatXR" style="height:48px;object-fit:contain;filter:brightness(0) invert(1);"/>
-      <img class="ongoing-eunic-logo" src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/>
+      <div class="ongoing-eunic-logo" style="width:80px;"></div>
     </div>
     <a class="section-cta" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer">GET YOUR TICKETS</a>
   </div>

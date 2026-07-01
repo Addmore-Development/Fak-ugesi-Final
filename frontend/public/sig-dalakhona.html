@@ -42,12 +42,12 @@
       position: relative; width: 100%; min-height: 520px; overflow: hidden;
       display: flex; align-items: flex-start;
     }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('images/image00038.jpg');
-      background-size: cover; background-position: center 35%;
-      animation: kenBurns 18s ease-in-out infinite alternate;
-    }
+   .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/image00038.jpg');
+  background-size: cover; background-position: center calc(35% - 110px);
+  animation: kenBurns 18s ease-in-out infinite alternate;
+}
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
     .hero-overlay {
       position: absolute; inset: 0;
@@ -177,7 +177,7 @@
       cursor: pointer; font-family: 'InterDisplay', sans-serif; text-decoration: none;
       transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.18s;
     }
-    .network-cta:hover { background: var(--navy); border-color: var(--navy); color: #fff; transform: translateY(-1px); }
+.network-cta:hover{background:#8b5cf6;color:#ffffff;border-color:#8b5cf6;box-shadow:0 0 20px #8b5cf6,0 0 44px #8b5cf6;transform:translateY(-1px);}
 
     /* ── Shared link hover ── */
     .involved-link, .curatorial-view-link, .showcases-link, .showcases-header a,
