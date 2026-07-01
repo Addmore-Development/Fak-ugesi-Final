@@ -65,7 +65,7 @@
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: transparent;
+      background: rgba(0,0,0,0.35);
     }
     .hero-content {
       grid-row: 2; grid-column: 2; position: relative; z-index: 4;
@@ -194,8 +194,12 @@
       position: absolute; inset: 0;
       background-size: cover; background-position: center center;
     }
-    /* No overlay color */
-    .challenge-overlay { display: none; }
+    /* Dark overlay to match index.html hero treatment */
+    .challenge-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 1; pointer-events: none;
+    }
     .challenge-inner {
       position: relative; z-index: 3;
       padding: 88px 248px;
@@ -223,6 +227,7 @@
       color: #ffffff; margin-bottom: 32px;
       text-shadow: 0 1px 10px rgba(0,0,0,0.4);
     }
+    /* GET INVOLVED button — hover treatment matches .btn-get-involved on index.html */
     .challenge-cta {
       display: inline-flex; align-items: center; justify-content: center;
       border: 1.5px solid #fff; color: #fff; background: transparent;
@@ -230,9 +235,13 @@
       letter-spacing: 0.12em; text-transform: uppercase;
       cursor: pointer; font-family: 'InterDisplay', sans-serif;
       text-decoration: none;
-      transition: background 0.22s, color 0.22s, transform 0.18s;
+      transition: background 0.22s, color 0.22s, transform 0.18s, box-shadow 0.35s, border-color 0.3s;
     }
-    .challenge-cta:hover { background: var(--navy); color: #fff; border-color: var(--navy); transform: translateY(-1px); }
+    .challenge-cta:hover {
+      background: #8b5cf6; color: #ffffff; border-color: #ffffff;
+      box-shadow: 0 0 20px #f8fafa, 0 0 44px #8b5cf6;
+      transform: translateY(-1px);
+    }
     .challenge-apply-link {
       font-size: 11px; font-weight: 600;
       color: rgba(255,255,255,0.65); text-decoration: underline;
@@ -440,6 +449,7 @@
 <!-- ═══════════════════════════════ 2026 ANIMATION CHALLENGE ═══════════════════════════════ -->
 <section class="challenge-section reveal">
   <div class="challenge-bg" style="background-image:url('../images/trailer.png');background-position:60% center;"></div>
+  <div class="challenge-overlay"></div>
   <div class="challenge-inner">
     <div class="challenge-content">
       <h2 class="challenge-title">2026 Animation<br>Challenge</h2>
@@ -454,6 +464,7 @@
 <!-- ═══════════════════════════════ 2026 GAMING CHALLENGE ═══════════════════════════════ -->
 <section class="challenge-section reveal">
   <div class="challenge-bg" style="background-image:url('../images/ruka.jpg');background-position:center 20%;"></div>
+  <div class="challenge-overlay"></div>
   <div class="challenge-inner">
     <div class="challenge-content">
       <h2 class="challenge-title">2026 Gaming<br>Challenge</h2>
@@ -552,11 +563,11 @@
         </a>
       </div>
 
-      <!-- 3 — Digital Dome -->
+      <!-- 3 — Mollo Animation Academy and Studio -->
       <div class="partner-card">
-        <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits Digital Dome">
+        <a href="https://tshimologong.joburg/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Mollo Animation Academy and Studio">
           <div class="partner-logo-box">
-            <img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/>
+            <img src="images/logos/Mollo-Logo.png" alt="Mollo Animation Academy and Studio" class="keep-color"/>
           </div>
         </a>
       </div>

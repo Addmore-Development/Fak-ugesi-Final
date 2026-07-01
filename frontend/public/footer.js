@@ -302,7 +302,7 @@
             <div class="fug-footer-right">
               <img class="fug-footer-logo" src="/images/logos/fakugesi/logo_fakugesi_dark.svg" alt="Fak'ugesi Festival" />
               <p class="fug-footer-copy">
-                <strong>© 2026 Fak'ugesi Festival</strong>
+                <strong>© 2026 Fak'ugesi<br>Festival</strong>
                 All Rights Reserved<br>
                 13–17 October 2026<br>
                 Tshimologong, Johannesburg

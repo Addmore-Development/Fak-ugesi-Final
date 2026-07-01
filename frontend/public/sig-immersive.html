@@ -24,8 +24,7 @@
     }
     .hero-bg{position:absolute;inset:0;background-image:url('images/digital-dome-image-inside.jpg');background-size:cover;background-position:center 35%;animation:kenBurns 18s ease-in-out infinite alternate}
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.06)}}
-    /* Overlay removed */
-    .hero-overlay{display:none;}
+    .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1;pointer-events:none;}
 
     .hero-inner{
       position:relative;z-index:3;width:100%;
@@ -59,9 +58,9 @@
       padding:13px 30px;font-size:11px;font-weight:700;
       letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
       text-decoration:none;
-      transition:background .22s,color .22s,border-color .22s;
+      transition:background .22s,color .22s,border-color .22s,box-shadow .35s;
     }
-    .hero-cta:hover,.section-cta:hover{background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important;}
+    .hero-cta:hover,.section-cta:hover{background:#00f4f5!important;color:var(--dark-text)!important;border-color:#ffffff!important;box-shadow:0 0 20px #f8fafa,0 0 44px #00f4f5!important;}
     .hero-cta::before,.section-cta::before{display:none!important;content:none!important;}
 
     /* ── TICKER ── */
@@ -79,8 +78,7 @@
     /* ── PREMIERING SECTION ── */
     .premiering-section{position:relative;width:100%;min-height:75vh;overflow:hidden;display:flex;align-items:stretch;flex-direction:column;justify-content:flex-start;}
     .premiering-bg{position:absolute;inset:-5%;background-image:url('images/8-Dotou-arbre-Fin.png');background-size:cover;background-position:center top;transform:scale(0.909);}
-    /* Overlay removed */
-    .premiering-overlay{display:none;}
+    .premiering-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1;pointer-events:none;}
     .premiering-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;}
 
     /* ── NOW SHOWING label ── */
@@ -100,12 +98,11 @@
     /* ── ON-GOING SECTION ── */
     .ongoing-section{position:relative;width:100%;min-height:75vh;overflow:hidden;display:flex;align-items:stretch;flex-direction:column;justify-content:flex-start;}
     .ongoing-bg{position:absolute;inset:-5%;background-image:url('images/Screenshot-2024-05-21-at-21.36.37.webp');background-size:cover;background-position:center;transform:scale(0.909);}
-    /* Overlay removed */
-    .ongoing-overlay{display:none;}
+    .ongoing-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1;pointer-events:none;}
     .ongoing-content{position:relative;z-index:3;padding:80px 248px 56px;width:100%;}
     .ongoing-title-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
     .ongoing-title-row .premiere-title{margin-bottom:0;}
-    .ongoing-eunic-logo{height:40px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.92;flex-shrink:0;margin-left:10px;}
+    .ongoing-eunic-logo{height:36px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.85;flex-shrink:0;}
 
     /* ── CROSS ICONS ── */
     .cross-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:18px!important;height:18px!important;flex-shrink:0!important;position:absolute!important;z-index:6!important;opacity:1!important;animation:none!important;transition:transform 0.1s linear!important;}
@@ -244,8 +241,10 @@
   <style id="fug-global-fixes">
     .hero{padding-top:58px!important;}
     body>.hero:first-child{padding-top:58px!important;}
-    .btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.hero-cta,.intro-cta,.network-cta,.section-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative!important;overflow:hidden!important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s!important;}
-    .btn-primary:hover,.btn-outline-dark:hover,.btn-outline-white:hover,.btn-apply:hover,.btn-cta-white:hover,.btn-cta-filled:hover,.btn-learn:hover,.hero-cta:hover,.intro-cta:hover,.network-cta:hover,.section-cta:hover,.challenge-cta:hover,a.btn-tickets:hover,button.btn-tickets:hover,.btn-get-pass:hover,.btn-primary-dark:hover,.btn-white:hover,.btn-dark:hover,.cta-btn:hover{background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important;}
+    .btn-primary,.btn-outline-dark,.btn-outline-white,.btn-apply,.btn-cta-white,.btn-cta-filled,.btn-learn,.intro-cta,.network-cta,.challenge-cta,a.btn-tickets,button.btn-tickets,.btn-get-pass,.btn-primary-dark,.btn-white,.btn-dark,.cta-btn,[class*="btn-"]:not(.req-btn):not(.faq-q-btn){position:relative!important;overflow:hidden!important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s!important;}
+    .btn-primary:hover,.btn-outline-dark:hover,.btn-outline-white:hover,.btn-apply:hover,.btn-cta-white:hover,.btn-cta-filled:hover,.btn-learn:hover,.intro-cta:hover,.network-cta:hover,.challenge-cta:hover,a.btn-tickets:hover,button.btn-tickets:hover,.btn-get-pass:hover,.btn-primary-dark:hover,.btn-white:hover,.btn-dark:hover,.cta-btn:hover{background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important;}
+    .hero-cta,.section-cta{position:relative!important;overflow:hidden!important;cursor:pointer;transition:background 0.22s,color 0.22s,border-color 0.22s,box-shadow 0.35s!important;}
+    .hero-cta:hover,.section-cta:hover{background:#00f4f5!important;color:var(--dark-text)!important;border-color:#ffffff!important;box-shadow:0 0 20px #f8fafa,0 0 44px #00f4f5!important;}
     @media(max-width:1400px){:root{--band:160px!important;}}
     @media(max-width:1200px){:root{--band:80px!important;}}
     @media(max-width:1024px){:root{--band:40px!important;}.hero-title{font-size:40px!important;}}
@@ -334,15 +333,13 @@
     <p class="section-dates">Oct 2025 — Aug 2026</p>
 
     <p class="premiere-badge">Digital Dome Screening</p>
-    <div class="ongoing-title-row">
-      <h3 class="premiere-title">Kwasukasukela</h3>
-      <img class="ongoing-eunic-logo" src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/>
-    </div>
+    <h3 class="premiere-title">Kwasukasukela</h3>
     <p class="premiere-body">Kwasukasukela, meaning “In the Beginning” in isiZulu, is an immersive projection installation by South African poet Xabiso Vili and Tshimologong Alumni, as well as interdisciplinary artist and director, Inka Kendzia.<br/><br/> This 360° experience fuses poetry, animation, AI, and African mythology to reimagine creation stories within a sangoma’s hut, inviting audiences into a transformative space of healing and ancestral connection. It was produced by a French partner and originally commissioned for the inaugural Forum Création Africa in Paris, with funding from the French. <br/>Ministry for Europe and Foreign Affairs and the
 support of the French Institute of South Africa, and produced by Dream Feel Factory and Maison des Mondes Africans.
 </p>
     <div class="premiere-co" style="justify-content:flex-start;">
       <img src="images/logos/immersiveAfrica/habitatxr.png" alt="HabitatXR" style="height:48px;object-fit:contain;filter:brightness(0) invert(1);"/>
+      <img class="ongoing-eunic-logo" src="images/logos/immersiveAfrica/eunic.svg" alt="EUNIC"/>
     </div>
     <a class="section-cta" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer">GET YOUR TICKETS</a>
   </div>
@@ -362,10 +359,10 @@ support of the French Institute of South Africa, and produced by Dream Feel Fact
         </div>
         <div class="faq-item">
           <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">What is the difference between the expo and the showcase?</span><span class="faq-t-icon">+</span></button>
-          <div class="faq-ans">The expo is where work is encountered: displayed and engaged with at the viewer's own pace. The showcase is a structured programme in which work is experienced sequentially, curated, timed, and fully immersive. Some Immersive Afrika works sit in one category; others bridge both. The programme will indicate which format applies.</div>
+          <div class="faq-ans">The expo is where work is encountered: displayed and engaged with at the viewer's own pace. The showcase is a structured programme in which work is experienced sequentially, curated, timed, and fully immersive. Some Immersive Africa works sit in one category; others bridge both. The programme will indicate which format applies.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Can I submit work for Immersive Afrika?</span><span class="faq-t-icon">+</span></button>
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Can I submit work for Immersive Africa?</span><span class="faq-t-icon">+</span></button>
           <div class="faq-ans">Commissioning and selection follows a curated process. Both original works and adaptations of existing work are considered. Proposals from African creatives working in fulldome, XR, and spatial sound are welcomed through the Get Involved section.</div>
         </div>
         <div class="faq-item">
@@ -373,7 +370,7 @@ support of the French Institute of South Africa, and produced by Dream Feel Fact
           <div class="faq-ans">EUNIC is the European Network of National Cultural Institutes.Immersive Africa is in collaboration with the EUNIC network, running through to August 2026.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Do I need specialist equipment to experience Immersive Afrika ?</span><span class="faq-t-icon">+</span></button>
+          <button class="faq-q-btn" aria-expanded="false"><span class="faq-q-text">Do I need specialist equipment to experience Immersive Africa ?</span><span class="faq-t-icon">+</span></button>
           <div class="faq-ans">No. The Dome environment provides the full immersive experience. Audiences need only to arrive and enter.</div>
         </div>
       </div>
@@ -383,7 +380,7 @@ support of the French Institute of South Africa, and produced by Dream Feel Fact
 
 <!-- ═══ PARTNERS CAROUSEL ═══ -->
 <section class="partners-section reveal">
-  <h2 class="partners-title">Our 2026 Immersive Africa Partners</h2>
+  <h2 class="partners-title">Our Immersive Africa Partners</h2>
   <div class="partners-carousel-outer">
     <div class="partners-carousel-track" id="partnersTrack"></div>
   </div>

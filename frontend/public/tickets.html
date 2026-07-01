@@ -19,9 +19,9 @@
 
     /* ══ HERO — matched to sig-dalakhona layout ══ */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-start;}
-    .hero-bg{position:absolute;inset:0;background-image:url('images/image updates/Copy of 0A9A7964.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.45);animation:kenBurns 18s ease-in-out infinite alternate;}
+    .hero-bg{position:absolute;inset:0;background-image:url('images/image updates/Copy of 0A9A7964.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.45); animation:kenBurns 18s ease-in-out infinite alternate; }
     @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.07)}}
-    .hero-blue-tint{position:absolute;inset:0;background:rgba(30,60,160,0.18);z-index:1;}
+    .hero-blue-tint{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1;pointer-events:none;}
     .hero-inner{position:relative;z-index:3;width:100%;padding:120px 248px 56px;display:flex;align-items:flex-start;justify-content:space-between;}
     .hero-content{max-width:480px;display:flex;flex-direction:column;align-items:flex-start;}
     .hero-title{font-family:'InterDisplay',sans-serif;font-size:55px;font-weight:600;line-height:1;color:#fff;margin-bottom:20px;}
@@ -50,8 +50,9 @@
 
     /* PASSES */
     .passes-section{position:relative;overflow:hidden;}
-    .passes-bg{position:absolute;inset:0;background-image:url('images/0A9A3304.JPG');background-size:cover;background-position:center;filter:brightness(0.38);}
-    .passes-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.50);}
+    .passes-bg{position:absolute;inset:0;background-image:url('images/0A9A3304.JPG');background-size:cover;background-position:center;filter:brightness(0.38);
+    animation:passesZoom 22s ease-in-out infinite alternate;}
+    .passes-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.0);}
     .passes-content{position:relative;z-index:3;padding:52px 248px 64px;}
     .passes-body{display:flex;flex-direction:column;gap:0;}
     .passes-left{margin-bottom:36px;}
@@ -152,7 +153,7 @@
     .partners-section{background:var(--lavender);padding:64px 248px 72px;position:relative;}
     .partners-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;}
     .partners-title{font-size:42px;font-weight:600;color:var(--dark-text);}
-    .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+    .partners-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
     .partner-card{display:flex;flex-direction:column;}
     .partner-logo-link{display:block;text-decoration:none;}
     .partner-logo-box{background:var(--white);border:1px solid rgba(26,39,68,0.12);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:40px 32px;transition:box-shadow 0.3s,transform 0.3s;}
@@ -313,7 +314,7 @@
               </div><div style="margin-top:18px;"><a class="btn-get-pass" href="https://www.webtickets.co.za/v2/event.aspx?itemid=1582162423" target="_blank" rel="noopener noreferrer">GET INDUSTRY PASS</a></div></div>
               <div></div>
               <div class="ticket-price-col"><div>
-                <div class="price-block"><div class="price-amount xlarge"><span class="price-curr">R</span>3,500</div><div class="price-label">For VIPs</div></div>
+                <div class="price-block"><div class="price-amount xlarge"><span class="price-curr">R</span>1,950</div><div class="price-label">For VIPs</div></div>
               </div><div></div></div>
             </div>
           </div></div>
@@ -363,6 +364,11 @@
     <div class="partner-card">
       <a href="https://digitaldome.wits.ac.za/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
         <div class="partner-logo-box"><img src="images/logos/immersiveAfrica/digitaldome.svg" alt="Digital Dome"/></div>
+      </a>
+    </div>
+    <div class="partner-card">
+      <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener noreferrer" class="partner-logo-link">
+        <div class="partner-logo-box"><img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color"/></div>
       </a>
     </div>
     <div class="partner-card">

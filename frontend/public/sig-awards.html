@@ -56,8 +56,11 @@
       animation: kenBurns 18s ease-in-out infinite alternate;
     }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
-    /* Overlay removed */
-    .hero-overlay { display: none; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 1; pointer-events: none;
+    }
     .hero-inner {
       position: relative; z-index: 3; width: 100%;
       padding: 120px 248px 56px;
@@ -113,7 +116,10 @@
     @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-wrapper:hover .ticker-track { animation-play-state: paused; }
 
-   
+     @keyframes kenBurns {
+  from { transform: scaleX(-1) scale(1); }
+  to   { transform: scaleX(-1) scale(1.06); }
+}
 
     /* ── SIG NAV STRIP ── */
     .fug-sig-strip {
@@ -219,7 +225,7 @@
       width: 100%; height: 100%; object-fit: cover; display: block;
       transition: transform 0.55s ease;
     }
-    .winner-card:hover .winner-img-wrap img { transform: scale(1.06); }
+    .winner-card:hover .winner-img-wrap img { transform: none; }
 
     /* ── LIGHTBOX ── */
     .winner-lightbox {
@@ -255,9 +261,9 @@
        AWARDS SUPERCUT — content reduced by 50%, autoplay
     ══════════════════════════════════════════════ */
     .supercut-section { background: var(--navy); position: relative; overflow: hidden; }
-    .supercut-inner { padding: 32px 248px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .supercut-inner { padding: 52px 248px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
     .supercut-header { display: flex; align-items: flex-end; justify-content: space-between; width: 50%; }
-    .supercut-title { font-size: 42px; font-weight: 700; color: #fff; line-height: 1.0; }
+    .supercut-title { font-size: 35px; font-weight: 600; color: #fff; line-height: 1.0; }
     .supercut-sub { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
     .supercut-video-wrap { position: relative; width: 50%; aspect-ratio: 16 / 9; background: #000; }
     .supercut-video-wrap video { width: 100%; height: 100%; display: block; object-fit: cover; }
@@ -317,13 +323,13 @@
     .cat-subtitle em { font-style: normal; color: rgba(255,255,255,0.75); }
     .cat-apply-link { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.65); text-decoration: underline; letter-spacing: 0.06em; white-space: nowrap; margin-top: 12px; cursor: pointer; text-underline-offset: 3px; transition: color 0.2s; }
     .cat-apply-link:hover { color: #fff; }
-    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .cat-card { cursor: pointer; border: 1px solid rgba(255,255,255,0.35); padding: 18px 18px 22px; position: relative; transition: background 0.22s; }
-    .cat-card.active { background: rgba(26,39,68,0.10); border-color: rgba(255,255,255,0.75); }
+    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: stretch; }
+    .cat-card { cursor: pointer; border: 1px solid rgba(255,255,255,0.35); padding: 18px 18px 22px; position: relative; background: rgba(0,0,0,0.35); transition: background 0.22s, border-color 0.22s; min-height: 220px; display: flex; flex-direction: column; }
+    .cat-card.active { background: rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.75); }
     .cat-card.active .cat-card-tag, .cat-card.active .cat-card-title,
     .cat-card.active .cat-card-items li { color: #fff; }
     .cat-card.active .cat-card-num { color: rgba(255,255,255,1); }
-    .cat-card:hover { background: rgba(255,255,255,0.06); }
+    .cat-card:hover { background: rgba(0,0,0,0.45); }
     .cat-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
     .cat-card-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
     .cat-card-num { font-size: 36px; font-weight: 700; color: rgba(255,255,255,0.75); line-height: 1; }
@@ -331,7 +337,6 @@
     .cat-card-items { list-style: none; }
     .cat-card-items li { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.75); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
     .cat-card-items li::before { content: '→'; font-size: 10px; }
-    .cat-card-director { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.20); margin-top: 4px; }
 
     /* ══════════════════════════════════════════════
        REQUIREMENTS
@@ -820,7 +825,7 @@ digital art, design, and music.</p>
           <li>And design</li>
         </ul>
       </div>
-      <div class="cat-card cat-card-director" data-bg="images/supercut/winners/prototype of the year/LuandaImage.png">
+      <div class="cat-card" data-bg="images/supercut/winners/prototype of the year/LuandaImage.png">
         <div class="cat-card-header"><span class="cat-card-tag">Festival Director's Award</span><span class="cat-card-num">07</span></div>
         <h3 class="cat-card-title">Festival Director's Award</h3>
         <ul class="cat-card-items">

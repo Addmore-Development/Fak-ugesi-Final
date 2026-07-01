@@ -9,7 +9,7 @@
     @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-SemiBold.otf') format('opentype'),url('../fonts/InterDisplay-SemiBold.otf') format('opentype'),url('/fonts/InterDisplay-SemiBold.otf') format('opentype');font-weight:600;font-display:block;}
     @font-face{font-family:'InterDisplay';src:url('fonts/InterDisplay-Bold.otf') format('opentype'),url('../fonts/InterDisplay-Bold.otf') format('opentype'),url('/fonts/InterDisplay-Bold.otf') format('opentype');font-weight:700;font-display:block;}
     @font-face{font-family:'DxWideground';src:url('fonts/DxWideground-Regular.otf') format('opentype'),url('../fonts/DxWideground-Regular.otf') format('opentype'),url('/fonts/DxWideground-Regular.otf') format('opentype');font-weight:400;font-display:block;}
-    @font-face{font-family:'Neofolia';src:url('frontend/fonts/Neofolia.ttf') format('truetype'),url('../frontend/fonts/Neofolia.ttf') format('truetype'),url('/frontend/fonts/Neofolia.ttf') format('truetype');font-weight:400;font-display:block;}
+    @font-face{font-family:'Neofolia';src:url('fonts/Neofolia.ttf') format('truetype'),url('../fonts/Neofolia.ttf') format('truetype'),url('/fonts/Neofolia.ttf') format('truetype');font-weight:400;font-display:block;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--navy:#1a2744;--blue-mid:#2a3f72;--lavender:#dde3f0;--white:#ffffff;--orange:#e05a1e;--dark-text:#0d1b3e;--body-gray:#3a4060;--band:248px;--turquoise:#00f4f5;}
     html{scroll-behavior:smooth}
@@ -27,9 +27,11 @@
 
     /* ── HERO ── */
     .hero{position:relative;width:100%;min-height:490px;overflow:hidden;display:flex;align-items:center;}
-    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;z-index:0;}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;z-index:0;transform:translate(10px, -20px);}
+    .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1;pointer-events:none;}
     .hero-inner{position:relative;z-index:3;width:100%;padding:110px var(--band) 60px;display:flex;align-items:center;justify-content:space-between;}
-    .hero-content{max-width:420px;}
+    
+    .hero-content{max-width:420px;position:relative;z-index:0;}
     .hero-subtitle{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;opacity:0.80;margin-bottom:10px;color:var(--white);}
     .hero-title{font-family:'InterDisplay',sans-serif;font-size:72px;font-weight:600;line-height:1.0;margin-bottom:14px;color:var(--white);}
     .hero-body{font-size:13px;font-weight:400;line-height:1.7;max-width:340px;opacity:1.5;margin-bottom:14px;color:var(--white);}
@@ -53,7 +55,9 @@
 
     /* THEME SECTION */
     .theme-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(180deg,#c8cede 0%,#e5e7ef 100%);}
-    .theme-poster-img{position:absolute;right:0;bottom:0;top:0;width:60%;height:150%;background-image:url('/images/image updates/banner_poster_transparent.png');background-size:contain;background-position:right bottom;background-repeat:no-repeat;transform:translateY(calc(-25% + 20px));}
+    /* Poster is now a looping video instead of a static image, nudged
+       10px to the right via the transform's X value. */
+    .theme-poster-video{position:absolute;right:0;bottom:0;top:0;width:60%;height:150%;object-fit:contain;object-position:right bottom;transform:translate(10px, calc(-25% + 20px));}
 
     .theme-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
     .theme-content{max-width:560px;}
@@ -84,8 +88,10 @@
     @keyframes kenBurns{from{transform:scale(1);}to{transform:scale(1.07);}}
     .involved-inner{position:relative;z-index:3;width:100%;padding:60px var(--band);}
     .involved-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;margin-bottom:32px;}
-    .btn-get-involved{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1.5px solid var(--white);color:var(--white);background:transparent;padding:14px 36px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'InterDisplay',sans-serif;transition:background 0.22s,color 0.22s,border-color 0.22s,transform 0.18s;text-decoration:none;}
-    .btn-get-involved:hover{background:#2a3f72;color:var(--white);border-color:#2a3f72;transform:translateY(-1px);}
+    .btn-get-involved{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1.5px solid var(--white);color:var(--white);background:transparent;padding:14px 36px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'InterDisplay',sans-serif;transition:background 0.22s,color 0.22s,transform 0.18s,box-shadow 0.35s,border-color 0.3s;text-decoration:none;}
+    /* Same glow-hover recipe as the Get Tickets button (box-shadow glow +
+       border flip to white), just swapped to purple instead of turquoise. */
+    .btn-get-involved:hover{background:#8b5cf6;color:#ffffff;border-color:#ffffff;box-shadow:0 0 20px #f8fafa,0 0 44px #8b5cf6;transform:translateY(-1px);}
     .involved-cta-row{display:flex;justify-content:flex-start;}
 
     /* Shared link hover */
@@ -95,8 +101,9 @@
     .involved-link:hover,.curatorial-view-link:hover,.showcases-link:hover,.showcases-header a:hover,.showcase-card-more:hover,.winners-view-link:hover,.highlights-view-link:hover,.intro-view-link:hover,.network-view-link:hover,.faq-tickets-link:hover,.faq-apply-link:hover,.faq-apply-top:hover,.partners-link:hover,.partners-view-link:hover,.main-partners-link:hover,.market-info-link:hover,.exhibitors-link:hover,.exhibitor-card-more:hover,.more-card-link:hover,.prizes-apply-link:hover,.cat-apply-link:hover,.req-apply-link:hover,.challenge-apply-link:hover,.section-link:hover,.media-link:hover,.locations-map-link:hover,.directions-link:hover,.hero-link:hover,[data-fug-link]:hover{transform:translateX(3px);}
     .involved-link{color:#ffffff !important;}
 
-    .inv-card{border:1px solid rgba(255,255,255,0.45);position:relative;min-height:240px;display:flex;flex-direction:column;}
-    .inv-card-front{flex:1;padding:20px;display:flex;flex-direction:column;background:transparent;justify-content:flex-start;}
+    .inv-card{border:1px solid rgba(189, 184, 184, 0.45);position:relative;min-height:240px;display:flex;flex-direction:column;}
+  
+    .inv-card-front{flex:1;padding:20px;display:flex;flex-direction:column;background:rgba(0,0,0,0.35);justify-content:flex-start;}
     .card-num{position:absolute;top:14px;right:16px;font-family:'InterDisplay',sans-serif;font-size:36px;font-weight:700;color:#ffffff;line-height:1;}
     .card-tag{font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;margin-bottom:8px;margin-top:28px;color:var(--white);}
     .card-title{font-family:'InterDisplay',sans-serif;font-size:20px;font-weight:600;margin-bottom:12px;color:var(--white);}
@@ -201,7 +208,7 @@
     @media(max-width:1024px){
       .hero-inner{padding:100px 48px 52px;}.hero-title{font-size:40px;}
       .theme-inner{padding:52px 48px;}.theme-year-label{font-size:40px !important;}.theme-head{font-size:30px;}.theme-head-logo{height:52px;}
-      .theme-poster-img{width:50%;opacity:0.6;}
+      .theme-poster-video{width:50%;opacity:0.6;}
       .countdown-inner{padding:0 48px;}.countdown-grid{gap:32px;}.countdown-num{font-size:44px;}
       .involved-inner{padding:52px 48px;}
       .spotlight-inner{padding:0 48px;}.spotlight-title{font-size:36px;}
@@ -220,7 +227,7 @@
     @media(max-width:768px){
       .hero{min-height:auto;}.hero-inner{padding:80px 20px 40px;flex-direction:column;align-items:flex-start;gap:24px;}
       .hero-content{max-width:100%;}.hero-title{font-size:32px;}.hero-logo{display:none;}
-      .theme-section{min-height:auto;}.theme-poster-img,.theme-fade{display:none;}
+      .theme-section{min-height:auto;}.theme-poster-video,.theme-fade{display:none;}
       .theme-inner{padding:40px 20px 44px;}.theme-content{max-width:100%;}
       .theme-year-label{font-size:32px !important;margin-bottom:12px !important;}.theme-head{font-size:26px;margin-bottom:14px;}.theme-head-logo{height:40px;margin-bottom:14px;}
       .theme-body{font-size:12px;max-width:100%;margin-bottom:20px;}
@@ -267,6 +274,7 @@
 <!-- HERO -->
 <section class="hero">
   <img class="hero-video" src="/images/_MGL2775.jpg" alt="Fak'ugesi Festival" autoplay muted loop playsinline preload="auto">
+  <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-content">
       <p class="hero-subtitle">African Digital &amp; Innovation Festival</p>
@@ -287,7 +295,9 @@
 
 <!-- THEME SECTION -->
 <section class="theme-section reveal">
-  <div class="theme-poster-img"></div>
+  <video class="theme-poster-video" autoplay muted loop playsinline preload="auto">
+    <source src="images/image updates/web_poster_loop.mp4" type="video/mp4">
+  </video>
   <div class="theme-fade"></div>
   <div class="theme-inner">
     <div class="theme-content">

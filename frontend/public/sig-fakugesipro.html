@@ -52,8 +52,7 @@
   animation: kenBurns 18s ease-in-out infinite alternate;
 }
     @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.07); } }
-    /* overlay removed */
-    .hero-overlay { display: none; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); z-index: 1; pointer-events: none; }
     .hero-content {
       grid-row: 2; grid-column: 2; position: relative; z-index: 4;
       display: flex; flex-direction: row;
@@ -159,8 +158,7 @@
       background-size: cover; background-position: center 30%;
       transform: scaleX(-1);
     }
-    /* overlay removed */
-    .network-overlay { display: none; }
+    .network-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); z-index: 1; pointer-events: none; }
     .network-inner {
       position: relative; z-index: 3; padding: 100px 248px;
       display: flex; justify-content: space-between; align-items: flex-start;
@@ -174,9 +172,9 @@
       padding: 13px 32px; font-size: 11px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase;
       cursor: pointer; font-family: 'InterDisplay', sans-serif; text-decoration: none;
-      transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.18s;
+      transition: background 0.22s, color 0.22s, transform 0.18s, box-shadow 0.35s, border-color 0.3s;
     }
-    .network-cta:hover { background: var(--navy); border-color: var(--navy); color: #fff; transform: translateY(-1px); }
+    .network-cta:hover { background: #8b5cf6; color: #ffffff; border-color: #8b5cf6; box-shadow: 0 0 20px #8b5cf6, 0 0 44px #8b5cf6; transform: translateY(-1px); }
 
     /* ══ 2025 HIGHLIGHTS ══ */
     .highlights-section { background: #fff; padding: 0; position: relative; overflow: hidden; }
@@ -186,12 +184,12 @@
     }
     .highlights-title { font-size: 52px; font-weight: 700; color: var(--dark-text); }
     .highlights-strip-outer { padding: 0 248px 64px; }
-    .highlights-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; }
-    .highlight-card { min-width: 0; }
-    .highlight-img-wrap { width: 100%; height: 260px; overflow: hidden; position: relative; }
+    .highlights-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; align-items: stretch; }
+    .highlight-card { min-width: 0; display: flex; flex-direction: column; height: 100%; }
+    .highlight-img-wrap { width: 100%; height: 260px; overflow: hidden; position: relative; flex-shrink: 0; }
     .highlight-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
     .highlight-card:hover .highlight-img-wrap img { transform: scale(1.04); }
-    .highlight-info { padding: 12px 0 0; }
+    .highlight-info { padding: 12px 0 0; display: flex; flex-direction: column; flex: 1; }
     .highlight-cat { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--body-gray); margin-bottom: 6px; }
     .highlight-name { font-size: 17px; font-weight: 700; color: var(--dark-text); margin-bottom: 8px; line-height: 1.2; }
 
@@ -204,9 +202,9 @@
     .highlight-read-more {
       font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
       color: var(--navy); cursor: pointer; border-bottom: 1px solid var(--navy);
-      display: inline-block; padding-bottom: 1px; transition: opacity 0.2s;
+      display: inline-block; width: fit-content; padding-bottom: 1px; transition: opacity 0.2s;
       background: none; border-top: none; border-left: none; border-right: none;
-      font-family: 'InterDisplay', sans-serif;
+      font-family: 'InterDisplay', sans-serif; margin-top: auto;
     }
     .highlight-read-more:hover { opacity: 0.6; }
 
@@ -307,7 +305,7 @@
     .partners-inner { padding: 0 248px; }
     .partners-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
     .partners-title { font-size: 38px; font-weight: 700; color: var(--dark-text); }
-    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
     .partner-card { display: flex; flex-direction: column; }
     .partner-logo-box {
       background: #fff; border: 1px solid rgba(26,39,68,0.10);
@@ -318,6 +316,7 @@
     .partner-card:hover .partner-logo-box { box-shadow: 0 10px 32px rgba(26,39,68,0.13); transform: translateY(-5px); }
     .partner-logo-box img { max-width: 100%; max-height: 110px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
     .partner-logo-box img.keep-color { filter: none !important; }
+    .partner-logo-box img.origins-logo { max-height: 68px; align-self: center; }
     .partner-logo-link { display: contents; text-decoration: none; }
 
     /* ── RESPONSIVE ── */
@@ -336,7 +335,7 @@
       .faq-layout { grid-template-columns: 220px 1fr; gap: 48px; }
       .partners-inner { padding: 0 48px; }
       .partners-title { font-size: 32px; }
-      .partners-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      .partners-grid { grid-template-columns: repeat(5, 1fr); gap: 12px; }
       .partner-logo-box { padding: 24px 20px; }
     }
    @media (max-width: 1400px) {
@@ -492,7 +491,7 @@
 
       <!-- Card 1 -->
       <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image updates/image00084(1).jpeg" alt="ACIII Booklet Launch" /></div>
+        <div class="highlight-img-wrap"><img src="images/image updates/pro highlights/ac3.jpg" alt="ACIII Booklet Launch" /></div>
         <div class="highlight-info">
           <p class="highlight-cat">In Conversation</p>
           <p class="highlight-name">ACIII Booklet Launch</p>
@@ -503,7 +502,7 @@
 
       <!-- Card 2 -->
       <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image updates/image00034.jpg" alt="A Seat at the Table of Change" /></div>
+        <div class="highlight-img-wrap"><img src="images/image updates/pro highlights/seat at the table.jpg" alt="A Seat at the Table of Change" /></div>
         <div class="highlight-info">
           <p class="highlight-cat">Panel Discussion</p>
           <p class="highlight-name">A Seat at the Table of Change</p>
@@ -514,7 +513,7 @@
 
       <!-- Card 3 -->
       <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image updates/image00001(1).jpg" alt="Electric Futures" /></div>
+        <div class="highlight-img-wrap"><img src="/images/image updates/pro highlights/electric futures.png" alt="Electric Futures" /></div>
         <div class="highlight-info">
           <p class="highlight-cat">Keynote Provocation</p>
           <p class="highlight-name">Electric Futures</p>
@@ -525,7 +524,7 @@
 
       <!-- Card 4 -->
       <div class="highlight-card">
-        <div class="highlight-img-wrap"><img src="images/image updates/image00011.jpg" alt="The AI Workshop" /></div>
+        <div class="highlight-img-wrap"><img src="images/image updates/pro highlights/ai workshop.jpg" alt="The AI Workshop" /></div>
         <div class="highlight-info">
           <p class="highlight-cat">Workshop</p>
           <p class="highlight-name">The AI Workshop</p>
@@ -578,6 +577,13 @@
         <a href="https://www.wits.ac.za/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Wits University">
           <div class="partner-logo-box">
             <img src="images/logos/wits/logo_wits_colour_colloquial_extended.svg" alt="Wits University" class="keep-color"/>
+          </div>
+        </a>
+      </div>
+      <div class="partner-card">
+        <a href="https://www.wits.ac.za/origins/" target="_blank" rel="noopener" class="partner-logo-link" aria-label="Origins Centre">
+          <div class="partner-logo-box">
+            <img src="images/logos/wits/origins-centre-logox200.png" alt="Origins Centre" class="keep-color origins-logo"/>
           </div>
         </a>
       </div>
