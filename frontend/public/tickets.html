@@ -17,10 +17,17 @@
     .sec-crosses{position:absolute;left:0;right:0;display:flex;justify-content:space-between;padding:0 248px;pointer-events:none;z-index:20;}
     .sec-crosses-top{top:20px;} .sec-crosses-bottom{bottom:20px;}
 
-    /* ══ HERO — matched to sig-dalakhona layout ══ */
+    /* ══ HERO  */
     .hero{position:relative;width:100%;min-height:520px;overflow:hidden;display:flex;align-items:flex-start;}
-    .hero-bg{position:absolute;inset:0;background-image:url('images/image updates/Copy of 0A9A7964.JPG');background-size:cover;background-position:center 30%;filter:brightness(0.45); animation:kenBurns 18s ease-in-out infinite alternate; }
-    @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.07)}}
+    .hero-bg{
+  position:absolute;inset:0;
+  background-image:url('images/image updates/Copy of 0A9A7964.JPG');
+  background-size:cover;background-position:center 30%;
+  filter:brightness(0.45);
+  transform:scaleX(-1);
+  animation:kenBurns 18s ease-in-out infinite alternate;
+}
+@keyframes kenBurns{from{transform:scaleX(-1) scale(1)}to{transform:scaleX(-1) scale(1.07)}}
     .hero-blue-tint{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1;pointer-events:none;}
     .hero-inner{position:relative;z-index:3;width:100%;padding:120px 248px 56px;display:flex;align-items:flex-start;justify-content:space-between;}
     .hero-content{max-width:480px;display:flex;flex-direction:column;align-items:flex-start;}
@@ -92,15 +99,25 @@
     .ticket-features li{font-size:10.5px;display:flex;align-items:center;gap:7px;}
     .ticket-features li::before{content:'→';font-size:9px;flex-shrink:0;color:currentColor;}
     .price-block{text-align:right;}
-    .price-amount{font-weight:600;letter-spacing:-0.03em;line-height:1;}
+    .price-amount{font-weight:600;letter-spacing:0.02em;line-height:1;}
     .price-amount.large{font-size:44px;} .price-amount.xlarge{font-size:38px;}
     .price-curr{font-size:16px;vertical-align:top;margin-top:7px;display:inline-block;font-weight:700;}
     .price-label{font-size:8px;letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;margin-bottom:3px;}
     .price-divider{width:100%;height:1px;margin:10px 0;}
     .student-note{font-size:8px;text-align:right;margin-bottom:10px;line-height:1.4;}
     .btn-get-pass{display:inline-block;padding:9px 18px;font-family:'InterDisplay',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;transition:background 0.22s,color 0.22s,border-color 0.22s;white-space:nowrap;border:1.5px solid transparent;}
-    .btn-get-pass:hover{background:#0d1b3e;color:var(--white);border-color:rgba(255,220,60,0.75);transform:translateY(-1px);}
+    
 
+    .btn-tickets,.btn-get-pass{
+  position:relative;overflow:hidden;
+  transition:background .22s,color .22s,border-color .22s,box-shadow .35s;
+}
+.btn-tickets:hover,.btn-get-pass:hover{
+  background:#00f4f5!important;
+  color:var(--dark-text)!important;
+  border-color:#00f4f5!important;
+  box-shadow:0 0 20px #00f4f5,0 0 44px #00f4f5!important;
+}
     /* WHITE click / hover state — applies identically to ALL ticket cards */
     .ticket-card:hover,
     .ticket-card.active{
@@ -160,6 +177,10 @@
     .partner-card:hover .partner-logo-box{box-shadow:0 10px 32px rgba(26,39,68,0.13);transform:translateY(-5px);}
     .partner-logo-box img{max-width:100%;max-height:140px;object-fit:contain;display:block;filter:brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%);}
     .partner-logo-box img.keep-color{filter:none !important;}
+    .partner-logo-box img[alt="Origins Centre"],
+.partner-logo-box img[alt="Tshimologong"] {
+  max-height: 80px;
+}
 
     .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
     .reveal.visible{opacity:1;transform:none;}
@@ -391,25 +412,24 @@
   function revealVisible() { rEls.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('visible'); }); }
   revealVisible(); window.addEventListener('load', revealVisible);
 
-  const faqData = [
-    { q: 'Are any events free to attend?', a: 'Some programme elements are open access. Others require registration or ticketing. Full details will be published with the festival programme.' },
-    { q: 'Is the venue wheelchair accessible?', a: 'The Tshimologong Precinct is wheelchair accessible. Full accessibility information will be published ahead of the festival. For specific requirements, contact hello@fakugesi.co.za in advance.' },
-    { q: 'How do I register for Fak\'ugesiPRO?', a: 'Fak\'ugesiPRO registration is included with your ticket, but seats are limited. Visit the Fak\'ugesiPRO page to secure your place.' },
-    { q: 'How do I get to Tshimologong?', a: 'The Tshimologong Digital Innovation Precinct is at 41 Juta Street, Braamfontein. Accessible by car, Gautrain, and Rea Vaya bus. Detailed travel information is available at tshimologong.joburg.' },
-  ];
-  const faqContainer = document.getElementById('faqAccordion');
-  faqData.forEach((faq, i) => {
-    const item = document.createElement('div');
-    item.className = 'faq-item' + (i === 0 ? ' open' : '');
-    item.innerHTML = `<button class="faq-question" aria-expanded="${i === 0}" style="padding-left:0;padding-right:0;"><span class="faq-question-text">${faq.q}</span><span class="faq-toggle" style="margin-right:0;">${i === 0 ? '×' : '+'}</span></button><div class="faq-answer">${faq.a}</div>`;
-    item.querySelector('.faq-question').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-toggle').textContent = '+'; el.querySelector('.faq-question').setAttribute('aria-expanded', 'false'); });
-      if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-toggle').textContent = '×'; item.querySelector('.faq-question').setAttribute('aria-expanded', 'true'); }
-    });
-    faqContainer.appendChild(item);
+ const faqData = [
+  { q: 'Are any events free to attend?', a: 'Some programme elements are open access. Others require registration or ticketing. Full details will be published with the festival programme.' },
+  { q: 'Is the venue wheelchair accessible?', a: 'The Tshimologong Precinct is wheelchair accessible. Full accessibility information will be published ahead of the festival. For specific requirements, contact hello@fakugesi.co.za in advance.' },
+  { q: 'How do I register for Fak\'ugesiPRO?', a: 'Fak\'ugesiPRO registration is included with your ticket, but seats are limited. Visit the Fak\'ugesiPRO page to secure your place.' },
+  { q: 'How do I get to Tshimologong?', a: 'The Tshimologong Digital Innovation Precinct is at 41 Juta Street, Braamfontein. Accessible by car, Gautrain, and Rea Vaya bus. Detailed travel information is available at tshimologong.joburg.' },
+];
+const faqContainer = document.getElementById('faqAccordion');
+faqData.forEach((faq, i) => {
+  const item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = `<button class="faq-question" aria-expanded="false" style="padding-left:0;padding-right:0;"><span class="faq-question-text">${faq.q}</span><span class="faq-toggle" style="margin-right:0;">+</span></button><div class="faq-answer">${faq.a}</div>`;
+  item.querySelector('.faq-question').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    faqContainer.querySelectorAll('.faq-item').forEach(el => { el.classList.remove('open'); el.querySelector('.faq-toggle').textContent = '+'; el.querySelector('.faq-question').setAttribute('aria-expanded', 'false'); });
+    if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-toggle').textContent = '×'; item.querySelector('.faq-question').setAttribute('aria-expanded', 'true'); }
   });
-
+  faqContainer.appendChild(item);
+});
   function drawTicketBorder(card) {
     const svg = card.querySelector('.ticket-border-svg'); const path = card.querySelector('.ticket-outline'); if (!svg || !path) return;
     const W = card.offsetWidth, H = card.offsetHeight; svg.setAttribute('viewBox', `0 0 ${W} ${H}`); path.setAttribute('d', `M 0 0 L ${W} 0 L ${W} ${H} L 0 ${H} Z`);
