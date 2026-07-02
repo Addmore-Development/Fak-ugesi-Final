@@ -173,7 +173,7 @@
       display:inline-flex; align-items:center; white-space:nowrap;
       transition:background .22s,border-color .22s,transform .15s;
     }
-    #main-nav .nav-tickets:hover{background:#00f4f5;color:#0d1b3e;border-color:#00f4f5;box-shadow:0 0 20px #00f4f5,0 0 44px #00f4f5;transform:translateY(-1px);}
+    #main-nav .nav-tickets:hover{background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px);}
     #main-nav .nav-tickets span{position:relative;z-index:1;}
 
     /* ── HAMBURGER BUTTON ── */
@@ -302,14 +302,13 @@
   const sigDropHTML = SIG_PAGES.map(p => `<a href="${p.href}">${p.label}</a>`).join('');
 
   const links = [
-    { label: 'Home',                 href: '/index.html' },
-    { label: 'Festival Programme',   href: '/festival-programmes.html' },
-    { label: 'Signature Programmes', href: '/sig-awards.html', sigDd: true },
-    { label: 'Discover',             href: '#', dd: [
-      { label: 'About Us',   href: '/about.html' },
-      { label: 'Venues',     href: '/discover/venues.html' },
-      { label: 'Resources',  href: '/discover/resources.html' },
-    ]},
+    { label: 'Home',                  href: '/index.html' },
+    { label: 'About Us',              href: '/about.html' },
+    { label: 'Festival Programme',    href: '/fes-market.html' },
+    { label: 'Signature Programmes',  href: '/sig-awards.html', sigDd: true },
+    { label: 'Festival Venues',       href: '/discover/venues.html' },
+    { label: 'Tickets',               href: '/tickets.html' },
+    { label: "Director's Highlights", href: '/director-highlights.html' },
   ];
 
   /* ── Desktop nav items ── */
@@ -451,41 +450,48 @@
      INLINE SEARCH SYSTEM
   ══════════════════════════════════════════════ */
   const SEARCH_INDEX = [
-    { title: 'Home', section: 'Home', url: '/index.html', tags: ['home','festival','fakugesi','2026','african','digital','innovation','african imaginaries','theme','johannesburg'] },
-    { title: '2026 Theme: African Imaginaries', section: 'Home', url: '/index.html', tags: ['african imaginaries','2026 theme','afrofuturism','speculative','creative energy','october'] },
-    { title: 'Get Involved', section: 'Home', url: '/index.html', tags: ['get involved','investors','funders','volunteers','expo showcases','sponsors'] },
-    { title: 'Festival Dates', section: 'Home', url: '/index.html', tags: ['07 october','12 october','2026','dates','when','braamfontein'] },
-    { title: 'Festival Programme', section: 'Programme', url: '/festival-programmes.html', tags: ['programme','events','lineup'] },
-    { title: "Fak'ugesi Expo", section: 'Expo', url: '/fes-expo.html', tags: ['expo','showcases','exhibitions','digital art','immersive media'] },
-    { title: 'Curatorial Frequencies', section: 'Expo', url: '/fes-expo.html', tags: ['curatorial','imagination engines','memory engines','future engines','ai','heritage'] },
-    { title: 'Want to Showcase', section: 'Expo', url: '/fes-expo.html', tags: ['exhibit','showcase your work','apply'] },
-    { title: "Fak'ugesi Market", section: 'Market', url: '/festival-programmes.html', tags: ['market','exhibitors','startup','business','vendors'] },
-    { title: 'Festival Schedule', section: 'Schedule', url: '/fes-schedule.html', tags: ['schedule','timetable','sessions','panels','keynotes','talks','workshops'] },
-    { title: 'AI Symposium', section: 'Schedule', url: '/fes-schedule.html', tags: ['ai symposium','artificial intelligence','research'] },
-    { title: 'Pitchathon Coaching Workshop', section: 'Schedule', url: '/fes-schedule.html', tags: ['pitchathon','pitch','coaching'] },
-    { title: 'JAMZ Video Game Challenge', section: 'Schedule', url: '/fes-schedule.html', tags: ['jamz','gaming','video game'] },
-    { title: "Fak'ugesi Awards", section: 'Awards', url: '/sig-awards.html', tags: ['awards','categories','application','submit'] },
-    { title: 'Awards Jury 2026', section: 'Awards', url: '/sig-awards.html', tags: ['jury','judges'] },
-    { title: 'Awards 2025 Winners', section: 'Awards', url: '/sig-awards.html', tags: ['winners','2025','past winners'] },
-    { title: 'Dala Khona – African Gaming Arcade', section: 'Dala Khona', url: '/sig-dalakhona.html', tags: ['gaming','arcade','african games','indie','speedrun'] },
+    // Home
+    { title: 'Home', section: 'Home', url: '/index.html', tags: ['home','festival','fakugesi','2026','african','digital','innovation','johannesburg'] },
+    { title: '2026 Theme: African Imaginaries', section: 'Home', url: '/index.html', tags: ['african imaginaries','2026 theme','imagination precedes innovation','memory engines','imagination engines','future engines'] },
+    { title: 'Spotlight — Awards Applications Open', section: 'Home', url: '/index.html', tags: ['spotlight','awards','applications','open'] },
+    { title: "What's Happening", section: 'Home', url: '/index.html', tags: ['instagram','twitter','x','facebook','social','feed'] },
+
+    // About
+    { title: 'Who We Are', section: 'About', url: '/about.html', tags: ['about','who we are','history','fakugesi','switch on the electricity'] },
+    { title: 'Previous Editions', section: 'About', url: '/about.html', tags: ['editions','2017','2018','2019','2020','2021','2022','2023','2024','2025','posters','past festivals'] },
+    { title: 'The Team', section: 'About', url: '/about.html', tags: ['team','staff','alby michaels','festival director','contact'] },
+    { title: 'Get in Touch', section: 'About', url: '/about.html', tags: ['contact','email','phone','address','braamfontein','juta street'] },
+
+    // Tickets
+    { title: 'Festival Passes', section: 'Tickets', url: '/tickets.html', tags: ['tickets','buy tickets','full pass','day pass','industry pass','pricing','student'] },
+    { title: 'Tickets FAQ', section: 'Tickets', url: '/tickets.html', tags: ['faq','accessibility','fakugesipro registration','directions','tshimologong'] },
+
+    // Festival Venues
+    { title: 'Festival Venues', section: 'Venues', url: '/discover/venues.html', tags: ['venues','locations','map','directions'] },
+    { title: 'Tshimologong Digital Innovation Precinct', section: 'Venues', url: '/discover/venues.html', tags: ['tshimologong','precinct','incubator','innovation','juta street'] },
+    { title: 'Wits Anglo American Digital Dome', section: 'Venues', url: '/discover/venues.html', tags: ['digital dome','planetarium','immersive','360'] },
+    { title: 'Origins Centre', section: 'Venues', url: '/discover/venues.html', tags: ['origins centre','museum','rock art','archaeology','human origins'] },
+    { title: 'Chris Seabrooke Music Hall', section: 'Venues', url: '/discover/venues.html', tags: ['music hall','live music','acoustic','jorissen street'] },
+
+    // Signature Programmes
+    { title: "Fak'ugesi Awards", section: 'Awards', url: '/sig-awards.html', tags: ['awards','categories','winners','jury','application','festival director award'] },
+    { title: 'Dala Khona — African Gaming Arcade', section: 'Dala Khona', url: '/sig-dalakhona.html', tags: ['dala khona','gaming','arcade','indie games','african games','developers'] },
     { title: "Fak'ugesiPRO", section: 'PRO', url: '/sig-fakugesipro.html', tags: ['pro','industry','professional','networking'] },
-    { title: 'Immersive Africa', section: 'Immersive Africa', url: '/sig-immersive.html', tags: ['immersive','xr','vr','dome','digital dome'] },
-    { title: 'JAMZ – Animation & Video Game Hackathon', section: 'JAMZ', url: '/sig-jamz.html', tags: ['jamz','animation','hackathon','esports'] },
+    { title: 'Immersive Africa', section: 'Immersive Africa', url: '/sig-immersive.html', tags: ['immersive','xr','vr','dome','now showing'] },
+    { title: 'JAMZ — Animation & Video Game Hackathon', section: 'JAMZ', url: '/sig-jamz.html', tags: ['jamz','animation','hackathon','video game','music'] },
     { title: 'Pitchathon', section: 'Pitchathon', url: '/sig-pitchathon.html', tags: ['pitchathon','pitch','startup','entrepreneur','apply'] },
-    { title: "About Fak'ugesi", section: 'About', url: '/about.html', tags: ['about','who we are','history','fakugesi'] },
-    { title: 'Festival Venues', section: 'Venues', url: '/discover/venues.html', tags: ['venues','locations','map','tshimologong','digital dome','braamfontein'] },
-    { title: 'Festival Partners', section: 'Partners', url: '/discover/partners.html', tags: ['partners','sponsors','funders'] },
-    { title: 'Festival Archive', section: 'Archive', url: '/discover/archive.html', tags: ['archive','gallery','history','past festivals','photos'] },
-    { title: 'Research & Resources', section: 'Resources', url: '/discover/resources.html', tags: ['resources','research','reports','download'] },
-    { title: 'Get Tickets', section: 'Tickets', url: '/tickets.html', tags: ['tickets','buy tickets','attend','passes','pricing'] },
+
+    // Other real pages (searchable, not in main nav)
+    { title: "Fak'ugesi Market", section: 'Market', url: '/fes-market.html', tags: ['market','exhibitors','vendors','showcase','want a spot'] },
+    { title: 'Research & Resources', section: 'Resources', url: '/discover/resources.html', tags: ['research','resources','report','intermediaries report','download','pdf'] },
+    { title: 'Get Involved', section: 'Get Involved', url: '/get-involved.html', tags: ['get involved','investors','funders','volunteers','exhibitors','sponsors','apply'] },
   ];
 
   const categoryColors = {
-    'Home': '#4a90d9', 'Programme': '#7b68ee', 'Expo': '#e05a1e', 'Market': '#3a8a6a',
-    'Schedule': '#c46200', 'Awards': '#b8860b', 'Dala Khona': '#1a7a4a', 'PRO': '#3a5a9a',
-    'Immersive Africa': '#7a3a8a', 'JAMZ': '#c43a3a', 'Pitchathon': '#2a6a8a',
-    'About': '#5a6a7a', 'Venues': '#4a7a4a', 'Partners': '#6a4a7a', 'Archive': '#7a5a3a',
-    'Resources': '#3a6a7a', 'Tickets': '#a03a3a'
+    'Home': '#4a90d9', 'About': '#5a6a7a', 'Tickets': '#a03a3a', 'Venues': '#4a7a4a',
+    'Awards': '#b8860b', 'Dala Khona': '#1a7a4a', 'PRO': '#3a5a9a', 'Immersive Africa': '#7a3a8a',
+    'JAMZ': '#c43a3a', 'Pitchathon': '#2a6a8a', 'Market': '#3a8a6a', 'Resources': '#3a6a7a',
+    'Get Involved': '#7b68ee'
   };
 
   const searchBar    = document.getElementById('nav-search-bar');
