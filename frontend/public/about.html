@@ -59,7 +59,7 @@
     .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; color: var(--white); font-family: 'InterDisplay', sans-serif; }
     .hero-logo { position: absolute; bottom: 165px; right: var(--band); flex-shrink: 0; display: flex; align-items: flex-start; justify-content: center; z-index: 4; }
     .hero-logo img { height: 110px; width: auto; display: block; filter: brightness(0) invert(1) contrast(1.2); mix-blend-mode: screen; }
-    .hero-title { font-size: 50px; font-weight: 600; line-height: 1.0; color: var(--white); margin-bottom: 20px; font-family: 'InterDisplay', sans-serif; max-width: calc(100% - 180px); }
+    .hero-title { font-size: 50px; font-weight: 700; line-height: 1.0; color: var(--white); margin-bottom: 20px; font-family: 'InterDisplay', sans-serif; max-width: calc(100% - 180px); }
     .hero-body { font-size: 13px; line-height: 1.72; max-width: 480px; opacity: 1; margin-bottom: 0; color: var(--white); font-family: 'InterDisplay', sans-serif; }
     .hero-body p { margin-bottom: 6px; }
     .hero-body .hero-tagline { margin-top: 16px; font-style: italic; opacity: 1; }
@@ -108,11 +108,12 @@
     .team-img { width: 100%; aspect-ratio: 3/2.4; overflow: hidden; }
     .team-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .team-info { background: var(--lavender); padding: 12px 14px 16px; }
-    .team-name { font-size: 26px; font-weight: 600; color: var(--dark-text); line-height: 1.2; margin-bottom: 6px; }
+    .team-name { font-size: 24px; font-weight: 700; color: var(--dark-text); line-height: 1.2; margin-bottom: 6px; }
     .team-role { font-size: 18px; font-weight: 500; color: var(--dark-text); margin-bottom: 6px; }
     .team-email { font-size: 11px; color: var(--body-gray); }
     .team-email a { color: var(--body-gray); text-decoration: none; }
     .team-email a:hover { text-decoration: underline; }
+    .team-grid-row5 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
 
     /* ── GET IN TOUCH ── */
     .contact-section { background: var(--navy); padding: 64px 248px 72px; position: relative; }
@@ -166,6 +167,11 @@
     .partner-logo-box img { max-width: 100%; max-height: 140px; object-fit: contain; display: block; filter: brightness(0) saturate(100%) invert(18%) sepia(52%) saturate(800%) hue-rotate(197deg) brightness(85%); }
     .partner-logo-box img.keep-color { filter: none !important; }
     .partner-desc { font-size: 12px; color: var(--body-gray); line-height: 1.65; }
+    .partner-logo-box img.keep-color { filter: none !important; }
+.partner-logo-box img[alt="Origins Centre"],
+.partner-logo-box img[alt="Tshimologong"] {
+  max-height: 80px;
+}
 
     /* ── Fak'ugesi shared link hover effect ── */
     .involved-link,.curatorial-view-link,.showcases-link,.showcases-header a,.showcase-card-more,.winners-view-link,.highlights-view-link,.intro-view-link,.network-view-link,.faq-tickets-link,.faq-apply-link,.faq-apply-top,.partners-link,.partners-view-link,.main-partners-link,.market-info-link,.exhibitors-link,.exhibitor-card-more,.more-card-link,.prizes-apply-link,.cat-apply-link,.req-apply-link,.challenge-apply-link,.section-link,.media-link,.locations-map-link,.directions-link,.hero-link,[data-fug-link]{position:relative !important;text-decoration:none !important;padding-bottom:2px !important;transition:opacity 0.25s ease,transform 0.25s ease !important;}
@@ -232,6 +238,7 @@
       .team-grid,.team-grid-row2,.team-grid-row3 { grid-template-columns: 1fr 1fr; gap: 12px; }
       .team-grid-row2,.team-grid-row3 { margin-top: 12px; }
       .team-grid-row4 { grid-template-columns: 1fr 1fr; margin-top: 12px; }
+      .team-grid,.team-grid-row2,.team-grid-row3,.team-grid-row5 { grid-template-columns: 1fr 1fr; gap: 12px; }
       .team-name { font-size: 23px; }
       .team-role { font-size: 15px; }
       .team-email { font-size: 9.5px; word-break: break-all; }
@@ -260,6 +267,7 @@
       .team-title { font-size: 24px; }
       .team-grid,.team-grid-row2,.team-grid-row3 { grid-template-columns: 1fr; }
       .team-grid-row4 { grid-template-columns: 1fr; }
+      .team-grid,.team-grid-row2,.team-grid-row3,.team-grid-row5 { grid-template-columns: 1fr; }
       .contact-title { font-size: 24px; }
       .partners-title { font-size: 22px; }
       .partners-grid { grid-template-columns: 1fr 1fr; }
@@ -316,7 +324,6 @@
     <h2 class="who-title">Who We Are</h2>
     <div class="who-body">
       <p>Fak'ugesi is derived from urban Zulu slang. Literally, it means "switch on the electricity" or "give it power."</p>
-      <br />
       <p>That meaning captures the festival's purpose. Since 2014, Fak'ugesi African Digital &amp; Innovation Festival has brought together artists, technologists, researchers, designers, entrepreneurs and cultural practitioners to activate ideas, exchange knowledge, build collaborations and share new work.</p>
       <br />
       <p>Founded through the Wits Schools of Arts (WSOA), the Festival found its home at the Tshimologong Digital Innovation Precinct. Fak'ugesi is the continent's premier platform for African digital innovation, creating the conditions for new practices, technologies and cultural conversations to emerge.</p>
@@ -361,42 +368,14 @@
   <div class="team-inner">
     <h2 class="team-title">Our  Team</h2>
 
-    <!-- Row 1: Festival Director / Programme Manager / Project Manager -->
+    <!-- Row 1: Festival Director / Associate Producer / CCI Specialist -->
     <div class="team-grid">
       <div class="team-card">
-        <div class="team-img"><img src="images/Alby 2.png" alt="Alby Michaels" /></div>
+        <div class="team-img"><img src="images/team photos/team_alby.png" alt="Alby Michaels" /></div>
         <div class="team-info">
           <div class="team-name">Alby<br>Michaels</div>
           <div class="team-role">Festival Director</div>
           <div class="team-email"><a href="mailto:alby@tshimologong.joburg">alby@tshimologong.joburg</a></div>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-img"><img src="images/team photos/team_avuzwa.png" alt="Avuzwa Ntshongwana" /></div>
-        <div class="team-info">
-          <div class="team-name">Avuzwa<br>Ntshongwana</div>
-          <div class="team-role">Programme Manager</div>
-          <div class="team-email"><a href="mailto:avuzwa@tshimologong.joburg">avuzwa@tshimologong.joburg</a></div>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-img"><img src="images/team photos/team_mq.png" alt="Mqalatjie Moretsele" /></div>
-        <div class="team-info">
-          <div class="team-name">Mqalatjie<br>Moretsele</div>
-          <div class="team-role">Project Manager</div>
-          <div class="team-email"><a href="mailto:mqalatjie@tshimologong.joburg">mqalatjie@tshimologong.joburg</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 2: Project Manager / Associate Producer / CCI Specialist -->
-    <div class="team-grid-row2">
-      <div class="team-card">
-        <div class="team-img"><img src="images/team photos/team_diane.png" alt="Diane Walker" /></div>
-        <div class="team-info">
-          <div class="team-name">Diane<br>Walker</div>
-          <div class="team-role">Project Manager</div>
-          <div class="team-email"><a href="mailto:diane@tshimologong.joburg">diane@tshimologong.joburg</a></div>
         </div>
       </div>
       <div class="team-card">
@@ -417,7 +396,35 @@
       </div>
     </div>
 
-    <!-- Row 3: Administrator / Marketing Coordinator / Resident Festival Writer -->
+    <!-- Row 2: Business Development Manager / Programme Manager / Graphic Designer -->
+    <div class="team-grid-row2">
+      <div class="team-card">
+        <div class="team-img"><img src="images/team photos/team_grace.png" alt="Grace Meadow" /></div>
+        <div class="team-info">
+          <div class="team-name">Grace<br>Meadow</div>
+          <div class="team-role">Business Development Manager</div>
+          <div class="team-email"><a href="mailto:grace@tshimologong.joburg">grace@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/team photos/team_avuzwa.png" alt="Avuzwa Ntshongwana" /></div>
+        <div class="team-info">
+          <div class="team-name">Avuzwa<br>Ntshongwana</div>
+          <div class="team-role">Programme Manager</div>
+          <div class="team-email"><a href="mailto:avuzwa@tshimologong.joburg">avuzwa@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/team photos/team_samuel.png" alt="Sam Gillham" /></div>
+        <div class="team-info">
+          <div class="team-name">Sam<br>Gillham</div>
+          <div class="team-role">Graphic Designer</div>
+          <div class="team-email"><a href="mailto:Samuel.Gillham@gmail.com">Samuel.Gillham@gmail.com</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Administrator / Project Manager / Project Manager -->
     <div class="team-grid-row3">
       <div class="team-card">
         <div class="team-img"><img src="images/team photos/team_resego.png" alt="Resego Matshediso" /></div>
@@ -428,11 +435,39 @@
         </div>
       </div>
       <div class="team-card">
+        <div class="team-img"><img src="images/team photos/team_mq.png" alt="Mqalatjie Moretsele" /></div>
+        <div class="team-info">
+          <div class="team-name">Mqalatjie<br>Moretsele</div>
+          <div class="team-role">Project Manager</div>
+          <div class="team-email"><a href="mailto:mqalatjie@tshimologong.joburg">mqalatjie@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/team photos/team_diane2.png" alt="Diane Walker" /></div>
+        <div class="team-info">
+          <div class="team-name">Diane<br>Walker</div>
+          <div class="team-role">Project Manager</div>
+          <div class="team-email"><a href="mailto:diane@tshimologong.joburg">diane@tshimologong.joburg</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: Marketing Coordinator / Web Master / Resident Festival Writer -->
+    <div class="team-grid-row4">
+      <div class="team-card">
         <div class="team-img"><img src="images/team photos/team_edson.png" alt="Edson Vilankulo" /></div>
         <div class="team-info">
           <div class="team-name">Edson<br>Vilankulo</div>
           <div class="team-role">Marketing Coordinator</div>
           <div class="team-email"><a href="mailto:edson@tshimologong.joburg">edson@tshimologong.joburg</a></div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img"><img src="images/team photos/team_stanley.png" alt="Stanley Moloto" /></div>
+        <div class="team-info">
+          <div class="team-name">Stanley<br>Moloto</div>
+          <div class="team-role">Web Master</div>
+          <div class="team-email"><a href="mailto:stanley@tshimologong.joburg">stanley@tshimologong.joburg</a></div>
         </div>
       </div>
       <div class="team-card">
@@ -445,24 +480,8 @@
       </div>
     </div>
 
-    <!-- Row 4: Web Master / Graphic Designer / Web Developer -->
-    <div class="team-grid-row4">
-      <div class="team-card">
-        <div class="team-img"><img src="images/team photos/team_stanley.png" alt="Stanley Moloto" /></div>
-        <div class="team-info">
-          <div class="team-name">Stanley<br>Moloto</div>
-          <div class="team-role">Web Master</div>
-          <div class="team-email"><a href="mailto:stanley@tshimologong.joburg">stanley@tshimologong.joburg</a></div>
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-img"><img src="images/team photos/team_samuel.png" alt="Sam Gillham" /></div>
-        <div class="team-info">
-          <div class="team-name">Sam<br>Gillham</div>
-          <div class="team-role">Graphic Designer</div>
-          <div class="team-email"><a href="mailto:Samuel.Gillham@gmail.com">Samuel.Gillham@gmail.com</a></div>
-        </div>
-      </div>
+    <!-- Row 5: Web Developer -->
+    <div class="team-grid-row5">
       <div class="team-card">
         <div class="team-img"><img src="images/team photos/team_unathy.png" alt="Unathi Qamza" /></div>
         <div class="team-info">
@@ -472,7 +491,6 @@
         </div>
       </div>
     </div>
-
 </div>
 
   </div>
