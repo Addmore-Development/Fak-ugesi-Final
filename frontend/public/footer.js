@@ -58,8 +58,8 @@
        how the content columns below are sized. */
     .fug-footer-crosses {
       position: absolute;
-      left: 248px;
-      right: 248px;
+      left: 200px;
+      right: 200px;
       height: 18px;
       pointer-events: none;
       z-index: 2;

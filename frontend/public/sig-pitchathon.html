@@ -62,16 +62,14 @@
       grid-template-columns: 248px 1fr 248px;
       align-items: stretch;
     }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('/images/image updates/image00041.jpeg');
-      background-size: cover; background-position: right 20%;
-      animation: kenBurns 18s ease-in-out infinite alternate;
-    }
-    @keyframes kenBurns {
-      from { transform: scaleX(-1) scale(1); }
-      to   { transform: scaleX(-1) scale(1.06); }
-    }
+ .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('images/image updates/_C6A8687.jpg');
+  background-size: cover;
+  background-position: 30% calc(40% - 20px);
+  animation: kenBurns 18s ease-in-out infinite alternate;
+}
+   
     .hero-overlay {
       position: absolute; inset: 0;
       background: rgba(0,0,0,0.20);
@@ -187,9 +185,12 @@
     .fug-sig-item:hover img, .fug-sig-item.fug-active img { transform:scale(1.08); opacity:1; }
 
     /* ══ ABOUT / WHAT IS PITCHATHON ══ */
-    .about-section {
-      background:#fff; padding:88px 248px; position:relative; overflow:hidden;
-    }
+   .about-section {
+  background:linear-gradient(180deg,#c8cede 0%,#e5e7ef 100%);
+  padding:88px 248px;
+  position:relative;
+  overflow:hidden;
+}
     .about-layout {
       display:flex; flex-direction:column; gap:32px;
     }
