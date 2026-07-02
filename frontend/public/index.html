@@ -11,10 +11,14 @@
     @font-face{font-family:'DxWideground';src:url('fonts/DxWideground-Regular.otf') format('opentype'),url('../fonts/DxWideground-Regular.otf') format('opentype'),url('/fonts/DxWideground-Regular.otf') format('opentype');font-weight:400;font-display:block;}
     @font-face{font-family:'Neofolia';src:url('fonts/Neofolia.ttf') format('truetype'),url('../fonts/Neofolia.ttf') format('truetype'),url('/fonts/Neofolia.ttf') format('truetype');font-weight:400;font-display:block;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{margin:0;padding:0;}
+body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
     :root{--navy:#1a2744;--blue-mid:#2a3f72;--lavender:#dde3f0;--white:#ffffff;--orange:#e05a1e;--dark-text:#0d1b3e;--body-gray:#3a4060;--band:248px;--turquoise:#00f4f5;}
     html{scroll-behavior:smooth}
     body{font-family:'InterDisplay',sans-serif;background:var(--white);color:var(--white);overflow-x:hidden}
 
+    
+    
     /* CANONICAL CROSS STRIPS — same horizontal padding (var(--band)) used everywhere, matching the 248px band used in nav.js */
     .cross-strip{display:flex;justify-content:space-between;align-items:center;padding:0 var(--band);height:40px;}
     .sec-crosses{position:absolute;left:0;right:0;display:flex;justify-content:space-between;padding:0 var(--band);pointer-events:none;z-index:20;}
@@ -26,9 +30,30 @@
     .btn-outline-dark:hover{background:var(--dark-text);color:var(--white);transform:translateY(-1px);}
 
     /* ── HERO ── */
-    .hero{position:relative;width:100%;min-height:490px;overflow:hidden;display:flex;align-items:center;}
-    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;z-index:0;transform:translate(10px, -20px);}
-    .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1;pointer-events:none;}
+    .hero{
+  position:relative;
+  width:100%;
+  min-height:490px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+}
+.hero-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+  z-index:0;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:1;
+  pointer-events:none;
+}
     .hero-inner{position:relative;z-index:3;width:100%;padding:110px var(--band) 60px;display:flex;align-items:center;justify-content:space-between;}
     
     .hero-content{max-width:420px;position:relative;z-index:0;}
@@ -55,8 +80,6 @@
 
     /* THEME SECTION */
     .theme-section{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;}
-    /* Poster is now a looping video instead of a static image, nudged
-       10px to the right via the transform's X value. */
   .theme-poster-video{
   position:absolute;
   inset:0;
@@ -110,6 +133,16 @@
     .involved-link{color:#ffffff !important;}
 
     .inv-card{border:1px solid rgba(189, 184, 184, 0.45);position:relative;min-height:240px;display:flex;flex-direction:column;}
+
+.inv-card-front{
+  position:absolute;
+  inset:0;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  background:rgba(0,0,0,0.35);
+  justify-content:flex-start;
+}
   
     .inv-card-front{flex:1;padding:20px;display:flex;flex-direction:column;background:rgba(0,0,0,0.35);justify-content:flex-start;}
     .card-num{position:absolute;top:14px;right:16px;font-family:'InterDisplay',sans-serif;font-size:36px;font-weight:700;color:#ffffff;line-height:1;}
@@ -311,7 +344,7 @@
     <div class="theme-content">
       <span class="theme-year-label">2026 Theme</span>
       <p class="theme-sub">Imagination Precedes Innovation</p>
-      <img class="theme-head-logo" src="images/logos/logo_theme (1).svg" alt="African Imaginaries"/>
+      <img class="theme-head-logo" src="images/logos/logo_theme_dark.png" alt="African Imaginaries"/>
       <p class="theme-body">From 13 to 17 October 2026, the festival returns to the Tshimologong Digital Innovation Precinct in Johannesburg under the theme African Imaginaries. An Imaginary, in this context, is not a fantasy. It is a framework: a set of conditions under which alternative futures become real.<br><br>Three frequencies organise the work. Memory Engines: how African communities preserve and transmit knowledge on their own terms. Imagination Engines: how African creatives and technologists are retraining the tools of machine intelligence. Future Engines: how African cities and systems are being built, right now, ahead of global precedent. Each one a distinct signal; together, a system for producing, interrogating, and deploying African knowledge at the highest level of creative and technological ambition.<br><br>The work has already begun. Five days in October are where it becomes visible.</p>
       <div class="btn-row">
         <button class="btn-outline-white" onclick="location.href='tickets.html'">GET TICKETS</button>
@@ -418,7 +451,7 @@
   </div>
   <div class="happening-inner">
     <div class="happening-header">
-      <h2 class="happening-title">What's happening</h2>
+      <h2 class="happening-title">What's Happening</h2>
       <div class="soc-tabs">
         <button class="soc-tab active" data-feed="instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></button>
         <button class="soc-tab" data-feed="twitter" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622z"/></svg></button>
