@@ -303,7 +303,7 @@
 
   const links = [
     { label: 'Home',                 href: '/index.html' },
-    { label: 'Festival Programme',   href: '/fes-market.html' },
+    { label: 'Festival Programme',   href: '/festival-programmes.html' },
     { label: 'Signature Programmes', href: '/sig-awards.html', sigDd: true },
     { label: 'Discover',             href: '#', dd: [
       { label: 'About Us',   href: '/about.html' },
@@ -482,8 +482,8 @@
     { title: 'JAMZ — Animation & Video Game Hackathon', section: 'JAMZ', url: '/sig-jamz.html', tags: ['jamz','animation','hackathon','video game','music'] },
     { title: 'Pitchathon', section: 'Pitchathon', url: '/sig-pitchathon.html', tags: ['pitchathon','pitch','startup','entrepreneur','apply'] },
 
-    // Other real pages (searchable, not in main nav)
-    { title: "Fak'ugesi Market", section: 'Market', url: '/fes-market.html', tags: ['market','exhibitors','vendors','showcase','want a spot'] },
+   
+    { title: "Fak'ugesi Market", section: 'Market', url: '/festival-programmes.html', tags: ['market','exhibitors','vendors','showcase','want a spot'] },
     { title: 'Research & Resources', section: 'Resources', url: '/discover/resources.html', tags: ['research','resources','report','intermediaries report','download','pdf'] },
     { title: 'Get Involved', section: 'Get Involved', url: '/get-involved.html', tags: ['get involved','investors','funders','volunteers','exhibitors','sponsors','apply'] },
     { title: "Director's Highlights", section: 'Highlights', url: '/director-highlights.html', tags: ["director's highlights","director highlights","festival highlights","highlights"] },
