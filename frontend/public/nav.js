@@ -173,7 +173,7 @@
       display:inline-flex; align-items:center; white-space:nowrap;
       transition:background .22s,border-color .22s,transform .15s;
     }
-    #main-nav .nav-tickets:hover{background:#0d1b3e;border-color:rgba(255,220,60,.75);transform:translateY(-1px);}
+    #main-nav .nav-tickets:hover{background:#00f4f5;color:#0d1b3e;border-color:#00f4f5;box-shadow:0 0 20px #00f4f5,0 0 44px #00f4f5;transform:translateY(-1px);}
     #main-nav .nav-tickets span{position:relative;z-index:1;}
 
     /* ── HAMBURGER BUTTON ── */
